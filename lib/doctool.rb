@@ -23,10 +23,10 @@ if ARGV[0] == 'publish'
   source_control = SourceControl.current_revision
   FileUtils.chdir(olddir)
   git_revision = `git rev-parse --verify --short HEAD`.strip
-  SOURCE_CONTROL_REVISION = source_control.displayable_id
+  SOURCE_CONTROL_REVISION = "#{source_control.displayable_id}-#{git_revision}"
   SOURCE_CONTROL_DATE = source_control.displayable_date_string
   PACKAGING_VERSION = "#{source_control.filename_time_string}-#{SOURCE_CONTROL_REVISION}"
-  UPDATED_MESSAGE = "Revision: #{SOURCE_CONTROL_REVISION}+#{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
+  UPDATED_MESSAGE = "Revision: #{source_control.displayable_id}+#{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
   puts "Docs revision: #{SOURCE_CONTROL_REVISION} on #{SOURCE_CONTROL_DATE}"
 else
   UPDATED_MESSAGE = 'CHECKOUT'
