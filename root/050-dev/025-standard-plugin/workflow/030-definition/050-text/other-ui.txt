@@ -1,0 +1,14 @@
+title: UI
+long_title: User Interface
+--
+
+h4. Displayable name of the workflow process
+
+ * workflow-process-name:STATE
+ * workflow-process-name
+
+
+h4. "Currently with" caption in action panel
+
+ * status-ui-currently-with:STATE
+ * status-ui-currently-with

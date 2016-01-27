@@ -1,0 +1,48 @@
+title: Literals
+--
+
+Templates need to include fixed contents, whether that's tag properties or user visible text.
+
+HSVT is slightly unusual in that it
+
+ * requires literal values to be explicitly marked as literal text
+ * ignores all whitespace and reformats your HTML strictly.
+
+The intention is to make common cases easy, where you are inserting values from the view, and avoid any problems with HTML's whitespace sensitivity giving you a choice between neat templates or annoying rendering.
+ 
+Within HTML tags, literal string quoting is very natural as they're quoted anyway. But you have to remember enclose document text in quotes.
+
+For example,
+
+<pre>language=hsvt
+<div class="container"> "This is a \"message\"." </div>
+</pre>
+
+will be rendered as
+
+<pre>
+<div class="container">This is a "message".</div>
+</pre>
+
+Note that:
+
+ * Quotes within the string must be escaped as @\"@
+ * Whitespace outside literals is ignored.
+
+Newlines are supported in literals, either as @\n@ or as actual newlines. For example:
+
+<pre>language=hsvt
+<div> "This is a\nmulti-line
+literal string"
+</div>
+</pre>
+
+will be rendered as
+
+<pre>
+<div>This is a
+multi-line
+literal string</div>
+</pre>
+
+

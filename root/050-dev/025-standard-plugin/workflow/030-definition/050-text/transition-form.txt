@@ -1,0 +1,9 @@
+title: Transition form
+--
+
+The error message when transition forms are not completed can be configured if the default if not suitable.
+
+h4. Transition form error message
+
+ * transition-form-error:STATE
+ * transition-form-error

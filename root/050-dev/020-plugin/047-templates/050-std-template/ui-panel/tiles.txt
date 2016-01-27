@@ -1,0 +1,13 @@
+title: std:ui:panel:tiles
+link_as: keyword
+--
+
+A style of [node:dev/plugin/templates/std-template/ui-panel] which displays large tiles for top level navigation.
+
+
+h2. Supported panel element properties
+
+ * @label@
+ * @href@
+ * @icon@
+

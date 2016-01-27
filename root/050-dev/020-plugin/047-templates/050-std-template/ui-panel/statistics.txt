@@ -1,0 +1,12 @@
+title: std:ui:panel:statistics
+link_as: keyword
+--
+
+A style of [node:dev/plugin/templates/std-template/ui-panel] which displays summary statistics.
+
+h2. Supported panel element properties
+
+ * @label@
+ * @value@
+ * @href@
+

@@ -1,0 +1,229 @@
+title: Handlers
+long_title: Workflow Handlers
+--
+
+Workflow Handlers layer behaviour on top of the basic 'flowchart' defined by the [node:dev/standard-plugin/workflow/definition/states:states].
+
+These functions are called on the Definition object, and all take two arguments, a [node:dev/standard-plugin/workflow/definition/selector:Selector] and a function which will be called at the appropriate moment when the instance is selected by the Selector.
+
+The handler function's first argument is always @M@, the workflow instance.
+
+Returning a value (which isn't @undefined@) stops the handler chain.
+
+
+h2. observeEnter(selector, fn)
+
+Called when a state is entered.
+
+<pre>language=javascript
+EgWorkflow.observeEnter(function(M, transition, previousState) {
+});
+</pre>
+
+@transition@ is the transition which caused the move to this state, and @previousState@ is the previous state. The current state, if not implied by the Selector, is in @M.state@.
+
+
+
+h2. observeExit(selector, fn)
+
+Called when the process exits a state.
+
+<pre>language=javascript
+EgWorkflow.observeExit(function(M, transition) {
+});
+</pre>
+
+@transition@ is the transition which caused the move from this state.
+
+
+h2. resolveTransitionDestination(selector, fn)
+
+Called to choose which of the allowed destinations in the state definition will be taken. It's called even if there is a single destination,.
+
+<pre>language=javascript
+EgWorkflow.resolveTransitionDestination(
+    function(M, transition, destinations, target) {
+    }
+);
+</pre>
+
+@transition@ is the transition name.
+
+@destinations@ is an array containing all the allowed destinations, in the order specified in the state definition.
+
+Return a state name to choose a specific destination state. The state you choose is checked to make sure it's in the allowed list.
+
+
+
+h2. filterTransition(selector, fn)
+
+Called after @resolveTransitionDestination()@ to filter out allowed transitions from a state. Your state definition must define all possible transitions, but they may not all be allowed in every instance of the process. This handler allows you to filter the transitions to the permitted set.
+
+<pre>language=javascript
+EgWorkflow.filterTransition(function(M, transition) {
+});
+</pre>
+
+@transition@ is the name of the transition.
+
+Return @false@ to remove this transition. Return @true@ to allow this transition regardless of any other handler functions. Return @undefined@ to express no opinion on the matter, and allow other handlers to called.
+
+If all handler functions return @undefined@, the transition will be allowed.
+
+
+
+h2. actionPanel(selector, fn)
+
+Called to populate the action panel which displays the status of the workflow, links to the transition UI, and any other useful information such as forms.
+
+You should probably not return anything from this handler, as it would prevent all the UI from being added.
+
+<pre>language=javascript
+EgWorkflow.actionPanel(function(M, builder) {
+});
+</pre>
+
+@builder@ is a [node:dev/plugin/interface/panel-builder] object.
+
+There are two special purpose action panel handlers, @actionPanelStatusUI()@ and @actionPanelTransitionUI()@, which can be overridden to adjust the default behaviour. They're separate to allow that part of the UI to be overridden.
+
+
+
+h2. actionPanelStatusUI(selector, fn)
+
+Similar to @actionPanel()@, but for adding the headline status display at the top of the action panel. Override this handler to change the default UI.
+
+
+
+h2. actionPanelTransitionUI(selector, fn)
+
+Similar to @actionPanel()@, but for adding the links to the built-in transition UI. Override this handler if you need to use a different UI.
+
+
+
+h2. renderWork(selector, fn)
+
+Called to render the work unit.
+
+<pre>language=javascript
+EgWorkflow.renderWork(function(M, W) {
+});
+</pre>
+
+@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer].
+
+
+h2. renderWorkList(selector, fn)
+
+Called to render the work unit in the task list.
+
+<pre>language=javascript
+EgWorkflow.renderWork(function(M, W) {
+});
+</pre>
+
+@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer].
+
+
+
+h2. workListFullInfo(selector, fn)
+
+Update the [node:dev/plugin/interface/plugin-work-unit-renderer] view when rendering the work unit in the task list to set the "full info" link and label.
+
+<pre>language=javascript
+EgWorkflow.workListFullInfo(function(M, W, view) {
+});
+</pre>
+
+@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer], @view@ is the view which will be passed to [node:dev/plugin/interface/plugin-work-unit-renderer#render].
+
+The handler should modify the properties of the view as described [node:dev/plugin/interface/plugin-work-unit-renderer#Extra_information_in_the_view:in the render() documentation].
+
+
+
+h2. notification(selector, fn)
+
+Alter the email notification set to the user when the work unit becomes actionable by them.
+
+It's usually easier to use the Text system to [node:dev/standard-plugin/workflow/definition/text/notification-emails:set the text for the email] than use this handler.
+
+<pre>language=javascript
+EgWorkflow.notification(function(M, notificationView) {
+});
+</pre>
+
+@notificationView@ is the notification view object.
+
+Return @false@ to prevent the notification from being sent.
+
+
+
+h2. transitionUI(selector, fn)
+
+Control the built-in transition UI.
+
+<pre>language=javascript
+EgWorkflow.transitionUI(function(M, E, ui) {
+});
+</pre>
+
+@E@ is the [node:dev/plugin/interface/exchange] object.
+
+@ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object, on which you should call functions to modify the UI.
+
+
+
+h2. transitionFormSubmitted(selector, fn)
+
+Called when the build-in transition UI form is submitted, but before the workflow UI is fully committed to the transition.
+
+<pre>language=javascript
+EgWorkflow.transitionFormSubmitted(function(M, E, ui) {
+});
+</pre>
+
+@E@ is the [node:dev/plugin/interface/exchange] object.
+
+@ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object. Call @preventTransition()@ and @redirect()@ to stop the transition and send the user somewhere else.
+
+
+h2. transitionFormPreTransition(selector, fn)
+
+Called when the build-in transition UI form is submitted, after the workflow UI is fully committed to the transition.
+
+<pre>language=javascript
+EgWorkflow.transitionFormPreTransition(function(M, E, ui) {
+});
+</pre>
+
+@E@ is the [node:dev/plugin/interface/exchange] object.
+
+@ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object. Call @redirect()@ send the user somewhere else.
+
+
+
+h2. preWorkUnitSave(selector, fn)
+
+Called just before [node:dev/plugin/interface/work-unit#save] is called on on the underlying @WorkUnit@. It's especially handy for updating @WorkUnit@ tags.
+
+<pre>language=javascript
+EgWorkflow.preWorkUnitSave(function(M) {
+});
+</pre>
+
+You can modify the @WorkUnit@, available as the @M.workUnit@ property. But be careful.
+
+
+h2. setWorkUnitProperties(selector, fn)
+
+Called after the workflow process is committed to a transition to give the workflow a chance to update the @WorkUnit@.
+
+<pre>language=javascript
+EgWorkflow.setWorkUnitProperties(function(M, transition) {
+});
+</pre>
+
+@transition@ is the name of the transition.
+
+You can modify the @WorkUnit@, available as the @M.workUnit@ property. But be careful.
+

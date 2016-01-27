@@ -1,0 +1,7 @@
+title: Definitions
+long_title: Workflow Definitions
+class: DocNodeTextileWithTOC
+--
+
+The Workflow Definition is created by your plugin as it loads, then configured by calling functions on the object.
+

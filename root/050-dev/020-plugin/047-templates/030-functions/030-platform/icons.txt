@@ -1,0 +1,21 @@
+title: Icons
+long_title: Icons template functions
+--
+
+These functions render type icons. Each of the functions takes an optional size, which can be @"micro"@, @"small"@, @"medium"@ or @"large"@.
+
+h2. std:icon:type(typeRef size)
+
+Renders an icon for a given object type, specified by it's [node:dev/plugin/interface/ref] from the [node:dev/plugin/schema/local-schema].
+
+
+h2. std:icon:object(object size)
+
+Renders an icon for the given @object@, specified as a [node:dev/plugin/interface/store-object] or [node:dev/plugin/interface/ref].
+
+
+h2. std:icon:description(description size)
+
+Renders an icon given an icon description string.
+
+You can build icon strings using the Icon Designer, found by visiting the @/do/setup/appearance/icon-designer@ URL on any Haplo application when you're logged in as a user in the built-in Administrators group.

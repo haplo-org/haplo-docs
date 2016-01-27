@@ -1,0 +1,161 @@
+title: Including other templates
+--
+
+You will often want to include other templates inside a template, so that you don't have to repeat common templates.
+
+There are two ways of doing it. If you know which template you want to include, then the @template:X()@ template function include it by name. If you don't, you can use [node:dev/plugin/interface/template#deferredRender] on a template and then include the output with the [node:dev/plugin/templates/functions/language#render] template function.
+
+
+h2. Including a template
+
+Let's say you have a very simple widget, which renders a heading and some text. In a file called @template/widget/example.hsvt@ in your plugin, you create this template:
+
+<pre>language=hsvt
+<div class="example-widget">
+    <h2> heading </h2>
+    std:text:paragraph(text)
+</div>
+</pre>
+
+This expects a view with a @heading@ and text properties @text@.
+
+Let's include it in another template:
+
+<pre>language=hsvt
+<h1> "Widgets" </h1>
+<div>
+    template:widget:example()
+</div>
+</pre>
+
+You can now render it with this view:
+
+<pre>language=json
+{
+    "heading": "Widget One",
+    "text": "First use"
+}
+</pre> 
+
+
+h2. Including it twice
+
+Let's say you want to use it twice in another template. You now need to render it with a different view, because otherwise it'll render the same content twice.
+
+We can use the [node:dev/plugin/templates/functions/language#within] template function to move the view to a nested view, and then include the other template.
+
+<pre>language=hsvt
+<h1> "Widgets" </h1>
+<div>
+    within(one) { template:widget:example() }
+    within(two) { template:widget:example() }
+</div>
+</pre>
+
+and render it with a view like:
+
+<pre>language=json
+{
+    "one": {
+        "heading": "Widget One",
+        "text": "First use"
+    },
+    "two": {
+        "heading": "Second widget",
+        "text": "2nd use"
+    }
+}
+</pre>
+
+But there's a trick with @yield()@ you can use to simplify this even further.
+
+
+h2. Using Platform templates
+
+You can use platform templates in exactly the same way.
+
+To use the [node:dev/plugin/templates/std-template/ui-choose] template, you'd prefix the name with @template:@ and use it as you would any other template. For example,
+
+<pre>language=hsvt
+<div class="choices">
+    template:std:ui:choose()
+</div>
+</pre>
+
+and a view like
+
+<pre>language=json
+{
+    "choices": [
+        {"action":"/do/path", "label":"Choice one"},
+        // ...
+    ]
+}
+</pre>
+
+
+h2. Tricks with yield()
+
+[node:dev/plugin/templates/functions:Template functions] can take blocks, and the @template:X()@ functions are no exception. The included template can then use [node:dev/plugin/templates/functions/language#yield] to include those blocks.
+
+Let's write that widget again.
+
+<pre>language=hsvt
+<div class="example-widget">
+    <h2> yield() </h2>
+    yield:text()
+</div>
+</pre>
+
+Now we don't have to mess around with the view, and can include literal text in the template which includes this widget. For example:
+
+<pre>language=hsvt
+<h1> "Widgets" </h1>
+<div>
+    template:widget:example() { "Heading One" }
+        text { textFromView }
+
+    template:widget:example() { secondHeadingFromView }
+        text { std:text:paragraph("Yielded text") }
+</div>
+</pre>
+
+
+h2. Deferred rendering
+
+If you're writing a plugin which composes the UI from other plugins, you should use [node:dev/plugin/interface/template#deferredRender] in the JavaScript code, and the @render()@ function in your template. This ensures you're never unsafely including HTML without proper escaping.
+
+For example, a plugin might use a service to collect content from other plugins.
+
+<pre>language=javascript
+// Service to collect content
+P.implementService("example:included", function(content) {
+    content.push(P.template("example/one").deferredRender({
+        title: "Example",
+        // rest of view goes here
+    }));
+});
+
+// Request handler to fetch all the content from the
+// various implementations of the service, and display it.
+P.respond("GET", "/do/display/all", [
+], function(E) {
+    var content = [];
+    O.service("example:included", content);
+    E.render({
+        content: content
+    });
+});
+</pre>
+
+Your template to display all the content then looks like:
+
+<pre>language=hsvt
+<div>
+    each(content) {
+        render(.)
+    }
+</div>
+</pre>
+
+Here, @.@ is a special value which is the root of the current view, that is, the current element in the @content@ array.

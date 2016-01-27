@@ -1,0 +1,110 @@
+title: Function lists
+--
+
+These function lists configure the overall properties of the Workflow. You may only need to implement @start()@.
+
+
+h2. start(fn)
+
+Called when a new workflow is started. Use this to configure the starting state of the workflow, which otherwise defaults to @"START"@.
+
+<pre>language=javascript
+EgWorkflow.start(function(M, initial, properties) {
+    initial.state = "starting_state";
+});
+</pre>
+
+@properties@ is the argument to the @create()@ function which creates the instance.
+
+
+
+h2. getActionableBy(fn)
+
+Translate an @actionableBy@ name into a [node:dev/plugin/interface/security-principal] object. If your function cannot find this user, then make sure you return @undefined@ so other functions can try too.
+
+There's a fallback implementation which looks up groups by their API code, so you can use the API code of a group in @actionableBy@ without any extra work.
+
+<pre>language=javascript
+EgWorkflow.getActionableBy(function(M, actionableBy, target) {
+    if(actionableBy === "user") {
+        return O.user(M.workUnit.data.userEmail);
+    }
+});
+</pre>
+
+The entities system will provide an implementation which does everything you need.
+
+
+
+h2. hasRole(fn)
+
+Given a [node:dev/plugin/interface/security-principal] object, test to see if the user has the given role in the instance.
+
+There's a fallback implementation which tests whether the user is a member of a group, specified by API code, matching the fallback implementation for @getActionableBy@.
+
+<pre>language=javascript
+EgWorkflow.hasRole(function(M, user, role) {
+    if(role === "user") {
+        return (user.email === M.workUnit.data.userEmail);
+    }
+});
+</pre>
+
+
+
+h2. textInterpolate(fn)
+
+Given a text string, modify it. This is used to replace tokens by specific names, for example, names of the actual users involved.
+
+The entities system implements a useful text interpolation based on the defined entities.
+
+<pre>language=javascript
+EgWorkflow.textInterpolate(function(M, text) {
+    return text.replace(/\#email\#/g, M.workUnit.data.userEmail);
+});
+</pre>
+
+This function is slightly unusual in that it must always return a value, and that value is passed through all functions so all interpolations are performed, not just the first matching interpolation.
+
+
+
+h2. renderTimelineEntryDeferred(fn)
+
+Render a custom timeline entry.
+
+<pre>language=javascript
+EgWorkflow.renderTimelineEntryDeferred(function(M, entry) {
+});
+</pre>
+
+@entry@ is the timeline entry. Test @entry.action@ to see if it's something you should render, and if so, return a deferred render using [node:dev/plugin/interface/template#deferredRender] on a template using the properties in @M@ and @entry.data@.
+
+
+
+h2. taskUrl(fn)
+
+Generate the canonical URL of the page representing this instance.
+
+You should not generally need to implement this, as if your workflow is associated with an Object, that page will automatically be used.
+
+<pre>language=javascript
+EgWorkflow.taskUrl(function(M) {
+  return "/do/example/process/"+M.workUnit.id;
+});
+</pre>
+
+
+
+h2. taskTitle(fn)
+
+Generate the human readable name of this instance, used in links and throughout the UI.
+
+You should not generally need to implement this, as if your workflow is associated with an Object, the title of the object will be used.
+
+<pre>language=javascript
+EgWorkflow.taskTitle(function(M) {
+  return "Process "+M.workUnit.id;
+});
+</pre>
+
+

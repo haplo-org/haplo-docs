@@ -1,0 +1,6 @@
+title: Platform functions
+class: DocNodeTextileWithTOC
+--
+
+Platform template functions divide into categories:
+

@@ -1,0 +1,100 @@
+title: PanelBuilder
+link_as: keyword
+--
+
+An object implementing the @PanelBuilder@ interface builds views for [node:dev/plugin/templates/std-template/ui-panel] standard templates, and renders them.
+
+The @PanelBuilder@ adds the following features over constructing view yourself.
+
+ * It's designed for passing to multiple co-operating plugins to build a combined user interface. The @std_action_panel@ plugin uses it to render Elements containing _panel elements_ from multiple plugins.
+
+ * Each _panel element_ has a *priority*, and elements are sorted according to their priority before rendering.
+
+ * The @PanelBuilder@ supports multiple panels, treated as a single element, so user interface can be logically grouped.
+
+All builder functions return the @PanelBuilder@ object itself for easy chaining.
+
+
+h2. Construction
+
+Call [node:dev/plugin/o/constructor/ui-panel] with your required options.
+
+
+h2. Interface (panel elements)
+
+These builder functions add _panel elements_.
+
+
+h3(function). element(priority, element)
+
+Add a generic _panel element_ to this panel, with the given @priority@.
+
+@element@ is the view for this element, described in [node:dev/plugin/templates/std-template/ui-panel#Panel_element_views:panel element views].
+
+
+h3(function). link(priority, href, label, indicator)
+
+Add a simple link to the panel with the given @priority@, @href@ and @label@ properties. @indicator@ is optional.
+
+
+h3(function). status(priority, text)
+
+Add a _panel element_ displaying the status of a process.
+
+
+h3(function). relatedInfo(priority, href, label, heading)
+
+Add a _panel element_ as a link to related information which isn't an integral part of the current process.
+
+
+h2. Interface (panels)
+
+These builder functions create and configure the individual panels.
+
+h3(function). panel(priority)
+
+Return a @PanelBuilder@ for the given priority.
+
+The same @PanelBuilder@ will be returned for each @priority@ value. All returned @PanelBuilders@ are related, and calling @panel()@ on any of them will return the same object. The @PanelBuilder@ returned by [node:dev/plugin/o/constructor/ui-panel] has a priority of @"default"@.
+
+
+h3(function). title(title)
+
+Set the @title@ of this panel.
+
+
+h3(function). highlight(highlight)
+
+Set the @highlight@ value for this panel. The default highlight value is set by the @defaultHighlight@ to [node:dev/plugin/o/constructor/ui-panel].
+
+See [node:dev/plugin/templates/std-template/ui-panel#highlight] for the supported values.
+
+
+h3(function). spaceAbove()
+
+Add additional space above this panel.
+
+
+h3(function). hidePanel()
+
+Prevent this panel from being rendered. It's intended to allow customisations to remove user interface from other plugins which isn't required for a particular application.
+
+
+h2. Rendering
+
+These rendering functions should only be called on the root @PanelBuilder@ returned by [node:dev/plugin/o/constructor/ui-panel].
+
+h3(function). render()
+
+Render the panel, returning HTML.
+
+
+h3(function). anyBuilderShouldBeRendered()
+
+At least one of the builders returns @true@ to @shouldBeRendered()@.
+
+
+h3(function). shouldBeRendered()
+
+Return @true@ if this individual panel should be rendered. It must have some elements and @hidePanel()@ must not have been called.
+

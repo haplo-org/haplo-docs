@@ -1,0 +1,15 @@
+
+Haplo Documentation is copyright Haplo Services Ltd. The Haplo Documentation is
+licensed to you under the terms of the Mozilla Public License Version 2.0, a copy
+of which is provided in the LICENSE file.
+
+------------------------------------------------------------------------------------
+
+This distribution contains software by other authors, licensed to you as follows:
+
+SyntaxHighlighter
+doc/web/static/presentation/syntaxhighlighter/*
+  http://alexgorbatchev.com/SyntaxHighlighter
+  Dual licensed under the MIT and GPL licenses.
+  It is included in this distribution under the MIT license.
+

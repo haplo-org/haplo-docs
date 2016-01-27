@@ -1,0 +1,27 @@
+title: Objects
+long_title: Objects template functions
+--
+
+These template functions render [node:dev/plugin/interface/store-object:StoreObjects].
+
+h2. std:object(object style)
+
+Render @object@ in the given @style@.
+
+|*Name*|*Purpose*|
+|@"generic"@|Generic rendering|
+|@"standardview"@|Standard view for display in a web page|
+|@"linkedheading"@|Heading with icon and link to object|
+|@"searchresult"@|Entry in search results|
+|@"searchresultmini"@|Entry in mini search results|
+
+
+h2. std:object:link(object)
+
+Render a link to @object@, with the title of the object as the link text.
+
+
+h2. std:object:link:descriptive(object)
+
+Render a link to @object@, with the full descriptive title of the object as the link text.
+

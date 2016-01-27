@@ -1,0 +1,7 @@
+title: Interfaces
+long_title: Miscellaneous Workflow Interfaces
+class: DocNodeTextileWithTOC
+--
+
+The Workflow plugin uses a few miscellaneous interfaces.
+

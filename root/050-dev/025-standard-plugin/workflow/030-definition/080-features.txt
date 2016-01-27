@@ -1,0 +1,48 @@
+title: Features
+long_title: Workflow features
+--
+
+Workflow features provide a formal mechanism to allow shared functionality to be implemented by external plugins.
+
+h3. use(featureName, ...)
+
+Calling @use()@ on a Workflow Definition applies this feature to the workflow.
+
+@featureName@ is the name of the registered feature. The rest of the arguments are passed to the implementing plugin, and are used to configure the feature. Refer to the documentation for that feature.
+
+For example,
+
+<pre>language=javascript
+EgWorkflow.use("std:notes", {
+    canSeePrivateNotes: function(M, user) {
+        return !M.hasRole(user, "researcher");
+    }
+});
+</pre>
+
+
+h3. P.workflow.registerWorkflowFeature(featureName, fn)
+
+To register a workflow feature for other plugins, use @P.workflow.registerWorkflowFeature()@.
+
+@featureName@ is the name of your feature, and @fn@ is a function which will be called when another plugin calls @use()@.
+
+The arguments to @fn@ are the workflow definition, and then any other arguments passed to @use()@.
+
+A feature which filters transitions might be implemented like this:
+
+<pre>language=javascript
+P.workflow.registerWorkflowFeature("example:check",
+    function(workflow, config) {
+        // Set up states, handlers, to implement this feature
+        workflow.filterTransition(function(M, transition) {
+            if(transition === config.transition) {
+                if(!isTransitionAllowed()) {
+                    return false;
+                }
+            }
+        });
+    }
+);
+</pre>
+

@@ -1,0 +1,105 @@
+title: States
+long_title: Workflow states
+--
+
+The states in your workflow are defined by the @states()@ function on your workflow Definition object.
+
+Here's an example state definition for a simple approval workflow:
+
+<pre>language=javascript
+EgWorkflow.states({
+    review_project: {
+        actionableBy: "submitter",
+        transitions: [
+            ["approve", "wait_reviewer", "approved"],
+            ["reject", "check_rejection"]
+        ]
+    },
+    wait_reviewer: {
+        actionableBy: "reviewer",
+        transitions: [
+            ["approve", "approved"],
+            ["reject", "rejected"]
+        ]
+    },
+    check_rejection: {
+        actionableBy: "oversight",
+        transitions: [
+            ["reject", "rejected"]
+        ],
+        flagsSetOnExit: ["rejection_checked"]
+    },
+    approved: {
+        finish: true
+    },
+    rejected: {
+        finish: true
+    }
+});
+</pre>
+
+You can call @states()@ as many times as you need to build up your workflow.
+
+Use [node:dev/standard-plugin/workflow/definition/function-lists#start] to set the first state in the workflow.
+
+
+h3(function). states(definitions)
+
+@states()@ adds all the states defined in @definitions@ to the workflow's states.
+
+The properties in @definitions@ are the names of the states, and the values are the state definitions, described below.
+
+
+h2. State definitions
+
+State definitions have the following properties, all of which are optional.
+
+They're deliberately sparse, describing the minimum details to form the 'flowchart' of the process. Behaviours are then layers on top by adding [node:dev/standard-plugin/workflow/definition/handlers].
+
+
+h3(key). actionableBy
+
+A string with the name of the user who will perform the actions in this state. The names are local to the Instance, and are decoded by the [node:dev/standard-plugin/workflow/definition/function-lists#getActionableBy] function.
+
+If @actionableBy@ is not set in a state definition, then the actionable by user is not altered as the process transitions to this state.
+
+
+h3(key). transitions
+
+An array of transitions, which are arrays of names which describe a transition. These arrays must contain at least two strings.
+
+The first string in the transition array is the name of the transition.
+
+The other strings are the possible destinations. The first destination will be taken unless a [node:dev/standard-plugin/workflow/definition/handlers#resolveTransitionDestination] handler selects one of the others.
+
+
+h3(key). finish
+
+If @true@, entering this state finishes the workflow and closes the @WorkUnit@.
+
+
+h3(key). flags
+
+An array of Flag names which are set while the instance is in this state.
+
+
+h3(key). flagsSetOnEnter
+
+An array of Flag names which are set when the process enters this state. As the workflow transitions into other states, they will remain set until explicitly unset.
+
+
+h3(key). flagsSetOnExit
+
+An array of Flag names which are set when the process exits this state. As the workflow transitions into other states, they will remain set until explicitly unset.
+
+
+h3(key). flagsUnsetOnEnter
+
+An array of Flag names which are unset when the process enters this state.
+
+
+h3(key). flagsUnsetOnExit
+
+An array of Flag names which are unset when the process exits this state.
+
+

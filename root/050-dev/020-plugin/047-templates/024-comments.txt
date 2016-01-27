@@ -1,0 +1,13 @@
+title: Comments
+--
+
+HSVT supports comments using the @//@ notation. All characters after @//@ are ignored.
+
+<pre>language=hsvt
+<div class="container">
+    // This container contains the contained items
+    <span> "..." </span>
+</div>
+</pre>
+
+As with all coding, don't overuse them. But they're useful to explain the structure of more complex templates.

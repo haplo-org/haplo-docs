@@ -1,0 +1,23 @@
+title: Legacy Handlebars support
+--
+
+As well as [node:dev/plugin/templates:HSVT templates], Haplo also supports legacy "Handlebars":http://handlebarsjs.com/ templates. Templates have a @.html@ file extension.
+
+Handlebars and HSVT templates can be seamlessly mixed in a plugin.
+
+You should *not* use Handlebars for new plugins, and Handlebars support will be removed from a future version of the platform. This documentation is to support existing Haplo plugins.
+
+Handlebars partials are automatically supported, and can refer to plugin templates, [node:dev/plugin/templates/std-template:standard templates], or the [node:dev/plugin/misc/handlebars/std-template:legacy Handlebars standard templates].
+
+Some [node:dev/plugin/misc/handlebars/std-helper:handlebars helpers] are provided.
+
+
+h2. Plugin Handlebars helpers
+
+[node:dev/plugin/interface/plugin:Plugin objects] implement a function to register a custom Handlebars helper for your templates.
+
+h3(function). registerHandlebarsHelper(name, helperFunction)
+
+Register a Handlebars helper function, making it available to all the templates rendered by this plugin.
+
+

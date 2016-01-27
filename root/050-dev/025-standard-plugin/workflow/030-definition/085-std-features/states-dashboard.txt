@@ -1,0 +1,114 @@
+title: States dashboard
+--
+
+The @std:dashboard:states@ feature implements a dashboard which displays counts of processes at each state.
+
+It can be filtered and additional UI added.
+
+<pre>language=javascript
+EgWorkflow.use("std:dashboard:states", {
+    title: "Example task progress",
+    path: "/do/example/progress-dashboard",
+    columnTag: "department",
+    canViewDashboard: function(dashboard, user) {
+        return user.isMemberOf(Group.ViewDashboard);
+    },
+    states: [
+        "review_project",
+        "wait_reviewer",
+        "check_rejection",
+        "approved",
+        "rejected"
+    ]
+});
+</pre>
+
+Your plugin is responsible for providing some UI to link to the dashboard at @/do/example/progress-dashboard@.
+
+
+h2. Usage
+
+The second argument to @use()@ is the configuration, which has properties:
+
+h3(key). title
+
+The name of the dashboard, displayed as the page title.
+
+
+h3(key). layout
+
+The layout for the page. Consider setting to @"std:wide"@ if there are lots of columns.
+
+
+h3(key). path
+
+The path for the generated [node:dev/plugin/interface/plugin/request-handling#respond] call on your plugin. The path must be within your plugin's namespace.
+
+
+h3(key). canViewDashboard
+
+@function(dashboard, user)@
+
+A function which returns @true@ when a user is permitted to view the dashboard. The function takes two arguments, the @dashboard@ object and the @user@.
+
+
+h3(key). states
+
+An array containing the states which should be displayed on the dashboard, in order.
+
+
+h3(key). columnTag
+
+The name of the tag to use to split the instances into columns.
+
+
+h3(key). columnTagToName
+
+@function(value)@
+
+Returns a user visible heading for the column, given the tag value.
+
+
+h3(key). setup
+
+@function(dashboard, E)@
+
+A function called to set up the dashboard object for the given [node:dev/plugin/interface/exchange].
+
+
+
+h2. Dashboard interface
+
+The feature configuration calls functions with a @Dashboard@ object to allow you to configure it and add extra UI.
+
+
+h3(property). query
+
+The query used to select the relevant @WorkUnits@ for this dashboard. Use the [node:dev/plugin/interface/work-unit-query] functions to refine the query.
+
+
+h3(function). addLinkParameter(key, value)
+
+If you're providing extra UI, for example, year navigation, you can use this to add parameters to the URL. These will be available within @E.parameters@ in your @setup()@ function.
+
+
+h3(function). addHeaderDeferred(deferred)
+
+Add additional UI in the header, as a deferred render created by [node:dev/plugin/interface/template#deferredRender].
+
+
+h3(function). setTitle(title)
+
+Override the default page title, for example, by adding the year.
+
+
+
+h2. Text
+
+The dashboard system uses the text system, but interpolation is *not* used as there is no active instance.
+
+h4. Transition name on dashboard
+
+ * dashboard-status:STATE
+ * status:STATE
+

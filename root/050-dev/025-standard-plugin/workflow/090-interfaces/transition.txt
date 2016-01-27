@@ -1,0 +1,59 @@
+title: Transition
+long_title: Transition interface
+link_as: keyword
+--
+
+The @Transition@ interface represents information about an individual transition.
+
+
+h2. Interface (transition)
+
+h3(property). name
+
+Name of the transition
+
+
+h3(property). destination
+
+The name of the state the instance would be in if this the named transition was performed.
+
+
+h3(property). destinationTarget
+
+Reserved.
+
+
+h3(property). M
+
+The [node:dev/standard-plugin/workflow/interfaces/instance] to which this transition relates.
+
+
+h2. Interface (text)
+
+These functions use the [node:dev/standard-plugin/workflow/definition/text:text system] to retrieve the user visible names of the transition, with properties named in a way compatible with the [node:dev/plugin/templates/std-template/ui-choose] standard template.
+
+
+h3(property). label
+
+The user visible name of this transition.
+
+
+h3(property). notes
+
+Optional notes for this transition.
+
+
+h3(property). indicator
+
+Optional indicator for this transition.
+
+
+h3(property). confirmText
+
+A variation on @notes@ for displaying on the confirmation page.
+
+
+h3(property). action
+
+Internal use only, the value of this property is dependent on the built in UI implementation and may be changed in the future.
+

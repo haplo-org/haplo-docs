@@ -1,0 +1,10 @@
+title: Timeline
+--
+
+h4. Timeline description of an action
+
+(text appears after the user's name)
+
+ * timeline-entry:TRANSITION:STATE
+ * timeline-entry:TRANSITION
+ * timeline-entry

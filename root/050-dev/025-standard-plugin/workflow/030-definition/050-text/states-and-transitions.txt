@@ -1,0 +1,32 @@
+title: States and transitions
+--
+
+In the text system, the name 'status' is used to distinguish the text shown to the user from the underlying _state_.
+
+
+h4. State name (general)
+
+ * status:STATE
+ * status
+
+
+h4. State name (task list)
+
+ * status-list:STATUS
+ * status:STATE
+ * status
+
+
+h4. State name (notification email)
+
+ * notification-status:STATUS
+ * status:STATE
+ * notification-status
+ * status
+
+
+h4. Transition name (general)
+
+ * transition:TRANSITION:STATE
+ * transition:TRANSITION
+ * transition

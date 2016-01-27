@@ -1,0 +1,7 @@
+title: Standard templates
+class: DocNodeTextileWithTOC
+--
+
+A number of legacy templates are provided for use with Handlebars templates. These will be removed when support for Handlebars is removed.
+
+

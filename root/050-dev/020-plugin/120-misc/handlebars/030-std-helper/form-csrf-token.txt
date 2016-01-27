@@ -1,0 +1,10 @@
+title: std:form_csrf_token
+link_as: keyword
+--
+
+This helper is the equivalent of the @std:form_csrf_token@ standard template.
+
+<pre>
+    {{std:form_csrf_token}}
+</pre>
+

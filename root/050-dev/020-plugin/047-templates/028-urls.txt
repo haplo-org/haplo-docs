@@ -1,0 +1,66 @@
+title: URLs
+--
+
+URLs are handled specially, because they require different escaping to other values, and HSVT knows how to generate neat URL parameters from your view. This is especially useful where you're generating many links where only one parameter varies.
+
+URL parsing and escaping is triggered by one of these forms:
+
+* An explicit url pseudo function containing a list @url(...)@
+
+* As an attribute defined in the HTML spec to take a URL value attribute, with a single value, @<a href=url>@
+
+* As an attribute defined in the HTML spec to take a URL value attribute, with a list @<a href=[...]>@
+
+* As any tag attribute with an explict url value, @<a href=url(...)>@
+
+Where a URL is a single value, it is % escaped without escaping reserved characters. This allows values in the view like @/path/to/action@ to work as expected, as otherwise characters like '/' would be replaced with % encoded values.
+
+
+h2. URL parameter building
+
+Where a URL is a list, the first value, and all literal values afterwards, are % escaped without escaping reserved characters. Values after the first value are fully % escaped.
+
+The URL list may contain the @?@ symbol, which triggers parameter mode. This is designed to do common parameter manipulation in the template language, without lots of troublesome code:
+
+* @key=value@ sets the given parameter to the value. This can be a value from the view or a literal. If a parameter with that name is already set, then the value is replaced.
+
+* @*dictionary@ retrives value from the view, inteprets it as a dictionary of key value pairs for setting parameters.
+
+* @!key@ removes the parameter
+
+Parameters are omitted if the values are not found in the view.
+
+After the (optional) parameters, the URL list may contain the '#' symbol, which triggers URL fragment mode. Any further values are concatenated and used as the URL fragment.
+
+For example, given the definition:
+
+<pre>language=hsvt
+<div>
+    // The URL has been split over multiple lines for clarity
+    <a href=[
+        "/action" ?
+        *params !sort kind="person" from=fromDate
+        # "f" index
+    ]>
+        label
+    </a>
+</div>
+</pre>
+
+and the view
+
+<pre>language=json
+{
+  "params": {"q":"query string", "sort":"date"},
+  "fromDate": "2015-12-01",
+  "index": 42,
+  "label": "People"
+}
+</pre>
+
+the template would be rendered as
+
+<pre>
+<div><a href="/action?q=query%20string&kind=person&from=2015-12-01#f42">People</a></div>
+</pre>
+

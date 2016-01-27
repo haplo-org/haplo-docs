@@ -1,0 +1,13 @@
+title: std:ui:panel:links
+link_as: keyword
+--
+
+A style of [node:dev/plugin/templates/std-template/ui-panel] which displays plain links.
+
+
+h2. Supported panel element properties
+
+ * @label@
+ * @href@
+ * @title@
+

@@ -1,0 +1,44 @@
+title: UI functions
+--
+
+UI template functions modify the rendered view to control the standard Haplo page.
+
+See [node:dev/plugin/templates/hsvt-language#Example:the example template] for an example of their use.
+
+h2. pageTitle(...)
+
+All arguments are rendered, concatenated, and the @pageTitle@ in the view is set to the string.
+
+
+h2. backLink(...) { label }
+
+The arguments are intepreted as a URL, and @backLink@ in the view is set to that URL. The optional anonymous block is rendered if present, and @backLinkText@ is set to that string.
+
+
+h2. std:plugin:resources(...)
+
+Each argument to this template function includes a resource from the plugin's @static@ directory, including the CSS or client side JavaScript resource in the generated HTML page. For example, to include a CSS and a JavaScript file,
+
+<pre>
+    std:plugin:resources("example.css" "example.js")
+</pre>
+
+This only works when you're using the default HTML layout. If you're generating the entire page yourself, you'll have to write your own tags.
+
+This is an alternative to calling the @useStaticResource()@ function on the [node:dev/plugin/interface/response] object, but can be used when you're not generating the entire response.
+
+If you want to include generated CSS and JavaScript files, use the [node:dev/plugin/templates/std-template/resources] template.
+
+
+h2. Layout functions
+
+The layout functions choose a Haplo layout, setting the @layout@ property in the view.
+
+<pre>
+    std:layout:standard()
+    std:layout:minimal()
+    std:layout:wide()
+    std:layout:none()
+</pre>
+
+See [node:dev/plugin/interface/exchange#layout] for details of the layouts.

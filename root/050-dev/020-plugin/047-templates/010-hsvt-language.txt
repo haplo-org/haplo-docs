@@ -1,0 +1,69 @@
+title: HSVT language
+long_title: The HSVT templating language
+--
+
+Haplo Safe View Templates (HSVT) is a simple templating language designed for clarity and safety against security flaws.
+
+The language is comprised of [node:dev/plugin/templates/literals:literals], [node:dev/plugin/templates/views:view properties],  [node:dev/plugin/templates/comments:comments], [node:dev/plugin/templates/html-tags:HTML tags], [node:dev/plugin/templates/urls:URLs] and [node:dev/plugin/templates/functions:template functions].
+
+h2. Example
+
+Here's a simple template:
+
+<pre>language=hsvt
+pageTitle("Choose next action for " workUnit.data.taskName)
+backLink("/do/plugin/task/" workUnit.id) { "Cancel" }
+
+<div>
+    if(workUnit.closed) {
+        std:ui:notice("The task is complete")
+    } else {
+        <p> "Please choose from the list below." </p>
+        each(choices) {
+            <div class="choice">
+                <a href=["/do/plugin/action/" id]> label </a>
+            </div>
+        }
+    }
+</div>
+</pre>
+
+This might be rendered in a [node:dev/plugin/interface/plugin/request-handling#respond] request handler with code like this. (This handler has been simplied for clarity.)
+
+<pre>language=javascript
+P.respond("GET", "/do/plugin/choices", [
+    {parameter:0, as:"workUnit"}
+], function(E, workUnit) {
+    E.render({
+        workUnit: workUnit,
+        choices: [
+            {id:1, label:"First choice"},
+            {id:2, label:"Choice 2"}
+        ]
+    });
+});
+</pre>
+
+In the example template, lines 1 and 2 specify the page title (for display in the platform page user interface), and the optional back link.
+
+@pageTitle()@ is a template function, which concatenates all its arguments to form the page title. Note that template functions separate their arguments with whitespace, not commas. The page title consists of a literal string followed by some text from the workUnit's data.
+
+You don't have to worry about escaping your values. HSVT understands the structure of HTML, and will use the correct escaping mode for the context within which the value is used.
+
+If you want to include a literal string in your template, whether that's in a title, as some text within the HTML, or as a constant value in an HTML tag attribute, it must be enclosed in @"@ characters.
+
+Barewords are always properties of the view. You can access nested properties using @.@ notation, and this works on any property of any JavaScript object. In this case, we've included a [node:dev/plugin/interface/work-unit] in the view and are using it in a few places within the template.
+
+Line 5 is a simple @if()@ template function which implements control flow.
+
+Line 6 is a template function which renderes a simple UI widget. It's argument is a static literal string, but you could include text from the view.
+
+Line 8 outputs some static HTML. In this case, it will always output @<p>Please choose from the list below.</p>@ if the WorkUnit is open.
+
+Line 9 is an @each()@ template function which iterates over an array-like property of the view. The block is output once per element in the array, and within that block, the root of the view properties is the current array element.
+
+Line 10 is a simple HTML tag with a constant attribute. Tags must be balanced (if they're not one of the HTML 'void elements' which don't require a close tag), so if the close tag on line 12 was omitted, you'd get a error when the template was loaded or checked by the plugin tool.
+
+Line 11 is an @<a>@ tag, with an link value generated from a literal string and an @id@ from the view. Where an attribute is formed of multiple values, it's written as a list enclosed in @[]@ brackets.
+
+HSVT understands HTML's rules about attributes. URL attributes, like @href@, are parsed specially as URL attributes. @class@ and @id@ attributes must be formed of literal strings and conditionals only.

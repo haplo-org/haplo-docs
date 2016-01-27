@@ -1,0 +1,12 @@
+title: Text
+long_title: Text template functions
+--
+
+h2. std:text:paragraph(text)
+
+This template function renders paragraph plain text. The string is split on newlines, and each paragraph is HTML escaped and enclosed in a @<p>@ tag.
+
+
+h2. std:text:document(document)
+
+This template function renders XML document text as HTML.

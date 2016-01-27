@@ -1,0 +1,14 @@
+title: Widgets
+long_title: Widgets template functions
+--
+
+h2. std:ui:notice(message dismissLink dismissText)
+
+Render a prominent notice for alerting users to important information. The @message@ text is rendered using [node:dev/plugin/templates/functions/platform/text#std_text_paragraph].
+
+@dismissLink@ and @dismissText@ are optional, and if present, render an @X@ icon and text to dismiss the notice.
+
+
+h2. std:ui:navigation:arrow(direction link)
+
+Render a navigation arrow. Direction is @"left"@ or @"right"@, and @link@ is an optional link for the @<a>@ element.
