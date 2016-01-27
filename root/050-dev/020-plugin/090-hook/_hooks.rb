@@ -119,7 +119,7 @@ __E
       # Store the node definition for later
       LOOKUP[node_name] = h
       # Check the description file exists
-      node_filename = "doc/root/050-dev/020-plugin/090-hook/#{node_name}.txt"
+      node_filename = "root/050-dev/020-plugin/090-hook/#{node_name}.txt"
       unless File.exist?(node_filename)
         raise "Expected to find a #{node_filename} for hook"
       end
@@ -128,6 +128,6 @@ __E
 end
 
 # Load all the hook definitions, creating nodes
-Dir.glob("app/hooks/**/*.rb") do |hook_defn|
+Dir.glob("#{ENV['HAPLO_ROOT']}/app/hooks/**/*.rb") do |hook_defn|
   require hook_defn
 end

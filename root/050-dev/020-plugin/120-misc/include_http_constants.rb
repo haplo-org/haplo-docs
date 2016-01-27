@@ -1,6 +1,6 @@
 
 Documentation.after_load do
-  File.open('lib/javascript/lib/constants.js') do |file|
+  File.open("#{ENV['HAPLO_ROOT']}/lib/javascript/lib/constants.js") do |file|
     constants = file.read()
     raise "Can't find HTTP constants" unless constants =~ /var HTTP = ({[^}]+})/
     json = $1

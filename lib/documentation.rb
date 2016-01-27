@@ -9,7 +9,7 @@ require 'erb'
 
 class Documentation
 
-  HTML_TEMPLATE_FILENAME = 'doc/web/template.html.erb'
+  HTML_TEMPLATE_FILENAME = 'web/template.html.erb'
 
   @@root = DocNode.new('')
 

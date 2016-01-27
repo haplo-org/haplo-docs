@@ -11,29 +11,35 @@ require 'fileutils'
 gem 'json'
 require 'json/ext'
 
-require "lib/common/source_control/source_control.rb"
+require './lib/doc_node'
+require './lib/documentation'
+require './lib/documentation_html'
+require './lib/doc_server'
 
-require 'doc/scripts/doc_node'
-require 'doc/scripts/documentation'
-require 'doc/scripts/documentation_html'
-require 'doc/scripts/doc_server'
+if ARGV[0] == 'publish'
+  require "#{ENV['HAPLO_PATH']}/lib/common/source_control/source_control.rb"
+  olddir = FileUtils.pwd
+  FileUtils.chdir(ENV['HAPLO_PATH'])
+  source_control = SourceControl.current_revision
+  FileUtils.chdir(olddir)
+  git_revision = `git rev-parse --verify --short HEAD`.strip
+  SOURCE_CONTROL_REVISION = "#{source_control.displayable_id}+#{git_revision}"
+  SOURCE_CONTROL_DATE = source_control.displayable_date_string
+  PACKAGING_VERSION = "#{source_control.filename_time_string}-#{SOURCE_CONTROL_REVISION}"
+  puts "Docs revision: #{SOURCE_CONTROL_REVISION} on #{SOURCE_CONTROL_DATE}"
+else
+  SOURCE_CONTROL_REVISION = 'CHECKOUT'
+  SOURCE_CONTROL_DATE = ''
+end
 
-
-source_control = SourceControl.current_revision
-SOURCE_CONTROL_REVISION = source_control.displayable_id
-SOURCE_CONTROL_DATE = source_control.displayable_date_string
-PACKAGING_VERSION = "#{source_control.filename_time_string}-#{SOURCE_CONTROL_REVISION}"
-puts "Docs revision: #{SOURCE_CONTROL_REVISION} on #{SOURCE_CONTROL_DATE}"
-
-
-DOCS_ROOT = 'doc/root'
+DOCS_ROOT = 'root'
 PUBLISH_DIR = 'docs.haplo.org'
 SITE_URL_BASE = 'http://docs.haplo.org'
 
 # Load all the documentation
 puts "Loading all files..."
 # Ruby files go first
-Dir.glob("#{DOCS_ROOT}/**/*.rb").each do |ruby_file|
+Dir.glob("./#{DOCS_ROOT}/**/*.rb").each do |ruby_file|
   require ruby_file
   STDOUT.write('.'); STDOUT.flush
 end
@@ -74,19 +80,15 @@ when 'publish'
   end
   FileUtils.mkdir(PUBLISH_DIR)
   puts "Copying static files..."
-  Dir.glob("doc/web/static/**/*").each do |filename|
-    unless filename.include?('/.')  # skip files and svn dirs
-      target = PUBLISH_DIR + filename.sub('doc/web/static','')
+  Dir.glob("web/static/**/*").each do |filename|
+    unless filename.include?('/.')
+      target = PUBLISH_DIR + filename.sub('web/static','')
       if File.file?(filename)
         FileUtils.cp(filename, target)
       else
         FileUtils.mkdir(target, :mode => 0755)
       end
     end
-  end
-  FileUtils.mkdir(PUBLISH_DIR+'/presentation/font')
-  Dir.glob("static/images/ubuntu-{r,b}-small-webfont.*").each do |filename|
-    FileUtils.cp(filename, "#{PUBLISH_DIR}/presentation/font/#{filename.sub('static/images/','')}")
   end
   puts "Writing files..."
   Documentation.publish_to(PUBLISH_DIR)

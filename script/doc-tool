@@ -12,6 +12,14 @@
 #  check - checks all the pages will render correctly
 #  publish - write files for uploading to the web server
 
-. config/paths-`uname`.sh
+set -e
 
-$JRUBY_HOME/bin/jruby doc/scripts/doctool.rb $@
+HAPLO_ROOT=$(cd ../haplo; pwd)
+export HAPLO_ROOT
+
+if [ ! -d ${HAPLO_ROOT}/app/hooks ] ; then
+    echo "${HAPLO_ROOT} must be a check out of the Haplo Platform"
+    exit 1
+fi
+
+jruby lib/doctool.rb $@
