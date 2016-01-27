@@ -15,14 +15,23 @@ h3. Check Java is installed.
 
 In the command prompt, type @java -version@
 
-If you get an error, install Java using your package manager. Mac OS X will either have Java installed, or this command will open a window offering to install it for you.
+You must have Java 8 or later. The version number shown will be prefixed with '1.', so Java 8's version will be shown as '1.8'.
+
+If you get an error, or need to update to Java 8, download "Java":https://java.com and install it in the default folder. Repeat the @java -version@ command to check it installed correctly.
+
+If you are using a Linux system, your package manager should be able to install Java 8 for you.
 
 
 h3. Download JRuby
 
-Download the current release of "JRuby":http://jruby.org/download. Choose the "binary tar.gz" version.
+Download the current release of "JRuby":http://jruby.org/download, which must be version 9.0.5.0 or later. Choose the "binary .tar.gz" version.
 
-Decompress the downloaded file, then rename the extracted folder to @jruby@ (without the version number).
+Decompress the downloaded file, then rename the extracted folder to @jruby@ (without the version number):
+
+<pre>
+    tar zxf ruby-bin-9.0.5.0.tar.gz
+    mv jruby-9.0.5.0 jruby
+</pre>
 
 
 h3. Install the Plugin Tool
