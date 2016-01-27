@@ -17,19 +17,19 @@ require './lib/documentation_html'
 require './lib/doc_server'
 
 if ARGV[0] == 'publish'
-  require "#{ENV['HAPLO_PATH']}/lib/common/source_control/source_control.rb"
+  require "#{ENV['HAPLO_ROOT']}/lib/common/source_control/source_control.rb"
   olddir = FileUtils.pwd
-  FileUtils.chdir(ENV['HAPLO_PATH'])
+  FileUtils.chdir(ENV['HAPLO_ROOT'])
   source_control = SourceControl.current_revision
   FileUtils.chdir(olddir)
   git_revision = `git rev-parse --verify --short HEAD`.strip
-  SOURCE_CONTROL_REVISION = "#{source_control.displayable_id}+#{git_revision}"
+  SOURCE_CONTROL_REVISION = source_control.displayable_id
   SOURCE_CONTROL_DATE = source_control.displayable_date_string
   PACKAGING_VERSION = "#{source_control.filename_time_string}-#{SOURCE_CONTROL_REVISION}"
+  UPDATED_MESSAGE = "Revision: #{SOURCE_CONTROL_REVISION}+#{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
   puts "Docs revision: #{SOURCE_CONTROL_REVISION} on #{SOURCE_CONTROL_DATE}"
 else
-  SOURCE_CONTROL_REVISION = 'CHECKOUT'
-  SOURCE_CONTROL_DATE = ''
+  UPDATED_MESSAGE = 'CHECKOUT'
 end
 
 DOCS_ROOT = 'root'
