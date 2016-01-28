@@ -89,6 +89,11 @@ h3(function). render()
 Render the panel, returning HTML.
 
 
+h3(function). deferredRender()
+
+Render the panel, returning a object which can be used with the [node:dev/plugin/templates/functions/language#render] template function.
+
+
 h3(function). anyBuilderShouldBeRendered()
 
 At least one of the builders returns @true@ to @shouldBeRendered()@.
