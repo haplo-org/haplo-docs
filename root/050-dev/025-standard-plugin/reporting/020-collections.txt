@@ -1,0 +1,100 @@
+title: Collections
+--
+
+The standard Reporting plugin provides the ability to generate reports based on historical data from many different sources.
+
+Collections define a set of data/statistics/filters related to a type of StoreObject.
+
+h2. Definition
+
+Collections are defined by implementing the @std:reporting:discover_collections@ service and passing a function with an argument that will be the collection @discover()@ function when called.
+
+The discover function takes three arguments, a unique internal name for the collection, a human readable title/description, and an optional list of categories.
+
+For example, to define a new collection:
+
+<pre>language=javascript
+P.implementService("std:reporting:discover_collections", function(discover) {
+    discover("example", "Example Collection");
+});
+</pre>
+
+h2. Setup
+
+Collections are setup by implementing the @std:reporting:collection:COLLECTION_NAME:setup@ service which passes in the collection object which can then be used to add facts, statistics, filters and properties.
+
+This service can be implemented in any plugin, which allows plugins to add their facts about their own functionality/data to a collection. 
+
+<pre>language=javascript
+P.implementService("std:reporting:collection:example:setup", function(collection) {
+    collection.fact(...);
+});
+</pre>
+
+Functions called on the collection object return themselves, and so can be chained.
+
+h2. Interface
+
+h3(function). fact(name, type, description)
+
+Define a fact. @name@ must be unique within the collection. @description@ is the human readable name of the fact shown in the admin UI and in Dashboards when no heading is defined.
+
+@type@ may be any valid [node:dev/plugin/interface/database#type:Database type] but the following types are also allowed as convenience methods
+
+|*Name*|*Data type*|*JavaScript type*|
+|@end-date@|Date|Date|
+
+@end-date@ is a convenience type useful for specifiying facts that use the [node:dev/plugin/interface/date-time#end:end] property of a platform Datetime region.
+
+h3(function). statistic(specification)
+
+Defines a statistic using @specification@. The @specification@ must define an aggregate function to use or a calculate function that can be called to generate the statistic value.
+
+@specification@ is an object with the following properties:
+
+|*Property*|*Description*|
+|name|Unique statistic name|
+|description|Human readable name for displaying in the UI|
+|filter|The filter to apply to the collection|
+|aggregate|The [node:dev/plugin/interface/database-query#aggregate:aggregate function] to use to generate the statistic value|
+|calculate|A function with one argument, the [node:dev/plugin/interface/database-table#select:select] object|
+
+h3(function). filter(name, filterFunction)
+
+Defines a named filter on the collection. @filterFunction@ is passed the [node:dev/plugin/interface/database-table#select:select] object which is used to filter the collection.
+
+@name@ is either a string, or one of the specially defined named filters which are available via the collection object.
+
+|*Filter*|*Description*|
+|collection.*FILTER_ALL*|Filter applied to *every* usage of the collection|
+|collection.*FILTER_DEFAULT*|Filter applied to the collection if no filters are specified|
+
+h3(function). currentObjectsOfType(type, type2, ...)
+
+Tells the collection what object Types the collection should be storing facts for, every object of type @type@ will be included in the collection.
+
+@type@ 's should be defined in the [node:dev/plugin/schema/requirements-schema:schema requirements]
+
+Multiple types can be specified by passing additional arguments.
+
+This should only be called in the owning plugin.
+
+h2. Example
+
+The following example shows a minimal collection implementation.
+
+<pre>language=javascript
+P.implementService("std:reporting:collection:books:setup", function(collection) {
+    collection.
+        currentObjectsOfType(T.Book).
+        fact("title", "text", "Book title").
+        fact("isCheckedOut", "boolean", "Book is checked out").
+        fact("timesLoaned", "int", "Number of times book has been loaned").
+        statistic({
+            name: "checkedOut", description: "Number of books checked out",
+            filter: function(select) { select.where("isCheckedOut","=",true); },
+            aggregate: "COUNT"
+        }).
+        filter("neverLoaned", function(select) { select.where("timesLoaned","=",0); }).
+});
+</pre>

@@ -54,4 +54,4 @@ h2. Workflows and objects
 
 Workflows are generally associated with a type of [node:dev/plugin/interface/store-object], although they don't have to be.
 
-When workflows are associated with objects, more of the user interface will be provided by the Workflow plugin and the platform. Prefer to use an associated type, as this is an easy way of preserving the historical record.
+When workflows are associated with objects, more of the user interface will be provided by the Workflow plugin and the platform. It is preferable to use an associated type, as this is an easy way of preserving the historical record.

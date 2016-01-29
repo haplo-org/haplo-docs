@@ -1,0 +1,175 @@
+title: Lists
+--
+
+A List Dashboard is used by specifying @kind: "list"@ in the specification when instantiating a Dashboard object.
+
+It adds functions to the Dashboard interface that help generate a list-based dashboard, in the form of a table with headings, and a number of columns, where each row represents one object that we are reporting on.
+
+h2. Interface
+
+In addition to the standard Dashboard interface, List dashboards provide:
+
+h3(function). columns(priority, columns)
+
+Add one or more columns to the Dashboard.
+
+@priority@ is a number used for sorting the columns.
+
+@columns@ is a list of column definitions, which are objects with the following common properties:
+
+|*Property*|*Description*|
+|type|The column type. If no type is specified, then infer using the definition of the specified fact|
+|fact|Defined name of the fact|
+|heading|Heading displayed for the column. If no heading is specified then the description specified in the collection fact definition is used|
+|style|Style to use for the column, one of "wide", "medium", "small", "tiny"|
+
+The simplest column definition is @{fact:"factname"}@, which will infer the type from the fact definition and render in an appropiate fashion.
+
+Different column types support and may require more than these properties. See the list of column types below.
+
+h2. Standard features
+
+The List dashboard provides some standard features that can be utilised with the Dashboard [node:dev/standard-plugin/reporting/dashboards#use:use()] function.
+
+h3. std:row_text_filter
+
+Displays a simple text search widget which filters the dashboard as the user types.
+
+It takes one argument, a specification object with the following properties:
+
+|*Property*|*Description*|
+|facts|An array of facts that can be searched/filtered by|
+|placeholder|Text to be displayed when the search box is blank|
+
+For example:
+
+<pre>language=javascript
+dashboard.use("std:row_text_filter", {
+    facts:["title","author"], 
+    placeholder:"Search"
+});
+</pre>
+
+h3. std:row_object_filter
+
+Displays a dropdown widget which filters the dashboard where the specified fact matches the value selected in the dropdown.
+
+It takes one argument, a specification object with the following properties:
+
+|*Property*|*Description*|
+|fact|The fact to be used for filtering, *must be a Ref*|
+|objects|Either a type Ref from the schema requirements which generates a list of all Objects with that type, or a function that returns a list of objects with a @ref@ and @title@ property|
+
+For example, a simple object filter by type:
+
+<pre>language=javascript
+dashboard.use("std:row_object_filter, {
+    fact:"author", objects:T.Author
+});
+</pre>
+
+h2. Column types
+
+h3. simple
+
+@simple@ columns render the value of the fact as a string
+
+h3. ref
+
+@ref@ columns render the title of the object stored at the ref as a string and have the following optional properties:
+
+|*Property*|*Description*|
+|link|Boolean. If true, the text is rendered as a link to the object specified by the fact|
+|shortestTitle|Boolean. If true, the shortest title attribute on the object is displayed|
+
+The @ref@ type is used automatically if the fact specified has type @ref@
+
+h3. date
+
+@date@ columns render a date fact as a human readable string, by default the column uses the formatting "01 Jan 2015", but alternate formatting can be specified using a property:
+
+|*Property*|*Description*|
+|format|String. Format to use to render the date, as a standard date and time format string, default: ("dd MMM yyyy")|
+
+The @date@ type is used automatically if the fact specified has type @date@
+
+h3. datetime
+
+Same implementation as @date@, except uses @"dd MMM yyyy HH:mm"@ as the default format to also display time.
+
+The @datetime@ type is used automatically if the fact specified has type @datetime@
+
+h3. end-date
+
+Same implementation as @date@, except for dates from the end of platform time ranges to prevent them showing the day after the last day of the range.
+
+The @end-date@ type is used automatically if the fact specified has type @end-date@
+
+h3. date-with-age-warning
+
+@date-with-age-warning@ columns act similarly to @date@ columns, but allow styling to be applied dynamically based upon the value of the fact. The following properties can be used to control styling:
+
+|*Property*|*Description*|
+|format|String. Format to use to render the date, as a standard date and time format string, default: ("dd MMM yyyy")|
+|warnDate|Date. If the value of the fact is later than this date, then a warning hint (orange background) will be applied to the cell|
+|errorDate|Date. If the value of the fact is later than this date, then an error hint (red background) will be applied to the cell|
+|successFact|String. Name of a fact that implies a success condition. If the specified fact has a truthy value then a success hint (green background), overriding warn or error styling|
+|determineCellStyle|Function. A function with an argument @row@ (an object containing all the facts for this row, acessible as row.factName), that can be used for more complex styling/warning rules. The function should return one of @"warn"@ @"error"@ or @"success"@|
+
+h3. int
+
+@int@ columns display a number, rendering a grey dash when the value is 0
+
+The @int@ column type is used automatically if the fact specified has a type that is @int@ @float@ @smallint@ or @bigint@
+
+h3. boolean
+
+@boolean@ columns render a unicode tick (&#10003;) if the fact has a true or truthy value
+
+It is possible to specify a truth function and use custom logic to determine whether a value should be true or false, as a column property:
+
+|*Property*|*Description*|
+|truthFunction|Function. A function with an argument @value@ (the value of the fact) which should return true or false|
+
+The @boolean@ column type is used automatically if the fact specified has type @boolean@
+
+h3. join
+
+@join@ columns provide an easy way to concatenate mulitple facts into one column. It has the properties:
+
+|*Property*|*Description*|
+|columns|Array. An array of column definitions|
+|joinWith|String. A string to use to seperate the joined values *(default: ", ")*|
+
+h3. attribute
+
+@attribute@ columns retrieve data directly from an object. There must be a @fact@ property that refers to a ref, and a @desc@ property that is an attribute defined in the schema requirements.
+
+|*Property*|*Description*|
+|desc|Attribute. The attribute from the schema that we should retrieve data from|
+
+This column type should be used sparingly, in cases where there is data that doesn't make sense to track as a fact but is still useful to display in an export for instance. It should not be used in place of facts, and is much slower than retrieving facts.
+
+Email addresses for example, while not interesting enough to be defined as a fact, may be very useful to include on a dashboard export where people are involved for a mail-merge or similar.
+
+h3. linked
+
+@linked@ columns allow you to render any column type as a link. A @column@ property must be specified or else an exception will be thrown. The default link if no @link@ property is specified is the object the current row refers to.
+
+|*Property*|*Description*|
+|column|Column. A single column definition|
+|link|Function. A function with an argument @row@ (an object containing all the facts for this row, accessible as row.factName), which should return a URL as a string|
+
+h3. html
+
+@html@ columns are used for rendering arbitrary HTML, and have the following properties:
+
+|*Property*|*Description*|
+|displayHTML|Function. A function with an argument @row@, which should return a string of text or HTML to be rendered|
+|exportValue|Function. A function with an argument @row@ [1], which should return a string of text to be used in a spreadsheet when exporting|
+|sortValue|Function. A function with an argument @row@ [1], which the UI can use to provide custom sorting when the table is sorted by this column|
+|exportOptions|String. A value passed to the [node:dev/plugin/o/generate/table#cell:xls.cell] function as the second @options@ argument|
+
+h2. Notes
+
+[1] @row@ refers to the @row@ object which has access to all of the facts for the current object. Facts are properties and can be access directly, for example, @row.exampleFact@ will retrieve the value of "exampleFact"

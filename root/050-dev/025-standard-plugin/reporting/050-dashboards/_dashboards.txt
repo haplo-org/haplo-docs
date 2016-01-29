@@ -1,0 +1,101 @@
+title: Dashboards
+--
+
+Dashboards are web pages that display a subset of facts from a collection.
+
+h2. Usage
+
+A Dashboard object can be instantiated using @P.reporting.dashboard(E, specification)@
+
+This should be called in a [node:dev/plugin/request-handling:request handler].
+
+The specification has the following properties:
+
+|*Property*|*Description*|
+|name|A string naming the dashboard|
+|kind|The type of dashboard to be rendered, eg: @"list"@|
+|collection|The name of the collection to be used|
+|filter|The filter to be applied to the collection|
+|title|The human readable title/description of the dashboard for displaying in the UI|
+
+h2. Interface
+
+Functions called on the dashboard object return themselves, and so can be chained.
+
+h3(function). use(featureName, argument, argument2, ...)
+
+Use a defined dashboard feature by name @featureName@.
+
+h3(function). summaryStatistic(priority, statistic)
+
+Displays a summary statistic on the Dashboard.
+
+@priority@ is a number used for sorting the statistics. @statistic@ is a string which is the name of defined name of the statistic.
+
+h3(function). filter(select)
+
+Apply a dashboard specific filter using the [node:dev/plugin/interface/database-query:DatabaseQuery] interface.
+
+h3(function). order(orderBy)
+
+Specify how to order the dashboard on first render, orderBy should either be a fact name, or an array where the first item is the fact name, and the second item specifies the order. 
+
+Multiple orders can be specified, and subsequent orders are used when rows have the same value for the fact specified by the order one up in the hierarchy. See [node:dev/plugin/interface/database-query#order:order].
+
+h3(function). setTime(date)
+
+Specify a date/time for viewing historical data of facts. @date@ must be a JavaScript Date object.
+
+h3(function). respond()
+
+Generate the Dashboard and serve/render it to the user.
+
+h2. Services
+
+Dashboards can be modified/setup/added to from outside of the Dashboard specification/dashboard object using services. This allows other plugins to do things like adding columns and statistics to already existing dashboards without modifying the original plugin.
+
+The dashboard will first call the @std:reporting:collection-dashboard:[collection]:setup@ service where @[collection]@ is the name of the collection defined in the dashboard spec.
+
+Next it will call the @std:reporting:dashboard:[dashboard]:setup@ service where @[dashboard]@ is the name if the dashboard defined in the dashboard spec.
+
+A third service will be called *only if the dashboard is exporting*, eg, when generating an excel spreadsheet for download. This service follows the format @std:reporting:dashboard:[dashboard]:setup_export@
+
+All three services are called with one argument, the @dashboard@ object, for example:
+
+<pre>language=javascript
+P.implementService("std:reporting:dashboard:example_dashboard:setup",
+    function(dashboard) {
+        // do things on the dashboard object, add columns etc, eg:
+        dashboard.columns(200, [...]);
+    }
+);
+</pre>
+
+h2. Example
+
+An example of how a handler implementing a List Dashboard to display information about a collection of books may look:
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/example-plugin/books", [
+], function(E, year) {
+    var dashboard = P.reporting.dashboard(E, {
+        name: "books_dashboard",
+        kind: "list",
+        collection: "books",
+        title: "Books"
+    }).
+        use("std:row_text_filter", {facts:["title","author"], placeholder:"Search"}).
+        use("std:row_object_filter", {fact:"genre", objects:T.Genre}).
+        summaryStatistic(0, "count").
+        order(["publishedDate", "descending"]).
+        columns(10, [
+            {type:"linked", style:"wide", column:{fact:"title"}}
+        ]).
+        columns(100, [
+            {fact:"author", link:true, style:"medium"},
+            {fact:"genre", style:"medium"},
+            {fact:"publishedDate", style:"medium"}
+        ]).
+        respond();
+});
+</pre>
