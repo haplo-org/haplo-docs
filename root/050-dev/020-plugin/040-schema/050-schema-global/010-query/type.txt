@@ -54,3 +54,15 @@ An array of attribute descriptors, in the order that the attributes should be di
 
 Where the application uses an aliased attribute, the descriptor of the underlying attribute is included in this array.
 
+
+h3(key). behaviours
+
+An array of strings describing the behaviours associated with this type.
+
+|@"classification"@|Classification type|
+|@"physical"@|Represents a physical item|
+|@"hierarchical"@|Hierarchical user interface|
+|@"show-hierarchy"@|Show hierarchy when displaying a link to objects|
+|@"force-label-choice"@|Force explicit choice of label when creating new object|
+|@"self-labelling"@|Automatically label objects of this type with itself|
+|@"hide-from-browse"@|Hide from Browse|
