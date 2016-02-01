@@ -1,0 +1,29 @@
+title: Concepts
+long_title: Reporting concepts
+--
+
+h2. Collections
+
+The data to be reported on is defined in your plugin code as a *Collection*. A collection is a group of facts about an [node:dev/plugin/interface/store-object:Object]. A *Fact* is a piece of data or information related to the object and are defined in the collection.
+
+Once a collection is defined, any other plugin is also able to define new facts, specify new statistics and use the collection to render reports and dashboards.
+
+While any plugin can add to a collection, the plugin that defines the collection should be the "owning" plugin. Other plugins should take care not to use any names that may be used by the owning plugin or any other plugin. One way to do this is to prepend a short string related to the plugin adding to the collection before the fact name. Care should also be taken to not render facts in reports from plugins that are not the current plugin, or the "owning" plugin.
+
+h2. Facts
+
+*Facts* are tracked over time, all the value's of a fact are known from the first recording of the fact up until the present value. A fact should be a discrete piece of data that changes based on an action taken, and does not change by the passage of time.
+
+For instance, if we wanted to create a report on overdue library books, a "due date" would be a sensible fact to record and the UI would handle what is overdue and what is not. Having a "is the book overdue" fact however would be problematic, as the Reporting plugin cannot know that an update is needed unless running a full rebuild of the collection.
+
+h2. Statistics
+
+Collections also define *Statistics*. Single value's which are derived from a subset of rows filtered in the collection, optionally grouped by other facts. 
+
+h2. Collection categories
+
+Collection categories allow for common functionality to be defined by defining that a collection is in one or more categories. For example, if we were to have "Staff" and "Customers" collections, it would make sense to define a "People" category that sets up facts and information that would be related to both rather than duplicating definitions.
+
+h2. Dashboards
+
+With the data from a collection, we can generate a *Dashboard* - a subset of facts from a collection displayed on a web page, with a potentially different set of facts generated for an export. Dashboards can be filtered based on values of facts, and can display statistics that are defined by the collection.

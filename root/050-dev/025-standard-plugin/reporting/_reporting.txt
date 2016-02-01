@@ -5,10 +5,6 @@ Plugin name: @std_reporting@
 
 The standard Reporting plugin provides the ability to generate reports based on historical data from many different sources.
 
-h2. Overview
-
-While any plugin can add to a collection, the plugin that defines the collection should be the "owning" plugin. Other plugins should take care not to use any names that may be used by the owning plugin or any other plugin. One way to do this is to prepend a short string related to the plugin adding to the collection before the fact name.
-
 h2. Terminology
 
  * Facts: a set of facts & figures about a [node:dev/plugin/interface/store-object:StoreObject], implemented as fields in a [node:dev/plugin/interface/database:Database] table
