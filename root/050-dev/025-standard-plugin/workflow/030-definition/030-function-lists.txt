@@ -22,8 +22,6 @@ h2. getActionableBy(fn)
 
 Translate an @actionableBy@ name into a [node:dev/plugin/interface/security-principal] object. If your function cannot find this user, then make sure you return @undefined@ so other functions can try too.
 
-There's a fallback implementation which looks up groups by their API code, so you can use the API code of a group in @actionableBy@ without any extra work.
-
 <pre>language=javascript
 EgWorkflow.getActionableBy(function(M, actionableBy, target) {
     if(actionableBy === "user") {
@@ -32,15 +30,22 @@ EgWorkflow.getActionableBy(function(M, actionableBy, target) {
 });
 </pre>
 
-The entities system will provide an implementation which does everything you need.
+There's a fallback implementation which provides some very basic actionable by names:
 
+ * @"object:creator"@, the user which created the object associated with the process
+
+ * the API code of any group.
+
+If you implement @getActionableBy()@, add a @hasRole()@ function which looks up your name.
+
+The [node:dev/standard-plugin/workflow/definition/std-features/entities#Entity_roles:entities system] provides an implementation which usually does everything you need.
 
 
 h2. hasRole(fn)
 
 Given a [node:dev/plugin/interface/security-principal] object, test to see if the user has the given role in the instance.
 
-There's a fallback implementation which tests whether the user is a member of a group, specified by API code, matching the fallback implementation for @getActionableBy@.
+There's a fallback implementation which tests whether the user is a member of a group, specified by API code, or @"object:creator"@, matching the fallback implementation for @getActionableBy@.
 
 <pre>language=javascript
 EgWorkflow.hasRole(function(M, user, role) {
