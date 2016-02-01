@@ -5,7 +5,7 @@ Plugin name: @std_workflow@
 
 The standard Workflow plugin implements a comprehensive workflow system based on "Finite state machines":https://en.wikipedia.org/wiki/Finite-state_machine.
 
-While the theory may sound a little complex, it's actually really simple, and is just a way of turning a flowchart into code. A workflow process can be in one of several defined states, and can transition to defined set of other states from each of those states.
+While the theory may sound a little complex, it's actually really simple, and is just a way of turning a flowchart into code. A workflow process can be in one of several defined states, and can transition to a defined set of other states from each of those states.
 
 Read the [node:dev/standard-plugin/workflow/overview:overview] and [node:dev/standard-plugin/workflow/concepts:concepts] to get started.
 

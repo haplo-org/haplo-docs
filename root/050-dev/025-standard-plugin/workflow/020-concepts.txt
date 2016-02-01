@@ -30,7 +30,7 @@ h2. Transition
 
 Actions by the user _transition_ the Instance to a different State.
 
-The state Definition declares which transitions are valid for that state, and the name of the state to which it moves when the transition.
+The state Definition declares which transitions are valid for that state, and the name of the state to which it moves when the transition occurs.
 
 It is only possible to move to another state if there is a valid transition.
 

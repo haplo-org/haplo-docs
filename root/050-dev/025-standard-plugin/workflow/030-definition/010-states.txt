@@ -54,7 +54,7 @@ h2. State definitions
 
 State definitions have the following properties, all of which are optional.
 
-They're deliberately sparse, describing the minimum details to form the 'flowchart' of the process. Behaviours are then layers on top by adding [node:dev/standard-plugin/workflow/definition/handlers].
+They're deliberately sparse, describing the minimum details to form the 'flowchart' of the process. Behaviours are then layered on top by adding [node:dev/standard-plugin/workflow/definition/handlers].
 
 
 h3(key). actionableBy
