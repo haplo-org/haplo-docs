@@ -1,0 +1,109 @@
+title: Entity replacements
+--
+
+This feature builds on top of the [node:dev/standard-plugin/workflow/definition/std-features/entities] system to allow you to specify alternatives to those entities. This provides per-instance customisation for workflows, giving some extra flexibility where required.
+
+Usually this functionality will not be required, as the @Entities@ system will be sufficient. It's worth avoiding the extra layer of abstraction if possible.
+
+
+h2. Using replacement entities
+
+<pre>language=javascript
+myWorkflow.use("std:entities:entity_replacement", {
+	// replacement entity definitions
+    replacements: {
+        "reviewerOrNominee": {
+            entity: "reviewer",
+            assignableWhen: {flags: ["canReplaceEntities"]},
+            replacementTypes: [T.Person]
+        },
+        "editorOrNominee": {
+            entity: "editor",
+            assignableWhen: {flags: ["canReplaceEntities"]},
+            replacementTypes: [T.Researcher]
+        }
+    },
+    // optional properties
+    relevantReplacements: function(M) {
+   		var relevant = ["reviewerOrNominee"];
+    	if(M.workUnit.data.needsReplacementEditor)
+            relevant.push("editorOrNominee");
+        }
+        return relevant;
+    },
+    onFinishPage: function(M) {
+    	// ... custom logic for smooth integration into the workflow
+    }
+});
+</pre>
+
+In use throughout the workflow plugin, the usage is the same as any non-replaced entity (so from the above definition, using @M.entities.reviewerOrNominee_ref@ is valid).
+
+Replacements are stored as one-to-one mappings between object [node:dev/plugin/interface/ref:Refs], so replacement is performed by a simple lookup operation.
+
+If no replacement is specified, the original entity is returned.
+
+
+h2. Configuring entity replacements
+
+@use()@ the @std:entities:entity_replacement@ feature, passing in the specification object, which has keys:
+
+
+h3(key). replacements
+
+This is an object, specifying a mapping from new entity name to an object specifying which entity to replace, when the replacement can be specified, and what type of object can be used as a replacement.
+
+The @entity@ string must be an entity that is already defined for the workflow.
+
+@assignableWhen@ is a [node:dev/standard-plugin/workflow/definition/selector:Selector].
+
+@replacementTypes@ is an array of schema types. The replacement [node:dev/plugin/interface/store-object:StoreObject] must have one of these types.
+
+
+h3(function). relevantReplacements
+
+Not all replacements may be relevant to a particular workflow. This function allows you to optionally implement custom logic for which replacements to offer. Defaults to returning all @replacements@ defined.
+
+
+h3(function). onFinishPage
+
+Optional. Returns a url to direct the user towards after any entity replacements have been chosen.
+
+
+h2. User interface
+
+The feature supplies a full functional user interface for viewing and selecting the replacement entities for a workflow. A link is added to the workflow obect's [node:dev/standard-plugin/action-panel], linking to the Overview page.
+
+An @entityReplacementUserInterfaceURL()@ method (taking no arguments) is added to the @M@ workflow object if the ui is needed to be accessed from elsewhere.
+
+h4. Overview
+
+This gives a table of the entities that have been changed, their original value, and the replacement. If the @assignableWhen@ selector is @true@, then a @set@ or @change@ link will be displayed to the user.
+
+h4. Form
+
+A very simple form page, displaying the original entity and a lookup field for replacing it. The lookup is restricted to suggesting objects of the replacement's @replacementTypes@.
+
+
+h2. Text
+
+The text for use in the ui should be added to the workflow 	[node:dev/standard-plugin/workflow/definition/text] interface.
+
+The following names are searched:
+
+h4. Displayable entity names
+
+* entity-replacement:display-name:reviewerOrNominee
+* entity-replacement:display-name
+
+Either a generic displayable value can be given, or a user-readable name supplied for each of your replacement entitites
+
+h4. Page titles
+
+* entity-replacement:page-title:overview
+* entity-replacement:page-title:form
+* entity-replacement:page-title
+
+These are optional, with sensible defaults used if left undefined
+
+
