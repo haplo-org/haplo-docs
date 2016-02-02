@@ -11,7 +11,7 @@ h2. Check all files
 Run the @check@ command to syntax check all files.
 
 <pre>
-    haplo-plugin check
+    haplo-plugin -p ALL check
 </pre>
 
 Make sure the output of the command is @PASSED@.

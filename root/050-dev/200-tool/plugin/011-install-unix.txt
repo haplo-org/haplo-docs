@@ -1,9 +1,21 @@
-title: Installation (UNIX or Mac)
+title: Installation (UNIX or OS X)
 --
 
-The plugin tool requires a little bit of setup. These instructions work on Mac OS X and UNIX-like operating systems, such as Linux.
+On Mac OS X and UNIX-like operating systems, such as Linux, you have a choice of using an automatic installer script (if you're not using JRuby for anything else), or manual installation.
 
 h2. Automatic installation
+
+h3. Check Java is installed
+
+To check Java is installed, in a Terminal window, type @java -version@
+
+You must have Java 8 or later. The version number shown will be prefixed with '1.', so Java 8's version will be shown as '1.8'.
+
+If you get an error, or need to update to Java 8, download "Java":https://java.com and install it in the default folder. Repeat the @java -version@ command to check it installed correctly.
+
+If you are using a Linux system, your package manager should be able to install Java 8 for you.
+
+h3. Run the automatic installation script
 
 Open a new Terminal window and download the "@haplo_plugin_install.sh@":https://raw.githubusercontent.com/haplo-org/haplo-plugin-tool/master/install/haplo_plugin_install.sh installation script:
 
@@ -30,17 +42,13 @@ to ensure installation was successful.
 If you receive a _command not found_ error check the output of @echo $PATH@ . It should contain the @jruby/bin@ directory from the @haplo-dev-support/haplo-plugin@ directory. If it does not, you may need to move the installer added line from @~/.profile@ to  @~/.bash_profile@ or @~/.bash_login@
 
 
+&nbsp;
+
+&nbsp;
 
 h2. Manual installation
 
-h3. Create a working folder
-
-Create a folder anywhere on your hard disc. We'll be using the example of @/Users/developer/haplo-development@ for simplicity. This working folder should be the root of your source control repository.
-
-Open a Terminal window, and @cd@ to that directory.
-
-
-h3. Check Java is installed.
+h3. Check Java is installed
 
 In the Terminal window, type @java -version@
 

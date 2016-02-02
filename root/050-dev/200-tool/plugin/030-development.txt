@@ -35,7 +35,7 @@ h2. Developing your plugin
 Typing
 
 <pre>
-    haplo-plugin
+    haplo-plugin -p test_plugin
 </pre>
 
 will upload the plugin to the server, and install it. You can test the plugin by visiting the URL given in the output from the @new@ command, replacing the hostname with the hostname of the application you're using for development.
@@ -64,7 +64,7 @@ h2. Tests
 Where appropriate, you should write [node:dev/plugin/tests:automated tests] for your plugin's key functionality. To run them, use the @test@ command:
 
 <pre>
-    haplo-plugin test
+    haplo-plugin -p test_plugin test
 </pre>
 
 The @test@ command takes an optional argument to specify a subset of the tests. If given, only the test scripts whose filenames contain the given string will be run.
@@ -86,7 +86,7 @@ h2. Uninstallation
 To remove a plugin under development, type
 
 <pre>
-    haplo-plugin uninstall
+    haplo-plugin -p test_plugin uninstall
 </pre>
 
 Run the plugin tool again to upload and re-install the plugin.
