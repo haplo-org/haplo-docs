@@ -1,0 +1,90 @@
+title: Interface
+long_title: Document store interfaces
+--
+
+To get an instance of the Document store, call @instance(key)@ on your defined Document store object.
+
+h2. Interfaces
+
+h3(property). currentDocument
+
+Returns the currently edited but unsaved document as a javascript object if one exists. Else returns the last committed version of the document or if one doesn't exist, a blank document.
+
+h3(property). currentDocumentIsEdited
+
+Returns a boolean which is true if the current document has outstanding uncommitted edits.
+
+h3(property). currentDocumentIsComplete
+
+Returns a boolean which is true if the current document is completed, eg: the required fields are filled in and the document validates.
+
+h3(function). setCurrentDocument(document, isComplete)
+
+Sets the current (uncomitted) document to @document@, using @isComplete@ to define the completed/incompleted status of the current document.
+
+h3(property). lastCommittedDocument
+
+Returns the javascript object of the last committed version of the document, or if one doesn't exist, a blank document.
+
+h3(property). hasComittedDocument
+
+Returns a boolean which is true if there is any saved version of the document.
+
+h3(property). getAllVersions
+
+Return an array of objects containing data about all the versions of the document stored for this instance of the document store.
+
+The objects in the array have the properties:
+
+|*Property*|*Description*|
+|version|The numeric version of the document|
+|date|The date this version was committed|
+|user|The user that committed this version|
+|document|The document as a javascript object|
+
+h3(function). commit(user)
+
+Saves/commits the @currentDocument@ as the latest version. If there is no edited version then @commit()@ will use the @lastCommittedDocument@ as the document to commit.
+
+h3(function). handleEditDocument(E, actions)
+
+Handles the editing of a document instance, for example in a request handler where the user has submitted changes to some forms.
+
+@E@ is the request object and is required.
+
+@actions@ is an optional object containing hooks to be executed to customise functionality of the editor.
+
+|*Property*|*Description*|
+|finishEditing|A function called with the arguments @instance, E, complete@ when the user submits edits to the form. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
+|gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
+|render|A function called with the arguments @instance, E, html@
+
+The arguments mentioned above are:
+
+|*Argument*|*Description*|
+|instance|The document store instance|
+|E|The [node:dev/plugin/interface/exchange:Exchange] object|
+|complete|Boolean. if the form passes validation and is completed|
+|formId|String. Id of the form the user is going to|
+|html|String. The HTML of the form to be displayed|
+
+For example:
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/vre-application-to-transfer/edit-form", [
+    {pathElement:0, as:"workUnit", workType:"example_workunit"},
+    {parameter:"form", as:"string", optional:true}
+], function(E, workUnit, form, formId) {
+    var formStore = P.STORE_LOOKUP[form];
+    var key = workUnit.id
+    var instance = P.exampleDocStore.instance(key);
+    instance.handleEditDocument(E, {
+        finishEditing: function(instance, E, complete) {
+            if(complete) {
+                // ...
+            }
+        }
+    });
+});
+</pre>
+

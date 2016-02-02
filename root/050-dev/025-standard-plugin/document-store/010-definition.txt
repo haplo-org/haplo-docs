@@ -1,0 +1,70 @@
+title: Definition
+long_title: Document store definition
+--
+
+Document stores are constructed by passing a delegate object as an argument to @P.defineDocumentStore()@
+
+The delegate is a collection of properties and methods which define how your Document store should function.
+
+h2. Specification
+
+h3(property). name
+
+Required. The internal name of the Document store. This name will be used when querying the document for data or values and can not be shared with any other Document store defined on your plugin.
+
+h3(property). keyIdType
+
+The type that will be used for the @key@ of your form, if it is not @int@
+
+h3(function). formsForKey(key)
+
+Required. Needs to return an array of [node:dev/plugin/form:forms].
+
+You can check/use the value of @key@ to return different forms depending on what is necessary.
+
+h3(function). keyToKeyId(key)
+
+If the key you are using is not the keyId, use keyToKeyId to transform a key object and into a keyId by return value.
+
+h3(function). blankDocumentForKey(key)
+
+Return what the blank document for a given key should be. You should return a JSON document that sets any default values you want to be set when the user first edits the document store.
+
+h3(function). formIdFromRequest(request)
+
+Given a request object, return a form ID. By default the Document store will use the second [node:dev/plugin/interface/request#extraPathElements:extraPathElements].
+
+h3(function). prepareFormInstance(key, form, instance, context)
+
+Prepare a form instance for the form.
+
+Use this to setup things like [node:dev/plugin/interface/form-instance#choices:dynamic form choices], for example:
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    prepareFormInstance: function(key, form, instance, context) {
+        if(key === "some_value") {
+            instance.choices("genres", ["Action", "Comedy", "Horror"]);
+        } else {
+            instance.choices("genres", ["Thriller", "Drama"]);
+        }
+    }
+});
+</pre>
+
+h2. Example
+
+An example small definition, where @meetingDetails@ and @otucomes@ are two defined [node:dev/plugin/form:forms]:
+
+<pre>language=javascript
+var meetingRecordStore = P.defineDocumentStore({
+    name: "meetingRecord",
+    formsForKey: function(key) { return [meetingDetails, outcomes]; },
+    blankDocumentForKey: function(key) {
+        return {
+            meetingDate: new Date()
+        };
+    }
+});
+</pre>
