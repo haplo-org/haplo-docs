@@ -119,3 +119,19 @@ EgWorkflow.use("std:entities", {
 });
 </pre>
 
+
+
+h2. Text system helpers
+
+When using @std:entities@, entities that you define become avaialable in the [node:dev/standard-plugin/workflow/definition/text:workflow text system]. Simply use the entitiy name enclosed in @ symbols, and upon rendering the title of the object that the entity references will be displayed instead
+
+For example, to display the name of the entity @supervisor@ in a transition name:
+
+<pre>language=javascript
+EgWorkflow.text({
+    // ...
+    "transition:return_supervisor": "Return to @supervisor@"
+    // ...
+});
+</pre>
+
