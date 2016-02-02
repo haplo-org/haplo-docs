@@ -1,8 +1,6 @@
 title: Plugin development
 --
 
-First, you must [node:dev/tool/plugin/getting-ready:start your session].
-
 
 h2. Authorise with server
 

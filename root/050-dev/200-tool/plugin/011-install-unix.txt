@@ -3,6 +3,35 @@ title: Installation (UNIX or Mac)
 
 The plugin tool requires a little bit of setup. These instructions work on Mac OS X and UNIX-like operating systems, such as Linux.
 
+h2. Automatic installation
+
+Open a new Terminal window and download the @haplo_plugin_install.sh@ installation script:
+
+<pre>
+    curl -O https://raw.githubusercontent.com/haplo-org/haplo-plugin-tool/master/install/haplo_plugin_install.sh
+</pre>
+
+Before executing the script, review the contents in your text editor of choice. The script downloads the binary release of JRuby into @~/haplo-dev-support/haplo-plugin@ , installs the @haplo@ ruby gem, and appends the new @jruby/bin@ directory to your PATH by adding a line to the @~/.profile@ of your current user.
+
+To install, run the script with:
+
+<pre>
+    sh haplo_plugin_install.sh
+</pre>
+
+After installation, open a new Terminal window or run @source ~/.profile@ and type:
+
+<pre>
+    haplo-plugin --help
+</pre>
+
+to ensure installation was successful.
+
+If you receive a _command not found_ error check the output of @echo $PATH@ . It should contain the @jruby/bin@ directory from the @haplo-dev-support/haplo-plugin@ directory. If it does not, you may need to move the installer added line from @~/.profile@ to  @~/.bash_profile@ or @~/.bash_login@
+
+
+
+h2. Manual installation
 
 h3. Create a working folder
 
@@ -13,7 +42,7 @@ Open a Terminal window, and @cd@ to that directory.
 
 h3. Check Java is installed.
 
-In the command prompt, type @java -version@
+In the Terminal window, type @java -version@
 
 You must have Java 8 or later. The version number shown will be prefixed with '1.', so Java 8's version will be shown as '1.8'.
 
@@ -61,3 +90,15 @@ Create a folder inside your working folder, for example, @/Users/developer/haplo
 h3. Check the installation works
 
 Type @haplo-plugin --help@ to check the plugin tool is installed correctly.
+
+h3. Persist PATH across sessions
+
+If you installed JRuby manually, then you will either need to set your PATH every time you open a new Terminal window or alternatively configure your system to automatically append the @jruby/bin@ directory to the PATH.
+
+To do so, add:
+
+<pre>
+    export PATH=/Users/developer/haplo-development/jruby/bin:$PATH
+</pre>
+
+to your shell configuration file.

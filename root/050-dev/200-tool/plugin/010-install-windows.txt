@@ -22,26 +22,28 @@ If you get an error, or need to update to Java 8, download "Java":https://java.c
 
 h3. Download JRuby
 
-Download the current release of "JRuby":http://jruby.org/download, which must be version 9.0.5.0 or later. Choose the "binary .zip" version.
+Download the current release of "JRuby":http://jruby.org/download, which must be version 9.0.5.0 or later. Choose "Windows Executable" to download the JRuby installer.
 
-Open the downloaded zip file, and drag the @jruby-x.x.x@ to the folder you created in the first step.
+Once downloaded, install JRuby by running the installer. The installer will append JRuby to your PATH enviornment variable.
 
-When that's finished, rename the extracted folder to @jruby@ (without the version number).
 
 
 h3. Install the Plugin Tool
 
 The Plugin Tool is distributed as a Ruby Gem.
 
-Return to the @cmd@ window you opened. Type
+Open a new @cmd@ prompt (_An already open @cmd@ prompt will not reflect the changes to the PATH made by the JRuby installer_) and type:
 
 <pre>
-    set JAVA_HOME=C:\Program Files\Java\jre8
-    set PATH=C:\haplo-development\jruby\bin;%PATH%
     jgem install haplo
 </pre>
 
-(Change the folder in the second line to whatever folder you created in the first step.)
+
+
+h3. Check the installation works
+
+Type @haplo-plugin --help@ to check the plugin tool is installed correctly.
+
 
 
 h3. Create a project folder
@@ -52,9 +54,4 @@ Create a folder inside your working folder, for example, @C:\haplo-development\e
     mkdir example-project
     cd example-project
 </pre>
-
-
-h3. Check the installation works
-
-Type @haplo-plugin --help@ to check the plugin tool is installed correctly.
 
