@@ -5,7 +5,7 @@ The plugin tool requires a little bit of setup. These instructions work on Mac O
 
 h2. Automatic installation
 
-Open a new Terminal window and download the @haplo_plugin_install.sh@ installation script:
+Open a new Terminal window and download the "@haplo_plugin_install.sh@":https://raw.githubusercontent.com/haplo-org/haplo-plugin-tool/master/install/haplo_plugin_install.sh installation script:
 
 <pre>
     curl -O https://raw.githubusercontent.com/haplo-org/haplo-plugin-tool/master/install/haplo_plugin_install.sh
