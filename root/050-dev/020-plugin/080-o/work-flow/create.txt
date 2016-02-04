@@ -14,9 +14,11 @@ The following properties are set by default, unless overridden by the constructo
 |*Property*|*Default value*|
 |@openedAt@|The current date and time|
 |@createdBy@|[node:dev/plugin/o/request/current-user]|
-|@actionableBy@|[node:dev/plugin/o/request/current-user], unless it is the SYSTEM user|
+|@actionableBy@|[node:dev/plugin/o/request/current-user]|
 |@visible@|@true@|
 |@autoVisible@|@true@|
+
+Note that the current user may be the SYSTEM user unless a request is active, or a user has been explicitly set with [node:dev/plugin/o/permissions#O_impersonating].
 
 
 h2. Usage
