@@ -52,12 +52,12 @@ Handles the editing of a document instance, for example in a request handler whe
 
 @E@ is the request object and is required.
 
-@actions@ is an optional object containing hooks to be executed to customise functionality of the editor.
+@actions@ is an object containing hooks to be executed to customise functionality of the editor.
 
 |*Property*|*Description*|
 |finishEditing|A function called with the arguments @instance, E, complete@ when the user submits edits to the form. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
 |gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
-|render|A function called with the arguments @instance, E, html@
+|render|A function called with the arguments @instance, E, deferredRender@ that should render the page by calling @E.render()@|
 
 The arguments mentioned above are:
 
@@ -66,25 +66,39 @@ The arguments mentioned above are:
 |E|The [node:dev/plugin/interface/exchange:Exchange] object|
 |complete|Boolean. if the form passes validation and is completed|
 |formId|String. Id of the form the user is going to|
-|html|String. The HTML of the form to be displayed|
+|deferredRender|[node:dev/plugin/templates/including-templates#Deferred_rendering:Deferred render]. The Deferred render object of the form to be displayed to be included in a HSVT template|
 
 For example:
 
 <pre>language=javascript
-P.respond("GET,POST", "/do/vre-application-to-transfer/edit-form", [
-    {pathElement:0, as:"workUnit", workType:"example_workunit"},
-    {parameter:"form", as:"string", optional:true}
-], function(E, workUnit, form, formId) {
-    var formStore = P.STORE_LOOKUP[form];
-    var key = workUnit.id
+P.respond("GET,POST", "/do/example-plugin/edit-form", [
+    {pathElement:0, as:"workUnit", workType:"example_workunit"}
+], function(E, workUnit) {
+    var key = workUnit.id;
     var instance = P.exampleDocStore.instance(key);
     instance.handleEditDocument(E, {
         finishEditing: function(instance, E, complete) {
             if(complete) {
                 // ...
             }
+        },
+        gotoPage: function(instance, E, formId) {
+            E.response.redirect("/do/example-plugin/edit-form/"+
+                instance.key.workUnit.id+
+                "/application?form="+formId);
+        },
+        render: function(instance, E, html) {
+            E.render({
+                // ...
+            });
         }
     });
 });
 </pre>
+
+h3(function). makeViewerUI(E, options)
+
+Constructs and returns a [node:dev/standard-plugin/document-store/viewer:DocumentViewer] object which can be used to display UI for your document store and forms in your plugin.
+
+For @options@ see [node:dev/standard-plugin/document-store/viewer#Options:DocumentViewer options].
 
