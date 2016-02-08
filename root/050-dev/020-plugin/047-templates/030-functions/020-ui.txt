@@ -12,7 +12,13 @@ All arguments are rendered, concatenated, and the @pageTitle@ in the view is set
 
 h2. backLink(...) { label }
 
-The arguments are intepreted as a URL, and @backLink@ in the view is set to that URL. The optional anonymous block is rendered if present, and @backLinkText@ is set to that string.
+The arguments are interpreted as a URL, and @backLink@ in the view is set to that URL. The optional anonymous block is rendered if present, and @backLinkText@ is set to that string.
+
+To set a back link to an object, use this with the [node:dev/plugin/templates/functions/platform/objects:std_object_url] template function:
+
+<pre>
+    backLink(std:object:url(object))
+</pre>
 
 
 h2. std:plugin:resources(...)

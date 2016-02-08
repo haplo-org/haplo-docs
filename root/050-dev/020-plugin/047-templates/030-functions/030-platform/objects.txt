@@ -25,3 +25,15 @@ h2. std:object:link:descriptive(object)
 
 Render a link to @object@, with the full descriptive title of the object as the link text.
 
+
+h2. std:object:url(object)
+
+The URL of this object, as obtained by calling [node:dev/plugin/interface/store-object#url] on an object.
+
+This is useful to use with [node:dev/plugin/templates/functions/ui#backLink:backLink()].
+
+
+h2. std:object:url:full(object)
+
+The URL of this object, including the full hostname, as obtained by calling [node:dev/plugin/interface/store-object#url:url(true)] on an object.
+
