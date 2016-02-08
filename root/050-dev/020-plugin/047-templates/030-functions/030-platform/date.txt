@@ -1,0 +1,53 @@
+title: Dates
+long_title: Dates template functions
+--
+
+These template functions render JavaScript @Date@ objects.
+
+h2. std:date(date)
+
+Render the date in a compact manner, in the timezone of the current user.
+
+For example: @02 Feb 2015@
+
+
+h2. std:date:long(date)
+
+Render the date without abbreviations, in the timezone of the current user.
+
+For example: @02 February 2015@
+
+
+h2. std:date:time(date)
+
+Render the date and time, in the timezone of the current user.
+
+For example: @02 Feb 2015, 14:23@
+
+
+h2. std:utc:date(date)
+
+Render a UTC date in a compact manner. (ignoring user's timezone)
+
+For example: @02 Feb 2015@
+
+
+h2. std:utc:date:long(date)
+
+Render a UTC date without abbreviations.
+
+For example: @02 February 2015@
+
+
+h2. std:utc:date:time(date)
+
+Render a UTC date and time.
+
+For example: @02 Feb 2015, 13:23@
+
+
+h2. std:utc:date:sort(date)
+
+Render a UTC date and time in a manner suitable for sorting.
+
+For example: @201502021323@
