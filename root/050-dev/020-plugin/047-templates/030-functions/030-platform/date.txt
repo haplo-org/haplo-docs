@@ -2,7 +2,12 @@ title: Dates
 long_title: Dates template functions
 --
 
-These template functions render JavaScript @Date@ objects.
+These template functions render JavaScript @Date@ objects using standardised format strings for consistency.
+
+They also accept date objects from the bundled date libraries.
+
+If any other type of object is passed to the function, including @undefined@ and @null@, the empty string is rendered.
+
 
 h2. std:date(date)
 
