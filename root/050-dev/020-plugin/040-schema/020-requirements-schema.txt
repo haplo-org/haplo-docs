@@ -165,3 +165,17 @@ type example:type:something
 Multiple requirements files can add values to the same template.
 
 It is *not* an error to attempt to apply a template which does not exist.
+
+
+h2. Type annotations
+
+Sometimes it is useful to work with a set of types, or apply generic functionality to some types without knowing exactly what they are. Type annotations allow you to annotate types with arbitrary strings, and query the schema to find them. You can apply multiple annotations to a type.
+
+<pre>
+type std:type:file
+    annotation example:annotation:first
+    annotation example:annotation:second
+</pre>
+
+Types with a given annotation are found using [node:dev/plugin/schema/schema-global/query/type-annotation:SCHEMA.getTypesWithAnnotation()], and [node:dev/plugin/schema/schema-global/query/type:SCHEMA.getTypeInfo()] to retrieve the annotations on a given type.
+

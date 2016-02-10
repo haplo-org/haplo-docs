@@ -6,6 +6,7 @@ Use the schema query functions to find out more information about the schema.
 
 |*Function*|*Schema item*|
 |@[node:dev/plugin/schema/schema-global/query/type:SCHEMA.getTypeInfo()]@|Types|
+|@[node:dev/plugin/schema/schema-global/query/type-annotation:SCHEMA.getTypesWithAnnotation()]@|Find types by annotation|
 |@[node:dev/plugin/schema/schema-global/query/attribute:SCHEMA.getAttributeInfo()]@|Attributes|
 |@[node:dev/plugin/schema/schema-global/query/qualifier:SCHEMA.getQualifierInfo()]@|Qualifiers|
 
