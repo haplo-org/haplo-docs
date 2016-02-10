@@ -17,6 +17,12 @@ To preview your changes:
 
 Adding new files requires a restart, but otherwise click refresh to view your changes.
 
+Before committing your changes, check all the files with:
+
+`script/doc-tool check`
+
+This ensures that all the documentation can be generated, in particular, that all the links point to a valid destination.
+
 ### License
 
 Haplo Documentation is licensed under the Mozilla Public License Version 2.0. See the LICENSE file for full details.
