@@ -1,0 +1,18 @@
+title: std:render
+link_as: keyword
+--
+
+A utility template intended to be used for rendering deferred renders from other templates.
+
+The template is just a single [node:dev/plugin/templates/functions/language#render] template function.
+
+<pre>
+    render(.)
+</pre>
+
+Use it to render the result of [node:dev/plugin/interface/template#deferredRender].
+
+<pre>language=javascript
+var deferred = P.template("example").deferredRender({ ... });
+var html = P.template("std:render").render(deferred);
+</pre>
