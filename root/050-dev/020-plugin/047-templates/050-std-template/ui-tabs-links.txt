@@ -1,0 +1,17 @@
+title: std:ui:tabs:links
+link_as: keyword
+--
+
+This template renders tabs to build the UI to switch between pages of a tabbed user interface.
+
+
+h2. View
+
+h3(key). tabs
+
+An array of information about the tabs, each of which is rendered as a link. Each element of the array is a dictionary with properties:
+
+|@href@|The URL for the @href@ attribute of the link.|
+|@parameters@|(Optional) A dictionary of extra parameters for this link|
+|@label@|The label for the tab.|
+|@selected@|If @true@, the tab is selected.|
