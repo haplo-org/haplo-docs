@@ -42,7 +42,12 @@ During the process of handling a request, various [node:dev/plugin/interface/plu
 
 h3. Response generation
 
-The plugin object provides HTML templating, form handling, and other [node:dev/plugin/interface/plugin/response-generation:response generation] features.
+The plugin object provides HTML templates, and other [node:dev/plugin/interface/plugin/response-generation:response generation] features.
+
+
+h3. Forms
+
+The plugin object creates [node:dev/plugin/interface/plugin/form:form descriptions and data sources].
 
 
 h3. Properties

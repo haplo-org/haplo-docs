@@ -1,0 +1,24 @@
+title: Forms
+long_title: Plugin form support
+--
+
+[node:dev/plugin/form:Forms] are defined through your plugin.
+
+
+h2. Interface
+
+h3(function). form(specification)
+
+Declare a form for use by this plugin.
+
+Returns a [node:dev/plugin/interface/form-description] object.
+
+@form()@ can only be called while the plugin is being loaded.
+
+
+h3(function). dataSource(name, kind, definition)
+
+Define a data source. See [node:dev/plugin/form/data-source] for the various ways data sources can be defined.
+
+@dataSource()@ can only be called while the plugin is being loaded.
+

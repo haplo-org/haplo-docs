@@ -39,18 +39,3 @@ Given a string containing some CSS, rewrite it to reflect the current applicatio
 The replacements are the same as the [node:dev/plugin/directory-structure/css-rewriting:CSS rewriting for static files].
 
 
-h3(function). form(specification)
-
-Declare a form for use by this plugin.
-
-Returns a [node:dev/plugin/interface/form-description] object.
-
-@form()@ can only be called while the plugin is being loaded.
-
-
-h3(function). dataSource(name, kind, definition)
-
-Define a data source. See [node:dev/plugin/form/data-source] for the various ways data sources can be defined.
-
-@dataSource()@ can only be called while the plugin is being loaded.
-

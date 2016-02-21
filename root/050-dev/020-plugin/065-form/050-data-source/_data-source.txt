@@ -2,7 +2,7 @@ title: Data sources
 class: DocNodeTextileWithTOC
 --
 
-Data sources are defined using the [node:dev/plugin/interface/plugin/response-generation#dataSource] function on your [node:dev/plugin/interface/plugin].
+Data sources are defined using the [node:dev/plugin/interface/plugin/form#dataSource] function on your [node:dev/plugin/interface/plugin].
 
 The @name@ is used in the @dataSource@ property of form elements, such as [node:dev/plugin/form/specification/lookup] form elements. The @kind@ defines what kind of source to create, and the @definition@ defines the exact nature of the source.
 
