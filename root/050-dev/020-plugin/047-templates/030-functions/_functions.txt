@@ -13,7 +13,7 @@ There are three categories of template functions provided by the platform:
  * [node:dev/plugin/templates/functions/ui:ui functions], which affect the rendering of the standard Haplo UI
  * [node:dev/plugin/templates/functions/language:platform functions], which provide rendering of widgets
 
-Plugins can define their own template functions. These are made available to all plugins, so must be namespaced appropraitely.
+Plugins can [node:dev/plugin/templates/functions/plugin-functions:define their own template functions]. These are made available to all plugins, so must be in an appropriate namespace.
 
 
 h2. Function syntax

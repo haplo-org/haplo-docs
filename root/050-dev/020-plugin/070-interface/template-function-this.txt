@@ -1,0 +1,50 @@
+title: TemplateFunctionThis
+long_title: TemplateFunctionThis interface
+link_as: keyword
+--
+
+An object used to render [node:dev/plugin/templates/functions/plugin-functions:plugin defined template functions], passed as @this@ when the implementing function is called.
+
+
+h2. Construction
+
+@TemplateFunctionThis@ object are automatically created by the templates rendering system. The objects may be reused for efficiency, but your implementation must make no assumptions.
+
+
+h2. Interface
+
+h3(property). functionName
+
+The name of the function being rendered.
+
+
+h3(function). write(string)
+
+Write the @string@, escaped for the current context.
+
+
+h3(function). hasBlock(blockName)
+
+Return @true@ if the function has been called with a given named block, or @null@ for the anonymous block.
+
+
+h3(function). writeBlock(blockName)
+
+Write the given named block, or @null@ for the anonymous block.
+
+
+h3(function). render(thing)
+
+Render something. @thing@ may be a deferred render or a template.
+
+
+h3(function). unsafeWriteHTML(html)
+
+Output the @html@ without any escaping. Use with care.
+
+
+h3(function). assertContext(context)
+
+Assert that the function is being called in the right HTML context. @context@ may be @"TEXT"@ or @"ATTRIBUTE_VALUE"@.
+
+
