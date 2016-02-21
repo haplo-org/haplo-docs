@@ -31,15 +31,6 @@ Render the anonymous block. @yield:name()@ within that block renders the named b
 This is useful for things like conditionally adding links around generated HTML.
 
 
-h2. unsafeHTML(unsafeValue)
-
-Evaluate @unsafeValue@ as a string, then output directly in the template without escaping. A parse error is thrown if it is used outside the text context (eg can't be used in an attribute value).
-
-The value name must begin with @unsafe@ so that it's obvious in the code generating the view that the value will be used unsafely.
-
-Try to use @render()@ and [node:dev/plugin/interface/template#deferredRender] instead.
-
-
 h2. template:X()
 
 Include another template in the rendered output. The template name, @X@, is part of the function name.
@@ -66,9 +57,35 @@ h2. url(...)
 Pseudo function with special parsing. See [node:dev/plugin/templates/urls].
 
 
+h2. concat(...)
+
+Output all the arguments. No whitespace is output between them.
+
+Use to override the automatic space separated values when using lists as attribute values.
+
+
 h2. scriptTag(...)
 
 Pseudo function for generating @<script>@ tags. The arguments are a URL, as @url()@, and the resulting URL is output as the @src@ attribute in @<script src="..."></script>@ tag pair.
 
 Script tags are otherwise not allowed in templates, because including JavaScript is too dangerous and should be prohibited by your Content Security Policy.
 
+
+h2. unsafeHTML(unsafeValue)
+
+Evaluate @unsafeValue@ as a string, then output directly in the template without escaping. A parse error is thrown if it is used outside the text context (eg can't be used in an attribute value).
+
+The value name, or one of the path elements, must begin with @unsafe@ so that it's obvious in the code generating the view that the value will be used unsafely.
+
+Try to use @render()@ and [node:dev/plugin/interface/template#deferredRender] instead.
+
+
+h2. unsafeAttributeValue(unsafeValue)
+
+Override @id@, @class@ and @style@ attribute restrictions by pretending a value is a literal string. The value is escaped within the attribute.
+
+A parse error is thrown if it is used outside the attribute context.
+
+The value name, or one of the path elements, must begin with @unsafe@ so that it's obvious in the code generating the view that the value will be used unsafely.
+
+Try to use a @data-@ attribute instead and select on that value in your JavaScript code.

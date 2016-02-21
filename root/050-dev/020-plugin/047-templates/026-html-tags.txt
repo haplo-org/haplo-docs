@@ -49,7 +49,11 @@ HTML "void elements":http://www.w3.org/TR/html-markup/syntax.html#syntax-element
 
 h2. Special handling of tag attributes
 
-HSVT usually ignores all whitespace, and omits it from the rendered HTML. There is one exception in HTML tag attributes, where if you include multiple values in a list, they're space separated. This is especially useful for conditional application of multiple class names.
+HSVT usually ignores all whitespace, and omits it from the rendered HTML. There is one exception in HTML tag attributes, where if you include multiple values in a list, they're space separated.
+
+Use [node:dev/plugin/templates/functions/language#concat] to override this behaviour.
+
+The space separated values in attributes is especially useful for conditional application of multiple class names:
 
 <pre>language=hsvt
 <div class=["item" if(selected){"highlight"}]> "x" </div>
