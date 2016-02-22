@@ -6,7 +6,7 @@ The text system is used to customise the notification emails.
 
 h4. State name (notification email)
 
- * notification-status:STATUS
+ * notification-status:STATE
  * status:STATE
  * notification-status
  * status
