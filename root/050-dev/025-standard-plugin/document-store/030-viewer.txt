@@ -33,6 +33,10 @@ h3(property). hideFormNavigation
 
 Boolean. True hides the interform links from the viewer generated sidebar.
 
+h3(property). uncommittedChangesWarningText
+
+String. Specify the warning text to display when viewing current uncommitted document. Set to a falsey value for no warning.
+
 h2. Interfaces
 
 h3(property). hasDocumentToDisplay
