@@ -22,7 +22,7 @@ h4. Action button label
  * action-label
 
 
-h4. Additional explainatory notes for the email
+h4. Additional explanatory notes for the email
 
 (rendered with [node:dev/plugin/templates/functions/platform/text#std_text_paragraph] if present)
 

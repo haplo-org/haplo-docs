@@ -23,7 +23,7 @@ h2. Searching for strings
 
 To avoid having to set lots of strings for every possible case, the text system has a list of string it'll search. The most specific string will be used.
 
-In the documentated search paths, placeholders will be used:
+In the documented search paths, placeholders will be used:
 
  * STATE - name of a state
  * TRANSITION - name of a transition
