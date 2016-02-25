@@ -126,6 +126,58 @@ var instance = EgWorkflow.documentStore.applicationForm.instance(M)
 var projectTitle = instance.currentDocument.projectTitle
 </pre>
 
+h2. Text
+
+The [node:dev/standard-plugin/workflow/definition/text:workflow text system] can be used to configure the text that appears in the document store specific user interface.
+
+In the documented search paths, placeholders will be used:
+
+ * DOCSTORE - name of a document store 
+ * STATE - name of a state
+
+h4. Edit document button
+
+(Defaults to @"Edit "+title.toLowerCase()@)
+
+ * docstore-panel-edit-link:DOCSTORE:STATE
+ * docstore-panel-edit-link:DOCSTORE
+
+h4. Uncommitted changes warning
+
+(std:ui:notice @message@, defaults to @"You've made some changes, but they're not visible to anyone else yet."@)
+
+ * docstore-uncommitted-changes-warning-text:DOCSTORE
+
+h4. Review prompt
+
+(std:ui:confirm @text@, defaults to @"Please review the form below."@)
+
+ * docstore-review-prompt:DOCSTORE
+
+h4. Review continue
+
+(Defaults to @"Continue"@)
+
+ * docstore-review-continue:DOCSTORE
+
+h4. Review return to edit
+
+(Defaults to @"Return to edit"@)
+
+ * docstore-review-return-to-edit:DOCSTORE
+
+h4. Review prompt edit
+
+(Shown if form editable by current user, defaults to @"Once submitted, the form is no longer editable."@)
+
+ * docstore-review-editable:DOCSTORE
+
+h4. Review cancel
+
+(std:ui:confirm @backLinkText@, defaults to @"Cancel"@)
+
+ * docstore-review-cancel:DOCSTORE
+
 h2. Example definition
 
 An example of a simple document store for a workflow:
