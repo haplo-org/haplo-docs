@@ -50,6 +50,12 @@ h3(function). respond()
 
 Generate the Dashboard and serve/render it to the user.
 
+h3(function). deferredRender()
+
+Provides a [node:dev/plugin/interface/template#deferredRender] object for the dashboard. Allows inclusion of dashboards into other templates.
+
+Note that dashboard exports are not possible when deferred rendering, and the Export button will not be displayed.
+
 h2. Services
 
 Dashboards can be modified/setup/added to from outside of the Dashboard specification/dashboard object using services. This allows other plugins to do things like adding columns and statistics to already existing dashboards without modifying the original plugin.
