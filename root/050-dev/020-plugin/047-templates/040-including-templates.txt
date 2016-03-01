@@ -17,9 +17,9 @@ Let's say you have a very simple widget, which renders a heading and some text. 
 </div>
 </pre>
 
-This expects a view with a @heading@ and text properties @text@.
+This expects a view with a @heading@ and text properties @text@. When the template is rendered, it uses the current view. You can use @within()@ to control which bit of the view is used by your included template, as shown in the "Including it twice" section below.
 
-Let's include it in another template:
+But in the very simple case, where you just want to use the current view, you can include this template in another template like this:
 
 <pre>language=hsvt
 <h1> "Widgets" </h1>
@@ -97,6 +97,8 @@ and a view like
 h2. Tricks with yield()
 
 [node:dev/plugin/templates/functions:Template functions] can take blocks, and the @template:X()@ functions are no exception. The included template can then use [node:dev/plugin/templates/functions/language#yield] to include those blocks.
+
+*IMPORTANT:* In most cases, you won't need to use these tricks. If you're writing a template that only you're going to use, it's going to be easier to just pass in information implicitly in the view.
 
 Let's write that widget again.
 
