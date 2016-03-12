@@ -5,12 +5,12 @@ link_as: keyword
 
 A JavaScript object implementing the @FileIdentifier@ interface is a reference to a [node:dev/plugin/interface/file] used as a value within a [node:dev/plugin/interface/store-object]. It includes extra information to implement the user interface for 'file version tracks' provided by the Platform.
 
-The digest and fileSize are used to unambiguously identify the @File@ to which it refers.
+The @digest@ and @fileSize@ are used to unambiguously identify the @File@ to which it refers.
 
 
 h2. Construction
 
-Use [node:dev/plugin/interface/file#identifier] on a @File@ object, or @mutableCopy()@ on a @FileIdentifier@ object(),
+Use [node:dev/plugin/interface/file#identifier] on a @File@ object, or @mutableCopy()@ on a @FileIdentifier@ object.
 
 
 h2. Interface
