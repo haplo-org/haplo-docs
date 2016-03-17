@@ -35,7 +35,14 @@ Boolean. True hides the interform links from the viewer generated sidebar.
 
 h3(property). uncommittedChangesWarningText
 
-String. Specify the warning text to display when viewing current uncommitted document. Set to a falsey value for no warning.
+String. Specify the warning text to display when viewing current uncommitted document. Set to a falsey value to disable the warning.
+
+h3(property). style
+
+Specify the style to be used by the viewer. The default (unspecified) style shows all of the forms in a document concatenated on one page. Possible styles:
+
+|*Style*|*Description*|
+|@"tabs"@|Shows only one form at a time, rendering tabs in the UI for switching between the different forms|
 
 h2. Interfaces
 
