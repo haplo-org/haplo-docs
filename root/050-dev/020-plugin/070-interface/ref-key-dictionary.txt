@@ -9,6 +9,8 @@ A JavaScript @Object@ can be used as a lookup dictionary with the @[]@ operator,
 
 @RefKeyDictionary@ objects are provided as a work around for this limitation. They don't have quite the same interface as a JavaScript @Object@ (so that the fundamental rules of the language still apply). As a bonus, they can be constructed with an optional value constructor function which is called to create the value for unknown keys.
 
+You might find that [node:dev/plugin/interface/ref-key-dictionary-hierarchical] is more useful when dealing with hierarchical object structures, for example, types and subtypes.
+
 
 h2. Construction
 
