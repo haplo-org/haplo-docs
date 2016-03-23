@@ -128,6 +128,11 @@ h3(function). firstTitle(qual)
 Shortcut for @first(ATTR["dc:attribute:title"], qual)@
 
 
+h3(function). firstParent(qual)
+
+Shortcut for @first(ATTR["std:attribute:parent"], qual)@
+
+
 h3(function). every(desc, qual, iterator)
 
 All arguments are optional. @desc@ and @qual@ as for the @first()@ function.
@@ -150,11 +155,6 @@ Shortcut for @every(ATTR["dc:attribute:type"], qual, iterator)@
 h3(function). everyTitle(qual)
 
 Shortcut for @every(ATTR["dc:attribute:title"], qual, iterator)@
-
-
-h3(function). everyParent(qual, iterator)
-
-Shortcut for @every(ATTR["std:attribute:parent"], qual, iterator)@
 
 
 h3(function). has(value, desc, qual)
