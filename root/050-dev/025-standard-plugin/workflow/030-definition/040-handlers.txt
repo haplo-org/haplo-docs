@@ -35,6 +35,20 @@ EgWorkflow.observeExit(function(M, transition) {
 
 @transition@ is the transition which caused the move from this state.
 
+@observeExit@ handlers are called before the workflow instance is committed to the database, so you can modify the underlying workunit and set timeline entry data. You may prefer to use @transitionComplete@ to avoid race conditions when performing actions as a result of a completed transition.
+
+
+h2. transitionComplete(selector, fn)
+
+Called when a transition is complete and all changes to the workflow instance have been committed to the database.
+
+<pre>language=javascript
+EgWorkflow.transitionComplete(function(M, transition, previousState) {
+});
+</pre>
+
+Note that the list of handlers is choosen using the selectors at the *beginning* of the transition, but the functions are called at the *end* of the transition with the new state of the workflow instance. This avoids having to select on all the possible destination states.
+
 
 h2. resolveTransitionDestination(selector, fn)
 
