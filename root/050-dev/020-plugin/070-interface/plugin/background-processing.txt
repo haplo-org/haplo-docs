@@ -1,0 +1,14 @@
+title: Background processing
+long_title: Plugin background processing
+--
+
+See the main [node:dev/plugin/o/background-processing:background processing] documentation for details of running jobs in the background.
+
+h3(function). backgroundCallback(name, fn)
+
+Register a callback function to perform the background processing for a named job.
+
+@name@ is the name of the job, *without* the plugin name prefix.
+
+@fn@ is called with a single @data@ argument.
+
