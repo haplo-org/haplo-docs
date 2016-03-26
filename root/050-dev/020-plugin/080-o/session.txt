@@ -1,0 +1,31 @@
+title: Session
+--
+
+You can store a small amount of data in the user's session. This is lost when the user logs out or their session times out.
+
+All values must be able to be serialised to JSON.
+
+The session is automatically saved when a top level value is updated. If you modify a value without explicitly setting the top level value, the session will not be saved.
+
+If you're going to use the session object, consider other methods first. For example, try and use values in URLs or URL parameters, so users can work in multiple windows at the same time without conflict, and you don't have to worry about removing the data later.
+
+
+h3(property). O.session
+
+A dictionary object representing the user's session.
+
+All keys must include a @':'@ character, and you should use this to namespace your keys with your plugin name. For example,
+
+<pre>language=javascript
+O.session['example_plugin:name'] = 'Joe';
+</pre>
+
+If you wish to update a nested value, you must also update the root value. For example:
+
+<pre>language=javascript
+var nested = O.session['example_plugin:nested'] || {};
+nested.value = 42;
+O.session['example_plugin:nested'] = nested;
+</pre>
+
+In general, prefer to use a very small number of simple values.
