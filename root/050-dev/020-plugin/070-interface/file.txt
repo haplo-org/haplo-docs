@@ -59,6 +59,13 @@ h3(function). checkSecret(secret)
 Compare the given secret with the file's secret using a timing-attack resistant comparison algorithm. If the secret does not match, an exception is thrown.
 
 
+h3(function). readAsString(charsetName)
+
+Read the contents of the file, interpreted as a string in the given character set, eg @"UTF-8"@.
+
+Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidently run out of memory.
+
+
 h3(property). properties
 
 A JavaScript @Object@, as a dictionary, containing additional properties of the file. These may not be available either because the file has not been processed yet, processing encountered an error, or the properties are not applicable to that file type.

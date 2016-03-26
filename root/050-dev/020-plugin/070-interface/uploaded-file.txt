@@ -32,3 +32,9 @@ h3(property). filename
 
 The filename of the file, as set by the browser.
 
+
+h3(function). readAsString(charsetName)
+
+Return the contents of the binary data, interpreted as a string in the given character set, eg @"UTF-8"@.
+
+Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidently run out of memory.
