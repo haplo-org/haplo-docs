@@ -64,6 +64,8 @@ h3(key). type
 |@link@|Reference to row in other table|Database row object [3]|
 |@user@|Reference to user|[node:dev/plugin/interface/security-principal] [3]|
 |@file@|File stored in the file store|[node:dev/plugin/interface/file]|
+|@labelList@|Labels|[node:dev/plugin/interface/label-list]|
+
 
 h3(key). linkedTable
 

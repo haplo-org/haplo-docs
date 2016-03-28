@@ -31,9 +31,13 @@ Add a where clause to the query, as in SQL. This function can be called multiple
 
 @comparison@ can be one of @"="@, @"<"@, @">"@, @"<="@, @">="@, @"<>"@ or @"LIKE"@. Note that fields taking non-primitive values, such as @link@, @user@ and @ref@, can only use @"="@ or @"<>"@ comparisons. @"!="@ is an alias for @"<>"@.
 
+In addition, for @labelList@ fields, the @"PERMIT READ"@ comparison may be used with a [node:dev/plugin/interface/security-principal:User] @value@ to select rows where the user is permitted to read objects labeled with the given label list.
+
 To select objects based on whether they have @null@ values, use the @"="@ or @"<>"@ operators only.
 
 The values for @"LIKE"@ comparisons use the normal SQL wildcard characters, @_@ for any single character and @%@ for zero or more characters. An exception will be thrown if @value@ is the empty string or the first character is a wildcard.
+
+@where()@ allows the use of the implicit @"id"@ field.
 
 h4. Implicit joins
 
@@ -75,6 +79,8 @@ This is a 'hint' for efficiency and will speed things up when used correctly, bu
 h3(function). order(fieldName, descending)
 
 Add an order clause to the query. You can call this multiple times to specify orderings over multiple fields, as in SQL.
+
+@order()@ allows the use of the implicit @"id"@ field.
 
 
 h3(function). stableOrder()
