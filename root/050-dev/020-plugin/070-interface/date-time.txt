@@ -32,7 +32,14 @@ The start time of the range in the GMT timezone, as a JavaScript @Date@ object.
 
 h3(property). end
 
-The end time of the range in the GMT timezone, as a JavaScript @Date@ object. If no end time is specified, this property will be @null@.
+The end time of the range in the GMT timezone, as a JavaScript @Date@ object.
+
+There will always be an end date, but if a range end was not explicitly specified when the @DateTime@ object was created, it will be generated using the @start@ and @precision@. Use the @specifiedAsRange@ property if you need to determine if it is an explicit range.
+
+
+h3(property). specifiedAsRange
+
+@true@ if the @DateTime@ object was specified explicitly as a range.
 
 
 h3(property). precision
