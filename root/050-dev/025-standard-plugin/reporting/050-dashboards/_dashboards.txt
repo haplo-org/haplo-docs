@@ -46,6 +46,19 @@ h3(function). setTime(date)
 
 Specify a date/time for viewing historical data of facts. @date@ must be a JavaScript Date object.
 
+h3(function). display(where, deferred)
+
+Display custom HTML on the dashboard. @where@ specifies where it should be placed, and @deferred@ is the result of [node:dev/plugin/interface/template#deferredRender] on a @Template@.
+
+Different dashboards support different locations, which may include:
+
+|@"above"@|A good place above the main dashboard display|
+|@"below"@|Below the main dashboard display|
+|@"above-summary"@|Above any summary information|
+|@"above-export"@|Above an export button|
+|@"above-navigation"@|Above navigation user interface|
+|@"above-table"@|Above the main data table|
+
 h3(function). respond()
 
 Generate the Dashboard and serve/render it to the user.
