@@ -7,7 +7,7 @@ h3(function). O.audit.query()
 
 Constructs a new object implementing the [node:dev/plugin/interface/audit-entry-query] interface.
 
-This object may be used to filter, sort and return audit trail events.
+This object may be used to filter, sort and return audit trail events. Note that this will only find audit entries that have labels which *permit the current user to read them*.
 
 
 h3(function). O.audit.write(dictionary)

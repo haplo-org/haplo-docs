@@ -5,8 +5,7 @@ link_as: keyword
 
 A JavaScript object implementing the @AuditEntryQuery@ interface represents a query for [node:dev/plugin/interface/audit-entry] objects and provides access as a read only @Array@ of @AuditEntry@ objects.
 
-By default, only displayable audit events in sections the current user has permissions for
-as returned.
+Only audit trail entries which have labels which *permit the current user to read them* are returned from queries.
 
 
 h2. Construction
@@ -64,11 +63,11 @@ Find audit entries that were generated between the two dates: @from@ and @to@.
 
 h3(function). displayable(bool)
 
-Find audit entries that are marked either as @displayable@ (true) or @not displayable@ (false)
+Find audit entries that are marked either as _displayable_ (@true@) or _not displayable_ (@false@). Call @displayable(null)@ to find all audit entries (the default displayable option).
 
-@displayable@ entries are visible in the Recent changes list, and typically relate to store objects.  @not displayable@ entries relate to other operations such as login and logout events.
+_Displayable_ entries are visible in the Recent changes list, and typically relate to store objects. _Not displayable_ entries relate to other operations such as login and logout events.
 
-*Note*: care must be taken when requesting @not displayable@ entries to ensure that only suitable information is displayed to the user, and that the user is authorised to view this information.
+*Note*: care must be taken when requesting _not displayable_ entries to ensure that only suitable information is displayed to the user, and that the user is authorised to view this information.
 
 
 h3(function). userId(id)
