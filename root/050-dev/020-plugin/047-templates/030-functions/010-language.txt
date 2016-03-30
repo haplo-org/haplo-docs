@@ -51,6 +51,8 @@ This is intended to prevent you from needing to use @unsafeHTML()@ by giving you
 
 See [node:dev/plugin/templates/including-templates#Deferred_rendering] for how to use @render()@.
 
+Use [node:dev/plugin/templates/template-support#O_isDeferredRender] to check whether an object is a deferred render.
+
 
 h2. url(...)
 
