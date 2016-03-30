@@ -7,7 +7,7 @@ Collections define a set of data/statistics/filters related to a type of StoreOb
 
 h2. Definition
 
-Collections are defined by implementing the @std:reporting:discover_collections@ service and passing a function with an argument that will be the collection @discover()@ function when called.
+Collections are defined by implementing the @"std:reporting:discover_collections"@ service and passing a function with an argument that will be the collection @discover()@ function when called.
 
 The discover function takes three arguments, a unique internal name for the collection, a human readable title/description, and an optional list of categories.
 
@@ -21,7 +21,7 @@ P.implementService("std:reporting:discover_collections", function(discover) {
 
 h2. Setup
 
-Collections are setup by implementing the @std:reporting:collection:COLLECTION_NAME:setup@ service which passes in the collection object which can then be used to add facts, statistics, filters and properties.
+Collections are setup by implementing the @"std:reporting:collection:COLLECTION_NAME:setup"@ service which passes in the collection object which can then be used to add facts, statistics, filters and properties.
 
 This service can be implemented in any plugin, which allows plugins to add their facts about their own functionality/data to a collection. 
 
@@ -30,6 +30,8 @@ P.implementService("std:reporting:collection:example:setup", function(collection
     collection.fact(...);
 });
 </pre>
+
+In addition, the wildcard @"std:reporting:collection:*:setup"@ service is called to allow plugins to configure every collection.
 
 Functions called on the collection object return themselves, and so can be chained.
 
