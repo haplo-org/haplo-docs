@@ -42,11 +42,12 @@ h3(property). view
 
 A list of objects specifying which roles are able to view the document and optionally limiting by [node:dev/standard-plugin/workflow/definition/selector:workflow selectors]. Omitting these objects or specifying an empty list @[]@ means that everyone can view the document.
 
-The objects have two properties:
+The objects have optional properties:
 
 |*Property*|*Description*|
 |roles|A list of [node:dev/standard-plugin/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the document|
-|selector|A [node:dev/standard-plugin/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be viewable by the specified roles. An empty selector @{}@ will select on all states.| 
+|selector|A [node:dev/standard-plugin/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be viewable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
 
 For example:
 
@@ -66,11 +67,12 @@ h3(property). edit
 
 A list of objects specifying which roles are able to edit the document and optionally limiting by [node:dev/standard-plugin/workflow/definition/selector:workflow selectors]. Omitting these objects or specifying an empty list @[]@ means that everyone would be able to edit the document, and if it was not optional, would be forced to for every stage of the workflow.
 
-The objects have three properties:
+The objects have optional properties:
 
 |*Property*|*Description*|
 |roles|A list of [node:dev/standard-plugin/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the document. An empty roles property will allow everyone to read the document|
 |selector|A [node:dev/standard-plugin/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be editable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
 |transitionsFiltered|A list specifying which transitions should only be avaialble if the form has been edited and completed. Useful for situations where a document must be completed to progress, but should allow alternate/backwards traversing transitions when not completed|
 |optional|Boolean. If present and true, allows the user to progress even if the document has not been edited or completed. This is the preferred way to specify optinality, and has the same effect as specifying transitionsFiltered as an empty list|
 
@@ -84,6 +86,34 @@ For example:
             roles: ["researcher"],
             selector: {state:"wait_researcher"},
             transitionsFiltered: ["progress"]
+        }
+    ]
+}
+</pre>
+
+h3(property). history
+
+A list of objects specifying which roles are able to view the history of the document and optionally limiting by [node:dev/standard-plugin/workflow/definition/selector:workflow selectors]. Omitting this property or specifying an empty list @[]@ means that everyone would be able to view the history of the document.
+
+This is useful where a document store maybe being used to draft/collaborate on a message that you intend to show to a particular user at a certain point, but do not want them to be able to see the draft stage.
+
+The objects have optional properties:
+
+|*Property*|*Description*|
+|roles|A list of [node:dev/standard-plugin/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the document. An empty roles property will allow everyone to read the document|
+|selector|A [node:dev/standard-plugin/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be editable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
+
+For example:
+
+<pre>language=javascript
+{
+    // ... ,
+    history: [
+        {
+            roles: ["researcher"],
+            selector: {state:"approved"},
+            action: "deny"
         }
     ]
 }
