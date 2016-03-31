@@ -1,0 +1,11 @@
+title: Auditing
+--
+
+When a user exports data from a dashboard, a @"std_reporting:export"@ audit event is written to the audit trail.
+
+The data for the entry has keys:
+
+|@collection@|Name of the Collection|
+|@dashboard@|Name of the Dashboard|
+|@at@|Date and time, as string, of the point in time for which the data was requested|
+
