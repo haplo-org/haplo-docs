@@ -32,7 +32,7 @@ Collection object used by this dashboard.
 
 h3(function). use(featureName, argument, argument2, ...)
 
-Use a defined dashboard feature by name @featureName@.
+Use a defined dashboard feature by name @featureName@, passing the additional arguments to the feature implementation.
 
 h3(function). summaryStatistic(priority, statistic)
 
@@ -40,15 +40,15 @@ Displays a summary statistic on the Dashboard.
 
 @priority@ is a number used for sorting the statistics. @statistic@ is a string which is the name of defined name of the statistic.
 
-h3(function). filter(select)
+h3(function). filter(fn)
 
-Apply a dashboard specific filter using the [node:dev/plugin/interface/database-query:DatabaseQuery] interface.
+Apply a dashboard specific filter. @fn@ is a function which will be called to apply the filter as @fn(select)@ where @select@ is a [node:dev/plugin/interface/database-query:DatabaseQuery] object.
 
-h3(function). order(orderBy)
+h3(function). order(orderBy, ...)
 
-Specify how to order the dashboard on first render, orderBy should either be a fact name, or an array where the first item is the fact name, and the second item specifies the order. 
+Specify how to order the dashboard when it is initially displayed.
 
-Multiple orders can be specified, and subsequent orders are used when rows have the same value for the fact specified by the order one up in the hierarchy. See [node:dev/plugin/interface/database-query#order:order].
+Each argument is a fact name, or an array of @[factName, descending]@. See the database query [node:dev/plugin/interface/database-query#order:order()].
 
 h3(function). setTime(date)
 
@@ -69,7 +69,7 @@ Different dashboards support different locations, which may include:
 
 h3(function). respond()
 
-Generate the Dashboard and serve/render it to the user.
+Generate the Dashboard and respond to the HTTP request. Call this as the final operation in your request handler.
 
 h3(function). deferredRender()
 
