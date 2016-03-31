@@ -22,6 +22,14 @@ h2. Interface
 
 Functions called on the dashboard object return themselves, and so can be chained.
 
+h3(property). name
+
+Name of the dashboard.
+
+h3(property). collection
+
+Collection object used by this dashboard.
+
 h3(function). use(featureName, argument, argument2, ...)
 
 Use a defined dashboard feature by name @featureName@.
@@ -73,15 +81,17 @@ h2. Services
 
 Dashboards can be modified/setup/added to from outside of the Dashboard specification/dashboard object using services. This allows other plugins to do things like adding columns and statistics to already existing dashboards without modifying the original plugin.
 
-The dashboard will first call the @std:reporting:collection_dashboard:[collection]:setup@ service where @[collection]@ is the name of the collection defined in the dashboard spec. This adds columns to all dashboards using this collection.
+The dashboard will call the @"std:reporting:collection_dashboard:COLLECTION_NAME:setup"@ service where @COLLECTION_NAME@ is the name of the collection defined in the dashboard spec. This adds columns to all dashboards using this collection.
 
-Next it will call the @std:reporting:dashboard:[dashboard]:setup@ service where @[dashboard]@ is the name of the dashboard defined in the dashboard spec.
+To set up this specific dashboard, the dashboard will call the @"std:reporting:dashboard:DASHBOARD_NAME:setup"@ service where @DASHBOARD_NAME@ is the name of the dashboard defined in the dashboard specification.
 
-It will then call the @std:reporting:collection_category_dashboard:[collection-category]:setup@ service. This service adds columns to all of the dashboards in the @[collection-category]@ (defined in the collection spec). For example, a plugin could add financial columns to all dashboards in the @example:financial-info@ collection category.
+In addition it will call the @"std:reporting:collection_category_dashboard:COLLECTION_CATEGORY:setup"@ services for all the collection's categories as @COLLECTION_CATEGORY@. For example, a plugin could add financial columns to all dashboards in the @example:financial-info@ collection category.
 
-A fourth service will be called *only if the dashboard is exporting*, eg, when generating an excel spreadsheet for download. This service follows the format @std:reporting:dashboard:[dashboard]:setup_export@
+If the dashboard is *exporting*, eg, when generating an excel spreadsheet for download, the @"std:reporting:dashboard:DASHBOARD_NAME:setup_export"@ will be called.
 
-All four services are called with one argument, the @dashboard@ object, for example:
+A wildcard service, @"std:reporting:dashboard:*:setup"@ is also called to allow setup for all dashboards.
+
+All services are called with one argument, the @dashboard@ object, for example:
 
 <pre>language=javascript
 P.implementService("std:reporting:dashboard:example_dashboard:setup",

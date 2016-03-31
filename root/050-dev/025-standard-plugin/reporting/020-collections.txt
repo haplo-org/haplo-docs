@@ -37,6 +37,14 @@ Functions called on the collection object return themselves, and so can be chain
 
 h2. Interface
 
+h3(property). name
+
+Name of the collection.
+
+h3(property). description
+
+Readable description of the collection.
+
 h3(function). fact(name, type, description)
 
 Define a fact. @name@ must be unique within the collection. @description@ is the human readable name of the fact shown in the admin UI and in Dashboards when no heading is defined.
