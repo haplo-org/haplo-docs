@@ -5,6 +5,8 @@ link_as: keyword
 
 A JavaScript object implementing the @BinaryData@ interface represents binary data, for example, a file which has just been uploaded in an HTTP request.
 
+@BinaryData@ objects can be stored in the file store using [node:dev/plugin/o/constructor/file].
+
 
 h2. Construction
 
