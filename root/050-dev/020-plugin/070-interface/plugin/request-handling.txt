@@ -106,7 +106,9 @@ Invalid JSON will cause the request to fail validation and your handler will not
 
 h3(value). as: "file"
 
-The value is passed to the handler as an [node:dev/plugin/interface/uploaded-file]. All files which may be uploaded by your form must be declared, and the form element must have an @enctype="multipart/form-data"@ attribute. Uploaded files cannot be retrieved from @E.request.parameters@.
+The value is passed to the handler as a [node:dev/plugin/interface/binary-data] object. All files which may be uploaded by your form must be declared, and the form element must have an @enctype="multipart/form-data"@ attribute. Uploaded files cannot be retrieved from @E.request.parameters@.
+
+Unless it is stored using [node:dev/plugin/o/constructor/file], the uploaded file will be deleted at the end of the request.
 
 You should consider using a form with a [node:dev/plugin/form/specification/file:file element] instead.
 

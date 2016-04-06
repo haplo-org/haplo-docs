@@ -19,9 +19,9 @@ h3(function). O.file(fileIdentifier)
 If a [node:dev/plugin/interface/file-identifier] is passed as an argument, the @File@ it references will be returned from the file store.
 
 
-h3(function). O.file(uploadedFile)
+h3(function). O.file(binaryData)
 
-An [node:dev/plugin/interface/uploaded-file] will be added to the file store, then a @File@ object returned after committing the file to the file store.
+A [node:dev/plugin/interface/binary-data] object, such as an uploaded file, will be added to the file store, then a @File@ object returned after committing the file to the file store.
 
 
 h3(function). O.file(digest, fileSize)

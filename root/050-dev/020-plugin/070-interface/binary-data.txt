@@ -1,14 +1,16 @@
-title: UploadedFile
-long_title: UploadedFile interface
+title: BinaryData
+long_title: BinaryData interface
 link_as: keyword
 --
 
-A JavaScript object implementing the @UploadedFile@ interface represents a file which has just been uploaded in an HTTP request. Unless it is stored, using [node:dev/plugin/o/constructor/file], it will be deleted at the end of the request.
+A JavaScript object implementing the @BinaryData@ interface represents binary data, for example, a file which has just been uploaded in an HTTP request.
 
 
 h2. Construction
 
 Declare an @as:"file"@ argument on a [node:dev/plugin/interface/plugin/request-handling:request handler].
+
+Generate binary data with [node:dev/plugin/o/constructor/binary-data].
 
 
 h2. Interface
@@ -37,4 +39,4 @@ h3(function). readAsString(charsetName)
 
 Return the contents of the binary data, interpreted as a string in the given character set, eg @"UTF-8"@.
 
-Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidently run out of memory.
+Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidentally run out of memory.
