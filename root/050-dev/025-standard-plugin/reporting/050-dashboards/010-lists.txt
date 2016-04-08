@@ -15,7 +15,7 @@ Add one or more columns to the Dashboard.
 
 @priority@ is a number used for sorting the columns.
 
-@columns@ is a list of column definitions, which are objects with the following common properties:
+@columns@ is a list of column definitions, which are either fact names as strings, or objects with the following common properties:
 
 |*Property*|*Description*|
 |type|The column type. If no type is specified, then infer using the definition of the specified fact|
@@ -23,7 +23,7 @@ Add one or more columns to the Dashboard.
 |heading|Heading displayed for the column. If no heading is specified then the description specified in the collection fact definition is used|
 |style|Style to use for the column, one of "wide", "medium", "small", "tiny"|
 
-The simplest column definition is @{fact:"factname"}@, which will infer the type from the fact definition and render in an appropiate fashion.
+If a column definition is specified as a string, it's interpreted as @{fact:"factName"}@, which will infer the type from the fact definition and render in an appropriate fashion.
 
 Different column types support and may require more than these properties. See the list of column types below.
 
