@@ -3,7 +3,7 @@ long_title: StoreQueryResults interface
 link_as: keyword
 --
 
-A JavaScript object implementing the @StoreQuery@ interface represents the result of a query of objects within the object store.
+A JavaScript object implementing the @StoreQuery@ interface represents the result of an object store query, and acts as an array of [node:dev/plugin/interface/store-object] objects.
 
 
 h2. Construction
@@ -15,7 +15,7 @@ h2. Interface
 
 h3(acts_as). Array
 
-The query results behave as a read-only JavaScript @Array@, using the @[]@ operator to retrieve an object.
+The query results behave as a read-only JavaScript @Array@. You can use the @[]@ operator to retrieve a [node:dev/plugin/interface/store-object] at the given index in the results.
 
 
 h3(property). length
@@ -25,7 +25,7 @@ Number of results.
 
 h3(function). each(iterator)
 
-Calls @iterator@, once for each object. Arguments are @(object, index)@, where @index@ is the index of the object in this 'array'.
+Calls @iterator@, once for each object. Arguments are @(object, index)@, where @object@ is a [node:dev/plugin/interface/store-object] and @index@ is the index of the object in the results.
 
 Return @true@ from the @iterator@ function to stop the iteration immediately.
 
