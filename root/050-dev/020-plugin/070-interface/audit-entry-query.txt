@@ -118,26 +118,3 @@ h3(function). first()
 
 Alias of @latest()@
 
-
-h3(function). table(fieldName, [fieldName, ...])
-
-Perform the query, and return a generator object, suitable for direct output to a Response [node:dev/plugin/interface/response#body].
-
-The results are a JSON encoded list of rows corresponding to the matching audit entries.
-
-Each row is an @Array@ of values for that entry, corresponding to the requested fieldNames (in the requested order).
-
-<pre>language=javascript
-    O.audit.query().
-        limit(2).
-        table("auditEntryType", "ref", "creationDate");
-</pre>
-
-might produce:
-
-<pre>language=javascript
-    [
-       ["CREATE", "88y19", "2013-06-27 09:54:57.691"], // First
-       ["FILE-NEW", "89x10", "2013-06-26 10:43:46.580"]  // Second
-    ]
-</pre>
