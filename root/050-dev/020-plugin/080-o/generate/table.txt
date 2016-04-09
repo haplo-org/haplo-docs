@@ -31,6 +31,8 @@ h2. Usage
  * For each row, add cells by using the JavaScript @Array@ interface, or calling the @cell()@ function, then @nextRow()@
  * Create any more sheets by repeating.
  * Call @finish()@
+ * Do something with the generated file, such as storing it in the file store with [node:dev/plugin/o/constructor/file], or returning it as an HTTP responses by assigning it to [node:dev/plugin/interface/response#body:E.response.body].
+
 
 
 h2. Cell values

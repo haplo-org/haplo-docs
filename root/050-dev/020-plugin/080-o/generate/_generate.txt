@@ -1,7 +1,11 @@
 title: Generators
+class: DocNodeTextileWithTOC
 --
 
 Generators are used to build formatted data for sending to the user in response to requests. They encapsulate creation, formatting, and delivering a file to the user.
+
+All generator objects implement the [node:dev/plugin/interface/binary-data] interface so they can be returned as responses to HTTP requests, or added to the file store.
+
 
 h2. Example
 
@@ -16,3 +20,6 @@ P.respond("GET", "/do/example/xls", [
     E.response.body = xls;
 });
 </pre>
+
+
+h2. Generators
