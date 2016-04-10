@@ -13,6 +13,11 @@ Use [node:dev/plugin/o/constructor/label-list].
 
 h2. Interface
 
+h3(acts_as). Array
+
+A @LabelList@ acts as an @Array@ of @Ref@ objects. Use @[]@ to retrieve the @Ref@ at the given index.
+
+
 h3(property). length
 
 The number of labels in the list.
