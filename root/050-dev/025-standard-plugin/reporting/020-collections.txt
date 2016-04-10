@@ -83,11 +83,25 @@ h3(function). currentObjectsOfType(type, type2, ...)
 
 Tells the collection what object Types the collection should be storing facts for, every object of type @type@ will be included in the collection.
 
-@type@ 's should be defined in the [node:dev/plugin/schema/requirements-schema:schema requirements]
+This is a shortcut for implementing functions for @currentObjects()@ and @objectIsValidForCollection()@.
+
+@type@ arguments should be defined in the [node:dev/plugin/schema/requirements-schema:schema requirements]
 
 Multiple types can be specified by passing additional arguments.
 
 This should only be called in the owning plugin.
+
+h3(function). currentObjects(fn)
+
+It is probably easier to use @currentObjectsOfType()@ than this function, but if you do use it, remember to implement @objectIsValidForCollection()@ too.
+
+@fn@ is a function which returns an @Array@ or [node:dev/plugin/interface/store-query-results] containing all [node:dev/plugin/interface/store-object] which are currently members of the collection.
+
+@fn@ is called when the collection is rebuilt to determine the current collection membership.
+
+h3(function). objectIsValidForCollection(fn)
+
+@fn@ is called with a [node:dev/plugin/interface/store-object] as a single argument, and must return @true@ if this object is currently a member of the collection.
 
 h2. Example
 
