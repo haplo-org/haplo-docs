@@ -26,6 +26,10 @@ h3(property). name
 
 Name of the dashboard.
 
+h3(property). isDashboard
+
+Always @true@.
+
 h3(property). collection
 
 Collection object used by this dashboard.
@@ -39,6 +43,16 @@ h3(function). summaryStatistic(priority, statistic)
 Displays a summary statistic on the Dashboard.
 
 @priority@ is a number used for sorting the statistics. @statistic@ is a string which is the name of defined name of the statistic.
+
+h3(function). property(name)
+
+Retrieve the user defined property for the given @name@, returning @undefined@ if the property has not been set.
+
+Properties are inherited from the Collection. If the property is not defined on the Dashboard, the value will be retrieved from the Collection.
+
+h3(function). property(name, value)
+
+Set the user defined property for @name@ to @value@. If the property is already defined, an exception will be thrown.
 
 h3(function). filter(fn)
 

@@ -45,6 +45,14 @@ h3(property). description
 
 Readable description of the collection.
 
+h3(property). isCollection
+
+Always @true@.
+
+h3(property). isUpdatingFacts
+
+@true@ if the Collection is known to be out of date and is updating facts in the background.
+
 h3(function). fact(name, type, description)
 
 Define a fact. @name@ must be unique within the collection. @description@ is the human readable name of the fact shown in the admin UI and in Dashboards when no heading is defined.
@@ -55,6 +63,18 @@ Define a fact. @name@ must be unique within the collection. @description@ is the
 |@end-date@|Date|Date|
 
 @end-date@ is a convenience type useful for specifiying facts that use the [node:dev/plugin/interface/date-time#end:end] property of a platform Datetime region.
+
+h3(function). indexedFact(name, type, description)
+
+As @fact()@, but a database index is created for the fact to improve the speed of filtering. Use only if you know it's required.
+
+h3(function). property(name)
+
+Retrieve the user defined property for the given @name@, returning @undefined@ if the property has not been set.
+
+h3(function). property(name, value)
+
+Set the user defined property for @name@ to @value@. If the property is already defined, an exception will be thrown.
 
 h3(function). statistic(specification)
 
@@ -102,6 +122,10 @@ It is probably easier to use @currentObjectsOfType()@ than this function, but if
 h3(function). objectIsValidForCollection(fn)
 
 @fn@ is called with a [node:dev/plugin/interface/store-object] as a single argument, and must return @true@ if this object is currently a member of the collection.
+
+h3(function). collectAllFactsInBackground()
+
+Initiate a full rebuild of the collection.
 
 h2. Example
 

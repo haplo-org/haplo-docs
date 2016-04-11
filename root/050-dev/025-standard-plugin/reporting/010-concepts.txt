@@ -27,3 +27,9 @@ Collection categories allow for common functionality to be defined by defining t
 h2. Dashboards
 
 With the data from a collection, we can generate a *Dashboard* - a subset of facts from a collection displayed on a web page, with a potentially different set of facts generated for an export. Dashboards can be filtered based on values of facts, and can display statistics that are defined by the collection.
+
+h2. Properties
+
+You can define arbitrary name/value pairs as properties on collections and dashboards. These are useful for configuring reusable features you've written.
+
+Properties on dashboards are inherited from collections.

@@ -7,9 +7,9 @@ If there is no current row (a current set of facts) for an object, one will be c
 
 h2. Getting facts
 
-Whenever the Reporting plugin needs to update or get facts for an object, it calls the service @std:reporting:collection:[collection]:get_facts_for_object@ where @[collection]@ is the collection name.
+Whenever the Reporting plugin needs to update or get facts for an object, it calls the service @"std:reporting:collection:COLLECTION_NAME:get_facts_for_object"@ service where @COLLECTION_NAME@ is the collection name, and the @"std:reporting:collection_category:CATEGORY:get_facts_for_object"@ service for each of the collection categories. In addition, the wildcard @"std:reporting:collection:*:get_facts_for_object"@ service is called.
 
-The service is called with two arguments, @object@ , the [node:dev/plugin/interface/store-object:StoreObject] of the object who's facts are being updated, and @row@, an interface for the new row of facts that we can use to save our data.
+The services are called with two arguments, @object@ , the [node:dev/plugin/interface/store-object:StoreObject] of the object who's facts are being updated, and @row@, an database row object. Your service implementation should set the current values for its facts in the @row@.
 
 Multiple plugins can implement the @get_facts_for_object@ service for a collection, but shouldn't set any facts for which they do not themselves define.
 
@@ -17,7 +17,7 @@ For example, a very simple @get_facts_for_object@ that gets one fact:
 
 <pre>language=javascript
 P.implementService("std:reporting:collection:books:get_facts_for_object", function(object, row) {
-    row.title = object.firstTitle().toString();
+    row.title = object.title;
 });
 </pre>
 
