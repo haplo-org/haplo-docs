@@ -7,18 +7,32 @@ If there is no current row (a current set of facts) for an object, one will be c
 
 h2. Getting facts
 
-Whenever the Reporting plugin needs to update or get facts for an object, it calls the service @"std:reporting:collection:COLLECTION_NAME:get_facts_for_object"@ service where @COLLECTION_NAME@ is the collection name, and the @"std:reporting:collection_category:CATEGORY:get_facts_for_object"@ service for each of the collection categories. In addition, the wildcard @"std:reporting:collection:*:get_facts_for_object"@ service is called.
+Whenever the Reporting plugin needs to update or get facts for an object, it calls services to allow one or more plugins to calculate the facts.
 
-The services are called with two arguments, @object@ , the [node:dev/plugin/interface/store-object:StoreObject] of the object who's facts are being updated, and @row@, an database row object. Your service implementation should set the current values for its facts in the @row@.
+ * @"std:reporting:collection:*:get_facts_for_object"@, a wildcard service called for all collections
+
+ * @"std:reporting:collection:COLLECTION_NAME:get_facts_for_object"@, where @COLLECTION_NAME@ is the collection name
+ 
+ * @"std:reporting:collection_category:CATEGORY:get_facts_for_object"@, for each of the collection categories as @CATEGORY@
+
+The services are called with three arguments,
+
+ * @object@, the [node:dev/plugin/interface/store-object:StoreObject] of the object who's facts are being updated,
+ * @row@, a database row object. Your service implementation should set the current values for its facts in the @row@
+ * @collection@, the [node:dev/standard-plugin/reporting/collections#Interface:Collection] object
+ 
+The @collection@ object is included for wildcard and category services to access properties of the collection, and is generally omitted from service implementations.
 
 Multiple plugins can implement the @get_facts_for_object@ service for a collection, but shouldn't set any facts for which they do not themselves define.
 
 For example, a very simple @get_facts_for_object@ that gets one fact:
 
 <pre>language=javascript
-P.implementService("std:reporting:collection:books:get_facts_for_object", function(object, row) {
-    row.title = object.title;
-});
+P.implementService("std:reporting:collection:books:get_facts_for_object",
+    function(object, row) { // omit the final collection argument
+        row.title = object.title;
+    }
+);
 </pre>
 
 After the last @get_facts_for_object@ for the collection is called, the row is committed and the facts stored in the Database.
