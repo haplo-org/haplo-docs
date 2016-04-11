@@ -15,6 +15,15 @@ You can call @hook()@ more than once to register multiple functions for the same
 
 See the [node:dev/plugin/hook] documentation for example code for each hook.
 
+h3(function). callback(name, responderFunction)
+
+Create a callback from @responderFunction@ with the given name (which
+must not be used for another callback in the same plugin).
+
+A descriptor for the callback is returned, which can be passed to API
+functions that require a callback descriptor. When the callback is
+invoked via that descriptor, @responderFunction@ will be called with
+any arguments provided by the caller.
 
 h3(function). element(name, description, renderer)
 

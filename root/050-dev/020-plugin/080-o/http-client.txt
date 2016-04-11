@@ -1,0 +1,41 @@
+title: HTTP Client
+--
+
+The Haplo HTTP client allows plugins to access external services via
+HTTP or HTTPS, such as APIs for third-party systems.
+
+h2. Interface
+
+h3(function). O.httpClient(url)
+
+This function creates a new [node:dev/plugin/interface/http-client]
+object. The HTTP request is not performed at this point; further
+configuration may be performed before [node:dev/plugin/interface/http-client#request] is called.
+
+h2. Example
+
+<pre>language=javascript
+P.myHTTPCallback = P.callback("myHTTPCallback", function(data, client, result) {
+    if(result.successful) {
+        var body = result.body.readAsString("UTF-8");
+        if (body === "RETRY") {
+           // Try again
+           var newClient = client.mutableCopy();
+           newClient.request(P.myHTTPCallback, data);
+        } else {
+            P.data[data.target] = "Success: " + body;
+        }
+    } else {
+        P.data[data.target] = "Failure: " + result.errorMessage;
+    }
+});
+
+...
+    var client = O.httpClient("http://www.example.com/api").
+                   method("PUT").
+                   body("application/json", "{ver: '1.0', operation: 'help'}");
+
+
+    client.request(P.myHTTPCallback, {target: 'help-response'});
+...
+</pre>
