@@ -1,16 +1,13 @@
 title: HTTP Client
 --
 
-The Haplo HTTP client allows plugins to access external services via
-HTTP or HTTPS, such as APIs for third-party systems.
+The Haplo HTTP client allows plugins to access external services via HTTP or HTTPS, such as APIs for third-party systems.
 
 h2. Interface
 
 h3(function). O.httpClient(url)
 
-This function creates a new [node:dev/plugin/interface/http-client]
-object. The HTTP request is not performed at this point; further
-configuration may be performed before [node:dev/plugin/interface/http-client#request] is called.
+This function creates a new [node:dev/plugin/interface/http-client] object. The HTTP request is not performed at this point; further configuration may be performed before [node:dev/plugin/interface/http-client#request] is called.
 
 h2. Example
 
