@@ -21,6 +21,8 @@ Create a callback from @responderFunction@ with the given name (which must not b
 
 A descriptor for the callback is returned, which can be passed to API functions that require a callback descriptor. When the callback is invoked via that descriptor, @responderFunction@ will be called with any arguments provided by the caller.
 
+The returned descriptor is an opaque value. Your code *must not* assume it is any particular data type or attempt to serialise it.
+
 h3(function). element(name, description, renderer)
 
 Implement an [node:dev/plugin/elements:Element], and enable the default implementations of [node:dev/plugin/hook/element-discover] and [node:dev/plugin/hook/element-render].

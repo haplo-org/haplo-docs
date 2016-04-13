@@ -11,13 +11,15 @@ When [node:dev/plugin/interface/http-client#request] is called and the callback 
 
 h2. Interface
 
-h3(property). succeesful
+h3(property). successful
 
 Returns true if the request succeeded. If the request failed, see the [node:dev/plugin/interface/http-response#errorMessage] property for the reason why.
 
 h3(property). type
 
 The type of response. This string property will always be @SUCCEEDED@ for a successful response, @FAIL@ for a failed response, and @TEMP_FAIL@ for a response that failed in a way that may get better in future, but did not after several tries.
+
+You should use the @successful@ property to test for success unless you really need to know this detail.
 
 h3(property). errorMessage
 
