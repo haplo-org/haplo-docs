@@ -175,6 +175,13 @@ The values are sorted by descriptor, but the order of values in any given descri
 @desc@ and @qual@ are optional. If @desc@ is specified, then only values with that descriptor are compared. If @qual@ is specified, then only values with the descriptor and qualifier are compared.
 
 
+h3(function). reindexText()
+
+Request that the text of the object is reindexed. This will happen in the background and may be delayed if there is other indexing activity.
+
+In general, you shouldn't need to use this, except if you're doing exciting things with [node:dev/plugin/hook/pre-index-object].
+
+
 h3(property). creationUid
 
 The user ID of the user who created this object. May be zero if it was created during initialisation of the application.
