@@ -17,7 +17,7 @@ h3. Example
 This example hook adds additional text to the notes field for File objects.
 
 <pre>language=javascript
-P.hook('hPreObjectIndex', function(response, object) {
+P.hook('hPreIndexObject', function(response, object) {
     if(object.isKindOf(T.File)) {
         var r = response.replacementObject || object.mutableCopy();
         r.append("notes ...", A_NOTES);
