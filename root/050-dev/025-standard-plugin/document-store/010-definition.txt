@@ -6,7 +6,7 @@ Document stores are constructed by passing a delegate object as an argument to @
 
 The delegate is a collection of properties and methods which define how your Document store should function.
 
-h2. Specification
+h2. Delegate interface
 
 h3(property). name
 
@@ -16,11 +16,11 @@ h3(property). keyIdType
 
 The type that will be used for the @key@ of your form, if it is not @int@
 
-h3(function). formsForKey(key)
+h3(function). formsForKey(key, instance)
 
 Required. Needs to return an array of [node:dev/plugin/form:forms].
 
-You can check/use the value of @key@ to return different forms depending on what is necessary.
+You can use the value of @key@ and the @instance@ to return different forms for different instances. Note that [node:dev/standard-plugin/document-store/interface:instance] methods and properties which require the list of forms cannot be used in this method.
 
 h3(function). keyToKeyId(key)
 
