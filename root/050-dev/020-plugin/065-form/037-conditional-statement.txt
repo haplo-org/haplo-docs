@@ -16,7 +16,7 @@ Use the @"==="@ operation to test the value at @path@ for equality with a consta
 
 <pre>language=javascript
     {
-        path: "path.to.value"
+        path: "path.to.value",
         operation: "===",
         value: 17
     }
@@ -29,7 +29,7 @@ Use the @"defined"@ and @"not-defined"@ operations to test whether value at @pat
 
 <pre>language=javascript
     {
-        path: "some.value"
+        path: "some.value",
         operation: "not-defined"
     }
 </pre>
