@@ -10,15 +10,11 @@ h2. Specification
 
 The specification is a [node:dev/standard-plugin/document-store/definition:Document store definition] with some additional properties.
 
+The @formsForKey()@ method is *required*.
+
 h3(property). name
 
 *Required*. The internal name of the Document store. This name will be used when querying the document for data or values and can not be shared with any other Document store being defined on your workflow.
-
-h3(function). formsForKey(key)
-
-*Required*. Needs to return an array of [node:dev/plugin/form:forms].
-
-You can check/use the value of @key@ to return different forms depending on what is necessary.
 
 h3(property). title
 

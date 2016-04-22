@@ -16,11 +16,13 @@ h3(property). keyIdType
 
 The type that will be used for the @key@ of your form, if it is not @int@
 
-h3(function). formsForKey(key, instance)
+h3(function). formsForKey(key, instance, document)
 
 Required. Needs to return an array of [node:dev/plugin/form:forms].
 
-You can use the value of @key@ and the @instance@ to return different forms for different instances. Note that [node:dev/standard-plugin/document-store/interface:instance] methods and properties which require the list of forms cannot be used in this method.
+You can use the value of @key@ and the @document@ to return different forms for different instances and documents. @document@ may be a historical version when using the document viewer.
+
+Note that using the [node:dev/standard-plugin/document-store/interface:instance] to determine forms is unlikely to be that interesting, and the methods and properties which require the list of forms cannot be used in this method.
 
 h3(function). keyToKeyId(key)
 
@@ -33,6 +35,18 @@ Return what the blank document for a given key should be. You should return a JS
 h3(function). formIdFromRequest(request)
 
 Given a request object, return a form ID. By default the Document store will use the second [node:dev/plugin/interface/request#extraPathElements:extraPathElements].
+
+h3(function). alwaysShowNavigation(key, instance, document)
+
+Return @true@ to always multi-page navigation, overriding the default to only show it when it's necessary.
+
+h3(function). onSetCurrentDocument(instance, document, isComplete)
+
+Called when the current document is set.
+
+h3(function). onCommit(instance, user)
+
+Called when @commit()@ is called.
 
 h3(function). prepareFormInstance(key, form, instance, context)
 
