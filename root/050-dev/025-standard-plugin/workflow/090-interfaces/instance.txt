@@ -112,3 +112,6 @@ h3(function). getStateDefinition(state)
 Returns the state definition for the given state. Use only as a last resort.
 
 
+h3(function). recalculateFlags()
+
+Recalculate the @flags@ property. This is intended for use by plugins providing features which use [node:dev/standard-plugin/workflow/definition/function-lists#modifyFlags], and should be avoided in workflow implementations.

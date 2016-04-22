@@ -113,3 +113,16 @@ EgWorkflow.taskTitle(function(M) {
 </pre>
 
 
+h2. modifyFlags(fn)
+
+Features may use this function list to modify the flags. It's recommended that you avoid the use of this function list if possible.
+
+You can force a recalculation of the cached flags with [node:dev/standard-plugin/workflow/interfaces/instance#recalculateFlags].
+
+<pre>language=javascript
+EgWorkflow.modifyFlags(function(M, flags) {
+  flags.xyz = true;
+});
+</pre>
+
+
