@@ -116,6 +116,15 @@ h3. date-with-age-warning
 |successFact|String. Name of a fact that implies a success condition. If the specified fact has a truthy value then a success hint (green background), overriding warn or error styling|
 |determineCellStyle|Function. A function with an argument @row@ (an object containing all the facts for this row, acessible as row.factName), that can be used for more complex styling/warning rules. The function should return one of @"warn"@ @"error"@ or @"success"@|
 
+h3. json
+
+@json@ columns pick a value to display from the JSON structure for @json@ type facts.
+
+This is useful when combined with some navigation UI to display related values, for example, values from different years.
+
+|*Property*|*Description*|
+|valueProperty|String. The property to use from the fact's value, defaults to the @"std:reporting:json_column:default_value_property"@ [node:dev/standard-plugin/reporting/dashboards#property_name:dashboard property]|
+
 h3. int
 
 @int@ columns display a number, rendering a grey dash when the value is 0
