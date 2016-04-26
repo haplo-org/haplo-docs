@@ -64,6 +64,7 @@ h3(key). type
 |@link@|Reference to row in other table|Database row object [3]|
 |@user@|Reference to user|[node:dev/plugin/interface/security-principal] [3]|
 |@file@|File stored in the file store|[node:dev/plugin/interface/file]|
+|@json@|JSON compatible data structure with automatic serialisation.|JavaScript @Object@ <br> see [node:dev/plugin/interface/database#JSON_field_type:notes on json field limitations]|
 |@labelList@|Labels|[node:dev/plugin/interface/label-list]|
 
 
@@ -115,6 +116,33 @@ P.db.table("employee", {
         return this.firstName()+" "+this.lastName();
     }
 });
+</pre>
+
+
+h2. JSON field type
+
+@json@ fields automatically JSON serialise and deserialise values for convenience, but do come with limitations:
+
+ * Cannot be indexed
+ * Cannot be used in @where()@ clauses
+ * The deserialised value is mutable, so you have to think carefully about how you use the deserialised value
+ * So that errors in usage are easier to spot, you need to explicitly assign to the property to make a change which will be committed to the database when @save()@ is called on the row.
+
+<pre>language=javascript
+// Where data is a json column...
+var row = P.db.table.create({data:{a:1,b:2}});
+row.save();
+var reloaded = P.db.table.load(row.id);
+reloaded.data.b = 3; // INCORRECT USAGE
+reloaded.save();
+// Because line 5 mutated a cached value, it's not saved
+var reloaded2 = P.db.table.load(row.id);
+// reloaded2.data.b === 2
+// To update the value, assign to the property
+reloaded2.data = {a:1,b:3}; // CORRECT
+reloaded2.save();
+var reloaded3 = P.db.table.load(row.id);
+// reloaded3.data.b === 3
 </pre>
 
 
