@@ -124,7 +124,7 @@ h2. JSON field type
 @json@ fields automatically JSON serialise and deserialise values for convenience, but do come with limitations:
 
  * Cannot be indexed
- * Cannot be used in @where()@ clauses
+ * Cannot be used in @where()@ clauses, except when comparing to @null@
  * The deserialised value is mutable, so you have to think carefully about how you use the deserialised value
  * So that errors in usage are easier to spot, you need to explicitly assign to the property to make a change which will be committed to the database when @save()@ is called on the row.
 
