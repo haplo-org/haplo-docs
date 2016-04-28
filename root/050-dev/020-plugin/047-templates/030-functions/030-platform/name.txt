@@ -1,0 +1,9 @@
+title: Names
+long_title: Names template functions
+--
+
+h3(function). NAME ("Literal Name")
+
+The @NAME()@ template function uses the [node:dev/plugin/misc/name] function to look up names.
+
+The argument must be a literal string.

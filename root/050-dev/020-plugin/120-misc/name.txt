@@ -1,0 +1,44 @@
+title: NAME()
+link_as: keyword
+--
+
+The @NAME()@ global function is a generic way to implement plugins which call things differently in different applications. It's also available as a [node:dev/plugin/templates/functions/platform/name:template function], which is the recommended way of using it.
+
+For example, universities have lots of different names for their top level division. They may have names like 'Faculties', 'Departments' or 'Schools', depending on the institution's history.
+
+h3(function). NAME (name)
+
+Returns a translated version of @name@.
+
+The @"std:NAME"@ service is called to look up the name, if it is implemented by any plugins.
+
+If nothing translates the name, @name@ is returned unaltered.
+
+The result is cached.
+
+
+h2. Usage
+
+Ordinary plugins just use the @NAME()@ function in their code or templates. As a matter of style, try to restrict use of @NAME()@ to templates:
+
+<pre>language=javascript
+  <div> "Destination: " NAME("Faculty") </div>
+</pre>
+
+and only when necessary as the JavaScript function:
+
+<pre>language=javascript
+var view = {
+    destination: NAME("Faculty")
+};
+</pre>
+
+A plugin may translate names with a service such as:
+
+<pre>language=javascript
+P.implementService("std:NAME", function(name) {
+    if(name === "ping") { return "pong"; }
+});
+</pre>
+
+Returning nothing or @undefined@ will allow another service implementation to try translating a string.
