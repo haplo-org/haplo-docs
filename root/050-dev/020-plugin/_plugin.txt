@@ -42,8 +42,3 @@ The JavaScript coding style used for the plugin API is a little different to the
 "JavaScript: The Good Parts":http://www.amazon.co.uk/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742 -- __Douglas Crockford__
 
 "JavaScript Patterns":http://www.amazon.co.uk/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752 -- __Stoyan Stefanov__
-
-
-h2. More APIs?
-
-Do get in touch if you'd like to suggest [node:dev/plugin/request-new-api:a new API] or functionality.
