@@ -116,7 +116,7 @@ class DocNodeTextile < DocNodeWithHeaders
   end
 
   def body_html
-    html = RedCloth.new(body_textile).to_html
+    html = RedCloth.new(body_textile, [:no_span_caps]).to_html
     # Anchor points for headings
     ids_used_in_template = Documentation.get_ids_used_in_template
     # 1) Search for duplicates where the long name should be used
