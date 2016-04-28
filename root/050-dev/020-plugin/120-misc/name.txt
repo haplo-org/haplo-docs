@@ -2,9 +2,14 @@ title: NAME()
 link_as: keyword
 --
 
-The @NAME()@ global function is a generic way to implement plugins which call things differently in different applications. It's also available as a [node:dev/plugin/templates/functions/platform/name:template function], which is the recommended way of using it.
+The @NAME()@ global function is a generic way to implement plugins which call things differently in different applications.
 
 For example, universities have lots of different names for their top level division. They may have names like 'Faculties', 'Departments' or 'Schools', depending on the institution's history.
+
+It's also available as:
+
+ * a [node:dev/plugin/templates/functions/platform/name:template function] (which is the recommended way of using it)
+ * as a standard text interpolation in the standard [node:dev/standard-plugin/workflow/definition/text:workflow plugin text system]
 
 h3(function). NAME (name)
 

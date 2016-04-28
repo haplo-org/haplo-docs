@@ -10,13 +10,16 @@ You add text to the system with the @text()@ function on the Workflow object, wh
 <pre>language=javascript
 EgWorkflow.text({
     "status:approved": "Approved",
-    "status:rejected": "Rejected"
+    "status:rejected": "Rejected",
+    "status:wait_head": "Waiting for NAME(Head of Department)"
 });
 </pre>
 
 You can call @text()@ as many times as you need.
 
 All text strings are subject to interpolation by [node:dev/standard-plugin/workflow/definition/function-lists#textInterpolate] functions.
+
+By default, the @NAME(name)@ interpolation calls the [node:dev/plugin/misc/name] function to translate names of things. Note there are no quotes within the brackets, as in the example above.
 
 
 h2. Searching for strings
