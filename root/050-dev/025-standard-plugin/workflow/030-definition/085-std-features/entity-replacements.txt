@@ -10,21 +10,23 @@ h2. Using replacement entities
 
 <pre>language=javascript
 myWorkflow.use("std:entities:entity_replacement", {
-    // replacement entity definitions
-    "editorOrNominee": {
-        entity: "editor",
-        assignableWhen: {flags: ["canAssignReplacements"]},
-        replacementTypes: [T.Researcher]
-    },
-    "adminOrNominee": {
-        entity: "admin",
-        assignableWhen: {flags: ["canAssignReplacements"]},
-        selectableWhen: {flags: ["canAssignReplacements", "adminNotApproved"]}, // optional
-        listAll: true,  // optional
-        replacementTypes: [T.Staff]
-    }
-    onFinishPage: function(M) {
-        // ... custom logic for smooth integration into the workflow
+    replacements: {
+        // replacement entity definitions
+        "editorOrNominee": {
+            entity: "editor",
+            assignableWhen: {flags: ["canAssignReplacements"]},
+            replacementTypes: [T.Researcher]
+        },
+        "adminOrNominee": {
+            entity: "admin",
+            assignableWhen: {flags: ["canAssignReplacements"]},
+            selectableWhen: {flags: ["canAssignReplacements", "adminNotApproved"]}, // optional
+            listAll: true,  // optional
+            replacementTypes: [T.Staff]
+        }
+        onFinishPage: function(M) {
+            // ... custom logic for smooth integration into the workflow
+        }
     }
 });
 </pre>
