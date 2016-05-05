@@ -10,6 +10,8 @@ h2. Construction
 
 Use [node:dev/plugin/o/constructor/ref].
 
+To avoid hardcoding @Ref@ values in your plugin, use the [node:dev/plugin/o/behaviour:behaviour] lookup functions.
+
 
 h2. Interface
 
@@ -35,4 +37,10 @@ h3(function). deleteObject()
 
 Deletes the object referred to by this reference, without loading it first. Has the same effect as the @deleteObject@ function on a [node:dev/plugin/interface/store-object], but more efficient if the object has not already been loaded.
 
+
+h3(function). behaviour
+
+Returns the 'behaviour' of the object represented by this @Ref@. See [node:dev/plugin/o/behaviour] for how this property is determined and the intended use.
+
+The current user's permissions are not enforced when reading the object store to determine the behaviour.
 
