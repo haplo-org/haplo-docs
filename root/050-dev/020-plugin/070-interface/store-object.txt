@@ -49,6 +49,11 @@ h3(property). title
 The first title attribute of this object, converted to a string. @object.title@ is equivalent to @object.firstTitle().toString()@.
 
 
+h3(property). shortestTitle
+
+The shortest title attribute of this object, converted to a string. Length is measured in characters. If two title attributes have the same length, this property has the string value of the first.
+
+
 h3(property). descriptiveTitle
 
 Returns the title of the object, suitable for displaying in a link to an object.
