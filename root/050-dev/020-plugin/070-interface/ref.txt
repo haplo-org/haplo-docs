@@ -42,5 +42,7 @@ h3(function). behaviour
 
 Returns the 'behaviour' of the object represented by this @Ref@. See [node:dev/plugin/o/behaviour] for how this property is determined and the intended use.
 
+If the object does not have a behaviour, this property is @null@.
+
 The current user's permissions are not enforced when reading the object store to determine the behaviour.
 
