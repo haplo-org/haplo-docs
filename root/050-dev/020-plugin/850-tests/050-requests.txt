@@ -10,7 +10,7 @@ h3(function). t.login(as)
 
 Set up the [node:dev/plugin/o/request:request context] for the given user.
 
-The @as@ argument specifies the user, which can be any value accepted by [node:dev/plugin/o/lookup/user].
+The @as@ argument specifies the user, which can be any value accepted by [node:dev/plugin/o/lookup/user], or a [node:dev/plugin/interface/security-principal] object.
 
 Alternatively, you can pass the string @"ANONYMOUS"@ to 'log in' as the anonymous user, which is the state before a real user has logged in. Usually your plugin will not handle requests for the anonymous user, but this can be overridden using [node:dev/plugin/plugin-json#allowAnonymousRequests] in [node:dev/plugin/plugin-json].
 
@@ -58,6 +58,11 @@ The @t.request()@ function takes an optional @options@ argument. This has proper
 h3(property). headers
 
 @E.request.headers@ is set to the value of this property.
+
+
+h3(property). plugin
+
+The name of the plugin which should respond to this request. This defaults to the plugin under test, and is only necessary if you want to call request handlers in other plugins.
 
 
 h2. Request response information
