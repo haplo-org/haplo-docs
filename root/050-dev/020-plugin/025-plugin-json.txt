@@ -13,6 +13,7 @@ The @plugin.json@ file describes the plugin. It's a JSON file using the UTF-8 en
     "displayDescription": "An example plugin to demonstrate the JavaScript plugin API.",
     "installSecret": "abcdefghij0123456789",
     "apiVersion": 4,
+    "depend": ["std_workflow"],
     "privilegesRequired": ["pDatabase"],
     "load": ["js/example_plugin.js", "js/handle_requests.js"],
     "respond": ["/do/example", "/api/example"],
@@ -60,6 +61,11 @@ If this key is omitted, the plugin will be able to be installed without supplyin
 h3(key). apiVersion
 
 The minimum version of the Haplo API required by this plugin.
+
+
+h3(key). depend
+
+An array of plugin names of the plugins on which this plugin depends. These plugins will be installed automatically when this plugin is installed, along with their dependencies.
 
 
 h3(key). load
