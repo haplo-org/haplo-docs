@@ -120,10 +120,23 @@ h3. json
 
 @json@ columns pick a value to display from the JSON structure for @json@ type facts.
 
-This is useful when combined with some navigation UI to display related values, for example, values from different years.
+This is useful when combined with some navigation UI to display related values, for example, values from different years. You can delegate the display to another column type using the @column@ property.
 
 |*Property*|*Description*|
-|valueProperty|String. The property to use from the fact's value, defaults to the @"std:reporting:json_column:default_value_property"@ [node:dev/standard-plugin/reporting/dashboards#property_name:dashboard property]|
+|valueProperty|(Optional) String. The property to use from the fact's value, defaults to the @"std:reporting:json_column:default_value_property"@ [node:dev/standard-plugin/reporting/dashboards#property_name:dashboard property]|
+|column|(Optional) Column definition to use to display the value.|
+
+If you use the @column@ property, the column definition must include the @type@. For example:
+
+<pre>
+  {fact:"aJSONcolumn", column:{type:"date"}}
+</pre>
+
+All the date types will automatically parse the value as a date using the XDate library. You must use ISO8601 format, for example, @"2016-07-12T14:30:00"@.
+
+If you're displaying numbers from your @json@ column, use a number type, for example @"int"@, to display numbers nicely.
+
+The @"lookup"@ column type might be especially useful.
 
 h3. int
 
