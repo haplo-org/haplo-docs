@@ -114,7 +114,7 @@ h3. date-with-age-warning
 |warnDate|Date. If the value of the fact is later than this date, then a warning hint (orange background) will be applied to the cell|
 |errorDate|Date. If the value of the fact is later than this date, then an error hint (red background) will be applied to the cell|
 |successFact|String. Name of a fact that implies a success condition. If the specified fact has a truthy value then a success hint (green background), overriding warn or error styling|
-|determineCellStyle|Function. A function with an argument @row@ (an object containing all the facts for this row, acessible as row.factName), that can be used for more complex styling/warning rules. The function should return one of @"warn"@ @"error"@ or @"success"@|
+|determineCellStyle|Function. A function with an argument @row@ (an object containing all the facts for this row, accessible as row.factName), that can be used for more complex styling/warning rules. The function should return one of @"warn"@ @"error"@ or @"success"@|
 
 h3. json
 
@@ -142,13 +142,20 @@ It is possible to specify a truth function and use custom logic to determine whe
 
 The @boolean@ column type is used automatically if the fact specified has type @boolean@
 
+h3. lookup
+
+@lookup@ columns allow you to translate the value stored in the fact into a string to display. The result of looking up the value in a dictionary @Object@ or calling a function is displayed and exported.
+
+|*Property*|*Description*|
+|lookup|A dictionary @Object@ or @function@ used to look up the display value.|
+
 h3. join
 
-@join@ columns provide an easy way to concatenate mulitple facts into one column. It has the properties:
+@join@ columns provide an easy way to concatenate multiple facts into one column. It has the properties:
 
 |*Property*|*Description*|
 |columns|Array. An array of column definitions|
-|joinWith|String. A string to use to seperate the joined values *(default: ", ")*|
+|joinWith|String. A string to use to separate the joined values *(default: ", ")*|
 
 h3. attribute
 
@@ -171,7 +178,9 @@ h3. linked
 
 h3. html
 
-@html@ columns are used for rendering arbitrary HTML, and have the following properties:
+@html@ columns are used for rendering arbitrary HTML. *Avoid using them* as it's easy to forget to escape the values. Consider using a @lookup@ column instead.
+
+HTML column definitions have the following properties:
 
 |*Property*|*Description*|
 |displayHTML|Function. A function with an argument @row@, which should return a string of text or HTML to be rendered|
