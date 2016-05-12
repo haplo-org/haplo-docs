@@ -162,6 +162,14 @@ h3. lookup
 |*Property*|*Description*|
 |lookup|A dictionary @Object@ or @function@ used to look up the display value.|
 
+If a function is specified as @lookup@, it is called with two arguments, the first is the value to look up, and the second is the row object containing all the facts. This enables you to abuse lookup columns to perform arbitrary calculations using one or more facts. For example,
+
+<pre>language=javascript
+  lookup: function(value, row) {
+    return row.first + " " + row.last;
+  }
+</pre>
+
 h3. join
 
 @join@ columns provide an easy way to concatenate multiple facts into one column. It has the properties:
