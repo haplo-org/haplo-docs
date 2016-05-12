@@ -73,7 +73,9 @@ Find work units referring to the [node:dev/plugin/interface/ref].
 
 h3(function). tag(key, value)
 
-Find work units which have the [node:dev/plugin/interface/work-unit#tags:tag] specified by the @key@ and @value@, which must both be a @String@.
+Find work units which have the [node:dev/plugin/interface/work-unit#tags:tag] specified by the @key@ and @value@. @key@ must be a @String@, and @value@ must be a @String@ or @null@.
+
+Tag queries treat @null@ and the empty string as equivalent, matching tags which are not set or have the empty value, for consistency with the @countByTags()@ function.
 
 
 h3(function). isVisible()
