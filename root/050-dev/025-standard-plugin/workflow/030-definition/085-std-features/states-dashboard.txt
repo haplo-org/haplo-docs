@@ -57,6 +57,19 @@ h3(key). states
 An array containing the states which should be displayed on the dashboard, in order.
 
 
+h3(key). mergeStates
+
+Optional. A dictionary of state name to an array of other state names. The other states are considered the same when counting and listing workflow instances.
+
+For example, to report @"returned2"@ and @"returned3"@ as @"returned"@ in the dashboard, use:
+
+<pre>language=javascript
+  mergeStates: {
+    "returned": ["returned2", "returned3"]
+  }
+</pre>
+
+
 h3(key). columnTag
 
 The name of the tag to use to split the instances into columns.
