@@ -36,6 +36,11 @@ This is an alternative to calling the @useStaticResource()@ function on the [nod
 If you want to include generated CSS and JavaScript files, use the [node:dev/plugin/templates/std-template/resources] template.
 
 
+h2. emailSubject(...)
+
+All arguments are rendered, concatenated, and the @emailSubject@ in the view is set to the string.
+
+
 h2. Layout functions
 
 The layout functions choose a Haplo layout, setting the @layout@ property in the view.
