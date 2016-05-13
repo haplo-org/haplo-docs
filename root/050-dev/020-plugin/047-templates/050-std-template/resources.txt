@@ -27,10 +27,13 @@ h2. Example
 
 h3. Template
 
-<pre>
-{{>std:resources}}
-<h2>A title</h2>
-<p> ... </p>
+<pre>language=hsvt
+within(resources) {
+  template:std:resources()
+}
+pageTitle("Including resources",
+<h2> "A title" </h2>
+<p> "..." </p>
 </pre>
 
 
@@ -40,8 +43,7 @@ h3. Request handler
 P.respond("GET", "/do/example/test", [
 ], function(E) {
     E.render({
-        pageTitle:"Including resources",
-        "std:resources": {
+        "resources": {
             css: "/api/example/generated_css",
             javascript: [
                 "/api/example/generated_javascript_one",
