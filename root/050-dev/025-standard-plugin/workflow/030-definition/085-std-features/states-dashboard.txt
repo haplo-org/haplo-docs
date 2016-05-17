@@ -45,6 +45,11 @@ h3(key). path
 The path for the generated [node:dev/plugin/interface/plugin/request-handling#respond] call on your plugin. The path must be within your plugin's namespace.
 
 
+h3(key). configurationService
+
+If present, the named service will be called with a copy of the specification to apply common configuration to state dashboards.
+
+
 h3(key). canViewDashboard
 
 @function(dashboard, user)@
@@ -95,11 +100,6 @@ h2. Dashboard interface
 The feature configuration calls functions with a @Dashboard@ object to allow you to configure it and add extra UI.
 
 
-h3(property). query
-
-The query used to select the relevant @WorkUnits@ for this dashboard. Use the [node:dev/plugin/interface/work-unit-query] functions to refine the query.
-
-
 h3(function). addLinkParameter(key, value)
 
 If you're providing extra UI, for example, year navigation, you can use this to add parameters to the URL. These will be available within @E.parameters@ in your @setup()@ function.
@@ -108,6 +108,24 @@ If you're providing extra UI, for example, year navigation, you can use this to 
 h3(function). addHeaderDeferred(deferred)
 
 Add additional UI in the header, as a deferred render created by [node:dev/plugin/interface/template#deferredRender].
+
+
+h3(function). addQueryFilter(fn)
+
+Add a filter function which will be called to filter the dashboard using the [node:dev/plugin/interface/work-unit-query] functions to refine the query.
+
+For example:
+
+<pre>language=javascript
+  setup: function(dashboard, E) {
+      var year = O.ref(E.request.parameters.year);
+      if(year) {
+          dashboard.addQueryFilter(function(query) {
+              query.tag("year", year);
+          });
+      }
+  }
+</pre>
 
 
 h3(function). setTitle(title)
