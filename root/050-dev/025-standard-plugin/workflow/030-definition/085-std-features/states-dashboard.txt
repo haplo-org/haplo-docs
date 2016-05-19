@@ -66,13 +66,18 @@ h3(key). mergeStates
 
 Optional. A dictionary of state name to an array of other state names. The other states are considered the same when counting and listing workflow instances.
 
-For example, to report @"returned2"@ and @"returned3"@ as @"returned"@ in the dashboard, use:
+For example, to report @"returned"@, @"returned2"@ and @"returned3"@ as a single line in the dashboard, use something like:
 
 <pre>language=javascript
+  states: [
+    "submitted", "returned", "rejected", "approved"
+  ],
   mergeStates: {
     "returned": ["returned2", "returned3"]
   }
 </pre>
+
+When merging states, choose one to act as the state in the list of states for the dashboard, @"returned"@ in this case, and include it in the right place in the @states@ array. Then use @mergeStates@ to list the states which should be merged into that state.
 
 
 h3(key). columnTag
