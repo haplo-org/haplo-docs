@@ -45,6 +45,11 @@ h3(property). isActive
 @true@ if this @SecurityPrincipal@ represents an active user or group, @false@ if it has been deleted, blocked or disabled.
 
 
+h3(property). isSuperUser
+
+@true@ if this @SecurityPrincipal@ represents a super-user. These include the built in @SYSTEM@ and @SUPPORT@ users.
+
+
 h3(property). groupIds
 
 An array of IDs of the groups this principal belongs to.
