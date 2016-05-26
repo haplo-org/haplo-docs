@@ -24,8 +24,9 @@ myWorkflow.use("std:entities:entity_replacement", {
             listAll: true,  // optional
             replacementTypes: [T.Staff]
         }
-        onFinishPage: function(M) {
-            // ... custom logic for smooth integration into the workflow
+        onRenderUI: function(M, ui) {
+            ui.addSidebarButton("/do/example-path");
+            ui.addDeferredRender(deferredRenderObject);
         }
     }
 });
@@ -60,10 +61,17 @@ These flags can then be used for any custom logic the consuming workflow require
 @replacementTypes@ is an array of schema types. The replacement [node:dev/plugin/interface/store-object:StoreObject] must have one of these types.
 
 
-h3(function). onFinishPage
+h3(function). onRenderUI
 
-Optional. Returns a url to direct the user towards after any entity replacements have been chosen.
+Optional. Passes in an object containing functions to add custom UI into the entity replacements overview page. The functions implemented are:
 
+h4. addDeferredRender(deferred)
+
+Adds the [node:dev/plugin/interface/template#deferredRender] object passed in to be rendered at the bottom of the entity replacement page.
+
+h4. addSidebarButton(link, label, indicator)
+
+Uses the url passed in as @link@ as the path for an action button rendered into the right-hand sidebar. @label@ and @indicator@ are optional, and have sensible default values.
 
 h2. User interface
 
