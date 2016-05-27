@@ -118,7 +118,7 @@ Return the result of an aggregate function.
 
 @functionName@ is one of @"AVG"@, @"COUNT"@, @"MAX"@, @"MIN"@, @"SUM"@, @"STDDEV_POP"@, @"STDDEV_SAMP"@, @"VAR_POP"@, or @"VAR_SAMP"@, as implemented by PostgreSQL.
 
-@fieldName@ is one of the fields in the database table, to which the aggregate function will be applied.
+@fieldName@ is one of the fields in the database table, to which the aggregate function will be applied. @"id"@ can be used, which is useful to perform the equivalent of @COUNT(*)@.
 
 @groupByFieldName@ is optional. If present, then the values are grouped by that field.
 
