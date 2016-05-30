@@ -18,6 +18,8 @@ The [node:dev/plugin/form/specification:specification] is a JSON document descri
 
 The form is split into sections, which group fields, and form elements, which describe the fields themselves. Sections can be repeating, which allows the user to enter a table of data, adding rows as required.
 
+Form specifications are conventionally stored as JSON files within your plugin's @[node:dev/plugin/directory-structure#file:file/data]@ directory.
+
 
 h3. Document
 

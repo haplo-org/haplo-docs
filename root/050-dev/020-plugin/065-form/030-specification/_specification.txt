@@ -2,7 +2,9 @@ title: Specification
 class: DocNodeTextileWithTOC
 --
 
-Specifications are JSON documents which describe a form. To implement a form, [node:dev/plugin/interface/form-description] objects are created from specifications using the [node:dev/plugin/interface/plugin/form#form] method on your plugin object.
+Specifications are JSON documents which describe a form. To implement a form, [node:dev/plugin/interface/form-description] objects are created from specifications using the @[node:dev/plugin/interface/plugin/form:form()]@ method on your plugin object.
+
+Form specifications are conventionally stored as JSON files within your plugin's @[node:dev/plugin/directory-structure#file:file/data]@ directory.
 
 See a [node:dev/plugin/form/usage:simple usage example] for how specifications are used to handle forms.
 

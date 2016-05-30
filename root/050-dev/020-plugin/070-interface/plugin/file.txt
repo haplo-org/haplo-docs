@@ -1,0 +1,29 @@
+title: Files
+long_title: Plugin bundled files
+--
+
+Files bundled in the plugin's @[node:dev/plugin/directory-structure#file]@ directory are intended for storing small resources.
+
+It's recommended you use bundled files for storing form specifications, which are lazily loaded when you use the plugin's @[node:dev/plugin/interface/plugin/form:form()]@ method.
+
+h2. Interface
+
+h3(function). loadFile(pathname)
+
+Load a file from the plugin's [node:dev/plugin/directory-structure#file] directory, returning a [node:dev/plugin/interface/binary-data] object.
+
+
+h2. Example
+
+To lazily load a lookup table from the @file/lookup/departments.json@, use code like:
+
+<pre>language=javascript
+var departmentsLookupCached;
+var getDepartmentsLookup() {
+    if(!departmentsLookupCached) {
+        departmentsLookupCached =
+          P.loadFile("lookup/departments.json").readAsJSON();
+    }
+    return departmentsLookupCached;
+}
+</pre>

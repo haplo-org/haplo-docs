@@ -17,6 +17,9 @@ Plugins are a collection of JavaScript code, templates, automated tests, and oth
            \- style.css
       \- template
            \- page1.html
+      \- file
+           \- form
+                \- details-form.json
       \- test
            \- test_feature1.js
 </pre>
@@ -84,6 +87,17 @@ Files are served with expiry times several years in the future. Whenever the fil
 h2. template
 
 [node:dev/plugin/templates:HSVT Templates] are stored in the @template@ directory with a @.hsvt@ file extension.
+
+
+h2. file
+
+Files in the @file@ directory are accessible to the plugin using your plugin's [node:dev/plugin/interface/plugin/file#loadFile] API.
+
+This is intended to be used to contain bundled data used by the plugin which should not be publicly available. For example, rarely used lookup data could be stored as JSON files and loaded when required.
+
+The @file/form@ directory is the conventional location for files used as form definitions, loaded with the [node:dev/plugin/interface/plugin/form:plugin form interface].
+
+Use the @static@ directory for files which are to be made available over HTTP and do not need access control.
 
 
 h2. test

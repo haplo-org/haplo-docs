@@ -8,7 +8,7 @@ A JavaScript object implementing the @FormDescription@ interface describes a for
 
 h2. Construction
 
-Use the [node:dev/plugin/interface/plugin/form#form] method on your plugin object.
+Use the @[node:dev/plugin/interface/plugin/form:form()]@ method on your plugin object.
 
 
 h2. Interface

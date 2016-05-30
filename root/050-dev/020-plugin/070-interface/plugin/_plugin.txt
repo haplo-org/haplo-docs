@@ -28,6 +28,11 @@ h3. Data and databases
 Your plugin object provides [node:dev/plugin/interface/plugin/data:data storage] facilities to store arbitrary data outside the main object store.
 
 
+h3. Bundled files
+
+Arbitrary files can be bundled [node:dev/plugin/directory-structure:inside your plugin] in the @file@ directory, then [node:dev/plugin/interface/plugin/file:loaded as BinaryFile objects].
+
+
 h3. Lifecycle
 
 Your plugin's [node:dev/plugin/interface/plugin/lifecycle:lifecycle functions] are called at various key moments.

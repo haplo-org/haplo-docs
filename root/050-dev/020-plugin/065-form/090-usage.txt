@@ -13,28 +13,8 @@ This example defines a form with two form elements, and a request handler which 
 // Define data source
 P.dataSource('person-list', 'object-lookup', [T.Person, T.Organisation]);
 
-// Define form
-var exampleForm = P.form({
-    "specificationVersion": 0,
-    "formId": "example_form",
-    "formTitle": "Example form",
-    "elements": [
-        {
-            "type": "text",
-            "label": "Name",
-            "required": true,
-            "path": "info.name",
-            "guidanceNote": "Enter the name of the item."
-        },
-        {
-            "type": "lookup",
-            "label": "Owner",
-            "dataSource": "person-list",
-            "path": "owner",
-            "guidanceNote": "Find the name of the person or organisation which owns this item."
-        }
-    ]
-});
+// Define form, using specification from a JSON file
+var exampleForm = P.form("example_form", "form/example.json");
 
 // Request handler
 P.respond("GET,POST", "/do/example_form_plugin/example", [
@@ -58,6 +38,32 @@ P.respond("GET,POST", "/do/example_form_plugin/example", [
 });
 </pre>
 
+The specification is stored as @file/form/example.json@ in your plugin:
+
+<pre>language=json
+{
+    "specificationVersion": 0,
+    "formId": "example_form",
+    "formTitle": "Example form",
+    "elements": [
+        {
+            "type": "text",
+            "label": "Name",
+            "required": true,
+            "path": "info.name",
+            "guidanceNote": "Enter the name of the item."
+        },
+        {
+            "type": "lookup",
+            "label": "Owner",
+            "dataSource": "person-list",
+            "path": "owner",
+            "guidanceNote": "Find the name of the person or organisation which owns this item."
+        }
+    ]
+}
+</pre>
+
 The template uses the [node:dev/plugin/templates/functions/platform/form#std_form] template function to display the form:
 
 <pre>language=hsvt
@@ -69,7 +75,7 @@ The template uses the [node:dev/plugin/templates/functions/platform/form#std_for
 
 Note that the rendered form does not include the @<form>@ or @<input type="submit">@ elements, so these need to be included in your template. This allows you greater flexibility in how you use the forms than if the entire form HTML was generated.
 
-You can also include generate the HTML for a form with [node:dev/plugin/interface/form-instance#renderForm] and include it using @unsafeHTML()@ to prevent escaping.
+You can also include the HTML for a form by using [node:dev/plugin/interface/form-instance#deferredRenderForm] and including it in a template using @render()@.
 
 
 
