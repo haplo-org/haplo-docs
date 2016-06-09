@@ -45,3 +45,11 @@ h3(key). types
 An array of @Ref@ objects specifying the types to which this attribute may link. Note that the object store does not type check linked objects in attributes.
 
 This is provided only when @typecode === O.T_REF@.
+
+
+h3(key). allowedQualifiers
+
+An array of [node:dev/plugin/schema/schema-global/qual:qualifier values] for the qualifiers currently allowed to be applied in the object editor UI. Note that it is entirely possible for an object to have a qualifier which is not in this list, either because the allowed qualifiers changed, or a plugin applied the qualifier.
+
+An empty list means that all qualifiers will be allowed by the object editor UI.
+
