@@ -84,6 +84,13 @@ h3. ref
 
 The @ref@ type is used automatically if the fact specified has type @ref@
 
+h3. ref-person-name
+
+When used with objects that have Person Name titles, @ref-person-name@ will render them as "Last, First", and the exported data will have each field of the name in a separate column.
+
+|*Property*|*Description*|
+|link|Boolean. If true, the text is rendered as a link to the object specified by the fact|
+
 h3. date
 
 @date@ columns render a date fact as a human readable string, by default the column uses the formatting "01 Jan 2015", but alternate formatting can be specified using a property:
