@@ -42,6 +42,21 @@ h3. Common properties
 |@inDocument@|(optional) If @true@, or a [node:dev/plugin/form/conditional-statement:conditional statement] which evaluates to true, the element is displayed in the document. Defaults to @true@.|
 
 
+h2. Text
+
+All user visible text in forms, like @label@, @heading@, etc, uses the [node:dev/plugin/misc/name] function to translate names of things where names are marked as @NAME(name)@. Note there are no quotes within the brackets.
+
+For example:
+
+<pre>language=json
+  {
+    "type": "paragraph",
+    "path": "example",
+    "label": "Comments from NAME(Head of Department)"
+  }
+</pre>
+
+
 h2. Autofocus
 
 The client side JavaScript forms support will auto-focus into the first text field. You can skip an element by applying the @oforms-no-autofocus@ class using the @class@ property, or by applying this class to any of its parent elements in the DOM.

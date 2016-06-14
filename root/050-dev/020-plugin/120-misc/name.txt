@@ -9,6 +9,7 @@ For example, universities have lots of different names for their top level divis
 It's also available as:
 
  * a [node:dev/plugin/templates/functions/platform/name:template function] (which is the recommended way of using it)
+ * automatic substitution in [node:dev/plugin/form/specification#Text:form labels and other text]
  * as a standard text interpolation in the standard [node:dev/standard-plugin/workflow/definition/text:workflow plugin text system]
 
 h3(function). NAME (name)
