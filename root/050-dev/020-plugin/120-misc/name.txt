@@ -17,6 +17,8 @@ Returns a translated version of @name@.
 
 The @"std:NAME"@ service is called to look up the name, if it is implemented by any plugins.
 
+Your @"std:NAME"@ service function may be called during plugin load, as an exception to the usual service rules. This means that plugins can use @NAME()@ to set up data structures, but it does mean you have to be very careful with the load order of your plugins.
+
 If nothing translates the name, @name@ is returned unaltered.
 
 The result is cached.

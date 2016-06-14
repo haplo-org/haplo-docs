@@ -43,7 +43,7 @@ h2. Allowing other plugins to extend your plugin
 
 You might be developing a plugin which is used in more than one context, and you'd like to have different behaviour in each of those contexts. You could add configuration to your plugin, or you could use services to allow those behaviours to be implemented in another plugin.
 
-In this case, your plugin is a consumer of services. You check if a service is available using [node:dev/plugin/o/service#O_serviceImplemented], and if it is, call it with [node:dev/plugin/o/service#O_service].
+In this case, your plugin is a consumer of services. You check if a service is available using [node:dev/plugin/o/service#O_serviceImplemented], and if it is, call it with [node:dev/plugin/o/service#O_service]. Alternatively, use [node:dev/plugin/o/service#O_serviceMaybe] if the explicit implementation check would make your code unnecessarily verbose.
 
 Other plugins then implement the service. If more than one plugin implements a service, then each of the registered functions will be called in turn until one of those functions returns something other than @undefined@.
 
