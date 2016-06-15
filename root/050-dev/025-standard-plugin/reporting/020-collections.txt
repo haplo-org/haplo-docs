@@ -57,12 +57,16 @@ h3(function). fact(name, type, description)
 
 Define a fact. @name@ must be unique within the collection. @description@ is the human readable name of the fact shown in the admin UI and in Dashboards when no heading is defined.
 
-@type@ may be any valid [node:dev/plugin/interface/database#type:Database type] but the following types are also allowed as convenience methods
+@type@ may be any valid [node:dev/plugin/interface/database#type:database type].
+
+Note there is an implicit @"ref"@ fact, which is the ref of the object being reported on.
+
+In addition to the standard database types, the following types are also allowed as convenience methods
 
 |*Name*|*Data type*|*JavaScript type*|
 |@end-date@|Date|Date|
 
-@end-date@ is a convenience type useful for specifiying facts that use the [node:dev/plugin/interface/date-time#end:end] property of a platform Datetime region.
+@end-date@ is a convenience type useful for specifying facts that use the [node:dev/plugin/interface/date-time#end:end] property of a platform Datetime region.
 
 h3(function). indexedFact(name, type, description)
 

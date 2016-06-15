@@ -16,6 +16,8 @@ h2. Facts
 
 For instance, if we wanted to create a report on overdue library books, a "due date" would be a sensible fact to record and the UI would handle what is overdue and what is not. Having a "is the book overdue" fact however would be problematic, as the Reporting plugin cannot know that an update is needed unless running a full rebuild of the collection.
 
+There is an implicit @"ref"@ fact, which is the object being reported on.
+
 h2. Statistics
 
 Collections also define *Statistics*. Single value's which are derived from a subset of rows filtered in the collection, optionally grouped by other facts. 

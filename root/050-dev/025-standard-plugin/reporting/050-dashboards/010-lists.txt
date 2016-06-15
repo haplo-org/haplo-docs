@@ -25,6 +25,8 @@ Add one or more columns to the Dashboard.
 
 If a column definition is specified as a string, it's interpreted as @{fact:"factName"}@, which will infer the type from the fact definition and render in an appropriate fashion.
 
+*NOTE* To display the name of the object being reported on, use the implicit @"ref"@ fact. If the object is a person, use a column definition like @{fact:"ref", type:"ref-person-name", heading:"Name"}@.
+
 Different column types support and may require more than these properties. See the list of column types below.
 
 h2. Standard features
