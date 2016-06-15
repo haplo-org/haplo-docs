@@ -6,7 +6,7 @@ HSVT language template functions implement the core features necessary for usefu
 
 h2. if(value) & unless(value)
 
-A simple conditional control flow function. If @value@ is truthy, the anonymous block is rendered if it is, otherwise the @else@ block. @unless*()@ inverts this logic.
+A simple conditional control flow function. If @value@ is truthy, the anonymous block is rendered if it is, otherwise the @else@ block. @unless()@ inverts this logic.
 
 
 h2. each(value)
