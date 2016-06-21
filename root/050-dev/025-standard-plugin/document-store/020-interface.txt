@@ -46,6 +46,23 @@ h3(function). commit(user)
 
 Saves/commits the @currentDocument@ as the latest version. If there is no edited version then @commit()@ will use the @lastCommittedDocument@ as the document to commit.
 
+h3(function). deferredRenderLastCommittedDocument()
+
+Return a [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred render] for the last committed document.
+
+h3(property). lastCommittedDocumentHTML
+
+The HTML for the last committed document. Use @deferredRenderLastCommittedDocument()@ instead.
+
+h3(function). deferredRenderCurrentDocument()
+
+Return a [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred render] for the current, potentially edited, version of the document.
+
+h3(property). currentDocumentHTML
+
+The HTML for the current document. Use @deferredRenderCurrentDocument()@ instead.
+
+
 h3(function). handleEditDocument(E, actions)
 
 Handles the editing of a document instance, for example in a request handler where the user has submitted changes to some forms.

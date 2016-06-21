@@ -18,9 +18,11 @@ The type that will be used for the @key@ of your form, if it is not @int@
 
 h3(function). formsForKey(key, instance, document)
 
-Required. Needs to return an array of [node:dev/plugin/form:forms].
+Required. Return an array of [node:dev/plugin/form:forms].
 
 You can use the value of @key@ and the @document@ to return different forms for different instances and documents. @document@ may be a historical version when using the document viewer.
+
+*IMPORTANT*: The forms returned for a given @key@ should not vary depending on the currently active user. If you need to display or edit different forms for different people, use @shouldDisplayForm()@ and @shouldEditForm()@.
 
 Note that using the [node:dev/standard-plugin/document-store/interface:instance] to determine forms is unlikely to be that interesting, and the methods and properties which require the list of forms cannot be used in this method.
 
@@ -48,9 +50,23 @@ h3(function). onCommit(instance, user)
 
 Called when @commit()@ is called.
 
+h3(function). shouldDisplayForm(key, form, document)
+
+Return @true@ if this form should be displayed when rendering the instance as a document.
+
+Use @form.formId@ to determine which form is being queried.
+
+h3(function). shouldEditForm(key, form, document)
+
+Return @true@ if this form should be edited. Use this to stop users from editing individual forms.
+
+Use @form.formId@ to determine which form is being queried.
+
 h3(function). prepareFormInstance(key, form, instance, context)
 
 Prepare a form instance for the form.
+
+*IMPORTANT*: Always check @form.formId@ to check you're preparing the right form.
 
 Use this to setup things like [node:dev/plugin/interface/form-instance#choices:dynamic form choices], for example:
 
@@ -58,10 +74,12 @@ Use this to setup things like [node:dev/plugin/interface/form-instance#choices:d
 var docStore = P.defineDocumentStore({
     // ... ,
     prepareFormInstance: function(key, form, instance, context) {
-        if(key === "some_value") {
-            instance.choices("genres", ["Action", "Comedy", "Horror"]);
-        } else {
-            instance.choices("genres", ["Thriller", "Drama"]);
+        if(form.formId === "form_name") {
+          if(key.kind === "film") {
+              instance.choices("genres", ["Action", "Comedy", "Horror"]);
+          } else {
+              instance.choices("genres", ["Thriller", "Drama"]);
+          }
         }
     }
 });
