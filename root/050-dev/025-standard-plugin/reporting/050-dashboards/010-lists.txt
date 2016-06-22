@@ -21,6 +21,7 @@ Add one or more columns to the Dashboard.
 |type|The column type. If no type is specified, then infer using the definition of the specified fact|
 |fact|Defined name of the fact|
 |heading|Heading displayed for the column. If no heading is specified then the description specified in the collection fact definition is used|
+|exportHeading|Heading used when the column is exported. Defaults to @heading@ if not specified|
 |style|Style to use for the column, one of "wide", "medium", "small", "tiny"|
 
 If a column definition is specified as a string, it's interpreted as @{fact:"factName"}@, which will infer the type from the fact definition and render in an appropriate fashion.
