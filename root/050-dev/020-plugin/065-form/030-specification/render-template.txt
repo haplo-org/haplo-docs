@@ -1,0 +1,45 @@
+title: Render template
+--
+
+An element which renders one of the plugin's templates in the form or document, used to include explanatory notes in forms.
+
+
+h2. Properties
+
+|@type@|@"render-template"@|
+|@template@|Name of the plugin's template|
+|@view@|(optional) Arbitrary data passed to template's @render()@ function|
+
+Use the @inForm@ and @inDocument@ [node:dev/plugin/form/specification#Common_properties:common properties] to control where the template is rendered.
+
+
+h2. Template rendering
+
+The template is rendered with a view containing two properties:
+
+|@view@|The @view@ from the specification.|
+|@context@|The current context within the document (ie root of the document, current section, or element in repeating section).|
+
+
+h2. Example
+
+The specification:
+
+<pre>language=javascript
+{
+    "type": "render-template",
+    "template": "forms/special-note",
+    "inDocument": false,
+    "view": {
+        "text": "This is a note"
+    }
+}
+</pre>
+
+will render the @"forms/special-note"@ template in the editable form, but not when rendered as a document. The template might look like:
+
+<pre>language=hsvt
+<div class="special-note">
+  view.text
+</div>
+</pre>
