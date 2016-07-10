@@ -16,7 +16,7 @@ h2. observeEnter(selector, fn)
 Called when a state is entered.
 
 <pre>language=javascript
-EgWorkflow.observeEnter(function(M, transition, previousState) {
+EgWorkflow.observeEnter({}, function(M, transition, previousState) {
 });
 </pre>
 
@@ -29,7 +29,7 @@ h2. observeExit(selector, fn)
 Called when the process exits a state.
 
 <pre>language=javascript
-EgWorkflow.observeExit(function(M, transition) {
+EgWorkflow.observeExit({}, function(M, transition) {
 });
 </pre>
 
@@ -43,8 +43,10 @@ h2. transitionComplete(selector, fn)
 Called when a transition is complete and all changes to the workflow instance have been committed to the database.
 
 <pre>language=javascript
-EgWorkflow.transitionComplete(function(M, transition, previousState) {
-});
+EgWorkflow.transitionComplete({},
+  function(M, transition, previousState) {
+  }
+);
 </pre>
 
 Note that the list of handlers is choosen using the selectors at the *beginning* of the transition, but the functions are called at the *end* of the transition with the new state of the workflow instance. This avoids having to select on all the possible destination states.
@@ -55,7 +57,7 @@ h2. resolveTransitionDestination(selector, fn)
 Called to choose which of the allowed destinations in the state definition will be taken. It's called even if there is a single destination,.
 
 <pre>language=javascript
-EgWorkflow.resolveTransitionDestination(
+EgWorkflow.resolveTransitionDestination({},
     function(M, transition, destinations, target) {
     }
 );
@@ -74,7 +76,7 @@ h2. filterTransition(selector, fn)
 Called after @resolveTransitionDestination()@ to filter out allowed transitions from a state. Your state definition must define all possible transitions, but they may not all be allowed in every instance of the process. This handler allows you to filter the transitions to the permitted set.
 
 <pre>language=javascript
-EgWorkflow.filterTransition(function(M, transition) {
+EgWorkflow.filterTransition({}, function(M, transition) {
 });
 </pre>
 
@@ -93,7 +95,7 @@ Called to populate the action panel which displays the status of the workflow, l
 You should probably not return anything from this handler, as it would prevent all the UI from being added.
 
 <pre>language=javascript
-EgWorkflow.actionPanel(function(M, builder) {
+EgWorkflow.actionPanel({}, function(M, builder) {
 });
 </pre>
 
@@ -120,7 +122,7 @@ h2. renderWork(selector, fn)
 Called to render the work unit.
 
 <pre>language=javascript
-EgWorkflow.renderWork(function(M, W) {
+EgWorkflow.renderWork({}, function(M, W) {
 });
 </pre>
 
@@ -132,7 +134,7 @@ h2. renderWorkList(selector, fn)
 Called to render the work unit in the task list.
 
 <pre>language=javascript
-EgWorkflow.renderWork(function(M, W) {
+EgWorkflow.renderWork({}, function(M, W) {
 });
 </pre>
 
@@ -145,7 +147,7 @@ h2. workListFullInfo(selector, fn)
 Update the [node:dev/plugin/interface/plugin-work-unit-renderer] view when rendering the work unit in the task list to set the "full info" link and label.
 
 <pre>language=javascript
-EgWorkflow.workListFullInfo(function(M, W, view) {
+EgWorkflow.workListFullInfo({}, function(M, W, view) {
 });
 </pre>
 
@@ -162,7 +164,7 @@ Alter the email notification set to the user when the work unit becomes actionab
 It's usually easier to use the Text system to [node:dev/standard-plugin/workflow/definition/text/notification-emails:set the text for the email] than use this handler.
 
 <pre>language=javascript
-EgWorkflow.notification(function(M, notificationView) {
+EgWorkflow.notification({}, function(M, notificationView) {
 });
 </pre>
 
@@ -177,7 +179,7 @@ h2. transitionUI(selector, fn)
 Control the built-in transition UI.
 
 <pre>language=javascript
-EgWorkflow.transitionUI(function(M, E, ui) {
+EgWorkflow.transitionUI({}, function(M, E, ui) {
 });
 </pre>
 
@@ -192,7 +194,7 @@ h2. transitionFormSubmitted(selector, fn)
 Called when the build-in transition UI form is submitted, but before the workflow UI is fully committed to the transition.
 
 <pre>language=javascript
-EgWorkflow.transitionFormSubmitted(function(M, E, ui) {
+EgWorkflow.transitionFormSubmitted({}, function(M, E, ui) {
 });
 </pre>
 
@@ -206,7 +208,7 @@ h2. transitionFormPreTransition(selector, fn)
 Called when the build-in transition UI form is submitted, after the workflow UI is fully committed to the transition.
 
 <pre>language=javascript
-EgWorkflow.transitionFormPreTransition(function(M, E, ui) {
+EgWorkflow.transitionFormPreTransition({}, function(M, E, ui) {
 });
 </pre>
 
@@ -221,7 +223,7 @@ h2. preWorkUnitSave(selector, fn)
 Called just before [node:dev/plugin/interface/work-unit#save] is called on on the underlying @WorkUnit@. It's especially handy for updating @WorkUnit@ tags.
 
 <pre>language=javascript
-EgWorkflow.preWorkUnitSave(function(M) {
+EgWorkflow.preWorkUnitSave({}, function(M) {
 });
 </pre>
 
@@ -233,7 +235,7 @@ h2. setWorkUnitProperties(selector, fn)
 Called after the workflow process is committed to a transition to give the workflow a chance to update the @WorkUnit@.
 
 <pre>language=javascript
-EgWorkflow.setWorkUnitProperties(function(M, transition) {
+EgWorkflow.setWorkUnitProperties({}, function(M, transition) {
 });
 </pre>
 
