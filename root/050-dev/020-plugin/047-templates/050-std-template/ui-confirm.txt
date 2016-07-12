@@ -10,6 +10,8 @@ See also the [node:dev/plugin/templates/std-template/ui-choose] template, which 
 
 Note that this template simply generates HTML forms, so any @actions@ and @parameters@ are subject to client side manipulation, just like any other form.
 
+This template uses the standard @backLink@ and @backLinkText@ view properties to automatically use the same link and text as the 'Back' link. Where you want to use different values, use the [node:dev/plugin/templates/functions/language#within] template function to move the view into a new context.
+
 
 h2. View
 
@@ -24,12 +26,12 @@ h3(key). backLink
 
 Optional. The URL for the cancel link.
 
-This property is called @backLink@ so if you use this as the main template for your page, you'll automatically get the standard back link displayed in the top left.
+This property is called @backLink@ so if you use this as the main template for your page, you'll automatically get the standard back link displayed in the top left. See note about @within()@ above.
 
 
 h3(key). backLinkText
 
-Optional. The text for the cancel link, defaulting to @"Cancel"@.
+Optional. The text for the cancel link, defaulting to @"Cancel"@. See note about @within()@ above.
 
 
 h3(key). options
