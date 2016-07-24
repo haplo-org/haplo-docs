@@ -5,6 +5,7 @@ class KObject; end
 class WorkUnit; end
 class AuditEntry; end
 class User; end
+class KLabelList; end
 class KLabelChanges; end
 class KLabelStatements; end
 class StoredFile; end
@@ -64,6 +65,8 @@ module KHooks
         "[node:dev/plugin/interface/audit-entry]"
       elsif klass == User
         "[node:dev/plugin/interface/security-principal]"
+      elsif klass == KLabelList
+        "[node:dev/plugin/interface/label-list]"
       elsif klass == KLabelChanges
         "[node:dev/plugin/interface/label-changes]"
       elsif klass == KLabelStatements
