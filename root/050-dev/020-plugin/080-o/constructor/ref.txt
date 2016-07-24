@@ -11,7 +11,9 @@ h3(function). O.ref(string)
 
 Decode the presentation string representation of a object reference.
 
-Returns @null@ if the string is not a valid object reference.
+Returns @null@ if the string does not match the format of a valid object reference.
+
+Note that the returned reference may not refer to an object which actually exists, or the current user may not necessarily have permission to read it, so calling @load()@ on this @Ref@ is not guaranteed to be able to return an @Object@.
 
 
 h3(function). O.ref(objId)
