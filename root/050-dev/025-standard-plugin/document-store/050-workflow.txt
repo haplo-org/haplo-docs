@@ -131,6 +131,20 @@ For example:
 }
 </pre>
 
+h3(function). onFinishPage(key)
+
+Return the URL (as a string) of the page to redirect to after finishing the final page of the document store.
+
+By default, the document store workflow integration will redirect the user to the transition screen upon completion of a form if a transition is available, or back to the associated object if not. Specifying an onFinishPage function in the specification can override this behaviour and redirect to the returned URL.
+
+<pre>language=javascript
+{
+    // ... ,
+    onFinishPage: function(key) {
+        return key.entities.object.url();
+    }
+}
+</pre>
 
 
 h2. Accessing a document from the workflow
