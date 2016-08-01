@@ -18,6 +18,8 @@ h2. within(value)
 
 The view is moved to the @value@, then the anonymous block is rendered.
 
+If the value is not defined, then nothing is rendered.
+
 
 h2. switch(value)
 
