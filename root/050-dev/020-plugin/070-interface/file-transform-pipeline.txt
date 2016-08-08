@@ -54,7 +54,7 @@ These functions generate URLs and views which allow the results of the pipeline 
 @filename@ is the user visible name of the file. Remember to include an extension.
 
 
-h3(function). urlForOuputWaitThenDownload(name, filename, view)
+h3(function). urlForOutputWaitThenDownload(name, filename, view)
 
 Generate a URL to a user interface, implemented by the platform, which shows a progress bar while the file is being generated, then downloads the file. Use this to implement the recommended "redirect after POST" pattern after form submission.
 
@@ -74,7 +74,7 @@ h3(function). urlForOutput(name, filename)
 
 Returns a URL, which can be fetched immediately. It will wait without sending any data until the pipeline is complete, then respond with the generated file.
 
-Only use this for building APIs to work with other software. Use @urlForOuputWaitThenDownload()@ when building UI to ensure a good user experience.
+Only use this for building APIs to work with other software. Use @urlForOutputWaitThenDownload()@ when building UI to ensure a good user experience.
 
 If the @filename@ has no extension, or the wrong extension, an appropriate file extension will be added.
 

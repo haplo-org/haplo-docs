@@ -75,7 +75,7 @@ P.respond("GET,POST", "/do/example-plugin/letter", [
             html: P.template("letter").render(view)
         });
         var redirectURL =
-            pipeline.urlForOuputWaitThenDownload("output", "special-letter.pdf");
+            pipeline.urlForOutputWaitThenDownload("output", "special-letter.pdf");
         pipeline.execute();
         E.response.redirect(redirectURL);
     } else {
