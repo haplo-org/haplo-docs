@@ -217,6 +217,21 @@ EgWorkflow.transitionFormPreTransition({}, function(M, E, ui) {
 @ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object. Call @redirect()@ send the user somewhere else.
 
 
+h2. transitionUIPostTransitionRedirectForActionableUser(selector, fn)
+
+Called when the build-in transition UI has completed a transition, and the new actionable user is still the current user. Return a URL to override the default redirect to the workflow's @url@.
+
+Note the selector applies to the workflow *after* the transition has taken place.
+
+<pre>language=javascript
+EgWorkflow.transitionUIPostTransitionRedirectForActionableUser({},
+    function(M, ui) {
+    }
+);
+</pre>
+
+@ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object.
+
 
 h2. preWorkUnitSave(selector, fn)
 

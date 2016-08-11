@@ -32,6 +32,8 @@ h3(function). redirect(url)
 
 After the transition is complete, redirect the user to @url@.
 
+It may be easier to use the @transitionUIPostTransitionRedirectForActionableUser@ handler which selects on the post-transition state.
+
 
 h3(function). addFormDeferred(position, deferred)
 
