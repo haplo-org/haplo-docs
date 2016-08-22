@@ -1,0 +1,7 @@
+title: hUserAttributeRestrictionLabels
+class: HookNode
+--
+
+This hook allows plugins to specify the restriction labels for a given user.
+
+There should generally only be one plugin using this hook, as part of a pluggable permission system.
