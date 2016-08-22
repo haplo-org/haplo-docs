@@ -18,6 +18,7 @@ Use the @load()@ function on [node:dev/plugin/interface/ref] objects.
 
 For creating new store objects, use [node:dev/plugin/interface/store-object-mutable], constructed by [node:dev/plugin/o/constructor/object].
 
+To create a "restricted view" of a store object, which only has the attributes that should be visible to a particular user, use the @restrictedCopy@ function on an original unrestricted store object.
 
 h2. Interface
 
@@ -83,6 +84,25 @@ h3(function). mutableCopy()
 
 Returns a mutable copy of this object, which is independent of this object. As well as implementing this interface, it also implements [node:dev/plugin/interface/store-object-mutable].
 
+Restricted objects cannot have mutable copies of them made.
+
+h3(function). isRestricted()
+
+Returns @true@ if the object is restricted to only show attributes visible to a particular user.
+
+h3(function). restrictedCopy(user)
+
+Returns a restricted copy of this object, which only contains the attributes that are visible to the specified user (which will commonly be @O.currentUser@).
+
+You cannot call this function on an already-restricted object.
+
+h3(function). canRead(desc,user)
+
+Returns @true@ if the specified user is allowed to view the specified attribute (regardless of qualifier). These are the attributes that will still be present in a restricted copy of this object. Unless a plugin uses @restrictedCopy@ to create a restricted version of the object with these attributes missing, they will still be able to access them through the @StoreObject@ API; this restriction is honoured by the platform's object rendering logic, and (through this function and @restrictedCopy@) made visible to plugins so that theyc an implement restrictions as they see fit.
+
+h3(function). canModify(desc,user)
+
+Returns @true@ if the specified user is allowed to modify the specified attribute (regardless of qualifier). There is no restriction on plugins creating a @mutableCopy@ and editing this attribute through the @StoreObject@ interface; this restriction is honoured by the platform's object editor user interface, and (through this function) made visible to plugins so that they can implement restrictions as they see fit.
 
 h3(function). relabel(labelChanges)
 
