@@ -53,7 +53,7 @@ h3(key). indicator
 
 An indicator to draw the user's attention to this panel element. Values are:
 
-|@"standard"@|No indicator (default)|
+|@"standard"@|Non-specific indicator|
 |@"primary"@|Primary, or usual, next action|
 |@"secondary"@|Secondary action, less likely to be taken|
 |@"terminal"@|An action will which terminate a process|
