@@ -38,7 +38,7 @@ Only actionable work units are shown in task lists.
 
 h2. Visibility
 
-Plugins have a @visible@ property which controls whether they are shown in the various listings on the Tasks page and on object pages.
+Work units have a @visible@ property which controls whether they are shown in the various listings on the Tasks page and on object pages.
 
 If the @autoVisible@ property is @true@, which it is by default, _open_ work units have their visibility changed:
 
