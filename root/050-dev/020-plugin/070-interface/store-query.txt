@@ -62,15 +62,19 @@ The optional @desc@ and @qual@ arguments restrict the attributes which are searc
 
 This function is intended for performing searches based on queries entered by the user. If your intention is to find a specific object, use the object's reference, or to find groups of specific objects, use the @link()@ function.
 
+Note that text indexing is performed in the background, so queries immediately after creating or updating an object may not find these new objects.
+
 Returns itself, making the function suitable for chaining.
+
 
 h3(function). exactTitle(title)
 
 Finds objects with an exact given title. @title@ must be a non-empty String. The search will normalise @title@, making it case and accent insensitive.
 
-This function doesn't use the platform text indexes, and so can be used to return objects as soon as they are saved to the object store. All other text query functions will only return newly created objects after they have been indexed, which takes an undefined amount of time.
+In the current implementation, searches for exact titles do not need to wait for text indexing to complete before they find new objects. However, this property should not be relied on by plugin code.
 
 Returns itself, making the function suitable for chaining.
+
 
 h3(function). link(ref, desc, qual)
 
