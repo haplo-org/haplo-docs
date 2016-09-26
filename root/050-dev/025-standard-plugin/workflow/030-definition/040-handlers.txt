@@ -99,7 +99,7 @@ If all handler functions return @undefined@, the transition will be allowed.
 
 h2. resolveDispatchDestination(selector, fn)
 
-Called on entry to a dispatch state to immediately forward the workflow to another state. Your state definition must define all possible destination states.
+Called on entry to a dispatch state to immediately forward the workflow to another state. Your state definition must define all possible destination states. Return the name of the destination state to transition to.
 
 <pre>language=javascript
 EgWorkflow.resolveDispatchDestination({},
