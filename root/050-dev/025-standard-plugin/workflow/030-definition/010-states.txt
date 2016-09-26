@@ -72,6 +72,11 @@ The first string in the transition array is the name of the transition.
 
 The other strings are the possible destinations. The first destination will be taken unless a [node:dev/standard-plugin/workflow/definition/handlers#resolveTransitionDestination] handler selects one of the others.
 
+h3(key). dispatch
+
+An alternative method of describing workflow transitions, used to simplify complex workflow routing logic. As with the @transitions@ key, is defined as an array with the first entry is the name of the transition, with further entries being possible destinations.
+
+States with this defined are used for routing purposes only, and will call [node:dev/standard-plugin/workflow/definition/handlers#resolveDispatchDestination] immediately on entry. The workflow will then be routed to the resolved state (which could be another dispatch state).
 
 h3(key). finish
 

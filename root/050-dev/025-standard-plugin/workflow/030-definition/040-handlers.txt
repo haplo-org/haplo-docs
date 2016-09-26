@@ -97,6 +97,19 @@ Return @false@ to remove this transition. Return @true@ to allow this transition
 If all handler functions return @undefined@, the transition will be allowed.
 
 
+h2. resolveDispatchDestination(selector, fn)
+
+Called on entry to a dispatch state to immediately forward the workflow to another state. Your state definition must define all possible destination states.
+
+<pre>language=javascript
+EgWorkflow.resolveDispatchDestination({},
+	function(M, transition, destination, target, possibleDestinations) {
+	}
+);
+</pre>
+
+Using this handler and dispatch states may be simpler for workflows with complex routing logic than using multiple sets of @resolveTransitionDestination@ and @filterTransition@.
+
 
 h2. actionPanel(selector, fn)
 
