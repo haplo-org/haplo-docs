@@ -1,0 +1,7 @@
+title: hPreSearchUI
+class: HookNode
+--
+
+This hook allows plugins to observe searches in the main search UI.
+
+If the plugin sets the @redirectPath@ response property, the user will be redirected away from the search results. Use this with caution.
