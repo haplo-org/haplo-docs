@@ -11,4 +11,4 @@ As you're probably dealing with confidential information in your Haplo applicati
 
 h2. Getting help
 
-If you have any questions, please "get in touch":http://www.oneis.co.uk/contact.
+If you have any questions, please "get in touch":http://www.haplo-services.com/contact.
