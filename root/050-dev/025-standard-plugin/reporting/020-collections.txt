@@ -35,6 +35,12 @@ In addition, the wildcard @"std:reporting:collection:*:setup"@ service is called
 
 Functions called on the collection object return themselves, and so can be chained.
 
+h2. Direct access
+
+Collections can also be accessed directly by using @P.reporting.collection@. This returns the collection object, for use outside of a [node:dev/standard-plugin/reporting/dashboards:dashboard].
+
+This should only be used for querying the underlying data. Any setup or modifications should be carried out inside the setup functions.
+
 h2. Interface
 
 h3(property). name
@@ -130,6 +136,18 @@ h3(function). objectIsValidForCollection(fn)
 h3(function). collectAllFactsInBackground()
 
 Initiate a full rebuild of the collection.
+
+h3(function). selectAllCurrentRows(filterName)
+
+Returns all current rows from the collection.
+
+The optional argument @filterName@ is the name of one of the filters defined on the collection, and is used to restrict the rows returned from the query.
+
+h3(function). selectAllRowsAtTime(date, filterName)
+
+Returns rows from the collection for the data that was current at @date@.
+
+The optional argument @filterName@ is the name of one of the filters defined on the collection, and is used to restrict the rows returned from the query.
 
 h2. Example
 
