@@ -108,7 +108,7 @@ when 'publish'
     "name" => "website-docs",
     "version" => PACKAGING_VERSION,
     "description" => "Developer documentation web site",
-    "install_path" => "/www/sites/docs.haplo.org",
+    "install_path" => "/oneis/sites/docs.haplo.org",
     "archives" => [queued_archive["archive"]],
   }
   File.open("#{PUBLISH_DIR}/manifest.json", "w") { |f| f.write JSON.pretty_generate(manifest) }
