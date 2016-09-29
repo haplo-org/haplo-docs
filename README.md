@@ -7,7 +7,7 @@
 To set up:
 
 * install `jruby`, make sure it's in your `PATH`
-* run `jgem install RedCloth`
+* run `jgem install RedCloth -v 4.2.9`
 * check out the main [Haplo repository](https://github.com/haplo-org/haplo) at the same level as this repository
 
 To preview your changes:
