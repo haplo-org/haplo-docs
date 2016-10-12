@@ -106,6 +106,12 @@ If there is an object in the object store which represents this user, return a [
 
 A store object represents the user if it has been explicitly set in System Management or programmatically.
 
+h3(function). can(operation, ref)
+
+Returns @true@ if the user is allowed to carry out the @operation@ on the object specified by [node:dev/plugin/interface/ref].
+
+Valid values for @operation@ are: @"update"@, @"read"@, @"create"@, @"relabel"@, @"delete"@, and @"approve"@.
+
 
 h3(function). canCreateObjectOfType(typeRef)
 
