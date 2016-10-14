@@ -87,7 +87,7 @@ var docStore = P.defineDocumentStore({
 
 h2. Example
 
-An example small definition, where @meetingDetails@ and @otucomes@ are two defined [node:dev/plugin/form:forms]:
+An example small definition, where @meetingDetails@ and @outcomes@ are two defined [node:dev/plugin/form:forms]:
 
 <pre>language=javascript
 var meetingRecordStore = P.defineDocumentStore({
