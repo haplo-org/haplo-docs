@@ -50,6 +50,12 @@ h3(function). onCommit(instance, user)
 
 Called when @commit()@ is called.
 
+h3(function). updateDocumentBeforeEdit(key, instance, document)
+
+Called before a form is to be edited to change the current document. Changes to the document in this function are only saved if the user saves the form.
+
+Use this if your form uses information from other sources that may change between edits.
+
 h3(function). shouldDisplayForm(key, form, document)
 
 Return @true@ if this form should be displayed when rendering the instance as a document.
