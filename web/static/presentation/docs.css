@@ -675,3 +675,11 @@ h2.acts_as span.apilabel, h3.acts_as span.apilabel
     margin-top: 32px;
     text-shadow: white 1px 1px 0;
 }
+
+/* ref converter widget */
+.ref-converter input
+{
+    padding: 2px 2px 2px 5px;
+}
+.ref-converter input:first-child { margin-right: 10px; }
+.ref-converter input:nth-child(2) { margin-left: 10px; }

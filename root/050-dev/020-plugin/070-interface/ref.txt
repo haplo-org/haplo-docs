@@ -5,6 +5,7 @@ link_as: keyword
 
 A JavaScript object implementing the @Ref@ interface is a reference to an object in the Object Store.
 
+[ref-widget]
 
 h2. Construction
 
