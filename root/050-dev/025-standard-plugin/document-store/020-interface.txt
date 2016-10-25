@@ -30,7 +30,7 @@ h3(property). hasCommittedDocument
 
 Returns a boolean which is true if there is any saved version of the document.
 
-h3(function). getAllVersions()
+h3(property). history
 
 Return an array of objects containing data about all the versions of the document stored for this instance of the document store.
 
