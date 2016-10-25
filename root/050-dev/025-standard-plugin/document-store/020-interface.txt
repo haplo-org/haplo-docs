@@ -26,11 +26,11 @@ h3(property). lastCommittedDocument
 
 Returns the javascript object of the last committed version of the document, or if one doesn't exist, a blank document.
 
-h3(property). hasComittedDocument
+h3(property). hasCommittedDocument
 
 Returns a boolean which is true if there is any saved version of the document.
 
-h3(property). getAllVersions
+h3(function). getAllVersions()
 
 Return an array of objects containing data about all the versions of the document stored for this instance of the document store.
 
