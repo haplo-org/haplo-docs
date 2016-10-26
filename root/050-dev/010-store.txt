@@ -32,5 +32,3 @@ h2. Object References
 Object references (objrefs) look like @8qw57@. They are formed as a hexadecimal number, with the transformation @tr/abcdef/qvwxyz/@ applied to remove the possibility of spelling words in object URLs.
 
 Since attributes, qualifiers and types are all defined by objects, objrefs are used to describe them in the XML API.
-
-[ref-widget]

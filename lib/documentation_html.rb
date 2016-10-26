@@ -119,7 +119,7 @@ class Documentation
     end
     # Ref to id widget
     # todo: use loader method eg: syntax highlighter (and move css from docs.css to seperate file?)
-    html.gsub!('[ref-widget]', '<h3>Object ID to Ref converter</h3><p>Use the inputs below to convert object ID numbers to Ref representations and vice-versa.</p><div class="ref-converter"><input name="ref-converter-id" placeholder="id (eg: 123456)"></input> &rlarr; <input name="ref-converter-ref" placeholder="ref (eg: 9w8q6)"></input></div><script src="/presentation/scripts/ref-converter.js"></script>')
+    html.gsub!('[ref-widget]', '<p>Use the inputs below to convert object ID numbers to Ref representations and vice-versa.</p><div class="ref-converter"><input name="ref-converter-id" placeholder="id (eg: 123456)"></input> &rlarr; <input name="ref-converter-ref" placeholder="ref (eg: 9w8q6)"></input></div><script src="/presentation/scripts/ref-converter.js"></script>')
     # Is there anything which needs syntax highlighting?
     required_syntax_highlighters = Hash.new
     html.gsub!(/\<pre\>language=(\w+)/) do
