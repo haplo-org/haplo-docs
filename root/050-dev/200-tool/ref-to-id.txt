@@ -1,0 +1,10 @@
+title: Ref/id converter
+long_title: Ref to id/Id to ref tool
+link_as: keyword
+--
+
+h2. Object ID to Ref converter
+
+<p>Use the inputs below to convert object ID numbers to Ref representations and vice-versa.</p>
+&nbsp;<div class="ref-converter"><input name="ref-converter-id" placeholder="id (eg: 123456)"></input> &rlarr; <input name="ref-converter-ref" placeholder="ref (eg: 9w8q6)"></input>
+</div><script src="/presentation/scripts/ref-converter.js"></script>
