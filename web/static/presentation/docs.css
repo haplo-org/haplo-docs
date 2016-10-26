@@ -679,6 +679,7 @@ h2.acts_as span.apilabel, h3.acts_as span.apilabel
 /* ref converter widget */
 .ref-converter input
 {
+    font-size: 16px;
     padding: 2px 2px 2px 5px;
 }
 .ref-converter input:first-child { margin-right: 10px; }
