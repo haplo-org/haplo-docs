@@ -1,0 +1,34 @@
+title: NAME() customisation
+long_title: NAME() based customisation
+--
+
+The [node:dev/plugin/misc/name] system can be used to globally customise test within the workflow system.
+
+h2. Private notes
+
+'Private' may not be the right word for your application, or you might want to customise the wording of the explanation without including it in every workflow.
+
+Use the @std:NAME@ service to translate these codes:
+
+ * @std:workflow:notes-private-label@ - the label for private notes
+ * @std:workflow:notes-private-label-plural@ - the label for private notes (plural)
+ * @std:workflow:notes-private-adjective@ - the adjective for the notes
+ * @std:workflow:notes-private-email-marker@ - the marker to identify private notes in email notifications
+ * @std:workflow:notes-explanation-private@ - the explanation of what a private note is
+ * @std:workflow:notes-explanation-everyone@ - the corresponding explanation for normal notes
+
+For example, to rename 'private notes' to 'administrative notes', use code like:
+
+<pre>language=javascript
+var PRIVATE_NOTES_TEXT = {
+    "std:workflow:notes-private-label": "Administrative note",
+    "std:workflow:notes-private-label-plural": "Administrative notes",
+    "std:workflow:notes-private-adjective": "administrative",
+    "std:workflow:notes-private-email-marker": "ADMIN",
+    "std:workflow:notes-explanation-private": "Seen only by administrative staff reviewing this application, not seen by the applicant unless specifically requested."
+};
+P.implementService("std:NAME", function(name) {
+    var text = PRIVATE_NOTES_TEXT[name];
+    if(text) { return text; }
+});
+</pre>

@@ -44,6 +44,8 @@ h2. Text
 
 The notes system uses configurable text to explain private notes to users.
 
+Note this, and the 'private' name, can be configured globally using the [node:dev/standard-plugin/workflow/definition/text/name:NAME() system].
+
 The following names are searched.
 
 h4. Normal notes explanation in transition UI
