@@ -151,6 +151,8 @@ class DocNodeTextile < DocNodeWithHeaders
         %Q!<div id="#{link_name}" class="anchor_point"></div>#{heading}!
       end
     end
+    # Quick hack to make NAME() work, avoiding confusion with Textile acronym syntac ABC(Apple Bananas Carrots)
+    html.gsub!('NAME (', 'NAME(')
     # Return processed HTML
     html
   end

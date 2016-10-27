@@ -12,6 +12,9 @@ It's also available as:
  * automatic substitution in [node:dev/plugin/form/specification#Text:form labels and other text]
  * as a standard text interpolation in the standard [node:dev/standard-plugin/workflow/definition/text:workflow plugin text system]
 
+There is a two argument version so longer phrases can be customised using the same system.
+
+
 h3(function). NAME (name)
 
 Returns a translated version of @name@.
@@ -25,12 +28,20 @@ If nothing translates the name, @name@ is returned unaltered.
 The result is cached.
 
 
+h3(function). NAME (code, defaultName)
+
+Looks up @code@ using the same mechanism as the single argument version of @NAME()@, but if it isn't translated, the value of @defaultName@ will be returned.
+
+Use this to allow longer messages to be replaced with customised defaults. The use of a code as a key, rather than the entire phrase, allows the default to be edited without updating all the customisations.
+
+
 h2. Usage
 
 Ordinary plugins just use the @NAME()@ function in their code or templates. As a matter of style, try to restrict use of @NAME()@ to templates:
 
 <pre>language=javascript
   <div> "Destination: " NAME("Faculty") </div>
+  <div> NAME("example:routing:committee" "This application will be routed to the Faculty committee.") </div>
 </pre>
 
 and only when necessary as the JavaScript function:
