@@ -30,6 +30,14 @@ If a column definition is specified as a string, it's interpreted as @{fact:"fac
 
 Different column types support and may require more than these properties. See the list of column types below.
 
+h3(function). hasColumnBasedOnFact(fact)
+
+Returns @true@ if the dashboard currently has a column based on the @fact@.
+
+h3(property). columnCount
+
+The number of columns currently added to this dashboard.
+
 h2. Standard features
 
 The List dashboard provides some standard features that can be utilised with the Dashboard [node:dev/standard-plugin/reporting/dashboards#use:use()] function.

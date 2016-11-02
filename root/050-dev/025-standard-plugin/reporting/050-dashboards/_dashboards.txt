@@ -105,6 +105,8 @@ If the dashboard is *exporting*, eg, when generating an excel spreadsheet for do
 
 A wildcard service, @"std:reporting:dashboard:*:setup"@ is also called to allow setup for all dashboards.
 
+In addition, just before the dashboard is rendered, a 'final' version of each of the above services is called, with @_final@ appended to the name. These should be used if your customisations depend on what other plugins might have done previously. You should only use these versions if you can't implement your customisation otherwise.
+
 All services are called with one argument, the @dashboard@ object, for example:
 
 <pre>language=javascript
