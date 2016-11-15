@@ -62,7 +62,9 @@ h3(function). order(orderBy, ...)
 
 Specify how to order the dashboard when it is initially displayed.
 
-Each argument is a fact name, or an array of @[factName, descending]@. See the database query [node:dev/plugin/interface/database-query#order:order()].
+Each argument is a fact name, or an array of @["factName", descending]@ where @descending@ is a boolean which should be true to use a descending order.
+
+See the database query [node:dev/plugin/interface/database-query#order:order()].
 
 h3(function). setTime(date)
 
