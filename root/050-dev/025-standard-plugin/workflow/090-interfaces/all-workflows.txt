@@ -1,0 +1,22 @@
+title: AllWorkflows
+long_title: AllWorkflows interface
+link_as: keyword
+--
+
+@AllWorkflows@ objects provide information about all the workflows defined in the application.
+
+h2. Construction
+
+Register a callback with [node:dev/standard-plugin/workflow/definition/special#P_workflow_registerOnLoadCallback].
+
+
+h2. Interface
+
+h3(function). getWorkflow(name)
+
+Returns the workflow definition for the given @name@.
+
+
+h3(function). forEach(iterator)
+
+Calls the @iterator@ for each defined workflow.
