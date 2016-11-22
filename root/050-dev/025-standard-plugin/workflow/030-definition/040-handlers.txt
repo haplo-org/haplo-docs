@@ -140,6 +140,14 @@ Similar to @actionPanel()@, but for adding the links to the built-in transition 
 
 
 
+h2. panelHeading(priority, title)
+
+Called to set the title of a set of action panel elements with a given priority.
+
+No title is rendered if there are no elements for the given priority.
+
+
+
 h2. renderWork(selector, fn)
 
 Called to render the work unit.
