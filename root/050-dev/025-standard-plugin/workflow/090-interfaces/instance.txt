@@ -65,6 +65,12 @@ Perform the named @transition@, with optional additional @data@ to store in the 
 
 
 
+h3(function). transitionUrl(transition, extraParameters)
+
+Return the transition confirmation page URL for the given @transition@ as a string. Optionally specify an @extraParameters@ object to include any additional parameters required, eg: to specify the @target@.
+
+
+
 h3(function). getTextMaybe(name, ...)
 
 The arguments are one or more text string names, specified in the [node:dev/standard-plugin/workflow/definition/text:definition's text].
