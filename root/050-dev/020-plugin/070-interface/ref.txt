@@ -11,6 +11,8 @@ Use [node:dev/plugin/o/constructor/ref].
 
 To avoid hardcoding @Ref@ values in your plugin, use the [node:dev/plugin/o/behaviour:behaviour] lookup functions.
 
+If you have an array of @Ref@ objects, the [node:dev/plugin/o/utility#O_deduplicateArrayOfRefs] function may be useful.
+
 
 h2. Interface
 
