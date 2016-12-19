@@ -91,6 +91,55 @@ var docStore = P.defineDocumentStore({
 });
 </pre>
 
+h3(function). getAdditionalUIForViewer(key, instance, document)
+
+Use this to define additional UI to be displayed when rendering the form viewer.
+
+Return an object containing locations and [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred renders].
+
+|*Property*|*Location*|
+|top|Displayed at the top of the page|
+|bottom|Displayed at the bottom of the page|
+
+The properties are optional.
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    getAdditionalUIForViewer: function(M, instance, document) {
+        return {
+            top: P.template("top").deferredRender(view)
+        };
+    }
+});
+</pre>
+
+h3(function). getAdditionalUIForEditor(key, instance, document, form)
+
+Use this to define additional UI to be displayed when rendering the form editor. Check form.formId to only display on certain forms in the docstore.
+
+Return an object containing locations and [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred renders].
+
+|*Property*|*Location*|
+|top|Displayed at the top of the page, above the form nvaigation|
+|formTop|Displayed above the form, after the form navigation|
+|bottom|Displayed at the bottom of the page, below the form nvaigation|
+|formBottom|Displayed below the form, before the submit buttons and form navigation|
+
+The properties are optional.
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    getAdditionalUIForEditor: function(M, instance, document, form) {
+        return {
+            top: P.template("top").deferredRender({}),
+            formBottom: P.template("form-bottom").deferredRender({})
+        };
+    }
+});
+</pre>
+
 h2. Example
 
 An example small definition, where @meetingDetails@ and @outcomes@ are two defined [node:dev/plugin/form:forms]:
