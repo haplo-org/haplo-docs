@@ -97,7 +97,7 @@ Defines a statistic using @specification@. The @specification@ must define an ag
 |description|Human readable name for displaying in the UI|
 |filter|The filter to apply to the collection|
 |aggregate|The [node:dev/plugin/interface/database-query#aggregate:aggregate function] to use to generate the statistic value|
-|calculate|A function with one argument, the [node:dev/plugin/interface/database-table#select:select] object|
+|calculate|A function with two arguments, a [node:dev/plugin/interface/database-query] object and a @context@, which is either a collection or a dashboard and implements @property()@.|
 
 h3(function). filter(name, filterFunction)
 
