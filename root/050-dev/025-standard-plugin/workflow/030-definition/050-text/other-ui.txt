@@ -12,3 +12,13 @@ h4. "Currently with" caption in action panel
 
  * status-ui-currently-with:STATE
  * status-ui-currently-with
+
+
+h4. Annotations to "Currently with"
+
+As the "Currently with" often shows the name of a specific person, you can add an annotation to display their role.
+
+ * status-ui-currently-with-annotation:ACTIONABLE-BY:STATE
+ * status-ui-currently-with-annotation:ACTIONABLE-BY
+ * status-ui-currently-with-annotation
+
