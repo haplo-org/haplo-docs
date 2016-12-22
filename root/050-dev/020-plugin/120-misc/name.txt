@@ -35,6 +35,23 @@ Looks up @code@ using the same mechanism as the single argument version of @NAME
 Use this to allow longer messages to be replaced with customised defaults. The use of a code as a key, rather than the entire phrase, allows the default to be edited without updating all the customisations.
 
 
+h2. String interpolation
+
+Forms and standard plugins provide an alternative use of @NAME()@ through string interpolation.
+
+When strings are interpolated, the pattern @NAME(.+?)@ is replaced by translated text. Note that the text does not use quotes.
+
+The two argument form uses a @|@ character to separate the code and default name.
+
+For example:
+
+<pre>
+  "The NAME(Head of Department) should action this request."
+  "Please review this NAME(std:workflow:notes-private-label|Private note)"
+</pre>
+
+
+
 h2. Usage
 
 Ordinary plugins just use the @NAME()@ function in their code or templates. As a matter of style, try to restrict use of @NAME()@ to templates:

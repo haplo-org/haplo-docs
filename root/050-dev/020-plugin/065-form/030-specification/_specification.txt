@@ -45,7 +45,7 @@ h3. Common properties
 
 h2. Text
 
-All user visible text in forms, like @label@, @heading@, etc, uses the [node:dev/plugin/misc/name] function to translate names of things where names are marked as @NAME(name)@. Note there are no quotes within the brackets.
+All user visible text in forms, like @label@, @heading@, etc, uses @NAME()@ [node:dev/plugin/misc/name#String_interpolation:string interpolation] to translate names of things where names are marked as @NAME(name)@. Note there are no quotes within the brackets.
 
 For example:
 
