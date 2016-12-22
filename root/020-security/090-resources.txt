@@ -5,7 +5,7 @@ h2. Full disk encryption software
 
 h3. Windows
 
-Some versions of Windows have "BitLocker":http://windows.microsoft.com/en-US/windows7/products/features/bitlocker built in. If your version of Windows doesn't include this feature, you can use products such as "PGP Whole Disk Encryption":http://www.symantec.com/business/whole-disk-encryption and "TrueCrypt":http://www.truecrypt.org/.
+Some versions of Windows have "BitLocker":https://technet.microsoft.com/en-us/library/cc732774(v=ws.11).aspx built in. If your version of Windows provides BitLocker, you should "enable it":https://support.microsoft.com/en-us/instantanswers/e7d75dd2-29c2-16ac-f03d-20cfdf54202f/turn-on-device-encryption, but if it doesn't, you can use products such as "PGP Whole Disk Encryption":http://www.symantec.com/business/whole-disk-encryption.
 
 h3. Mac OS X
 
@@ -18,7 +18,7 @@ It's worth upgrading to the latest Mac OS X for FileVault 2.
 
 h3. Linux
 
-See your distribution's documentation for the options available to you. "TrueCrypt":http://www.truecrypt.org/ is available for Linux.
+See your distribution's documentation for the options available to you, for example, "LUKS":https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup.
 
 
 h2. Technical articles
