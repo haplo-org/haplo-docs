@@ -1,0 +1,62 @@
+title: Transition form
+--
+
+This feature adds a form at the top of the standard [node:dev/standard-plugin/workflow/definition/text/transition-ui] which must be completed by the actionable user before the pending transition can take place. The document from the form is then saved in the timeline entry upon transitioning.
+
+This provides an alternative place to place forms that do not necessarily require an entire [node:dev/standard-plugin/document-store/definition:Document store definition] but that may still be essential to certain parts of a workflow.
+
+h2. Using transition forms
+
+<pre>language=javascript
+EgWorkflow.use("std:transition_form", {
+    
+    selector: { state: "wait_supervisor" },
+    
+    transitions: ["progress"],
+    
+    form: P.form({
+        specificationVersion: 0,
+        formId: "exampleForm",
+        formTitle: "Example form",
+        elements: [
+            // ...
+        ]
+    }),
+    
+    onTransition: function(M, document) {
+        // called just before transition
+    }
+});
+</pre>
+
+h2. Usage
+
+@use()@ the @std:transition_form@ feature, passing in the specification object, which has keys:
+
+h3(key). selector
+
+A [node:dev/standard-plugin/workflow/definition/selector:selector] for the transition form.
+
+h3(key). transitions
+
+The list of transitions for which the form is required.
+
+h3(key). form
+
+The [node:/dev/plugin/interface/form-description] to display on transition UI.
+
+h3(key). prepareFormInstance
+
+@function(key, instance)@
+
+Allows preparation of the form instance, such as setting up [node:dev/plugin/interface/form-instance#choices:dynamic form choices]. See [node:dev/standard-plugin/document-store/definition#prepareFormInstance] for usage examples.
+
+h3(key). onTransition
+
+@function(key, document)@
+
+If this function is specified, it will be called just before the transition is committed.
+
+h2. Errors
+
+Error messages are rendered at the top of the form if the form is left incomplete. The text for these can be easily customised using [node:/dev/standard-plugin/workflow/definition/text/transition-form:the Workflow text system].
