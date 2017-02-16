@@ -93,6 +93,11 @@ h3(function). anyVisibility()
 Ignore the @visible@ property when finding work units.
 
 
+h3(function). deadlineMissed()
+
+Find work units where the @deadline@ property is in the past.
+
+
 h2. Interface (results)
 
 h3(acts_as). Array

@@ -60,7 +60,7 @@ Date. When the user is/was first expected to act on this work unit.
 
 h3(property). deadline
 
-Date. When this work unit must be closed by.
+Date. A deadline for the next action for this work unit. The platform does not display this date to the user.
 
 
 h3(property). closedAt
