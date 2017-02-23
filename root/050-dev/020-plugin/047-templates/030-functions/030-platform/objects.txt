@@ -4,6 +4,9 @@ long_title: Objects template functions
 
 These template functions render [node:dev/plugin/interface/store-object:StoreObjects].
 
+The @object@ argument may also be a [node:dev/plugin/interface/ref], which will implicitly load the object.
+
+
 h2. std:object(object style)
 
 Render @object@ in the given @style@.
