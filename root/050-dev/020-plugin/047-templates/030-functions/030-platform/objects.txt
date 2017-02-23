@@ -26,6 +26,16 @@ h2. std:object:link:descriptive(object)
 Render a link to @object@, with the full descriptive title of the object as the link text.
 
 
+h2. std:object:title(object)
+
+The title of the @object@.
+
+
+h2. std:object:title:shortest(object)
+
+The shortest title of the @object@.
+
+
 h2. std:object:url(object)
 
 The URL of this object, as obtained by calling [node:dev/plugin/interface/store-object#url] on an object.
