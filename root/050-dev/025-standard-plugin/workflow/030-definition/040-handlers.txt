@@ -222,7 +222,7 @@ EgWorkflow.transitionUI({}, function(M, E, ui) {
 
 h2. transitionFormSubmitted(selector, fn)
 
-Called when the build-in transition UI form is submitted, but before the workflow UI is fully committed to the transition.
+Called when the built-in transition UI form is submitted, but before the workflow UI is fully committed to the transition.
 
 <pre>language=javascript
 EgWorkflow.transitionFormSubmitted({}, function(M, E, ui) {
@@ -236,7 +236,7 @@ EgWorkflow.transitionFormSubmitted({}, function(M, E, ui) {
 
 h2. transitionFormPreTransition(selector, fn)
 
-Called when the build-in transition UI form is submitted, after the workflow UI is fully committed to the transition.
+Called when the built-in transition UI form is submitted, after the workflow UI is fully committed to the transition.
 
 <pre>language=javascript
 EgWorkflow.transitionFormPreTransition({}, function(M, E, ui) {
@@ -250,7 +250,7 @@ EgWorkflow.transitionFormPreTransition({}, function(M, E, ui) {
 
 h2. transitionUIPostTransitionRedirectForActionableUser(selector, fn)
 
-Called when the build-in transition UI has completed a transition, and the new actionable user is still the current user. Return a URL to override the default redirect to the workflow's @url@.
+Called when the built-in transition UI has completed a transition, and the new actionable user is still the current user. Return a URL to override the default redirect to the workflow's @url@.
 
 Note the selector applies to the workflow *after* the transition has taken place.
 

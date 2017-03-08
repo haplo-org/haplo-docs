@@ -17,7 +17,7 @@ h2. Interface
 
 h3(function). toString()
 
-Returns a human-readable string representation. For clarify, the format will depend on the precision and the values of the range.
+Returns a human-readable string representation. For clarity, the format will depend on the precision and the values of the range.
 
 
 h3(function). toHTML()

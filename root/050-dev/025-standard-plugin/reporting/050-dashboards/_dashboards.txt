@@ -42,7 +42,7 @@ h3(function). summaryStatistic(priority, statistic)
 
 Displays a summary statistic on the Dashboard.
 
-@priority@ is a number used for sorting the statistics. @statistic@ is a string which is the name of defined name of the statistic.
+@priority@ is a number used for sorting the statistics. @statistic@ is a string which is the defined name of the statistic.
 
 h3(function). property(name)
 

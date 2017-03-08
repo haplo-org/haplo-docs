@@ -241,7 +241,7 @@ var application = P.form({
     ]
 });
 
-P.EgWorkflow.use("vre:document_store", {
+P.EgWorkflow.use("std:document_store", {
     name: "applicationForm",
     title: "Application form",
     panel: 500,

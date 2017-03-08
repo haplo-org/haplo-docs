@@ -92,7 +92,7 @@ If @true@, an index will be created for this field.
 
 h3(key). indexedWith
 
-If set to an array of name of other fields, a multi-field index will be created with this field as the first field, then the others in order. Useful for speeding up queries on multiple fields, but use with caution.
+If set to an array of names of other fields, a multi-field index will be created with this field as the first field, then the others in order. Useful for speeding up queries on multiple fields, but use with caution.
 
 
 h3(key). uniqueIndex

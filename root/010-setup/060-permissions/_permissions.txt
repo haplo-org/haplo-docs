@@ -22,7 +22,7 @@ h2. Plugins and permissions
 
 The Platform provides a fairly comprehensive, but minimal, system for applying labels and describing permissions for users. This will be more than sufficient for many applications.
 
-It is not, however, intended to cover the needs of larger applications. In this case, the build-in system should be augmented or completely replaced by a permissions scheme implemented by plugins.
+It is not, however, intended to cover the needs of larger applications. In this case, the built-in system should be augmented or completely replaced by a permissions scheme implemented by plugins.
 
 This approach allows you complete flexibility in how you implement permissions in your application. Rather than being restricted by limited built-in tools, you can express whatever you need in a few lines of code.
 
