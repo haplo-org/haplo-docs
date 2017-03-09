@@ -39,6 +39,8 @@ h3(function). instanceForRef(ref)
 Given the [node:dev/plugin/interface/ref] of the associated object, return a [node:dev/standard-plugin/workflow/interfaces/instance] representing the process or @null@ if there is no such process.
 
 
+If you do not have access to the workflow definition object, you can also access the instance using the @std:workflow:for_ref@ [node:dev/plugin/o/service:service] which takes two arguments, @workType@ and @ref@.
+
 h2. Example
 
 This handler displays confirmation page, and if the user confirm, creates an object representing the task and the workflow instance to go along with it.
