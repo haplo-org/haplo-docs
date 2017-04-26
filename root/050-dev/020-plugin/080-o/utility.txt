@@ -15,7 +15,7 @@ This function guarantees the following properties. You *must not* rely on any ot
 
  * If an entry in the input array is a @StoreObject@, the returned array will return the corresponding @Ref@.
 
- * @undefined@ and @null@ values in the input array are ignored.
+ * @undefined@ and @null@ values in the input array are ignored, and therefore will not be included in the output array.
 
  * While the array may contain the exact @Ref@ objects which appeared in the input array, only equivalence is guaranteed.
 
