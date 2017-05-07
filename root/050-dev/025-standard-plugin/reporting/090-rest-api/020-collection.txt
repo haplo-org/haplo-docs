@@ -1,0 +1,97 @@
+title: collection
+link_as: keyword
+--
+
+*Endpoint*: @GET /api/reporting/v0/collection/[collection-name]@
+
+This request takes no parameters. The collection name is embedded in the URL.
+
+h2. Response
+
+The response is a JSON document with the following properties.
+
+h3(property). name
+
+The name of the collection, for use in future API requests.
+
+
+h3(property). description
+
+A description of the collection, as text which may be presented to the user.
+
+
+h3(property). categories
+
+An array of category names.
+
+
+h3(property). status
+
+The status of the collection. If the status is @"ready"@ then all the facts have been gathered and the data is up-to-date.
+
+
+h3(property). facts
+
+An array of facts available in this collection, as objects with properties giving the @"name"@ of the fact, the data @"type"@ of the fact, and a @"description"@ suitable for presentation to the user.
+
+
+h3(property). data
+
+The URL path to request to retrieve the data stored in this collection.
+
+
+h2. Example response
+
+@GET /api/reporting/v0/collection/researchers?output=pretty@
+
+<pre>language=json
+{
+  "name": "researchers",
+  "description": "Researchers",
+  "categories": [
+    "hres:people"
+  ],
+  "status": "ready",
+  "facts": [
+    {
+      "name": "ref",
+      "type": "ref",
+      "description": "Reporting object"
+    },
+    {
+      "name": "isExternal",
+      "type": "boolean",
+      "description": "Is an external researcher"
+    },
+    {
+      "name": "isExaminer",
+      "type": "boolean",
+      "description": "Is an examiner"
+    },
+    {
+      "name": "examsDone",
+      "type": "int",
+      "description": "Examinations"
+    },
+    {
+      "name": "nameSortAs",
+      "type": "text",
+      "description": "Sorting by name"
+    },
+    {
+      "name": "faculty",
+      "type": "ref",
+      "description": "Faculty"
+    },
+    {
+      "name": "department",
+      "type": "ref",
+      "description": "Department"
+    }
+  ],
+  "data": "/api/reporting/v0/collection-data/researchers"
+}
+</pre>
+
+
+

@@ -3,7 +3,7 @@ title: Reporting
 
 Plugin name: @std_reporting@
 
-The standard Reporting plugin provides the ability to generate reports based on historical data from many different sources.
+The standard Reporting plugin provides the ability to generate reports based on historical data from many different sources, and a [node:dev/standard-plugin/reporting/rest-api] for access by external systems.
 
 h2. Terminology
 

@@ -1,0 +1,68 @@
+title: collections
+link_as: keyword
+--
+
+*Endpoint*: @GET /api/reporting/v0/collections@
+
+This request takes no parameters.
+
+
+h2. Response
+
+The response is a JSON document with a single root property, @collections@, an array of information about the collections available. Each element of this array has properties:
+
+h3(property). name
+
+The name of the collection, for use in future API requests.
+
+
+h3(property). description
+
+A description of the collection, as text which may be presented to the user.
+
+
+h3(property). categories
+
+An array of category names.
+
+
+h3(property). info
+
+The URL path to request to get more information about this collection.
+
+
+
+h2. Example response
+
+@GET /api/reporting/v0/collections?output=pretty@
+
+<pre>language=json
+{
+  "collections": [
+    {
+      "name": "researchers",
+      "description": "Researchers",
+      "categories": [
+        "hres:people"
+      ],
+      "info": "/api/reporting/v0/collection/researchers"
+    },
+    {
+      "name": "doctoral_researchers",
+      "description": "Doctoral Researchers",
+      "categories": [
+        "hres:people"
+      ],
+      "info": "/api/reporting/v0/collection/doctoral_researchers"
+    },
+    {
+      "name": "doctoral_supervisors",
+      "description": "Supervisors of Doctoral Researchers",
+      "categories": [
+        "hres:people"
+      ],
+      "info": "/api/reporting/v0/collection/doctoral_supervisors"
+    }
+  ]
+}
+</pre>
