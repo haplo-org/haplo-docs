@@ -100,7 +100,7 @@ This is mainly intended for use by other features, and your plugin should define
 
 h2. Defining entities by function
 
-Sometimes the logic to find an entity depends on things which can't be expressed with simple attributes and qualifiers. You can use a function instead, which takes a single argument @context@, which is either @"list"@ or @"first"@. If @"list"@, return an array of Refs, otherwise a single Ref.
+Sometimes the logic to find an entity depends on things which can't be expressed with simple attributes and qualifiers. You can use a function instead, which must return an array of Refs. The return value will be de-duplicated with [node:dev/plugin/o/utility#O_deduplicateArrayOfRefs].
 
 @this@ is the entities object. Access to the workflow instance is available via the @this.M@, but it might not always be available, so use with caution.
 
@@ -111,14 +111,16 @@ EgWorkflow.use("std:entities", {
     "project": ["object", A.Project],
     "supervisor": ["project", A.Supervisor],
     "examiner": ["project", A.Supervisor, Q.Examiner],
-    "responsibleStaff": function(context) {
-        var r = this.examiner_refMaybe ||
-                this.supervisor_refMaybe;
-        return (context === "list") ? [r] : r;
+    "responsibleStaff": function() {
+        return [
+          this.examiner_refMaybe || this.supervisor_refMaybe,
+          this.facultyApprover_refMaybe
+        ];
     }
 });
 </pre>
 
+For compatibility with legacy code, this function will always be called with a single argument, @"list"@.
 
 
 h2. Text system helpers
