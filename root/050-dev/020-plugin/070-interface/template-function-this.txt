@@ -23,6 +23,43 @@ h3(function). write(string)
 Write the @string@, escaped for the current context.
 
 
+h3(function). deferredRenderBlock(blockName)
+
+Return a deferred render for the named block, or @null@ for the anonymous block.
+
+Where you're using a template with @render()@, this allows you to include blocks from the template which uses your function.
+
+For example, with this template function:
+
+<pre>language=javascript
+P.globalTemplateFunction("example:link-with-block-title", function(object) {
+    this.render(P.template("example-link").deferredRender({
+        href: object.url(),
+        title: this.deferredRenderBlock()
+    }));
+});
+</pre>
+
+@example-link@ is a template in the defining plugin:
+
+<pre>language=hsvt
+<a href=href>
+  render(title)
+</a>
+</pre>
+
+And the function can be used in any other plugin like this:
+
+<pre>language=hsvt
+<p>
+  example:link-with-block-title(object) {
+    <i> "Title: " </i>
+    object.title
+  }
+</p>
+</pre>
+
+
 h3(function). hasBlock(blockName)
 
 Return @true@ if the function has been called with a given named block, or @null@ for the anonymous block.
