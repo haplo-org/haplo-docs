@@ -33,3 +33,13 @@ h3(function). O.allUsersWithEmailAddress(emailAddress)
 Return an @Array@ of zero or more [node:dev/plugin/interface/security-principal] objects which have the specified email address and are currently active.
 
 In general, you should use @O.user(emailAddress)@, which will return the oldest active @SecurityPrincipal@ object with that email address. However, if you're writing a custom authentication system, you may need to create multiple users with the same email address and this function will be useful to find them all.
+
+
+h3(function). O.serviceUser(code)
+
+Return a service user with the given code.
+
+If the service user does not exist, an exception is thrown.
+
+Service users are created with [node:dev/plugin/schema/requirements-schema#Service_users:schema requirements].
+
