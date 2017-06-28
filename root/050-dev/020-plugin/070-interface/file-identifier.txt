@@ -61,3 +61,7 @@ h3(property). logMessage
 
 A @String@ containing the user's description of the changes made in this version within a 'file version track'.
 
+
+h3(function). identifier()
+
+Returns itself. Implemented so that you can call @identifier()@ on both @FileIdentifier@ and [node:dev/plugin/interface/file] objects.
