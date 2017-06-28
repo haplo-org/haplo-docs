@@ -96,3 +96,9 @@ h2. Options
 |@linkToDownload@|When generating HTML, include a link to download the file.|@false@|
 |@forceDownload@|Set the Content-Disposition to attachment to force the browser to download the file, rather than displaying it.|@false@|
 
+
+h3(property). thumbnailFile
+
+A [node:dev/plugin/interface/binary-data] object of the thumbnail image for this file, if available. Use the @properties@ of the @File@ to determine the existence, width and height of the image.
+
+
