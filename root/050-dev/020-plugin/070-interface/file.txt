@@ -102,3 +102,15 @@ h3(property). thumbnailFile
 A [node:dev/plugin/interface/binary-data] object of the thumbnail image for this file, if available. Use the @properties@ of the @File@ to determine the existence, width and height of the image.
 
 
+h3(property). tags
+
+An @Object@-like dictionary of short @String@ to @String@ key value pairs, intended for storing additional properties about the file such as extended file information captured by external file preservation systems.
+
+
+h3(function). changeTags(changes)
+
+Modify the @tags@ property. Call with an @Object@ dictionary of @String@ to @String@ key value pairs. If a value is @null@ or @undefined@, the tag is deleted.
+
+Changing tags is performed atomically without race conditions for multiple concurrent modifications to tag.
+
+An exception will be thrown if keys or values are not @Strings@.
