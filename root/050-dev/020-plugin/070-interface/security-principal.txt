@@ -52,6 +52,16 @@ h3(property). isSuperUser
 @true@ if this @SecurityPrincipal@ represents a super-user. These include the built in @SYSTEM@ and @SUPPORT@ users.
 
 
+h3(property). isServiceUser
+
+@true@ if this @SecurityPrincipal@ represents a service user.
+
+
+h3(property). isAnonymous
+
+@true@ if this @SecurityPrincipal@ represents an anonymous user. This includes the built in @ANONYMOUS@ user.
+
+
 h3(property). groupIds
 
 An array of IDs of the groups this principal belongs to.
