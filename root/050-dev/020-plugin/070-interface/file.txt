@@ -93,6 +93,8 @@ h2. Options
 |@transform@|Transform to be applied to the file|@null@|
 |@asFullURL@|Whether to include the hostname in the URL|@false@|
 |@authenticationSignature@|Sign the URL to bypass the usual file download authentication. Note that this signature is only valid for the current user session.|@false@|
+|\3.@authenticationSignatureValidForSeconds@|
+||Sign the URL to bypass the usual file download authentication. The signature doesn't need a user session, but is only valid for the specified number of seconds.|@null@|
 |@linkToDownload@|When generating HTML, include a link to download the file.|@false@|
 |@forceDownload@|Set the Content-Disposition to attachment to force the browser to download the file, rather than displaying it.|@false@|
 
