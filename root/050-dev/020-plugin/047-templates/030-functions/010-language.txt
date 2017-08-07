@@ -65,7 +65,7 @@ h2. concat(...)
 
 Output all the arguments. No whitespace is output between them.
 
-Use to override the automatic space separated values when using lists as attribute values.
+Use to override the automatic space separated values when using lists as attribute values, and building strings as arguments to template functions.
 
 
 h2. scriptTag(...)
