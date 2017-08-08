@@ -1,0 +1,25 @@
+title: Universally unique identifiers
+--
+
+Support for generating and parsing Universally Unique Identifiers (UUIDs).
+
+
+h3(function). O.uuid.randomUUID()
+
+Generate a new random UUID (v4).
+
+
+h3(function). O.uuid.fromString(uuid)
+
+Constructs a @O.T_IDENTIFIER_UUID@ [node:dev/plugin/interface/text:text object] from a valid UUID @String@.
+
+The UUID should be expressed in the canonical 8-4-4-4-12 format, eg:
+
+@xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx@
+
+
+h3(function). O.uuid.isEqual(uuid1, uuid2)
+
+Returns @true@ if the two given UUIDs (as @String@) are equal.
+
+

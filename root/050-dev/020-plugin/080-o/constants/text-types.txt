@@ -18,5 +18,6 @@ See also [node:dev/plugin/o/constants/value-types].
 |@O.T_IDENTIFIER_POSTCODE@|UK postcode|
 |@O.T_IDENTIFIER_TELEPHONE_NUMBER@|Telephone number, with international dialing|
 |@O.T_IDENTIFIER_URL@|URL (web address)|
+|@O.T_IDENTIFIER_UUID@|Universally unique identifier|
 |@O.T_IDENTIFIER_CONFIGURATION_NAME@|Configuration name, for use by plugins to identify special objects, or special behaviour of objects.|
 
