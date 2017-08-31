@@ -159,13 +159,19 @@ li
     background: #fff url(/presentation/linksbg.png) 0 0;
     border-bottom:1px solid #ddd;
     color:#555;	
-    font-size: 11px;
-    padding: 15px 0 14px 19px;
     position:fixed;
     width:100%;
     left:0;
     top:0;
     z-index:1000;
+}
+
+#header-logo
+{
+    padding: 22px;
+    text-align:right;
+    font-size: 13px;
+    background: url(/presentation/haplo-trademark-logo-docs.svg) 12px 8px no-repeat;
 }
 
 #header span
