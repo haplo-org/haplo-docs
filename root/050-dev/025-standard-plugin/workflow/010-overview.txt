@@ -23,6 +23,7 @@ The Workflow plugin provides a @std:workflow@ [node:dev/plugin/interface/plugin/
 {
   "pluginName": "example_workflow",
   // ... rest of plugin.json
+  "depend": ["std_workflow"],
   "use": ["std:workflow"]
 }
 </pre>
