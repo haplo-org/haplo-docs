@@ -27,7 +27,7 @@ For a failed request, this string property gives a reason for the failure.
 
 h3(property). status
 
-The HTTP status code of the response. This may not be set, if no response could be obtained from the server at all.
+The HTTP status code of the response as a string. This may not be set, if no response could be obtained from the server at all.
 
 h3(property). reason
 
