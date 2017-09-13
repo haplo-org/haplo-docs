@@ -3,7 +3,7 @@ long_title: std:generate:fill_fields transform step
 link_as: keyword
 --
 
-This file transform step fills in fields in PDF and word processing documents.
+This file transform step fills in fields in PDF and word processing documents. The @information@ property on the [node:dev/plugin/interface/file-transform-result] is used to return information about which fields were filled.
 
 *NOTE:* This transform is implemented by an optional platform component, and may not be available in your installation.
 
@@ -13,6 +13,26 @@ h2. Creating input documents
 Text form fields are filled in when filling a PDF file.
 
 @MERGEFIELD@ fields are filled in when filling a word processing document. A definition should look like @"MERGEFIELD FieldName"@ where @FieldName@ is the name which should be used in the @fields@ property.
+
+
+h2. Information in result
+
+The @information@ property in the [node:dev/plugin/interface/file-transform-result] will contain a @"std:generate:fill_fields"@ property. This is an array of objects, one per fill fields transform step.
+
+Each of these objects contains an @"filled"@ property, an array of field names that were filled in, and an @"unfilled"@ property, of those where a value was not specified in the @fields@ property of the specification. If fields are repeated in the input file, these arrays will contain multiple entries for that field.
+
+For example:
+
+<pre>language=json
+{
+  "std:generate:fill_fields": [
+    {
+      "filled": ["Field 1", "Field Two", "Field 1"],
+      "unfilled": ["Three"]
+    }
+  ]
+}
+</pre>
 
 
 h2. Transform specification
