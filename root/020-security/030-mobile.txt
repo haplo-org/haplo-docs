@@ -32,14 +32,6 @@ p(recommendation). You __should__ have the ability to perform a remote wipe of t
 
 If you are using an Apple iPhone, you __should__ only use the iPhone 3GS and later, as these devices use the mobile equivalent of full disc encryption and can be wiped instantly and unrecoverably.
 
-h3. Haplo Mobile
-
-The "Haplo Mobile":http://itunes.apple.com/gb/app/oneis-mobile/id365288248?mt=8 iPhone app stores the following information:
-
- * An authentication token, which is equivalent to your username and password, allowing it to access Haplo on your behalf.
- * Temporary copies of files you have viewed.
-
-If you use the Haplo Mobile app, you __must__ follow both the recommendations above.
 
 h3. Mobile web access
 

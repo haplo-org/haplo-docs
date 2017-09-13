@@ -1,6 +1,6 @@
 ## Haplo Documentation
 
-[Documentation](http://docs.haplo.org) for the [Haplo Platform](http://haplo.org)
+[Documentation](https://docs.haplo.org) for the [Haplo Platform](https://haplo.org)
 
 ## Editing the documentation
 
@@ -29,4 +29,4 @@ Haplo Documentation is licensed under the Mozilla Public License Version 2.0. Se
 
 ### Copyright
 
-Haplo Documentation is copyright [Haplo Services Ltd](http://www.haplo-services.com). See the COPYRIGHT file for full details.
+Haplo Documentation is copyright [Haplo Services Ltd](https://www.haplo-services.com). See the COPYRIGHT file for full details.

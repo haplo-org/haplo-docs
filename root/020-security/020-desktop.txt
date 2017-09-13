@@ -19,7 +19,7 @@ In particular:
 
  * Run up-to-date anti-virus and anti-malware software.
  * Run the most secure web browser possible.
- ** For example, "Google Chrome":http://www.google.com/chrome and "Safari":http://www.apple.com/safari version 5.1 and later include "sandboxing":http://www.apple.com/safari/features.html#security to minimise the effects of flaws.
+ ** For example, "Google Chrome":https://www.google.com/chrome and "Safari":https://www.apple.com/safari version 5.1 and later include "sandboxing":https://www.apple.com/safari/features.html#security to minimise the effects of flaws.
  ** *Do not* use Internet Explorer on Windows XP, as it lacks any modern protection whatsoever.
  * Ideally use one web browser for surfing the web, and the other for sensitive information.
  * Make sure all your software is kept up to date, wherever possible with automatic updates.

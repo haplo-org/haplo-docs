@@ -1,12 +1,12 @@
 title: Using Fossil
 --
 
-These instructions are the minimum needed to get going with the Fossil hosting service provided for Haplo developers. You can do much more with Fossil, see "the Fossil website":http://fossil-scm.org for more details.
+These instructions are the minimum needed to get going with the Fossil hosting service provided for Haplo developers. You can do much more with Fossil, see "the Fossil website":https://fossil-scm.org for more details.
 
 
 h2. Installation
 
-First, "download":http://www.fossil-scm.org/download.html Fossil for your platform. Alternatively, download the source code and build it with @./configure; make@ , or use your platform's packaging system.
+First, "download":https://www.fossil-scm.org/download.html Fossil for your platform. Alternatively, download the source code and build it with @./configure; make@ , or use your platform's packaging system.
 
 In all cases, you'll end up with a single @fossil@ or @fossil.exe@ executable. This is completely self-contained, and can be placed anywhere convenient on your @PATH@ or otherwise.
 
