@@ -96,11 +96,11 @@ Returns a restricted copy of this object, which only contains the attributes tha
 
 You cannot call this function on an already-restricted object.
 
-h3(function). canRead(desc,user)
+h3(function). canReadAttribute(desc,user)
 
 Returns @true@ if the specified user is allowed to view the specified attribute (regardless of qualifier). These are the attributes that will still be present in a restricted copy of this object. Unless a plugin uses @restrictedCopy@ to create a restricted version of the object with these attributes missing, they will still be able to access them through the @StoreObject@ API; this restriction is honoured by the platform's object rendering logic, and (through this function and @restrictedCopy@) made visible to plugins so that theyc an implement restrictions as they see fit.
 
-h3(function). canModify(desc,user)
+h3(function). canModifyAttribute(desc,user)
 
 Returns @true@ if the specified user is allowed to modify the specified attribute (regardless of qualifier). There is no restriction on plugins creating a @mutableCopy@ and editing this attribute through the @StoreObject@ interface; this restriction is honoured by the platform's object editor user interface, and (through this function) made visible to plugins so that they can implement restrictions as they see fit.
 
