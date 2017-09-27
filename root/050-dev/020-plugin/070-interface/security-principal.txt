@@ -12,7 +12,7 @@ You can't create new security principals from the JavaScript API. Users and grou
 
 @SecurityPrincipal@ objects representing users and groups are looked up using [node:dev/plugin/o/lookup/user], [node:dev/plugin/o/lookup/group] and [node:dev/plugin/o/lookup/security-principal], and in request context, by the [node:dev/plugin/o/request/current-user] property.
 
-Service users, created by [node:dev/plugin/schema/requirements-schema#Service_users:schema requirements], are looked up with [node:dev/plugin/o/lookup/user#O_serviceUser].
+Service users, created by [node:dev/plugin/schema/requirements-schema/declaration/service-user:schema requirements], are looked up with [node:dev/plugin/o/lookup/user#O_serviceUser].
 
 
 h2. Interface (users and groups)

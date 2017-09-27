@@ -1,0 +1,4 @@
+title: Changing values
+--
+
+Because schemas are shared with the user, who can rename things you declare, changing a value in a @requirements.schema@ file won't change the value. Prefix a value with @REMOVE@ to explicitly remove a value you need to change, but do try to avoid doing this.

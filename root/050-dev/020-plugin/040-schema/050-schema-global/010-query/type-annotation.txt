@@ -5,7 +5,7 @@ long_title: Type annotation queries
 
 Plugins can query the schema to find all types annotated with a given annotation in the current application.
 
-Annotations are applied using [node:dev/plugin/schema/requirements-schema#Type_annotations:requirements.schema] files.
+Annotations are applied using [node:dev/plugin/schema/requirements-schema/declaration/type#Type_annotations:requirements.schema] files.
 
 
 h2. Schema query

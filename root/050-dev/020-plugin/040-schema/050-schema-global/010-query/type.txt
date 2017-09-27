@@ -57,7 +57,7 @@ Where the application uses an aliased attribute, the descriptor of the underlyin
 
 h3(key). annotations
 
-An array of annotation names, applied by [node:dev/plugin/schema/requirements-schema#Type_annotations:requirements.schema] files.
+An array of annotation names, applied by [node:dev/plugin/schema/requirements-schema/declaration/type#Type_annotations:requirements.schema] files.
 
 
 h3(key). elements

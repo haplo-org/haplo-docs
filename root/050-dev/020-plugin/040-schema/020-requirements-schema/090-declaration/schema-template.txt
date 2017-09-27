@@ -1,0 +1,19 @@
+title: Schema template
+--
+
+Sometimes it's useful to be able to apply requirements to more than one declaration, for example, a set of common attributes that are applied to more than one type.
+
+Define schema templates with a @schema-template@ declaration, then apply the template to other declarations with the @apply-schema-template@ pseudo-value.
+
+<pre>
+schema-template example:schema-template:common-attributes
+    attribute std:attribute:project
+
+type example:type:something
+    apply-schema-template example:schema-template:common-attributes
+    # Other values
+</pre>
+
+Multiple requirements files can add values to the same template.
+
+It is *not* an error to attempt to apply a template which does not exist.

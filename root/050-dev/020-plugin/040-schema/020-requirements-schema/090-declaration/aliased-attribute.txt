@@ -1,0 +1,15 @@
+title: Aliased attribute
+--
+
+@aliased-attribute@ declarations define aliased attributes, used on types. This declaration defines the standard Name alias for Title, using different qualifiers and the @person-name@ data type. It's made available as @AA.Name@.
+
+<pre>
+aliased-attribute std:aliased-attribute:name as Name
+    title: Name
+    search-name: name
+    alias-of dc:attribute:title
+    on-qualifier std:qualifier:null
+    on-qualifier dc:qualifier:alternative
+    on-qualifier std:qualifier:nickname
+    on-data-type person-name
+</pre>

@@ -1,0 +1,5 @@
+title: Feature
+--
+
+@feature@ declarations define special features, such as the elements on the home page and the left hand navigation.
+

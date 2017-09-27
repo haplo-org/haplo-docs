@@ -41,5 +41,5 @@ Return a service user with the given code.
 
 If the service user does not exist, an exception is thrown.
 
-Service users are created with [node:dev/plugin/schema/requirements-schema#Service_users:schema requirements].
+Service users are created with [node:dev/plugin/schema/requirements-schema/declaration/service-user:schema requirements].
 

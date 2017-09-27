@@ -1,0 +1,13 @@
+title: Attribute
+--
+
+@attribute@ declarations define attributes which are used in types. This declaraction defines the standard Publisher attribute, and makes the descriptor available as @A.Publisher@.
+
+<pre>
+attribute dc:attribute:publisher as Publisher
+    title: Publisher
+    search-name: publisher
+    qualifier std:qualifier:null
+    data-type link
+    linked-type std:type:organisation
+</pre>

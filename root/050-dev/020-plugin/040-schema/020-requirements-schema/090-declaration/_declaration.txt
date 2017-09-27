@@ -1,0 +1,5 @@
+title: Declarations
+class: DocNodeTextileWithTOC
+--
+
+A @requirements.schema@ file consists of one or more declarations.

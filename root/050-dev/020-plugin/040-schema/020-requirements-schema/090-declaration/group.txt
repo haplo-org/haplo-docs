@@ -1,0 +1,10 @@
+title: Group
+--
+
+@group@ declarations define groups, and which other are members of that group. This declaration defines a new group, with another group as a member, and makes the ID available as @Group.Example@.
+
+<pre>
+group example:group:example as Example
+    title: Example group
+    member example:group:other
+</pre>

@@ -1,0 +1,11 @@
+title: Label
+--
+
+@label@ declarations define labels, used for the permission system. This declaration defines the standard Confidential label, making it available as @Label.Confidential@.
+
+<pre>
+label std:label:confidential as Confidential
+    title: Confidential
+    category Sensitivity
+    notes: This item is confidential.
+</pre>

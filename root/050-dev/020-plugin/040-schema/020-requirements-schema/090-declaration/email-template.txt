@@ -1,0 +1,11 @@
+title: Email template
+--
+
+@email-template@ declarations define email templates. @as@ readable names cannot be used.
+
+<pre>
+email-template std:email-template:password-recovery
+    title: Password recovery
+    description: This template is used to send lost password emails.
+    purpose: Password recovery
+</pre>
