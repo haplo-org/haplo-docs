@@ -86,7 +86,7 @@ and a view like
 
 <pre>language=json
 {
-    "choices": [
+    "options": [
         {"action":"/do/path", "label":"Choice one"},
         // ...
     ]
