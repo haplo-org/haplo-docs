@@ -1,0 +1,51 @@
+title: Restriction
+--
+
+Define [node:dev/plugin/schema/restrictions:restrictions] with a @restriction@ declaration.
+
+All values are optional.
+
+<pre>
+restriction example:restriction:sensitive-attributes
+    title: Sensitive Attributes
+    restrict-type std:type:person
+    restrict-if-label example:label:sensitive-information
+    label-unrestricted example:label:can-view-sensitive-information
+    attribute-restricted example:attribute:record-identifier
+    attribute-read-only example:attribute:notes
+</pre>
+
+
+h2. title
+
+Name of the restriction, for display in System Management.
+
+
+h2. restrict-type
+
+Zero or more types to which this Restriction applies. If none specified, this Restriction applies to all types.
+
+Restrictions are always applied to root types, even if you specify a sub-type.
+
+
+h2. restrict-if-label
+
+Zero or more labels which define which objects this Restriction applies. If any labels are specified, an object must have at least one of those labels for the Restriction to apply.
+
+
+h2. label-unrestricted
+
+Zero or more labels which 'lift' the restriction for a subset of users.
+
+If a user 'has' these labels, specified with the [node:dev/plugin/hook/user-attribute-restriction-labels] or [node:dev/plugin/hook/object-attribute-restriction-labels-for-user] hooks, then the restriction does not apply.
+
+
+h2. attribute-restricted
+
+Attributes which should be restricted, and not shown to any users except when explicitly permitted.
+
+
+h2. attribute-read-only
+
+Attributes which should be read only, unless the user is explicitly permitted to edit them.
+
