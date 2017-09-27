@@ -1,4 +1,56 @@
 title: Changing values
 --
 
-Because schemas are shared with the user, who can rename things you declare, changing a value in a @requirements.schema@ file won't change the value. Prefix a value with @REMOVE@ to explicitly remove a value you need to change, but do try to avoid doing this.
+Haplo has "shared schemas", where the schema is made up of:
+
+ * Schemas specified by standards, such as Dublin Core
+ * Requirements specified by plugins
+ * Changes made by the administrator in the System Management user interface
+
+The platform combines these into a single schema. @requirements.schema@ files are so named because they specify the plugin's requirements, rather than an exact schema.
+
+Because of this sharing, especially the ability of the administrator to reconfigure the schema, making changes is not completely straightforward. A change in a @requirements@ file must not override anything else.
+
+Changes are needed as an application evolves, so a @REMOVE@ modifier is provided to explicitly remove values. However, if something else requires this value, the @REMOVE@ will be overridden and the value will stay. @REMOVE@ just means that your plugin doesn't require it any more.
+
+
+h2. Changing a single value
+
+To change a single valued statement, such as @title@, the old value is removed, and the new value applied.
+
+<pre>
+type example:type:one as ExampleOne
+    REMOVE title: Old title
+    title: New title
+</pre>
+
+To maintain the expectations of the shared schema, this change will only take place if:
+
+ * The title of this type is @"Old title"@, that is, it hasn't been renamed by the administrator
+ * No other plugin requires the title to be @"Old title"@
+
+
+h2. Changing a multi-value
+
+To remove entries from a multi-valued statement, such as @attribute@, simply use the @REMOVE@ modifier.
+
+<pre>
+type example:type:one as ExampleOne
+    REMOVE attribute std:attribute:file
+</pre>
+
+However, if another plugin requires this attribute, it will not be removed.
+
+
+h2. Forcing changes
+
+There's also a @FORCE-REMOVE@ modifier, for when you absolutely must remove something from the schema. It overrides all other plugins, and therefore is a little dangerous. *Try not to use it.*
+
+The only really valid use is customising metadata schemas. For example, you might have a generic plugin implementing a standards based schema, but you need a slight modification in an application. In this case, you would implement a plugin for the application which uses @FORCE-REMOVE@.
+
+<pre>
+type example:type:one as ExampleOne
+    FORCE-REMOVE attribute random-standard:attribute:example
+</pre>
+
+Using @FORCE-REMOVE@ in most cases suggests that your schema definitions need to be restructured, or your functionality split into separate plugins.
