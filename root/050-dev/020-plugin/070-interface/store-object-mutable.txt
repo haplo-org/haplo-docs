@@ -25,7 +25,7 @@ h3(function). save(labelChanges)
 
 Creates or updates the object in the store.
 
-@labelChanges@ is optional, and if present, is used to add or remove labels from the defaults, or those specified when calling @O.object()@.
+@labelChanges@ is optional, and if present, is used to add or remove labels from the defaults, or those specified when calling @O.object()@. If you *only* want to change the labels, use [node:dev/plugin/interface/store-object#relabel] instead.
 
 
 h3(function). append(value, desc, qual)
