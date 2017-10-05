@@ -35,3 +35,5 @@ type std:type:file
 
 Types with a given annotation are found using [node:dev/plugin/schema/schema-global/query/type-annotation:SCHEMA.getTypesWithAnnotation()], and [node:dev/plugin/schema/schema-global/query/type:SCHEMA.getTypeInfo()] to retrieve the annotations on a given type.
 
+To test if an object is one of your annotated types, use [node:dev/plugin/interface/store-object#isKindOfTypeAnnotated].
+

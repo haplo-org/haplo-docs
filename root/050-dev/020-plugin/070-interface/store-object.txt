@@ -134,6 +134,13 @@ Returns @true@ if this object is the type specified as @typeRef@, or one of it's
 If @typeRef@ is @null@ or @undefined@, then @false@ will be returned.
 
 
+h3(function). isKindOfTypeAnnotated(annotation)
+
+Returns @true@ is this object has a type which is annotated by @annotation@.
+
+Type annotations are defined in [node:dev/plugin/schema/requirements-schema/declaration/type#Type_annotations:requirements.schema files].
+
+
 h3(function). first(desc, qual)
 
 Returns the first value in the object described by @desc@ and @qual@. Use the schema [node:dev/plugin/schema/schema-global/attr] constants.
