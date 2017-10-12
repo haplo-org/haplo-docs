@@ -35,6 +35,12 @@ Looks up @code@ using the same mechanism as the single argument version of @NAME
 Use this to allow longer messages to be replaced with customised defaults. The use of a code as a key, rather than the entire phrase, allows the default to be edited without updating all the customisations.
 
 
+h3(function). O.interpolateNAMEinString(string)
+
+Returns a new string with uses of @NAME()@ replaced by translated sub-strings, as described in _String interpolation_ below.
+
+
+
 h2. String interpolation
 
 Forms and standard plugins provide an alternative use of @NAME()@ through string interpolation.
@@ -50,6 +56,7 @@ For example:
   "Please review this NAME(std:workflow:notes-private-label|Private note)"
 </pre>
 
+Use @O.interpolateNAMEinString()@ to use string interpolation in your plugins.
 
 
 h2. Usage
