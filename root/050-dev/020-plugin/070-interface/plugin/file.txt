@@ -13,6 +13,11 @@ h3(function). loadFile(pathname)
 Load a file from the plugin's [node:dev/plugin/directory-structure#file] directory, returning a [node:dev/plugin/interface/binary-data] object.
 
 
+h3(function). hasFile(pathname)
+
+Returns @true@ if the plugin has a file with the given @pathname@.
+
+
 h2. Example
 
 To lazily load a lookup table from the @file/lookup/departments.json@, use code like:
