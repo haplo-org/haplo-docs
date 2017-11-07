@@ -120,6 +120,33 @@ P.implementService("std:reporting:dashboard:example_dashboard:setup",
 );
 </pre>
 
+h2. Features
+
+The @use()@ interface adds a defined dashboard feature to the dashboard being displayed. To register a new workfow feature for other plugins, use @P.reporting.registerReportingFeature()@
+
+h3. P.reporting.registerReportingFeature(featureName, fn)
+
+@featureName@ is the name of your feature, and @fn@ is a function which will be called when another plugin's dashbaord calls @use()@.
+
+The arguments to @fn@ are the dashboard object, and any further arugments passed to @user()@.
+
+For example, for collections where the root @ref@ object is a person, you might implement:
+
+<pre>language=javascript
+P.reporting.registerReportingFeature("example:person_name_column",
+    function(dashboard, spec) {
+        dashboard.
+            columns(10, dashboard.isExporting ?
+                makePersonExportColumns(spec) :
+                makePersonDashboardColumns(spec)).
+            order("nameSortAs").
+            use("std:row_text_filter", {
+                facts:["ref"],
+                placeholder: spec.placeholder ||"Search by name"
+            });
+});
+</pre>
+
 h2. Example
 
 An example of how a handler implementing a List Dashboard to display information about a collection of books may look:
