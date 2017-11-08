@@ -23,6 +23,13 @@ h3(property). formTitle
 Title of the form from the [node:dev/plugin/form/specification:specification] @formTitle@, with @NAME()@ [node:dev/plugin/form/specification#Text:text translation].
 
 
+h3(property). formTitleShort
+
+Title of the form from the [node:dev/plugin/form/specification:specification] @formTitleShort@, with @NAME()@ [node:dev/plugin/form/specification#Text:text translation].
+
+If the form specification doesn't have a @formTitleShort@ property, the @formTitle@ will be used instead.
+
+
 h3(property). specification
 
 The form [node:dev/plugin/form/specification:specification], lazily loaded when specified with a plugin JSON file.

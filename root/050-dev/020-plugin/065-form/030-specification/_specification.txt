@@ -16,6 +16,7 @@ The root of the specification contains the following properties:
 |@specificationVersion@|Must be @0@|
 |@formId@|A unique identifier for the form, unique within this plugin only. Formed from @a-z0-9_@|
 |@formTitle@|A human readable name of the form.|
+|@formTitleShort@|A shorter version of the human readable name of the form, defaulting to @formTitle@ if not specified.|
 |@elements@|The elements of the top level section.|
 |(section properties)|Other properties from the [node:dev/plugin/form/specification/section] specification, including template choice.|
 
