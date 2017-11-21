@@ -39,7 +39,7 @@ h3(function). deleteObject()
 Deletes the object referred to by this reference, without loading it first. Has the same effect as the @deleteObject@ function on a [node:dev/plugin/interface/store-object], but more efficient if the object has not already been loaded.
 
 
-h3(function). behaviour
+h3(property). behaviour
 
 Returns the 'behaviour' of the object represented by this @Ref@. See [node:dev/plugin/o/behaviour] for how this property is determined and the intended use.
 
@@ -47,3 +47,15 @@ If the object does not have a behaviour, this property is @null@.
 
 The current user's permissions are not enforced when reading the object store to determine the behaviour.
 
+
+h3(function). getBehaviourExactMaybe()
+
+Returns the exact _configured behaviour_ attribute of the object, without using the inheritance rules of the @behaviour@ property.
+
+If there is no attribute, @null@ will be returned.
+
+It is a function, rather than a property, because it will do a database lookup every time it's called. You need to be careful about performance when using it.
+
+Also, in general, a good design should never need to test what the exact behaviour is, only the root behaviour. If you need this, then there's something exceptional going on, and your code should look ugly to warn everyone reading it in the future.
+
+The current user's permissions are not enforced when reading the object store to determine the behaviour.
