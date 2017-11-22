@@ -76,6 +76,13 @@ Handles the editing of a document instance, for example in a request handler whe
 |gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
 |render|A function called with the arguments @instance, E, deferredRender@ that should render the page by calling @E.render()@|
 
+
+h3(function). addInitialCommittedDocument(document, user, date)
+
+Adds @document@ as the first committed document to the instance.
+
+@user@ becomes the person that committed the original document and the @date@ becomes the date the document was originally committed. There cannot be any existing documents, committed or not, for the current instance.
+
 The arguments mentioned above are:
 
 |*Argument*|*Description*|

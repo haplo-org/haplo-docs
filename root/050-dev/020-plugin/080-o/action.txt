@@ -73,7 +73,7 @@ Writing rules using groups is sufficient for many applications, but custom permi
 <pre>language=javascript
 var ActionWithRoles = O.action("example:with_roles").
     title("Action using roles").
-    allow("group", Group.ExampleGroup),
+    allow("group", Group.ExampleGroup).
     allow("role", "Special Role");  // requires plugin
 </pre>
 
