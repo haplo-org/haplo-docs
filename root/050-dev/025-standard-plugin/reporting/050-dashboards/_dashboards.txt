@@ -26,6 +26,10 @@ h3(property). name
 
 Name of the dashboard.
 
+h3(property). kind
+
+Kind of the dashboard.
+
 h3(property). isDashboard
 
 Always @true@.
@@ -99,13 +103,15 @@ Dashboards can be modified/setup/added to from outside of the Dashboard specific
 
 The dashboard will call the @"std:reporting:collection_dashboard:COLLECTION_NAME:setup"@ service where @COLLECTION_NAME@ is the name of the collection defined in the dashboard spec. This adds columns to all dashboards using this collection.
 
+*IMPORTANT* If you implement setup services which apply to more than one dashboard using collection or wildcard services, you *must* check the @kind@ property of the dashboard if you use dashboard configuration functions which are only available on a subset of dashboard kinds.
+
 To set up this specific dashboard, the dashboard will call the @"std:reporting:dashboard:DASHBOARD_NAME:setup"@ service where @DASHBOARD_NAME@ is the name of the dashboard defined in the dashboard specification.
 
 In addition it will call the @"std:reporting:collection_category_dashboard:COLLECTION_CATEGORY:setup"@ services for all the collection's categories as @COLLECTION_CATEGORY@. For example, a plugin could add financial columns to all dashboards in the @example:financial-info@ collection category.
 
 If the dashboard is *exporting*, eg, when generating an excel spreadsheet for download, the @"std:reporting:dashboard:DASHBOARD_NAME:setup_export"@ will be called.
 
-A wildcard service, @"std:reporting:dashboard:*:setup"@ is also called to allow setup for all dashboards.
+A wildcard service, @"std:reporting:dashboard:*:setup"@ is also called to allow setup for all dashboards. Make sure you check the @kind@ property.
 
 In addition, just before the dashboard is rendered, a 'final' version of each of the above services is called, with @_final@ appended to the name. These should be used if your customisations depend on what other plugins might have done previously. You should only use these versions if you can't implement your customisation otherwise.
 
