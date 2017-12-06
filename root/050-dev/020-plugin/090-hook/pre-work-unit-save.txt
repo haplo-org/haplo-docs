@@ -1,0 +1,5 @@
+title: hPreWorkUnitSave
+class: HookNode
+--
+
+This hook allows a plugin to modify a work unit before it is saved, for instance, by updating the tags. 
