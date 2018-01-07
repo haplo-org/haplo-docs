@@ -42,6 +42,15 @@ The value can be:
 |[node:dev/plugin/interface/date-time]|Variable precision date and time|
 |@Date@|Automatically converted into a [node:dev/plugin/interface/date-time] with Day precision|
 
+Use @appendWithIntValue()@ if you want to add integers.
+
+
+h3(function). appendWithIntValue(value, desc, qual)
+
+As @append()@, but with a workaround for JavaScript's unhelpful use of floating point numbers for all numeric values.
+
+@value@ must be a number, and is converted into an integer value before appending to the object.
+
 
 h3(function). appendType(value, qual)
 
