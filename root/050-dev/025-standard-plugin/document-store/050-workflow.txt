@@ -248,7 +248,7 @@ P.EgWorkflow.use("std:document_store", {
     priority: 100,
     path: "/do/example-plugin/application-form"
     formsForKey: function(key) {
-        return [application]
+        return [application];
     },
     blankDocumentForKey: function(key) {
         var applicant = key.entities.applicant;
