@@ -29,6 +29,8 @@ To register a workflow feature for other plugins, use @P.workflow.registerWorkfl
 
 The arguments to @fn@ are the workflow definition, and then any other arguments passed to @use()@.
 
+If you create a request handler in the feature, you must call @E.setResponsiblePlugin(P)@ in the handler to be able to use the templates in the providing plugin.
+
 A feature which filters transitions might be implemented like this:
 
 <pre>language=javascript

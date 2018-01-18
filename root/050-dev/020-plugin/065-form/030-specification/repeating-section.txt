@@ -24,6 +24,7 @@ h2. Properties
 |@allowAdd@|(optional) Whether to display the add button after the repeated sections. Defaults to @true@.|
 |@minimumCount@|(optional) The minimum number of rows required to pass validation.|
 |@maximumCount@|(optional) The maximum number of rows allowed to pass validation.|
+|@required@|(optional) Whether to enforce the @minimumCount@ and/or @maximumCount@. Defaults to @true@.|
 
 h3. Editing tables
 

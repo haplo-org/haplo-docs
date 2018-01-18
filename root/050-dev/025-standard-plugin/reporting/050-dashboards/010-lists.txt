@@ -70,6 +70,7 @@ It takes one argument, a specification object with the following properties:
 |*Property*|*Description*|
 |fact|The fact to be used for filtering, *must be a Ref*|
 |objects|Either a type Ref from the schema requirements which generates a list of all Objects with that type, or a function that returns a list of objects with a @ref@ and @title@ property|
+|placeholder|A string to show as the dropdown menu placeholder|
 
 For example, a simple object filter by type:
 

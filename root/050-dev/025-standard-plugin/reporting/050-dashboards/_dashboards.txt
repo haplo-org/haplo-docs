@@ -17,6 +17,8 @@ The specification has the following properties:
 |collection|The name of the collection to be used|
 |filter|The filter to be applied to the collection|
 |title|The human readable title/description of the dashboard for displaying in the UI|
+|backLink|The URL for the return link (optional)|
+|backLinkText|The text for the back button (optional)|
 
 h2. Interface
 
