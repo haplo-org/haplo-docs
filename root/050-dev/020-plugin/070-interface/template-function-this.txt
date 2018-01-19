@@ -85,3 +85,9 @@ h3(function). assertContext(context)
 Assert that the function is being called in the right HTML context. @context@ may be @"TEXT"@ or @"ATTRIBUTE_VALUE"@.
 
 
+h3(property). view
+
+The current view at the point this template function was invoked.
+
+*Use with caution*, and prefer to pass all the information you need as arguments. Use of the @view@ property creates implicit behaviour and makes it hard to reason about your function.
+
