@@ -3,6 +3,8 @@ title: Function lists
 
 These function lists configure the overall properties of the Workflow. You may only need to implement @start()@.
 
+Functions added to a list are called in reverse order of being defined, breaking as soon as any returns a value.
+
 
 h2. start(fn)
 
@@ -16,6 +18,22 @@ EgWorkflow.start(function(M, initial, properties) {
 
 @properties@ is the argument to the @create()@ function which creates the instance.
 
+
+h2. implementWorkflowService(name, fn)
+
+Defines a service @fn@ that can be called by @name@ on any instance of this workflow. @fn@ takes the instance as the first argument.
+
+By convention @name@ should begin with the workflow name as specified in [node:dev/standard-plugin/workflow/definition/implement:@P.workflow.implement()@].
+
+If there is more than one implementation for a service @name@, they will be called in reverse order of registration until one returns something other than @undefined@ (as for all worklflow function lists).
+
+*Note:* This differs from [node:dev/plugin/o/service:platform services], which are called in order of registration.
+
+<pre>language=javascript
+EgWorkflow.implementWorkflowService("eg:can_view_workflow", function(M, user) {
+    return CanViewApplication(M, user);
+});
+</pre>
 
 
 h2. getActionableBy(fn)

@@ -70,6 +70,23 @@ h3(function). transitionUrl(transition, extraParameters)
 Return the transition confirmation page URL for the given @transition@ as a string. Optionally specify an @extraParameters@ object to include any additional parameters required, eg: to specify the @target@.
 
 
+h3(function). workflowService(name, arg1, arg2, ...)
+
+Call the registered workflow service called @name@. Workflow services are implemented with [node:dev/standard-plugin/workflow/definition/function-lists#implementWorkflowService]. Further arguments are optional, and will be passed to the service function if specified.
+
+This will return the first value returned by a registered service function.
+
+An exception will be thrown if no service function is registered on this workflow for this @name@.
+
+h3(function). workflowServiceMaybe(name, arg1, arg2, ...)
+
+Like @workflowService()@, except @undefined@ is returned if no service function is registered on this workflow for this @name@.
+
+h3(function). workflowServiceImplemented(name)
+
+Returns @true@ if there is at least one function registered to implement the workflow service @name@ on this workflow.
+
+
 
 h3(function). getTextMaybe(name, ...)
 
