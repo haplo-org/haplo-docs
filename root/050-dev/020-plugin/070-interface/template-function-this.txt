@@ -65,6 +65,13 @@ h3(function). hasBlock(blockName)
 Return @true@ if the function has been called with a given named block, or @null@ for the anonymous block.
 
 
+h3(function). getAllNamedBlockNames()
+
+Returns an array of all the names of the named blocks, in the order they appear in the template.
+
+The anonymous block is not included in this array. If the array is non-empty, then the existence of the anonymous block is implied, but if it's empty, an explicit @hasBlock(null)@ is required.
+
+
 h3(function). writeBlock(blockName)
 
 Write the given named block, or @null@ for the anonymous block.
