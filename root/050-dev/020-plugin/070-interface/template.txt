@@ -28,11 +28,11 @@ Render the template, returning a @String@.
 
 @view@ is a JavaScript @Object@ used as a dictionary to provide parameters for the template rendering.
 
-If you're generating HTML to include in another template, prefer using @deferredRender()@ and the [node:dev/plugin/templates/functions/language#render] template function.
+If you're generating HTML to include in another template, prefer using @deferredRender()@ and the [node:dev/plugin/templates/functions/language#render_deferred] template function.
 
 
 h3(function). deferredRender(view)
 
-Return an object which can be used with the [node:dev/plugin/templates/functions/language#render] template function. At the point the @render()@ template function is rendered, this template will be rendered with the given view.
+Return an object which can be used with the [node:dev/plugin/templates/functions/language#render_deferred] template function. At the point the @render()@ template function is rendered, this template will be rendered with the given view.
 
 See [node:dev/plugin/templates/including-templates#Deferred_rendering] for how to use @deferredRender()@.

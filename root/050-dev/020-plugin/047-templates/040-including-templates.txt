@@ -3,7 +3,7 @@ title: Including other templates
 
 You will often want to include other templates inside a template, so that you don't have to repeat common templates.
 
-There are two ways of doing it. If you know which template you want to include, then the @template:X()@ template function include it by name. If you don't, you can use [node:dev/plugin/interface/template#deferredRender] on a template and then include the output with the [node:dev/plugin/templates/functions/language#render] template function.
+There are two ways of doing it. If you know which template you want to include, then the @template:X()@ template function include it by name. If you don't, you can use [node:dev/plugin/interface/template#deferredRender] on a template and then include the output with the [node:dev/plugin/templates/functions/language#render_deferred] template function.
 
 
 h2. Including a template

@@ -4,7 +4,7 @@ link_as: keyword
 
 A utility template intended to be used for rendering deferred renders from other templates.
 
-The template is just a single [node:dev/plugin/templates/functions/language#render] template function.
+The template is just a single [node:dev/plugin/templates/functions/language#render_deferred] template function.
 
 <pre>
     render(.)

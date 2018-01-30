@@ -5,6 +5,8 @@ link_as: keyword
 
 Text objects are used as values for [node:dev/plugin/interface/store-object], and the type of text object specifies how the text is formatted in the user interface.
 
+Use [node:dev/plugin/templates/functions/language#render_convertible] to render text objects in your templates.
+
 
 h2. Construction
 

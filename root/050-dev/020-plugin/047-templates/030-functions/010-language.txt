@@ -56,6 +56,13 @@ See [node:dev/plugin/templates/including-templates#Deferred_rendering] for how t
 Use [node:dev/plugin/templates/template-support#O_isDeferredRender] to check whether an object is a deferred render.
 
 
+h2. render(convertible)
+
+Render @convertible@ into the current template. @convertible@ must implement the @toHTML()@ function.
+
+Use this to render [node:dev/plugin/interface/text] objects.
+
+
 h2. url(...)
 
 Pseudo function with special parsing. See [node:dev/plugin/templates/urls].
