@@ -37,6 +37,11 @@ If the principal represents a user, the email address this user uses to log in.
 If the principal represents a group, this property is optional, and is the notification email address for this group.
 
 
+h3(property). code
+
+The API code (as used in schema requirements) of a group, if it has one. If it does not, or this principal represents a user, the property is @null@.
+
+
 h3(property). isGroup
 
 @true@ if this @SecurityPrincipal@ represents a group, @false@ if it represents a user.
