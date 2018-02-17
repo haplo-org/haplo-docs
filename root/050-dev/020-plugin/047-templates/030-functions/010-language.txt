@@ -9,6 +9,11 @@ h2. if(value) & unless(value)
 A simple conditional control flow function. If @value@ is truthy, the anonymous block is rendered if it is, otherwise the @else@ block. @unless()@ inverts this logic.
 
 
+h2. ifAll(...), ifAny(...), unlessAll(...) & unlessAny(...)
+
+Multiple argument versions of @if()@ and @unless()@, which take at least two arguments. All arguments must be truthy with the @All@ variations, and at least one for the @Any@ variations.
+
+
 h2. each(value)
 
 Where @value@ is an array-like object, then the anonymous block is rendered once per item in that list with the view set to that item.
