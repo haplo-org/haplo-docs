@@ -1,0 +1,55 @@
+title: Aggregates
+--
+
+An Aggregate Dashboard is used by setting @kind: "aggregate"@ in the specification when instantiating a Dashboard object.
+
+Aggregate dashboards group objects in a collection by a set of up to four *dimensions* (one or two in the x-axis, one or two in the y-axis), to produce a table of aggregate values. Dimensions are set up by services, and are designed to be flexibly re-used between dashboards.
+
+h2. Specification
+
+
+In addition to the standard [node:dev/standard-plugin/reporting/dashboards:specification] options, aggregate dashboard specifications also include:
+
+h3. Dimension properties @x@, @y@, @outerX@, and @outerY@.
+
+These are the dashboard's *dimensions*, and in almost all cases they would be service api codes). By convention of the form @NAMESPACE:reporting-aggregate-dimension:NAME@.
+
+The service should return an array of objects, each of which specifies properties for a row or column across this dimension: 
+
+|*Property*|*Description*|
+|title|The title for the row or column|
+|filter|A function taking a @select@ query argument. Use to select relevant collection rows|
+|value|(optional) The value to select for in the collection|
+|groupByFact|(optional) The fact to select on|
+
+The @value@ and @groupByFact@ properties will match those used in the filter select query, and trigger an optimisation when the dimension is used in the y-axis.
+
+h3(property). aggregate (optional)
+
+The SQL aggregation function to use. Defaults to @COUNT@.
+
+h3(property). fact (optional)
+
+The collection fact to aggregate over.
+
+h3(property). formatter (optional)
+
+The output format for aggregate values.
+
+
+h2. Example
+
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/example-plugin/count-books-by-department",
+], function(E) {
+    P.reporting.dashboard({
+        kind: "aggregate",
+        collection: "books",
+        name: "books_by_department",
+        title: "Total books per department",
+        x: "eg:reporting-aggregate-dimension:book-type",
+        y: "eg:reporting-aggregate-dimension:departments"
+    }).respond();
+});
+</pre>
