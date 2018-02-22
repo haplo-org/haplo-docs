@@ -1,0 +1,35 @@
+title: Files
+long_title: File template functions
+--
+
+These template functions render files in a standardised manner.
+
+They all take optional options as string arguments. Options can be @"asFullURL"@, @"authenticationSignature"@ and @"forceDownload"@, matching the meanings of the [node:dev/plugin/interface/file#Options:options for File's toHTML() function].
+
+To render a file with a thumbnail and filename, use an authentication signature, and force it to be a download, use
+
+<pre>language=hsvt
+std:file(file "authenticationSignature" "forceDownload")
+</pre>
+
+Either a @File@ or a @FileIdentifier@ can be passed to the template functions. If the latter, the filename of the identifier will be displayed.
+
+
+h2. std:file(file [options])
+
+Render a file with a thumbnail and filename, linking to the download.
+
+
+h2. std:file:thumbnail(file [options])
+
+Render a file as a thumbnail only, linking to the download.
+
+
+h2. std:file:link(file [options])
+
+Render a simple link to a file.
+
+
+h2. std:file:transform(file transform [options])
+
+Like @std:file()@, but a file transform is specified for the link.
