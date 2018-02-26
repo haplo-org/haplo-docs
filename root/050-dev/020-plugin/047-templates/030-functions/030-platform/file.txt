@@ -4,7 +4,7 @@ long_title: File template functions
 
 These template functions render files in a standardised manner.
 
-They all take optional options as string arguments. Options can be @"asFullURL"@, @"authenticationSignature"@ and @"forceDownload"@, matching the meanings of the [node:dev/plugin/interface/file#Options:options for File's toHTML() function].
+Most take optional options as string arguments. Options can be @"asFullURL"@, @"authenticationSignature"@ and @"forceDownload"@, matching the meanings of the [node:dev/plugin/interface/file#Options:options for File's toHTML() function].
 
 To render a file with a thumbnail and filename, use an authentication signature, and force it to be a download, use
 
@@ -33,3 +33,21 @@ Render a simple link to a file.
 h2. std:file:transform(file transform [options])
 
 Like @std:file()@, but a file transform is specified for the link.
+
+
+h2. std:file:with-link-url(file url)
+
+Renders the same as the @std:file()@ template, but the download links to the supplied @url@, not the platform default.
+
+@url@ should be generated using an HSVT [node:dev/plugin/templates/urls:url()] function, to ensure proper formatting.
+
+This template should only be used if your plugin is implementing its own file download handler.
+
+
+h2. std:file:thumbnail:with-link-url(file url)
+
+Renders the same as the @std:file:thumblnail()@ template, but the download links to the supplied @url@, not the platform default.
+
+@url@ should be generated using an HSVT [node:dev/plugin/templates/urls:url()] function, to ensure proper formatting.
+
+This template should only be used if your plugin is implementing its own file download handler.
