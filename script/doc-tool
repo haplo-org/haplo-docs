@@ -14,8 +14,10 @@
 
 set -e
 
-HAPLO_ROOT=$(cd ../haplo; pwd)
-export HAPLO_ROOT
+if [ X${HAPLO_ROOT} = X ] ; then
+    HAPLO_ROOT=$(cd ../haplo; pwd)
+    export HAPLO_ROOT
+fi
 
 if [ ! -d ${HAPLO_ROOT}/app/hooks ] ; then
     echo "${HAPLO_ROOT} must be a check out of the Haplo Platform"
