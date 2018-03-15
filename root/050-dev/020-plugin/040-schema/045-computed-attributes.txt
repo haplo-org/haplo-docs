@@ -1,0 +1,38 @@
+title: Computed attributes
+--
+
+"Computed attributes" are attributes of a [node:dev/plugin/interface/store-object] which are somehow derived by plugins. The platform provides relatively low-level building blocks for plugins to implement these automatic modifications.
+
+
+h2. Rules for implementing computed attributes
+
+You must implement computed attributes carefully.
+
+ * Apply a read-only [node:dev/plugin/schema/restrictions:restriction] to prevent users from being able to edit attributes which would then be immediately overwritten
+
+ * Never modify attributes that the user can edit.
+
+ * Be careful to avoid reordering attributes.
+
+ * Think about permissions, as the active user will vary, and so will object visibility for queries. You will probably need to use [node:dev/plugin/o/permissions#O_withoutPermissionEnforcement] and carefully consider what information will be revealed. Ideally, only set attributes which link to objects visible to everyone.
+
+Ideally, carefully written generic plugins should implement computed plugins, and application specific plugins should only use those common implementations.
+
+
+h2. Implementing computed attributes
+
+h3. hComputeAttributes hook
+
+The [node:dev/plugin/hook/compute-attributes] hook enables a plugin to modify the attributes of an object before it is committed, or the platform makes decisions based on the attributes of mutable objects.
+
+
+h3. Restrictions
+
+Apply a read-only [node:dev/plugin/schema/restrictions:restriction] in the normal manner.
+
+
+h3. Mutable store objects
+
+Most of the time, your code won't have to worry about computed attributes. However, if you're working with [node:dev/plugin/interface/store-object-mutable:mutable StoreObjects], you may need to explicitly compute the attributes before using them.
+
+Where it is necessary to have up-to-date computed attributes, call [node:dev/plugin/interface/store-object#computeAttributesIfRequired] before accessing them. This method is efficient and will work on mutable and non-mutable store objects, so you can call it as a precaution before all accesses.

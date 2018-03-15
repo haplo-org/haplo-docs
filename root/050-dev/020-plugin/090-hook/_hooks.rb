@@ -59,6 +59,8 @@ module KHooks
         "[node:dev/plugin/interface/ref]"
       elsif klass == KObject
         "[node:dev/plugin/interface/store-object]"
+      elsif klass == "KObjectMutable"
+        "[node:dev/plugin/interface/store-object-mutable]"
       elsif klass == WorkUnit
         "[node:dev/plugin/interface/work-unit]"
       elsif klass == AuditEntry
