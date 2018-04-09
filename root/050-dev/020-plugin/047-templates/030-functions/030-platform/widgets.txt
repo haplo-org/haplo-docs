@@ -30,3 +30,14 @@ For example:
     std:ui:button-link("/do/other" id)    { "Another button" }
 </p>
 </pre>
+
+
+h2. std:ui:button-link:active(url) { linkedText }
+
+Like @std:ui:button-link()@, with the button rendered in an 'active' style.
+
+
+h2. std:ui:button-link:disabled() { text }
+
+Render a disabled button in a style to fit in with @std:ui:button-link()@. Note there is no URL argument.
+
