@@ -13,6 +13,7 @@ See also [node:dev/plugin/o/constants/value-types].
 |@O.T_TEXT_PARAGRAPH@|Paragraph plain text|
 |@O.T_TEXT_PERSON_NAME@|Person's name, with annotated fields|
 |@O.T_IDENTIFIER_EMAIL_ADDRESS@|Email address|
+|@O.T_IDENTIFIER_FILE|File identifier|
 |@O.T_IDENTIFIER_ISBN@|Book ISBN number|
 |@O.T_IDENTIFIER_POSTAL_ADDRESS@|Postal address, with annotated fields|
 |@O.T_IDENTIFIER_POSTCODE@|UK postcode|
