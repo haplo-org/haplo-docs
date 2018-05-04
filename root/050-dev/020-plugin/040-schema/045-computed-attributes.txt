@@ -16,7 +16,7 @@ You must implement computed attributes carefully.
 
  * Think about permissions, as the active user will vary, and so will object visibility for queries. You will probably need to use [node:dev/plugin/o/permissions#O_withoutPermissionEnforcement] and carefully consider what information will be revealed. Ideally, only set attributes which link to objects visible to everyone.
 
-Ideally, carefully written generic plugins should implement computed plugins, and application specific plugins should only use those common implementations.
+Ideally, carefully written generic plugins should implement computed attributes, and application specific plugins should only use those common implementations.
 
 
 h2. Implementing computed attributes
