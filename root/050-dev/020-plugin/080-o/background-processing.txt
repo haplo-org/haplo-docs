@@ -39,3 +39,5 @@ h3(function). O.background.run(name, data)
 @name@ is the job name, which must start with your plugin's name. For example, @"example_plugin:task"@.
 
 @data@ is a small amount of JSON serialisable data the details of the job.
+
+Note that the @data@ argument is *required*. If there is no data to be passed to the @backgroundCallback@ function, pass in an empty object.
