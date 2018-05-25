@@ -8,7 +8,7 @@ A JavaScript object implementing the @SecurityPrincipal@ interface represents an
 
 h2. Construction
 
-You can't create new security principals from the JavaScript API. Users and groups are created through the System Management user interface in your web browser.
+Users and groups are created through the System Management user interface in your web browser, or via a privileged JavaScript API.
 
 @SecurityPrincipal@ objects representing users and groups are looked up using [node:dev/plugin/o/lookup/user], [node:dev/plugin/o/lookup/group] and [node:dev/plugin/o/lookup/security-principal], and in request context, by the [node:dev/plugin/o/request/current-user] property.
 
@@ -37,9 +37,11 @@ If the principal represents a user, the email address this user uses to log in.
 If the principal represents a group, this property is optional, and is the notification email address for this group.
 
 
-h3(property). code
+h3(property). ref
 
-The API code (as used in schema requirements) of a group, if it has one. If it does not, or this principal represents a user, the property is @null@.
+If there is an object in the object store which represents this user or group, return a [node:dev/plugin/interface/ref] of that store object. Otherwise, return @null@.
+
+A store object represents the security principal if it has been explicitly set in System Management or programmatically.
 
 
 h3(property). isGroup
@@ -117,12 +119,6 @@ h3(property). nameLast
 Last name.
 
 
-h3(property). ref
-
-If there is an object in the object store which represents this user, return a [node:dev/plugin/interface/ref] of that store object. Otherwise, return @null@.
-
-A store object represents the user if it has been explicitly set in System Management or programmatically.
-
 h3(function). can(operation, ref)
 
 Returns @true@ if the user is allowed to carry out the @operation@ on the object specified by [node:dev/plugin/interface/ref].
@@ -140,6 +136,10 @@ If @typeRef@ is @null@ or @undefined@, then @false@ will be returned.
 h2. Interface (groups)
 
 The following interface is valid for @SecurityPrincipal@ objects representing groups.
+
+h3(property). code
+
+The API code (as used in schema requirements) of a group, if it has one. If it does not, or this principal represents a user, the property is @null@.
 
 
 h3(function). loadAllMembers()
