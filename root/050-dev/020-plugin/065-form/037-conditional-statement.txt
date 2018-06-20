@@ -16,9 +16,9 @@ Use the @"==="@ operation to test the value at @path@ for equality with a consta
 
 <pre>language=javascript
     {
-        path: "path.to.value",
-        operation: "===",
-        value: 17
+        "path": "path.to.value",
+        "operation": "===",
+        "value": 17
     }
 </pre>
 
@@ -29,8 +29,34 @@ Use the @"defined"@ and @"not-defined"@ operations to test whether value at @pat
 
 <pre>language=javascript
     {
-        path: "some.value",
-        operation: "not-defined"
+        "path": "some.value",
+        "operation": "not-defined"
+    }
+</pre>
+
+
+h2. Value is contained in an array
+
+Use the @"contains"@ and @"not-contains"@ operations to test whether the array at @path@ contains (or doesn't contain) a given value.
+
+<pre>language=javascript
+    {
+        "path": "some.array",
+        "operation": "contains",
+        "value": "v1"
+    }
+</pre>
+
+
+h2. Array has a minimum count
+
+Use the @"minimum-count"@ operation to test whether the array at @path@ has at least the given number of elements.
+
+<pre>language=javascript
+    {
+        "path": "some.array",
+        "operation": "minimum-count",
+        "value": 5
     }
 </pre>
 
@@ -41,10 +67,10 @@ Use the @"AND"@ and @"OR"@ operations to combine the tests in the @statements@ a
 
 <pre>language=javascript
     {
-        operation: "AND",
-        statements: [
-            {path:"value1", operation:"===", value:24},
-            {path:"value2", operation:"defined"}
+        "operation": "AND",
+        "statements": [
+            {"path":"value1", "operation":"===", value:24},
+            {"path":"value2", "operation":"defined"}
         ]
     }
 </pre>
