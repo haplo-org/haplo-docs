@@ -161,3 +161,20 @@ Your template to display all the content then looks like:
 </pre>
 
 Here, @.@ is a special value which is the root of the current view, that is, the current element in the @content@ array.
+
+
+h3. Immediate deferreds
+
+If you need to provide a [node:dev/plugin/interface/deferred:deferred render] to an API, but you are generating it within a different security context, you may find it convenient to call @immediate()@ on the deferred to render it with the right user active. For example:
+
+<pre>language=javascript
+P.implementService("example:service", function(apiObject) {
+  var deferred = O.impersonating(O.SYSTEM, function() {
+      return P.template("tmpl").
+          deferredRender(view).
+          immediate();
+  });
+  apiObject.addDeferred(deferred);
+});
+</pre>
+
