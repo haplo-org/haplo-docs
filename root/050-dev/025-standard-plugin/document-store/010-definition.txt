@@ -72,6 +72,10 @@ h3(function). prepareFormInstance(key, form, instance, context)
 
 Prepare a form instance for the form.
 
+h3(property). enableSidebarPanel
+
+A boolean that enables items to be added to the top right of the form viewer. The sidebar is populated by implementing the @"std:document_store:sidebar_panel"@ service, which passes in a @builder@ parameter.
+
 *IMPORTANT*: Always check @form.formId@ to check you're preparing the right form.
 
 Use this to setup things like [node:dev/plugin/interface/form-instance#choices:dynamic form choices], for example:
