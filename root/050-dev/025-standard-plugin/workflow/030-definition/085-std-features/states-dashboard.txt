@@ -45,6 +45,16 @@ h3(key). path
 The path for the generated [node:dev/plugin/interface/plugin/request-handling#respond] call on your plugin. The path must be within your plugin's namespace.
 
 
+h3(key). backLink
+
+The URL for the return link (optional).
+
+
+h3(key). backLinkText
+
+The text for the back button (optional).
+
+
 h3(key). configurationService
 
 If present, the named service will be called with a copy of the specification to apply common configuration to state dashboards.
