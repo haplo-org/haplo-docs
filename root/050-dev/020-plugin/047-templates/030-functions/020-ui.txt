@@ -50,6 +50,8 @@ The layout functions choose a Haplo layout, setting the @layout@ property in the
     std:layout:minimal()
     std:layout:wide()
     std:layout:none()
+    std:layout:empty()
+    std:layout:clear()
 </pre>
 
 See [node:dev/plugin/interface/exchange#layout] for details of the layouts.

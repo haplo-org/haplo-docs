@@ -55,6 +55,8 @@ Optional. Possible values are:
 |@null@, @undefined@|Use the @std:standard@ layout.|
 |@"std:wide"@|A version of the standard layout, including all the normal Haplo navigation, with a wider content area.|
 |@"std:minimal"@|Minimal layout, using the Haplo styles and client side resource handling, but without the main navigation.|
+|@"std:empty"@|Empty layout, using the Haplo styles and client side resource handling, within the standard width, but without any chrome.|
+|@"std:clear"@|Clear layout, using the Haplo styles and client side resource handling, but with nothing except the rendered HTML in the @body@ tag.|
 
 If the template is not HTML, this property is ignored.
 
