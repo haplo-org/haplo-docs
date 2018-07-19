@@ -34,6 +34,17 @@ Load the referred object, returning an object implementing the JavaScript interf
 Note that deleted objects can still be loaded. Use the @deleted@ property if checking that object hasn't been deleted is important. However, in many cases, you should just use it anyway.
 
 
+h3(function). loadVersion(version)
+
+Load the specified version of the referred object, returning a [node:dev/plugin/interface/store-object].
+
+
+h3(function). loadVersionAtTime(date)
+
+Load the version of the referred object which was the current version at the specified @date@, returning a [node:dev/plugin/interface/store-object].
+
+
+
 h3(function). deleteObject()
 
 Deletes the object referred to by this reference, without loading it first. Has the same effect as the @deleteObject@ function on a [node:dev/plugin/interface/store-object], but more efficient if the object has not already been loaded.
