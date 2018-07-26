@@ -11,6 +11,7 @@ h2. Properties
 |@type@|@"choice"@|
 |@style@|What style of choice. Defaults to @"select"@.|
 |@radioGroups@|(Optional) If a radio style is used, display the options in this number of groups. Useful for displaying long lists of options.|
+|@radioClusters@|(Optional) If the @radio-vertical@ style is used, add labels and explanation text between options. Useful for clustering options in a single element. See below for structure.|
 |@prompt@|For the @"select"@ style, the text to use for the null 'choice', displayed first in the list to prompt the user to select something. Defaults to a reasonable message. Set to @false@ to have no prompt.|
 |@choices@|The choices for the element. See below for how choices are specified.|
 |@objectIdProperty@|The property name for the ID, if applicable to the choice list. Defaults to @"id"@.|
@@ -83,6 +84,30 @@ h3. Automatic numeric ID detection
 If the choice list is an array of arrays or an array of objects (or a per-instance choice list formed this way), then, if the first entry has an ID which is a JavaScript @number@, then the IDs are assumed to be numeric and the value stored in the document will be a @number@ too.
 
 This should make the right choice every time, but can be easily overridden if not.
+
+
+h3. radioClusters option
+
+THe @radioClusters@ option allows a single choice element to contain multiple clusters of options. This is useful when there are several categories of choices, but they're all mutually exclusive.
+
+<pre>language=javascript
+    "radioClusters": [
+        {
+            "label": "Cluster label",
+            "explanation": "Explanation of what's in this cluster",
+            "values": ["carrots", "onions", "potatoes"]
+        },
+        {
+            ...
+        }
+    ]
+</pre>
+
+The @radioClusters@ property is an array of labels & explanations which are added in-between choices in the radio buttons.
+
+The @values@ property is a list of values that will trigger the display of the cluster label. It will only be displayed above the first matching value. This is so that where the list of choices may change (using instance choices), you can specify all the possible values.
+
+For clarity in the display in the document version of the form, it may be best to use the @heading@ property to describe the element, omit the @label@ and @explanation@ properties from the element itself, and use an entry in the @radioClusters@ option to display the label above the first choice.
 
 
 h3. Restrictions
