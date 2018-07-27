@@ -41,7 +41,7 @@ h2. Example
 
 
 <pre>language=javascript
-P.respond("GET,POST", "/do/example-plugin/count-books-by-department",
+P.respond("GET,POST", "/do/example-plugin/count-books-by-department", [
 ], function(E) {
     P.reporting.dashboard({
         kind: "aggregate",
