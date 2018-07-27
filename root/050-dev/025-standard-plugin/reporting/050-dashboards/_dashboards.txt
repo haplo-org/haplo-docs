@@ -40,6 +40,10 @@ h3(property). collection
 
 Collection object used by this dashboard.
 
+h3(property). E
+
+The [node:dev/plugin/interface/exchange:exchange] object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
+
 h3(function). use(featureName, argument, argument2, ...)
 
 Use a defined dashboard feature by name @featureName@, passing the additional arguments to the feature implementation.
