@@ -68,6 +68,10 @@ h3(function). filter(fn)
 
 Apply a dashboard specific filter. @fn@ is a function which will be called to apply the filter as @fn(select)@ where @select@ is a [node:dev/plugin/interface/database-query:DatabaseQuery] object.
 
+h3(function). removeColumnsBasedOnFact(factName)
+
+Remove all columns from a dashboard which are based on the fact with name @factName@.
+
 h3(function). order(orderBy, ...)
 
 Specify how to order the dashboard when it is initially displayed.
