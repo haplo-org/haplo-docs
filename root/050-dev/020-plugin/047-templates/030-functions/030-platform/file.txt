@@ -4,7 +4,9 @@ long_title: File template functions
 
 These template functions render files in a standardised manner.
 
-All functions take optional options as string arguments. Options can be @"asFullURL"@, @"authenticationSignature"@ and @"forceDownload"@, matching the meanings of the [node:dev/plugin/interface/file#Options:options for File's toHTML() function].
+All functions take optional options as string arguments. Options can be @"asFullURL"@, @"authenticationSignature"@, and @"authenticationSignatureValidForSeconds"@ and @"forceDownload"@, matching the meanings of the [node:dev/plugin/interface/file#Options:options for File's toHTML() function].
+
+Unlike @toHTML()@, this simplified interface means a validity time cannot be specified for @"authenticationSignatureValidForSeconds"@. The validity time is set to several hours.
 
 To render a file with a thumbnail and filename, use an authentication signature, and force it to be a download, use
 
