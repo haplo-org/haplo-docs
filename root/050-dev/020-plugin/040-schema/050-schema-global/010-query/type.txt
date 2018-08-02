@@ -60,6 +60,11 @@ h3(key). annotations
 An array of annotation names, applied by [node:dev/plugin/schema/requirements-schema/declaration/type#Type_annotations:requirements.schema] files.
 
 
+h3(key). createShowType
+
+@true@ if this type or subtype is offered in the object editor. This corresponds to the @create-show-subtype@ statement in [node:dev/plugin/schema/requirements-schema/declaration/type:requirements.schema] files.
+
+
 h3(key). elements
 
 An array of names of [node:dev/plugin/elements] which will be displayed on objects of this type. The order may not be the order they are displayed, and only the names of the elements are available.
