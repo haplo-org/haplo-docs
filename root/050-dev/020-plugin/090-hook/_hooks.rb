@@ -75,6 +75,8 @@ module KHooks
         "[node:dev/plugin/interface/label-statements]"
       elsif klass == StoredFile
         "[node:dev/plugin/interface/file]"
+      elsif klass == "JSRequest"
+        "[node:dev/plugin/interface/request]"
       elsif klass == Hash
         "@Object@ (as dictionary)"
       else
