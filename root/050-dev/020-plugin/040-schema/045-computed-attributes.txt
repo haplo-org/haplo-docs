@@ -35,4 +35,4 @@ h3. Mutable store objects
 
 Most of the time, your code won't have to worry about computed attributes. However, if you're working with [node:dev/plugin/interface/store-object-mutable:mutable StoreObjects], you may need to explicitly compute the attributes before using them.
 
-Where it is necessary to have up-to-date computed attributes, call [node:dev/plugin/interface/store-object#computeAttributesIfRequired] before accessing them. This method is efficient and will work on mutable and non-mutable store objects, so you can call it as a precaution before all accesses.
+Where it is necessary to have up-to-date computed attributes, call [node:dev/plugin/interface/store-object-mutable#computeAttributesIfRequired] before accessing them. This method is efficient and will work on mutable and non-mutable store objects, so you can call it as a precaution before all accesses.

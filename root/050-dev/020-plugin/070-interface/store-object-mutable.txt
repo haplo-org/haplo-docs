@@ -81,3 +81,39 @@ Preallocate the @ref@ for a new object before @save()@ is called.
 @preallocateRef()@ will throw an exception if it is called when the @ref@ has already been allocated, either by calling this function or @save()@.
 
 Returns the new @ref@.
+
+
+h2. Interface (computed attributes)
+
+h3(property). willComputeAttributes
+
+@true@ if the object will [node:dev/plugin/schema/computed-attributes:compute attributes] the next time it is saved or the platform uses attribute values.
+
+
+h3(function). computeAttributesIfRequired()
+
+If the object has been modified since attributes were last [node:dev/plugin/schema/computed-attributes:computed], call the [node:dev/plugin/hook/compute-attributes] hook to compute the attributes.
+
+There is no need to check the @willComputeAttributes@ property first; this method only does work if it is actually required.
+
+You only need to call this method when you are working with mutable store objects and are accessing computed attributes.
+
+Returns this store object.
+
+
+h3(function). computeAttributesForced()
+
+Like @computeAttributesIfRequired()@, but computes attributes even if the object hasn't been marked as requiring an update to computed attributes.
+
+Returns this store object.
+
+
+h3(function). setWillComputeAttributes(willCompute)
+
+Overrides the normal marking of objects as requiring attributes to be computed.
+
+If @willCompute@ is @true@, attributes will be computed when next required.
+
+If @willCompute@ is @false@, the object will be marked as not requiring attributes to be computed.
+
+Returns this store object.

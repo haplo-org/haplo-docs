@@ -207,22 +207,6 @@ The values are sorted by descriptor, but the order of values in any given descri
 @desc@ and @qual@ are optional. If @desc@ is specified, then only values with that descriptor are compared. If @qual@ is specified, then only values with the descriptor and qualifier are compared.
 
 
-h3(property). willComputeAttributes
-
-@true@ if the object will [node:dev/plugin/schema/computed-attributes:compute attributes] the next time it is saved or the platform uses attribute values.
-
-
-h3(function). computeAttributesIfRequired()
-
-If the object has been modified since attributes were last [node:dev/plugin/schema/computed-attributes:computed], call the [node:dev/plugin/hook/compute-attributes] hook to compute the attributes.
-
-There is no need to check the @willComputeAttributes@ property first; this method only does work if it is actually required.
-
-You only need to call this method when you are working with *mutable* store objects and are accessing computed attributes.
-
-Returns this store object.
-
-
 h3(function). reindexText()
 
 Request that the text of the object is reindexed. This will happen in the background and may be delayed if there is other indexing activity.
