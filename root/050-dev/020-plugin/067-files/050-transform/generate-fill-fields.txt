@@ -14,6 +14,34 @@ Text form fields are filled in when filling a PDF file.
 
 @MERGEFIELD@ fields are filled in when filling a word processing document. A definition should look like @"MERGEFIELD FieldName"@ where @FieldName@ is the name which should be used in the @fields@ property.
 
+h3. Using Microsoft Word
+
+To use Word to insert @MERGEFIELD@ fields into a document without going through the whole mailmerge setup, you need to do a little preparation.
+
+ * In Window title, click down arrow (Customise Quick Access Toolbar)
+
+ * Menu: _More commands..._
+
+ * Choose commands from: _All commands_
+
+ * Select: _Insert a Field..._
+
+ * Click @[ > ]@ button
+
+ * Click _Save_
+
+Then, to add a @MERGEFIELD@:
+
+ * Click the new button in the window title
+
+ * Categories: _Mail Merge_
+
+ * Field names: _MergeField_
+
+ * Fill in box so it says: @MERGEFIELD Something@, where _Something_ is the name of the field
+
+ * Click _OK_
+
 
 h2. Information in result
 
