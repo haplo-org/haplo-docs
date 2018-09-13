@@ -8,6 +8,60 @@ h2. Properties
 
 |@type@|@"paragraph"@|
 |@rows@|(optional) The number of rows in the @<textarea>@. A suitable default will be chosen if this is not specified.|
+|@validationCount@|(optional) Description of min and max word/character counts, see below.|
 
 All the [node:dev/plugin/form/specification#Common_properties:common properties] are supported.
 
+
+h3. validationCount
+
+This property describes the required word or character count to pass validation. When present, a counter is shown in the UI.
+
+For example, to ensure that a paragraph has at least 10 words, use a definition like:
+
+<pre>language=json
+{
+  "type": "paragraph",
+  "label": "At least ten",
+  "required": true,
+  "validationCount": {
+    "min": 10
+  }
+}
+</pre>
+
+In this example, @required@ specifies that a blank paragraph is not permitted, and the @validationCount@ specifies is must have at least 10 words.
+
+Within the @validationCount@ definition, all properties are optional. To just display a word counter without any validation, set it to @{}@.
+
+
+h3(property). min
+
+The minimum count for this paragraph element.
+
+*IMPORTANT* If you specify @min@, you probably also want to set @required@ to @true@ in the main element definition to ensure that a blank paragraph is not accepted.
+
+
+h3(property). max
+
+The maximum count for this paragraph element.
+
+
+h3(property). unit
+
+The units of counting. The default is @"word"@ to count words. Set to @"character"@ to count characters.
+
+
+h3(property). minFailureMessage
+
+The validation message to display when the count is less than the minimum.
+
+
+h3(property). maxFailureMessage
+
+The validation message to display when the count is greated than the maximum.
+
+
+h3(property). limitText
+
+The text to display in the UI to describe the limits, next to the counter. This should be very short.
