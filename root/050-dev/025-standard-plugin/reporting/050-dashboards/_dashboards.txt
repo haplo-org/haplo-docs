@@ -48,6 +48,8 @@ h3(property). specification
 
 The @specification@ object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
 
+Note: you cannot modify the dashboard specification through this property.
+
 h3(function). use(featureName, argument, argument2, ...)
 
 Use a defined dashboard feature by name @featureName@, passing the additional arguments to the feature implementation.
