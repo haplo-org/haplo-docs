@@ -70,6 +70,13 @@ Sets instance choices for use by @choice@ elements. This must be called before @
 Use one of the Array formats described in [node:dev/plugin/form/specification/choice#Specifying_the_choice_list].
 
 
+h3(function). customValidation(name, fn)
+
+Register a function which provides custom validation. See [node:dev/plugin/form/custom-validation] for details.
+
+The function has arguments @value@ (element's value in the document), @data@ (from the @validationCustom@ property), @context@ (the current location in the document) and @document@ (the root of the document itself).
+
+
 h3(function). documentWouldValidate()
 
 Returns @true@ if the document would pass validation if rendered as a form and submitted by the user.

@@ -45,6 +45,7 @@ h3. Common properties
 |@inDocument@|(optional) If @true@, or a [node:dev/plugin/form/conditional-statement:conditional statement] which evaluates to true, the element is displayed in the document. Defaults to @true@. Consider using @include@ instead.|
 |@include@|(optional) A shortcut which sets @inForm@ and @inDocument@ to the same value. Use to control inclusion of the element in *both* form and document with a single property.|
 |@inlineGuidanceNote@|(optional) Either a view to be passed to the template specified by @inlineGuidanceNoteTemplate@ or a string.|
+|@validationCustom@|(optional) The specification for a validation function to provide custom validation for this element. See [node:dev/plugin/form/custom-validation].|
 
 
 h2. Text

@@ -1,0 +1,61 @@
+title: Custom validation
+--
+
+Custom validation functions can be applied to elements in a form. However, it's best to avoid their use if at all possible, so that the JSON specification remains the entire description of the form.
+
+Creating a custom validation has two steps. Firstly, the [node:dev/plugin/form/specification#Form_elements:form elements] need to include the @validationCustom@ property, which specifies the name and any additional data required to perform the validation. Specifications have two properties:
+
+|@name@|The name of the validation function.|
+|@data@|Any additional configuration data that needs to be passed to the validation function.|
+
+Secondly, the validation function needs to be registered with the form instance using the [node:dev/plugin/interface/form-instance#customValidation] method. Validation functions take four arguments:
+
+|@value@|The value of this form element, as stored in the document.|
+|@data@|Function specific configuration data, obtained from the element's specification.|
+|@context@|The current context within the document. If the element is in a section, this will be the sections position in the document. Generally you should access other elements through the context.|
+|@document@|The root of the document. Avoid using this to make sure your functions are as general as possible.|
+
+The validation function is only called when the value is not @undefined@.
+
+If validation does not pass, the function returns an error message to display to the user.
+
+
+h2. Example
+
+This example shows how to create a custom validation function that checks that two number elements sum to a given total, writing the validation function in as general a style as possible.
+
+The two elements are described with @"required":true@ to ensure the values are present in the document, and the validation function doesn't need to worry about checking they exist. The @data@ property is used to pass information to the function about the required total and the other element's path.
+
+<pre>language=json
+{
+    "type": "number",
+    "label": "First number",
+    "path": "firstNumber",
+    "required": true
+  },
+  {
+    "type": "number",
+    "label": "Second number",
+    "path": "secondNumber",
+    "required": true,
+    "validationCustom": {
+      "name": "sumValue",
+      "data": {
+        "otherValue": "firstNumber",
+        "requiredSum": 100
+    }
+  }
+}
+</pre>
+
+The validation function is defined and registered with the instance as:
+
+<pre>language=javascript
+instance.customValidation("sumValue",
+  function(value, data, context, document) {
+    if(value + context[data.otherValue] !== data.requiredSum) {
+        return "Must add up to "+data.requiredSum;
+    }
+  }
+);
+</pre>
