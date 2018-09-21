@@ -72,9 +72,9 @@ Use one of the Array formats described in [node:dev/plugin/form/specification/ch
 
 h3(function). customValidation(name, fn)
 
-Register a function which provides custom validation. See [node:dev/plugin/form/custom-validation] for details.
+Register a [node:dev/plugin/form/custom-validation#Validation_function:custom validation function]. See [node:dev/plugin/form/custom-validation] for details.
 
-The function has arguments @value@ (element's value in the document), @data@ (from the @validationCustom@ property), @context@ (the current location in the document) and @document@ (the root of the document itself).
+It may be more convenient to register it globally with [node:dev/plugin/interface/plugin/form#globalFormsCustomValidationFunction].
 
 
 h3(function). documentWouldValidate()

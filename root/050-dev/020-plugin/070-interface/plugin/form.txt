@@ -43,3 +43,10 @@ Define a data source. See [node:dev/plugin/form/data-source] for the various way
 
 @dataSource()@ can only be called while the plugin is being loaded.
 
+
+h3(function). globalFormsCustomValidationFunction(name, fn)
+
+Register a global [node:dev/plugin/form/custom-validation#Validation_function:custom validation function] for form [node:dev/plugin/form/custom-validation:custom validation].
+
+As this function name will apply to all forms, the @name@ must be namespaced and carefully named, eg @"example:specific-name-of-validation"@.
+
