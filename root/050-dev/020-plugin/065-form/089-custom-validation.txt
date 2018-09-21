@@ -19,6 +19,8 @@ The validation function is only called when the value is not @undefined@.
 
 If validation does not pass, the function returns an error message to display to the user.
 
+The values for other elements in the @context@ or @document@ will only have been updated for elements which precede this element in the specification. This means a custom validation function which operates on the values of more than one element must be applied to the element that is last in the specification.
+
 
 h2. Example
 
