@@ -15,14 +15,17 @@ Firstly, the [node:dev/plugin/form/specification#Form_elements:form elements] ne
 
 h2. Validation function
 
-The validation function needs to be registered with the form instance using the [node:dev/plugin/interface/form-instance#customValidation] method, or globally with the plugin's [node:dev/plugin/interface/plugin/form#globalFormsCustomValidationFunction]. Global registration is often more convenient, especially when the function is reused, but registering it with the form instance will allow access to data held outside the form.
+The validation function needs to be registered with the plugin [node:dev/plugin/interface/plugin/form#globalFormsCustomValidationFunction] method. Global registration is especially convenient when using the @std_document_store@ plugin, or when a function is reused across many forms.
 
-Validation functions take four arguments:
+Alternatively, if global registration is not possible, the function can be declared locally to the form instance with [node:dev/plugin/interface/form-instance#customValidation].
+
+Validation functions take five arguments:
 
 |@value@|The value of this form element, as stored in the document.|
 |@data@|Function specific configuration data, obtained from the element's specification.|
 |@context@|The current context within the document. If the element is in a section, this will be the sections position in the document. Generally you should access other elements through the context.|
 |@document@|The root of the document. Avoid using this to make sure your functions are as general as possible.|
+|@externalData@|The external data set on this form instance. @std_document_store@ will set the @"std_document_store:key"@ property within @externalData@.|
 
 The validation function is only called when the value is not @undefined@.
 
@@ -70,7 +73,7 @@ The validation function is defined and registered with the instance as:
 
 <pre>language=javascript
 P.globalFormsCustomValidationFunction("example:sum-value",
-  function(value, data, context, document) {
+  function(value, data, context, document, externalData) {
     if(value + context[data.otherValue] !== data.requiredSum) {
         return "Must add up to "+data.requiredSum;
     }
