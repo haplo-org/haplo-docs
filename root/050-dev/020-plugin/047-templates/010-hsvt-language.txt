@@ -28,11 +28,11 @@ backLink("/do/plugin/task/" workUnit.id) { "Cancel" }
 </div>
 </pre>
 
-This might be rendered in a [node:dev/plugin/interface/plugin/request-handling#respond] request handler with code like this. (This handler has been simplied for clarity.)
+This might be rendered in a [node:dev/plugin/interface/plugin/request-handling#respond] request handler with code like this. (This handler has been simplified for clarity.)
 
 <pre>language=javascript
 P.respond("GET", "/do/plugin/choices", [
-    {parameter:0, as:"workUnit"}
+    {pathElement:0, as:"workUnit"}
 ], function(E, workUnit) {
     E.render({
         workUnit: workUnit,
@@ -52,11 +52,11 @@ You don't have to worry about escaping your values. HSVT understands the structu
 
 If you want to include a literal string in your template, whether that's in a title, as some text within the HTML, or as a constant value in an HTML tag attribute, it must be enclosed in @"@ characters.
 
-Barewords are always properties of the view. You can access nested properties using @.@ notation, and this works on any property of any JavaScript object. In this case, we've included a [node:dev/plugin/interface/work-unit] in the view and are using it in a few places within the template.
+Bare words are always properties of the view. You can access nested properties using @.@ notation, and this works on any property of any JavaScript object. In this case, we've included a [node:dev/plugin/interface/work-unit] in the view and are using it in a few places within the template.
 
 Line 5 is a simple @if()@ template function which implements control flow.
 
-Line 6 is a template function which renderes a simple UI widget. It's argument is a static literal string, but you could include text from the view.
+Line 6 is a template function which renders a simple UI widget. It's argument is a static literal string, but you could include text from the view.
 
 Line 8 outputs some static HTML. In this case, it will always output @<p>Please choose from the list below.</p>@ if the WorkUnit is open.
 
