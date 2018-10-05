@@ -138,3 +138,13 @@ Returns the state definition for the given state. Use only as a last resort.
 h3(function). recalculateFlags()
 
 Recalculate the @flags@ property. This is intended for use by plugins providing features which use [node:dev/standard-plugin/workflow/definition/function-lists#modifyFlags], and should be avoided in workflow implementations.
+
+
+h3(function). sendEmail(emailDefinition)
+
+Send the email defined. This is a generic [node:dev/standard-plugin/workflow/definition/emails] sending mechanism for workflows.
+
+
+h3(function). sendNotification(notificationName)
+
+Explicitly send a [node:dev/standard-plugin/workflow/definition/emails#Notifications] email.

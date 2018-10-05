@@ -1,0 +1,117 @@
+title: Emails
+long_title: Workflow emails
+--
+
+An email in your workflow is defined as a JS @Object@ with the keys described below. They are processed by @WorkflowInstance@ @sendEmail()@, workflow Notifications and the service @std:workflow_emails:send_email@.
+
+
+h2. Using emails
+
+There needs to be at least 1 @to@ recipient or 1 @toExternal@ external recipient for an email to send.
+
+The function version of the keys described below is useful when passing emails as configuration to workflow components.
+
+If you're not using a workflow you can still send emails defined like below through the @std:workflow_emails:send_email@ service. You won't have the @WorkflowInstance@ M available and @M.getActionableBy()@ will replaced for entity lookup. Most of the helpers for writing email text won't work without @WorkflowInstance@. @template@ key will have to a @Template@ object. Example:
+
+<pre>language=javascript
+O.service("std:workflow_emails:send_email", {
+    template: P.template("invoice"),
+    to: "client",
+    view: {
+        charge: quote
+    }
+}, standaloneEntities);
+</pre>
+
+
+h3. Notifications
+
+Notifications are pre-defined 'notification' emails, as a lookup of name to email definition. The @template@ key can be left out, as it will default to templates in the @notification/@ directory with the same name as the notification.
+
+Example notification definitions:
+
+<pre>language=javascript
+EgWorkflow.notifications({
+    check_rejection: {
+        to: "submitter"
+    },
+    approved: {
+        to: "submitter"
+    },
+    rejected: {
+        to: "submitter",
+        cc: "reviewer"
+    }
+});
+</pre>
+
+When the workflow enters a state (or passes through a dispatch state), the notification with the same name as the state is automatically sent. @view@ key will have to be a function as notifications are created when the plugin is loaded.
+
+
+h3. Recipient
+
+can be entity names with the usual suffixes like "_list" or the name is resolved using @M.getActionableBy()@, numeric id of @SecurityPricipal@, @SecurityPricipal@ object and @Ref@ / @StoreObject@ representing a @SecurityPricipal@ object.
+
+Entity names are adjusted for efficiency and to prevent exceptions for you. You're allowed to lookup the entities yourself e.g.
+
+<pre>language=javascript
+    to: M.entities.supervisor_list
+</pre>
+
+Internally @SecurityPricipal@ object(s) are yielded using @O.user()@.
+
+
+h3. External recipient
+
+is a JS @Object@ with at least the @email@, @nameFirst@ and @name@ properties. Note that external recipients don't get de-duplicated or respect the @except@ key.
+
+
+h3(key). template
+
+Template object, or name of template within consuming plugin.
+
+The view is passed has the additional properties of the @WorkflowInstance@ @M@ and the @SecurityPrincipal@ @toUser@ that the email is being sent to.
+
+
+h3(key). view
+
+View for rendering template.
+
+If view is a function, the function is called to generate the view with @WorkflowInstance@ @M@ as the only argument.
+
+@emailSubject@ can be set here, or preferably use the @emailSubject()@ template function.
+
+
+h3(key). to
+
+Recipient or list of recipients.
+
+If @to@ is a function, the function is called to generate the recipient(s) with @WorkflowInstance@ @M@ as the only argument.
+
+
+h3(key). cc
+
+CC recipient or list of recipients.
+
+If @cc@ is a function, the function is called to generate the recipient(s) with @WorkflowInstance@ @M@ as the only argument.
+
+
+h3(key). except
+
+Recipient or list of recipients that shouldn't have email sent to them.
+
+If @except@ is a function, the function is called to generate the recipient(s) with @WorkflowInstance@ @M@ as the only argument.
+
+
+h3(key). toExternal
+
+External recipient or list of external recipients.
+
+If @toExternal@ is a function, the function is called to generate the external recipient(s) with @WorkflowInstance@ @M@ as the only argument.
+
+
+h3(key). ccExternal
+
+CC external recipient or list of external recipients.
+
+If @ccExternal@ is a function, the function is called to generate the external recipient(s) with @WorkflowInstance@ @M@ as the only argument.
