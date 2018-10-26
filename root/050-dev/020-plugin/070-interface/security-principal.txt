@@ -119,6 +119,11 @@ h3(property). nameLast
 Last name.
 
 
+h3(property). otpIdentifier
+
+One time password token identifier assigned to this user, or @null@ if no token is assigned.
+
+
 h3(function). can(operation, ref)
 
 Returns @true@ if the user is allowed to carry out the @operation@ on the object specified by [node:dev/plugin/interface/ref].
