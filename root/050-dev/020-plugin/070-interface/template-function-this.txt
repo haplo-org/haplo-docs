@@ -77,6 +77,11 @@ h3(function). writeBlock(blockName)
 Write the given named block, or @null@ for the anonymous block.
 
 
+h3(function). renderIncludedTemplate(template)
+
+Render the given template (objected from @P.template()@), in the context of this function. The template will use the current view, and can @yield@ to any blocks, just like [node:dev/plugin/templates/including-templates:included templates].
+
+
 h3(function). render(thing)
 
 Render something. @thing@ may be a deferred render or a template.
