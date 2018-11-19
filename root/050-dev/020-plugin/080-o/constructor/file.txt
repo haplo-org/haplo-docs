@@ -33,3 +33,19 @@ h3(function). O.file(object)
 
 Look up a @File@ by properties on the @object@ passed as an argument. @object.digest@ must be a string, and the optional @object.fileSize@ must be a number.
 
+
+h3(function). O.file(signedUrl)
+
+Pass in a signed URL to efficiently copy files between applications that are co-located on the same hosting cluster. If this is not possible for any reason, an exception will be thrown.
+
+Generate the signed URL on the application that contains the file to be copied with code like:
+
+<pre>language=javascript
+var signedURL = file.url({
+  asFullURL: true,
+  authenticationSignatureValidForSeconds: 600
+});
+</pre>
+
+Then transfer this URL to the application to which the file should be copied (perhaps using a message bus), and then pass it to @O.file()@ to copy the file.
+
