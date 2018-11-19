@@ -49,3 +49,4 @@ var signedURL = file.url({
 
 Then transfer this URL to the application to which the file should be copied (perhaps using a message bus), and then pass it to @O.file()@ to copy the file.
 
+The @pCopyFilesBetweenApplications@ privilege is required to copy files between applications.
