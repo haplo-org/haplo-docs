@@ -109,6 +109,11 @@ h3(function). getAttributeWithNamespace(namespaceURI, attributeName)
 Returns the value of the named attribute in the specified namespace.
 
 
+h3(function). forEachAttribute(iterator)
+
+Calls the @iterator@ function with the name and value of each attribute.
+
+
 h3(function). getText()
 
 Returns the text value of the current node.
