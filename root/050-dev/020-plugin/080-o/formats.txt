@@ -25,6 +25,8 @@ Returns a function which takes a single string argument, and returns a @Date@ pa
 
 The @format@ string uses the same formats as Java's "@java.text.SimpleDateFormat@":https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.
 
+If the string passed to the parser does not match the format, @null@ is returned.
+
 For performance, call this once to create a parser which is called many times.
 
 <pre>language=javascript
