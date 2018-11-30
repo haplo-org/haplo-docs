@@ -1,0 +1,36 @@
+title: field
+--
+
+The @field@ action copies a value from the input *Record* to a *Name* in a *Destination*.
+
+As it is the most common Instruction, the @action@ property may be omitted.
+
+|@source@|The property in the input Record.|
+|@destination@|The destination to store the value in.|
+|@name@|The Name within the destination to store the value in.|
+
+In addition, [node:import/control/value-conversion:value conversion properties] can be added.
+
+
+h2. Example
+
+To set @username@ within the @user@ destination using the value of the @ID@ property in the input Record:
+
+<pre>language=json
+{
+    "source": "ID",
+    "destination": "user",
+    "name": "username"
+}
+</pre>
+
+To set an organisational unit in the user's @profile@, [node:import/control/mapping:mapping a code] from the input:
+
+<pre>language=json
+{
+    "source": "orgUnit",
+    "destination": "profile",
+    "name": "example:attribute:organisational-unit",
+    "refMapping": "organisational-unit"
+}
+</pre>

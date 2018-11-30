@@ -1,0 +1,21 @@
+title: Instructions
+class: DocNodeTextileWithTOC
+--
+
+*Instructions* tell the data import framework how to retrieve, map and convert values from the *Records* and set values in the *Model*.
+
+Each instruction in the @instructions@ array is defined by a dictionary, and executed in order for each Record.
+
+
+h2. Common properties
+
+Some properties in the definition dictionary are common to all instructions.
+
+|@action@|The action of the instruction. If not specified, defaults to @"field"@.|
+|@mapInputValue@|A dictionary for simple mapping of input values, where the key is the value in the Record, and the value is the value to be passed through to the *Destination*.|
+|@mapInputValueDefault@|If a mapping is not found, use this default value. If not specified, the value is passed through unmodified when it is not found in @mapInputValue@.|
+
+Other properties will depend on the @action@ of the instruction, and the data type to which it's mapping a value.
+
+
+h2. Instruction actions
