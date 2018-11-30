@@ -1,0 +1,58 @@
+title: Example
+long_title: Example control file
+--
+
+A very simple control file for user sync, mapping from a JSON file to the _User_ destination might look like:
+
+<pre>language=json
+{
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:user-sync",
+    "files": {
+        "DEFAULT": {
+            "read": "json",
+        }
+    },
+    "instructions": [
+        {
+            "source": "ID",
+            "destination": "user",
+            "name": "username"
+        },
+        {
+            "source": "FIRST_NAME",
+            "destination": "user",
+            "name": "nameFirst"
+        },
+        {
+            "source": "LAST_NAME",
+            "destination": "user",
+            "name": "nameLast"
+        },
+        {
+            "source": "EMAIL_ADDR",            
+            "destination": "user",
+            "name": "email"
+        }
+    ]
+}
+</pre>
+
+An input file compatible with this control file might look like:
+
+<pre>language=json
+[
+    {
+        "ID": "jbloggs",
+        "FIRST_NAME": "Joe",
+        "LAST_NAME": "Bloggs",
+        "EMAIL_ADDR": "joe@example.org"
+    },
+    {
+        "ID": "jsmith",
+        "FIRST_NAME": "Jane",
+        "LAST_NAME": "Smith",
+        "EMAIL_ADDR": "jane@example.org"
+    }
+]
+</pre>

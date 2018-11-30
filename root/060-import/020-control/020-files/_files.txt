@@ -1,0 +1,29 @@
+title: Files
+class: DocNodeTextileWithTOC
+--
+
+The @files@ property specifies how the files are to be interpreted, mapping from file names to file properties.
+
+Files in a *Batch* are named, so that different files can be read in different ways. The @"DEFAULT"@ name is used if a file name is not individually specified.
+
+h2. File properties
+
+File properties always use the @"read"@ property to specify the format of the file. Built in formats are listed below, and plugins can extend the framework with additional formats.
+
+h2. Example
+
+<pre>language=json
+"files": {
+    "DEFAULT": {
+        "read": "json"
+    },
+    "table" {
+        "read": "tsv-with-name-row",
+        "charset": "windows-1252"
+    }
+}
+</pre>
+
+In this example, the @table@ file is read as a TSV file in the Windows-1252 charset, and any other file will be read as JSON.
+
+h2. File formats

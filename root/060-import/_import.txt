@@ -1,0 +1,29 @@
+title: Data import
+class: DocNodeTextileWithTOC
+--
+
+Haplo provides a data import framework which uses a common description of data mapping and transformation to
+
+* import batches of data
+* synchronise users and their associated data with other systems
+* implement REST style APIs for pushing data into an application
+* provide a server-side API to other plugins.
+
+Responsibility is split between application developers who define a data *Model*, and data engineers who create *Control Files* which describe how to read the input files, transform data, and map input to the data Model.
+
+
+h2. Using this documentation
+
+This documentation describes the generic mechanisms for importing data into Haplo applications. You should refer to additional documentation provided by the developers of your application which describes the specific data model and approach for importing data.
+
+
+h2. Required plugins
+
+To import data, you will need to ensure that the correct plugins are installed.
+
+The @haplo_data_import_framework@ plugin provides the core framework, and additional plugins provide features and describe the data model. For example, @haplo_user_sync_generic@ uses the framework to implement user synchronisation.
+
+Your application developers or support contact will be able to install and configure the required plugins.
+
+
+h2. Table of contents

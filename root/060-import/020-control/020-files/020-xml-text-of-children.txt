@@ -1,0 +1,38 @@
+title: xml-text-of-children
+--
+
+The @xml-text-of-children@ format reads an XML file, where the root element contains child elements which form the *Records*. The text value of those children of those elements are the values in the Record.
+
+The names of the root and immediate child elements are ignored.
+
+There are no additional options.
+
+h2. Example control file
+
+<pre>language=json
+"files": {
+    "DEFAULT": {
+        "read": "xml-text-of-children"
+    }
+}
+</pre>
+
+
+h2. Example input file
+
+<pre>language=xml
+<file>
+    <record>
+        <id>jbloggs</id>
+        <first>Joe</first>
+        <last>Bloggs"</last>
+        <email>joe@example.org</email>
+    </record>
+    <record>
+        <id>jsmith</id>
+        <first>Jane</first>
+        <last>Smith"</last>
+        <email>jane@example.org</email>
+    </record>
+</file>
+</pre>

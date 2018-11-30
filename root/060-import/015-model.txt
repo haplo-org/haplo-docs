@@ -1,0 +1,25 @@
+title: Model
+--
+
+When configuring a data import, start by reviewing the *Model*.
+
+CLICK_PATH TOOLS > Data import > Models
+
+Choose the correct model for your data import. The user sync always uses the @haplo:user-sync@ model, but other data import processes and REST APIs can use any model provided by your application developers.
+
+For each *Destination* in the Model, this page lists:
+
+* The destination name for use in *Control* files
+* Whether it's an optional destination that does not have to have any data
+* A table describing all the *Names* in that Destination.
+
+The columns in the Names table are:
+
+|Name|The name which should be used in Control files to refer to this value.|
+|Type|The data type of the value.|
+|MV?|Whether this Name is multi-value.|
+|Req?|Whether a value for this Name is required.|
+|Description|A short description of the values expected.|
+
+Some data types will have actions in the right column. _Map_ links to a page which generates example mappings for the Control file.
+
