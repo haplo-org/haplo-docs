@@ -1,0 +1,29 @@
+title: Type ref
+--
+
+Type of store objects are described using @ref@ values, but use a special @type-ref@ data type.
+
+Values must be the API code of the type, which can be found using System Management.
+
+CLICK_PATH TOOLS > System management > Types
+
+
+h2. Example
+
+The API code of the desired type is set as the @value@ of the @add-value@ instruction:
+
+<pre>language=json
+{
+    "source": "TYPE",
+    "action": "if-value-one-of",
+    "values": ["STAFF"],
+    "then": [
+        {
+            "action": "add-value",
+            "destination": "profile",
+            "name": "dc:attribute:type",
+            "value": "std:type:person:staff"
+        }
+    ]
+}
+</pre>

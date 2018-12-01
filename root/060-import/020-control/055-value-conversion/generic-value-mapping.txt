@@ -1,0 +1,24 @@
+title: Generic value mapping
+--
+
+Generic value mapping can be used on any instruction to perform simple mapping from input values. These mappings can be used with any other value conversion or mapping, and is performed before any other conversion.
+
+|@mapInputValue@|A dictionary for simple mapping of input values, where the key is the value in the Record, and the value is the value to be passed through to the *Destination*.|
+|@mapInputValueDefault@|Default value if the input value cannot be found in @mapInputValue@.|
+
+If a mapping is not found in @mapInputValue@, and @mapInputValueDefault@ is not specified, then the value is passed through unmodified. This allows generic value mapping to be used to make small corrections to input data.
+
+h2. Example
+
+<pre>language=json
+{
+    "source": "role",
+    "destination": "user",
+    "name": "groups",
+    "mapInputValue": {
+        "EXTERNAL": "example:group:external",
+        "AFFILIATED": "external:group:affiliated"
+    },
+    "mapInputValueDefault": "external:group:internal"
+}
+</pre>
