@@ -1,0 +1,30 @@
+title: if-exists
+--
+
+The @if-exists@ instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value exists in the current *Record*.
+
+|@action@|@"if-exists"@|
+|@source@|The property in the input Record.|
+|@then@|An array of Instructions to be executed when the value exists in the Record (optional).|
+|@else@|An array of Instructions to be executed when the value does not exist in the Record (optional).|
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-exists",
+    "source": "supervisors",
+    "then": [
+        {
+            "action": "add-value",
+            "destination": "user",
+            "name": "groups",
+            "value": "example:group:student"
+        }
+    ],
+    "else": [
+        // ...
+    ]
+}
+</pre>

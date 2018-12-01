@@ -1,7 +1,7 @@
 title: field
 --
 
-The @field@ action copies a value from the input *Record* to a *Name* in a *Destination*.
+The @field@ instruction copies a value from the input *Record* to a *Name* in a *Destination*.
 
 As it is the most common Instruction, the @action@ property may be omitted.
 
