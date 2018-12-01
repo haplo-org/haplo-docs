@@ -1,0 +1,41 @@
+title: Structured values
+--
+
+Structured values are values which are composed of more than one field. For example, a postal address has fields for the various lines in the address, and a person's name has values for the various parts of the name.
+
+Each of these different parts may need to be mapped or transformed, so a two step process is used to convert these types from the input data.
+
+h3. 1. Copy values to pseudo-destination
+
+Each of the structured data types has an associated pseudo-destination, which has *Names* for each of the fields. These pseudo-destinations show up in the *Model*, and are named with a prefix of @"value:"@.
+
+Use the normal @field@ and @add-value@ instructions to set the fields in this pseudo-destination. This allows all the value conversion features to be used on the input data.
+
+Use the admin UI to see the Names in these pseudo-destinations.
+
+h3. 2. Set value from the pseudo-destination
+
+Once all the values have been set in the value type's pseudo-destination, use the @field-structured@ instruction to assemble the structured value and set it in the final Destination.
+
+This instruction clears the pseudo-destination ready for the next value to be assembled.
+
+
+h2. Example
+
+These instructions copy values from the input *Record* into the person's name pseudo-destination, then apply it to as the name in the profile object representing that person in the object store.
+
+<pre>language=json
+{ "source":"T", "destination":"value:person-name", "name":"title"  },
+{ "source":"F", "destination":"value:person-name", "name":"first"  },
+{ "source":"M", "destination":"value:person-name", "name":"middle" },
+{ "source":"L", "destination":"value:person-name", "name":"last"   },
+{ "source":"S", "destination":"value:person-name", "name":"suffix" },
+{
+    "action": "field-structured",
+    "structured": "value:person-name",
+    "destination": "profile",
+    "name": "dc:attribute:title"
+}
+</pre>
+
+The person's name goes in the @dc:attribute:title@ name, because as this is the Dublin Core attribute for the 'name' of a thing.

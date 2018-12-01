@@ -1,3 +1,25 @@
 title: field-structured
 --
 
+The @field-structured@ instruction copies a [node:import/control/value-conversion/structured-value:structured value] to a *Name* in a *Destination*.
+
+|@action@|@"field-structured"@|
+|@structured@|The name of the pseudo-destination for this structure value type.|
+|@destination@|The destination to store the value in.|
+|@name@|The Name within the destination to store the value in.|
+
+Structured values are composed of multiple values, for example, the various fields in an address or a person's name. These are assembled in an pseudo-destination using the @field@ and @add-value@ instructions, then this instruction converts it to the structured data type. See [node:import/control/value-conversion/structured-value] for full details.
+
+After this instruction is executed, all the values in the pseudo-destination are cleared.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "field-structured",
+    "structured": "value:person-name",
+    "destination": "profile",
+    "name": "dc:attribute:title"
+}
+</pre>
