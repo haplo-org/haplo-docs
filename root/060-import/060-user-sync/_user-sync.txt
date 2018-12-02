@@ -1,0 +1,48 @@
+title: User sync
+class: DocNodeTextileWithTOC
+--
+
+User sync keeps the Haplo user database and user profile objects synchronised with an external system. Regular batch files are uploaded which contain information on all current users, and the user sync works out the difference between this and the previous version to:
+
+* add users and their associated profile store objects,
+
+* update existing users and profile objects to match the information in the feed,
+
+* maintains group membership in [node:import/user-sync/user-groups:managed groups],
+
+* block users who are no longer in the feed, and mark their profile object as 'past',
+
+* unblock users who reappear in the feed, and mark their profile object as current.
+
+A user interface is provided to configure the user sync, view logs of all sync runs, download previous batch files, and examine received data on individual users.
+
+While the user sync plugin maintains the user database and profile information, logging in users is handled by a separate plugin.
+
+The user sync will not alter users that it has not created, so it can be used in parallel to other user management systems.
+
+
+h2. Required plugins
+
+The @haplo_user_sync_generic@ plugin provides user sync services based on the data import framework. Other plugins may add to the [node:import/model].
+
+
+h2. Setting up a user sync
+
+To set up a user sync,
+
+* As the generic user sync mechanism is very general, and the exact data Model will depend on the application, consult the application specific documentation for additional guidance.
+
+* View the @haplo:user-sync@ [node:import/model] and note the required and optional data that needs to be provided.
+
+* Prepare data exports from the originating system, usually by writing database queries that select data for all active users. Output these files in [node:import/control/files/json:JSON] format, or use [node:import/control/files/xml-text-of-children:XML (child nodes)], [node:import/control/files/xml-attributes:XML (attributes)] or [node:import/control/files/tsv-with-name-row:TSV].
+
+* Write a [node:import/user-sync/control:Control file] which describes how to map the input data onto the *Model*. Follow the additional documentation for your specific application.
+
+* Write a script which uploads the control file and data files to a test instance of your application.
+
+* Refine the data and mappings.
+
+* Set up the live user sync by automating data generation and upload.
+
+
+h2. Table of contents

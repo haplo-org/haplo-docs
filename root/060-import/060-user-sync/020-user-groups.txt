@@ -1,0 +1,11 @@
+title: User groups
+long_title: User sync managed groups
+--
+
+The user system maintains each user's membership in zero or more of the _managed groups_. These groups are defined as part of the user sync data Model.
+
+As well as user group membership, these groups also control the type of the profile object, so that these various classes of users can be distinguished in search results. A 'current' and 'past' type is associated with each group, so the profile objects are marked as past when the user drops out of the user feed files.
+
+To see the list of Managed groups in the data model, view the user sync model in the admin user interface and look in the additional information section.
+
+CLICK_PATH TOOLS > Data import > Models > haplo:user-sync

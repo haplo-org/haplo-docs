@@ -1,0 +1,63 @@
+title: Control file
+long_title: User sync control file
+--
+
+To map the data from the external system to the Haplo data *Model*, you need to write a data import [node:import/control:Control file], which is slightly different to the control files used by other data import tasks.
+
+* The model must be @haplo:user-sync@, as no other models are supported.
+
+* Mappings from usernames to the @ref@ of People records is performed with special *Destinations* in the *Model*, because lookups need to be delayed until all user *Records* have been processed.
+
+* There is no need to use the *remove-values* instruction, as relevant attributes from previous versions are automatically removed as the sync assumes that the mapped values represent the desired state.
+
+
+h2. Example
+
+This minimal control file maps from a simple JSON format to the user sync Model. Real control files are likely to be a bit more complex.
+
+<pre>language=json
+{
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:user-sync",
+    "files": {
+        "DEFAULT": {
+            "read": "json",
+        }
+    },
+    "instructions": [
+        {
+            "source": "ID",
+            "destination": "user",
+            "name": "username"
+        },
+        {
+            "source": "FIRST_NAME",
+            "destination": "user",
+            "name": "nameFirst"
+        },
+        {
+            "source": "LAST_NAME",
+            "destination": "user",
+            "name": "nameLast"
+        },
+        {
+            "source": "EMAIL_ADDR",            
+            "destination": "user",
+            "name": "email"
+        },
+        {
+            "source": "ROLE",
+            "action": "if-value-one-of",
+            "values": ["RESEARCHER"],
+            "then": [
+                {
+                    "action": "add-value",
+                    "destination": "user",
+                    "name": "groups",
+                    "value": "example:group:researchers"
+                }
+            ]
+        }
+    ]
+}
+</pre>

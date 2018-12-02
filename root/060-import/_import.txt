@@ -5,7 +5,7 @@ class: DocNodeTextileWithTOC
 Haplo provides a data import framework which uses a common description of data mapping and transformation to
 
 * import batches of data
-* synchronise users and their associated data with other systems
+* [node:import/user-sync:synchronise users] and their associated data with other systems
 * implement REST style APIs for pushing data into an application
 * provide a server-side API to other plugins.
 
