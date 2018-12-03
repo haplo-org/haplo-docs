@@ -1,0 +1,22 @@
+title: Research Framework
+--
+
+The Research Framework application is the open source core of "Haplo Research Manager":https://www.haplo.com/research-manager. This provides:
+
+* Core schema for representing an organisation which performs research, such as a University, Research Institute, or R&D department in a company.
+
+* Building blocks for Research applications, such as data types, integrations with external systems, and researcher profiles.
+
+* User sync data model within the [node:import:data import framework].
+
+The code is available through the "haplo-research-manager":https://github.com/haplo-org/haplo-research-manager source code repository, under the MPLv2 license.
+
+
+h2. Setting up an application
+
+* Install the required plugins
+
+* Set up the [node:app/research/institution-structure]
+
+* Set up the [node:app/research/user-sync] so that users do not have to be manually managed
+

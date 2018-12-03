@@ -1,0 +1,16 @@
+title: User sync
+long_title: Haplo Repository user sync setup
+--
+
+As Haplo Repository is built on top of the Research Framework, you need include the [node:app/research/user-sync:Research Framework's user sync data].
+
+
+h2. REF Unit of Assessment
+
+If your institution is a UK University, and you wish to use the Haplo Repository REF process, you will need to assign each user to a REF Unit of Assessment.
+
+If this information is available in another system, or it can be determined from information in another system, it would be convenient to use the user sync to apply this to users.
+
+Map the information in the user feed to the @hres:attribute:ref-unit-of-assessment@ *Name* of the @profile@ *Destination*.
+
+To generate the instruction and mapping to the institutional structure, view the *Model* in the admin UI, then click 'Map' next to the Name. Fill in the values in the mapping when copying to your control file.
