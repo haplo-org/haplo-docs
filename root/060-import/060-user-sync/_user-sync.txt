@@ -32,6 +32,8 @@ To set up a user sync,
 
 * As the generic user sync mechanism is very general, and the exact data Model will depend on the application, consult the application specific documentation for additional guidance.
 
+* Find an identifier for your users which will never change over the entire time they are involved with your organisation to use as the @username@. This might be their account username, but some organisations change usernames, so another person identifier may be more appropriate.
+
 * View the @haplo:user-sync@ [node:import/model] and note the required and optional data that needs to be provided.
 
 * Prepare data exports from the originating system, usually by writing database queries that select data for all active users. Output these files in [node:import/control/files/json:JSON] format, or use [node:import/control/files/xml-text-of-children:XML (child nodes)], [node:import/control/files/xml-attributes:XML (attributes)] or [node:import/control/files/tsv-with-name-row:TSV].
