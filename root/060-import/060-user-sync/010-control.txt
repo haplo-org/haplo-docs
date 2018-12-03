@@ -6,6 +6,8 @@ To map the data from the external system to the Haplo data *Model*, you need to 
 
 * The model must be @haplo:user-sync@, as no other models are supported.
 
+* The @files@ section should name all the files, and not use @DEFAULT@, as this list of files is used to determine whether all the files for the sync run have been received.
+
 * Mappings from usernames to the @ref@ of People records is performed with special *Destinations* in the *Model*, because lookups need to be delayed until all user *Records* have been processed.
 
 * There is no need to use the *remove-values* instruction, as relevant attributes from previous versions are automatically removed as the sync assumes that the mapped values represent the desired state.
@@ -20,7 +22,7 @@ This minimal control file maps from a simple JSON format to the user sync Model.
     "dataImportControlFileVersion": 0,
     "model": "haplo:user-sync",
     "files": {
-        "DEFAULT": {
+        "users": {
             "read": "json",
         }
     },

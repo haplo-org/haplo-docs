@@ -38,9 +38,9 @@ To set up a user sync,
 
 * Write a [node:import/user-sync/control:Control file] which describes how to map the input data onto the *Model*. Follow the additional documentation for your specific application.
 
-* Write a script which uploads the control file and data files to a test instance of your application.
+* Write an [node:import/user-sync/upload-script:upload script] which uploads the control file and data files to a test instance of your application.
 
-* Refine the data and mappings.
+* Refine the data and mappings. The error count for a sync run should be as close to zero as possible.
 
 * Set up the live user sync by automating data generation and upload.
 

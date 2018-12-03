@@ -1,0 +1,95 @@
+title: Upload script
+--
+
+While there is a user interface for manual upload of files, it is generally quicker to develop the integration using an upload script from the very start.
+
+The upload script needs to:
+
+* Authenticate each request to the server using HTTP basic authentication, using the username @haplo@ and an API key as the password.
+
+* Upload one or more files, each with a separate @name@ parameter, matching the names in the @files@ section of the control file.
+
+* When all files are uploaded, make a separate request to apply the files.
+
+Upload scripts just need to make POST requests to @https@ URLs, using the @multipart/form-data@ encoding for the request body. Just about all HTTP client libraries are capable of making these requests.
+
+
+h3. Example script for UNIX
+
+The standard @curl@ utility is often pre-installed on UNIX-like operating systems, such as Linux and macOS, or easily obtained through a package.
+
+<pre>
+#!/bin/sh
+set -e
+
+# TODO: Edit this configuration
+API_KEY=YOUR_API_KEY_HERE
+FILE_DIRECTORY=/path/to/directory
+SERVER=research.example.org
+
+# Upload the control file
+curl -X POST -F name=_control -F file=@${FILE_DIRECTORY}/_control.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/upload-file
+
+# TODO: Edit the name and file arguments, and repeat if there are multiple files
+curl -X POST -F name=users -F file=@${FILE_DIRECTORY}/users.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/upload-file
+
+# Applies the files
+curl -X POST --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/start-sync
+</pre>
+
+h3. Example script for Windows
+
+For Windows servers, we recommend the use of the "User Sync Uploader":https://github.com/haplo-org/haplo-user-sync-uploader utility (contact your support contact for a compiled binary if needed), for which the equivalent script looks like:
+
+<pre>
+set HAPLO_API_KEY=YOUR_API_KEY_HERE
+set HAPLO_SERVER=research.example.org
+
+haplo-user-sync-uploader file _control path\to\_control.json
+haplo-user-sync-uploader file users path\to\users.json
+haplo-user-sync-uploader apply
+</pre>
+
+
+h2. Configuring the script
+
+The server name is the hostname of the application you're testing, or eventually the live application.
+
+The API key is generated for a special _service user_ through System management.
+
+CLICK_PATH TOOLS > System management > Users > SRV > Generic user sync access
+
+Then scroll to the bottom of the right hand pane, and click _New API Key_. Enter
+
+@/api/haplo-user-sync/@
+
+as the _Request path prefix_ and click _Create new API key_.
+
+
+
+h2. Control files
+
+The control file is uploaded with the @_control@ name, and should be uploaded as the first file. If it is not uploaded for a sync run, the previous control file will be used.
+
+
+h2. API
+
+The user sync API uses two endpoints on the application. Both must be authenticated using HTTP basic authentication with the @haplo@ username and an API key as the password.
+
+h3. POST /api/haplo-user-sync/upload-file
+
+The request body must be @multipart/form-data@ encoded, and contain two parameters:
+
+* @name@ - the name of the file, matching an entry in the @files@ property of the control file.
+
+* @file@ - the data file. The filename of this file is ignored.
+
+As a special case, if the @name@ is @_control@, then the control file is replaced with the @file@.
+
+Files do not all needed to be uploaded from the same server, as long as the request to start the sync happens after they have all been uploaded.
+
+h3. POST /api/haplo-user-sync/start-sync
+
+After all files have been uploaded, make a POST request this endpoint to start the sync run. An error will be returned if not all files have been uploaded yet.
+
+If automatic apply of the user sync has been disabled in the admin user interface, or the files are too different from the previous run, then a manual action will be needed to apply the sync. 

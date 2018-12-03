@@ -9,7 +9,7 @@ A very simple control file for user sync, mapping from a JSON file to the _User_
     "dataImportControlFileVersion": 0,
     "model": "haplo:user-sync",
     "files": {
-        "DEFAULT": {
+        "users": {
             "read": "json",
         }
     },
