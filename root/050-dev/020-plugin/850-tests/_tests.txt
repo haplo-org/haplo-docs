@@ -43,7 +43,7 @@ When a test starts, the current user is the privileged SYSTEM user, as no reques
 
 The [node:dev/plugin/tests/requests#t_login:@t.login()@] function logs in a user. You can then call your plugin's [node:dev/plugin/request-handling:request handlers] using functions like [node:dev/plugin/tests/requests#t_get:@t.get()@] and [node:dev/plugin/tests/requests#t_post:@t.post()@]. Information about the response is returned from these functions, but your tests may read better if you access it through the @t.last@ property.
 
-To check that a result is correct, use [node:dev/plugin/tests/assertions:@t.assert()@]. If the first argument is not true, the test will be aborted and failure reported.
+To check that a result is correct, use an [node:dev/plugin/tests/assertions:assert statement]. If the assert fails, the test will be aborted and failure reported.
 
 You can use [node:dev/plugin/standard-interfaces/console:@console.log()@] in your tests while you're writing them. To see the output, keep the Plugin Tool running the @develop@ command in another window.
 
