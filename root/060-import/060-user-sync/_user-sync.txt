@@ -26,6 +26,13 @@ h2. Required plugins
 The @haplo_user_sync_generic@ plugin provides user sync services based on the data import framework. Other plugins may add to the [node:import/model].
 
 
+h2. No duplicate usernames and emails
+
+Both the @username@ and @email@ address of a user must be unique within the data files, so that users can be unambiguously matched by either of these identifiers. This is particularly important for authenticating users.
+
+If a record duplicates the @username@ or @email@ of a previous record, it will be ignored with an error in the logs.
+
+
 h2. Setting up a user sync
 
 To set up a user sync,

@@ -6,7 +6,7 @@ CLICK_PATH TOOLS > User sync administration
 
 The admin interface provides:
 
-* Logs for all the sync runs and downloads of the data files
+* Logs for all the sync runs and downloads of the data and control files
 
 * Configuration of the user sync
 
@@ -27,7 +27,7 @@ There are various actions which may be available depending on the status of the 
 
 * _Unsafe mark cancelled_ - mark this sync run as cancelled, even though it is in a state which suggests this is might be unsafe.
 
-Scroll to the bottom of the page to download the data files.
+Scroll to the bottom of the page to download the data files and the control file.
 
 
 h2. Configuration
