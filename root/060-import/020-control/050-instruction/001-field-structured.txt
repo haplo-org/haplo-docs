@@ -1,4 +1,5 @@
 title: field-structured
+link_as: keyword
 --
 
 The @field-structured@ instruction copies a [node:import/control/value-conversion/structured-value:structured value] to a *Name* in a *Destination*.
@@ -11,6 +12,8 @@ The @field-structured@ instruction copies a [node:import/control/value-conversio
 Structured values are composed of multiple values, for example, the various fields in an address or a person's name. These are assembled in an pseudo-destination using the @field@ and @add-value@ instructions, then this instruction converts it to the structured data type. See [node:import/control/value-conversion/structured-value] for full details.
 
 After this instruction is executed, all the values in the pseudo-destination are cleared.
+
+*WARNING*: To replace the value in a multi-value Name, you need to precede this instruction with a [node:import/control/instruction/remove-values] instruction. (Except if you're writing a control file for a user sync.)
 
 
 h2. Example

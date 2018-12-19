@@ -1,4 +1,5 @@
 title: if-value-one-of
+link_as: keyword
 --
 
 The @if-value-one-of@ instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value in the current *Record* has a value matching one of a specified list of values.

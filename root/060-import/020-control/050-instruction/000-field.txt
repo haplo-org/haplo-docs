@@ -1,4 +1,5 @@
 title: field
+link_as: keyword
 --
 
 The @field@ instruction copies a value from the input *Record* to a *Name* in a *Destination*.
@@ -11,8 +12,10 @@ As it is the most common Instruction, the @action@ property may be omitted.
 
 In addition, [node:import/control/value-conversion:value conversion properties] can be added.
 
+*WARNING*: To replace the value in a multi-value Name, you need to precede this instruction with a [node:import/control/instruction/remove-values] instruction. (Except if you're writing a control file for a user sync.)
 
-h2. Example
+
+h2. Example: single value
 
 To set @username@ within the @user@ destination using the value of the @ID@ property in the input Record:
 
@@ -24,6 +27,9 @@ To set @username@ within the @user@ destination using the value of the @ID@ prop
 }
 </pre>
 
+
+h2. Example: mapping to ref
+
 To set an organisational unit in the user's @profile@, [node:import/control/mapping:mapping a code] from the input:
 
 <pre>language=json
@@ -34,3 +40,22 @@ To set an organisational unit in the user's @profile@, [node:import/control/mapp
     "refMapping": "organisational-unit"
 }
 </pre>
+
+
+h2. Example: replacing multi-value
+
+To set the value of a multi-value Name, replacing any values that are already set, use a pair of @remove-values@ and @field@ instructions.
+
+<pre>language=json
+{
+    "action": "remove-values",
+    "destination": "profile",
+    "name": "std:attribute:job-title"
+},
+{
+    "source": "JOB_TITLE",
+    "destination": "profile",
+    "name": "std:attribute:job-title"
+}
+</pre>
+

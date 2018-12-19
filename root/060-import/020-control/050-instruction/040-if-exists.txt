@@ -1,4 +1,5 @@
 title: if-exists
+link_as: keyword
 --
 
 The @if-exists@ instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value exists in the current *Record*.
