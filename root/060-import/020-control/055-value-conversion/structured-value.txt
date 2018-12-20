@@ -7,7 +7,7 @@ Each of these different parts may need to be mapped or transformed, so a two ste
 
 h3. 1. Copy values to pseudo-destination
 
-Each of the structured data types has an associated pseudo-destination, which has *Names* for each of the fields. These pseudo-destinations show up in the *Model*, and are named with a prefix of @"value:"@.
+Each of the structured data types has an associated [node:import/model/pseudo:pseudo-destination], which has *Names* for each of the fields. These pseudo-destinations show up in the *Model*, and are named with a prefix of @"value:"@.
 
 Use the normal @field@ and @add-value@ instructions to set the fields in this pseudo-destination. This allows all the value conversion features to be used on the input data.
 

@@ -25,6 +25,8 @@ The *Model* contains one or more *Destinations* which describe the data model. D
 
 For example, the user sync plugin provides Destinations for the user account, their 'profile' (a store object which describes the person), and other plugins extend this Model with other Destinations, for example, the user's project.
 
+Destinations can be used to create new objects and other data in your application, or update existing data.
+
 
 h2. Name
 

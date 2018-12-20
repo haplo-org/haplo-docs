@@ -1,0 +1,45 @@
+title: load
+link_as: keyword
+--
+
+The @load@ instruction loads an existing piece of data represented by a *Destination*. If that data does not exist, other instructions can be executed, enabling "load or create" style operations.
+
+If the @otherwise@ instructions aren't specified, and it isn't possible to load the data into the Destination, an error will be reported and nothing will be committed for this *Record*.
+
+|@action@|@"load"@|
+|@using@|The name of the [node:import/model/pseudo:pseudo destination] for the required method of loading the object. The values in this destination must have been set by previous instructions.|
+|@destination@|The destination for this data.|
+|@otherwise@|(optional) If specified, the instructions to execute if the data does not already exist.|
+
+It the @load@ instruction should not be used for [node:import/model/depends:dependent destinations].
+
+
+h2. Example
+
+Try to load a person, and if it doesn't already exist, create one setting the person object's type to Staff:
+
+<pre>language=json
+{
+    "source": "PERSON-USERNAME",
+    "destination": "load:by-ref",
+    "name": "ref",
+    // filters or mapping from username to ref
+},
+{
+    "action": "load",
+    "destination": "profile",
+    "using": "load:by-ref",
+    "otherwise": [
+        {
+            "action": "new",
+            "destination": "profile"
+        },
+        {
+            "action": "add-value",
+            "destination": "profile",
+            "name": "dc:attribute:type",
+            "value": "std:type:person:staff"
+        }
+    ]
+}
+</pre>
