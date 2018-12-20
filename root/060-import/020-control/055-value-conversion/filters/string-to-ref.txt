@@ -1,0 +1,19 @@
+title: haplo:string-to-ref
+link_as: keyword
+--
+
+The @haplo:string-to-ref@ filters converts the string representation of a Haplo Ref to a Ref value which can be used to load and refer to other objects.
+
+
+h2. Example
+
+Your input data might include the Haplo Ref of existing objects. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] instruction, use:
+
+<pre>language=json
+{
+    "source": "PERSON_REF",
+    "destination": "load:by-ref",
+    "name": "ref",
+    "filters": ["haplo:string-to-ref"]
+}
+</pre>

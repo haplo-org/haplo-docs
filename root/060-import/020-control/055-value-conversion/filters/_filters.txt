@@ -1,0 +1,30 @@
+title: Filters
+class: DocNodeTextileWithTOC
+--
+
+Input data can be passed through multiple filters to convert the values in the input *Record*.
+
+|@filters@|Array of filter names.|
+
+
+h2. Example
+
+Your input data might include the Haplo Ref of existing objects. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] instruction, use:
+
+<pre>language=json
+{
+    "source": "PERSON_REF",
+    "destination": "load:by-ref",
+    "name": "ref",
+    "filters": ["haplo:string-to-ref"]
+}
+</pre>
+
+
+h2. Standard filters
+
+The standard filters provided by the data import framework may be augmented by other plugins. To view the available filters, use the admin UI:
+
+CLICK_PATH TOOLS > Data import > Filters
+
+These filters will always be available:
