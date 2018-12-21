@@ -8,6 +8,7 @@ See also [node:dev/plugin/o/constants/value-types].
 
 |*Constant name*|*Description*|
 |@O.T_TEXT@|Plain single line text|
+|@O.T_TEXT_FORMATTED_LINE|Formatted single line text|
 |@O.T_TEXT_DOCUMENT@|Rich document text|
 |@O.T_TEXT_MULTILINE@|Multi-line plain text|
 |@O.T_TEXT_PARAGRAPH@|Paragraph plain text|
