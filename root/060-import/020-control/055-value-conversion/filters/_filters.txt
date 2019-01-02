@@ -27,4 +27,4 @@ The standard filters provided by the data import framework may be augmented by o
 
 CLICK_PATH TOOLS > Data import > Filters
 
-These filters will always be available:
+Filters implemented by the framework and user sync are:

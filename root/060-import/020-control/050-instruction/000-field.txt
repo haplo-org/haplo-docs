@@ -10,7 +10,7 @@ As it is the most common Instruction, the @action@ property may be omitted.
 |@destination@|The destination to store the value in.|
 |@name@|The Name within the destination to store the value in.|
 
-In addition, [node:import/control/value-conversion:value conversion properties] can be added.
+In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filters:filters], [node:import/control/value-conversion/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/ref:ref mapping].
 
 *WARNING*: To replace the value in a multi-value Name, you need to precede this instruction with a [node:import/control/instruction/remove-values] instruction. (Except if you're writing a control file for a user sync.)
 

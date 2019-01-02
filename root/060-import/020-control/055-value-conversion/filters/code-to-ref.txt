@@ -1,0 +1,16 @@
+title: haplo:code-to-ref
+link_as: keyword
+--
+
+The @haplo:code-to-ref@ filter converts the string representation of a [node:dev/plugin/o/behaviour:behaviour] to a Ref value which can be used to describe other objects. While a [node:import/control/mapping:mapping] is often more useful, this filter can be used in combination with other filters and [node:import/control/value-conversion/generic-value-mapping:generic mapping].
+
+
+h2. Example
+
+<pre>language=json
+{
+    "source": "SUBJECT",
+    "name": "dc:attribute:subject",
+    "filters": ["haplo:code-to-ref"]
+}
+</pre>
