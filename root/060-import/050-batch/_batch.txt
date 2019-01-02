@@ -1,0 +1,33 @@
+title: Batch import
+--
+
+Batch import provides [node:import/batch/api:an API] and a user interface for performing one-off imports of data into a Haplo application, along with a user interface for reviewing the data and logs of previous batch import jobs.
+
+For both methods, you need a [node:import/control:control file] and one or more data files to import.
+
+
+h2. API import
+
+Using [node:import/batch/api:the API for import] allows it to be scripted. This may be the most convenient method when you are preparing a data import using a test application, as your data preparation scripts can automatically upload and test the import each time you make a change.
+
+
+h2. Manual import
+
+When your data import is finalised, you can use the [node:import/batch/user-interface:import user interface] for the final import into your production application.
+
+
+h2. Administrative user interface
+
+All the batch import jobs are listed in the administrative user interface.
+
+CLICK_PATH TOOLS > Data import > Batch import > Batch import jobs
+
+For each job, the
+
+* Control file
+* Data files
+* Import log
+
+are available for download.
+
+Where a job was run as a dry run for testing before a real import, you can copy the job and re-run it as a import.
