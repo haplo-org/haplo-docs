@@ -1,0 +1,34 @@
+title: if-has-value
+link_as: keyword
+--
+
+The @if-has-value@ instruction conditionally executes a nested lists of *Instructions* depending on whether a *Destination* has a value set. This is useful for setting default values.
+
+|@action@|@"if-has-value"@|
+|@destination@|The destination to check.|
+|@name@|The Name within the destination.|
+|@then@|An array of Instructions to be executed when the value exists in the Destination (optional).|
+|@else@|An array of Instructions to be executed when the value does not exist in the Destination (optional).|
+
+See also [node:import/control/instruction/if-exists].
+
+
+h2. Example
+
+To ensure a object always has a title by applying a default if no other value has been set, add this to the *end* of your control file's instructions.
+
+<pre>language=json
+{
+    "action": "if-has-value",
+    "destination": "book",
+    "name": "dc:attribute:title",
+    "else": [
+        {
+            "action": "add-value",
+            "destination": "book",
+            "name": "dc:attribute:title",
+            "value": "Unnamed project"
+        }
+    ]
+}
+</pre>

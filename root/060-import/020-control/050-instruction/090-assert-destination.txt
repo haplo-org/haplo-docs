@@ -13,7 +13,7 @@ If the expectation is not met, then an error is emitted, and the entire *Record*
 
 h2. Example
 
-To check that the @project@ desintaiton already exists before updating it, use:
+To ensure that the @project@ destination already exists before updating it, use:
 
 <pre>language=json
 {

@@ -1,0 +1,27 @@
+title: log-error
+link_as: keyword
+--
+
+The @log-error@ instruction outputs a message in the error log. Use with the conditional instructions to output errors if conditions are met. 
+
+|@action@|@"log-error"@|
+|@message@|The message to output in the error log.|
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-exists",
+    "source": "researchers",
+    "then": [
+        // ... process researchers ...
+    ],
+    "else": [
+        {
+            "action": "log-error",
+            "message": "Expected researchers, but wasn't present"
+        }
+    ]
+}
+</pre>
