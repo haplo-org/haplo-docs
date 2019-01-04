@@ -3,6 +3,9 @@ title: REST API
 
 The data import framework provides a simple administrative user interface to implement REST style APIs for adding and updating information.
 
+Plugins can also [node:import/rest-api/plugin-defaults:provide default REST API definitions] which can be edited by administrators.
+
+
 To add a REST API, click:
 
 CLICK_PATH TOOLS > Data import > REST APIs > New REST API...
