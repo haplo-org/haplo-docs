@@ -6,7 +6,7 @@ Haplo provides a data import framework which uses a common description of data m
 
 * import [node:import/batch:batches of data]
 * [node:import/user-sync:synchronise users] and their associated data with other systems
-* implement REST style APIs for pushing data into an application
+* implement [node:import/rest-api:REST style APIs] for pushing data into an application
 * provide a server-side API to other plugins.
 
 Responsibility is split between application developers who define a data *Model*, and data engineers who create *Control Files* which describe how to read the input files, transform data, and map input to the data Model.
