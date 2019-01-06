@@ -1,0 +1,26 @@
+title: set-value
+link_as: keyword
+--
+
+The @set-value@ instruction adds a constant value to a *Name* in a *Destination*. It is called _add_ value because if the *Name* is a multi-value, then it will add the value rather than replacing it.
+
+|@action@|@"set-value"@|
+|@destination@|The destination to store the value in.|
+|@name@|The Name within the destination to store the value in.|
+|@value@|The constant value.|
+|@multivalue@|(Optional) If @true@, then the value is added to a multi-value name instead of replacing any existing value.|
+
+The value specified in the control file uses the normal value conversions, so all the [node:import/control/value-conversion:value conversion properties] can be used.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "set-value",
+    "destination": "profile",
+    "name": "dc:attribute:type",
+    "value": "std:type:person:staff"
+}
+</pre>
+

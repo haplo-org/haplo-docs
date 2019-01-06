@@ -10,7 +10,7 @@ CLICK_PATH TOOLS > System management > Types
 
 h2. Example
 
-The API code of the desired type is set as the @value@ of the @add-value@ instruction:
+The API code of the desired type is set as the @value@ of the @set-value@ instruction:
 
 <pre>language=json
 {
@@ -19,7 +19,7 @@ The API code of the desired type is set as the @value@ of the @add-value@ instru
     "values": ["STAFF"],
     "then": [
         {
-            "action": "add-value",
+            "action": "set-value",
             "destination": "profile",
             "name": "dc:attribute:type",
             "value": "std:type:person:staff"

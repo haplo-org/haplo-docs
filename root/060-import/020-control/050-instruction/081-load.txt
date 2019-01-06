@@ -35,7 +35,7 @@ Try to load a person, and if it doesn't already exist, create one setting the pe
             "destination": "profile"
         },
         {
-            "action": "add-value",
+            "action": "set-value",
             "destination": "profile",
             "name": "dc:attribute:type",
             "value": "std:type:person:staff"

@@ -24,7 +24,7 @@ To ensure a object always has a title by applying a default if no other value ha
     "name": "dc:attribute:title",
     "else": [
         {
-            "action": "add-value",
+            "action": "set-value",
             "destination": "book",
             "name": "dc:attribute:title",
             "value": "Unnamed project"

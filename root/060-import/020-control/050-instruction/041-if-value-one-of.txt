@@ -20,7 +20,7 @@ h2. Example
     "values": ["STUDENT", "PHD"],
     "then": [
         {
-            "action": "add-value",
+            "action": "set-value",
             "destination": "user",
             "name": "groups",
             "value": "example:group:student"

@@ -5,15 +5,15 @@ link_as: keyword
 The @remove-values@ instruction removes all the values from a *Name* in a *Destination*. *values* is plural because if the *Name* is a multi-value, then it will remove all the values set for that Name.
 
 |@action@|@"remove-values"@|
-|@destination@|The destination to remove the value from.|
-|@name@|The Name within the destination to remove the value from.|
+|@destination@|The destination to remove the values from.|
+|@name@|The Name within the destination to remove the values from.|
 
 
 h2. Usage
 
-@remove-values@ is most often used in combination with the [node:import/control/instruction/field] and [node:import/control/instruction/add-value] instructions when the value in a multi-value name should be replaced.
+@remove-values@ is most often used to remove all the values in a multi-value name before a [node:import/control/instruction/field] or [node:import/control/instruction/set-value] instruction is used with the @multivalue:true@ option.
 
-This instruction does *not* need to be used in control files for the [node:import/user-sync].
+You probably won't need to use this instruction unless you're explicitly handling multi-values in your control file.
 
 
 h2. Example
@@ -25,3 +25,5 @@ h2. Example
     "name": "std:attribute:job-title"
 }
 </pre>
+
+See also the [node:import/control/instruction/field#Example_working_with_multi_values:working with multi-values] example for the @field@ instruction.

@@ -9,10 +9,9 @@ As it is the most common Instruction, the @action@ property may be omitted.
 |@source@|The property in the input Record.|
 |@destination@|The destination to store the value in.|
 |@name@|The Name within the destination to store the value in.|
+|@multivalue@|(Optional) If @true@, then the value is added to a multi-value name instead of replacing any existing value.|
 
 In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filters:filters], [node:import/control/value-conversion/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/ref:ref mapping].
-
-*WARNING*: To replace the value in a multi-value Name, you need to precede this instruction with a [node:import/control/instruction/remove-values] instruction. (Except if you're writing a control file for a user sync.)
 
 
 h2. Example: single value
@@ -42,9 +41,9 @@ To set an organisational unit in the user's @profile@, [node:import/control/mapp
 </pre>
 
 
-h2. Example: replacing multi-value
+h2. Example: working with multi-values
 
-To set the value of a multi-value Name, replacing any values that are already set, use a pair of @remove-values@ and @field@ instructions.
+To set the value of a multi-value Name, replacing any values that are already set, use a @remove-values@ instruction. This example sets the job title to "Researcher" if depending on a value in the input file, then additionally adds any job title from the input file.
 
 <pre>language=json
 {
@@ -53,9 +52,24 @@ To set the value of a multi-value Name, replacing any values that are already se
     "name": "std:attribute:job-title"
 },
 {
+    "source": "ROLE",
+    "action": "if-value-one-of",
+    "values": ["RESEARCHER"],
+    "then": [
+        {
+            "action": "set-value",
+            "destination": "profile",
+            "name": "std:attribute:job-title",
+            "value": "Additional job title",
+            "multivalue": true
+        }
+    ]
+},
+{
     "source": "JOB_TITLE",
     "destination": "profile",
-    "name": "std:attribute:job-title"
+    "name": "std:attribute:job-title",
+    "multivalue": true
 }
 </pre>
 

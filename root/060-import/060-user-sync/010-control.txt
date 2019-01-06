@@ -2,15 +2,11 @@ title: Control file
 long_title: User sync control file
 --
 
-To map the data from the external system to the Haplo data *Model*, you need to write a data import [node:import/control:Control file], which is slightly different to the control files used by other data import tasks.
+To map the data from the external system to the Haplo data *Model*, you need to write a data import [node:import/control:control file] for the @haplo:user-sync@ model.
 
-* The model must be @haplo:user-sync@, as no other models are supported.
+The @files@ section is used to determine whether all the files for the sync run have been received, so it must name all the files without the use of @DEFAULT@.
 
-* The @files@ section should name all the files, and not use @DEFAULT@, as this list of files is used to determine whether all the files for the sync run have been received.
-
-* Mappings from usernames to the @ref@ of People records is performed with special *Destinations* in the *Model*, because lookups need to be delayed until all user *Records* have been processed.
-
-* There is no need to use the [node:import/control/instruction/remove-values] instruction, as relevant attributes from previous versions are automatically removed as the sync assumes that the mapped values represent the desired state.
+Mappings from usernames to the @ref@ of People records are performed with special *Destinations* in the *Model*, because lookups need to be delayed until all user *Records* have been processed.
 
 The control file used in a sync run is stored along with the input files, and can be viewed in the [node:import/user-sync/admin-ui].
 
@@ -55,7 +51,7 @@ This minimal control file maps from a simple JSON format to the user sync Model.
             "values": ["RESEARCHER"],
             "then": [
                 {
-                    "action": "add-value",
+                    "action": "set-value",
                     "destination": "user",
                     "name": "groups",
                     "value": "example:group:researchers"
