@@ -42,11 +42,17 @@ After creating the API, the admin interface will show you the full URL of the en
 
 @https://app.example.org/api/push-data/api-name@
 
-Requests should be POSTed to this URL using an API key, which you can generate in System management:
+h3. Creating an API key
+
+Requests should be POSTed to this URL using an API key, which you can generate by clicking the _Create API key..._ button on the REST API's page. It's important to create keys using this user interface so they are restricted to just accessing a single REST API.
+
+Once created, API keys are managed in System management:
 
 CLICK_PATH TOOLS > System management > Users > SRV > REST API data import access
 
-Scroll to the bottom and click _New API key_.
+Scroll to the bottom to view the API keys.
+
+h3. POST data to the REST API
 
 Once you have the API key, POST the data in the specified format to the endpoint, using HTTP basic authentication with the username @haplo@ and the API key as the password.
 

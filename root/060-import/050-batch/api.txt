@@ -13,11 +13,15 @@ There are four steps:
 
 There's an example script at the bottom of this page.
 
-You'll need an API key, which you can generate in system management:
+You'll need an API key, which you can generate in the data import UI:
+
+CLICK_PATH TOOLS > Data import > Batch import > Create API key...
+
+After creation, API keys are managed in System management:
 
 CLICK_PATH TOOLS > System management > Users > SRV > Batch data import access
 
-Then scroll down, and click _New API key_.
+Scroll down to view the current API keys.
 
 
 h3. Upload control file

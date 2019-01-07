@@ -70,6 +70,13 @@ and fill out the form with:
 Click _New REST API_ to create the API.
 
 
+h2. Create an API key
+
+After creating the REST API, click the _Create API key..._ button to create an API key.
+
+This API key is restricted so it can only access this REST API.
+
+
 h2. Prepare request data
 
 Create a file, @request.json@, which contains the data:
@@ -82,15 +89,6 @@ Create a file, @request.json@, which contains the data:
 </pre>
 
 Adjust the file with a username that is used in your application.
-
-
-h2. Create an API key
-
-Create an API key to authenticate in System management:
-
-CLICK_PATH TOOLS > System management > Users > SRV > REST API data import access
-
-Scroll to the bottom and click _New API key_.
 
 
 h2. Call the endpoint

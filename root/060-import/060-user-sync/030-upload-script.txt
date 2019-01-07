@@ -55,15 +55,17 @@ h2. Configuring the script
 
 The server name is the hostname of the application you're testing, or eventually the live application.
 
-The API key is generated for a special _service user_ through System management.
+The API key is generated for a special _service user_ using User sync administration UI:
+
+CLICK_PATH TOOLS > User sync administration > Create API key...
+
+After creation, API keys are managed through System Management:
 
 CLICK_PATH TOOLS > System management > Users > SRV > Generic user sync access
 
-Then scroll to the bottom of the right hand pane, and click _New API Key_. Enter
+Scroll to the bottom of the right hand pane to view the API keys.
 
-@/api/haplo-user-sync/@
-
-as the _Request path prefix_ and click _Create new API key_.
+All user sync API keys should have @/api/haplo-user-sync/@ as the _Request path_ to restrict them to just the user sync APIs.
 
 
 
