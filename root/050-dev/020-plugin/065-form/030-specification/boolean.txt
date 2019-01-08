@@ -23,6 +23,7 @@ The @style@ property can be set to:
 
 |@"radio"@|Use two HTML @<input type="radio">@ elements, labelled with the @trueLabel@ and @falseLabel@|
 |@"checkbox"@|Use an HTML @<input type="checkbox">@ element, followed by the @label@ of the Element.|
+|@"checklist"@|As @"checkbox"@, but displays the label with a tick or a cross in the document.|
 |@"confirm"@|As @"checkbox"@, but requires that the checkbox is checked by the user to pass validation.|
 
 Note that use of the @"checkbox"@ style means that the value in the Document will always be @true@ or @false@. The @"radio"@ style allows for no answer to be given, in which case the value will be omitted from the Document.
