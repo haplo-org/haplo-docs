@@ -21,7 +21,7 @@ Your input data might include the Haplo Ref of existing objects. To convert it i
 </pre>
 
 
-h2. Standard filters
+h2. Available filters
 
 The standard filters provided by the data import framework may be augmented by other plugins. To view the available filters, use the admin UI:
 

@@ -7,7 +7,7 @@ h3. Extend data import framework
 
 The data import framework [node:import/model:Models] are defined by plugins around a key object, such as a user or person. One plugin will declare the model exists, and then other plugins extend the model to describe the data they manage.
 
-To extend the capabilities of the data import framework or perform transformations during the import process, plugins can provide [node:import/developer/filter-readers:custom logic] and filters for use in control files.
+To extend the capabilities of the data import framework or perform transformations during the import process, plugins can provide [node:import/developer/filter-readers:custom logic] and [node:import/developer/filters:filters] for use in control files.
 
 Readers can be implemented to import new file formats.
 

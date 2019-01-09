@@ -13,6 +13,8 @@ Some uses of the data import framework, primarily the user sync, require a speci
 h2. Example
 
 <pre>language=json
-"model": "haplo:user-sync"
+{
+    "model": "haplo:user-sync"
+}
 </pre>
 
