@@ -9,7 +9,7 @@ The data import framework [node:import/model:Models] are defined by plugins arou
 
 To extend the capabilities of the data import framework or perform transformations during the import process, plugins can provide [node:import/developer/filter-readers:custom logic] and [node:import/developer/filters:filters] for use in control files.
 
-Readers can be implemented to import new file formats.
+[node:import/developer/reader:Readers] can be implemented to import new file formats.
 
 h3. Use framework for importing data
 
