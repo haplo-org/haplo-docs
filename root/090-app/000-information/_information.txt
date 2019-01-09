@@ -3,9 +3,11 @@ long_title: Generic Information Management Systems
 class: DocNodeTextileWithTOC
 --
 
-Haplo is an information management system customised to accurately reflect the information within an organisation. 
+The underlying Haplo Platform is an information management system which can be customised to accurately reflect the information within an organisation.
 
-The system is customised using:
+Out-of-the-box, without any plugins, you can configure it using the _System management_ user interface to build a comprehensive information management system. Later you might add plugins to extend the functionality.
+
+The application is customised using:
 
  * *Types and subtypes* of information
  * *Attributes* to describe each type of information
