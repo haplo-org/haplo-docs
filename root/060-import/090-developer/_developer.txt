@@ -1,0 +1,34 @@
+title: Developer
+--
+
+The server-side data import framework API has two distinct uses.
+
+h3. Extend data import framework
+
+The data import framework [node:import/model:Models] are defined by plugins around a key object, such as a user or person. One plugin will declare the model exists, and then other plugins extend the model to describe the data they manage.
+
+To extend the capabilities of the data import framework or perform transformations during the import process, plugins can provide [node:import/developer/filter-readers:custom logic] and filters for use in control files.
+
+Readers can be implemented to import new file formats.
+
+h3. Use framework for importing data
+
+Other plugins can use the data import framework for ingesting data, using the same server-side API as the [node:import/batch:batch import], [node:import/user-sync] and [node:import/rest-api]. This enables custom data import ingest processes to be implemented with very small amounts of code.
+
+
+h2. Additional concepts
+
+As well as the core data import framework [node:import/concepts:concepts], the API uses these terms:
+
+h3. Reader
+
+Input files are converted into *Records* by a *Reader*. This is implemented as a function which calls an iterator with every row from an input file.
+
+h3. Target
+
+When a record is processed, each of the *Destinations* creates *Targets*. These are the actual objects where the data is stored, which might be JavaScript objects, [node:dev/plugin/interface/store-object:store objects], and so on. The *Model* knows how to load, create and save data to the various databases.
+
+h3. Transformation
+
+*Transformations* control ingesting data from a single record, which is transformed via *Destinations* into *Targets*. These Targets may then be *committed* to save them into the databases.
+

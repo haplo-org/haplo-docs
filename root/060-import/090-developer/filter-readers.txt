@@ -1,21 +1,22 @@
 title: Filter readers
 --
 
-The @filterReaders@ property allows custom code to be written to reformat data after it has been read, for example, combining multiple files into one.
-
-This requires that a server-side plugin is written to implement this transformation, so it is preferred that any processing takes place before file import.
-
-Contact your application developers if you need to use this feature.
+The @filterReaders@ property in a [node:import/control:control file] allows custom code to be written to reformat data after it has been read, for example, combining multiple files into one.
 
 
 h2. Example
 
 <pre>language=json
-"filterReaders": "example:combine-files"
+{
+    "files": {
+        // ...
+    },
+    "filterReaders": "example:combine-files"
+}
 </pre>
 
 
-h2. Implementing a filter
+h2. Implementing a reader filters service
 
 A plugin must implement a [node:dev/plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:reader-filter:"@.
 
