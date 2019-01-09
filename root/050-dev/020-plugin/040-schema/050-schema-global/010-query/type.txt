@@ -55,6 +55,13 @@ An array of attribute descriptors, in the order that the attributes should be di
 Where the application uses an aliased attribute, the descriptor of the underlying attribute is included in this array.
 
 
+h3(key). aliasedAttributes
+
+An array of any aliased attribute descriptors used on this type. Each matches an [node:dev/plugin/schema/schema-global/attr] constant.
+
+Plugins are not usually expected to need this information, but it may be useful for displaying appropriate schema names in the user interface.
+
+
 h3(key). annotations
 
 An array of annotation names, applied by [node:dev/plugin/schema/requirements-schema/declaration/type#Type_annotations:requirements.schema] files.
