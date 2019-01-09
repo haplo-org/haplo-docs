@@ -1,7 +1,7 @@
 title: Lists
 --
 
-Use Lists to offer drop down menus of choices in the editor. These should be lists of options like yes/no blue/orange/red, rather than actual things or concepts. (Things and concepts are better represented using the data type: Link to other object (see [node:setup/attributes]))
+Use Lists to offer drop down menus of choices in the editor. These should be lists of options like yes/no blue/orange/red, rather than actual things or concepts. (Things and concepts are better represented using the data type: Link to other object (see [node:app/information/attributes]))
 
 CLICK_PATH TOOLS > System management > Lists
 

@@ -1,4 +1,5 @@
-title: Setup Manual
+title: Information Management
+long_title: Generic Information Management Systems
 class: DocNodeTextileWithTOC
 --
 

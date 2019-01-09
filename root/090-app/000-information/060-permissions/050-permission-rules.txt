@@ -1,7 +1,7 @@
 title: Permission rules
 --
 
-[node:setup/permissions/user-permissions:Permission label sets] are generated for each user by applying *Permission rules*. These allow you to make statements about the rules you wish to see implemented, and the Platform uses them to build the permission label sets.
+[node:app/information/permissions/user-permissions:Permission label sets] are generated for each user by applying *Permission rules*. These allow you to make statements about the rules you wish to see implemented, and the Platform uses them to build the permission label sets.
 
 A rule applies to a group or user, and consists of:
 

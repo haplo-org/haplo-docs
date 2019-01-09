@@ -20,7 +20,7 @@ The Haplo security model is designed to protect your information from outsiders.
 
 You __should__ verify the actions of your users through the tools provided, such as the RECENT listing.
 
-To restrict access within the system, see [node:setup/permissions] in the setup guide for how to set access controls for your users. We recommend taking a balanced approach to setting access controls. Imposing unnecessary restrictions can lead to further problems, such as staff borrowing each others' logins to access material.  
+To restrict access within the system, see [node:app/information/permissions] in the setup guide for how to set access controls for your users. We recommend taking a balanced approach to setting access controls. Imposing unnecessary restrictions can lead to further problems, such as staff borrowing each others' logins to access material.  
 
 
 h2. Seek professional advice

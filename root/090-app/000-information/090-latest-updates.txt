@@ -13,7 +13,7 @@ Go to the relevant group and choose to edit the Latest updates settings.
 
 Choosing to use the setting from the parent group uses the parent group's email template setting by default, where this group is a member of another group.
 
-Templates can be created or amended within [node:setup/appearance:email templates]. You can apply different templates to different groups; for example, your staff could receive an internal newsletter, but your clients receive a branded news service.
+Templates can be created or amended within [node:app/information/appearance:email templates]. You can apply different templates to different groups; for example, your staff could receive an internal newsletter, but your clients receive a branded news service.
 
  * Remove settings: reset to default sets this user or group to use the defaults set on the parent group.
 

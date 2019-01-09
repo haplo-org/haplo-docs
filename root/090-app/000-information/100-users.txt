@@ -15,4 +15,4 @@ Create new users by clicking 'New user', then entering:
 
 Person records, as displayed in the contacts directory, are not created automatically when creating a new user via System Management. Create these manually if required.
 
-Consider whether you need to use [node:setup/authentication-tokens:authentication tokens] for security.
+Consider whether you need to use [node:app/information/authentication-tokens:authentication tokens] for security.

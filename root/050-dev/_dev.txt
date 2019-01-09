@@ -6,7 +6,7 @@ There are three main activities in developing a Haplo application.
 
 h2. 1) Configure the system
 
-You can quickly build a system for storing and finding information just by [node:setup:configuring the base system]. Haplo can be configured to model just about any organisation or data set.
+You can quickly build a system for storing and finding information just by [node:app/information:configuring the base system]. Haplo can be configured to model just about any organisation or data set.
 
 
 h2. 2) Write plugins

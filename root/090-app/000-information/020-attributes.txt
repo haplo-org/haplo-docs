@@ -40,14 +40,14 @@ Choose the type of data for this field from the drop down menu. This specifies t
  * Date and time
  * Link to other object
  ** When you are linking to any object of the specified types, use the *Lookup* option, which provides an auto-completing field to search for items.
- ** When you are linking to a small set of classification objects (see [node:setup/lists]), use one of:
+ ** When you are linking to a small set of classification objects (see [node:app/information/lists]), use one of:
  *** *Drop down of choices*: A simple drop-down list box.
  *** *Radio boxes*: A set of radio boxes, one for each option. Users can add another set of radio boxes using the + button.
  *** *Checkboxes*: A set of check boxes, one for each option. Users can select zero or more options, and the + button is disabled.
 
 h2. Qualifiers
 
-Select the qualifiers allowed for this attribute. For an explanation of qualifiers see the [node:setup/qualifiers:next section].
+Select the qualifiers allowed for this attribute. For an explanation of qualifiers see the [node:app/information/qualifiers:next section].
 
  * Qualifiers not used on this attribute: choose this if there are no relevant qualifiers
  * Allow any qualifier: use if any qualifier can be chosen for this attribute (unlikely to be used, in most situations the third option (below) is more appropriate.)

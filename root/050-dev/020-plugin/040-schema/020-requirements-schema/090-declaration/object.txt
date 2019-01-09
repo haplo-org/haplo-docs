@@ -1,7 +1,7 @@
 title: Object
 --
 
-@object@ declarations define a generic object with a given type, and a configured behaviour attribute as the given API code. They're used to set up the default members of a [node:setup/lists:list].
+@object@ declarations define a generic object with a given type, and a configured behaviour attribute as the given API code. They're used to set up the default members of a [node:app/information/lists:list].
 
 You cannot use @as@ readable names on @object@ declarations. Use the normal store object API, or the [node:dev/plugin/o/behaviour] API.
 

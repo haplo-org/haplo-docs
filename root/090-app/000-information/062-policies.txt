@@ -1,7 +1,7 @@
 title: Policies
 --
 
-Similar to [node:setup/permissions:Permissions], Policies control what a user can do in the system as a whole, as opposed to individual items of information.
+Similar to [node:app/information/permissions:Permissions], Policies control what a user can do in the system as a whole, as opposed to individual items of information.
 
 CLICK_PATH TOOLS > System management > Groups > Choose a group > Pollicies > Edit
 

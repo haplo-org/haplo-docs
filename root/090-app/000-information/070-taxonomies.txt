@@ -20,8 +20,8 @@ h2. Setting up a hierarchical attribute
 
 To create an attribute where the user selects from a hierarchical list, you need to set up a hierarchical attribute. These are made up of:
 
- * An [node:setup/attributes:attribute]
- * An appropriately configured classification [node:setup/types:type]
+ * An [node:app/information/attributes:attribute]
+ * An appropriately configured classification [node:app/information/types:type]
  * One or more taxonomies
 
 The attribute and the type will generally have exactly the same name.
