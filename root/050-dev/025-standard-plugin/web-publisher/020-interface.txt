@@ -1,0 +1,13 @@
+title: Interface
+--
+
+
+
+h3(function). urlForFileDownload(fileOrIdentifier, options)
+
+Returns the url to download the file through this publication. This handler will return the download URL for the file. Plugins are expected to check for themselves whether the requesting user has permission to access that URL.
+
+The @options@ object can have properties:
+
+|@transform@|The transform to be applied to the file|
+

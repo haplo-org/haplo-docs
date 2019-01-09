@@ -1,0 +1,20 @@
+title: Publication Definition
+--
+
+A publication is a public interface to a Haplo system. Data is exposed through a publication by application code.
+
+The behaviour of a publication is defined using the @publication@ interface. Plugins register a new publications by calling @P.webPublication.register()@, with @std:web-publisher@ in the plugin's @use@ list in @plugin.json@.
+
+
+h3. Registering a new publication
+
+// TODO
+
+h3. Retrieving publication objects
+
+If other plugins need to retrieve a publication object, they can do so using the @"std:web_publisher:get_publication"@ service. This takes a single argument, the @name@ of the publication.
+
+
+h2. Defining publication behaviour
+
+
