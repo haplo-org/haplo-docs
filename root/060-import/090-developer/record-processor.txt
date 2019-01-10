@@ -1,7 +1,7 @@
-title: Filter readers
+title: Record processors
 --
 
-The @filterReaders@ property in a [node:import/control:control file] allows custom code to be written to reformat data after it has been read, for example, combining multiple files into one.
+The @recordProcessor@ property in a [node:import/control:control file] allows custom code to be written to adjust *Records* after they have been read, for example, combining multiple files into one.
 
 
 h2. Example
@@ -11,14 +11,14 @@ h2. Example
     "files": {
         // ...
     },
-    "filterReaders": "example:combine-files"
+    "recordProcessor": "example:combine-files"
 }
 </pre>
 
 
-h2. Implementing a reader filters service
+h2. Implementing a record processor service
 
-A plugin must implement a [node:dev/plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:reader-filter:"@.
+A plugin must implement a [node:dev/plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:record-processor:"@.
 
 The service takes a single argument of an array of objects with @name@ and @reader@ properties. The @reader@ property is a function which when called with an iterator function as an argument, calls that iterator with each @Record@ in order.
 
@@ -31,7 +31,7 @@ This example combines two input files. The main file contains most of the user d
 
 <pre>language=javascript
 P.implementService(
-    "haplo:data-import-framework:reader-filter:example:combine-files",
+    "haplo:data-import-framework:record-processor:example:combine-files",
     function(readers) {
 
         let readerByName = {};

@@ -28,7 +28,7 @@ In this example, the @table@ file is read as a TSV file in the Windows-1252 char
 
 h2. Extra processing
 
-If your files need extra transformation, a plugin developer could implement a [node:import/developer/filter-readers:filter readers] service.
+If your files need extra transformation, a plugin developer could implement a [node:import/developer/record-processor:filter readers] service.
 
 This requires that a server-side plugin is written to implement this transformation, so it is preferred that any processing takes place before file import.
 

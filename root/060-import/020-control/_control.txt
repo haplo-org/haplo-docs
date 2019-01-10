@@ -10,7 +10,7 @@ The root properties are:
 |@"dataImportControlFileVersion"@|The version of the control file, which must be @0@.|
 |@"model"@|The name of the *Model* to import the data into.|
 |@"files"@|Describes how to interpret input files.|
-|@"filterReaders"@|Optional name of a custom process to filter the input data, [node:import/developer/filter-readers:provided by a plugin].|
+|@"recordProcessor"@|Optional name of a custom process to adjust the input data, [node:import/developer/record-processor:provided by a plugin].|
 |@"instructions"@|How to interpret the @Records@ in the input files.|
 |@"mapping"@|Describes how to map input values.|
 
