@@ -2,11 +2,11 @@ title: for-each
 link_as: keyword
 --
 
-The @for-each@ instruction executes a nested list of instructions on nested records in an array in the input *Record*. This is used to iterate over multiple values in JSON input data.
+The @for-each@ instruction executes a list of instructions on nested records in an array in the input *Record*. This is used to iterate over multiple values in JSON input data.
 
 |@action@|@"for-each"@|
 |@source@|The property in the input Record containing an array of nested records.|
-|@instructions@|An array of Instructions to be execute for each element in the input array.|
+|@instructions@|An array of Instructions to be executed for each element in the input array.|
 
 
 h2. Example
@@ -39,7 +39,8 @@ the @supervisor@ could be applied to a multi-value property like:
         {
             "source": "role",
             "destination": "project-supervisors",
-            "name": "supervisorRole"
+            "name": "supervisorRole",
+            "multivalue": true
         },
         // ...
     ]
