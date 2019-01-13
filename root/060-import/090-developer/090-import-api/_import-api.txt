@@ -1,0 +1,10 @@
+title: Import API
+--
+
+The data import framework provides a server-side API for other plugins to import data using control files.
+
+Plugins which use this API must depend on the @haplo_data_import_framework@ plugin.
+
+To import data, use the [node:import/developer/import-api/batch-service:batch service].
+
+To validate control files, use the [node:import/developer/import-api/control-validation:control file validation] service or form validation.

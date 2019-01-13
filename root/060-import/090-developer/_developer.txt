@@ -13,7 +13,7 @@ To extend the capabilities of the data import framework or perform transformatio
 
 h3. Use framework for importing data
 
-Other plugins can use the data import framework for ingesting data, using the same server-side API as the [node:import/batch:batch import], [node:import/user-sync] and [node:import/rest-api]. This enables custom data import ingest processes to be implemented with very small amounts of code.
+Other plugins can use the data import framework for importing data, using the same [node:import/developer/import-api:server-side API] as the [node:import/batch:batch import], [node:import/user-sync] and [node:import/rest-api]. This enables custom data import processes to be implemented with very small amounts of code.
 
 
 h2. Additional concepts
