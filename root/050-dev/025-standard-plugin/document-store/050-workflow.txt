@@ -209,11 +209,25 @@ h4. Edit document button
  * docstore-panel-edit-link:DOCSTORE:STATE
  * docstore-panel-edit-link:DOCSTORE
 
+h4. View document button
+
+(Defaults to the title given in the docstore spec)
+
+ * docstore-panel-view-link:DOCSTORE
+
 h4. Uncommitted changes warning
 
 (std:ui:notice @message@, defaults to @"You've made some changes, but they're not visible to anyone else yet."@)
 
  * docstore-uncommitted-changes-warning-text:DOCSTORE
+
+h4. View draft button
+
+Displays when there are uncommitted changes and the user is permitted to view the draft
+
+(defaults to @"Draft "+title.toLowerCase()@)
+
+ * docstore-panel-draft-link:DOCSTORE
 
 h4. Review prompt
 
