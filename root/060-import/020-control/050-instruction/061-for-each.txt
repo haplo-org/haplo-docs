@@ -6,6 +6,7 @@ The @for-each@ instruction executes a list of instructions on nested records in 
 
 |@action@|@"for-each"@|
 |@source@|The property in the input Record containing an array of nested records.|
+|@wrapValues@|(optional) If @true@, each element of the array is wrapped in an @Object@ with the element as the @value@ property. This is needed to iterate over [node:import/how-do-i/read-an-array-of-simple-values:arrays with simple values].|
 |@instructions@|An array of Instructions to be executed for each element in the input array.|
 
 
