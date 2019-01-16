@@ -176,7 +176,7 @@ class DocNodeTextileWithTOC < DocNodeTextile
     # Build the TOC
     toc = ''
     self.sorted_children.each do |node|
-      toc << "[node:#{node.url_path}]\n"
+      toc << "[node:#{node.url_path}:#{node.long_title}]\n"
     end
     # Get body from super
     body = super
