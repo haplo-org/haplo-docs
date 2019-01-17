@@ -1,10 +1,10 @@
-title: Filters
+title: Value filters
 class: DocNodeTextileWithTOC
 --
 
-Input data can be passed through multiple filters to convert the values in the input *Record*.
+Input data can be passed through multiple value filters to convert the values in the input *Record*.
 
-|@filters@|Array of filter names.|
+|@filters@|Array of value filter names.|
 
 
 h2. Example
@@ -21,10 +21,10 @@ Your input data might include the Haplo Ref of existing objects. To convert it i
 </pre>
 
 
-h2. Available filters
+h2. Available value filters
 
 The standard filters provided by the data import framework may be augmented by other plugins. To view the available filters, use the admin UI:
 
-CLICK_PATH TOOLS > Data import > Filters
+CLICK_PATH TOOLS > Data import > Value filters
 
-Filters implemented by the framework and user sync are:
+Value filters implemented by the framework and user sync are:

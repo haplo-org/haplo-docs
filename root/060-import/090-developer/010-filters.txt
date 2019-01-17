@@ -1,15 +1,15 @@
-title: Filters
+title: Value filters
 --
 
-Filters implement generic conversion of values during the import process. Plugins can add to the [node:import/control/value-conversion/filters:standard filters] provided by the data import framework.
+Filters implement generic conversion of values during the import process. Plugins can add to the [node:import/control/value-conversion/filters:standard value filters] provided by the data import framework.
 
-To implement a filter, you need to define a service, then declare it in a service metadata file.
+To implement a value filter, you need to define a service, then declare it in a service metadata file.
 
 The service should return a function that takes a value as a single argument, and returns a converted value, or @undefined@. This service will be called once and only once per *Batch*, so your implementation can keep state in a "closure":https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures.
 
 h2. Example filter
 
-This example filter doubles a string.
+This example filter value 'doubles' a string.
 
 <pre>language=javascript
 P.implementService("example:data:filter:double-string",
@@ -23,7 +23,7 @@ P.implementService("example:data:filter:double-string",
 );
 </pre>
 
-To enable this filter to be found by the data import framework, create a @file/__service-metadata__.json@ in your plugin which declares the details of this filter:
+To enable this value filter to be found by the data import framework, create a @file/__service-metadata__.json@ in your plugin which declares the details of this filter:
 
 <pre>language=json
 {
