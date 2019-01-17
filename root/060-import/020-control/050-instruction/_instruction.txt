@@ -7,6 +7,17 @@ class: DocNodeTextileWithTOC
 Each instruction in the @instructions@ array is defined by a dictionary, and executed in order for each Record.
 
 
+h2. Independence of instructions
+
+Although instructions are executed strictly in the order they appear in your control file, in general, instructions are independent of each other.
+
+Therefore they can appear in any order in your control file, with the following exceptions:
+
+* Where an instruction sets a value in a Destination, such as [node:import/control/instruction/field], and that instruction has the @"multivalue":true@ option, if you use [node:import/control/instruction/remove-values] to clear the current values, that @remove-values@ instruction must appear first in the control file.
+
+* The [node:import/control/instruction/within] and [node:import/control/instruction/for-each] instructions change the 'context' within the Record, execute their embedded @instructions@ list, then reset the context. To access the expected data, instructions like [node:import/control/instruction/field] must appear within that embedded list of instructions.
+
+
 h2. Common properties
 
 Some properties in the definition dictionary are common to all instructions.
