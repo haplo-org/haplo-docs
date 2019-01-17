@@ -11,7 +11,7 @@ There are four steps:
 * Upload the files
 * Schedule the import job to run it.
 
-There's an example script at the bottom of this page.
+See the [node:import/batch/api/example-script:example] for a script which uses @curl@ to run a data import batch.
 
 You'll need an API key, which you can generate in the data import UI:
 
@@ -86,34 +86,3 @@ The batch will be run as soon as possible, and the log visible in the admin UI:
 
 CLICK_PATH TOOLS > Data import > Batch import > Batch import jobs
 
-
-
-h2. Example script
-
-In this example script which uses @curl@ on a UNIX-like operating system, replace the values of @API_KEY@ and @SERVER@ with the key and hostname of your application.
-
-<pre>
-#!/bin/sh
-set -e
-
-API_KEY=API_KEY_GOES_HERE
-FILE_DIRECTORY=.
-SERVER=research.example.ac.uk
-
-# Upload the control file
-CONTROL_DIGEST=`curl -s -X POST -F "comment=Example control" -F file=@${FILE_DIRECTORY}/control.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-batch/control`
-echo "CONTROL DIGEST: " $CONTROL_DIGEST
-
-# Create a new batch
-BATCH_ID=`curl -s -X POST -d "comment=Example import" -d "control=$CONTROL_DIGEST" --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-batch/batch`
-echo "BATCH ID: " $BATCH_ID
-
-# Upload files to the batch
-curl -X POST -F "batch=$BATCH_ID" -F name=data0 -F file=@${FILE_DIRECTORY}/data.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-batch/file
-echo
-# Repeat for each file with different name= parameters
-
-# This does a dry run only, remove '-d mode=dry-run' to import the data
-curl -X POST -d "batch=$BATCH_ID" -d mode=dry-run --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-batch/schedule
-echo
-</pre>
