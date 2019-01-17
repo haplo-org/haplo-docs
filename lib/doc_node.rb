@@ -30,6 +30,10 @@ class DocNode
     @attributes[:long_title] || @attributes[:title]
   end
 
+  def title_for_toc
+    @attributes[:use_long_title_for_toc] ? @attributes[:long_title] : @attributes[:title]
+  end
+
   def replace_with(node)
     node.parent = @parent
     @parent.children[self.name] = node if @parent != nil
@@ -176,7 +180,7 @@ class DocNodeTextileWithTOC < DocNodeTextile
     # Build the TOC
     toc = ''
     self.sorted_children.each do |node|
-      toc << "[node:#{node.url_path}:#{node.long_title}]\n"
+      toc << "[node:#{node.url_path}:#{node.title_for_toc}]\n"
     end
     # Get body from super
     body = super

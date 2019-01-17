@@ -1,5 +1,6 @@
 title: Arrays of simple values
 long_title: How do I read an array of simple values?
+use_long_title_for_toc: yes
 --
 
 In your input data, you may need to read data which is in an array of simple values, such as an array of Strings, like this:
