@@ -1,0 +1,27 @@
+title: Postal address
+--
+
+The @postal-address@ value type is a [node:import/control/value-conversion/structured-value:structured value] representing the name of a person.
+
+The associated @value:postal-address@ pseudo-destination has the fields:
+
+|@street1@|Street address (line 1)|
+|@street2@|Street address (line 2)|
+|@city@|City|
+|@county@|County|
+|@postcode@|Postcode|
+|@country@|Country two letter ISO code|
+
+The @country@ is required, and must be a two letter "ISO Alpha-2 code":https://www.iso.org/obp/ui/#search/code/, such as @"GB"@. If your data uses country names, they will need to be mapped, either by pre-processing the data, or implementing the [node:import/control/value-conversion/generic-value-mapping:mapping in the control file].
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "field-structured",
+    "structured": "value:postal-address",
+    "destination": "profile",
+    "name": "std:attribute:address"
+}
+</pre>
