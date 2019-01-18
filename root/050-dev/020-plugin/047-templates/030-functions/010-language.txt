@@ -18,12 +18,16 @@ h2. each(value)
 
 Where @value@ is an array-like object, then the anonymous block is rendered once per item in that list with the view set to that item.
 
+Use @^{}@ notation to access [node:dev/plugin/templates/views#View_context:values in the parent context].
+
 
 h2. within(value)
 
 The view is moved to the @value@, then the anonymous block is rendered.
 
 If the value is not defined, then nothing is rendered.
+
+Use @^{}@ notation to access [node:dev/plugin/templates/views#View_context:values in the parent context].
 
 
 h2. switch(value)

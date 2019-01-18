@@ -2,7 +2,7 @@ title: View properties
 long_title: Views and view properties
 --
 
-Templates render a *view*, which is a nested JavaScript data structure containing arrays, objects (acting as dictionaries), primitve types like strings and numbers, and any other JavaScript object.
+Templates render a *view*, which is a nested JavaScript data structure containing arrays, objects (acting as dictionaries), primitive types like strings and numbers, and any other JavaScript object.
 
 HSVT uses the view structure to generate HTML, through control flow with template functions like @if()@ and @each()@, or inserting the values from the view with *view properties*.
 
@@ -30,13 +30,42 @@ is rendered as
 </pre>
 
 
+h2. View context
+
+When rendering the view, values are retrieved from the current _context_. This starts as the rendered view, and is changed by functions like @each()@ and @within()@.
+
+To access values from the parent context, use the @^{}@ notation. Use one @^@ character per level you want to traverse, eg @^^{}@ will use values from two levels up.
+
+For example, in this template,
+
+<pre>language=hsvt
+each(item) {
+    <p>
+        <a href=["/do/eg/item/" ^{docId} "/" itemId]> title </a>
+    </p>
+}
+</pre>
+
+the @docId@ property in the link will be obtained from the level above the @item@ array, in a view like this:
+
+<pre>language=json
+{
+    "docId": 1234,
+    "item": [
+        {"itemId":65, "title":"Item One"},
+        {"itemId":87, "title":"Item Two"},
+    ]
+}
+</pre>
+
+
 h2. View root
 
 @.@ is a special literal name which refers to the root of the current template. It's most often used to render items in an array when you iterate over them with @each()@.
 
 This template,
 
-<pre>language=json
+<pre>language=hsvt
 each(sentence) {
     <p> . </p>
 }
