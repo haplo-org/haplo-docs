@@ -16,6 +16,10 @@ h2. Using this documentation
 
 This documentation describes the generic mechanisms for importing data into Haplo applications. You should refer to additional documentation provided by the developers of your application which describes the specific data model and approach for importing data.
 
+When you have a test environment available, links to documentation for specific functionality installed in your application are available within the administrative UI.
+
+CLICK_PATH TOOLS > Data Import > Documentation
+
 
 h2. Required plugins
 
