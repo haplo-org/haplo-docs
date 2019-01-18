@@ -1,4 +1,6 @@
-title: Ref
+title: ref
+long_title: Ref data type
+link_as: keyword
 --
 
 When converting to a @ref@, the following properties may be added:

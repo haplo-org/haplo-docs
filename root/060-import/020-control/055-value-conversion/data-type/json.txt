@@ -1,4 +1,6 @@
-title: JSON data type
+title: json
+long_title: JSON data type
+link_as: keyword
 --
 
 *Names* with the @json@ data type require a JSON-compatible structure. Generally the format is unspecified by the model, or depends on other data, so can't be reflected in the *Model*.

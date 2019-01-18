@@ -2,7 +2,7 @@ title: Value conversions
 class: DocNodeTextileWithTOC
 --
 
-Input values in *Records* are typically strings, which need to be converted to the Haplo data type specified in the *Destination*. Conversion is largely automatic, but some additional properties need to be set in the *Instruction*.
+Input values in *Records* are typically strings, which need to be converted to the Haplo data type specified in the *Destination*. Conversion is largely automatic, but some additional properties need to be set in the *Instruction*, depending on the [node:import/control/value-conversion/data-type:data type] required by the model.
 
 
 h2. Conversions

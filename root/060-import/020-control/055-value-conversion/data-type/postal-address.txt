@@ -1,4 +1,6 @@
-title: Postal address
+title: postal-address
+long_title: Postal address data type
+link_as: keyword
 --
 
 The @postal-address@ value type is a [node:import/control/value-conversion/structured-value:structured value] representing the name of a person.

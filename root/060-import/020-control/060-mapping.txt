@@ -3,7 +3,7 @@ title: Mapping
 
 Many attributes in Haplo objects are described as links to other objects. These values appear as the @ref@ data type in *Names*.
 
-Mappings in the control file provide a mechanism for mapping from values in the input files to references to the other objects, and are referenced by [node:import/control/value-conversion/ref:ref value conversions] in *Instructions* to map input data.
+Mappings in the control file provide a mechanism for mapping from values in the input files to references to the other objects, and are referenced by [node:import/control/value-conversion/data-type/ref:ref value conversions] in *Instructions* to map input data.
 
 The @mapping@ property in the Control file is a dictionary of mapping name to mapping properties:
 

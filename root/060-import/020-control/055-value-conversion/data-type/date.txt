@@ -1,4 +1,6 @@
-title: Date
+title: date
+long_title: Date data type
+link_as: keyword
 --
 
 Dates in the input data need to be parsed with a specified format.

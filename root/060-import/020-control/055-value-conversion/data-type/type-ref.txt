@@ -1,16 +1,18 @@
-title: Type ref
+title: type-ref
+long_title: Type ref data type
+link_as: keyword
 --
 
-Type of store objects are described using @ref@ values, but use a special @type-ref@ data type.
+The @type-ref@ data type is used to describe the type of store objects using the API code of the type.
 
-Values must be the API code of the type, which can be found using System Management.
+The API code of types can be found using System Management:
 
 CLICK_PATH TOOLS > System management > Types
 
 
 h2. Example
 
-The API code of the desired type is set as the @value@ of the @set-value@ instruction:
+To set the type of the @profile@ object to _Staff_, which has the API code of @std:type:person:staff@, you could use a @set-value@ instruction:
 
 <pre>language=json
 {

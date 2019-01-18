@@ -1,4 +1,6 @@
-title: Person's name
+title: person-name
+long_title: Person's name data type
+link_as: keyword
 --
 
 The @person-name@ value type is a [node:import/control/value-conversion/structured-value:structured value] representing the name of a person.

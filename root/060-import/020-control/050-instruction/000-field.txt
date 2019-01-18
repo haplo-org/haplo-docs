@@ -11,7 +11,7 @@ As it is the most common Instruction, the @action@ property may be omitted.
 |@name@|The Name within the destination to store the value in.|
 |@multivalue@|(Optional) If @true@, then the value is added to a multi-value name instead of replacing any existing value.|
 
-In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filters:value filters], [node:import/control/value-conversion/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/ref:ref mapping].
+In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filters:value filters], [node:import/control/value-conversion/data-type/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/data-type/ref:ref mapping].
 
 
 h2. Example: single value
