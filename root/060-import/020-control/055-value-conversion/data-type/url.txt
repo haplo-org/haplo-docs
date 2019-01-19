@@ -7,4 +7,4 @@ The @url@ data type represents URLs.
 
 Trivial validation is performed to make sure they start with a scheme, for example, @https:@
 
-If your input data contains URLs which are not all well formed, then the [node:import/control/value-conversion/filters/fix-up-url] value filter may be helpful.
+If your input data contains URLs which are not all well formed, then the [node:import/control/value-conversion/filter/fix-up-url] value filter may be helpful.
