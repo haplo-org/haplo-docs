@@ -1,0 +1,8 @@
+title: text-paragraph
+long_title: Paragraph text data type
+link_as: keyword
+--
+
+The @text-paragraph@ data type represents paragraph text.
+
+Double newline characters, @"\n\n"@, mark paragraph breaks, and single newline characters, @"\n"@, are new lines within a paragraph.
