@@ -33,8 +33,12 @@ To enable this value filter to be found by the data import framework, create a @
         ],
         "metadata": {
             "name": "example:double-string",
-            "description": "Doubles a string."
+            "description": "Doubles a string.",
+            "documentationURL":
+                "https://docs.example.org/filter/double-string"
         }
     }
 }
 </pre>
+
+The @"documentationURL"@ is optional, but if supplied, will add a link under the value filter's name in the admin UI.
