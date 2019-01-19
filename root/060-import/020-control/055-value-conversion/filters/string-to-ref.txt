@@ -2,7 +2,7 @@ title: haplo:string-to-ref
 link_as: keyword
 --
 
-The @haplo:string-to-ref@ filter converts the string representation of a Haplo Ref to a Ref value which can be used to load and refer to other objects.
+The @haplo:string-to-ref@ value filter converts the string representation of a Haplo Ref to a Ref value which can be used to load and refer to other objects.
 
 
 h2. Example

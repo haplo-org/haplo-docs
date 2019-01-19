@@ -2,7 +2,7 @@ title: haplo:username-to-ref
 link_as: keyword
 --
 
-The @haplo:username-to-ref@ filter converts a username of a user managed by the [node:import/user-sync] to a Ref value which can be used to load profile objects, and add references to that person to other objects.
+The @haplo:username-to-ref@ value filter converts a username of a user managed by the [node:import/user-sync] to a Ref value which can be used to load profile objects, and add references to that person to other objects.
 
 
 h2. Example

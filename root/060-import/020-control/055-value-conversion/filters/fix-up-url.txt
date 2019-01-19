@@ -1,0 +1,18 @@
+title: haplo:fix-up-url
+link_as: keyword
+--
+
+The @haplo:fix-up-url@ value filter attempts to correct URLs without a scheme into valid URLs by prefixing them with @https://@, as long as the format looks like it'd be a valid URL otherwise.
+
+This cannot fix URLs properly, but may be useful for some data sets.
+
+h2. Example
+
+<pre>language=json
+{
+    "source": "URL",
+    "destination": "project",
+    "name": "std:attribute:url",
+    "filters": ["haplo:fix-up-url"]
+}
+</pre>

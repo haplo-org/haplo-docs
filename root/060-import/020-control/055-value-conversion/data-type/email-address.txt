@@ -1,0 +1,8 @@
+title: email-address
+long_title: Email address data type
+link_as: keyword
+--
+
+The @email-address@ data type represents email addresses.
+
+Trivial validation is performed to make sure they contain an @@@ symbol.

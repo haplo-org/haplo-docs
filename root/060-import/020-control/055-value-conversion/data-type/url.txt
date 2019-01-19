@@ -1,0 +1,10 @@
+title: url
+long_title: URL data type
+link_as: keyword
+--
+
+The @url@ data type represents URLs.
+
+Trivial validation is performed to make sure they start with a scheme, for example, @https:@
+
+If your input data contains URLs which are not all well formed, then the [node:import/control/value-conversion/filters/fix-up-url] value filter may be helpful.
