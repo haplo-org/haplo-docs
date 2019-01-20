@@ -1,0 +1,28 @@
+title: telephone-number
+long_title: Telephone number data type
+link_as: keyword
+--
+
+The @telephone-number@ data type represents telephone numbers.
+
+It accepts any reasonably formatted string as input, and will reformat it into fully a valid phone number, removing 'optional' digits such as redundant trunk codes and ensuring it has a valid country code.
+
+If an international dialing code is not included in the number, it will make a reasonable 'guess' based on the format of the number, and the @country@ property in the instruction.
+
+|@country@|(optional) The ISO two digit code of the country to assume numbers are from if unclear in the given input string. Defaults to @GB@.|
+
+For best results, format the input numbers with the full international dialling code.
+
+
+h2. Example
+
+To import phone number from a dataset which contains mostly North American phone numbers, use:
+
+<pre>language=json
+{
+    "source": "TELEPHONE",
+    "destination": "profile",
+    "name": "std:attribute:telephone",
+    "country": "US"
+}
+</pre>
