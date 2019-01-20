@@ -1,0 +1,8 @@
+title: string
+long_title: String data type
+link_as: keyword
+--
+
+The @string@ data type represents Unicode text.
+
+Numbers and booleans are converted to a string, other types of values are rejected.
