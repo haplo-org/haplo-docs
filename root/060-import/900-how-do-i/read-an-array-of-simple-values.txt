@@ -16,9 +16,9 @@ In your input data, you may need to read data which is in an array of simple val
 }
 </pre>
 
-But the [node:import/control/instruction/field] instruction needs a @source@ which specifies a property on a JavaScript @Object@, so when you iterate over the array with the [node:import/control/instruction/for-each] instruction, you don't have a property you can access.
+But the [node:import/control/instruction/field] Instruction needs a @source@ which specifies a property on a JavaScript @Object@, so when you iterate over the array with the [node:import/control/instruction/for-each] Instruction, you don't have a property you can access.
 
-To access this value, set @"wrapValues":true@ in your @for-each@ instruction. This makes the array look like this:
+To access this value, set @"wrapValues":true@ in your @for-each@ Instruction. This makes the array look like this:
 
 <pre>language=json
 {
@@ -33,7 +33,7 @@ To access this value, set @"wrapValues":true@ in your @for-each@ instruction. Th
 
 and now you can access it with @"source":"value"@.
 
-For example, to set a multi-value property from this input data, you would use instructions like this:
+For example, to set a multi-value property from this input data, you would use Instructions like this:
 
 <pre>language=json
 {

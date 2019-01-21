@@ -9,20 +9,20 @@ h3. 1. Copy values to pseudo-destination
 
 Each of the structured data types has an associated [node:import/model/pseudo:pseudo-destination], which has *Names* for each of the fields. These pseudo-destinations show up in the *Model*, and are named with a prefix of @"value:"@.
 
-Use the normal @field@ and @set-value@ instructions to set the fields in this pseudo-destination. This allows all the value conversion features to be used on the input data.
+Use the normal @field@ and @set-value@ Instructions to set the fields in this pseudo-destination. This allows all the value conversion features to be used on the input data.
 
 Use the admin UI to see the Names in these pseudo-destinations.
 
 h3. 2. Set value from the pseudo-destination
 
-Once all the values have been set in the value type's pseudo-destination, use the @field-structured@ instruction to assemble the structured value and set it in the final Destination.
+Once all the values have been set in the value type's pseudo-destination, use the @field-structured@ Instruction to assemble the structured value and set it in the final Destination.
 
-This instruction clears the pseudo-destination ready for the next value to be assembled.
+This Instruction clears the pseudo-destination ready for the next value to be assembled.
 
 
 h2. Example
 
-These instructions copy values from the input *Record* into the person's name pseudo-destination, then apply it to as the name in the profile object representing that person in the object store.
+These Instructions copy values from the input *Record* into the person's name pseudo-destination, then apply it to as the name in the profile object representing that person in the object store.
 
 <pre>language=json
 { "source":"T", "destination":"value:person-name", "name":"title"  },

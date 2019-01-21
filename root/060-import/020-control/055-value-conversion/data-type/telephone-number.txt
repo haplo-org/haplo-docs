@@ -7,7 +7,7 @@ The @telephone-number@ data type represents telephone numbers.
 
 It accepts any reasonably formatted string as input, and will reformat it into fully a valid phone number, removing 'optional' digits such as redundant trunk codes and ensuring it has a valid country code.
 
-If an international dialing code is not included in the number, it will make a reasonable 'guess' based on the format of the number, and the @country@ property in the instruction.
+If an international dialing code is not included in the number, it will make a reasonable 'guess' based on the format of the number, and the @country@ property in the Instruction.
 
 |@country@|(optional) The ISO two digit code of the country to assume numbers are from if unclear in the given input string. Defaults to @GB@.|
 

@@ -2,7 +2,7 @@ title: within
 link_as: keyword
 --
 
-The @within@ instruction executes a list of instructions for a single nested record within the input *Record*. This is used to move into nested data structures in JSON input data.
+The @within@ Instruction executes a list of Instructions for a single nested record within the input *Record*. This is used to move into nested data structures in JSON input data.
 
 |@action@|@"within"@|
 |@source@|The property in the input Record containing the nested data structure.|
@@ -22,7 +22,7 @@ With an input record structured like:
 }
 </pre>
 
-the @start@ date needs to be referred to inside a @within@ instruction:
+the @start@ date needs to be referred to inside a @within@ Instruction:
 
 <pre>language=json
 {

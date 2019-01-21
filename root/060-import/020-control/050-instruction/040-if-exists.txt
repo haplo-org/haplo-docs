@@ -2,7 +2,7 @@ title: if-exists
 link_as: keyword
 --
 
-The @if-exists@ instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value exists in the current *Record* in the input data.
+The @if-exists@ Instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value exists in the current *Record* in the input data.
 
 |@action@|@"if-exists"@|
 |@source@|The property in the input Record.|

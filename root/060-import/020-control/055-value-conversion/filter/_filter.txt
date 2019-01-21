@@ -9,7 +9,7 @@ Input data can be passed through multiple value filters to convert the values in
 
 h2. Example
 
-Your input data might include the Haplo Ref of existing objects. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] instruction, use:
+Your input data might include the Haplo Ref of existing objects. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] Instruction, use:
 
 <pre>language=json
 {

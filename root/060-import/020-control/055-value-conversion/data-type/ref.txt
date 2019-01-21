@@ -7,7 +7,7 @@ When converting to a @ref@, the following properties may be added:
 
 |@refMapping@|The name of a [node:import/control/mapping:mapping] to use to convert the input value.|
 
-It is recommended that you use the admin UI to generate the instruction and mapping for the value.
+It is recommended that you use the admin UI to generate the Instruction and mapping for the value.
 
 CLICK_PATH TOOLS > Data import > Models > Model name > Name / Map
 

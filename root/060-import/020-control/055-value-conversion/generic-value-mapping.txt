@@ -1,7 +1,7 @@
 title: Generic value mapping
 --
 
-Generic value mapping can be used on any instruction to perform simple mapping from input values. These mappings can be used with any other value conversion or mapping, and is performed before any other conversion.
+Generic value mapping can be used on any Instruction to perform simple mapping from input values. These mappings can be used with any other value conversion or mapping, and is performed before any other conversion.
 
 |@mapInputValue@|A dictionary for simple mapping of input values, where the key is the value in the Record, and the value is the value to be passed through to the *Destination*.|
 |@mapInputValueDefault@|Default value if the input value cannot be found in @mapInputValue@.|

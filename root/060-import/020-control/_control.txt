@@ -10,7 +10,7 @@ The root properties are:
 |@"dataImportControlFileVersion"@|The version of the control file, which must be @0@.|
 |@"model"@|The name of the *Model* to import the data into.|
 |@"files"@|Describes how to interpret input files.|
-|@"recordProcessor"@|Optional name of a custom process to adjust the input data after it has been read, but before the instructions are executed, [node:import/developer/record-processor:provided by a plugin].|
+|@"recordProcessor"@|Optional name of a custom process to adjust the input data after it has been read, but before the Instructions are executed, [node:import/developer/record-processor:provided by a plugin].|
 |@"instructions"@|How to interpret the @Records@ in the input files.|
 |@"mapping"@|Describes how to map input values.|
 
@@ -21,9 +21,9 @@ There is a control file generator utility in the admin UI.
 
 CLICK_PATH TOOLS > Data import > Models > (model name) > Generate control file...
 
-Select the *Names* you want to include in the control file, and click _Generate control file_ at the bottom of the page. By default, single values are set, but select _multivalue_ next to a name to generate the appropriate instructions for multiple values.
+Select the *Names* you want to include in the control file, and click _Generate control file_ at the bottom of the page. By default, single values are set, but select _multivalue_ next to a Name to generate the appropriate Instructions for multiple values.
 
-This control file is unlikely to be able to be used without changes. Change all the placeholders, marked with TODO, and ensure the [node:import/control/instruction/new] or [node:import/control/instruction/load] instructions set up the right data for import.
+This control file is unlikely to be able to be used without changes. Change all the placeholders, marked with TODO, and ensure the [node:import/control/instruction/new] or [node:import/control/instruction/load] Instructions set up the right data for import.
 
 
 h2. Control file contents

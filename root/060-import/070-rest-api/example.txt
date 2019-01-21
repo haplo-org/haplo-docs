@@ -44,7 +44,7 @@ We want to update the @dc:attribute:title@ of the @phd:project@ Destination. The
 }
 </pre>
 
-The three instructions:
+The three Instructions:
 
 * Look up the @username@ in the API request to find the ref of the user's @profile@.
 * Load the @profile@, using this ref.

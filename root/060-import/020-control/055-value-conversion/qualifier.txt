@@ -1,11 +1,11 @@
 title: Qualifier
 --
 
-Some Haplo values are [node:app/information/qualifiers:qualified]. To specify a qualifier, add the @qualifier@ property to the instruction. The value is the API code of the Qualifier, which can be found in System Management.
+Some Haplo values are [node:app/information/qualifiers:qualified]. To specify a Qualifier, add the @qualifier@ property to the Instruction. The value is the API code of the Qualifier, which can be found in System Management.
 
 CLICK_PATH TOOLS > System management > Qualifiers
 
-If the Destination does not support qualifiers, then any qualifier value is silently ignored.
+If the Destination does not support Qualifiers, then any Qualifier value is silently ignored.
 
 
 h2. Example

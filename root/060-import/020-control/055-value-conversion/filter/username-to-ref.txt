@@ -11,7 +11,7 @@ If user sync isn't used in your application, this value filter won't be availabl
 
 h2. Example
 
-Your input data might include the username of people. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] instruction, use:
+Your input data might include the username of people. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] Instruction, use:
 
 <pre>language=json
 {

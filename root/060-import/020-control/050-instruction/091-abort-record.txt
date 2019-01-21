@@ -2,7 +2,7 @@ title: abort-record
 link_as: keyword
 --
 
-The @abort-record@ instruction stops processing of the current *Record* and outputs a message in the log. Use with the conditional instructions to prevent data being imported if conditions are met. 
+The @abort-record@ Instruction stops processing of the current *Record* and outputs a message in the log. Use with the conditional Instructions to prevent data being imported if conditions are met. 
 
 |@action@|@"abort-record"@|
 |@message@|The message to output in the error log.|

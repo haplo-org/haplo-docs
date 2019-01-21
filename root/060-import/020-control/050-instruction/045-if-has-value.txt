@@ -2,7 +2,7 @@ title: if-has-value
 link_as: keyword
 --
 
-The @if-has-value@ instruction conditionally executes a nested lists of *Instructions* depending on whether a *Destination* has a value set. This is useful for setting default values.
+The @if-has-value@ Instruction conditionally executes a nested lists of *Instructions* depending on whether a *Destination* has a value set. This is useful for setting default values.
 
 |@action@|@"if-has-value"@|
 |@destination@|The Destination to check.|
@@ -15,7 +15,7 @@ See also [node:import/control/instruction/if-exists].
 
 h2. Example: setting defaults
 
-To ensure a object always has a title by applying a default if no other value has been set, add this to the *end* of your control file's instructions.
+To ensure a object always has a title by applying a default if no other value has been set, add this to the *end* of your control file's Instructions.
 
 <pre>language=json
 {

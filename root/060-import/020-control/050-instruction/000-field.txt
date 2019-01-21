@@ -2,7 +2,7 @@ title: field
 link_as: keyword
 --
 
-The @field@ instruction copies a value from the input *Record* to a *Name* in a *Destination*.
+The @field@ Instruction copies a value from the input *Record* to a *Name* in a *Destination*.
 
 As it is the most common Instruction, the @action@ property may be omitted.
 
@@ -43,9 +43,9 @@ To set an organisational unit in the user's @profile@, [node:import/control/mapp
 
 h2. Example: working with multi-values
 
-By default, new values are added to existing values in multi-value Names instead of replacing them. To replace the existing values instead, use a [node:import/control/instruction/remove-values] instruction, demonstrated in this example.
+By default, new values are added to existing values in multi-value Names instead of replacing them. To replace the existing values instead, use a [node:import/control/instruction/remove-values] Instruction, demonstrated in this example.
 
-First, this example removes existing values in the job title field of profiles. Then it uses the [node:import/control/instruction/if-value-one-of] instruction so that, if the profile's role is researcher, the title "Additional job title" should be added with the [node:import/control/instruction/set-value] action. Finally, it adds a additional job titles from the corresponding source in the input Record using a @field@ instruction.
+First, this example removes existing values in the job title field of profiles. Then it uses the [node:import/control/instruction/if-value-one-of] Instruction so that, if the profile's role is researcher, the title "Additional job title" should be added with the [node:import/control/instruction/set-value] action. Finally, it adds a additional job titles from the corresponding source in the input Record using a @field@ Instruction.
 
 <pre>language=json
 {
