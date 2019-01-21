@@ -1,0 +1,10 @@
+title: text
+long_title: Text data type
+link_as: keyword
+--
+
+The @text@ data type represents Unicode text.
+
+Usually this is a single line of text, with [node:import/control/value-conversion/data-type/text-paragraph] and [node:import/control/value-conversion/data-type/text-multiline] types used for longer runs of text.
+
+Numbers and booleans are converted to a string, other types of values are rejected.

@@ -1,9 +1,9 @@
-title: type-ref
-long_title: Type ref data type
+title: object-type
+long_title: Object type data type
 link_as: keyword
 --
 
-The @type-ref@ data type is used to describe the type of store objects using the API code of the type.
+The @object-type@ data type is used to describe the type of store objects using the API code of the type.
 
 The API code of types can be found using System Management:
 
