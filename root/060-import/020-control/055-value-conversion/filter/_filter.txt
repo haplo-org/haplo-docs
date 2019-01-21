@@ -13,7 +13,7 @@ Your input data might include usernames of users supplied in the [node:import/us
 
 <pre>language=json
 {
-    "source": "PERSON_REF",
+    "source": "PERSON-USERNAME",
     "destination": "load:by-ref",
     "name": "ref",
     "filters": ["haplo:username-to-ref"]

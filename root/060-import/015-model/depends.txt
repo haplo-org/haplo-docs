@@ -11,7 +11,7 @@ In the Haplo database and object store, dependent Destinations have some referen
 
 * Creation and loading of existing dependent destinations is implicit, without needing to use the [node:import/control/instruction/load] Instruction.
 
-In general, you should [node:import/control/instruction/load] the main Destination (such as the @profile@ destination for models about people and their information), and then just refer to other destinations. The data import framework will manage loading and creation.
+In general, you should [node:import/control/instruction/load] the main Destination (such as the @profile@ Destination for models about people and their information), and then just refer to other Destinations. The data import framework will manage loading and creation.
 
 If you are creating multiple dependent objects, for example, multiple books written by an author, then use the [node:import/control/instruction/new] Instruction to create new objects.
 

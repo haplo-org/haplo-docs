@@ -14,7 +14,7 @@ It is generally unnecessary to use the @new@ Instruction for [node:import/model/
 
 h2. Example
 
-To ingest new objects in a @project@ Destination, use a @new@ instruction followed by other instructions to add data:  
+To ingest new objects in a @project@ Destination, use a @new@ Instruction followed by other Instructions to add data:  
 
 <pre>language=json
 {
