@@ -7,8 +7,8 @@ The @field@ instruction copies a value from the input *Record* to a *Name* in a 
 As it is the most common Instruction, the @action@ property may be omitted.
 
 |@source@|The property in the input Record.|
-|@destination@|The destination to store the value in.|
-|@name@|The Name within the destination to store the value in.|
+|@destination@|The Destination to store the value in.|
+|@name@|The Name within the Destination to store the value in.|
 |@multivalue@|(Optional) If @true@, then the value is added to a multi-value name instead of replacing any existing value.|
 
 In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filter:value filters], [node:import/control/value-conversion/data-type/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/data-type/ref:ref mapping].
@@ -16,7 +16,7 @@ In addition, [node:import/control/value-conversion:value conversion properties] 
 
 h2. Example: single value
 
-To set @username@ within the @user@ destination using the value of the @ID@ property in the input Record:
+To set @username@ within the @user@ Destination using the value of the @ID@ property in the input Record:
 
 <pre>language=json
 {

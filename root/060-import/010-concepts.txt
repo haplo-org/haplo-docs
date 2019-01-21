@@ -47,9 +47,9 @@ The *Control* is a JSON file which describes a data import. This includes:
 
 h2. Instruction
 
-The *Control* file contains instructions on how to interpret the data, with limited support for conditionals and looping.
+The *Control* file contains Instructions on how to interpret the data, with limited support for conditionals and looping.
 
-These instructions describe how to take the data from the input files, transform them, and apply them to *Names* within the *Destinations*.
+These Instructions describe how to take the data from the input files, transform them, and apply them to *Names* within the *Destinations*.
 
 
 h2. Batch

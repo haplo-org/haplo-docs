@@ -9,7 +9,7 @@ Choose the correct model for your data import. The user sync always uses the @ha
 
 For each *Destination* in the Model, this page lists:
 
-* The destination name for use in *Control* files
+* The Destination name for use in *Control* files
 * Whether it [node:import/model/depends:depends] on another *Destination*
 * Whether it's an optional destination that does not need have to have any data, or is a [node:import/model/pseudo:pseudo-destination] which is used to form structured values or load other destinations.
 * A list of all the *Names* in that Destination

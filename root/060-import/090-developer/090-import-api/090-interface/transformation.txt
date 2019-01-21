@@ -46,4 +46,4 @@ Errors will be raised if the Target has not been loaded or created by the transf
 
 h3(function). getTargetMaybe(name)
 
-Like @getTarget()@, but returns @undefined@ if the *Target* wasn't loaded or created by the transformation. This is useful for optional destinations.
+Like @getTarget()@, but returns @undefined@ if the *Target* wasn't loaded or created by the transformation. This is useful for optional Destinations.

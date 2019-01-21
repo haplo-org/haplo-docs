@@ -3,7 +3,7 @@ title: Pseudo-destinations
 
 Some of the *Destinations* do not refer to data that will be stored, but exist only to collect together values for other operations. While this may seem to add verbosity, it allows your control file to use the full data transformation and mapping features.
 
-When viewing a *Model* in the admin UI, pseudo destinations will be flagged, and their name will describe their purpose.
+When viewing a *Model* in the admin UI, pseudo-destinations will be flagged, and their name will describe their purpose.
 
 
 h2. Loading other Destinations

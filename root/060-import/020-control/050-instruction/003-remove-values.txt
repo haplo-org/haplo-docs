@@ -5,8 +5,8 @@ link_as: keyword
 The @remove-values@ instruction removes all the values from a *Name* in a *Destination*. *values* is plural because if the *Name* is a multi-value, then it will remove all the values set for that Name.
 
 |@action@|@"remove-values"@|
-|@destination@|The destination to remove the values from.|
-|@name@|The Name within the destination to remove the values from.|
+|@destination@|The Destination to remove the values from.|
+|@name@|The Name within the Destination to remove the values from.|
 
 
 h2. Usage

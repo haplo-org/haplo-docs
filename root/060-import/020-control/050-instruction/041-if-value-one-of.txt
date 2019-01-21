@@ -4,7 +4,7 @@ link_as: keyword
 
 The @if-value-one-of@ instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value in the current *Record* has a value matching one of a specified list of values.
 
-|@action@|@"if-exists"@|
+|@action@|@"if-value-one-of"@|
 |@source@|The property in the input Record.|
 |@values@|An array of values.|
 |@then@|An array of Instructions to be executed when the value in the Record is equal to one of the values in @values@ (optional).|

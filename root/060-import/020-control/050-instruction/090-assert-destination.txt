@@ -8,12 +8,12 @@ If the expectation is not met, then an error is emitted, and the entire *Record*
 
 |@action@|@"assert-destination"@|
 |@destination@|The Destination to check.|
-|@exists@|@true@ is the destination should exist, or @false@ if it should not.|
+|@exists@|@true@ is the Destination should exist, or @false@ if it should not.|
 
 
 h2. Example
 
-To ensure that the @project@ destination already exists before updating it, use:
+To ensure that the @project@ Destination already exists before updating it, use:
 
 <pre>language=json
 {

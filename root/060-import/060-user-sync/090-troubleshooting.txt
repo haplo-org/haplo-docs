@@ -25,7 +25,7 @@ The usual cause of unexpected changes in a user's account is confusion over thei
 
 Check that:
 
-* There is only one entry in the user feed for that user. If information comes from multiple files, there aren't any duplicates in those files.
+* There is only one entry in the user feed for that user. If information comes from multiple files, check that there aren't any duplicates in those files.
 
 * The user's username is still correct and is spelt correctly in the input files.
 

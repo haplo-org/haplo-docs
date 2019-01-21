@@ -7,8 +7,8 @@ The @load@ instruction loads an existing piece of data represented by a *Destina
 If the @otherwise@ instructions aren't specified, and it isn't possible to load the data into the Destination, an error will be reported and nothing will be committed for this *Record*.
 
 |@action@|@"load"@|
-|@using@|The name of the [node:import/model/pseudo:pseudo destination] for the required method of loading the object. The values in this destination must have been set by previous instructions.|
-|@destination@|The destination for this data.|
+|@using@|The name of the [node:import/model/pseudo:pseudo-destination] for the required method of loading the object. The values in this Destination must have been set by previous instructions.|
+|@destination@|The Destination for this data.|
 |@otherwise@|(optional) If specified, the instructions to execute if the data does not already exist.|
 
 It the @load@ instruction should not be used for [node:import/model/depends:dependent destinations].

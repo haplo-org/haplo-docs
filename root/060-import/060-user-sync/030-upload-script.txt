@@ -88,7 +88,7 @@ The request body must be @multipart/form-data@ encoded, and contain two paramete
 
 As a special case, if the @name@ is @_control@, then the control file is replaced with the @file@.
 
-Files do not all needed to be uploaded from the same server, as long as the request to start the sync happens after they have all been uploaded.
+Files do not all need to be uploaded from the same server, as long as the request to start the sync happens after they have all been uploaded.
 
 h3. POST /api/haplo-user-sync/start-sync
 

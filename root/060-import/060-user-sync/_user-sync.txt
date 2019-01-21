@@ -8,7 +8,7 @@ User sync keeps the Haplo user database and user profile objects synchronised wi
 
 * update existing users and profile objects to match the information in the feed,
 
-* maintains group membership in [node:import/user-sync/user-groups:managed groups],
+* maintain group membership in [node:import/user-sync/user-groups:managed groups],
 
 * block users who are no longer in the feed, and mark their profile object as 'past',
 
