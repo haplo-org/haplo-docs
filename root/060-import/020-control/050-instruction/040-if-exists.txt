@@ -9,7 +9,7 @@ The @if-exists@ Instruction conditionally executes a nested lists of *Instructio
 |@then@|An array of Instructions to be executed when the value exists in the Record (optional).|
 |@else@|An array of Instructions to be executed when the value does not exist in the Record (optional).|
 
-See also [node:import/control/instruction/if-has-value].
+See also [node:import/control/instruction/if-has-value] and [node:import/control/instruction/if-value-one-of].
 
 
 h2. Example

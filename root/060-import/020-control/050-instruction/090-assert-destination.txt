@@ -4,7 +4,7 @@ link_as: keyword
 
 The @assert-destination@ Instruction checks whether a [node:import/model/depends:dependent destination] exists, or does not exist. This is used in batch imports to check whether the existing data is in the expected state.
 
-If the expectation is not met, then an error is emitted, and the entire *Record* is ignored.
+If the expectation is not met, then an error is emitted, and this single *Record* is ignored. The import will continue with further Records in the input files.
 
 |@action@|@"assert-destination"@|
 |@destination@|The Destination to check.|

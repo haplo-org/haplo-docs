@@ -7,6 +7,8 @@ The @log-error@ Instruction outputs a message in the error log. Use with the con
 |@action@|@"log-error"@|
 |@message@|The message to output in the error log.|
 
+See also [node:import/control/instruction/abort-record], which can be used to prevent a Record from being imported when there is an error.
+
 
 h2. Example
 

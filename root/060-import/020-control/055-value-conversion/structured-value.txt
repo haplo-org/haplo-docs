@@ -13,6 +13,8 @@ Use the normal @field@ and @set-value@ Instructions to set the fields in this ps
 
 Use the admin UI to see the Names in these pseudo-destinations.
 
+Each Name in the pseudo-destination is copied individually. If the input data includes these values as properties of a nested JSON structure, use the [node:import/control/instruction/within] Instruction to move within the structure.
+
 h3. 2. Set value from the pseudo-destination
 
 Once all the values have been set in the value type's pseudo-destination, use the @field-structured@ Instruction to assemble the structured value and set it in the final Destination.

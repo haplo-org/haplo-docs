@@ -37,7 +37,7 @@ You must explicitly tell the data import framework that the Destination should c
 
 h3. Loading existing data for modification
 
-The [node:import/control/instruction/load] Instruction loads existing data for modification. This is a two step process, firstly setting the 'ref' of the object in a [node:import/model/pseudo:pseudo Destination], and then using the @load@ Instruction to load the object into the Destination.
+The [node:import/control/instruction/load] Instruction loads existing data for modification. This is a two step process, firstly setting the 'ref' (ID) of the object in a [node:import/model/pseudo:pseudo Destination], and then using the @load@ Instruction to load the object into the Destination.
 
 This is separated out into two steps so the full data transformation capabilities of the data import framework can be used to determine which data to load. For example, the [node:import/control/value-conversion/filter/username-to-ref] value filter can be used to load user profiles by their username.
 

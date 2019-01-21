@@ -2,7 +2,7 @@ title: set-value
 link_as: keyword
 --
 
-The @set-value@ Instruction adds a constant value to a *Name* in a *Destination*. It is called _add_ value because if the *Name* is a multi-value, then it will add the value rather than replacing it.
+The @set-value@ Instruction sets a constant value to a *Name* in a *Destination*.
 
 |@action@|@"set-value"@|
 |@destination@|The Destination to store the value in.|

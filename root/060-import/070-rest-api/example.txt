@@ -11,7 +11,9 @@ Use the data import admin interface to view the @haplo:person@ model:
 
 CLICK_PATH TOOLS > Data import > Models > haplo:person
 
-We want to update the @dc:attribute:title@ of the @phd:project@ Destination. The 'depends on profile' label shows it's loaded via the @profile@, so our control file is:
+We want to update the @dc:attribute:title@ of the @phd:project@ Destination.
+
+The admin UI shows a "Depends on *profile*" tag above the list of Names in the model, so we know that the @phd:project@ depends on the @profile@ being loaded, so the user can be identified. Therefore, we need to load the @profile@ Destination, and then the @phd:project@ [node:import/model/depends:dependent Destination] is automatically loaded or created.
 
 <pre>language=json
 {

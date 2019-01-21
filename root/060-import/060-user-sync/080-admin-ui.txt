@@ -36,7 +36,7 @@ Configuration options are:
 
 * _Automatically apply uploaded sync files_ - set to _No_ to prevent sync runs being applied automatically. This is useful after making a change to the originating system, and you'd like to check the files it uploads in a test environment before updating the live environment.
 
-* _Force update of all records_ - set to _Yes_ to try applying all user records, even if the data hasn't changed since the last run. This can be required when the control file mappings have changed.
+* _Force update of all records_ - set to _Yes_ to try applying all user records, even if the data hasn't changed since the last run. This can be required when the control file mappings have changed, because although the input data is still the same, the control file will map it to different values.
 
 * _Emails to receive sync reports_ - a comma separated list of email addresses to send the sync logs.
 

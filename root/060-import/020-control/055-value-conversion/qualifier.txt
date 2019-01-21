@@ -5,6 +5,8 @@ Some Haplo values are [node:app/information/qualifiers:qualified]. To specify a 
 
 CLICK_PATH TOOLS > System management > Qualifiers
 
+Qualifiers can be used with [node:import/control/instruction/field], [node:import/control/instruction/field-structured] and [node:import/control/instruction/set-value] Instructions.
+
 If the Destination does not support Qualifiers, then any Qualifier value is silently ignored.
 
 

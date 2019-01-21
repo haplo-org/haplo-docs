@@ -26,7 +26,7 @@ Where you're mapping to a list type set up by one of the plugins, these will alr
 
 h3. title
 
-If behaviour codes cannot be used, then the @"title"@ option can be used if the number of objects is less than a few thousand. This limit means it is only suitable for mapping to a small number of objects which are used as classifications, and cannot be used to map to people or organisation names.
+If behaviour codes cannot be used, then the @"title"@ option can be used if the number of objects is less than a few thousand to prevent excessively large control files. This limit means it is only suitable for mapping to a small number of objects which are used as classifications, and cannot be used to map to people or organisation names.
 
 The @values@ will match, case sensitively, to any of the titles of the objects with the given @types@.
 

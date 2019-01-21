@@ -94,4 +94,6 @@ h3. POST /api/haplo-user-sync/start-sync
 
 After all files have been uploaded, make a POST request this endpoint to start the sync run. An error will be returned if not all files have been uploaded yet.
 
-If automatic apply of the user sync has been disabled in the admin user interface, or the files are too different from the previous run, then a manual action will be needed to apply the sync. 
+If automatic apply of the user sync has been disabled in the admin user interface, or the files are too different from the previous run (for example, their size differs by more than 10%), then a manual action will be needed to apply the sync.
+
+The first run will always need a manual apply.

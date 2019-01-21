@@ -14,9 +14,16 @@ It is generally unnecessary to use the @new@ Instruction for [node:import/model/
 
 h2. Example
 
+To ingest new objects in a @project@ Destination, use a @new@ instruction followed by other instructions to add data:  
+
 <pre>language=json
 {
     "action": "new",
     "destination": "project"
+},
+{
+    "source": "TITLE",
+    "destination": "project",
+    "name": "dc:attribute:title"
 }
 </pre>
