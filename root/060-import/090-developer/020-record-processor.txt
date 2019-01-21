@@ -1,7 +1,7 @@
 title: Record processors
 --
 
-The @recordProcessor@ property in a [node:import/control:control file] allows custom code to be written to adjust *Records* after they have been read, for example, combining multiple files into one.
+The @recordProcessor@ property in a [node:import/control:control file] allows custom code to be written to adjust *Records* after they have been read before executing the instructions, for example, combining multiple files into one.
 
 
 h2. Example

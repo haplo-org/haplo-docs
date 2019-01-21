@@ -2,7 +2,7 @@ title: Concepts
 long_title: Data import concepts
 --
 
-Haplo applications are highly configurable, so the schema of each application will be unique. The framework provides generic ways of describing and mapping data, along with a user interface to describe the data model in your application.
+Haplo applications are highly configurable, so the schema of each application will be unique. The framework handles this by providing generic ways of describing and mapping data, along with a user interface to describe the data model in your application.
 
 Key concepts are described below.
 
@@ -30,18 +30,18 @@ Destinations can be used to create new objects and other data in your applicatio
 
 h2. Name
 
-A *Destination* has one or more *Names*, which describe the values that can be stored in that Destination. Names are roughly equivalent to the columns in a relational database, although they tend to be multivalue.
+A *Destination* contains one or more *Names*, which describe the values that can be stored in that Destination. Names are roughly equivalent to the columns in a relational database, although they tend to be multivalue.
 
-The Name might describe an attribute of a store object, or a property of a JavaScript object.
+The Name might describe an attribute of a store object (for example, a person's email address on their profile), or a property of a JavaScript object.
 
 
 h2. Control
 
 The *Control* is a JSON file which describes a data import. This includes:
 
-* the name of the *Model*
-* the format of the input files
-* data transformations and mappings
+* the name of the *Model* that the import is using,
+* the format of the input files,
+* data transformations and mappings,
 * *Instructions* describing how to use the data from the input files.
 
 
@@ -54,7 +54,7 @@ These instructions describe how to take the data from the input files, transform
 
 h2. Batch
 
-A *Batch* is collection of input files and a *Control* file which are imported into an application.
+A *Batch* is is made up of a collection of input files and a *Control* file which are imported into an application.
 
 Batches may be a one-off import, a regular import to synchronise data in a user sync, or represent a single transaction when a REST API is called.
 

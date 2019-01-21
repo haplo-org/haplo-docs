@@ -43,7 +43,9 @@ To set an organisational unit in the user's @profile@, [node:import/control/mapp
 
 h2. Example: working with multi-values
 
-To set the value of a multi-value Name, replacing any values that are already set, use a @remove-values@ instruction. This example sets the job title to "Researcher" if depending on a value in the input file, then additionally adds any job title from the input file.
+By default, new values are added to existing values in multi-value Names instead of replacing them. To replace the existing values instead, use a [node:import/control/instruction/remove-values] instruction, demonstrated in this example.
+
+First, this example removes existing values in the job title field of profiles. Then it uses the [node:import/control/instruction/if-value-one-of] instruction so that, if the profile's role is researcher, the title "Additional job title" should be added with the [node:import/control/instruction/set-value] action. Finally, it adds a additional job titles from the corresponding source in the input Record using a @field@ instruction.
 
 <pre>language=json
 {

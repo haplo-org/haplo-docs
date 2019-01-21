@@ -12,7 +12,7 @@ For each *Destination* in the Model, this page lists:
 * The destination name for use in *Control* files
 * Whether it [node:import/model/depends:depends] on another *Destination*
 * Whether it's an optional destination that does not need have to have any data, or is a [node:import/model/pseudo:pseudo-destination] which is used to form structured values or load other destinations.
-* A table describing all the *Names* in that Destination
+* A list of all the *Names* in that Destination
 
 The columns in the Names table are:
 
@@ -22,5 +22,7 @@ The columns in the Names table are:
 |Req?|Whether a value for this Name is required.|
 |Description|A short description of the values expected.|
 
-Some data types will have actions in the right column. _Map_ links to a page which generates example mappings for the Control file.
+Some data types will have actions in the right column:
+
+* _Map_ links to a page which generates example control file mappings for [node:import/control/value-conversion/data-type/ref] values.
 

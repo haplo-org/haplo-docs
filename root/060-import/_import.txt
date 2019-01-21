@@ -20,6 +20,8 @@ When you have a test environment available, links to documentation for specific 
 
 CLICK_PATH TOOLS > Data Import > Documentation
 
+It's recommended you start by reading the core [node:import/concepts:concepts], then about the [node:import/model:model] and how [node:import/control:control files] are written.
+
 
 h2. Required plugins
 
