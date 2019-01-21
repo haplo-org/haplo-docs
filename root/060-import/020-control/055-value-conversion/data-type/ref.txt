@@ -11,6 +11,8 @@ It is recommended that you use the admin UI to generate the instruction and mapp
 
 CLICK_PATH TOOLS > Data import > Models > Model name > Name / Map
 
+The control file generator will also include these mappings.
+
 h2. Example
 
 <pre>language=json

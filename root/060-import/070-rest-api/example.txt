@@ -52,6 +52,15 @@ The three instructions:
 
 Note the use of @singleRecord@ in the @files@ section, as this API will only be updating one project in a single request.
 
+This control file could be generated through the admin UI:
+
+CLICK_PATH TOOLS > Data import > Models > haplo:person > Generate control file...
+
+Select @dc:attribute:title@ in the project, click _Generate control file_, then modify it:
+
+* Add @"singleRecord":true@ to the @DEFAULT@ file.
+* Change the @source@ names to match your input data.
+
 
 h2. Create the API
 
