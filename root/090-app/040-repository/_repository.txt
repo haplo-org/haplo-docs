@@ -27,15 +27,12 @@ Highlights include:
 The code is available through the "haplo-repository":https://github.com/haplo-org/haplo-repository source code repository, under the MPLv2 license.
 
 
-h2. Setting up an application
+h2. This manual
 
-Haplo Repository is built on top of the [node:app/research], which needs to be set up as part of the Haplo Repository setup.
+This manual is aimed at IT professions and Librarians who are setting up and managing an academic repository.
 
-* Install the required plugins
+It is split into two main sections:
 
-* Set up the [node:app/research/institution-structure]
+1. [node:app/repository/setup:Setting up and configuring] a Haplo Repository.
 
-* Set up the [node:app/repository/user-sync] so that users do not have to be manually managed
-
-* Import any existing data
-
+2. Supporting and managing a Haplo Repository.

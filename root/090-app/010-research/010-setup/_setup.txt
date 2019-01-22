@@ -1,0 +1,15 @@
+title: Setup
+long_title: Setting up a Haplo Research Manager application
+--
+
+Typically you will work with a service provider to configure, customise and deploy your Haplo Research Manager application, and then provide 1st line support for the application once it goes live.
+
+The key steps to setting up a Haplo Research Manager application are:
+
+* Install the required plugins
+
+* Set up the [node:app/research/setup/institution-structure]
+
+* Set up the [node:app/research/setup/user-sync] so that users do not have to be manually managed
+
+* Pre-deployment configuration

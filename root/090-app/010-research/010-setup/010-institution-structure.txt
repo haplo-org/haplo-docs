@@ -7,7 +7,7 @@ The institution structure is hierarchical, and can be as deep or shallow as need
 
 Internally Haplo Research Manager calls the levels the University, Faculty, Department and School, but these are always renamed to reflect the actual names in use at the institution. This can be done by installing your institution's plugins, or by renaming the Types in System Management.
 
-A tool is provided to generate a [node:dev/plugin/schema/requirements-schema:requirements.schema] file which can apply the institutional structure to the application, ready for the [node:app/research/user-sync:user sync] to set the research institute for your users.
+A tool is provided to generate a [node:dev/plugin/schema/requirements-schema:requirements.schema] file which can apply the institutional structure to the application, ready for the [node:app/research/setup/user-sync:user sync] to set the research institute for your users.
 
 
 h2. Organisation unit codes

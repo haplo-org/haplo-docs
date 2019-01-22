@@ -4,7 +4,7 @@ long_title: Research Framework user sync setup
 
 Before setting up the user sync:
 
-* create and apply the [node:app/research/institution-structure]
+* create and apply the [node:app/research/setup/institution-structure]
 
 * review the generic documentation for [node:import/user-sync:setting up user sync].
 
@@ -31,7 +31,7 @@ Applications built on top of Haplo Researcher Manager may add additional managed
 
 h3. Organisational structure
 
-Each user should be a member of one of the organisational units making up the [node:app/research/institution-structure:institutional structure].
+Each user should be a member of one of the organisational units making up the [node:app/research/setup/institution-structure:institutional structure].
 
 Include this information in the user feed, and map it to the @hres:attribute:research-institute@ *Name* of the @profile@ *Destination*.
 

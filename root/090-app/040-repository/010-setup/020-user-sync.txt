@@ -2,7 +2,7 @@ title: User sync
 long_title: Haplo Repository user sync setup
 --
 
-As Haplo Repository is built on top of the Research Framework, you need include the [node:app/research/user-sync:Research Framework's user sync data].
+As Haplo Repository is built on top of Haplo Research Manager, you need include the required [node:app/research/setup/user-sync:user sync data].
 
 
 h2. REF Unit of Assessment
