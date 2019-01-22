@@ -47,7 +47,7 @@ To set up a user sync,
 
 * Prepare data exports from the originating system, usually by writing database queries that select data for all active users. Output these files in [node:import/control/files/json:JSON] format (recommended), or use [node:import/control/files/xml-text-of-children:XML (child nodes)], [node:import/control/files/xml-attributes:XML (attributes)] or [node:import/control/files/tsv-with-name-row:TSV].
 
-* Write a [node:import/user-sync/control:Control file] which describes how to map the input data onto the *Model*. Follow the additional documentation for your specific application.
+* Write a [node:import/user-sync/control:Control file] which describes how to map the input data onto the *Model*, using the control file generator linked from the Model page to create a starting point. Follow the additional documentation for your specific application.
 
 * Write an [node:import/user-sync/upload-script:upload script] which uploads the control file and data files to a test instance of your application.
 

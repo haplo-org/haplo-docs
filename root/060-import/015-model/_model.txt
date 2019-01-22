@@ -31,6 +31,8 @@ h2. Making Destinations ready for data import
 
 Before data can be set using the Names on a Destination, the Destination must be made ready for data import. The method depends on whether you are changing existing data in the application, or ingesting new data.
 
+The [node:import/user-sync] automatically makes Destinations ready, so you must not use @new@ or @load@ instructions.
+
 h3. Ingesting new data
 
 You must explicitly tell the data import framework that the Destination should create new data, using the [node:import/control/instruction/new] Instruction.
