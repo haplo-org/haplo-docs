@@ -1,0 +1,54 @@
+title: Batch service
+--
+
+To import a batch of data, you create a [node:import/developer/import-api/interface/batch] object using a service, then run a import loop to transform records and commit imported data.
+
+h2(service). haplo:data-import-framework:batch
+
+This service take three arguments:
+
+<pre>language=javascript
+let batch = O.service("haplo:data-import-framework:batch",
+        control, files, errorCallback);
+</pre>
+
+|@control@|A [node:import/control:control file], as a JavaScript data structure (not serialised JSON).|
+|@files@|An @Object@ with properties naming the files, and [node:dev/plugin/interface/binary-data] objects as the values.|
+|@errorCallback@|A @function@ called with two arguments, the error message and the current Record.|
+
+The service returns a [node:import/developer/import-api/interface/batch] object, which is used to run the import loop.
+
+
+h2. Example
+
+<pre>language=json
+// Control file is a JavaScript data structure
+let control = {
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:person",
+    // ...
+};
+
+// Map of name to BinaryData object, eg result of O.file()
+let files = {
+    "people": O.file(...)
+};
+
+// Callback function to output error messages
+let errorCallback = function(message, record) {
+    console.log(message);
+};
+
+// Create a Batch object
+let batch = O.service("haplo:data-import-framework:batch",
+        control, files, errorCallback);
+
+// Run the import loop to import data
+batch.eachRecord((record) => {
+    let transformation = batch.transform(record);
+    if(transformation.isComplete) {
+        transformation.commit();
+    }
+});
+</pre>
+

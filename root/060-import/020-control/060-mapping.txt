@@ -1,0 +1,52 @@
+title: Mapping
+--
+
+Many attributes in Haplo objects are described as links to other objects. These values appear as the @ref@ data type in *Names*.
+
+Mappings in the control file provide a mechanism for mapping from values in the input files to references to the other objects, and are referenced by [node:import/control/value-conversion/data-type/ref:ref value conversions] in *Instructions* to map input data.
+
+The @mapping@ property in the Control file is a dictionary of mapping name to mapping properties:
+
+|@types@|An array of API codes of the types of object this mapping maps to.|
+|@using@|What method is used to identify the object.|
+|@value@|A dictionary of input value to object identifier.|
+
+Example mappings can be generated through the admin interface by clicking 'Map' next to a @ref@ *Name*.
+
+
+h2. Identifying the mapped object
+
+Mappings need to identify the other object unambiguously.
+
+h3. behaviour
+
+The best way is to set @using@ to @"behaviour"@ and use the [node:dev/plugin/o/behaviour:configured behaviour codes] to identify the objects precisely, even if they're edited by the system administrator of your application.
+
+Where you're mapping to a list type set up by one of the plugins, these will already have configured behaviour codes set.
+
+h3. title
+
+If behaviour codes cannot be used, then the @"title"@ option can be used if the number of objects is less than a few thousand to prevent excessively large control files. This limit means it is only suitable for mapping to a small number of objects which are used as classifications, and cannot be used to map to people or organisation names.
+
+The @values@ will match, case sensitively, to any of the titles of the objects with the given @types@.
+
+
+
+h2. Example
+
+<pre>language=json
+"mapping": {
+    "project-mode": {
+        "types": [
+            "example:type:project-mode"
+        ],
+        "using": "behaviour",
+        "values": {
+            "FULL": "example:list:project-mode:full-time",
+            "PART": "example:list:project-mode:part-time"
+        }
+    }
+}
+</pre>
+
+

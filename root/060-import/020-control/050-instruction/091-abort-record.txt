@@ -1,0 +1,27 @@
+title: abort-record
+link_as: keyword
+--
+
+The @abort-record@ Instruction stops processing of the current *Record* and outputs a message in the log. Use with the conditional Instructions to prevent data being imported if conditions are met. 
+
+|@action@|@"abort-record"@|
+|@message@|The message to output in the error log.|
+
+See also [node:import/control/instruction/log-error], which can be used to output informational errors in the log without preventing the Record from being imported.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-exists",
+    "source": "researchers",
+    // use 'else' for "if doesn't exist" condition
+    "else": [
+        {
+            "action": "abort-record",
+            "message": "Researchers information not found"
+        }
+    ]
+}
+</pre>

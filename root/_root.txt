@@ -4,11 +4,13 @@ long_title: Haplo Technical Documentation
 
 The Haplo Platform offers the ability to build powerful applications for managing "real world" information that doesn't fit into a conventional database.
 
-This is the technical documentation for Haplo, describing how to [node:setup:set up and evolve] a Haplo application, and how to [node:dev/plugin:develop plugins] and connect it to [node:dev/xml-http:external systems].
+This is the technical documentation for Haplo, describing how to set up a Haplo application, [node:dev/plugin:develop plugins] and [node:import:import data].
 
-As you're probably dealing with confidential information in your Haplo application, you must read our [node:security].
+Documentation for [node:app:applications built on top of the platform] describes how to build customised applications on top of out-of-the-box functionality.
+
+As you're probably dealing with confidential information in your Haplo application, you should read our [node:security].
 
 
 h2. Getting help
 
-If you have any questions, please "get in touch":https://www.haplo-services.com/contact.
+If you have any questions, please "get in touch":https://www.haplo.com/contact.

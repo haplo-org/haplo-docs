@@ -1,0 +1,129 @@
+title: Models
+--
+
+[node:import/model:Models] are declared by a plugin in a service metadata file, which specifies a service name. Multiple plugins then implement that service to build up the model.
+
+h2. Service metadata file
+
+The plugin which 'owns' the model declares it in the @file/__service-metadata__.json@ file:
+
+<pre>language=json
+{
+    "example:data:setup-model:example:project": {
+        "statements": [
+            "conforms-to haplo:data-import-framework:setup-model"
+        ],
+        "metadata": {
+            "name": "example:project",
+            "title": "Project",
+            "description": "Information about projects things associated with those projects."
+        }
+    }
+}
+</pre>
+
+This file specifies the service name, @"example:data:setup-model:example:project"@ in this case, and the @name@, @title@ and @description@ to describe the model.
+
+
+h2. Model definitions
+
+One or more plugins then implements the named service:
+
+<pre>language=javascript
+P.implementService(
+    "example:data:setup-model:example:project",
+    function(model) {
+        // Model definition is set up here
+    }
+);
+</pre>
+
+To setup the model, @model.addDestination(spec)@ is called repeatedly to add the @Destinations@.
+
+The @spec@ has common properties, and then @kind@ specific properties. The common properties are:
+
+|@name@|Name of the Destination|
+|@title@|Human readable name of the Destination. The string will have @NAME()@ [node:dev/plugin/misc/name#String_interpolation:interpolated]|
+|@displaySort@|A numeric sorting value to order the Destinations when displaying information about the model in the admin UI|
+|@kind@|The kind of Destination|
+|@optional@|If @true@, then this Destination does not have to be completed by the control file|
+|@depends@|The @name@ of another Destination that this Destination depends on|
+
+
+h3. "object" Destination kind
+
+The @"object"@ Destination @kind@ specifies [node:dev/plugin/interface/store-object:an object] in the object store. As well as the common properties, it has:
+
+|@objectType@|The type of object this represents|
+|@objectDependsWithAttribute@|(optional) If the @depends@ property is set, then the attribute in the dependency which links to the Target object|
+|@without@|(optional) An array of API codes for attributes that shouldn't be included in the Destination|
+|@objectAttributesOverride@|(optional) A dictionary of attribute API code to Name specification to override the automatic definition of Names from the schema.|
+
+For example:
+
+<pre>language=javascript
+model.addDestination({
+    name: "phd:project",
+    title: "NAME(Doctoral Research Project) record",
+    depends: "profile",
+    kind: "object",
+    optional: true,
+    objectType: T.DoctoralResearchProject,
+    objectDependsWithAttribute: A.Researcher,
+    without: [
+        "std:attribute:notes"
+    ]
+});
+</pre>
+
+
+h3. "dictionary" Destination kind
+
+The @"dictionary"@ Destination @kind@ uses a plain JavaScript Object as the target, and the model definition needs to provide methods to read and populate the Target. In addition to the common properties, it has:
+
+|@dictionaryNames@|An object with the names of the Names as keys, and descriptions of the Name as the value. (see below)|
+|@tryLoadDestinationTarget@|A function which given the load information, returns a new Target. Return @undefined@ if it's not possible to load the target|
+|@tryMakeTargetAvailableForDependency@|A function which given the dependency name and dependent Target, returns a new Target. Return @undefined@ if it's not possible to load the target|
+|@commit@|A function which given a Target, the Destination name, and a @Transformation@ object, commits the Target to whatever database it's stored in|
+
+The @dictionaryNames@ values contain properties:
+
+|@description@|Human readable description of this Name|
+|@type@|Data type|
+|@required@|(optional) If @true@, this Name must have a value for the Transformation to succeed|
+|@multivalue@|(optional) If @true@, this Name is multivalue, and will be stored in the Target as an Array of values|
+
+For example:
+
+<pre>language=javascript
+model.addDestination({
+    name: "phd:project:supervisors",
+    title: "NAME(Doctoral Research Project) supervisors",
+    depends: "phd:project",
+    displaySort: 1001,
+    optional: true,
+    kind: "dictionary",
+    tryLoadDestinationTarget: function(loadInfo) {
+        // TODO: Load target
+        return {};
+    },
+    tryMakeTargetAvailableForDependency: function(dependencyName, dependencyTarget) {
+        // TODO: Load target given the dependencyTarget
+        return {};
+    },
+    commit: function(target, destinationName, transformation) {
+        // TODO: Store target in database
+    },
+    dictionaryNames: {
+        supervisor: {
+            description: "Supervisor",
+            type: "string",
+            multivalue: true
+        }
+    }
+});
+</pre>
+
+
+
+

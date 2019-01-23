@@ -621,6 +621,12 @@ h2.acts_as span.apilabel, h3.acts_as span.apilabel
     background: #eff;
 }
 
+h2.service span.apilabel, h3.service span.apilabel
+{
+    border-color: #faa;
+    background: #fee;
+}
+
 /* anchor points should be moved up a little bit so the heading doesn't get in the way */
 
 .anchor_point

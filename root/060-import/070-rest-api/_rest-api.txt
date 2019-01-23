@@ -1,0 +1,97 @@
+title: REST API
+--
+
+The data import framework provides a simple administrative user interface to implement REST style APIs for adding and updating information.
+
+Plugins can also [node:import/rest-api/plugin-defaults:provide default REST API definitions] which can be edited by administrators.
+
+
+To add a REST API, click:
+
+CLICK_PATH TOOLS > Data import > REST APIs > New REST API...
+
+If the menu entries aren't available, ensure the @haplo_data_import_api@ plugin is installed.
+
+Fill out the form to define the API:
+
+|URL|The name to use in the endpoint's URL.|
+|Description|A short description of the API.|
+|Enabled|Whether the API is enabled. This option is primarily so redundant APIs can be turned off.|
+|Response|Use JSON or XML for the response.|
+|Control file|See below for how [node:import/control:control files] are used to describe the API.|
+
+Everything apart from the URL can be edited later.
+
+
+h2. Control files for REST APIs
+
+The REST APIs run a *Batch* import with the request body as the input file. Typically these request bodies will just update one record.
+
+Write a [node:import/control:control file] in the normal way, noting:
+
+* In the @files@ section, use the name @DEFAULT@.
+
+* Choose either JSON or XML [node:import/control/files:format]. As your API will probably be intended to update just a single record, you might want to use the @singleRecord:true@ option to make the requests shorter.
+
+See the [node:import/rest-api/example:example definition] for a simple control file.
+
+
+h2. Using the API
+
+After creating the API, the admin interface will show you the full URL of the endpoint, which will look something like:
+
+@https://app.example.org/api/push-data/api-name@
+
+h3. Creating an API key
+
+Requests should be POSTed to this URL using an API key, which you can generate by clicking the _Create API key..._ button on the REST API's page. It's important to create keys using this user interface so they are restricted to just accessing a single REST API.
+
+Once created, API keys are managed in System management:
+
+CLICK_PATH TOOLS > System management > Users > SRV > REST API data import access
+
+Scroll to the bottom to view the API keys.
+
+h3. POST data to the REST API
+
+Once you have the API key, POST the data in the specified format to the endpoint, using HTTP basic authentication with the username @haplo@ and the API key as the password.
+
+See the [node:import/rest-api/example:example definition] for a worked example and script.
+
+
+h2. Response
+
+The response is in JSON or XML, with a @200@ status code if everything succeeded. The responses are formatted in JSON as:
+
+<pre>language=json
+{
+    "result": "failure",
+    "applied": 1,
+    "failures": 1,
+    "errorCount": 1,
+    "errors": [
+        "Example error"
+    ]
+}
+</pre>
+
+or in XML as:
+
+<pre>language=xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<response applied="1" errorCount="1" failures="1" result="failure">
+  <errors>
+    <error>Example error</error>
+  </errors>
+</response>
+</pre>
+
+The JSON properties or XML attributes/child nodes are:
+
+|@result@|The overall result of the API request, @success@ when everything worked without errors, @failure@ if some data couldn't be imported, or @error@ if there was an exception.|
+|@applied@|The number of records successfully applied.|
+|@failures@|The number of records which couldn't be applied.|
+|@errorCount@|The number of errors.|
+|@errors@|Zero or more error messages.|
+
+Because the APIs can receive multiple records in a single call, a result may be a partial success. You are recommended to just send a single record.

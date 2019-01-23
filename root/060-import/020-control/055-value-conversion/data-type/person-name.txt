@@ -1,0 +1,26 @@
+title: person-name
+long_title: Person's name data type
+link_as: keyword
+--
+
+The @person-name@ value type is a [node:import/control/value-conversion/structured-value:structured value] representing the name of a person.
+
+The associated @value:person-name@ pseudo-destination has the fields:
+
+|@title@|Mr, Mrs, Ms, etc|
+|@first@|First name|
+|@middle@|Middle name|
+|@last@|Family name (surname)|
+|@suffix@|Suffix|
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "field-structured",
+    "structured": "value:person-name",
+    "destination": "profile",
+    "name": "dc:attribute:title"
+}
+</pre>

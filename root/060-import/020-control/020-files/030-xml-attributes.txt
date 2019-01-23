@@ -1,0 +1,31 @@
+title: xml-attributes
+--
+
+The @xml-attributes@ format reads an XML file, where the root element contains child elements which form the *Records*. The attributes of these elements are the values in the Record.
+
+The names of the elements are ignored.
+
+|@"singleRecord"@|If @true@, treat the input file as a single record (without a containing root element) instead of multiple records. This is useful for defining [node:import/rest-api:REST APIs].|
+
+
+h2. Example control file
+
+<pre>language=json
+"files": {
+    "DEFAULT": {
+        "read": "xml-attributes"
+    }
+}
+</pre>
+
+
+h2. Example input file
+
+<pre>language=xml
+<file>
+    <record id="jbloggs" first="Joe" last="Bloggs"
+        email="joe@example.org"/>
+    <record id="jsmith" first="Jane" last="Smith"
+        email="jane@example.org"/>
+</file>
+</pre>

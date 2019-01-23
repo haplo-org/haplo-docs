@@ -1,0 +1,28 @@
+title: haplo:username-to-ref
+link_as: keyword
+--
+
+The @haplo:username-to-ref@ value filter converts a username of a user managed by the [node:import/user-sync] to a Ref value which can be used to load profile objects, and add references to that person to other objects.
+
+This value filter is provided by the @haplo_user_sync@ plugin, so it can be used in applications which use a user sync, but don't necessarily use the data import framework through the @haplo_user_sync_generic@ plugin.
+
+If user sync isn't used in your application, this value filter won't be available.
+
+
+h2. Example
+
+Your input data might include the username of people. To convert it into a Ref which can then be used by a [node:import/control/instruction/load] Instruction, use:
+
+<pre>language=json
+{
+    "source": "USERNAME",
+    "destination": "load:by-ref",
+    "name": "ref",
+    "filters": ["haplo:username-to-ref"]
+},
+{
+    "action": "load",
+    "destination": "profile",
+    "using": "load:by-ref"
+}
+</pre>

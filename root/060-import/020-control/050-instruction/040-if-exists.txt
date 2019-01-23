@@ -1,0 +1,33 @@
+title: if-exists
+link_as: keyword
+--
+
+The @if-exists@ Instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value exists in the current *Record* in the input data.
+
+|@action@|@"if-exists"@|
+|@source@|The property in the input Record.|
+|@then@|An array of Instructions to be executed when the value exists in the Record (optional).|
+|@else@|An array of Instructions to be executed when the value does not exist in the Record (optional).|
+
+See also [node:import/control/instruction/if-has-value] and [node:import/control/instruction/if-value-one-of].
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-exists",
+    "source": "supervisors",
+    "then": [
+        {
+            "action": "set-value",
+            "destination": "user",
+            "name": "groups",
+            "value": "example:group:student"
+        }
+    ],
+    "else": [
+        // ...
+    ]
+}
+</pre>

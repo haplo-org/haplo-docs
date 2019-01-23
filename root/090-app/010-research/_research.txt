@@ -1,0 +1,23 @@
+title: Haplo Research Manager
+--
+
+"Haplo Research Manager":https://www.haplo.com/research-manager provides an open source core to manage research in academic institutions. This core supports open source applications such as [node:app/repository:Haplo Repository], and commercial products such as "PhD Manager":https://www.haplo.com/phd-manager and "Ethics Monitor":https://www.haplo.com/ethics-monitor.
+
+It provides:
+
+* Core schema for representing an organisation which performs research, such as a University, Research Institute, or R&D department in a company.
+
+* Building blocks for Research applications, such as data types, integrations with external systems, researcher profiles, and workflow elements such as committee scheduling and online decisions.
+
+* User sync data model within the [node:import:data import framework].
+
+The code is available through the "haplo-research-manager":https://github.com/haplo-org/haplo-research-manager source code repository, under the MPLv2 license.
+
+
+h2. Administrator's manual
+
+This manual supports IT professionals who are working with Haplo applications. It is split into two main sections:
+
+1. [node:app/research/setup:Setting up and configuring] a Haplo Research Manager application
+
+2. [node:app/research/support:Supporting and managing] a Haplo Research Manager application, including updating data as the institution changes, and supporting user's day to day work.

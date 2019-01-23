@@ -1,0 +1,56 @@
+title: Glossary
+--
+
+h3. Attribute 
+
+Part of the description of an Object in the system. This is the "information" that your information management application stores and manages.
+
+[node:app/information/attributes:More...]
+
+
+h3. Group
+
+A set of users in the system, generally describing that user's role. Access permissions and other behaviours are applied to the group as a whole.
+
+[node:app/information/user-groups:More...]
+
+
+h3. Object
+
+An item in the system.
+
+
+h3. Permissions
+
+Determines what users can and can't do with objects based on their labels.
+
+[node:app/information/permissions:More...]
+
+
+h3. Qualifier
+
+Used to make the meaning of an Attribute more specific. For example, an __alternative__ title.
+
+[node:app/information/qualifiers:More...]
+
+
+h3. Label
+
+Arbitrary 'tags' attached to objects which are used to apply permissions.
+
+[node:app/information/permissions:More...]
+
+
+h3. Taxonomy
+
+A hierarchical controlled list.
+
+[node:app/information/taxonomies:More...]
+
+
+h3. Type
+
+A kind of object, which affects how that object is displayed, searched and edited, and which attributes are required by the user interface.
+
+[node:app/information/types:More...]
+

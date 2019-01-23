@@ -1,0 +1,8 @@
+title: configuration-name
+long_title: Configuration name data type
+link_as: keyword
+--
+
+The @configuration-name@ data type representes the values used to define [node:dev/plugin/o/behaviour:behaviours] with the @std:attribute:configured-behaviour@ attribute.
+
+This is unlikely to be used in a data import.

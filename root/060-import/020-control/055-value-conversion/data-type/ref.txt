@@ -1,0 +1,25 @@
+title: ref
+long_title: Ref data type
+link_as: keyword
+--
+
+When converting to a @ref@, the following properties may be added:
+
+|@refMapping@|The name of a [node:import/control/mapping:mapping] to use to convert the input value.|
+
+It is recommended that you use the admin UI to generate the Instruction and mapping for the value.
+
+CLICK_PATH TOOLS > Data import > Models > Model name > Name / Map
+
+The control file generator will also include these mappings.
+
+h2. Example
+
+<pre>language=json
+{
+    "source": "mode",
+    "destination": "project",
+    "name": "example:attribute:project-mode",
+    "refMapping": "project-mode"
+}
+</pre>

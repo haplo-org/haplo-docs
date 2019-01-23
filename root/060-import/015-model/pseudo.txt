@@ -1,0 +1,20 @@
+title: Pseudo-destinations
+--
+
+Some of the *Destinations* do not refer to data that will be stored, but exist only to collect together values for other operations. While this may seem to add verbosity, it allows your control file to use the full data transformation and mapping features.
+
+When viewing a *Model* in the admin UI, pseudo-destinations will be flagged, and their name will describe their purpose.
+
+
+h2. Loading other Destinations
+
+To load an existing Destination for modification, or adding data in [node:import/model/depends:dependent destinations], a 'load' pseudo-destination must be set with information that identifies the specific object, followed by a [node:import/control/instruction/load] Instruction.
+
+Note that control files for the [node:import/user-sync] should not @load@ or @new@ any Destinations.
+
+
+h2. Structured values
+
+Some values are [node:import/control/value-conversion/structured-value:structured], in that they are formed from multiple fields. For example, names of people are formed of their first and last names.
+
+The model will include pseudo-destinations for each of the structured values used in the model, which are used to assemble the data, then store it in the actual Destination with the [node:import/control/instruction/field-structured] Instruction.
