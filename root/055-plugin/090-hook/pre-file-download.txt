@@ -2,7 +2,7 @@ title: hPreFileDownload
 class: HookNode
 --
 
-This hook allows plugins to observe file downloads. It is called for file downloads and requests for thumbnail images, both from the normal platform interface and from the [node:dev/standard-plugin/web-publisher:web publisher].
+This hook allows plugins to observe file downloads. It is called for file downloads and requests for thumbnail images, both from the normal platform interface and from the [node:standard/web-publisher:web publisher].
 
 When observing file downloads, at the very least, your plugin should check the @isThumbnail@ and @transform@ arguments to make sure you are observing the right thing. You might also need to check the @isWebPublisher@ argument.
 

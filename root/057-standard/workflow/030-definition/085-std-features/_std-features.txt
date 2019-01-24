@@ -1,0 +1,6 @@
+title: Standard features
+long_title: Standard workflow features
+class: DocNodeTextileWithTOC
+--
+
+The Workflow plugin implements several useful [node:standard/workflow/definition/features:features] which implement many the common workflow requirements.

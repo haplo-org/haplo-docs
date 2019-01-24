@@ -1,0 +1,128 @@
+title: Concepts
+long_title: Workflow concepts
+--
+
+h2. Workflow Definition
+
+The workflow [node:standard/workflow/definition:Definition] is a JavaScript object which is created by the Workflow plugin.
+
+When your plugin is loaded, it creates a workflow Definition object then calls functions on it to define the workflow.
+
+Afterwards, the workflow Definition provides functions to create and retrieve _Instances_ of the workflow.
+
+
+h2. Workflow Instance
+
+A workflow [node:standard/workflow/interfaces/instance:Instance] represents an individual process that is undertaken in your application. It's based around a platform [node:plugin/interface/work-unit] to integrate into the platform as a whole.
+
+It's conventional in workflow plugins for function arguments and variables for workflow Instances to be named @M@.
+
+
+
+h2. State
+
+A workflow Instance is always in one of the [node:standard/workflow/definition/states:States] you declare to the Definition.
+
+States are actionable by a given user or group, which controls who can perform actions, and set _Flags_.
+
+
+h2. Transition
+
+Actions by the user _transition_ the Instance to a different State.
+
+The state Definition declares which transitions are valid for that state, and the name of the state to which it moves when the transition occurs.
+
+It is only possible to move to another state if there is a valid transition.
+
+
+h2. Flag
+
+Workflow Instances have a set of named _Flags_, which are either set or unset.
+
+States define Flags which are set when the workflow is in that state, or are set or unset when the state is entered or exited. This is a mechanism to cleanly test the state of the workflow without having to use state names or look at the history of the Instance.
+
+
+h2. Selector
+
+A [node:standard/workflow/definition/selector:Selector] is a concise statement about the overall state of a workflow Instance. An Instance is _selected_ by a Selector when all the conditions are true.
+
+Selectors can match on state name, Flags, which transition is about to happen, and whether the workflow is closed.
+
+
+h2. Handler
+
+[node:standard/workflow/definition/handlers:Handlers] are functions which are called at various points in the process to control the workflow, for example, when a state is entered, if an associated _Selector_ selects the Instance.
+
+For each named handler, a workflow Definition stores a list of handlers. The handlers are called in reverse order. If one of the handlers returned something other than @undefined@, the rest of the handlers are not called, and that return value is the result of running the handler list.
+
+
+h2. Function list
+
+[node:standard/workflow/definition/function-lists:Function lists] are similar to handlers, but do not have an associated Selector. These are used to look up information about the Instance which is independent of the state of the process, for example, the URL to display the information about the process.
+
+
+h2. Feature
+
+Workflow is designed to be extensible, and for other plugins to be able to provide reusable components. Plugins register named [node:standard/workflow/definition/features:Features] with the standard Workflow plugin, and then other plugins @use()@ those features.
+
+In addition to implementations by other plugins, all core functionality other than the very basics is implemented and configured as [node:standard/workflow/definition/std-features:standard features].
+
+Features have a very simple implementation. Implementing plugins register a function with the Workflow plugin, and when a workflow uses that feature, that function is called with the workflow definition as an argument and anything use passed to the @use()@ function. The implementing plugin then just adds States, Handlers and Functions as required.
+
+
+h2. Timeline
+
+Each Instance has a Timeline which records all the previous transitions and any other relevant data. This is used to display a history of events in the process, and acts as an audit trail.
+
+
+h2. Text
+
+Various strings are displayed in the user interface, from human readable names of states to guidance notes on the transition page. The [node:standard/workflow/definition/text:text system] makes these easy to specify for your workflow.
+
+Each Definition has a set of named strings. When some text is displayed, the Workflow plugin searches for the most specific string. For example, when displaying a Transition name, it'll search for the name in a given state, then try the transition name alone. This allows for general defaults with specific overrides when needed, cutting down on the amount of strings which need to be defined.
+
+After the string has been found, the @textInterpolate@ function is called. This can modify the string, for example, by turning role names into the names of the actual people involved.
+
+
+h2. Notes
+
+It's useful to add [node:standard/workflow/definition/std-features/notes:notes] to processes, so more detail can be recorded. If a workflow uses the @std:notes@ workflow feature, notes can be added at any time by authorised users, and there's always a notes box on transition pages.
+
+
+h2. Transition form
+
+The default user interface for transitioning to other stages includes a confirmation step. Workflows can add additional Transition Forms to this screen to collect extract information, for example, explicitly agreeing to legal conditions.
+
+
+h2. Email notifications
+
+Workflows automatically send notifications by email when a process transitions to a state which has a different actionable user than the previous state. The email can be configured using the [node:standard/workflow/definition/text/notification-emails:text system].
+
+
+h2. Entities
+
+If the workflow is associated with an object, you can use the [node:standard/workflow/definition/std-features/entities:Entities] system to quickly look up other objects associated with the instance. For example, you might have a project attribute, and you can look up the project. The entities system supports nesting, so you could look up supervisors on the project.
+
+Where these entities correspond to users because their [node:plugin/interface/security-principal#ref] property matches that entity, they can be used as actionable by users. When the metadata changes, the actionable by user of the process is automatically changed.
+
+The entities feature also provides a text interpolation function so entities names can be used in text strings.
+
+
+h2. Entity replacement
+
+Sometimes you need to be able to nominate replacements for some of the users. If you're using actionable users through the entities system, there's an optional workflow feature that provides a mechanism for replacing entities, and a UI to allow those replacements to be set.
+
+
+h2. Tags
+
+[node:plugin/interface/work-unit] tags are used by the Workflow plugin. The State is copied to the tags, and you can set the refs of named entities as tags.
+
+These are useful for efficiently finding relevant processes for reporting.
+
+
+h2. Dashboards
+
+The Workflow plugin can create a [node:standard/workflow/definition/std-features/states-dashboard:dashboard] to display a summary of the various states of all the instances in a plugin.
+
+The Dashboard is very configurable. You can adjust the underlying [node:plugin/interface/work-unit-query] to select the instances you're interested in, and add customised UI to navigate between different queries. In addition, the dashboard can be configured to show breakdowns by a tag, for example, splitting out totals by department.
+

@@ -10,7 +10,7 @@ It's also available as:
 
  * a [node:plugin/templates/functions/platform/name:template function] (which is the recommended way of using it)
  * automatic substitution in [node:plugin/form/specification#Text:form labels and other text]
- * as a standard text interpolation in the standard [node:dev/standard-plugin/workflow/definition/text:workflow plugin text system]
+ * as a standard text interpolation in the standard [node:standard/workflow/definition/text:workflow plugin text system]
 
 There is a two argument version so longer phrases can be customised using the same system.
 

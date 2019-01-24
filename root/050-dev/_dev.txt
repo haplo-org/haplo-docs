@@ -17,7 +17,7 @@ To add extra functionality, you can write a [node:plugin:plugin]. These are writ
 
 A comprehensive and easy to use JavaScript API enables you to build great applications extremely quickly.
 
-The [node:dev/standard-plugin:standard plugins], which form part of the Platform, provide core features that will be useful for your application. In addition, there are "open source plugins":https://github.com/haplo-org which provide components, particularly the "haplo-plugins repository":https://github.com/haplo-org/haplo-plugins.
+The [node:standard:standard plugins], which form part of the Platform, provide core features that will be useful for your application. In addition, there are "open source plugins":https://github.com/haplo-org which provide components, particularly the "haplo-plugins repository":https://github.com/haplo-org/haplo-plugins.
 
 
 h2. 3) Connect to external systems

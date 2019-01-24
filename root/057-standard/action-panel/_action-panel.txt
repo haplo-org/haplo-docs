@@ -1,0 +1,13 @@
+title: Action Panel
+--
+
+Plugin name: @std_action_panel@
+
+The standard Action Panel plugin provides an [node:plugin/elements:Element] which uses [node:plugin/templates/std-template/ui-panel] standard templates to add UI elements to the home page and objects.
+
+It's especially good for creating menus and composing UI from multiple co-operating plugins. It uses [node:plugin/o/service] to ask other plugins to call methods on a [node:plugin/interface/panel-builder] object.
+
+To use Action Panels:
+
+ # Add the Action Panel Elements to [node:standard/action-panel/element:objects or the home page] in your @requirements.schema@ file.
+ # Implement a Service to [node:standard/action-panel/services:add items to the panels].

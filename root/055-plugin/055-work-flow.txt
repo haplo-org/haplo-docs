@@ -4,7 +4,7 @@ long_title: Workflow support
 
 The Haplo Platform provides basic workflow support for guiding users through processes, but doesn't provide any implementation for the actual processes. The implementation is provided by plugins.
 
-Because the platform features are deliberately limited, a [node:dev/standard-plugin/workflow:standard Workflow plugin] is layered on top to implement comprehensive workflow systems with minimal code. Unless you're doing something very special, prefer to use the [node:dev/standard-plugin/workflow] plugin instead of the platform directly.
+Because the platform features are deliberately limited, a [node:standard/workflow:standard Workflow plugin] is layered on top to implement comprehensive workflow systems with minimal code. Unless you're doing something very special, prefer to use the [node:standard/workflow] plugin instead of the platform directly.
 
 The platform provides:
 
@@ -15,7 +15,7 @@ The platform provides:
  ** Displaying work units attached to store objects on their pages
  * [node:plugin/hook] for plugins to implement work flow using @WorkUnit@ objects.
 
-The [node:dev/standard-plugin/workflow] plugin extends this with many more features.
+The [node:standard/workflow] plugin extends this with many more features.
 
 
 h2. Plugin state

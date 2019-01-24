@@ -7,11 +7,11 @@ Panels are a standardised way of displaying information and links as part of you
 
 Each panel is composed of _panel elements_ which build up the UI.
 
-While you can use these templates directly, the [node:plugin/o/constructor/ui-panel] builder and the [node:dev/standard-plugin/action-panel:Action Panel standard plugin] standard plugin are often more convenient ways to use them, especially when the UI is composed from functionality provided by multiple cooperating plugins.
+While you can use these templates directly, the [node:plugin/o/constructor/ui-panel] builder and the [node:standard/action-panel:Action Panel standard plugin] standard plugin are often more convenient ways to use them, especially when the UI is composed from functionality provided by multiple cooperating plugins.
 
 There are several different styles of panel, each of which take a common view but ignore properties which are not relevant. @std:ui:panel@ is the default style, intended for use in the sidebar.
 
-These view render a single panel. Using [node:plugin/o/constructor/ui-panel] or the [node:dev/standard-plugin/action-panel:Action Panel standard plugin] allows you to display more than one panel at once.
+These view render a single panel. Using [node:plugin/o/constructor/ui-panel] or the [node:standard/action-panel:Action Panel standard plugin] allows you to display more than one panel at once.
 
 
 h2. Top level view

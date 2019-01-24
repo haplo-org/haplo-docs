@@ -1,0 +1,32 @@
+title: Reporting
+--
+
+Plugin name: @std_reporting@
+
+The standard Reporting plugin provides the ability to generate reports based on historical data from many different sources, and a [node:standard/reporting/rest-api] for access by external systems.
+
+h2. Terminology
+
+ * Facts: a set of facts & figures about a [node:plugin/interface/store-object:StoreObject], implemented as fields in a [node:plugin/interface/database:Database] table
+
+ * Collection: a collection of facts about an object
+
+ * Collection category: a collection is in one or more categories, which allows setup of common functionality
+
+ * Statistic: a single value derived from a subset of rows in the collection, optionally grouped by other facts
+
+ * Dashboard: a subset of facts from a collection displayed on a web page, with a potentially different set of facts generated for a spreadsheet export
+
+h2. Using the Reporting plugin
+
+The Reporting plugin provides a @std:reporting@ [node:plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:plugin/plugin-json#use:use] in your @plugin.json@ file.
+
+<pre>language=json
+{
+  "pluginName": "example_workflow",
+  // ... rest of plugin.json
+  "use": ["std:reporting"]
+}
+</pre>
+
+
