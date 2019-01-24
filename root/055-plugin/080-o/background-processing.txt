@@ -1,0 +1,43 @@
+title: Background processing
+--
+
+Some processing takes too long to perform in a request or hook handlers. You can perform this as a background job.
+
+Background jobs will generally be started immediately if there is nothing else in the queue, but no guarantees are made about when the job will be run.
+
+Your plugin must have the @pBackgroundProcessing@ privilege to run background jobs.
+
+Jobs are started with the @O.background.run()@ function, then a handler registered with [node:plugin/interface/plugin/background-processing#backgroundCallback] is called to perform the work.
+
+Your background task is unlikely to be executed in the same JavaScript runtime which initiated it. All data passed to the job must be JSON serialisable so it can be passed safely between runtimes.
+
+
+h2. Example
+
+<pre>language=javascript
+// A service called by other plugins which needs to do work
+// in the background.
+P.implementService("example_plugin:long_task", function(ref) {
+    O.background.run("example_plugin:long_job", {
+        // Convert ref to a string for JSON serialisation
+        ref: ref.toString()
+    });
+});
+
+P.backgroundCallback("long_job", function(data) {
+    // Interpret String data
+    var ref = O.ref(data.ref);
+    // ... do time consuming work...
+});
+</pre>
+
+
+h2. Interface
+
+h3(function). O.background.run(name, data)
+
+@name@ is the job name, which must start with your plugin's name. For example, @"example_plugin:task"@.
+
+@data@ is a small amount of JSON serialisable data the details of the job.
+
+Note that the @data@ argument is *required*. If there is no data to be passed to the @backgroundCallback@ function, pass in an empty object.

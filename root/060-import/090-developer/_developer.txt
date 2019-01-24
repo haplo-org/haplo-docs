@@ -26,7 +26,7 @@ Input files are converted into *Records* by a *Reader*. This is implemented as a
 
 h3. Target
 
-When a record is processed, each of the *Destinations* creates *Targets*. These are the actual objects where the data is stored, which might be JavaScript objects, [node:dev/plugin/interface/store-object:store objects], and so on. The *Model* knows how to load, create and save data to the various databases.
+When a record is processed, each of the *Destinations* creates *Targets*. These are the actual objects where the data is stored, which might be JavaScript objects, [node:plugin/interface/store-object:store objects], and so on. The *Model* knows how to load, create and save data to the various databases.
 
 h3. Transformation
 

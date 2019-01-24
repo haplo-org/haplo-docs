@@ -1,0 +1,82 @@
+title: Custom validation
+--
+
+Custom validation functions can be applied to elements in a form. However, it's best to avoid their use if at all possible, so that the JSON specification remains the entire description of the form.
+
+Creating a custom validation has two parts.
+
+h2. Form specification
+
+Firstly, the [node:plugin/form/specification#Form_elements:form elements] need to include the @validationCustom@ property, which specifies the name and any additional data required to perform the validation. Specifications have two properties:
+
+|@name@|The name of the validation function.|
+|@data@|Any additional configuration data that needs to be passed to the validation function.|
+
+
+h2. Validation function
+
+The validation function needs to be registered with the plugin [node:plugin/interface/plugin/form#globalFormsCustomValidationFunction] method. Global registration is especially convenient when using the @std_document_store@ plugin, or when a function is reused across many forms.
+
+Alternatively, if global registration is not possible, the function can be declared locally to the form instance with [node:plugin/interface/form-instance#customValidation].
+
+Validation functions take five arguments:
+
+|@value@|The value of this form element, as stored in the document.|
+|@data@|Function specific configuration data, obtained from the element's specification.|
+|@context@|The current context within the document. If the element is in a section, this will be the sections position in the document. Generally you should access other elements through the context.|
+|@document@|The root of the document. Avoid using this to make sure your functions are as general as possible.|
+|@externalData@|The external data set on this form instance. @std_document_store@ will set the @"std_document_store:key"@ property within @externalData@.|
+
+The validation function is only called when the value is not @undefined@.
+
+If validation does not pass, the function returns an error message to display to the user.
+
+h3. Testing values
+
+Custom validation functions need to be written carefully, taking into account the way the elements are read from submitted data and the order of updating the document.
+
+You *must* test the @value@ argument of the function, not retrieve it from the @context@ or @document@. When the function is called, the document might not have been updated with the new value.
+
+The values for other elements in the @context@ or @document@ will only have been updated for elements which precede this element in the specification. This means a custom validation function which operates on the values of more than one element must be applied to the element that is last in the specification.
+
+
+h2. Example
+
+This example shows how to create a custom validation function that checks that two number elements sum to a given total, writing the validation function in as general a style as possible.
+
+The two elements are described with @"required":true@ to ensure the values are present in the document, and the validation function doesn't need to worry about checking they exist. The @data@ property is used to pass information to the function about the required total and the other element's path.
+
+<pre>language=json
+[
+  {
+    "type": "number",
+    "label": "First number",
+    "path": "firstNumber",
+    "required": true
+  },
+  {
+    "type": "number",
+    "label": "Second number",
+    "path": "secondNumber",
+    "required": true,
+    "validationCustom": {
+      "name": "example:sum-value",
+      "data": {
+        "otherValue": "firstNumber",
+        "requiredSum": 100
+    }
+  }
+]
+</pre>
+
+The validation function is defined and registered with the instance as:
+
+<pre>language=javascript
+P.globalFormsCustomValidationFunction("example:sum-value",
+  function(value, data, context, document, externalData) {
+    if(value + context[data.otherValue] !== data.requiredSum) {
+        return "Must add up to "+data.requiredSum;
+    }
+  }
+);
+</pre>

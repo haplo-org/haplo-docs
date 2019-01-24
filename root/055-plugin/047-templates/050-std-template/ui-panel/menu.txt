@@ -1,0 +1,12 @@
+title: std:ui:panel:menu
+link_as: keyword
+--
+
+A style of [node:plugin/templates/std-template/ui-panel] which displays a menu of choices leading to many different functions.
+
+
+h2. Supported panel element properties
+
+ * @label@
+ * @href@
+

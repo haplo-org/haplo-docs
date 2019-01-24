@@ -1,0 +1,15 @@
+title: Object
+--
+
+@object@ declarations define a generic object with a given type, and a configured behaviour attribute as the given API code. They're used to set up the default members of a [node:app/information/lists:list].
+
+You cannot use @as@ readable names on @object@ declarations. Use the normal store object API, or the [node:plugin/o/behaviour] API.
+
+This declaration ensures that there is a 'Red' member of the given list, with a configured behaviour attribute of @"example:list:colours:red"@.
+
+<pre>
+object example:list:colours:red
+    type example:type:colours
+    title: Red
+    notes: This colour is quite nice.
+</pre>

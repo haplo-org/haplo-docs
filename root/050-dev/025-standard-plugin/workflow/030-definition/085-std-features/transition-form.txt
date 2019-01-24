@@ -43,13 +43,13 @@ The list of transitions for which the form is required.
 
 h3(key). form
 
-The [node:/dev/plugin/interface/form-description] to display on transition UI.
+The [node:plugin/interface/form-description] to display on transition UI.
 
 h3(key). prepareFormInstance
 
 @function(key, instance)@
 
-Allows preparation of the form instance, such as setting up [node:dev/plugin/interface/form-instance#choices:dynamic form choices]. See [node:dev/standard-plugin/document-store/definition#prepareFormInstance] for usage examples.
+Allows preparation of the form instance, such as setting up [node:plugin/interface/form-instance#choices:dynamic form choices]. See [node:dev/standard-plugin/document-store/definition#prepareFormInstance] for usage examples.
 
 h3(key). onTransition
 

@@ -7,7 +7,7 @@ The standard Reporting plugin provides the ability to generate reports based on 
 
 h2. Terminology
 
- * Facts: a set of facts & figures about a [node:dev/plugin/interface/store-object:StoreObject], implemented as fields in a [node:dev/plugin/interface/database:Database] table
+ * Facts: a set of facts & figures about a [node:plugin/interface/store-object:StoreObject], implemented as fields in a [node:plugin/interface/database:Database] table
 
  * Collection: a collection of facts about an object
 
@@ -19,7 +19,7 @@ h2. Terminology
 
 h2. Using the Reporting plugin
 
-The Reporting plugin provides a @std:reporting@ [node:dev/plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:dev/plugin/plugin-json#use:use] in your @plugin.json@ file.
+The Reporting plugin provides a @std:reporting@ [node:plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:plugin/plugin-json#use:use] in your @plugin.json@ file.
 
 <pre>language=json
 {

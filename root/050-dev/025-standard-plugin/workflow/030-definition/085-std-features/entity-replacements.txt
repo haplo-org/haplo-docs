@@ -34,7 +34,7 @@ myWorkflow.use("std:entities:entity_replacement", {
 
 In use throughout the consuming workflow plugin, the usage is the same as any non-replaced entity (so from the above definition, using @M.entities.editorOrNominee_ref@ is valid).
 
-Replacements are stored as one-to-one mappings between object [node:dev/plugin/interface/ref:Refs], so replacement is performed by a simple lookup operation.
+Replacements are stored as one-to-one mappings between object [node:plugin/interface/ref:Refs], so replacement is performed by a simple lookup operation.
 
 If no replacement is specified, the original entity is returned.
 
@@ -58,7 +58,7 @@ These flags can then be used for any custom logic the consuming workflow require
 
 @listAll@ is an optional boolean. When @true@ the underlying entity @_list@ is used, allowing a replacement to be chosen for each of those entities, if required.
 
-@replacementTypes@ is an array of schema types. The replacement [node:dev/plugin/interface/store-object:StoreObject] must have one of these types.
+@replacementTypes@ is an array of schema types. The replacement [node:plugin/interface/store-object:StoreObject] must have one of these types.
 
 
 h3(function). onRenderUI
@@ -67,7 +67,7 @@ Optional. Passes in an object containing functions to add custom UI into the ent
 
 h4. addDeferredRender(deferred)
 
-Adds the [node:dev/plugin/interface/template#deferredRender] object passed in to be rendered at the bottom of the entity replacement page.
+Adds the [node:plugin/interface/template#deferredRender] object passed in to be rendered at the bottom of the entity replacement page.
 
 h4. addSidebarButton(link, label, indicator)
 

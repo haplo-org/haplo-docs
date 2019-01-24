@@ -20,7 +20,7 @@ Mappings need to identify the other object unambiguously.
 
 h3. behaviour
 
-The best way is to set @using@ to @"behaviour"@ and use the [node:dev/plugin/o/behaviour:configured behaviour codes] to identify the objects precisely, even if they're edited by the system administrator of your application.
+The best way is to set @using@ to @"behaviour"@ and use the [node:plugin/o/behaviour:configured behaviour codes] to identify the objects precisely, even if they're edited by the system administrator of your application.
 
 Where you're mapping to a list type set up by one of the plugins, these will already have configured behaviour codes set.
 

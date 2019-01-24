@@ -20,7 +20,7 @@ h3(function). create(properties)
 
 Create a new workflow Instance with the given @properties@.
 
-If the workflow is associated with an object, @properties.object@ must be that [node:dev/plugin/interface/store-object].
+If the workflow is associated with an object, @properties.object@ must be that [node:plugin/interface/store-object].
 
 @properties@ is passed to the [node:dev/standard-plugin/workflow/definition/function-lists#start] handler and may contain additional information for your own use.
 
@@ -29,17 +29,17 @@ Returns a [node:dev/standard-plugin/workflow/interfaces/instance] representing t
 
 h3(function). instance(workUnit)
 
-Given a [node:dev/plugin/interface/work-unit] with the correct @workType@, return a [node:dev/standard-plugin/workflow/interfaces/instance] representing the process.
+Given a [node:plugin/interface/work-unit] with the correct @workType@, return a [node:dev/standard-plugin/workflow/interfaces/instance] representing the process.
 
-Use a [node:dev/plugin/interface/work-unit-query] to find the relevant @WorkUnits@.
+Use a [node:plugin/interface/work-unit-query] to find the relevant @WorkUnits@.
 
 
 h3(function). instanceForRef(ref)
 
-Given the [node:dev/plugin/interface/ref] of the associated object, return a [node:dev/standard-plugin/workflow/interfaces/instance] representing the process or @null@ if there is no such process.
+Given the [node:plugin/interface/ref] of the associated object, return a [node:dev/standard-plugin/workflow/interfaces/instance] representing the process or @null@ if there is no such process.
 
 
-If you do not have access to the workflow definition object, you can also access the instance using the @std:workflow:for_ref@ [node:dev/plugin/o/service:service] which takes two arguments, @workType@ and @ref@.
+If you do not have access to the workflow definition object, you can also access the instance using the @std:workflow:for_ref@ [node:plugin/o/service:service] which takes two arguments, @workType@ and @ref@.
 
 h2. Example
 

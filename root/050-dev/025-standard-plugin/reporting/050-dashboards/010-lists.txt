@@ -226,7 +226,7 @@ HTML column definitions have the following properties:
 |displayHTML|Function. A function with an argument @row@, which should return a string of text or HTML to be rendered|
 |exportValue|Function. A function with an argument @row@ [1], which should return a string of text to be used in a spreadsheet when exporting|
 |sortValue|Function. A function with an argument @row@ [1], which the UI can use to provide custom sorting when the table is sorted by this column|
-|exportOptions|String. A value passed to the [node:dev/plugin/o/generate/table#cell:xls.cell] function as the second @options@ argument|
+|exportOptions|String. A value passed to the [node:plugin/o/generate/table#cell:xls.cell] function as the second @options@ argument|
 
 h2. Notes
 

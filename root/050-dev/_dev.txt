@@ -13,7 +13,7 @@ Alternatively, you can quickly build a system for storing and finding informatio
 
 h2. 2) Write plugins
 
-To add extra functionality, you can write a [node:dev/plugin:plugin]. These are written in JavaScript, and run on the server in an isolated sandbox. They allow you to change core parts of the Haplo user interface, use the object store, and implement any functionality which can be developed as a web application.
+To add extra functionality, you can write a [node:plugin:plugin]. These are written in JavaScript, and run on the server in an isolated sandbox. They allow you to change core parts of the Haplo user interface, use the object store, and implement any functionality which can be developed as a web application.
 
 A comprehensive and easy to use JavaScript API enables you to build great applications extremely quickly.
 

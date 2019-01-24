@@ -46,4 +46,4 @@ For new plugins, you'll need to install it.
 
 CLICK_PATH TOOLS > System management > Plugins > Install plugin
 
-If you've used the [node:dev/plugin/plugin-json#installSecret] key in your [node:dev/plugin/plugin-json] file, you'll need to generate a license key. The Plugin Tool @license-key@ command will [node:dev/tool/plugin/license-key:generate a key], given the ID of the live application.
+If you've used the [node:plugin/plugin-json#installSecret] key in your [node:plugin/plugin-json] file, you'll need to generate a license key. The Plugin Tool @license-key@ command will [node:dev/tool/plugin/license-key:generate a key], given the ID of the live application.

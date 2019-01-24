@@ -19,14 +19,14 @@ P.implementService("std:action_panel:person",
 );
 </pre>
 
-@builder@ is a [node:dev/plugin/interface/panel-builder] object for building the user interface.
+@builder@ is a [node:plugin/interface/panel-builder] object for building the user interface.
 
 @display@ is an object with the following properties:
 
 
 h3(key). object
 
-If the Action Panel Element is being rendered on an object page, the [node:dev/plugin/interface/store-object].
+If the Action Panel Element is being rendered on an object page, the [node:plugin/interface/store-object].
 
 
 h3(key). path
@@ -41,7 +41,7 @@ The options from the Element definition. While not entirely recommended, you can
 
 h3. Multiple panels
 
-For clarity of user interface, remember to split the UI into logical groupings. Use the [node:dev/plugin/interface/panel-builder#panel] function on the @PanelBuilder@.
+For clarity of user interface, remember to split the UI into logical groupings. Use the [node:plugin/interface/panel-builder#panel] function on the @PanelBuilder@.
 
 
 h3. Category service

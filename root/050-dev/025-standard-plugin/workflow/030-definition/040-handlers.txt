@@ -122,7 +122,7 @@ EgWorkflow.actionPanel({}, function(M, builder) {
 });
 </pre>
 
-@builder@ is a [node:dev/plugin/interface/panel-builder] object.
+@builder@ is a [node:plugin/interface/panel-builder] object.
 
 There are two special purpose action panel handlers, @actionPanelStatusUI()@ and @actionPanelTransitionUI()@, which can be overridden to adjust the default behaviour. They're separate to allow that part of the UI to be overridden.
 
@@ -157,7 +157,7 @@ EgWorkflow.renderWork({}, function(M, W) {
 });
 </pre>
 
-@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer].
+@W@ is a [node:plugin/interface/plugin-work-unit-renderer].
 
 
 h2. renderWorkList(selector, fn)
@@ -169,22 +169,22 @@ EgWorkflow.renderWork({}, function(M, W) {
 });
 </pre>
 
-@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer].
+@W@ is a [node:plugin/interface/plugin-work-unit-renderer].
 
 
 
 h2. workListFullInfo(selector, fn)
 
-Update the [node:dev/plugin/interface/plugin-work-unit-renderer] view when rendering the work unit in the task list to set the "full info" link and label.
+Update the [node:plugin/interface/plugin-work-unit-renderer] view when rendering the work unit in the task list to set the "full info" link and label.
 
 <pre>language=javascript
 EgWorkflow.workListFullInfo({}, function(M, W, view) {
 });
 </pre>
 
-@W@ is a [node:dev/plugin/interface/plugin-work-unit-renderer], @view@ is the view which will be passed to [node:dev/plugin/interface/plugin-work-unit-renderer#render].
+@W@ is a [node:plugin/interface/plugin-work-unit-renderer], @view@ is the view which will be passed to [node:plugin/interface/plugin-work-unit-renderer#render].
 
-The handler should modify the properties of the view as described [node:dev/plugin/interface/plugin-work-unit-renderer#Extra_information_in_the_view:in the render() documentation].
+The handler should modify the properties of the view as described [node:plugin/interface/plugin-work-unit-renderer#Extra_information_in_the_view:in the render() documentation].
 
 
 
@@ -214,7 +214,7 @@ EgWorkflow.transitionUI({}, function(M, E, ui) {
 });
 </pre>
 
-@E@ is the [node:dev/plugin/interface/exchange] object.
+@E@ is the [node:plugin/interface/exchange] object.
 
 @ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object, on which you should call functions to modify the UI.
 
@@ -229,7 +229,7 @@ EgWorkflow.transitionFormSubmitted({}, function(M, E, ui) {
 });
 </pre>
 
-@E@ is the [node:dev/plugin/interface/exchange] object.
+@E@ is the [node:plugin/interface/exchange] object.
 
 @ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object. Call @preventTransition()@ and @redirect()@ to stop the transition and send the user somewhere else.
 
@@ -243,7 +243,7 @@ EgWorkflow.transitionFormPreTransition({}, function(M, E, ui) {
 });
 </pre>
 
-@E@ is the [node:dev/plugin/interface/exchange] object.
+@E@ is the [node:plugin/interface/exchange] object.
 
 @ui@ is a [node:dev/standard-plugin/workflow/interfaces/transition-ui] object. Call @redirect()@ send the user somewhere else.
 
@@ -266,7 +266,7 @@ EgWorkflow.transitionUIPostTransitionRedirectForActionableUser({},
 
 h2. preWorkUnitSave(selector, fn)
 
-Called just before [node:dev/plugin/interface/work-unit#save] is called on on the underlying @WorkUnit@. It's especially handy for updating @WorkUnit@ tags.
+Called just before [node:plugin/interface/work-unit#save] is called on on the underlying @WorkUnit@. It's especially handy for updating @WorkUnit@ tags.
 
 <pre>language=javascript
 EgWorkflow.preWorkUnitSave({}, function(M) {

@@ -20,7 +20,7 @@ The type that will be used for the @key@ of your form, if it is not @int@
 
 h3(function). formsForKey(key, instance, document)
 
-Required. Return an array of [node:dev/plugin/form:forms].
+Required. Return an array of [node:plugin/form:forms].
 
 You can use the value of @key@ and the @document@ to return different forms for different instances and documents. @document@ may be a historical version when using the document viewer.
 
@@ -38,7 +38,7 @@ Return what the blank document for a given key should be. You should return a JS
 
 h3(function). formIdFromRequest(request)
 
-Given a request object, return a form ID. By default the Document store will use the second [node:dev/plugin/interface/request#extraPathElements:extraPathElements].
+Given a request object, return a form ID. By default the Document store will use the second [node:plugin/interface/request#extraPathElements:extraPathElements].
 
 h3(function). alwaysShowNavigation(key, instance, document)
 
@@ -76,7 +76,7 @@ Prepare a form instance for the form.
 
 *IMPORTANT*: Always check @form.formId@ to check you're preparing the right form.
 
-Use this to setup things like [node:dev/plugin/interface/form-instance#choices:dynamic form choices], for example:
+Use this to setup things like [node:plugin/interface/form-instance#choices:dynamic form choices], for example:
 
 <pre>language=javascript
 var docStore = P.defineDocumentStore({
@@ -97,7 +97,7 @@ h3(function). getAdditionalUIForViewer(key, instance, document)
 
 Use this to define additional UI to be displayed when rendering the form viewer.
 
-Return an object containing locations and [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred renders].
+Return an object containing locations and [node:plugin/templates/including-templates#Deferred_rendering:deferred renders].
 
 |*Property*|*Location*|
 |top|Displayed at the top of the page|
@@ -120,7 +120,7 @@ h3(function). getAdditionalUIForEditor(key, instance, document, form)
 
 Use this to define additional UI to be displayed when rendering the form editor. Check form.formId to only display on certain forms in the docstore.
 
-Return an object containing locations and [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred renders].
+Return an object containing locations and [node:plugin/templates/including-templates#Deferred_rendering:deferred renders].
 
 |*Property*|*Location*|
 |top|Displayed at the top of the page, above the form nvaigation|
@@ -148,7 +148,7 @@ A boolean that enables items to be added to the top right of the form viewer. Th
 
 h2. Example
 
-An example small definition, where @meetingDetails@ and @outcomes@ are two defined [node:dev/plugin/form:forms]:
+An example small definition, where @meetingDetails@ and @outcomes@ are two defined [node:plugin/form:forms]:
 
 <pre>language=javascript
 var meetingRecordStore = P.defineDocumentStore({

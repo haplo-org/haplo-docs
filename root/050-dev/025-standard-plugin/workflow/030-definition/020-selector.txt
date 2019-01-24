@@ -47,7 +47,7 @@ An array of flag names. This condition matches if all the flags are set.
 
 h3(key). closed
 
-The value must be @true@ or @false@. This condition matches if the value is equal to the value of the underlying WorkUnit's [node:dev/plugin/interface/work-unit#closed] property when compared with @===@.
+The value must be @true@ or @false@. This condition matches if the value is equal to the value of the underlying WorkUnit's [node:plugin/interface/work-unit#closed] property when compared with @===@.
 
 
 h3(key). pendingTransitions

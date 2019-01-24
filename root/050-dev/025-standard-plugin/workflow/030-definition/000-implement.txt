@@ -14,7 +14,7 @@ h2. 2) Create a new plugin
 
 It's best if workflows, and any directly associated UI, are implemented in their own plugin.
 
-First, you must [node:dev/plugin/plugin-json#use:use] the @std:workflow@ [node:dev/plugin/interface/plugin/platform-interface#provideFeature:feature] in your @plugin.json@ file:
+First, you must [node:plugin/plugin-json#use:use] the @std:workflow@ [node:plugin/interface/plugin/platform-interface#provideFeature:feature] in your @plugin.json@ file:
 
 <pre>language=json
 {
@@ -43,7 +43,7 @@ h3(function). P.workflow.implement(name, readableName)
 
 This function returns a new Workflow Definition object, which implements the API described in [node:dev/standard-plugin/workflow/definition:this section].
 
-@name@ is the name of the workflow, which will be prefixed by your plugin name. It's passed to [node:dev/plugin/interface/plugin/platform-interface#workUnit] when the underlying @WorkUnit@ object is defined.
+@name@ is the name of the workflow, which will be prefixed by your plugin name. It's passed to [node:plugin/interface/plugin/platform-interface#workUnit] when the underlying @WorkUnit@ object is defined.
 
 @readableName@ is the human readable name of the process, used in the UI.
 

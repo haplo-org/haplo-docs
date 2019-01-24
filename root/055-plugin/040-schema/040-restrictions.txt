@@ -1,0 +1,29 @@
+title: Restrictions
+--
+
+Restrictions allow you to apply per-attribute permissions to the information in the object store.
+
+h2. Concepts
+
+A *Restriction* restricts individual attributes on an object, in addition to the normal permissions system of labels and label statements to control access to objects.
+
+Restrictions apply to objects they *match*. They can apply globally, or to a subset of objects specified by their type or a label on the object.
+
+A restriction may be *lifted* for a user, when the platform behaves in every way as if the restriction was not applied for that user.
+
+Restrictions can *restrict* an attribute, which hides it from object display and searches. Users cannot search on attributes which are restricted for them, so they can't use search results to infer the existence of information. When a restriction is lifted for a user, they have full search functionality.
+
+In addition, restrictions can make an attribute *read-only* so it can't be edited.
+
+Restrictions have one or more *unrestrict labels*. When a user 'has' one of those labels, set through the [node:plugin/hook/user-attribute-restriction-labels] hook, that restriction is *lifted* for them.
+
+
+h2. Using Restrictions
+
+To implement a restriction, plugins:
+
+ * Declare a [node:plugin/schema/requirements-schema/declaration/restriction:restriction] in their @requirements.schema@ file, and at least one label to use as an unrestrict label.
+ * Implement the [node:plugin/hook/user-attribute-restriction-labels] hook to lift restrictions for specified users,
+ * And if it really can't be avoided, implement the [node:plugin/hook/object-attribute-restriction-labels-for-user] hook to lift restrictions on a per-object per-user basis.
+
+For consistency, plugins see all attributes on an object, unless they explicitly use [node:plugin/interface/store-object#restrictedCopy]. In general this is not a problem, as the platform will respect restrictions when displaying objects, but plugins do sometimes need to be restriction-aware when dealing with attributes on objects.

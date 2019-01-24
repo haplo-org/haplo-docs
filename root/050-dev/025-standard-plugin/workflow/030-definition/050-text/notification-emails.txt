@@ -24,7 +24,7 @@ h4. Action button label
 
 h4. Additional explanatory notes for the email
 
-(rendered with [node:dev/plugin/templates/functions/platform/text#std_text_paragraph] if present)
+(rendered with [node:plugin/templates/functions/platform/text#std_text_paragraph] if present)
 
  * notification-notes:STATE
  * notification-notes

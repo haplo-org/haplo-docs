@@ -17,7 +17,7 @@ h2. Using the Workflow plugin
 
 To define a Workflow, you need to create a plugin to implement it and any other functionality associated with it.
 
-The Workflow plugin provides a @std:workflow@ [node:dev/plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:dev/plugin/plugin-json#use:use] in your @plugin.json@ file.
+The Workflow plugin provides a @std:workflow@ [node:plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:plugin/plugin-json#use:use] in your @plugin.json@ file.
 
 <pre>language=json
 {
@@ -53,6 +53,6 @@ By convention, an instance of the workflow is named @M@ in plugin code.
 
 h2. Workflows and objects
 
-Workflows are generally associated with a type of [node:dev/plugin/interface/store-object], although they don't have to be.
+Workflows are generally associated with a type of [node:plugin/interface/store-object], although they don't have to be.
 
 When workflows are associated with objects, more of the user interface will be provided by the Workflow plugin and the platform. It is preferable to use an associated type, as this is an easy way of preserving the historical record.

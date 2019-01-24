@@ -13,7 +13,7 @@ Afterwards, the workflow Definition provides functions to create and retrieve _I
 
 h2. Workflow Instance
 
-A workflow [node:dev/standard-plugin/workflow/interfaces/instance:Instance] represents an individual process that is undertaken in your application. It's based around a platform [node:dev/plugin/interface/work-unit] to integrate into the platform as a whole.
+A workflow [node:dev/standard-plugin/workflow/interfaces/instance:Instance] represents an individual process that is undertaken in your application. It's based around a platform [node:plugin/interface/work-unit] to integrate into the platform as a whole.
 
 It's conventional in workflow plugins for function arguments and variables for workflow Instances to be named @M@.
 
@@ -103,7 +103,7 @@ h2. Entities
 
 If the workflow is associated with an object, you can use the [node:dev/standard-plugin/workflow/definition/std-features/entities:Entities] system to quickly look up other objects associated with the instance. For example, you might have a project attribute, and you can look up the project. The entities system supports nesting, so you could look up supervisors on the project.
 
-Where these entities correspond to users because their [node:dev/plugin/interface/security-principal#ref] property matches that entity, they can be used as actionable by users. When the metadata changes, the actionable by user of the process is automatically changed.
+Where these entities correspond to users because their [node:plugin/interface/security-principal#ref] property matches that entity, they can be used as actionable by users. When the metadata changes, the actionable by user of the process is automatically changed.
 
 The entities feature also provides a text interpolation function so entities names can be used in text strings.
 
@@ -115,7 +115,7 @@ Sometimes you need to be able to nominate replacements for some of the users. If
 
 h2. Tags
 
-[node:dev/plugin/interface/work-unit] tags are used by the Workflow plugin. The State is copied to the tags, and you can set the refs of named entities as tags.
+[node:plugin/interface/work-unit] tags are used by the Workflow plugin. The State is copied to the tags, and you can set the refs of named entities as tags.
 
 These are useful for efficiently finding relevant processes for reporting.
 
@@ -124,5 +124,5 @@ h2. Dashboards
 
 The Workflow plugin can create a [node:dev/standard-plugin/workflow/definition/std-features/states-dashboard:dashboard] to display a summary of the various states of all the instances in a plugin.
 
-The Dashboard is very configurable. You can adjust the underlying [node:dev/plugin/interface/work-unit-query] to select the instances you're interested in, and add customised UI to navigate between different queries. In addition, the dashboard can be configured to show breakdowns by a tag, for example, splitting out totals by department.
+The Dashboard is very configurable. You can adjust the underlying [node:plugin/interface/work-unit-query] to select the instances you're interested in, and add customised UI to navigate between different queries. In addition, the dashboard can be configured to show breakdowns by a tag, for example, splitting out totals by department.
 

@@ -1,0 +1,99 @@
+title: HTML tags
+--
+
+If you're not doing anything special with your HTML tags, you write them in HSVT exactly as you would in HTML.
+
+<pre>language=hsvt
+<div class="container" id="main-list" data-value="top">
+    <p> contents </p>
+</div>
+</pre>
+
+If you want to include values from the view, just write them as view properties without quotes:
+
+<pre>language=hsvt
+<div data-value=containerValue>
+    <p> contents </p>
+</div>
+</pre>
+
+Here, the @containerValue@ value from the view is included as an attribute, so a view of
+
+<pre>language=json
+{
+    "containerValue": "a & b",
+    "contents": "Hello world"
+}
+</pre>
+
+will be rendered as
+
+<pre>
+<div data-value="a &amp; b"><p>Hello world</p></div>
+</pre>
+
+You can also use template functions as attribute values.
+
+
+h2. URLs in attributes
+
+HTML attributes defined to contain URLs are parsed specially, using [node:plugin/templates/urls:URL rules]. You can also explicitly use the @url()@ template function.
+
+
+h2. Tags must be balanced
+
+Tags must always be balanced with a closing tag, and that closing tag must be within the same block (enclosed in @{}@ brackets).
+
+HTML "void elements":http://www.w3.org/TR/html-markup/syntax.html#syntax-elements like @<br>@ and @<hr>@ do not need closing tags.
+
+
+h2. Special handling of tag attributes
+
+HSVT usually ignores all whitespace, and omits it from the rendered HTML. There is one exception in HTML tag attributes, where if you include multiple values in a list, they're space separated.
+
+Use [node:plugin/templates/functions/language#concat] to override this behaviour.
+
+The space separated values in attributes is especially useful for conditional application of multiple class names:
+
+<pre>language=hsvt
+<div class=["item" if(selected){"highlight"}]> "x" </div>
+</pre>
+
+If the @selected@ property in the view is falsey, then the view is rendered as
+
+<pre>
+<div class="item">x</div>
+</pre>
+
+otherwise
+
+<pre>
+<div class="item highlight">x</div>
+</pre>
+
+If all the values in the list are empty, the attribute is omitted entirely from the tag.
+
+
+h2. Attributes from dictionarys
+
+Sometimes you don't know all the attributes you need until the template is rendered.
+
+To specify attributes at render time, you can use the @*@ operator to expand a dictionary into attributes. For example,
+
+<pre>language=hsvt
+<div class="example" *attrs> </div>
+</pre>
+
+with a view of 
+
+<pre>language=json
+{"attrs":{"a":"b"}}
+</pre>
+
+would be rendered as
+
+<pre>
+<div class="example" a="b"></div>
+</pre>
+
+There are restrictions on the names of attributes to prevent security flaws.

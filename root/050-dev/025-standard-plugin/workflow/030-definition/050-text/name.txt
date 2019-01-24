@@ -2,7 +2,7 @@ title: NAME() customisation
 long_title: NAME() based customisation
 --
 
-The [node:dev/plugin/misc/name] system can be used to globally customise test within the workflow system.
+The [node:plugin/misc/name] system can be used to globally customise test within the workflow system.
 
 h2. Private notes
 

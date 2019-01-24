@@ -43,7 +43,7 @@ To setup the model, @model.addDestination(spec)@ is called repeatedly to add the
 The @spec@ has common properties, and then @kind@ specific properties. The common properties are:
 
 |@name@|Name of the Destination|
-|@title@|Human readable name of the Destination. The string will have @NAME()@ [node:dev/plugin/misc/name#String_interpolation:interpolated]|
+|@title@|Human readable name of the Destination. The string will have @NAME()@ [node:plugin/misc/name#String_interpolation:interpolated]|
 |@displaySort@|A numeric sorting value to order the Destinations when displaying information about the model in the admin UI|
 |@kind@|The kind of Destination|
 |@optional@|If @true@, then this Destination does not have to be completed by the control file|
@@ -52,7 +52,7 @@ The @spec@ has common properties, and then @kind@ specific properties. The commo
 
 h3. "object" Destination kind
 
-The @"object"@ Destination @kind@ specifies [node:dev/plugin/interface/store-object:an object] in the object store. As well as the common properties, it has:
+The @"object"@ Destination @kind@ specifies [node:plugin/interface/store-object:an object] in the object store. As well as the common properties, it has:
 
 |@objectType@|The type of object this represents|
 |@objectDependsWithAttribute@|(optional) If the @depends@ property is set, then the attribute in the dependency which links to the Target object|

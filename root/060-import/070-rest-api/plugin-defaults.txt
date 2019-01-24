@@ -11,7 +11,7 @@ To add a default REST API in your plugin, follow the steps below. In this exampl
 
 h3. 1) Depend on the framework
 
-In your [node:dev/plugin/plugin-json], add @haplo_data_import_api@ to your @depend@ statement.
+In your [node:plugin/plugin-json], add @haplo_data_import_api@ to your @depend@ statement.
 
 
 h3. 2) Declare the API by defining a service

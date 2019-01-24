@@ -52,7 +52,7 @@ h3(function). observe(event, callback)
 
 When the named @event@ occurs, call the @callback@ function.
 
-|@"object:save"@|Called when a [node:dev/plugin/interface/store-object] is saved with arguments @callback(transformation, destinationName, object, isNewObject)@|
+|@"object:save"@|Called when a [node:plugin/interface/store-object] is saved with arguments @callback(transformation, destinationName, object, isNewObject)@|
 
 
 h3(function). prepareTransformation(record, recordIdentifier)

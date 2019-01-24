@@ -31,7 +31,7 @@ We recommend you start by customising and using Haplo for one area of your work,
 
 h2. Custom functionality
 
-You can extend Haplo's functionality with custom [node:dev/plugin:plugins]. We recommend you start by configuring and using a basic system. You can develop and add additional plugins later once you're  clear about your organisation's requirements.
+You can extend Haplo's functionality with custom [node:plugin:plugins]. We recommend you start by configuring and using a basic system. You can develop and add additional plugins later once you're  clear about your organisation's requirements.
 
 
 h2. Contents

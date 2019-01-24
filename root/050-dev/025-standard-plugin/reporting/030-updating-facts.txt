@@ -17,7 +17,7 @@ Whenever the Reporting plugin needs to update or get facts for an object, it cal
 
 The services are called with three arguments,
 
- * @object@, the [node:dev/plugin/interface/store-object:StoreObject] of the object who's facts are being updated,
+ * @object@, the [node:plugin/interface/store-object:StoreObject] of the object who's facts are being updated,
  * @row@, a database row object - initially all facts in @row@ are @null@, your service implementation should set the current values for its facts in the @row@,
  * @collection@, the [node:dev/standard-plugin/reporting/collections#Interface:Collection] object
  

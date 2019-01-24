@@ -41,6 +41,6 @@ Add some additional user interface to the transition confirmation form.
 
 @position@ is either @"top"@ or @"bottom"@.
 
-@deferred@ is a deferred render returned from [node:dev/plugin/interface/template#deferredRender].
+@deferred@ is a deferred render returned from [node:plugin/interface/template#deferredRender].
 
 

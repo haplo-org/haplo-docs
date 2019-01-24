@@ -42,7 +42,7 @@ The layout for the page. Consider setting to @"std:wide"@ if there are lots of c
 
 h3(key). path
 
-The path for the generated [node:dev/plugin/interface/plugin/request-handling#respond] call on your plugin. The path must be within your plugin's namespace.
+The path for the generated [node:plugin/interface/plugin/request-handling#respond] call on your plugin. The path must be within your plugin's namespace.
 
 
 h3(key). backLink
@@ -106,7 +106,7 @@ h3(key). setup
 
 @function(dashboard, E)@
 
-A function called to set up the dashboard object for the given [node:dev/plugin/interface/exchange].
+A function called to set up the dashboard object for the given [node:plugin/interface/exchange].
 
 
 
@@ -122,12 +122,12 @@ If you're providing extra UI, for example, year navigation, you can use this to 
 
 h3(function). addHeaderDeferred(deferred)
 
-Add additional UI in the header, as a deferred render created by [node:dev/plugin/interface/template#deferredRender].
+Add additional UI in the header, as a deferred render created by [node:plugin/interface/template#deferredRender].
 
 
 h3(function). addQueryFilter(fn)
 
-Add a filter function which will be called to filter the dashboard using the [node:dev/plugin/interface/work-unit-query] functions to refine the query.
+Add a filter function which will be called to filter the dashboard using the [node:plugin/interface/work-unit-query] functions to refine the query.
 
 For example:
 

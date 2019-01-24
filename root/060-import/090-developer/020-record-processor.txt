@@ -18,7 +18,7 @@ h2. Example
 
 h2. Implementing a record processor service
 
-A plugin must implement a [node:dev/plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:record-processor:"@.
+A plugin must implement a [node:plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:record-processor:"@.
 
 The service takes a single argument of an array of objects with @name@ and @reader@ properties. The @reader@ property is a function which when called with an iterator function as an argument, calls that iterator with each @Record@ in order.
 

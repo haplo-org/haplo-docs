@@ -27,7 +27,7 @@ By convention @name@ should begin with the workflow name as specified in [node:d
 
 If there is more than one implementation for a service @name@, they will be called in reverse order of registration until one returns something other than @undefined@ (as for all worklflow function lists).
 
-*Note:* This differs from [node:dev/plugin/o/service:platform services], which are called in order of registration.
+*Note:* This differs from [node:plugin/o/service:platform services], which are called in order of registration.
 
 <pre>language=javascript
 EgWorkflow.implementWorkflowService("eg:can_view_workflow", function(M, user) {
@@ -38,7 +38,7 @@ EgWorkflow.implementWorkflowService("eg:can_view_workflow", function(M, user) {
 
 h2. getActionableBy(fn)
 
-Translate an @actionableBy@ name into a [node:dev/plugin/interface/security-principal] object. If your function cannot find this user, then make sure you return @undefined@ so other functions can try too.
+Translate an @actionableBy@ name into a [node:plugin/interface/security-principal] object. If your function cannot find this user, then make sure you return @undefined@ so other functions can try too.
 
 <pre>language=javascript
 EgWorkflow.getActionableBy(function(M, actionableBy, target) {
@@ -61,7 +61,7 @@ The [node:dev/standard-plugin/workflow/definition/std-features/entities#Entity_r
 
 h2. hasRole(fn)
 
-Given a [node:dev/plugin/interface/security-principal] object, test to see if the user has the given role in the instance.
+Given a [node:plugin/interface/security-principal] object, test to see if the user has the given role in the instance.
 
 There's a fallback implementation which tests whether the user is a member of a group, specified by API code, or @"object:creator"@, matching the fallback implementation for @getActionableBy@.
 
@@ -100,7 +100,7 @@ EgWorkflow.renderTimelineEntryDeferred(function(M, entry) {
 });
 </pre>
 
-@entry@ is the timeline entry. Test @entry.action@ to see if it's something you should render, and if so, return a deferred render using [node:dev/plugin/interface/template#deferredRender] on a template using the properties in @M@ and @entry.data@.
+@entry@ is the timeline entry. Test @entry.action@ to see if it's something you should render, and if so, return a deferred render using [node:plugin/interface/template#deferredRender] on a template using the properties in @M@ and @entry.data@.
 
 
 

@@ -3,7 +3,7 @@ long_title: TimelineRow interface
 link_as: keyword
 --
 
-@TimelineRow@ objects represent entries in the timeline, and are implemented as [node:dev/plugin/interface/database-row] objects.
+@TimelineRow@ objects represent entries in the timeline, and are implemented as [node:plugin/interface/database-row] objects.
 
 Use [node:dev/standard-plugin/workflow/interfaces/instance#addTimelineEntry] to add entries to the timeline. You should not create them directly, nor modify existing timeline entries.
 

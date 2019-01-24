@@ -7,7 +7,7 @@ h2. Usage
 
 A Dashboard object can be instantiated using @P.reporting.dashboard(E, specification)@
 
-This should be called in a [node:dev/plugin/request-handling:request handler].
+This should be called in a [node:plugin/request-handling:request handler].
 
 The specification has the following properties:
 
@@ -42,7 +42,7 @@ Collection object used by this dashboard.
 
 h3(property). E
 
-The [node:dev/plugin/interface/exchange:exchange] object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
+The [node:plugin/interface/exchange:exchange] object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
 
 h3(property). specification
 
@@ -72,7 +72,7 @@ Set the user defined property for @name@ to @value@. If the property is already 
 
 h3(function). filter(fn)
 
-Apply a dashboard specific filter. @fn@ is a function which will be called to apply the filter as @fn(select)@ where @select@ is a [node:dev/plugin/interface/database-query:DatabaseQuery] object.
+Apply a dashboard specific filter. @fn@ is a function which will be called to apply the filter as @fn(select)@ where @select@ is a [node:plugin/interface/database-query:DatabaseQuery] object.
 
 h3(function). removeColumnsBasedOnFact(factName)
 
@@ -84,7 +84,7 @@ Specify how to order the dashboard when it is initially displayed.
 
 Each argument is a fact name, or an array of @["factName", descending]@ where @descending@ is a boolean which should be true to use a descending order.
 
-See the database query [node:dev/plugin/interface/database-query#order:order()].
+See the database query [node:plugin/interface/database-query#order:order()].
 
 h3(function). setTime(date)
 
@@ -92,7 +92,7 @@ Specify a date/time for viewing historical data of facts. @date@ must be a JavaS
 
 h3(function). display(where, deferred)
 
-Display custom HTML on the dashboard. @where@ specifies where it should be placed, and @deferred@ is the result of [node:dev/plugin/interface/template#deferredRender] on a @Template@.
+Display custom HTML on the dashboard. @where@ specifies where it should be placed, and @deferred@ is the result of [node:plugin/interface/template#deferredRender] on a @Template@.
 
 Different dashboards support different locations, which may include:
 
@@ -109,7 +109,7 @@ Generate the Dashboard and respond to the HTTP request. Call this as the final o
 
 h3(function). deferredRender()
 
-Provides a [node:dev/plugin/interface/template#deferredRender] object for the dashboard. Allows inclusion of dashboards into other templates.
+Provides a [node:plugin/interface/template#deferredRender] object for the dashboard. Allows inclusion of dashboards into other templates.
 
 Note that dashboard exports are not possible when deferred rendering, and the Export button will not be displayed.
 

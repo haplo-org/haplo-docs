@@ -30,7 +30,7 @@ The [node:dev/standard-plugin/workflow/interfaces/instance] to which this transi
 
 h2. Interface (text)
 
-These functions use the [node:dev/standard-plugin/workflow/definition/text:text system] to retrieve the user visible names of the transition, with properties named in a way compatible with the [node:dev/plugin/templates/std-template/ui-choose] standard template.
+These functions use the [node:dev/standard-plugin/workflow/definition/text:text system] to retrieve the user visible names of the transition, with properties named in a way compatible with the [node:plugin/templates/std-template/ui-choose] standard template.
 
 
 h3(property). label

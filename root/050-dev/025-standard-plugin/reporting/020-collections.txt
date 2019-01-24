@@ -63,7 +63,7 @@ h3(function). fact(name, type, description)
 
 Define a fact. @name@ must be unique within the collection. @description@ is the human readable name of the fact shown in the admin UI and in Dashboards when no heading is defined.
 
-@type@ may be any valid [node:dev/plugin/interface/database#type:database type].
+@type@ may be any valid [node:plugin/interface/database#type:database type].
 
 Note there is an implicit @"ref"@ fact, which is the ref of the object being reported on.
 
@@ -72,7 +72,7 @@ In addition to the standard database types, the following types are also allowed
 |*Name*|*Data type*|*JavaScript type*|
 |@end-date@|Date|Date|
 
-@end-date@ is a convenience type useful for specifying facts that use the [node:dev/plugin/interface/date-time#end:end] property of a platform Datetime region.
+@end-date@ is a convenience type useful for specifying facts that use the [node:plugin/interface/date-time#end:end] property of a platform Datetime region.
 
 h3(function). indexedFact(name, type, description)
 
@@ -96,12 +96,12 @@ Defines a statistic using @specification@. The @specification@ must define an ag
 |name|Unique statistic name|
 |description|Human readable name for displaying in the UI|
 |filter|The filter to apply to the collection|
-|aggregate|The [node:dev/plugin/interface/database-query#aggregate:aggregate function] to use to generate the statistic value|
-|calculate|A function with two arguments, a [node:dev/plugin/interface/database-query] object and a @context@, which is either a collection or a dashboard and implements @property()@.|
+|aggregate|The [node:plugin/interface/database-query#aggregate:aggregate function] to use to generate the statistic value|
+|calculate|A function with two arguments, a [node:plugin/interface/database-query] object and a @context@, which is either a collection or a dashboard and implements @property()@.|
 
 h3(function). filter(name, filterFunction)
 
-Defines a named filter on the collection. @filterFunction@ is passed the [node:dev/plugin/interface/database-table#select:select] object which is used to filter the collection.
+Defines a named filter on the collection. @filterFunction@ is passed the [node:plugin/interface/database-table#select:select] object which is used to filter the collection.
 
 @name@ is either a string, or one of the specially defined named filters which are available via the collection object.
 
@@ -115,7 +115,7 @@ Tells the collection what object Types the collection should be storing facts fo
 
 This is a shortcut for implementing functions for @currentObjects()@ and @objectIsValidForCollection()@.
 
-@type@ arguments should be defined in the [node:dev/plugin/schema/requirements-schema:schema requirements]
+@type@ arguments should be defined in the [node:plugin/schema/requirements-schema:schema requirements]
 
 Multiple types can be specified by passing additional arguments.
 
@@ -125,13 +125,13 @@ h3(function). currentObjects(fn)
 
 It is probably easier to use @currentObjectsOfType()@ than this function, but if you do use it, remember to implement @objectIsValidForCollection()@ too.
 
-@fn@ is a function which returns an @Array@ or [node:dev/plugin/interface/store-query-results] containing all [node:dev/plugin/interface/store-object] which are currently members of the collection.
+@fn@ is a function which returns an @Array@ or [node:plugin/interface/store-query-results] containing all [node:plugin/interface/store-object] which are currently members of the collection.
 
 @fn@ is called when the collection is rebuilt to determine the current collection membership.
 
 h3(function). objectIsValidForCollection(fn)
 
-@fn@ is called with a [node:dev/plugin/interface/store-object] as a single argument, and must return @true@ if this object is currently a member of the collection.
+@fn@ is called with a [node:plugin/interface/store-object] as a single argument, and must return @true@ if this object is currently a member of the collection.
 
 h3(function). collectAllFactsInBackground()
 

@@ -5,7 +5,7 @@ Readers add support for new file formats.
 
 To add a new reader, add a service named after the file format, prefixed with @"haplo:data-import-framework:reader:"@.
 
-The service is called with two arguments, a [node:dev/plugin/interface/binary-data] object and the specification from the control file to allow options to be specified.
+The service is called with two arguments, a [node:plugin/interface/binary-data] object and the specification from the control file to allow options to be specified.
 
 It must return a function which takes a single @iterator@ argument, which it should call once for each *Record* in the file. The record should only contain data types which are JSON compatible.
 

@@ -12,17 +12,17 @@ Permissions are respected, so the menu is only shown when the user is able to cr
 
 h2. How it works
 
-The [node:dev/plugin/hook/object-display] hook function is called whenever an object is displayed, with that object as a argument.
+The [node:plugin/hook/object-display] hook function is called whenever an object is displayed, with that object as a argument.
 
 The plugin checks to see if it's one of the types it's interested in, and whether the user has permission to create objects of the proposed kind, then adds menu entries as appropriate.
 
-The required types and attributes are declared in the [node:dev/plugin/schema/requirements-schema] file, which makes them available as easy to read names in the code, such as @T.Person@. Since the plugin only uses the standard schema, it doesn't need to define the types or attributes.
+The required types and attributes are declared in the [node:plugin/schema/requirements-schema] file, which makes them available as easy to read names in the code, such as @T.Person@. Since the plugin only uses the standard schema, it doesn't need to define the types or attributes.
 
-With the @respond@ declaration in the [node:dev/plugin/plugin-json] file, and the @P.respond()@ statements, the plugin responds to two URLs which are used as the links in the menu entries.
+With the @respond@ declaration in the [node:plugin/plugin-json] file, and the @P.respond()@ statements, the plugin responds to two URLs which are used as the links in the menu entries.
 
-Each URL has the object reference as a final element in the path. This is decoded, the object loaded and the user permissions are checked before the handler function is called with the object as an argument, through the arguments declaration passed to the @respond()@ function. See [node:dev/plugin/request-handling].
+Each URL has the object reference as a final element in the path. This is decoded, the object loaded and the user permissions are checked before the handler function is called with the object as an argument, through the arguments declaration passed to the @respond()@ function. See [node:plugin/request-handling].
 
-In the handler functions, a template object is built, then the [node:dev/plugin/templates/std-template/new-object-editor] standard template is used to display an object editor for the user to fill in and save the new object.
+In the handler functions, a template object is built, then the [node:plugin/templates/std-template/new-object-editor] standard template is used to display an object editor for the user to fill in and save the new object.
 
 
 h2. plugin.json

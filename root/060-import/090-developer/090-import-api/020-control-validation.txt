@@ -27,7 +27,7 @@ if(errors.length === 0) {
 
 h2. Form validation
 
-Two form [node:dev/plugin/form/custom-validation:custom validation functions] are provided to validate control files as part of a [node:dev/plugin/form:form].
+Two form [node:plugin/form/custom-validation:custom validation functions] are provided to validate control files as part of a [node:plugin/form:form].
 
 h3. File upload
 

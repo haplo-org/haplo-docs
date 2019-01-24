@@ -1,7 +1,7 @@
 title: Entities
 --
 
-When a workflow is associated with a [node:dev/plugin/interface/store-object], the Entities system allows you easy access to the metadata.
+When a workflow is associated with a [node:plugin/interface/store-object], the Entities system allows you easy access to the metadata.
 
 
 h2. Using Entities
@@ -65,7 +65,7 @@ EgWorkflow.states({
 });
 </pre>
 
-Users are associated with entities when their [node:dev/plugin/interface/security-principal#ref] property matches that entity.
+Users are associated with entities when their [node:plugin/interface/security-principal#ref] property matches that entity.
 
 Where roles are defined through entities, if the underlying object changes (for example, a new lead supervisor is appointed), then any processes actionable by the old user will be moved to the new user.
 
@@ -100,7 +100,7 @@ This is mainly intended for use by other features, and your plugin should define
 
 h2. Defining entities by function
 
-Sometimes the logic to find an entity depends on things which can't be expressed with simple attributes and qualifiers. You can use a function instead, which must return an array of Refs. The return value will be de-duplicated with [node:dev/plugin/o/utility#O_deduplicateArrayOfRefs].
+Sometimes the logic to find an entity depends on things which can't be expressed with simple attributes and qualifiers. You can use a function instead, which must return an array of Refs. The return value will be de-duplicated with [node:plugin/o/utility#O_deduplicateArrayOfRefs].
 
 @this@ is the entities object. Access to the workflow instance is available via the @this.M@, but it might not always be available, so use with caution.
 

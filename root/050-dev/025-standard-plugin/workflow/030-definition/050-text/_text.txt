@@ -19,7 +19,7 @@ You can call @text()@ as many times as you need.
 
 All text strings are subject to interpolation by [node:dev/standard-plugin/workflow/definition/function-lists#textInterpolate] functions.
 
-By default, the @NAME(name)@ interpolation calls the [node:dev/plugin/misc/name] function to translate names of things. Note there are no quotes within the brackets, as in the example above. See [node:dev/plugin/misc/name#String_interpolation] for details.
+By default, the @NAME(name)@ interpolation calls the [node:plugin/misc/name] function to translate names of things. Note there are no quotes within the brackets, as in the example above. See [node:plugin/misc/name#String_interpolation] for details.
 
 You can retrieve the text string from the name by calling [node:dev/standard-plugin/workflow/interfaces/instance:getTextMaybe()] on an instance of that workflow.
 

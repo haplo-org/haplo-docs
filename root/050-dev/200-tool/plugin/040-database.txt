@@ -1,7 +1,7 @@
 title: Working with databases
 --
 
-The Haplo Platform provides a [node:dev/plugin/database:relational database] for plugins, with the tables defined in JavaScript.
+The Haplo Platform provides a [node:plugin/database:relational database] for plugins, with the tables defined in JavaScript.
 
 Currently automatic migration of database schemas will only add columns which are defined as @nullable:true@. If you make other changes, you will need to reset the plugin's database and recreate the contents.
 
@@ -23,9 +23,9 @@ You don't have to stop another instance of the Plugin Tool waiting to upload cha
 
 h2. Test data
 
-If you need some test data, the best way is to create a temporary [node:dev/plugin/request-handling:request handler] which creates it. After you've reset the database, request the URL in your web browser to populate the new database tables.
+If you need some test data, the best way is to create a temporary [node:plugin/request-handling:request handler] which creates it. After you've reset the database, request the URL in your web browser to populate the new database tables.
 
-Alternatively, you can define an @onInstall()@ function in your [node:dev/plugin/interface/plugin] definition. This will be called when you reset the database, and every time the Plugin Tool uploads a new file to the server.
+Alternatively, you can define an @onInstall()@ function in your [node:plugin/interface/plugin] definition. This will be called when you reset the database, and every time the Plugin Tool uploads a new file to the server.
 
 Remember to remove this test data when you submit the plugin.
 

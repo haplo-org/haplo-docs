@@ -1,0 +1,46 @@
+title: HTTPResponse
+long_title: HTTPResponse interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @HTTPResponse@ interface represents the response to an HTTP request made with the [node:plugin/o/http-client].
+
+h2. Construction
+
+When [node:plugin/interface/http-client#request] is called and the callback is invoked, an HTTP response will be passed as the third argument to the callback.
+
+h2. Interface
+
+h3(property). successful
+
+Returns true if the request succeeded. If the request failed, see the [node:plugin/interface/http-response#errorMessage] property for the reason why.
+
+h3(property). type
+
+The type of response. This string property will always be @SUCCEEDED@ for a successful response, @FAIL@ for a failed response, and @TEMP_FAIL@ for a response that failed in a way that may get better in future, but did not after several tries.
+
+You should use the @successful@ property to test for success unless you really need to know this detail.
+
+h3(property). errorMessage
+
+For a failed request, this string property gives a reason for the failure.
+
+h3(property). status
+
+The HTTP status code of the response as a string. This may not be set, if no response could be obtained from the server at all.
+
+h3(property). reason
+
+The HTTP reason message of the response. This may not be set, if no response could be obtained from the server at all.
+
+h3(property). url
+
+For a request that succeeded, the final URL that was requested, incorporating any query parameters added via [node:plugin/interface/http-client#queryParameter]; and if the request was redirected, then this property reflects the URL that was redirected to.
+
+h3(function). singleValueHeader(name, default)
+
+Returns a single-valued HTTP header from the response. @default@, if provided, is returned as a default if the header was not in the response.
+
+h3(property). body
+
+This property contains the body of the reponse, if one was provided, as a [node:plugin/interface/binary-data] object. The filename, content type, and charset will have been filled in from the HTTP response's @Content-Type@ and @Content-Disposition@ headers, if available.

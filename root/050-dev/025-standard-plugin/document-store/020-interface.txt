@@ -48,7 +48,7 @@ Saves/commits the @currentDocument@ as the latest version. If there is no edited
 
 h3(function). deferredRenderLastCommittedDocument()
 
-Return a [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred render] for the last committed document.
+Return a [node:plugin/templates/including-templates#Deferred_rendering:deferred render] for the last committed document.
 
 h3(property). lastCommittedDocumentHTML
 
@@ -56,7 +56,7 @@ The HTML for the last committed document. Use @deferredRenderLastCommittedDocume
 
 h3(function). deferredRenderCurrentDocument()
 
-Return a [node:dev/plugin/templates/including-templates#Deferred_rendering:deferred render] for the current, potentially edited, version of the document.
+Return a [node:plugin/templates/including-templates#Deferred_rendering:deferred render] for the current, potentially edited, version of the document.
 
 h3(property). currentDocumentHTML
 
@@ -80,10 +80,10 @@ The arguments mentioned above are:
 
 |*Argument*|*Description*|
 |instance|The document store instance|
-|E|The [node:dev/plugin/interface/exchange:Exchange] object|
+|E|The [node:plugin/interface/exchange:Exchange] object|
 |complete|Boolean. if the form passes validation and is completed|
 |formId|String. Id of the form the user is going to|
-|deferredRender|[node:dev/plugin/templates/including-templates#Deferred_rendering:Deferred render]. The Deferred render object of the form to be displayed to be included in a HSVT template|
+|deferredRender|[node:plugin/templates/including-templates#Deferred_rendering:Deferred render]. The Deferred render object of the form to be displayed to be included in a HSVT template|
 
 For example:
 

@@ -98,7 +98,7 @@ Return the first matching string, after interpolation, or @undefined@ if a strin
 
 h3(function). hasRole(user, role)
 
-Return @true@ if the given @user@, as a [node:dev/plugin/interface/security-principal], has the given @role@.
+Return @true@ if the given @user@, as a [node:plugin/interface/security-principal], has the given @role@.
 
 
 
@@ -106,13 +106,13 @@ h3(function). hasAnyRole(user, roles)
 
 @roles@ is an array of role names.
 
-Returns @true@ if the given @user@, as a [node:dev/plugin/interface/security-principal], has at least one of the roles.
+Returns @true@ if the given @user@, as a [node:plugin/interface/security-principal], has at least one of the roles.
 
 
 
 h3(function). getActionableBy(actionableBy, target)
 
-Returns the [node:dev/plugin/interface/security-principal] representing the named @actionableBy@ role.
+Returns the [node:plugin/interface/security-principal] representing the named @actionableBy@ role.
 
 @target@ is reserved and should be omitted.
 
@@ -126,7 +126,7 @@ Add a timeline entry with the given @action@ and optional @data@. Use [node:dev/
 
 h3(function). timelineSelect()
 
-Returns a [node:dev/plugin/interface/database-query] set to query the [node:dev/standard-plugin/workflow/interfaces/timeline-row] objects for this workflow.
+Returns a [node:plugin/interface/database-query] set to query the [node:dev/standard-plugin/workflow/interfaces/timeline-row] objects for this workflow.
 
 
 

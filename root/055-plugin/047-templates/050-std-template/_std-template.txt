@@ -1,0 +1,10 @@
+title: Standard templates
+class: DocNodeTextileWithTOC
+--
+
+Standard templates render common user interface elements and other useful HTML. As well as using them standalone, they're very convenient to use as a template function to include them in your own template.
+
+Rendering a store object into HTML is generally performed with the [node:plugin/templates/functions/platform/objects#std_object] template function.
+
+
+h2. Standard templates

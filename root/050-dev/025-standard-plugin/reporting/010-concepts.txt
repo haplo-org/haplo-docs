@@ -4,7 +4,7 @@ long_title: Reporting concepts
 
 h2. Collections
 
-The data to be reported on is defined in your plugin code as a *Collection*. A collection is a group of facts about an [node:dev/plugin/interface/store-object:Object]. A *Fact* is a piece of data or information related to the object and are defined in the collection.
+The data to be reported on is defined in your plugin code as a *Collection*. A collection is a group of facts about an [node:plugin/interface/store-object:Object]. A *Fact* is a piece of data or information related to the object and are defined in the collection.
 
 Once a collection is defined, any other plugin is also able to define new facts, specify new statistics and use the collection to render reports and dashboards.
 

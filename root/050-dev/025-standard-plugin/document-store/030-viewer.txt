@@ -56,7 +56,7 @@ Returns the UI for the DocumentViewer as a HTML string.
 
 h3(property). deferredDocument
 
-Returns the UI for the DocumentViewer as a [node:dev/plugin/templates/including-templates#Deferred_rendering:Deferred render] object for use in [node:dev/plugin/templates:HSVT templates].
+Returns the UI for the DocumentViewer as a [node:plugin/templates/including-templates#Deferred_rendering:Deferred render] object for use in [node:plugin/templates:HSVT templates].
 
 h3(property). sidebarHTML
 
