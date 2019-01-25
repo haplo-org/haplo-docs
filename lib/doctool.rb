@@ -34,7 +34,7 @@ end
 
 DOCS_ROOT = 'root'
 PUBLISH_DIR = 'docs.haplo.org'
-SITE_URL_BASE = 'http://docs.haplo.org'
+SITE_URL_BASE = 'https://docs.haplo.org'
 
 # Load all the documentation
 puts "Loading all files..."
