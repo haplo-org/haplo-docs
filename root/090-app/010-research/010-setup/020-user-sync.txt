@@ -1,5 +1,5 @@
 title: User sync
-long_title: Research Framework user sync setup
+long_title: Research Manager user sync setup
 --
 
 Before setting up the user sync:
