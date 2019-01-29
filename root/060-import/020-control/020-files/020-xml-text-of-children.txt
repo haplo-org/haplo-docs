@@ -5,6 +5,8 @@ The @xml-text-of-children@ format reads an XML file, where the root element cont
 
 The names of the root and immediate child elements are ignored.
 
+The charset of the input file is read from the XML declaration. If no declaration is present, UTF-8 is assumed.
+
 |@"singleRecord"@|If @true@, treat the input file as a single record (without a containing root element) instead of multiple records. This is useful for defining [node:import/rest-api:REST APIs].|
 
 
@@ -22,6 +24,7 @@ h2. Example control file
 h2. Example input file
 
 <pre>language=xml
+<?xml version="1.0" encoding="UTF-8"?>
 <file>
     <record>
         <id>jbloggs</id>

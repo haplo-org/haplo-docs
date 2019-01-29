@@ -1,7 +1,9 @@
 title: json
 --
 
-The @json@ format reads a JSON file in the UTF-8 charset, where the top level is an array, and the *Records* are the objects in this array.
+The @json@ format reads a JSON file where the top level is an array, and the *Records* are the objects in this array.
+
+JSON files always use the UTF-8 charset.
 
 Options are:
 
