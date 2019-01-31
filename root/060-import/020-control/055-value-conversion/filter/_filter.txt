@@ -6,6 +6,8 @@ Input data can be passed through multiple value filters to convert the values in
 
 |@filters@|Array of value filter names.|
 
+Filters are applied in the order they are specified in the control file. If [node:import/control/value-conversion/generic-value-mapping:generic value mapping] is used, this is performed before the filters.
+
 
 h2. Example
 
