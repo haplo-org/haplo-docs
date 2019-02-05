@@ -302,7 +302,7 @@ P.EgWorkflow.use("std:document_store", {
         {
             roles: ["applicant"],
             selector: {state:"wait_application"}, 
-            transitionsToBlock: ["submit_application"]}
+            transitionsFiltered: ["submit_application"]}
         },
         {
             roles: ["supervisor"],
