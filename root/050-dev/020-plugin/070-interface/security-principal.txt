@@ -138,6 +138,13 @@ Returns @true@ if the user has permission to create an object specified by the [
 If @typeRef@ is @null@ or @undefined@, then @false@ will be returned.
 
 
+h3(function). createAPIKey(name, path)
+
+Create an API key for this user, with the given @name@ and @path@. The @name@ is visible in System management to describe this key. Permissible requests are restricted to those with paths starting with @path@, or exact match if it's prefixed with @=@.
+
+Your plugin must have the @pUserCreateAPIKey@ privilege declared in @plugin.json@.
+
+
 h2. Interface (groups)
 
 The following interface is valid for @SecurityPrincipal@ objects representing groups.
