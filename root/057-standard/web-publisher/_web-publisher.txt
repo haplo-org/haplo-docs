@@ -5,3 +5,26 @@ Plugin name: @std_web_publisher@
 
 The standard Web Publisher plugin allows a subset of information to be published as a publicly accessible web site. Multiple [node:dev/standard-plugin/web-publisher/publications:_Publications_] can be created from a single application.
 
+
+h2. Concepts
+
+
+h3. Context
+
+The @context@ object is avalable in rendering contexts, and is used to pass around information that may be helpful for rendering the full page.
+
+Example values that can be set in the @context@ object:
+
+|@object@|The StoreObject for which this is the public page|
+|@pageTitle@|The title of the page being rendered|
+|@hint@|An object containing implementation-specific 'hints' for rendering options for this page. eg. @isHomePage=true@|
+
+
+h3. Page parts
+
+A page part defines a block of UI to be used in one or more places in a publication. They can be flexibly re-used between publications, or pages within a publication, defining common functionality.
+
+
+h3. Widgets
+
+// TODO

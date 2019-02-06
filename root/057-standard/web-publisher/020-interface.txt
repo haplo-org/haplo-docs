@@ -2,6 +2,12 @@ title: Interface
 --
 
 
+h3(function). layout(E, context, blocks)
+
+Returns the rendered html for a page in the publication. Each of the named @blocks@ will be rendered at their appropriate location in the layout, which will typically be defined on a per-publication basis.
+
+Use the layout template to define the common layout for this publication. The main content for each page will be rendered within this layout in the special @body@ block.
+
 
 h3(function). urlForFileDownload(fileOrIdentifier, options)
 

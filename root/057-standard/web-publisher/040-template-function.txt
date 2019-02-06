@@ -1,0 +1,52 @@
+title: Template functions
+--
+
+@std_web_publisher@ defines some additional HSVT template functions for use in setting up the layout of public pages.
+
+
+h3(function). std:web-publisher:page-part:render(name)
+
+Renders the named page part.
+
+
+h3(function). std:web-publisher:page-part:render-category(category)
+
+Renders all page parts for the given @category@, in order of their sort priority. Allows composible definitions of sets of page parts to be rendered together on public pages.
+
+
+h3(function). std:web-publisher:block(block)
+
+Defines a named block to be rendered in the appropriate location in the publication [node:standard/web-publisher/interface#layout].
+
+This is typically used to define a section of UI that to be rendered below the main content of the page, in the right sidebar, etc.
+
+
+h3(function). std:web-publisher:platform-style-tag()
+
+Includes the web publisher platform stylesheet.
+
+
+h3(function). std:web-publisher:object:link(object, title)
+
+Renders a link to the object in this publication. The title argument is optional, to allow links with text other than the object title to be generated. If an anonymous block is given, it's rendered instead of the title.
+
+
+h3(function). std:web-publisher:widget:query:list:search-result(specification)
+
+Render template for the search widget. //TODO: Document the widget
+
+
+h3(function). std:web-publisher:file:thumbnail(file)
+
+Renders a thumbnail of the file
+
+
+h3(function). std:web-publisher:utils:title:name(personObject)
+
+A utility for rendering names of people. Takes the name of the storeObject passed in, and renders it as "Lastname, Firstname".
+
+
+h3(function). std:web-publisher:template(code)
+
+Renders the replaceable template @code@, using the following block. //TODO: Document replaceableTemplates
+
