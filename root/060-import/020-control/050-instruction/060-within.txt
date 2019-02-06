@@ -1,0 +1,41 @@
+title: within
+link_as: keyword
+--
+
+The @within@ Instruction executes a list of Instructions for a single nested record within the input *Record*. This is used to move into nested data structures in JSON input data.
+
+|@action@|@"within"@|
+|@source@|The property in the input Record containing the nested data structure.|
+|@instructions@|An array of Instructions to be executed.|
+
+
+h2. Example
+
+With an input record structured like:
+
+<pre>language=json
+{
+    "username": "jbloggs",
+    "dates": {
+        "start": "2017-09-23"
+    }
+}
+</pre>
+
+the @start@ date needs to be referred to inside a @within@ Instruction:
+
+<pre>language=json
+{
+    "action": "within",
+    "source": "dates",
+    "instructions": [
+        {
+            "source": "start",
+            "destination": "project-dates",
+            "name": "start",
+            "dateFormat": "yyyy-MM-dd"
+        },
+        // ...
+    ]
+}
+</pre>

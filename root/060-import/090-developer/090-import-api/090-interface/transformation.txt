@@ -1,0 +1,49 @@
+title: Transformation
+long_title: Transformation interface
+link_as: keyword
+--
+
+@Transformation@ objects transform data from a single *Record* and commit imported data to the various databases.
+
+
+h2. Construction
+
+Call @transform()@ or @prepareTransformation()@ on a [node:import/developer/import-api/interface/batch] object.
+
+
+h2. Interface (normal usage)
+
+h3(property). isComplete
+
+@true@ if the import of the *Record* has all the required fields and there were no errors in the transformation process.
+
+
+h3(function). commit()
+
+Commit the transformed data to the various databases.
+
+
+h2. Interface (advanced)
+
+h3(function). transform()
+
+Transform the input data. Only call this function on @Transformation@ objects obtained from @prepareTransformation()@ on the @Batch@ object.
+
+
+h3(function). setTarget(name, target)
+
+Before @transform()@ is called, use this function to set the *Target* object. This allows custom loading of the objects which have data imported. Note that the use of this function should *not* be necessary as the *Model* will load or create *Target* objects.
+
+@name@ is the name of the *Destination*, and @target@ is the object to which imported values will be applied.
+
+
+h3(function). getTarget(name)
+
+After the transformation is complete, use this function to get a *Target* object of the @name@ *Destination*.
+
+Errors will be raised if the Target has not been loaded or created by the transformation.
+
+
+h3(function). getTargetMaybe(name)
+
+Like @getTarget()@, but returns @undefined@ if the *Target* wasn't loaded or created by the transformation. This is useful for optional Destinations.

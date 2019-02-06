@@ -1,0 +1,47 @@
+title: Elements
+long_title: Action Panel Elements
+--
+
+Use your plugin's [node:plugin/schema/requirements-schema] file to define the action panels you want to use. Remember that multiple plugins can require the same panel, but it'll be only included once, so it's safe to require the same panel in all the plugins which need it.
+
+Action Panel Elements need a panel name, to distinguish between all the different panels in use in your application. A good panel name is as generic as possible, to encourage sharing of panels amongst many plugins. A panel to be displayed on the right of people objects should be called @"person"@.
+
+The panel name is configured in the options of the Element definition. For example, a panel for People objects would be defined in your requirements.schema file like:
+
+<pre>
+type std:type:person as Person
+    element: std:group:everyone right std:action_panel {"panel":"person"}
+</pre>
+
+Adding a panel to the home page is similar:
+
+<pre>
+feature std:page:home
+    element: std:group:everyone right std:action_panel {"panel":"home_links"}
+</pre>
+
+
+h2. Element options
+
+As well as the required @panel@ option, you can specify:
+
+
+h3(key). title
+
+A title for the Element, as described in the [node:plugin/elements:Element] documentation.
+
+
+h3(key). category
+
+A category name for the panel, so consuming plugins can add panel elements based on category as well as by name.
+
+
+h3(key). style
+
+A style for the panel, as described in the [node:plugin/o/constructor/ui-panel#style:O.ui.builder()] documentation.
+
+
+h3(key). highlight
+
+A default highlight for the panel, as described in the [node:plugin/templates/std-template/ui-panel#highlight:PanelBuilder] documentation.
+

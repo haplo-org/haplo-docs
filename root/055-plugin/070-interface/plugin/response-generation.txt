@@ -1,0 +1,41 @@
+title: Response generation
+long_title: Plugin response generation
+--
+
+The Platform provides many features to help you generate the response HTML for your request handler. Note that the use of templates is built into the [node:plugin/interface/exchange] object passed into your [node:plugin/request-handling:request handler], and you only need to use the @template()@ function if you're doing something special.
+
+
+h2. Interface
+
+h3(function). template(templateName)
+
+Retrieve one of the plugin's template objects.
+
+For request handling, it's often not necessary to use this directly, but it's useful for rendering things as HTML in other parts of the plugin.
+
+It can also be used to retrieve a standard template, the names of which all begin @std:@.
+
+
+h3(function). globalTemplateFunction(name, templateFunction)
+
+Define a [node:plugin/templates/functions/plugin-functions:plugin defined template function] for use in this and all other plugins.
+
+As the function is available to all plugins, the name must contain an @:@ character, and should be in an appropriate namespace.
+
+The @templateFunction@ is called for each occurrence of the template function when a template is rendered, with the arguments from the template and @this@ set to a [node:plugin/interface/template-function-this] object.
+
+
+h3(property). staticDirectoryUrl
+
+The public facing path to the @static@ directory, used for referring to the static resources.
+
+The path returned does *not* contain a trailing @/@.
+
+
+h3(function). rewriteCSS(css)
+
+Given a string containing some CSS, rewrite it to reflect the current application.
+
+The replacements are the same as the [node:plugin/directory-structure/css-rewriting:CSS rewriting for static files].
+
+

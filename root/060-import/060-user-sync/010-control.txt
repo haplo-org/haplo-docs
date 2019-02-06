@@ -1,0 +1,72 @@
+title: Control file
+long_title: User sync control file
+--
+
+To map the data from the external system to the Haplo data *Model*, you need to write a data import [node:import/control:control file] for the @haplo:user-sync@ model.
+
+Use the control file generator to write the initial version:
+
+CLICK_PATH TOOLS > Data import > Models > haplo:user-sync > Generate control file...
+
+The @files@ section is used to determine whether all the files for the sync run have been received, so it must name all the files without the use of @DEFAULT@.
+
+Mappings from usernames to the @ref@ of People records are performed with special *Destinations* in the *Model*, because lookups need to be delayed until all user *Records* have been processed.
+
+The control file used in a sync run is stored along with the input files, and can be viewed in the [node:import/user-sync/admin-ui].
+
+
+h2. Automatic loading of Destinations
+
+The User sync automatically makes Destinations ready, so you must not use the @load@ and @new@ instructions in your control file.
+
+
+h2. Example
+
+This minimal control file maps from a simple JSON format to the user sync Model. Real control files are likely to be a bit more complex.
+
+<pre>language=json
+{
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:user-sync",
+    "files": {
+        "users": {
+            "read": "json",
+        }
+    },
+    "instructions": [
+        {
+            "source": "ID",
+            "destination": "user",
+            "name": "username"
+        },
+        {
+            "source": "FIRST_NAME",
+            "destination": "user",
+            "name": "nameFirst"
+        },
+        {
+            "source": "LAST_NAME",
+            "destination": "user",
+            "name": "nameLast"
+        },
+        {
+            "source": "EMAIL_ADDR",            
+            "destination": "user",
+            "name": "email"
+        },
+        {
+            "source": "ROLE",
+            "action": "if-value-one-of",
+            "values": ["RESEARCHER"],
+            "then": [
+                {
+                    "action": "set-value",
+                    "destination": "user",
+                    "name": "groups",
+                    "value": "example:group:researchers"
+                }
+            ]
+        }
+    ]
+}
+</pre>

@@ -1,0 +1,24 @@
+title: Setup
+long_title: Haplo Repository setup
+--
+
+The key steps to setting up a Haplo Repository application are:
+
+* Set up [node:app/research], which forms the basis for Haplo Repository
+
+* Install the required plugins
+
+* Configure schema.
+
+* Set up the [node:app/research/setup/institution-structure]
+
+* Set up the [node:app/repository/setup/user-sync] so that users do not have to be manually managed.
+
+* Import data from legacy repositories.
+
+* Set up integrations, such as ORCiD and DOI minting.
+
+* Customise and re-brand the repository's public interface.
+
+* Register the Repository with the appropraite registries for open access repositories.
+

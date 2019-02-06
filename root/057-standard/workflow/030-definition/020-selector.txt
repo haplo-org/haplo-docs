@@ -1,0 +1,57 @@
+title: Selectors
+--
+
+Selectors specify the conditions when something should happen in a workflow process.
+
+They're simple JavaScript objects, written as JavaScript literals. As an example, with this selector:
+
+<pre>language=javascript
+{
+    state: "wait_researcher",
+    flags: ["has_been_returned", "reviewed_by_external"]
+}
+</pre>
+
+a workflow Instance will match, or be _selected_ when it's in the @wait_researcher@ state and both flags are set.
+
+Their primary use is on Handlers, where you would write something like:
+
+<pre>language=javascript
+EgWorkflow.observeEnter({state:"approved"}, function(M) {
+    // do something on entering approved state
+});
+
+EgWorkflow.observeExit({flags:["returned"]}, function(M) {
+    // do something else on exiting a state when "return"
+    // flag is set
+});
+</pre>
+
+
+h2. Selector properties
+
+A selector matches if *all* the conditions match.
+
+
+h3(key). state
+
+A single state name. This condition matches if the state of the workflow instances is equal to the named state.
+
+(To match more than one state with a Selector, use @flags@.)
+
+
+h3(key). flags
+
+An array of flag names. This condition matches if all the flags are set.
+
+
+h3(key). closed
+
+The value must be @true@ or @false@. This condition matches if the value is equal to the value of the underlying WorkUnit's [node:plugin/interface/work-unit#closed] property when compared with @===@.
+
+
+h3(key). pendingTransitions
+
+An array of transition names. This condition matches if the currently pending transition is a member of the array.
+
+A transition is pending during the @M.transition()@ function and when calling handlers during the rendering of the transition UI.

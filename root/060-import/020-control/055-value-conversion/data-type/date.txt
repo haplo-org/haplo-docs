@@ -1,0 +1,24 @@
+title: date
+long_title: Date data type
+link_as: keyword
+--
+
+Dates in the input data need to be parsed with a specified format.
+
+|@dateFormat@|Format string used to parse dates in the input data|
+
+The format string uses the same specification as Java's "@SimpleDateFormat@":https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.
+
+Any inconsistencies in date formatting must be resolved in the input data.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "source": "START_DATE",
+    "destination": "project-dates",
+    "name": "project-start@actual",
+    "dateFormat": "yyyy-MM-dd"
+}
+</pre>

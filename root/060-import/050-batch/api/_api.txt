@@ -1,0 +1,88 @@
+title: API import
+long_title: Batch import API
+--
+
+The batch import API is useful for automated uploads, and development of scripts which automatically upload batches of files after extracting data from the external system.
+
+There are four steps:
+
+* Upload a control file
+* Create a new batch job
+* Upload the files
+* Schedule the import job to run it.
+
+See the [node:import/batch/api/example-script:example] for a script which uses @curl@ to run a data import batch.
+
+You'll need an API key, which you can generate in the data import UI:
+
+CLICK_PATH TOOLS > Data import > Batch import > Create API key...
+
+After creation, API keys are managed in System management:
+
+CLICK_PATH TOOLS > System management > Users > SRV > Batch data import access
+
+Scroll down to view the current API keys.
+
+
+h3. Upload control file
+
+Firstly, upload a control file. 
+
+API_ENDPOINT /api/haplo-data-import-batch/control (POST only)
+
+This expects a @multipart/form-data@ request body, with parameters:
+
+|@comment@|A short comment describing the purpose of the control file.|
+|@file@|The control file.|
+
+This step can be skipped if you know the control file has already been uploaded.
+
+On success, a @200@ status code is returned with the digest of the control file as the request body.
+
+
+h3. Create a new batch job
+
+Once the control file is uploaded, create a new import batch.
+
+API_ENDPOINT /api/haplo-data-import-batch/batch (POST only)
+
+This expects a normal @application/x-www-form-urlencoded@ request body, with parameters:
+
+|@comment@|A short comment describing the batch import.|
+|@control@|The digest of the control file, as returned by the control file upload endpoint.|
+
+On success, a @200@ status code is returned with the identifier of the batch as the request body.
+
+
+h3. Upload one or more files
+
+Using the batch identifier, upload one or more files to the batch by repeated calls to this endpoint.
+
+API_ENDPOINT /api/haplo-data-import-batch/file (POST only)
+
+This expects a @multipart/form-data@ request body, with parameters:
+
+|@batch@|The batch identifier, as returned by the batch creation endpoint.|
+|@name@|The name of the file, matching a name specified in the control file, so the data import framework knows how to read it.|
+|@file@|The data file.|
+
+On success, a @200@ status code is returned with the digest of the data file as the request body.
+
+
+h3. Schedule the import job
+
+After all the files are uploaded, schedule the job to run:
+
+API_ENDPOINT /api/haplo-data-import-batch/schedule (POST only)
+
+This expects a normal @application/x-www-form-urlencoded@ request body, with parameters:
+
+|@batch@|The batch identifier, as returned by the batch creation endpoint.|
+|@mode@|(optional) If set to 'dry-run', run the import in dry run mode.|
+
+On success, a @200@ status code is returned with @SCHEDULED@ as the request body.
+
+The batch will be run as soon as possible, and the log visible in the admin UI:
+
+CLICK_PATH TOOLS > Data import > Batch import > Batch import jobs
+

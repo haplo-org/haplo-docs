@@ -1,0 +1,33 @@
+title: tsv-with-name-row
+--
+
+The @tsv-with-name-row@ format reads a TSV (tab separated value) file in a specified charset, where the first line is names the values in the Record.
+
+Options are:
+
+|@"charset"@|The character set of the input file, defaults to @"utf-8"@. Value may be anything supported by Java.|
+|@"separator"@|The field separator in the input file, defaulting to @"\t"@. Use this option with caution.|
+
+TSV files are not a preferred input format because values containing tab or newline characters cannot be represented.
+
+
+h2. Example control file
+
+<pre>language=json
+"files": {
+    "DEFAULT": {
+        "read": "tsv-with-name-row",
+        "charset": "windows-1252"
+    }
+}
+</pre>
+
+
+h2. Example input file
+
+<pre>
+id  first   last    email
+jbloggs Joe Bloggs  joe@example.org
+jsmith  Jane    Smith   jane@example.org
+</pre>
+

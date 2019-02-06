@@ -1,0 +1,66 @@
+title: Batch
+long_title: Batch interface
+link_as: keyword
+--
+
+@Batch@ objects control a batch import process.
+
+
+h2. Construction
+
+Call the @[node:import/developer/import-api/batch-service:haplo:data-import-framework:batch]@ service.
+
+
+h2. Usage
+
+Construct a @Batch@ object, call any methods to set up the process, then run the data import loop:
+
+<pre>language=javascript
+batch.eachRecord((record) => {
+    let transformation = batch.transform(record);
+    if(transformation.isComplete) {
+        transformation.commit();
+    }
+});
+</pre>
+
+
+h2. Interface
+
+h3(function). eachRecord(iterator)
+
+Calls the @iterator@ function with each *Record* in the input data files.
+
+
+h3(function). transform(record, recordIdentifier)
+
+Transform the input @record@, returning a [node:import/developer/import-api/interface/transformation] object which can be used to commit the imported data.
+
+@recordIdentifier@ is an optional string which identifies the current record in error messages. If not specified, a suitable identifier is generated automatically.
+
+@prepareTransformation()@ may be useful when more control over the transformation is needed.
+
+
+h3(function). option(name, value)
+
+Set an option:
+
+|@"report-all-errors"@|If @true@, then all errors will be reported. Otherwise no more errors will be reported over a reasonable number.|
+
+
+h3(function). observe(event, callback)
+
+When the named @event@ occurs, call the @callback@ function.
+
+|@"object:save"@|Called when a [node:plugin/interface/store-object] is saved with arguments @callback(transformation, destinationName, object, isNewObject)@|
+
+
+h3(function). prepareTransformation(record, recordIdentifier)
+
+Like @transform()@, but just returns a [node:import/developer/import-api/interface/transformation] without doing any work. After any additional setup, call @transform()@ on the @Transformation@ object.
+
+
+h3(property). errorCount
+
+The current number of errors which have been encountered so far in this batch process. Most useful after the process has completed.
+

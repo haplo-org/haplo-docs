@@ -1,0 +1,91 @@
+title: Actions
+--
+
+Actions provide an extensible mechanism to concisely describe which users are allowed to perform an action and enforce permissions.
+
+Actions have an API code, used to construct the [node:plugin/interface/action] object, a title, which may be used in an administrative user interface to allow further configuration, and a number of allow and deny rules.
+
+To be permitted to perform an action, the user must match at least one allow rule and not match any deny rules (or be allowed by the special @"std:action:administrator_override"@ action).
+
+Rules check permissions of users. The platform implements rules for whether a user is a member of a given group, and plugins can extend this mechanism to other properties of the user. See below for the extensibility mechanism.
+
+Whether an action can be performed by a user is checked by calling [node:plugin/interface/security-principal#allowed] on a @SecurityPrincipal@ object, or enforced for the current user with the [node:plugin/interface/action#enforce] function on the @Action@ object.
+
+
+h2. Interface
+
+h3(function). O.action(code)
+
+Obtain an [node:plugin/interface/action] object for the given @code@.
+
+If plugins are being loaded, the action will be created it if it doesn't already exist, otherwise an exception will be thrown. This ensures that, while actions can be obtained at any time given an API code, after the plugins are loaded, the platform has a complete list of all possible actions for administrative UI.
+
+
+h2. Example
+
+<pre>language=javascript
+// Define an action as the plugin is loading.
+// Other plugins can add additional rules.
+var CanViewDashboard = O.action("example:view_dashboard").
+    title("Can view special dashboard").
+    allow("group", Group.DashboardViewers).
+    allow("group", Group.SpecialActivities).
+    deny("group", Group.TemporaryStaff);
+
+// Use the action to choose whether to display a
+// link in an action panel menu.
+P.implementService("std:action_panel:menu",
+    function(display, builder) {
+        if(O.currentUser.allowed(CanViewDashboard)) {
+            builder.link(10,
+                "/do/special-dashboard", "Special Dashboard");
+        }
+    }
+);
+
+// Enforce the permission when handling a request.
+P.respond("GET", "/do/special-dashboard", [
+], function(E) {
+    CanViewDashboard.enforce();
+    // ...
+});
+</pre>
+
+
+h2. Administrator override
+
+It's often useful for administrators to be allowed to do 'everything'.
+
+If a user would be allowed to perform the special @"std:action:administrator_override"@ action, then that user is allowed to perform all actions.
+
+For example, to enable the standard Administrators group to perform all actions, you'd write:
+
+<pre>language=javascript
+O.action("std:action:administrator_override").
+    allow("group", Group.Administrators);
+</pre>
+
+
+h2. Extensibility
+
+Writing rules using groups is sufficient for many applications, but custom permission systems may allow you to write rules using other properties. For example, a role based permission system may allow you to write:
+
+<pre>language=javascript
+var ActionWithRoles = O.action("example:with_roles").
+    title("Action using roles").
+    allow("group", Group.ExampleGroup).
+    allow("role", "Special Role");  // requires plugin
+</pre>
+
+To implement another kind of rule, plugins implement the @std:action:check:X@ service, where @X@ is the kind. The service function takes two arguments, @user@ and the @thing@ passed to the allow or deny rule, and returns @true@ if the rule matches.
+
+For example, the pluggable role based permission may implement the service like this:
+
+<pre>language=javascript
+P.implementService("std:action:check:role", function(user, thing) {
+    var roles = getRolesForUser(user);
+    return roles.hasRole(thing);
+});
+</pre>
+
+The service must be implemented before any other plugin can use it to define rules, so that the @kind@ names can be checked when defining rules. Use a low @loadPriority@ in your [node:plugin/plugin-json] file.

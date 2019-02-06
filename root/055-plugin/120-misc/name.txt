@@ -1,0 +1,87 @@
+title: NAME()
+link_as: keyword
+--
+
+The @NAME()@ global function is a generic way to implement plugins which call things differently in different applications.
+
+For example, universities have lots of different names for their top level division. They may have names like 'Faculties', 'Departments' or 'Schools', depending on the institution's history.
+
+It's also available as:
+
+ * a [node:plugin/templates/functions/platform/name:template function] (which is the recommended way of using it)
+ * automatic substitution in [node:plugin/form/specification#Text:form labels and other text]
+ * as a standard text interpolation in the standard [node:standard/workflow/definition/text:workflow plugin text system]
+
+There is a two argument version so longer phrases can be customised using the same system.
+
+
+h3(function). NAME (name)
+
+Returns a translated version of @name@.
+
+The @"std:NAME"@ service is called to look up the name, if it is implemented by any plugins.
+
+Your @"std:NAME"@ service function may be called during plugin load, as an exception to the usual service rules. This means that plugins can use @NAME()@ to set up data structures, but it does mean you have to be very careful with the load order of your plugins.
+
+If nothing translates the name, @name@ is returned unaltered.
+
+The result is cached.
+
+
+h3(function). NAME (code, defaultName)
+
+Looks up @code@ using the same mechanism as the single argument version of @NAME()@, but if it isn't translated, the value of @defaultName@ will be returned.
+
+Use this to allow longer messages to be replaced with customised defaults. The use of a code as a key, rather than the entire phrase, allows the default to be edited without updating all the customisations.
+
+
+h3(function). O.interpolateNAMEinString(string)
+
+Returns a new string with uses of @NAME()@ replaced by translated sub-strings, as described in _String interpolation_ below.
+
+
+
+h2. String interpolation
+
+Forms and standard plugins provide an alternative use of @NAME()@ through string interpolation.
+
+When strings are interpolated, the pattern @NAME(.+?)@ is replaced by translated text. Note that the text does not use quotes.
+
+The two argument form uses a @|@ character to separate the code and default name.
+
+For example:
+
+<pre>
+  "The NAME(Head of Department) should action this request."
+  "Please review this NAME(std:workflow:notes-private-label|Private note)"
+</pre>
+
+Use @O.interpolateNAMEinString()@ to use string interpolation in your plugins.
+
+
+h2. Usage
+
+Ordinary plugins just use the @NAME()@ function in their code or templates. As a matter of style, try to restrict use of @NAME()@ to templates:
+
+<pre>language=javascript
+  <div> "Destination: " NAME("Faculty") </div>
+  <div> NAME("example:routing:committee" "This application will be routed to the Faculty committee.") </div>
+</pre>
+
+and only when necessary as the JavaScript function:
+
+<pre>language=javascript
+var view = {
+    destination: NAME("Faculty")
+};
+</pre>
+
+A plugin may translate names with a service such as:
+
+<pre>language=javascript
+P.implementService("std:NAME", function(name) {
+    if(name === "ping") { return "pong"; }
+});
+</pre>
+
+Returning nothing or @undefined@ will allow another service implementation to try translating a string.

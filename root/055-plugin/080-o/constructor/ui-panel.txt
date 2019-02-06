@@ -1,0 +1,48 @@
+title: O.ui.panel()
+link_as: keyword
+--
+
+Constructs a object implementing the [node:plugin/interface/panel-builder] interface
+
+
+h3(function). O.ui.panel(options)
+
+Construct an empty @PanelBuilder@ with the given options.
+
+@options@ is an optional dictionary of options.
+
+
+h2. Options
+
+All @options@ properties are optional.
+
+
+h3(key). style
+
+The style of panel to render, named after the [node:plugin/templates/std-template/ui-panel] standard templates.
+
+|@"links"@|Simple list of links|
+|@"menu"@|A menu of loosely related entries|
+|@"tiles"@|Large tiles for top level navigation|
+|@"statistics"@|Overview statistics|
+
+If the @style@ is not specified, the standard [node:plugin/templates/std-template/ui-panel] style is used.
+
+
+h3(key). priorityDecode
+
+Each of the builder functions takes a priority used for sorting the panel elements. This optional function returns a numeric priority given whatever is passed to the builder function.
+
+If it isn't specified, the default decoder returns number unchanged, and converts the following names to numeric priorities.
+
+|*Name*|*Priority*|
+|@"top"@|10|
+|@"default"@|100|
+|@"action"@|200|
+|@"bottom"@|1000|
+
+
+h3(key). defaultHighlight
+
+The default highlight value for panels. See [node:plugin/templates/std-template/ui-panel#highlight] for the supported values.
+

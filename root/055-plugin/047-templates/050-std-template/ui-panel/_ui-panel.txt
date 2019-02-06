@@ -1,0 +1,110 @@
+title: std:ui:panel
+link_as: keyword
+class: DocNodeTextileWithTOC
+--
+
+Panels are a standardised way of displaying information and links as part of your plugin UI.
+
+Each panel is composed of _panel elements_ which build up the UI.
+
+While you can use these templates directly, the [node:plugin/o/constructor/ui-panel] builder and the [node:standard/action-panel:Action Panel standard plugin] standard plugin are often more convenient ways to use them, especially when the UI is composed from functionality provided by multiple cooperating plugins.
+
+There are several different styles of panel, each of which take a common view but ignore properties which are not relevant. @std:ui:panel@ is the default style, intended for use in the sidebar.
+
+These view render a single panel. Using [node:plugin/o/constructor/ui-panel] or the [node:standard/action-panel:Action Panel standard plugin] allows you to display more than one panel at once.
+
+
+h2. Top level view
+
+h3(key). elements
+
+An array of _panel element_ views. See below for properties.
+
+
+h3(key). title
+
+Where supported by the template, a title to be displayed above the panel.
+
+
+h3(key). highlight
+
+Where supported by the template, this property specifies an additional level of highlighting for this panel. Values are:
+
+|@"primary"@|Primary importance|
+|@"secondary"@|Secondary importance|
+
+
+h2. Panel element views
+
+The default style, @std:ui:panel@, supports the vast majority of these properties, but the alternative styles will only support a few. All properties are optional.
+
+
+h3(key). label
+
+The main text for the panel element.
+
+
+h3(key). href
+
+The link for the panel element.
+
+
+h3(key). indicator
+
+An indicator to draw the user's attention to this panel element. Values are:
+
+|@"standard"@|Non-specific indicator|
+|@"primary"@|Primary, or usual, next action|
+|@"secondary"@|Secondary action, less likely to be taken|
+|@"terminal"@|An action will which terminate a process|
+|@"primary-forward"@|Primary, moving process forward|
+|@"secondary-forward"@|Secondary, moving process forward|
+|@"primary-back"@|Primary, moving process back|
+|@"secondary-back"@|Secondary, moving process back|
+|@"forward"@|Move process forward|
+|@"back"@|Move process back|
+
+
+h3(key). title
+
+A title for this panel element.
+
+
+h3(key). heading
+
+A heading element. Don't include a @label@ if you're using this property.
+
+
+h3(key). disabled
+
+@true@ to show a disabled panel element.
+
+
+h3(key). light
+
+@true@ to style the panel element less prominently.
+
+
+h3(key). innerLink
+
+An additional link, as an object containing @href@ and @label@ properties.
+
+
+h3(key). innerText
+
+Additional explanatory text.
+
+
+h3(key). value
+
+A value of a statistic.
+
+
+h3(key). icon
+
+An icon description of the icon to display on this panel element.
+
+
+
+h2. Additional panel styles
+

@@ -1,0 +1,29 @@
+title: log-error
+link_as: keyword
+--
+
+The @log-error@ Instruction outputs a message in the error log. Use with the conditional Instructions to output errors if conditions are met. 
+
+|@action@|@"log-error"@|
+|@message@|The message to output in the error log.|
+
+See also [node:import/control/instruction/abort-record], which can be used to prevent a Record from being imported when there is an error.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-exists",
+    "source": "researchers",
+    "then": [
+        // ... process researchers ...
+    ],
+    "else": [
+        {
+            "action": "log-error",
+            "message": "Expected researchers, but wasn't present"
+        }
+    ]
+}
+</pre>

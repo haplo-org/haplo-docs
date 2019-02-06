@@ -1,0 +1,27 @@
+title: O.currentUser
+link_as: keyword
+--
+
+h3(property). O.currentUser
+
+Returns a [node:plugin/interface/security-principal] representing the currently logged in user.
+
+
+h2. Example
+
+This property is useful for performing authorisation in plugin requests. For example:
+
+<pre>language=javascript
+if(O.currentUser.isMemberOf(GROUP["std:group:administrators"])) {
+    // do action
+} else {
+    // redirect away to unauthorised page
+}
+</pre>
+
+
+h3(property). O.currentAuthenticatedUser
+
+Returns a [node:plugin/interface/security-principal] representing the user which originally authenticated in this session.
+
+If the user is impersonating another user, @O.currentUser@ will be the impersonated user, and @O.currentAuthenticatedUser@ will be the user who impersonated that user.

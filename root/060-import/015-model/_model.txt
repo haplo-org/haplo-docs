@@ -1,0 +1,50 @@
+title: Model
+--
+
+When configuring a data import, start by reviewing the *Model*.
+
+CLICK_PATH TOOLS > Data import > Models
+
+Choose the correct model for your data import. The user sync always uses the @haplo:user-sync@ model, but other data import processes and REST APIs can use any model provided by your application developers.
+
+For each *Destination* in the Model, this page lists:
+
+* The Destination name for use in *Control* files
+* Whether it [node:import/model/depends:depends] on another *Destination*
+* Whether it's an optional destination that does not need have to have any data, or is a [node:import/model/pseudo:pseudo-destination] which is used to form structured values or load other destinations.
+* A list of all the *Names* in that Destination
+
+The columns in the Names table are:
+
+|Name|The name which should be used in Control files to refer to this value.|
+|Type|The data type of the value.|
+|MV?|Whether this Name is multi-value.|
+|Req?|Whether a value for this Name is required.|
+|Description|A short description of the values expected.|
+
+Some data types will have actions in the right column:
+
+* _Map_ links to a page which generates example control file mappings for [node:import/control/value-conversion/data-type/ref] values.
+
+
+h2. Making Destinations ready for data import
+
+Before data can be set using the Names on a Destination, the Destination must be made ready for data import. The method depends on whether you are changing existing data in the application, or ingesting new data.
+
+The [node:import/user-sync] automatically makes Destinations ready, so you must not use @new@ or @load@ instructions.
+
+h3. Ingesting new data
+
+You must explicitly tell the data import framework that the Destination should create new data, using the [node:import/control/instruction/new] Instruction.
+
+h3. Loading existing data for modification
+
+The [node:import/control/instruction/load] Instruction loads existing data for modification. This is a two step process, firstly setting the 'ref' (ID) of the object in a [node:import/model/pseudo:pseudo Destination], and then using the @load@ Instruction to load the object into the Destination.
+
+This is separated out into two steps so the full data transformation capabilities of the data import framework can be used to determine which data to load. For example, the [node:import/control/value-conversion/filter/username-to-ref] value filter can be used to load user profiles by their username.
+
+See the [node:import/control/instruction/load] Instruction for an example.
+
+h3. Don't use load or new on dependent Destinations
+
+When a Destinations [node:import/model/depends:depends on another Destination], you should *not* use @new@ or @load@ instructions for those dependent Destinations, as everything happens automatically.

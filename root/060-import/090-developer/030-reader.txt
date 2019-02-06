@@ -1,0 +1,41 @@
+title: Readers
+--
+
+Readers add support for new file formats.
+
+To add a new reader, add a service named after the file format, prefixed with @"haplo:data-import-framework:reader:"@.
+
+The service is called with two arguments, a [node:plugin/interface/binary-data] object and the specification from the control file to allow options to be specified.
+
+It must return a function which takes a single @iterator@ argument, which it should call once for each *Record* in the file. The record should only contain data types which are JSON compatible.
+
+In your implementation, do not call @O.file()@ on the @BinaryData@ object, as for some uses of the data import framework, this would unnecessarily add files to the file store.
+
+
+h2. Example reader
+
+To create a @simple-json@ reader which reads a JSON file containing an array of records.
+
+<pre>language=javascript
+P.implementService(
+    "haplo:data-import-framework:reader:simple-json",
+    function(file, spec) {
+        let parsed = JSON.parse(file.readAsString("utf-8"));
+        return function(iterator) {
+            _.each(parsed, iterator);
+        };
+    }
+);
+</pre>
+
+A control file which uses this reader would include:
+
+<pre>language=json
+{
+    "files": {
+        "users": {
+            "read": "simple-json"
+        }
+    }
+}
+</pre>

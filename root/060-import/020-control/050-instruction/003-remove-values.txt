@@ -1,0 +1,29 @@
+title: remove-values
+link_as: keyword
+--
+
+The @remove-values@ Instruction removes all the values from a *Name* in a *Destination*. *values* is plural because if the *Name* is a multi-value, then it will remove all the values set for that Name.
+
+|@action@|@"remove-values"@|
+|@destination@|The Destination to remove the values from.|
+|@name@|The Name within the Destination to remove the values from.|
+
+
+h2. Usage
+
+@remove-values@ is most often used to remove all the values in a multi-value name before a [node:import/control/instruction/field] or [node:import/control/instruction/set-value] Instruction is used with the @multivalue:true@ option.
+
+You probably won't need to use this Instruction unless you're explicitly handling multi-values in your control file.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "remove-values",
+    "destination": "profile",
+    "name": "std:attribute:job-title"
+}
+</pre>
+
+See also the [node:import/control/instruction/field#Example_working_with_multi_values:working with multi-values] example for the @field@ Instruction.

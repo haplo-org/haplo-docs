@@ -1,0 +1,64 @@
+title: Viewer
+long_title: DocumentViewer
+--
+
+To get an instance of the DocumentViewer, call @makeViewerUI(E, options)@ on your Document store instance.
+
+<pre>language=javascript
+var instance = P.exampleDocStore.instance(M);
+var ui = instance.makeViewerUI(E, {
+    // options
+    showVersions: true,
+    showCurrent: true
+});
+</pre>
+
+h2. Options
+
+h3(property). version
+
+Version number to display.
+
+Specify which version to build the UI for.
+
+h3(property). showVersions
+
+Boolean. True allows the user to select from which version of the forms they want to view.
+
+h3(property). showCurrent
+
+Boolean. True allows the user to see the current version of the forms.
+
+h3(property). hideFormNavigation
+
+Boolean. True hides the interform links from the viewer generated sidebar.
+
+h3(property). uncommittedChangesWarningText
+
+String. Specify the warning text to display when viewing current uncommitted document. Set to a falsey value to disable the warning.
+
+h3(property). style
+
+Specify the style to be used by the viewer. The default (unspecified) style shows all of the forms in a document concatenated on one page. Possible styles:
+
+|*Style*|*Description*|
+|@"tabs"@|Shows only one form at a time, rendering tabs in the UI for switching between the different forms|
+
+h2. Interfaces
+
+h3(property). hasDocumentToDisplay
+
+Returns a boolean, specifying whether the viewer has a document to display.
+
+h3(property). documentHTML
+
+Returns the UI for the DocumentViewer as a HTML string.
+
+h3(property). deferredDocument
+
+Returns the UI for the DocumentViewer as a [node:plugin/templates/including-templates#Deferred_rendering:Deferred render] object for use in [node:plugin/templates:HSVT templates].
+
+h3(property). sidebarHTML
+
+Return the UI for the sidebar (links to the different forms/pages, and other versions of the form) as a HTML string.
+

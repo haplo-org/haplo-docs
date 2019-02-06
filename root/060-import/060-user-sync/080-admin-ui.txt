@@ -1,0 +1,47 @@
+title: Admin UI
+long_title: User sync admin user interface
+--
+
+CLICK_PATH TOOLS > User sync administration
+
+The admin interface provides:
+
+* Logs for all the sync runs and downloads of the data and control files
+
+* Configuration of the user sync
+
+* Data lookup for troubleshooting
+
+
+h2. Sync run logs
+
+Logs for all the sync runs are retained, along with the data files. Click _View..._ next to a sync run to see that individual sync run.
+
+There are various actions which may be available depending on the status of the sync run:
+
+* _Apply_ - perform this sync run now. Syncs need manual apply when they are too different to the previous files, or automatic apply has been disabled.
+
+* _Re-apply_ - make a copy of this sync run and apply it. This is useful for restoring state to a previous run.
+
+* _Cancel_ - mark this sync run as cancelled, so further files can be uploaded as a new sync run.
+
+* _Unsafe mark cancelled_ - mark this sync run as cancelled, even though it is in a state which suggests this is might be unsafe.
+
+Scroll to the bottom of the page to download the data files and the control file.
+
+
+h2. Configuration
+
+Configuration options are:
+
+* _Automatically apply uploaded sync files_ - set to _No_ to prevent sync runs being applied automatically. This is useful after making a change to the originating system, and you'd like to check the files it uploads in a test environment before updating the live environment.
+
+* _Force update of all records_ - set to _Yes_ to try applying all user records, even if the data hasn't changed since the last run. This can be required when the control file mappings have changed, because although the input data is still the same, the control file will map it to different values.
+
+* _Emails to receive sync reports_ - a comma separated list of email addresses to send the sync logs.
+
+
+h2. User lookup
+
+Entering a username or email address of a user will show state of the user account and profile, along with the data received from the originating system.
+

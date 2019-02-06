@@ -1,0 +1,65 @@
+title: Notes
+long_title: Notes feature
+--
+
+The notes feature adds a simple notes system to the built-in transition UI, and displays them in the timeline. Users can also enter notes at any time.
+
+You can optionally use 'private' notes which are only visible to a subset of participants in the process.
+
+The last few days of notes will be added to the notification emails.
+
+
+h2. Example
+
+To add notes to a workflow where everyone but the "researcher" user can see private notes:
+
+<pre>language=javascript
+EgWorkflow.use("std:notes", {
+    canSeePrivateNotes: function(M, user) {
+        return !M.hasRole(user, "researcher");
+    }
+});
+</pre>
+
+
+h2. Usage
+
+The second argument to @use()@ is the configuration, which has properties:
+
+h3(key). canSeePrivateNotes
+
+@function(M, user)@ taking the workflow instance and the user.
+
+Return true if the user can see private notes.
+
+
+h3(key). canAddNonTransitionNote
+
+@function(M, user)@ taking the workflow instance and the user.
+
+Return true if the user can add notes at any time in the process.
+
+
+h2. Text
+
+The notes system uses configurable text to explain private notes to users.
+
+Note this, and the 'private' name, can be configured globally using the [node:standard/workflow/definition/text/name:NAME() system].
+
+The following names are searched.
+
+h4. Normal notes explanation in transition UI
+
+ * notes-explanation-everyone:transition-ui
+ * notes-explanation-everyone
+
+h4. Private notes explanation in transition UI
+
+ * notes-explanation-private:transition-ui
+ * notes-explanation-private
+
+h4. Private notes explanation in ad-hoc note UI
+
+ * notes-explanation-private:add-note
+ * notes-explanation-private
+

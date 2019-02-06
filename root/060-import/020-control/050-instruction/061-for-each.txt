@@ -1,0 +1,49 @@
+title: for-each
+link_as: keyword
+--
+
+The @for-each@ Instruction executes a list of Instructions on nested records in an array in the input *Record*. This is used to iterate over multiple values in JSON input data.
+
+|@action@|@"for-each"@|
+|@source@|The property in the input Record containing an array of nested records.|
+|@wrapValues@|(optional) If @true@, each element of the array is wrapped in an @Object@ with the element as the @value@ property. This is needed to iterate over [node:import/how-do-i/read-an-array-of-simple-values:arrays with simple values].|
+|@instructions@|An array of Instructions to be executed for each element in the input array.|
+
+
+h2. Example
+
+With an input record structured like:
+
+<pre>language=json
+{
+    "username": "jbloggs",
+    "supervisors": [
+        {
+            "supervisor": "jsmith",
+            "role": "FIRST"
+        },
+        {
+            "supervisor": "aturing",
+            "role": "EXTERNAL"
+        }
+    ]
+}
+</pre>
+
+the @supervisor@ could be applied to a multi-value property like:
+
+<pre>language=json
+{
+    "action": "for-each",
+    "source": "supervisors",
+    "instructions": [
+        {
+            "source": "role",
+            "destination": "project-supervisors",
+            "name": "supervisorRole",
+            "multivalue": true
+        },
+        // ...
+    ]
+}
+</pre>

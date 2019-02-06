@@ -1,0 +1,199 @@
+title: Dashboards
+--
+
+Dashboards are web pages that display a subset of facts from a collection.
+
+h2. Usage
+
+A Dashboard object can be instantiated using @P.reporting.dashboard(E, specification)@
+
+This should be called in a [node:plugin/request-handling:request handler].
+
+The specification has the following properties:
+
+|*Property*|*Description*|
+|name|A string naming the dashboard|
+|kind|The type of dashboard to be rendered, eg: @"list"@|
+|collection|The name of the collection to be used|
+|filter|The filter to be applied to the collection|
+|title|The human readable title/description of the dashboard for displaying in the UI|
+|backLink|The URL for the return link (optional)|
+|backLinkText|The text for the back button (optional)|
+
+h2. Interface
+
+Functions called on the dashboard object return themselves, and so can be chained.
+
+h3(property). name
+
+Name of the dashboard.
+
+h3(property). kind
+
+Kind of the dashboard.
+
+h3(property). isDashboard
+
+Always @true@.
+
+h3(property). collection
+
+Collection object used by this dashboard.
+
+h3(property). E
+
+The [node:plugin/interface/exchange:exchange] object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
+
+h3(property). specification
+
+The @specification@ object passed to @P.reporting.dashboard@ on instantiation of the dashboard object.
+
+Note: you cannot modify the dashboard specification through this property.
+
+h3(function). use(featureName, argument, argument2, ...)
+
+Use a defined dashboard feature by name @featureName@, passing the additional arguments to the feature implementation.
+
+h3(function). summaryStatistic(priority, statistic)
+
+Displays a summary statistic on the Dashboard.
+
+@priority@ is a number used for sorting the statistics. @statistic@ is a string which is the defined name of the statistic.
+
+h3(function). property(name)
+
+Retrieve the user defined property for the given @name@, returning @undefined@ if the property has not been set.
+
+Properties are inherited from the Collection. If the property is not defined on the Dashboard, the value will be retrieved from the Collection.
+
+h3(function). property(name, value)
+
+Set the user defined property for @name@ to @value@. If the property is already defined, an exception will be thrown.
+
+h3(function). filter(fn)
+
+Apply a dashboard specific filter. @fn@ is a function which will be called to apply the filter as @fn(select)@ where @select@ is a [node:plugin/interface/database-query:DatabaseQuery] object.
+
+h3(function). removeColumnsBasedOnFact(factName)
+
+Remove all columns from a dashboard which are based on the fact with name @factName@.
+
+h3(function). order(orderBy, ...)
+
+Specify how to order the dashboard when it is initially displayed.
+
+Each argument is a fact name, or an array of @["factName", descending]@ where @descending@ is a boolean which should be true to use a descending order.
+
+See the database query [node:plugin/interface/database-query#order:order()].
+
+h3(function). setTime(date)
+
+Specify a date/time for viewing historical data of facts. @date@ must be a JavaScript Date object.
+
+h3(function). display(where, deferred)
+
+Display custom HTML on the dashboard. @where@ specifies where it should be placed, and @deferred@ is the result of [node:plugin/interface/template#deferredRender] on a @Template@.
+
+Different dashboards support different locations, which may include:
+
+|@"above"@|A good place above the main dashboard display|
+|@"below"@|Below the main dashboard display|
+|@"above-summary"@|Above any summary information|
+|@"above-export"@|Above an export button|
+|@"above-navigation"@|Above navigation user interface|
+|@"above-table"@|Above the main data table|
+
+h3(function). respond()
+
+Generate the Dashboard and respond to the HTTP request. Call this as the final operation in your request handler.
+
+h3(function). deferredRender()
+
+Provides a [node:plugin/interface/template#deferredRender] object for the dashboard. Allows inclusion of dashboards into other templates.
+
+Note that dashboard exports are not possible when deferred rendering, and the Export button will not be displayed.
+
+h2. Services
+
+Dashboards can be modified/setup/added to from outside of the Dashboard specification/dashboard object using services. This allows other plugins to do things like adding columns and statistics to already existing dashboards without modifying the original plugin.
+
+The dashboard will call the @"std:reporting:collection_dashboard:COLLECTION_NAME:setup"@ service where @COLLECTION_NAME@ is the name of the collection defined in the dashboard spec. This adds columns to all dashboards using this collection.
+
+*IMPORTANT* If you implement setup services which apply to more than one dashboard using collection or wildcard services, you *must* check the @kind@ property of the dashboard if you use dashboard configuration functions which are only available on a subset of dashboard kinds.
+
+To set up this specific dashboard, the dashboard will call the @"std:reporting:dashboard:DASHBOARD_NAME:setup"@ service where @DASHBOARD_NAME@ is the name of the dashboard defined in the dashboard specification.
+
+In addition it will call the @"std:reporting:collection_category_dashboard:COLLECTION_CATEGORY:setup"@ services for all the collection's categories as @COLLECTION_CATEGORY@. For example, a plugin could add financial columns to all dashboards in the @example:financial-info@ collection category.
+
+If the dashboard is *exporting*, eg, when generating an excel spreadsheet for download, the @"std:reporting:dashboard:DASHBOARD_NAME:setup_export"@ will be called.
+
+A wildcard service, @"std:reporting:dashboard:*:setup"@ is also called to allow setup for all dashboards. Make sure you check the @kind@ property.
+
+In addition, just before the dashboard is rendered, a 'final' version of each of the above services is called, with @_final@ appended to the name. These should be used if your customisations depend on what other plugins might have done previously. You should only use these versions if you can't implement your customisation otherwise.
+
+All services are called with one argument, the @dashboard@ object, for example:
+
+<pre>language=javascript
+P.implementService("std:reporting:dashboard:example_dashboard:setup",
+    function(dashboard) {
+        // do things on the dashboard object, add columns etc, eg:
+        dashboard.columns(200, [...]);
+    }
+);
+</pre>
+
+h2. Features
+
+The @use()@ interface adds a defined dashboard feature to the dashboard being displayed. To register a new workfow feature for other plugins, use @P.reporting.registerReportingFeature()@
+
+h3. P.reporting.registerReportingFeature(featureName, fn)
+
+@featureName@ is the name of your feature, and @fn@ is a function which will be called when another plugin's dashbaord calls @use()@.
+
+The arguments to @fn@ are the dashboard object, and any further arugments passed to @user()@.
+
+For example, for collections where the root @ref@ object is a person, you might implement:
+
+<pre>language=javascript
+P.reporting.registerReportingFeature("example:person_name_column",
+    function(dashboard, spec) {
+        dashboard.
+            columns(10, dashboard.isExporting ?
+                makePersonExportColumns(spec) :
+                makePersonDashboardColumns(spec)).
+            order("nameSortAs").
+            use("std:row_text_filter", {
+                facts:["ref"],
+                placeholder: spec.placeholder ||"Search by name"
+            });
+});
+</pre>
+
+h2. Example
+
+An example of how a handler implementing a List Dashboard to display information about a collection of books may look:
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/example-plugin/books", [
+], function(E, year) {
+    var dashboard = P.reporting.dashboard(E, {
+        name: "books_dashboard",
+        kind: "list",
+        collection: "books",
+        title: "Books"
+    }).
+        use("std:row_text_filter", {facts:["title","author"], placeholder:"Search"}).
+        use("std:row_object_filter", {fact:"genre", objects:T.Genre}).
+        summaryStatistic(0, "count").
+        order(["publishedDate", "descending"]).
+        columns(10, [
+            {type:"linked", style:"wide", column:{fact:"title"}}
+        ]).
+        columns(100, [
+            {fact:"author", link:true, style:"medium"},
+            {fact:"genre", style:"medium"},
+            {fact:"publishedDate", style:"medium"}
+        ]).
+        respond();
+});
+</pre>

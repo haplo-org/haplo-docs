@@ -1,0 +1,53 @@
+title: Plugin default APIs
+long_title: Providing default APIs in plugins
+--
+
+Plugins can use the data import framework to implement REST APIs, instead of writing the implementation in code.
+
+These APIs are created automatically, and then can be edited by the administrator. Once created, the definitions are *not* updated, even if the definition in the plugin changes. This allows the administrator of the system to be able to edit the API as their needs change without having to involve the plugin developer.
+
+To add a default REST API in your plugin, follow the steps below. In this example, the REST API is called @example@, and you'll need to change this name in the code, filenames and JSON file.
+
+
+h3. 1) Depend on the framework
+
+In your [node:plugin/plugin-json], add @haplo_data_import_api@ to your @depend@ statement.
+
+
+h3. 2) Declare the API by defining a service
+
+In your plugin's code, add a service definition:
+
+<pre>language=javascript
+P.implementService("haplo:data-import-api:discover-defaults",
+    function(api) {
+        api(P, "example");
+    }
+);
+</pre>
+
+When the @haplo_data_import_api@ plugin is installed, it will call this service to discover all the default APIs and create them.
+
+
+h3. 3) Write a definition JSON file
+
+Create a file called @file/rest-api-example.json@ in your plugin (changing the 'example' to the name of your API). This file includes the specification of the API and the control file.
+
+<pre>language=json
+{
+    "url": "example",
+    "description": "Example REST API",
+    "enabled": true,
+    "response": "JSON",
+    "control": {
+        "dataImportControlFileVersion": 0,
+        "model": "haplo:person",
+        "files": {
+            // ...
+        },
+        "instructions": [
+            // ...
+        ]
+    }
+}
+</pre>

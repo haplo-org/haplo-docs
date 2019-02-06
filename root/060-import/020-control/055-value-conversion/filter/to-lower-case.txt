@@ -1,0 +1,5 @@
+title: haplo:to-lower-case
+link_as: keyword
+--
+
+The @haplo:to-lower-case@ value filter converts strings to lower case.

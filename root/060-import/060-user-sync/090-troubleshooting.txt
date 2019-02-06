@@ -1,0 +1,35 @@
+title: Troubleshooting
+--
+
+When your users can't log in, or their information isn't as you expect, you will need to troubleshoot the data sent to your Haplo application.
+
+h3. 1) Check logs for errors
+
+In the [node:import/user-sync/admin-ui:admin user interface], view the latest sync run logs.
+
+Search for the username, and resolve any errors relating to this user.
+
+
+h3. 2) Check user data
+
+Use the 'user lookup' tool to view the status of the user, and the data received from the originating system.
+
+If the data isn't as you expect, return to the latest sync run, download the data files from the bottom of the page. Check these data files to see if the data matches the data from the originating system.
+
+If the data matches the input file, you will need to investigate within the originating system.
+
+
+h3. 3) Check user identity
+
+The usual cause of unexpected changes in a user's account is confusion over their @username@. This identifier must never change through the user's involvement with your organisation, and must not be duplicated in the feed.
+
+Check that:
+
+* There is only one entry in the user feed for that user. If information comes from multiple files, check that there aren't any duplicates in those files.
+
+* The user's username is still correct and is spelt correctly in the input files.
+
+
+h3. 4) Check mappings in control file
+
+Where the user account is working, but some of the information is wrong, you should check the mappings in the control file are up-to-date.

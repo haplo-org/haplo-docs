@@ -1,0 +1,36 @@
+title: Document store
+--
+
+Plugin name: @document_store@
+
+The standard Document store plugin provides the ability to define multi-page versioned documents that can be created, edited and presented to/by users.
+
+h2. Terminology
+
+* Document: A collection of forms representing a document.
+
+* DocumentInstance: A JavaScript object representing the store
+
+* Key item: A JavaSciprt object used as a key for this document
+
+* Key ID: A value derived from the key item to use as the key in the database (which by default is just the key)
+
+* Current document: A "work in progress" document that hasn't yet been committed as a new version of the document.
+
+* Committed versions: Upon committing a current document, a new version is added/saved. The history of the Document is available via versions.
+
+
+
+h2. Using the Document store plugin
+
+The Document store plugin provides a @std:document_store@ [node:plugin/interface/plugin/platform-interface#provideFeature:feature] which your plugin must [node:plugin/plugin-json#use:use] in your @plugin.json@ file.
+
+<pre>language=json
+{
+  "pluginName": "example_workflow",
+  // ... rest of plugin.json
+  "use": ["std:document_store"]
+}
+</pre>
+
+

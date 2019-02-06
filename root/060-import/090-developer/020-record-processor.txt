@@ -1,0 +1,61 @@
+title: Record processors
+--
+
+The @recordProcessor@ property in a [node:import/control:control file] allows custom code to be written to adjust *Records* after they have been read before executing the Instructions, for example, combining multiple files into one.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "files": {
+        // ...
+    },
+    "recordProcessor": "example:combine-files"
+}
+</pre>
+
+
+h2. Implementing a record processor service
+
+A plugin must implement a [node:plugin/o/service] named after the filter name in the control file, with a prefix of @"haplo:data-import-framework:record-processor:"@.
+
+The service takes a single argument of an array of objects with @name@ and @reader@ properties. The @reader@ property is a function which when called with an iterator function as an argument, calls that iterator with each @Record@ in order.
+
+The service returns a similar array.
+
+
+h2. Example
+
+This example combines two input files. The main file contains most of the user details, but the "role" is provided in a separate file. As the user sync needs this in a single record, custom logic is required to combine the two files.
+
+<pre>language=javascript
+P.implementService(
+    "haplo:data-import-framework:record-processor:example:combine-files",
+    function(readers) {
+
+        let readerByName = {};
+        readers.forEach((r) => { readerByName[r.name] = r.reader; });
+
+        // Mapping of staff ID => staff role
+        let staffRoles = {};
+        readerByName.staff_roles((row) => {
+            staffRoles[row.ID] = row.ROLE_ID;
+        });
+
+        // Make a new reader for users which adds in the extra info
+        let combinedReader = function(iterator) {
+            readerByName.users((user) => {
+                let staffRole = staffRoles[user.ID];
+                if(staffRole) {
+                    user.staffRole = staffRole;
+                }
+                iterator(user);
+            });
+        };
+
+        // Replace the readers with this single combined reader
+        return [{name:"users", reader:combinedReader}];
+    }
+);
+</pre>

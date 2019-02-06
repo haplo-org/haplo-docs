@@ -6,7 +6,7 @@ It's important that plugin developers can control who installs their plugins. Th
 
 h2. Installation secret
 
-The [node:dev/plugin/plugin-json] file contains an optional [node:dev/plugin/plugin-json#installSecret] key. This should be generated from random data. The [node:dev/tool/plugin] will generate a random key for you when it creates the initial plugin files for you.
+The [node:plugin/plugin-json] file contains an optional [node:plugin/plugin-json#installSecret] key. This should be generated from random data. The [node:dev/tool/plugin] will generate a random key for you when it creates the initial plugin files for you.
 
 If you do not include this key, anyone can install the plugin if they know its name.
 

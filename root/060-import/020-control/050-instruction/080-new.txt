@@ -1,0 +1,29 @@
+title: new
+link_as: keyword
+--
+
+The @new@ Instruction creates a new piece of data represented by a *Destination*.
+
+To enable multiple objects to be created, if there is already data loaded into the Destination, it will be committed to the database. Nothing will be committed if there are any errors processing the current *Record*.
+
+|@action@|@"new"@|
+|@destination@|The Destination for this data.|
+
+It is generally unnecessary to use the @new@ Instruction for [node:import/model/depends:dependent destinations] unless you are intending to create multiple objects.
+
+
+h2. Example
+
+To ingest new objects in a @project@ Destination, use a @new@ Instruction followed by other Instructions to add data:  
+
+<pre>language=json
+{
+    "action": "new",
+    "destination": "project"
+},
+{
+    "source": "TITLE",
+    "destination": "project",
+    "name": "dc:attribute:title"
+}
+</pre>

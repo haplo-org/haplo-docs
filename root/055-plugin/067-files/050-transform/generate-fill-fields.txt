@@ -1,0 +1,88 @@
+title: std:generate:fill_fields
+long_title: std:generate:fill_fields transform step
+link_as: keyword
+--
+
+This file transform step fills in fields in PDF and word processing documents. The @information@ property on the [node:plugin/interface/file-transform-result] is used to return information about which fields were filled.
+
+*NOTE:* This transform is implemented by an optional platform component, and may not be available in your installation.
+
+
+h2. Creating input documents
+
+Text form fields are filled in when filling a PDF file.
+
+@MERGEFIELD@ fields are filled in when filling a word processing document. A definition should look like @"MERGEFIELD FieldName"@ where @FieldName@ is the name which should be used in the @fields@ property.
+
+h3. Using Microsoft Word
+
+To use Word to insert @MERGEFIELD@ fields into a document without going through the whole mailmerge setup, you need to do a little preparation.
+
+ * In Window title, click down arrow (Customise Quick Access Toolbar)
+
+ * Menu: _More commands..._
+
+ * Choose commands from: _All commands_
+
+ * Select: _Insert a Field..._
+
+ * Click @[ > ]@ button
+
+ * Click _Save_
+
+Then, to add a @MERGEFIELD@:
+
+ * Click the new button in the window title
+
+ * Categories: _Mail Merge_
+
+ * Field names: _MergeField_
+
+ * Fill in box so it says: @MERGEFIELD Something@, where _Something_ is the name of the field
+
+ * Click _OK_
+
+
+h2. Information in result
+
+The @information@ property in the [node:plugin/interface/file-transform-result] will contain a @"std:generate:fill_fields"@ property. This is an array of objects, one per fill fields transform step.
+
+Each of these objects contains an @"filled"@ property, an array of field names that were filled in, and an @"unfilled"@ property, of those where a value was not specified in the @fields@ property of the specification. If fields are repeated in the input file, these arrays will contain multiple entries for that field.
+
+For example:
+
+<pre>language=json
+{
+  "std:generate:fill_fields": [
+    {
+      "filled": ["Field 1", "Field Two", "Field 1"],
+      "unfilled": ["Three"]
+    }
+  ]
+}
+</pre>
+
+
+h2. Transform specification
+
+h3(property). input
+
+Name of the input file. Optional, defaults to @"input"@.
+
+
+h3(property). output
+
+Name of the output file. Optional, defaults to @"output"@.
+
+
+h3(property). mimeType
+
+MIME type of the output file. Optional, defaults to the MIME type of the @input@ file.
+
+This transform step can convert between different formats of word processing documents, and word processing documents to PDF.
+
+
+h3(property). fields
+
+A dictionary of field name to field value, both of which must be strings.
+

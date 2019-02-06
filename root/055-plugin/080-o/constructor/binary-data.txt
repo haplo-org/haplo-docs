@@ -1,0 +1,21 @@
+title: O.binaryData()
+link_as: keyword
+--
+
+Constructs a object implementing the [node:plugin/interface/binary-data] interface.
+
+
+h3(function). binaryData(source, properties)
+
+Return a @BinaryData@ object generated from the given @source@, with optional properties specified in @properties@.
+
+If @source@ is a string, the binary data is the string encoded with the character set specified in @properties@.
+
+@properties@ has the following keys:
+
+||*Default*|Meaning|
+|@charset@|@"UTF-8"@|Character set to use for encoding|
+|@filename@|@"data.bin"@|User visible filename, used if the file is downloaded|
+|@mimeType@|@"application/octet-stream"@|MIME type of the data|
+
+
