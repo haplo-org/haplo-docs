@@ -3,7 +3,7 @@ title: Special functions
 
 The definition provides some special purpose functions to provide information about the configured workflow.
 
-These are intended to remove the necessity to make available too much information about the specifics of the workflow, to encourage well-designed composeable features.
+These are intended to remove the necessity to make available too much information about the specifics of the workflow, to encourage well-designed composable features.
 
 
 h2. Definition
