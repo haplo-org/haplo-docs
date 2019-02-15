@@ -1,0 +1,13 @@
+title: ZIP files
+--
+
+This API allows for ZIP files to be efficiently generated in response to a request handler.
+
+
+h3(function). O.zip.create(filename)
+
+Returns a new [node:plugin/interface/zip-file] object, ready for files to be added to the archive.
+
+The @filename@ is used when the the zip file is downloaded. The @.zip@ extension will be added if it's not specified.
+
+If @filename@ is not specified, a default filename will be used.

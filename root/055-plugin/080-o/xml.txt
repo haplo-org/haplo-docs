@@ -6,7 +6,7 @@ Namespace and context aware XML generation and parsing.
 
 h3(function). O.xml.document()
 
-Creates a new [node:plugin/interface/xml-document] interface, used for generating new XML documents.
+Creates a new [node:plugin/interface/xml-document] object, used for generating new XML documents.
 
 h3(function). O.xml.parse(document)
 
