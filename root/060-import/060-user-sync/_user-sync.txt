@@ -28,7 +28,9 @@ The @haplo_user_sync_generic@ plugin provides user sync services based on the da
 
 h2. No duplicate usernames, avoid duplication of email addresses
 
-The @username@ of a user must be unique within the data files, so that users can be unambiguously matched. However, usernames are opaque to the user sync, and can be any string or identifier.
+The @username@ of a user must be unique within the data files, so that users can be unambiguously matched.
+
+Usernames are opaque to the user sync, and can be any string or identifier. Note that usernames are _case insensitive_, and internally are converted to lower case. The identifiers used as the username must not differ only in case, eg @JSmith@ and @jsmith@ must refer to the same user.
 
 If a record duplicates the @username@ of a previous record, it will be ignored with an error in the logs.
 
