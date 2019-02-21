@@ -12,10 +12,9 @@ Firstly, the [node:plugin/form/specification#Form_elements:form elements] need t
 |@name@|The name of the validation function.|
 |@data@|Any additional configuration data that needs to be passed to the validation function.|
 
-
 h2. Validation function
 
-The validation function needs to be registered with the plugin [node:plugin/interface/plugin/form#globalFormsCustomValidationFunction] method. Global registration is especially convenient when using the @std_document_store@ plugin, or when a function is reused across many forms.
+If you need a validation function beyond the standard ones provided below, the new validation function needs to be registered with the plugin [node:plugin/interface/plugin/form#globalFormsCustomValidationFunction] method. Global registration is especially convenient when using the @std_document_store@ plugin, or when a function is reused across many forms.
 
 Alternatively, if global registration is not possible, the function can be declared locally to the form instance with [node:plugin/interface/form-instance#customValidation].
 
@@ -38,7 +37,6 @@ Custom validation functions need to be written carefully, taking into account th
 You *must* test the @value@ argument of the function, not retrieve it from the @context@ or @document@. When the function is called, the document might not have been updated with the new value.
 
 The values for other elements in the @context@ or @document@ will only have been updated for elements which precede this element in the specification. This means a custom validation function which operates on the values of more than one element must be applied to the element that is last in the specification.
-
 
 h2. Example
 
@@ -80,3 +78,25 @@ P.globalFormsCustomValidationFunction("example:sum-value",
   }
 );
 </pre>
+
+h2. Standard custom validation functions
+
+There are some standard custom validation functions that can be used in any form.
+
+h3. std:validation:compare_to_today
+
+This compares the value input into the date element you are defining to today, according to the @data@ passed in:
+
+|@operation@|The operation to use, one of < or >. The current value takes the left hand side of the operation.|
+|@delta@|A positive or negative integer offset in days. Optional.|
+|@errorMessage@|An error message to be displayed in the event of failed validation. Recommended.|
+
+h3. std:validation:compare_to_date
+
+This compares the value input into the date element you are defining to another date value, according to the @data@ passed in:
+
+|@path@|The path of the date the current value should be compared to. Must be defined in the document before the current path. One of @path@ or @externalData@ must be defined.|
+|@externalData@|The property in external data the current value should be compared to.|
+|@operation@|The operation to use, one of < or >. The current value takes the left hand side of the operation.|
+|@delta@|A positive or negative integer offset in days. Optional.|
+|@errorMessage@|An error message to be displayed in the event of failed validation. Recommended.|
