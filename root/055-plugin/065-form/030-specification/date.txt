@@ -14,4 +14,4 @@ All the [node:plugin/form/specification#Common_properties:common properties] are
 
 h2. Custom validation
 
-There are some standard custom validation functions defined for validating dates against today or other dates. See [node:plugin/form/custom-validation] for more details.
+There are [node:plugin/form/custom-validation/standard-validation] available for validating dates against today or other dates.
