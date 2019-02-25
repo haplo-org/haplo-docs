@@ -37,15 +37,6 @@ h3. Specifying the choice list
 
 The choice list can be specified in a few different ways.
 
-h4. Array of Strings
-
-A simple array of strings is interpreted as a list of choices where every element has an ID equal to the display name.
-
-<pre>language=javascript
-    "choices": ['Choice One', 'Choice Two', 'Choice Three']
-</pre>
-
-
 h4. Array of arrays containing two values
 
 An array of two element arrays, where the first element is the ID, and the second the display name.
@@ -88,7 +79,7 @@ This should make the right choice every time, but can be easily overridden if no
 
 h3. radioClusters option
 
-THe @radioClusters@ option allows a single choice element to contain multiple clusters of options. This is useful when there are several categories of choices, but they're all mutually exclusive.
+The @radioClusters@ option allows a single choice element to contain multiple clusters of options. This is useful when there are several categories of choices, but they're all mutually exclusive.
 
 <pre>language=javascript
     "radioClusters": [
