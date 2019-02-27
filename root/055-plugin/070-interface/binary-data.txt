@@ -25,20 +25,28 @@ h3(property). digest
 
 The digest of the file, as a hex encoded @String@.
 
+This property is read only.
+
 
 h3(property). fileSize
 
 The size of the file, in bytes, as a number.
+
+This property is read only.
 
 
 h3(property). mimeType
 
 The MIME type of the file. Note that some MIME types are standardised as browsers tend to be a bit inconsistent.
 
+This property can be changed.
+
 
 h3(property). filename
 
 The filename of the file, as set by the browser.
+
+This property can be changed, which may be necessary before calling [node:plugin/o/constructor/file] to add it to the file store to make sure it has a sensible name. This is particularly useful when working with responses from the [node:plugin/o/http-client].
 
 
 h3(function). readAsString(charsetName)
