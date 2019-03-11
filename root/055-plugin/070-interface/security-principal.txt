@@ -157,3 +157,8 @@ The API code (as used in schema requirements) of a group, if it has one. If it d
 h3(function). loadAllMembers()
 
 Returns an array of @SecurityPrincipal@ objects representing users *only*. If one of the members of this group is another group, the returned array will contain that group's users.
+
+
+h3(function). loadAllBlockedMembers();
+
+Like @loadAllMembers()@, but returns a list of blocked users.
