@@ -73,7 +73,7 @@ Handles the editing of a document instance, for example in a request handler whe
 
 |*Property*|*Description*|
 |finishEditing|A function called with the arguments @instance, E, complete@ when the user submits edits to the form. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
-|gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
+|gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location. By default appending @"/"+formId@ to the URL of the editor handler will redirect to a specific form. Use [node:standard/document-store/definition#formIdFromRequest:@formIdFromRequest()@] for other URL schemes|
 |render|A function called with the arguments @instance, E, deferredRender@ that should render the page by calling @E.render()@|
 
 The arguments mentioned above are:
@@ -101,8 +101,7 @@ P.respond("GET,POST", "/do/example-plugin/edit-form", [
         },
         gotoPage: function(instance, E, formId) {
             E.response.redirect("/do/example-plugin/edit-form/"+
-                instance.key.workUnit.id+
-                "/application?form="+formId);
+                instance.key.workUnit.id+"/"+formId);
         },
         render: function(instance, E, html) {
             E.render({
