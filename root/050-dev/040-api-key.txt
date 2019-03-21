@@ -11,13 +11,13 @@ h2. Generating keys
 
 To generate a generic API key, log into Haplo as an administrator.
 
-CLICK_PATH TOOLS > Users > (User name) > New API key...
+CLICK_PATH TOOLS > System management > Users > (User name) > New API key...
 
 API keys are shown at the bottom of the user info page, so you may need to scroll down.
 
 If you are creating a key for a service user, select the service user list first:
 
-CLICK_PATH TOOLS > Users > SRV > (User name) > New API key...
+CLICK_PATH TOOLS > System management > Users > SRV > (User name) > New API key...
 
 Fill out the form to create the key:
 
