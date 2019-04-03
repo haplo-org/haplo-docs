@@ -90,6 +90,25 @@ As a special case, if the @name@ is @_control@, then the control file is replace
 
 Files do not all need to be uploaded from the same server, as long as the request to start the sync happens after they have all been uploaded.
 
+If this API succeeds, the response will have a 200 status status code and the body will be a JSON document with three properties:
+
+|@digest@|SHA256 digest of the uploaded file|
+|@fileSize@|Size of the uploaded file in bytes|
+|@filename@|Filename of the uploaded file|
+
+For example,
+
+<pre>language=json
+{
+    "digest": "bb0216c6ec24c67658a8257733a47504f4131ef8a116b1085eda7f00932fb057",
+    "fileSize": 189373,
+    "filename": "users.xml"
+}
+</pre>
+
+If this API fails, a non-200 status code will be returned.
+
+
 h3. POST /api/haplo-user-sync/start-sync
 
 After all files have been uploaded, make a POST request this endpoint to start the sync run. An error will be returned if not all files have been uploaded yet.
@@ -97,3 +116,8 @@ After all files have been uploaded, make a POST request this endpoint to start t
 If automatic apply of the user sync has been disabled in the admin user interface, or the files are too different from the previous run (for example, their size differs by more than 10%), then a manual action will be needed to apply the sync.
 
 The first run will always need a manual apply.
+
+This API will return a @text/plain@ body with a human readable description of the status of the sync.
+
+If the user sync has all the files required, a 200 status code will be returned, otherwise a non-200 status code is returned.
+
