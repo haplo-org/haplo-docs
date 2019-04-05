@@ -117,7 +117,40 @@ If automatic apply of the user sync has been disabled in the admin user interfac
 
 The first run will always need a manual apply.
 
-This API will return a @text/plain@ body with a human readable description of the status of the sync.
+This API will by default return a @text/plain@ body with a human readable description of the status of the sync.
 
 If the user sync has all the files required, a 200 status code will be returned, otherwise a non-200 status code is returned.
 
+There are alternative APIs available if a structured response is required. Unlike the default API, the alternatives will return a 200 status cade even if the required files have not all been uploaded. The structured response will contain the following values:
+
+|@status@|The status of the user sync. Possible values are: @queued-for-apply@, @missing-files@, and @admin-intervention-required@|
+|@error@|Whether an error has occurred|
+|@message@|A human readable explanation of the state|
+<br>
+
+h4. JSON
+
+The first alternative is returning the data in JSON format. This can be used by POSTing to @/api/haplo-user-sync/start-sync/json@.
+
+Example response:
+
+<pre>language=json
+{
+    "status": "queued-for-apply",
+    "error": false,
+    "message": "OK. Sync queued."
+}
+</pre>
+
+h4. XML
+
+Another alternative is returning the data in XML format. This can be used by POSTing to @/api/haplo-user-sync/start-sync/xml@. The message value is the text of the sync element, while the error and status values are stored as attributes on it.
+
+Example response:
+
+<pre>language=xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<response>
+    <sync error="false" status="queued-for-apply">OK. Sync queued.</sync>
+</response>    
+</pre>
