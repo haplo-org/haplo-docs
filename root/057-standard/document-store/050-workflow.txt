@@ -30,6 +30,10 @@ h3(property). path
 
 The URL for the document. Must be a valid path (specified in @plugin.json@). The Document store plugin implements the handlers needed for viewing/editing the document at this path.
 
+h3(property). editPriority
+
+The priority of the edit document button within the built-in transition UI action panel. Defaults to "default".
+
 h3(property). priority
 
 The priority within the @panel@. Defaults to "default".
