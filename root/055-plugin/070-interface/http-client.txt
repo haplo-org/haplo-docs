@@ -79,6 +79,12 @@ Enables HTTP authentication for the request, using credentials from the specifie
 
 Returns the HTTP client, so configuration methods can be chained.
 
+h3(function). useClientCertificateFromKeychain(name)
+
+Authenticates with the remote server using a TLS (SSL) client certificate, using the specified X.509 Certificate and Key in the Keychain.
+
+Returns the HTTP client, so configuration methods can be chained.
+
 h3(function). mutableCopy()
 
 Makes a clone of this HTTP client. Even if the client is immutable (eg, [node:plugin/interface/http-client#request] has already been called on it), the copy returned will be mutable and can be configured then used for future requests.
