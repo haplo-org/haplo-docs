@@ -1,0 +1,5 @@
+title: Administration
+--
+
+Haplo Reopository provides adminstrative support staff with a set of comprehensive tools for managing research outputs at their institution.
+
