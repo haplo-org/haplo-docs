@@ -2,9 +2,9 @@ title: Ubuntu Server 18.04
 long_title: Build on Ubuntu Server 18.04
 --
 
-Download "Ubuntu Server LTS":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated. The instructions below are appropriate for Ubuntu 18.04 LTS. If you're not using 18.04, please refer to the "appropriate build instructions for your Ubuntu version":ubuntu.
+Download "Ubuntu Server LTS":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated. The instructions below are appropriate for Ubuntu 18.04 LTS. If you're not using 18.04, please refer to the [node:platform/build/ubuntu:appropriate build instructions for your Ubuntu version].
 
-If you just want to run a Haplo server with a minimum of fuss, go straight to the "running a production server":../run/production documentation.
+If you just want to run a Haplo server with a minimum of fuss, go straight to the [node:platform/run] documentation.
 
 *Important:* Do not include a dot in the hostname. A good hostname to choose would be @haplo@
 
