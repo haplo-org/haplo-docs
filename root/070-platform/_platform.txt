@@ -1,0 +1,18 @@
+title: Platform
+long_title: Haplo Platform
+--
+
+The Haplo Platform is a multi-tenant application server, with [node:app:applications] implemented through [node:plugin:plugins]. There is an administrative user interface for setting up applications, although more complex applications tend to be configured with code in a plugin.
+
+How you run an instance of the Haplo Platform server depends on your intended use.
+
+
+h2. Production server
+
+You should run a [node:platform/run:production server] for your live applications, and also plugin development. Production servers can be put in "plugin debugging" mode, which adds support for the [node:dev/tool/plugin].
+
+
+h2. Developing the platform
+
+If you want to modify the platform itself, you can run a [node:platform/build:development build] which has a slightly different configuration, and includes platform development only functionality such as automatic reloading of platform code.
+

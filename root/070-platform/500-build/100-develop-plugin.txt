@@ -1,0 +1,93 @@
+title: Plugins
+long_title: Plugins on development servers
+--
+
+To develop a Haplo plugin, you run the [node:dev/tool/plugin] on your local computer. As you make changes to files, it automatically uploads them to the server where you can test your plugin.
+
+
+h2. Install the plugin tool
+
+Follow the instructions to install the plugin tool for "Windows":https://docs.haplo.org/dev/tool/plugin/install-windows or "UNIX-like OSes":https://docs.haplo.org/dev/tool/plugin/install-unix such as Mac OS X or Linux.
+
+Note the requirement to make sure the "JRuby bin directory is in your PATH":https://docs.haplo.org/dev/tool/plugin/getting-ready before running the plugin tool.
+
+
+h2. Create working directory and copy server certificate
+
+The plugin tool is strict about only connecting to servers with SSL certificates it can verify. We need it to tell it to trust our development server's certificate.
+
+On your local computer, create a directory: (you don't have to use this exact name)
+
+<pre>
+mkdir ~/haplo-plugins
+cd ~/haplo-plugins
+</pre>
+
+Then copy the @~/haplo-dev-support/certificates/server.crt@ file into this directory as @server.local.crt@
+
+
+h2. Authorise with your development server
+
+After following the build instructions, you will be accessing your application at a URL like:
+
+<pre>
+https://test.your-computer.local:8443/
+</pre>
+
+@cd@ to an empty directory, then, taking the hostname and port from this URL, authorise the plugin tool:
+
+<pre>
+cd ~/haplo-plugins
+haplo-plugin auth test.your-computer.local:8443
+</pre>
+
+*IMPORTANT*: Change the hostname in the command above.
+
+Follow the instructions to complete the authentication. On Mac OS X, your browser will open automatically.
+
+
+h2. Create a plugin
+
+Create an empty plugin with the plugin tool:
+
+<pre>
+haplo-plugin -p your_test_plugin new
+</pre>
+
+
+h2. Upload the plugin to your development server
+
+Use a similar command (without the @new@) to automatically upload the plugin as you develop it:
+
+<pre>
+haplo-plugin -p your_test_plugin
+</pre>
+
+The plugin tool watches for changes you make to the plugin files and immediately uploads them.
+
+
+h2. See it working
+
+Visit the @/do/your-test-plugin/example@ path on your development server, for example
+
+<pre>
+https://test.your-computer.local:8443/do/your-test-plugin/example
+</pre>
+
+The test plugin will respond to this path, displaying the example template at @your_test_plugin/template/example.html@ -- try editing this file and refreshing the page in your browser.
+
+
+h2. Was it slow to upload the change?
+
+If it took more than a second or so to upload the file, your computer might be trying IPv6 first. Run the plugin tool like this:
+
+<pre>
+env _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true" haplo-plugin -p your_test_plugin
+</pre>
+
+and it should be much quicker to respond.
+
+
+h2. Write your plugin
+
+Use the [node:plugin:Haplo plugin API documentation] to develop your plugin.

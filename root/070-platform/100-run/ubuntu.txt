@@ -1,0 +1,66 @@
+title: Ubuntu
+long_title: Production server on Ubuntu
+--
+
+Deploying a production instance of Haplo can be a bit fiddly, so we have created a simple installation script that will install the correct system packages, configure them appropriately, download and build Haplo, and install it ready for use.
+
+h2. Pre-install planning
+
+You should be running "Ubuntu Server":http://www.ubuntu.com/download/server 16.04 or 18.04 LTS on a system with at least 4GB of memory. The system should be dedicated to Haplo, otherwise the security of your Haplo installation will be compromised.
+
+You'll probably want to install openssh to allow you to log in.
+
+<pre>
+sudo apt-get install openssh-server
+</pre>
+
+If creating user accounts, do not use @haplo@, as that will be created by the installation script and is used to run the application server.
+
+You will need to register a name in DNS so that clients can connect to your server. This can either be the name of the server you're going to install Haplo on, or an alias (CNAME). For example, if you want your Haplo installation to be available at the URL:
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+then you need to create a DNS entry for @haplo.your.site.name@. This name will also be used in the installation script below.
+
+h2. Running the installation script
+
+On the system where Haplo will be deployed, download the "installation script":https://raw.githubusercontent.com/haplo-org/haplo/master/haplo-install.sh
+
+Make it executable:
+
+<pre>
+chmod a+x haplo-install.sh
+</pre>
+
+And run it, supplying the DNS name you chose above:
+
+<pre>
+./haplo-install.sh haplo.your.site.name
+</pre>
+
+You will be asked for your password so that sudo can modify the system on your behalf.
+
+The script will perform most of the steps listed in the [node:platform/build/ubuntu:Build and run Haplo on Ubuntu Server] documentation, create any necessary user accounts, create the directories needed by the server with the correct permissions and ownership, configure and start the PostgreSQL database server, and set up port forwarding. Having built Haplo, it will be deployed to @/opt/haplo@ if this hasn't already been done.
+
+The script will then ask you for four pieces of information:
+
+<dl>
+<dt>Enter the name for this site: </dt>
+<dd>This is the name that will be displayed on all the pages of your Haplo installation. It should reflect the name of your department or organization, or the function of this Haplo installation.</dd>
+<dt>Enter the name of the first user: </dt>
+<dd>You need to create at least one user, so you will be asked for their details. This should be their full name, for example 'Fred Bloggs'.</dd>
+<dt>Enter the email of the first user: </dt>
+<dd>And their email address, for example 'fred.bloggs@example.com'.</dd>
+<dt>Enter the password of the first user: </dt>
+<dd>And then give a password for this user.</dd>
+</dl>
+
+The installation script will then create a self-signed certificate, set up an application, and start the application server. You can then go to
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+in your web browser and log in using the email address and password details you just entered. (You will get a security warning from your web browser due to the use of a self-signed certificate.)

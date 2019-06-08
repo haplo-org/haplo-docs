@@ -1,0 +1,109 @@
+title: Ubuntu Server 18.04
+long_title: Build on Ubuntu Server 18.04
+--
+
+Download "Ubuntu Server LTS":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated. The instructions below are appropriate for Ubuntu 18.04 LTS. If you're not using 18.04, please refer to the "appropriate build instructions for your Ubuntu version":ubuntu.
+
+If you just want to run a Haplo server with a minimum of fuss, go straight to the "running a production server":../run/production documentation.
+
+*Important:* Do not include a dot in the hostname. A good hostname to choose would be @haplo@
+
+If you're using a VM, you'll probably want to install openssh to allow you to log in from the VM host.
+
+<pre>
+sudo apt-get install openssh-server
+</pre>
+
+
+h2. Install required packages
+
+After logging in, install packages with:
+
+<pre>
+sudo apt-get install software-properties-common
+sudo apt-get update
+sudo apt-get install g++ make openjdk-8-jdk maven avahi-daemon uuid-dev curl patch git libxapian30 libxapian-dev zlib1g
+</pre>
+
+Check the version of java with @java -version@. You must use Java 8, as older and newer versions aren't compatible. If it's not using Java 8, run @sudo update-alternatives --config java@ to set the correct version. Or, non-interactively:
+
+<pre>
+sudo /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
+</pre>
+
+Install PostgreSQL 10 with:
+
+<pre>
+sudo apt-get install postgresql-10 postgresql-server-dev-10 postgresql-contrib-10
+</pre>
+
+[SNIPPET platform/build/postgresql-local-user]
+
+Disable the PostgreSQL daemon and allow the current user to run the server with:
+
+<pre>
+sudo /etc/init.d/postgresql stop
+sudo update-rc.d postgresql disable
+</pre>
+
+
+h2. Setting up PostgreSQL
+
+Create a database as the current user:
+
+<pre>
+mkdir -p ~/haplo-dev-support/pg
+/usr/lib/postgresql/10/bin/initdb -E UTF8 -D ~/haplo-dev-support/pg
+</pre>
+
+
+h2. Running PostgreSQL for development and testing
+
+Whenever you want to run the database, firstly, recreate the @/var/run/postgresql@ directory, as @/var/run@ gets wiped on every boot.
+
+<pre>
+sudo mkdir -p /var/run/postgresql
+sudo chmod a+rwx /var/run/postgresql
+</pre>
+
+Then, leave the following command running in a terminal window:
+
+<pre>
+/usr/lib/postgresql/10/bin/postmaster -D ~/haplo-dev-support/pg
+</pre>
+
+Open another terminal window now, before moving on to building Haplo.
+
+
+[SNIPPET platform/build/building-haplo]
+
+
+[SNIPPET platform/build/run-test-suite]
+
+If more than one or two tests fail, your system doesn't have enough memory.
+
+
+[SNIPPET platform/build/running-server]
+
+<pre>
+cd ~/haplo
+db/init_app.sh haplo test.`hostname`.local "Test application" sme 4000
+db/create_app_user.sh test.`hostname`.local "Ben Summers" ben@example.com password
+echo Visit http://test.`hostname`.local:8080 in your browser.
+</pre>
+
+The Haplo server will use multicast DNS to broadcast the hostname for the application, so a web browser on the machine on which the VM is running should be able to connect to the server on the address printed by the @echo@ command.
+
+You need to make sure your host OS can resolve multicast DNS:
+
+*Mac OS X*: Supports multicast DNS out of the box.
+
+*Linux*: Ensure the @avahi-daemon@ package is installed on the host OS.
+
+*Windows*: There isn't a good multicast DNS implementation for Windows. Find the IP address of the VM by running @ipconfig -a@ in the VM, then add the application hostnames to the @C:\Windows\System32\Drivers\etc\hosts@ file on the Windows host.
+
+
+[SNIPPET platform/build/server-login]
+
+
+[SNIPPET platform/build/next-steps]

@@ -1,0 +1,19 @@
+h2. Running the application in development mode
+
+After ensuring PostgreSQL is running under the current user (see instructions above), initialise the database with:
+
+<pre>
+db/init_dev_db.sh
+</pre>
+
+You only need to do this once.
+
+To run the Haplo server:
+
+<pre>
+script/server
+</pre>
+
+Haplo runs as a multi-tenant application server, so before we can log into the server, we need to create an application.
+
+In another terminal window:

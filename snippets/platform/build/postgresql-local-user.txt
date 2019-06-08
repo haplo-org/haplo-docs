@@ -1,0 +1,1 @@
+This will initialise and run the PostgreSQL server. However, when testing and developing Haplo, you need to run PostgreSQL as the same user as the Haplo process. (In deployment, PostgreSQL runs under a different user.)

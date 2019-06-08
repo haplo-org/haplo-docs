@@ -1,0 +1,17 @@
+title: Development build
+long_title: Building the Haplo Platform for development
+--
+
+These instructions apply when you are building the Haplo Platform to perform development on the platform itself. Note that most Haplo functionality is built as plugins on top of the platform, so the Platform is deliberately slow moving and you are more likely to need to modify plugins than the platform.
+
+h2. Linux (Ubuntu Server LTS)
+
+We recommend you try Haplo in a VM running 64 bit Ubuntu Server with at least 4GB of memory: [node:platform/build/ubuntu:Build and run Haplo on Ubuntu Server]
+
+h2. macOS
+
+We've also ported Haplo to macOS. It's not an ideal platform, so the instructions can be a bit fiddly: [node:platform/build/darwin:Build and run Haplo on macOS]
+
+h2. Plugin development on the development platform
+
+When you're running a development server, you need to perform [node:platform/build/develop-plugin:additional setup to use the Plugin tool].
