@@ -1,5 +1,5 @@
 title: Digital Ocean
-long_title: Running under Docker on Digiital Ocean
+long_title: Running under Docker on Digital Ocean
 --
 
 You can run Haplo as a pre-built container, using the preconfigured Docker Droplet on "Digital Ocean":https://www.digitalocean.com/.
