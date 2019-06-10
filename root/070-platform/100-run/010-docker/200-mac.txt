@@ -1,0 +1,43 @@
+title: MacOS
+long_title: Running under Docker Desktop on a Mac
+--
+
+You can run Haplo as a pre-built container locally on a Mac using "Docker Desktop":https://www.docker.com/products/docker-desktop.
+
+h3. Pre-install planning
+
+You need to create a location for persistent storage. Because containers are stateless, the data has to live outside the image. For example,
+
+<pre>
+mkdir ~/haplo-data
+</pre>
+
+You will need to decide on the name you're going to use for your Haplo installation. For example, if you want your Haplo installation to be available at the URL:
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+then you need to edit @/private/etc/hosts@ to add @haplo.your.site.name@ as an alias for 127.0.0.1.
+
+This name will also be used in the configuration file below.
+
+[SNIPPET platform/run/docker-seed]
+
+With the initial configuration ready, run the Haplo Docker image. You need to map network ports and the persistent storage.
+
+<pre>
+docker run -p 80:8080 -p 443:8443 -v ~/haplo-data:/haplo haploorg/haplo-app
+</pre>
+
+This will download the Haplo image, map the network ports 80 (for http) and 443 (for https), and mount your persistent storage in the correct place inside the container.
+
+The first time you run the container, it will take a little while to populate the database, create a self-signed certificate, set up an application, and start the application server. You can then go to
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+in your web browser and log in using the email address and password details you put in the configuration. (You will get a security warning from your web browser due to the use of a self-signed certificate.)
+
+Subsequent runs of the container will just load the data from the persistent storage, and won't need the initialization step. Once configured, you can go and delete the @app.values@ file.
