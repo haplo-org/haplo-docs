@@ -9,7 +9,7 @@ h3. Check Java is installed
 
 To check Java is installed, in a Terminal window, type @java -version@
 
-You must have Java 8 or later. The version number shown will be prefixed with '1.', so Java 8's version will be shown as '1.8'.
+You must use Java 8. The version number will be shown as '1.8'. (Later versions of Java will be supported when the JRuby runtime is compatible.)
 
 If you get an error, or need to update to Java 8, download "Java":https://java.com and install it in the default folder. Repeat the @java -version@ command to check it installed correctly.
 
