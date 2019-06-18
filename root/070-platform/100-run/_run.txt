@@ -9,7 +9,11 @@ In environments where this is not possible, you can run it on [node:platform/run
 
 h2. Plugin debugging
 
-To enable plugin debugging mode so you can develop plugins with the [node:dev/tool/plugin], configure the server with
+In order to develop plugins with the [node:dev/tool/plugin], plugin debugging mode needs to be enabled on the server.
+
+If using [node:platform/run/docker:Docker], simply run the @haploorg/haplo-dev@ image instead of the @haploorg/haplo-app@ image.
+
+If running a standalone [node:platform/run/ubuntu:Ubuntu] installation, configure the server with
 
 <pre>
     echo -n yes > /opt/haplo/etc/properties/plugin_debugging_support
