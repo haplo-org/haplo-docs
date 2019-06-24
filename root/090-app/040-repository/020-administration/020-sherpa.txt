@@ -1,0 +1,10 @@
+title: Sherpa
+--
+
+Haplo integrates with SHERPA tools to provide reference and guidance information on publisher and journal requirements to users at appropriate stages in the workflow.
+
+This guides users towards compliance with publisher and journal regulations, minimising the administrative effort for repository managers and ensuring the compliance of outputs uploaded into the repository.
+
+h3. RoMEO
+
+Publisher deposit rules for research outputs can be looked up using the SHERPA RoMEO service. Results from querying this service are displayed on the output record, displaying results for journal and publishers entered by the depositing user on the record. This allows repository managers to confirm at a glance that any files uploaded by researchers are allowed to be deposited in the repository, before they are made public. 
