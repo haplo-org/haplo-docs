@@ -10,6 +10,7 @@ We've put together more detailed instructions for running the Haplo Docker image
 
 * [node:platform/run/docker/mac]
 * [node:platform/run/docker/ubuntu]
+* [node:platform/run/docker/fedora]
 * [node:platform/run/docker/digitalocean]
 
 h3. Building the Docker image

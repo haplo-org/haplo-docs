@@ -8,6 +8,10 @@ h2. Linux (Ubuntu Server LTS)
 
 We recommend you try Haplo in a VM running 64 bit Ubuntu Server with at least 4GB of memory: [node:platform/build/ubuntu:Build and run Haplo on Ubuntu Server]
 
+h2. Linux (Fedora)
+
+If you want to use an alternative Linux distribution, this should work fine, although the commands for package installation and the package names will vary. We have an example of how to [node:platform/build/fedora:Build and run Haplo on Fedora]
+
 h2. macOS
 
 We've also ported Haplo to macOS. It's not an ideal platform, so the instructions can be a bit fiddly: [node:platform/build/darwin:Build and run Haplo on macOS]
