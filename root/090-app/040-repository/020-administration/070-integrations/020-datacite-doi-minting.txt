@@ -1,2 +1,9 @@
-title: Datacite DOI Minting
+title: DataCite DOI Minting
 --
+
+Haplo supports plug-ins to generate and assign DOIs, using DataCite, with institution-specific prefixes for these DOIs. Where a DOI is minted for the item, the DOI is automatically added to the metadata record and displayed publicly.
+
+DOIs can be created for one collection of content only and not for others, or created following any other rule as described by the institution. DOIs may be assigned automatically at a specified point in the ingest process, for example after approval of a record for deposit, or requested manually by repository managers.
+
+Metadata and the link to a public landing page is stored in DataCite, and is updated when the item is revised. Institution specific policy controls which items and what metadata is stored, and how versions of items are managed.
+
