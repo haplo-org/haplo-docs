@@ -4,7 +4,7 @@ long_title: Running under Docker
 
 If you have a system capable of running "Docker":https://www.docker.com/, you can run Haplo as a pre-built container. This might be on a Linux server with Docker installed, or on a Mac or PC using "Docker Desktop":https://www.docker.com/products/docker-desktop.
 
-Because Haplo needs persistent storage to keep your data, it need to be run on a platform that supports persistent storage, which rules out Amazon ECS and Fargate.
+Because Haplo needs persistent storage to keep your data, it needs to be run on a platform that supports persistent storage, which rules out Amazon ECS and Fargate.
 
 We've put together more detailed instructions for running the Haplo Docker image on a number of platforms:
 
