@@ -12,7 +12,7 @@ h3(function). respond(methods, path, argDeclarations, handlerFunction)
 
 Declare that this plugin responds to a URL. See [node:plugin/request-handling] for how it's used.
 
-Methods declares the HTTP methods this handler will respond to. Acceptable values are @"GET"@, @"POST"@ and @"GET,POST"@. You can declare two handlers for a single @path@ if one responds to @GET@ and the other @POST@, which is handy for avoiding conditional checks on the HTTP method in the handler functions while still having pleasant URL schemes.
+Methods declares the HTTP methods this handler will respond to. Acceptable values are @"GET"@, @"POST"@, @"PUT"@ and @"GET,POST"@. You can declare two handlers for a single @path@ if one responds to @GET@ and the other @POST@, which is handy for avoiding conditional checks on the HTTP method in the handler functions while still having pleasant URL schemes.
 
 @path@ is the URL to be handled. It must begin with @/do/@ or @/api/@.
 
