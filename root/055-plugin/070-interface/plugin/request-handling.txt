@@ -47,7 +47,9 @@ The argument value will be obtained from the request parameters, either from the
 
 h3(key). body: "body"
 
-The argument value will be obtained from the HTTP request body, treated as a UTF-8 string.
+If @as@ is set to @"binaryData"@, then the request body will be passed to the handler function as a [node:plugin/interface/binary-data] object. Response size limits will not apply to this request handler, so large files can be used as bodied for @POST@ requests.
+
+Otherwise, the argument value will be obtained from the HTTP request body, treated as a UTF-8 string. The request body will be limited to around 1MB.
 
 The value of the property must be the string @"body"@.
 
@@ -111,6 +113,11 @@ The value is passed to the handler as a [node:plugin/interface/binary-data] obje
 Unless it is stored using [node:plugin/o/constructor/file], the uploaded file will be deleted at the end of the request.
 
 You should consider using a form with a [node:plugin/form/specification/file:file element] instead.
+
+
+h3(value). as: "binaryData"
+
+For @body@ arguments only, pass the value as a [node:plugin/interface/binary-data] object and lift the request body size limits.
 
 
 h3. Argument validation
