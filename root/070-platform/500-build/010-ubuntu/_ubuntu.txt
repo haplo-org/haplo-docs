@@ -1,0 +1,13 @@
+title: Ubuntu Server
+long_title: Build on Ubuntu Server
+--
+
+Download "Ubuntu Server LTS":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated.
+
+If you just want to run a Haplo server with a minimum of fuss, go straight to the [node:platform/run] documentation.
+
+Due to the fact that different Ubuntu releases ship with different names and versions of packages, the instructions differ slightly between releases. Please select the Ubuntu version you're using from the list below:
+
+* [node:platform/build/ubuntu/1904]
+* [node:platform/build/ubuntu/1804]
+* [node:platform/build/ubuntu/1604]

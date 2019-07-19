@@ -1,0 +1,37 @@
+title: Production server
+long_title: Running the Haplo Platform in production
+--
+
+The easiest way to run a production Haplo Platform server is to use [node:platform/run/docker:Docker].
+
+In environments where this is not possible, you can run it on [node:platform/run/ubuntu:Ubuntu].
+
+
+h2. Plugin debugging
+
+In order to develop plugins with the [node:dev/tool/plugin], plugin debugging mode needs to be enabled on the server.
+
+If using [node:platform/run/docker:Docker], simply run the @haploorg/haplo-dev@ image instead of the @haploorg/haplo-app@ image.
+
+If running a standalone [node:platform/run/ubuntu:Ubuntu] installation, configure the server with
+
+<pre>
+    echo -n yes > /opt/haplo/etc/properties/plugin_debugging_support
+</pre>
+
+and then restart the server.
+
+
+h2. Plugins in production
+
+In production applications, plugins are "packed" and then placed in a subdirectory in @/haplo/plugins@ on the server.
+
+To pack a directory of plugins, use the @pack@ command of the [node:dev/tool/plugin].
+
+<pre>
+    haplo-plugin -p ALL --output /path/to/temp/directory/live pack
+</pre>
+
+Then transfer the @live@ directory to @/haplo/plugins@ on the server.
+
+Plugins may be updated while the server is running with zero downtime. After updating plugins in @/haplo/plugins@, run the @script/reload-third-party-plugins@ from the platform command prompt.

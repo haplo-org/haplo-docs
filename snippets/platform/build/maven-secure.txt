@@ -1,0 +1,1 @@
+Configure Maven to download over HTTPS with a @~/.m2/settings.xml@ file from the "instructions here":http://central.sonatype.org/pages/consumers.html#apache-maven.

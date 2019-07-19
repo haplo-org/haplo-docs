@@ -1,0 +1,10 @@
+h2. Running the test suite
+
+After ensuring PostgreSQL is running under the current user (see instructions above), run the test suite with:
+
+<pre>
+script/test
+</pre>
+
+If you see something like @'ERROR: could not access file ".../xapian_pg/oxp": Permission denied'@ then you are not running postgres as the same user as the test process.
+
