@@ -7,6 +7,3 @@ Haplo presents data in a format that can be uploaded to Researchfish, as a precu
 
 h2. CERIF
 Haplo sits within the CERIF framework for CRIS systems, using similar and compatible concepts to describe institutional information.
-
-h2. VIVO
-Haplo can be configured using the VIVO ontology for VIVO compliance.

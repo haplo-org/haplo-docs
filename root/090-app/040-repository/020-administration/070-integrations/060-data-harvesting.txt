@@ -6,5 +6,3 @@ Haplo integrates with industry standard systems to enable researchers to harvest
 When harvested items are matched to an existing researcher profile, the system prompts the user to confirm or disclaim them.
 
 To speed up metadata quality checks, repository editors are given clear notices in the user interface, indicating that the record was harvested from an external source, which external source the record was harvested from, and any fields that have been updated within Haplo if this is an update to an existing record.
-
-Haplo is able to draw publication metadata and citation information from external databases to which the institution subscribes or to which a free licence is available, such as: Web of Science by Thomson Reuters; Scopus by Elsevier; PubMed; Crossref; ORCID; EuropePMC; Figshare; Altmetric; Mendeley; and JISC Router.

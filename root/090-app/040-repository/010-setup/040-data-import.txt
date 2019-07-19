@@ -26,9 +26,3 @@ The best method for importing data from a legacy system is to develop a plugin t
 
 The repository has functionality to import records from external sources in a number of common formats (eg. Datacite XML, Dublin Core XML, etc.), which may be suitable depending on your institutions' requirements.
 
-
-h2. Google rankings
-
-Haplo public repositories follow Google Webmaster's best practice guides, and use HTTPS throughout, meaning that migrating systems should not harm your search rankings. In fact, if your legacy system used HTTP, it's likely that your Haplo Repository will be higher ranked in searches.
-
-Repositories also include @<meta>@ tags in the HTML of each output's landing page that are picked up by common site crawlers such as Google Scholar, ensuring outputs are well indexed.

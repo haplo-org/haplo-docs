@@ -5,9 +5,3 @@ long_title: Haplo Repository plugins
 To begin, setup [node:app/research].
 
 Then install your desired plugins from the open source "Haplo Repository plugins":https://www.haplo-services.com/docs/Haplo_Repository_Open_Source_Plugins.pdf
-
-h3. For development environments
-
-
-
-h3. For production environments
