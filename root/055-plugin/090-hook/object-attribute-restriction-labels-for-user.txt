@@ -7,7 +7,7 @@ This hook allows plugins to lift [node:plugin/schema/restrictions:restrictions] 
 For efficiency, this does not affect searches. Adding a per-object rule does not allow a user to search by attributes that are restricted.
 
 <pre>language=javascript
-P.hook("hObjectAttributeRestrictionLabelsForUser", function(response, user, object) {
+P.hook("hObjectAttributeRestrictionLabelsForUser", function(response, user, object, container) {
     if(isAuthorOf(user, object)) {
         response.userLabelsForObject.add(Label.LiftAllEmbargoRestrictions);
     }
