@@ -27,12 +27,12 @@ Returns a similar string to @toString()@, but with the text elements surrounded 
 
 h3(property). start
 
-The start time of the range in the GMT timezone, as a JavaScript @Date@ object.
+The start time of the range in the UTC timezone, as a JavaScript @Date@ object.
 
 
 h3(property). end
 
-The end time of the range in the GMT timezone, as a JavaScript @Date@ object.
+The end time of the range in the UTC timezone, as a JavaScript @Date@ object.
 
 There will always be an end date, but if a range end was not explicitly specified when the @DateTime@ object was created, it will be generated using the @start@ and @precision@. Use the @specifiedAsRange@ property if you need to determine if it is an explicit range.
 
