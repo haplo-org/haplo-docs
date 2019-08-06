@@ -1,0 +1,5 @@
+title: hLabelAttributeGroupObject
+class: HookNode
+--
+
+@hLabelAttributeGroupObject@ is one of the building blocks of grouped attributes.
