@@ -7,7 +7,7 @@ They may only refer to 1) values which are not modified by this form, 2) values 
 
 Conditional statements are defined using JSON compatible data structures, as functions cannot be serialised into JSON.
 
-The @path@ property is used to refer to a value in the form.
+The @path@ property is used to refer to a value in the form. See [node:plugin/form/value-path] for details.
 
 The @externalData@ property specifies the key which refers to the external data value set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance]. This is ignored if @path@ property is specified and it is a simple dictionary key so it doesn't behave like @path@ property.
 
