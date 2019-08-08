@@ -2,4 +2,4 @@ title: hLabelAttributeGroupObject
 class: HookNode
 --
 
-@hLabelAttributeGroupObject@ is one of the building blocks of grouped attributes.
+@hLabelAttributeGroupObject@ is one of the building blocks of grouped attributes. It applies labels to an [node:plugin/schema/attribute-groups:attribute group object], used to apply restrictions to a attribute group.
