@@ -19,6 +19,7 @@ The template is rendered with a view containing two properties:
 
 |@view@|The @view@ from the specification.|
 |@context@|The current context within the document (ie root of the document, current section, or element in repeating section).|
+|@externalData@|The external data that was set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance].|
 
 
 h2. Example

@@ -70,6 +70,13 @@ Sets instance choices for use by @choice@ elements. This must be called before @
 Use one of the Array formats described in [node:plugin/form/specification/choice#Specifying_the_choice_list].
 
 
+h3(function). externalData(source)
+
+Shallow copies all properties (arbitrary key/value pairs) in the source object to the @externalData@ object that is used by [node:plugin/form/conditional-statement], [node:plugin/form/custom-validation] and [node:plugin/form/specification/render-template]. This must be called before @update()@ or @renderForm()@.
+
+Use this instead of modifying the document just to have something available to the form in order to include form elements etc.
+
+
 h3(function). customValidation(name, fn)
 
 Register a [node:plugin/form/custom-validation#Validation_function:custom validation function]. See [node:plugin/form/custom-validation] for details.

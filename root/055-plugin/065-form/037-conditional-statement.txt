@@ -3,16 +3,20 @@ title: Conditional statements
 
 Conditional statements are used with @required@, @inForm@ and @inDocument@ properties to make them conditional on values in the document.
 
-They may only refer to 1) values which are not modified by this form, or 2) values which are modified by an element which is defined by *before* this element.
+They may only refer to 1) values which are not modified by this form, 2) values which are modified by an element which is defined by *before* this element, or 3) external data values set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance].
 
 Conditional statements are defined using JSON compatible data structures, as functions cannot be serialised into JSON.
+
+The @path@ property is used to refer to a value in the form.
+
+The @externalData@ property specifies the key which refers to the external data value set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance]. This is ignored if @path@ property is specified and it is a simple dictionary key so it doesn't behave like @path@ property.
 
 The @operation@ property defines what operation is performed.
 
 
 h2. Equality and inequality
 
-Use the @"==="@ operation to test the value at @path@ for equality with a constant value, and the @"!=="@ operation to test for inequality.
+Use the @"==="@ operation to test the value at @path@ or @externalData@ for equality with a constant value, and the @"!=="@ operation to test for inequality. Example:
 
 <pre>language=javascript
     {
@@ -22,10 +26,27 @@ Use the @"==="@ operation to test the value at @path@ for equality with a consta
     }
 </pre>
 
+@"="@ and @"=="@ are aliases of @"==="@.
+
+@"!="@ is alias of @"!=="@.
+
+
+h2. Relational
+
+Use the @"<"@, @"<="@, @">"@ or @">="@ operation to test the value at @path@ or @externalData@ for being smaller than, smaller than or equal to, greater than, or greater than or equal to respectively with a constant value. Example:
+
+<pre>language=javascript
+    {
+        "path": "path.to.value",
+        "operation": "<",
+        "value": 5
+    }
+</pre>
+
 
 h2. Defined and undefined values
 
-Use the @"defined"@ and @"not-defined"@ operations to test whether value at @path@ is present in the document.
+Use the @"defined"@ and @"not-defined"@ operations to test whether value at @path@ is present in the document or value at @externalData@ is present in the external data.
 
 <pre>language=javascript
     {
@@ -37,7 +58,7 @@ Use the @"defined"@ and @"not-defined"@ operations to test whether value at @pat
 
 h2. Value is contained in an array
 
-Use the @"contains"@ and @"not-contains"@ operations to test whether the array at @path@ contains (or doesn't contain) a given value.
+Use the @"contains"@ and @"not-contains"@ operations to test whether the array at @path@ or @externalData@ contains (or doesn't contain) a given value.
 
 <pre>language=javascript
     {
@@ -50,7 +71,7 @@ Use the @"contains"@ and @"not-contains"@ operations to test whether the array a
 
 h2. Array has a minimum count
 
-Use the @"minimum-count"@ operation to test whether the array at @path@ has at least the given number of elements.
+Use the @"minimum-count"@ operation to test whether the array at @path@ or @externalData@ has at least the given number of elements.
 
 <pre>language=javascript
     {
