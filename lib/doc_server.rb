@@ -10,11 +10,18 @@ require 'webrick'
 class DocServer
 
   PORT = 8899
+  @@running = false
+
+  def self.running?
+    @@running
+  end
 
   def self.run
     server = WEBrick::HTTPServer.new(:Port => PORT, :AccessLog => [])
     server.mount('/', DocHandler, 'web/static')
+    server.mount('/images', DocHandler, 'images')
     puts "Running documentation server at http://#{`hostname`.chomp}.local:#{PORT} ..."
+    @@running = true
     server.start
   end
 

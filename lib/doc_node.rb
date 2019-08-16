@@ -137,6 +137,7 @@ class DocNodeTextile < DocNodeWithHeaders
 
   def body_html
     body = DocSnippets.replace_snippets(body_textile)
+    body = DocImages.replace_image_markers_with_html(body, self.url_path)
     html = RedCloth.new(body, [:no_span_caps]).to_html
     # Anchor points for headings
     ids_used_in_template = Documentation.get_ids_used_in_template

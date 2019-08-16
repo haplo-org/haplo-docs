@@ -1,0 +1,17 @@
+
+<% if image_exists %>
+
+  <div class="doc-image">
+    <img src="<%= h(web_path) %>" width="<%= scaled_x %>" height="<%= scaled_y %>"<% if caption then %> alt="<%= h(caption) %>"<% end %>>
+    <% if caption %>
+      <div class="doc-image-caption">
+        <%= h(caption) %>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <div style="color:#f0f; font-size:24px">
+    IMAGE <%= h(image_name) %> DOES NOT EXIST.<br><span style="font-size:12px">Should be at <input type="text" value="<%= h(File.expand_path disk_dir) %>" length="150"> (copy this, then use Go / Go to folder... in Finder)</span>
+  </div>
+<% end %>
