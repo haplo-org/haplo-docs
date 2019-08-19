@@ -1,0 +1,121 @@
+title: Excel to JSON
+--
+
+Some applications need to read data from Excel files. The platform provides a conversion from Excel spreadsheet formats to a compact JSON representation.
+
+
+h2. Reading a spreadsheet
+
+Use the [node:plugin/files/transform/convert] pipeline conversion step to convert the input file to the @application/vnd.haplo.spreadsheet+json@ MIME type.
+
+<pre>language=javascript
+// get a File object from the object store
+let file = O.file(...);
+// TODO: Change pipeline name
+let pipeline = O.fileTransformPipeline("example_plugin:excel_to_json");
+pipeline.file("input", file);
+pipeline.transform("std:convert", {
+  mimeType: "application/vnd.haplo.spreadsheet+json"
+});
+pipeline.execute();
+</pre>
+
+This will convert the spreadsheet in the background, then call the [node:plugin/interface/plugin/file-store:pipeline callback] with the converted data.
+
+<pre>language=javascript
+P.fileTransformPipelineCallback("example_plugin:excel_to_json", {
+    success: function(result) {
+        let converted = result.file("output");
+        let json = JSON.parse(converted.readAsString());
+        // TODO: Consume spreadsheet data
+        console.log(json);
+    }
+});
+</pre>
+
+
+h2. JSON format
+
+The JSON data structure is designed to be compact, rather than readable. Here's an example of a simple spreadsheet:
+
+
+<pre>language=json
+{
+  "format": "application/vnd.haplo.spreadsheet+json",
+  "sheets": [
+    {
+      "name": "Sheet1",
+      "rows": [
+        [],
+        [null, {"t":0, "v":"abc"}],
+        [{"t":1, "v":1000.2}]
+      ]
+    },
+    {
+      "name": "Another sheet",
+      "rows": [
+        [{"t":4, "v":"4+8", "ct":1, "cv":12.0}]
+      ]
+    }
+  ]
+}  
+</pre>
+
+
+h3. Top level
+
+h3(property). format
+
+The format of the data, which is always @"application/vnd.haplo.spreadsheet+json"@. If the format changes, a new MIME type will be used.
+
+
+h3(property). sheets
+
+An array of Sheets.
+
+
+h3. Sheets
+
+Each sheet has the properties:
+
+h3(property). name
+
+The name of the sheet, as shown to the user.
+
+h3(property). rows
+
+An array of rows. Each row is represented as an array of Cells or @null@ if there is no data in that cell. A row may be the empty array.
+
+
+h3. Cells
+
+Each cell has the properties:
+
+h3(property). t
+
+The type of the data, as a numeric value.
+
+|@0@|String|
+|@1@|Numeric|
+|@2@|Date, as a string which can be parsed with @new Date(v)@|
+|@3@|Boolean, as @true@ or @false@|
+|@4@|Formula (has cached value)|
+|@9@|Blank cell (no @v@ property present)|
+|@-1@|Other data type, converted to a string with default formatting.|
+
+
+h3(property). v
+
+The value of the cell. The type of value will depend on the @t@ property.
+
+
+h3(property). ct
+
+(Formula values *only*) The type of the cached value.
+
+
+h3(property). cv
+
+(Formula values *only*) The cached value. The type of value will depend on the @ct@ property.
+
+Excel stores the calculated value of the cell as well as the formula. It should be correct, but if other software has modified the spreadsheet, it might not be.
