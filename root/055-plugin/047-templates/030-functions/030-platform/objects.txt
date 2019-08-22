@@ -13,7 +13,7 @@ Render @object@ in the given @style@.
 
 |*Name*|*Purpose*|
 |@"generic"@|Generic rendering|
-|@"standardview"@|Standard view for display in a web page|
+|@"generalview"@|Standard view for display in a web page|
 |@"linkedheading"@|Heading with icon and link to object|
 |@"searchresult"@|Entry in search results|
 |@"searchresultmini"@|Entry in mini search results|
