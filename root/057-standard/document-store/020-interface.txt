@@ -103,7 +103,7 @@ P.respond("GET,POST", "/do/example-plugin/edit-form", [
             E.response.redirect("/do/example-plugin/edit-form/"+
                 instance.key.workUnit.id+"/"+formId);
         },
-        render: function(instance, E, html) {
+        render: function(instance, E, deferredRender) {
             E.render({
                 // ...
             });
