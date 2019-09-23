@@ -1,0 +1,9 @@
+title: Collections/Portfolios
+--
+
+Haplo supports a wide range of outputs from practice based research and enables the creation of collection portfolios to display related work. 
+
+The portfolio record is automatically populated with data from each item which forms the portfolio. The ingest workflow supports appropriate business logic to be implemented for deposit of portfolios. Haplo's public interface supports the display of portfolios.
+
+h3. How to setup collection handling
+
