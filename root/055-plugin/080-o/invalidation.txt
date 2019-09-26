@@ -22,3 +22,8 @@ Avoid using this function. It should not be necessary for most plugins. Using an
 h3(function). O.reloadNavigation()
 
 Invalidates the cached left hand navigation for all users.
+
+
+h3(function). O.reloadPlatformDynamicFiles()
+
+Invalidates the platform's dynamic files for all users. These files include the dynamically generated CSS, to which plugins can append CSS with [node:plugin/hook/main-application-css].
