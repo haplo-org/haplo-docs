@@ -14,6 +14,7 @@ Render @object@ in the given @style@.
 |*Name*|*Purpose*|
 |@"generic"@|Generic rendering|
 |@"generalview"@|Standard view for display in a web page|
+|@"table"@|Standard view rendered as an HTML table, most useful for [node:plugin/files/transform/generate-formatted-text:generated files]|
 |@"linkedheading"@|Heading with icon and link to object|
 |@"searchresult"@|Entry in search results|
 |@"searchresultmini"@|Entry in mini search results|
