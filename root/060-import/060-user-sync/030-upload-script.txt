@@ -39,7 +39,16 @@ curl -X POST --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/start
 
 h3. Example script for Windows
 
-For Windows servers, we recommend the use of the "User Sync Uploader":https://github.com/haplo-org/haplo-user-sync-uploader utility (contact your support contact for a compiled binary if needed), for which the equivalent script looks like:
+For Windows servers, we recommend the use of the "User Sync Uploader":https://github.com/haplo-org/haplo-user-sync-uploader utility.
+
+You can download a binary from "the releases page":https://github.com/haplo-org/haplo-user-sync-uploader/releases. Checksums for the .exe downloads are:
+
+|*Version*|*SHA256 checksum*|
+|20190924|@f362d0ab8b3a293e001597a22efbefe33d1f2ac7b55b6d4b8d7c4360762032fd@|
+
+At least .NET 4.7 is required for TLS 1.2 support, which is required for connecting to Haplo applications.
+
+An example upload script is: 
 
 <pre>
 set HAPLO_API_KEY=YOUR_API_KEY_HERE
