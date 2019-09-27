@@ -15,6 +15,11 @@ HSVT has a [node:plugin/templates/hsvt-language:simple structure] made up of vie
 Template functions implement control flow, rendering of common HTML widgets, and include additional templates.
 
 
+h2. Internationalisation
+
+HSVT templates integrate with the Platform [node:plugin/i18n:internationalisation] features through the [node:plugin/templates/functions/i18n:i() translated text] function.
+
+
 h2. Directory layout
 
 Templates are stored in the @template@ (singular) directory as files with the @.hsvt@ extension. See [node:plugin/directory-structure].

@@ -1,0 +1,95 @@
+title: Text in plugins
+--
+
+Text in plugins must be marked for translation. Most of the text should be within the plugin's [node:plugin/templates:templates], with a small amount inline in the JavaScript code.
+
+h2. Text in templates
+
+Your templates should mark all strings for translation. An example template before translation might look like:
+
+<pre>language=hsvt
+<p> "Dear " user.name "," </p>
+<p> "This is an example notification." </p>
+<p> "There are " count " and they are " itemColour "." </p>
+</pre>
+
+After translation, the @i()@ template function is used to mark text, and the template looks like:
+
+<pre>language=hsvt
+<p> i("Dear {},") { user.name } </p>
+<p> i("This is an example notification.") </p>
+<p> i("There are {count} and they are {}.")
+        {itemColour} count{count}
+</p>
+</pre>
+
+It is important to note that the untranslated version uses small strings with values from the view included between them. But in the translated version, there is a single string, and the values are interpolated into them using the @{}@ notation. The plain @{}@ includes the anonymous block, and @{name}@ includes a named block.
+
+This is important for two reasons:
+
+* The strings are self-contained, so the translator can see the entire text to be translated.
+* Different languages may need the interpolations in a different order.
+
+Interpolation also allows you to handle plurals correctly. In English, you say "There are 23 items", but "There is 1 item". Other languages have even more complex rules. This example might be written as:
+
+<pre>language=hsvt
+<p>
+  i("There {,plural,one{is} other{are}} {} {,plural,one{item} other{items}}")
+    { count }
+</p>
+</pre>
+
+This syntax specifies all the possible options given the count. The translation of this string can include completely different plural rules.
+
+See the [node:plugin/templates/functions/i18n:full documentation for the i() template function].
+
+
+h2. Text in JavaScript
+
+You should prefer to put all your text in templates. As well as containing all the text in the files which implement the user interface, it also has more features for interpolating values and handling plurals.
+
+If you need to include text in your plugin, follow this style exactly so automated tools can be used.
+
+Firstly, get the [node:plugin/interface/locale#text:text] for the current locale. This code should be in a place where it is only called once in your function, and ideally only if text will be translated.
+
+<pre>
+  let i = P.locale().text("template");
+</pre>
+
+Then, instead of writing a literal string, write:
+
+<pre>
+  i["Hello World!"]
+</pre>
+
+Note that square brackets are used with @i[]@, which is different from @i()@ in templates.
+
+For example,
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/example/action", [
+], function(E) {
+    if(E.request.method === "POST") {
+        // do something
+    }
+    let i = P.locale().text("template");
+    E.render({
+        pageTitle: i["Perform Special Action"],
+        text: i["Would you like to perform the special action?"],
+        options: [{label:i["Confirm"]}]
+    }, "std:ui:confirm");
+});
+</pre>
+
+See the [node:plugin/interface/locale:full documentation for the Locale interface].
+
+
+h2. Extracting text ready for translation
+
+When you have finished a plugin, you can extract all text as JSON files for your translator, using the plugin tool:
+
+<pre>
+  haplo-plugin -p example_plugin extract-text
+</pre>
+
+A JSON file will be output which includes all the text found in templates, JavaScript files, and the strings file for the default locale.
