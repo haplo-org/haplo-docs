@@ -1,0 +1,49 @@
+title: Guidance
+long_title: Guidance on translating plugins
+--
+
+This page describes a recommended approach to writing plugins which can be internationalised.
+
+h2. General
+
+* As far as possible, put all text in templates. This includes things like [node:plugin/templates/functions/ui#pageTitle].
+
+* Templates have much better functionality for handling complex translatable strings, including interpolations and plurals. Don't write this code in JavaScript. If it really can't go in a template, write a template anyway, then @render()@ it into a string.
+
+* If you really can't avoid using text in JavaScript, follow the [node:plugin/i18n/text-in-plugin#Text_in_JavaScript:text coding style] so the plugin tool can pick up translated text, and it really obvious to anyone reading your code what it's doing.
+
+* Prefer to translate the actual text in your default locale. But if doing that would be ambiguous for the translator, do it as an [node:plugin/i18n/resources#Identifiers:identifier], and put the text in your @i18n/local/en.template.json@ file immediately.
+
+* Don't put leading or training whitespace in a translated string, as there's too much risk it'll get lost when it's translated. In a template, write @i("Confirm:") " "@, don't translate the string @"Confirm: "@.
+
+* Always use interpolation rather than assembling the output from component parts. Languages change the order, and translators need to see the full context of the string.
+
+* Only translate @O.stop()@ messages if it's intended the user will see them. Eg @"Workflow not implemented"@ should never be seen, but @"You've exceeded your quota"@ probably should be translated.
+
+* Don't translate exception messages, because only developers will see them.
+
+* Remember that the translation has to be performed when handling the request, when the user's locale is known, so you can't do the translations in 'setup' code when the plugin is loaded.
+
+* Use [node:plugin/i18n/debugging:i18n debugging] to check you have got all the text.
+
+* Do the actual translations last, when all the text is complete.
+
+
+h2. Writing a new plugin
+
+* Write translatable code in the first place. It'll be quicker to do this, than have to come back and mark it up later, as you'll be writing code in a way that's amenable to translation.
+
+
+h2. Translating an existing plugin
+
+* Do a first pass where you do all the easy changes, and mark the complex tasks with @TODO I18N@ so it's easy to find the missing bits later.
+
+* Your plugin may have some "administrative" user interface for troubleshooting. Consider whether it's necessary to translate this, as it will take you longer to translate the plugin, and the cost of translation will be higher.
+
+* If you are trying to translate text in 'setup' code, you might find defining a getter with @__defineGetter__@ allows you to get request time translation without having to rewrite the code which uses the data structures.
+
+* Define macros in your text editor to make surrounding text with @i()@ or @i[]@ a single keypress.
+
+* Legacy [node:plugin/misc/handlebars:Handlebars templates] will need to be converted to HSVT.
+
+* Test the full functionality of the plugin to make sure you have got all the text, and the UI still works.
