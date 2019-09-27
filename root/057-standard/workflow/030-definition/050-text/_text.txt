@@ -23,6 +23,12 @@ By default, the @NAME(name)@ interpolation calls the [node:plugin/misc/name] fun
 
 You can retrieve the text string from the name by calling [node:standard/workflow/interfaces/instance:getTextMaybe()] on an instance of that workflow.
 
+h2. Internationalisation and translation
+
+After a string has been found by the text system, it is translated using the @workflow@ category of [node:plugin/i18n/resources:internationalisation resources], using the implementing plugin's resources.
+
+Translation for [node:plugin/i18n:internationalisation] happens before interpolation.
+
 h2. Searching for strings
 
 To avoid having to set lots of strings for every possible case, the text system has a list of string it'll search. The most specific string will be used.

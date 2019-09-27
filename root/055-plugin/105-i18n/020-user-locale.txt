@@ -1,0 +1,18 @@
+title: User's locale
+--
+
+Each user has a configured locale. This can be set for the user, or inherited from a Group.
+
+CLICK_PATH TOOLS > Users > (user name) > Localisation
+
+Click the 'Edit' button and choose the locale.
+
+To set the locale for a group,
+
+CLICK_PATH TOOLS > Groups > (group name) > Localisation
+
+This can be useful for setting the default locale for groups of users. For example, the "Madrid Office" group may find the Spanish locale a useful default.
+
+The user setting overrides any locale set on their group.
+
+Set the locale of the @Everyone@ group to set the default locale of this application.

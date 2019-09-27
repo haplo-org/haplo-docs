@@ -96,7 +96,7 @@ Use the @static@ directory for files which are to be made available over HTTP an
 
 h2. i18n
 
-Files in the @i18n@ directory support [node:plugin/i18n:internationalisation] of this plugin. They are split into @local@ and @global@ directories. @local@ provides resources for this plugin only, and @global@ provides them to the entire application. When searching for resources, @local@ takes priority.
+Files in the @i18n@ directory provide [node:plugin/i18n/resources:resources] for [node:plugin/i18n:internationalisation] of this plugin. They are split into @local@ and @global@ directories. @local@ provides resources for this plugin only, and @global@ provides them to the entire application. When searching for resources, @local@ takes priority.
 
 All filenames start with the locale ID, for example, @en.@
 
