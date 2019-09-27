@@ -1,0 +1,49 @@
+title: Locale
+long-title: Locale interface
+link_as: keyword
+--
+
+An object implementing the @Locale@ interface represents a locale used for [node:plugin/i18n:internationalisation] of a plugin.
+
+Locale objects are specific for each plugin, because their behaviour may depend on the plugin's default locale, and string translations are per-plugin.
+
+
+h2. Construction
+
+Call [node:plugin/interface/plugin/i18n#locale] on a @Plugin@ object to obtain a @Locale@ object for the current or specified locale.
+
+
+h2. Example
+
+To translate a string for the UI:
+
+<pre>language=json
+  let i = P.locale().text("template");
+  let translatedString = i["Hello world"];
+</pre>
+
+The use of @i@ for the text object is a convention to match the @i()@ template function to translate templates.
+
+
+h2. Interface
+
+h3(property). id
+
+The ID of this locale, eg @"en"@.
+
+
+h3(property). plugin
+
+The [node:plugin/interface/plugin] which created this Locale object.
+
+
+h3(property). defaultForPlugin
+
+@true@ if this Locale is the default locale for this plugin, @false@ otherwise.
+
+
+h3(function). text(category)
+
+Returns a JavaScript @Object@ for a given @category@ which acts as a dictionary to translate text.
+
+For strings which are used in the user interface, always use the @"template"@ category to match your HSVT templates.
