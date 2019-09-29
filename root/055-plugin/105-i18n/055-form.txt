@@ -1,0 +1,19 @@
+title: Forms
+long_title: Translating forms
+--
+
+[node:plugin/form:Forms] are translated using strings from the @form@ category.
+
+
+h2. Translating forms
+
+User readable strings in the specification are translated before any other interpolations (eg [node:plugin/misc/name]).
+
+Extract strings from forms by temporarily installing the @design_i18n_utility_extract_translatable@ plugin.
+
+After translation, include the translated @<localeId>.form.json@ files in your plugin.
+
+
+h2. Using translated forms
+
+You do not need to write additional code to translate forms. The user's current locale is used to automatically select the translation when displaying forms. 

@@ -47,3 +47,5 @@ h2. Translating an existing plugin
 * Legacy [node:plugin/misc/handlebars:Handlebars templates] will need to be converted to HSVT.
 
 * Test the full functionality of the plugin to make sure you have got all the text, and the UI still works.
+
+* If you are translating a large application composed of many plugins, rather than small self-contained plugins, it may be easier to extract all the text, then translate it in as a single unit. Place the translated files into a single plugin as @global@ resources.
