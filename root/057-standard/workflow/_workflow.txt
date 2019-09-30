@@ -28,6 +28,8 @@ h2. Features
 
  * Replacements system and UI, allowing users to be replaced on an ad-hoc basis
 
+ * Translation using the platform's [node:plugin/i18n/workflow:internationalisation features]
+
  * Configurable dashboard showing states of tasks
 
  * Behind-the-scenes admin UI for support and development

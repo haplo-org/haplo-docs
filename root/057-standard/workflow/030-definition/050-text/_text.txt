@@ -17,7 +17,7 @@ EgWorkflow.text({
 
 You can call @text()@ as many times as you need.
 
-All text strings are subject to interpolation by [node:standard/workflow/definition/function-lists#textInterpolate] functions.
+All text strings are subject to interpolation by [node:standard/workflow/definition/function-lists#textInterpolate] functions, and can be translated using the platform's [node:plugin/i18n/workflow:internationalisation features].
 
 By default, the @NAME(name)@ interpolation calls the [node:plugin/misc/name] function to translate names of things. Note there are no quotes within the brackets, as in the example above. See [node:plugin/misc/name#String_interpolation] for details.
 
