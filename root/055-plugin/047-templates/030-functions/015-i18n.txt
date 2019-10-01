@@ -10,6 +10,8 @@ Translates a literal string, with text from the @template@ [node:plugin/i18n/res
 
 The argument to the function must be a literal string. Using values from the view is not allowed.
 
+Text is [node:plugin/misc/name#String_interpolation:interpolated] with [node:plugin/misc/name].
+
 If the function has [node:plugin/templates/functions#Function_syntax:blocks], then the string is interpolated with values from the blocks, with insertion points marked with @{}@. See below for syntax.
 
 

@@ -19,10 +19,12 @@ To translate a string for the UI:
 
 <pre>language=json
   let i = P.locale().text("template");
-  let translatedString = i["Hello world"];
+  let translatedString = i["Please contact the NAME(Registry)"];
 </pre>
 
 The use of @i@ for the text object is a convention to match the @i()@ template function to translate templates.
+
+The word 'Registry' is replaced using the [node:plugin/misc/name] system.
 
 
 h2. Interface
@@ -45,5 +47,7 @@ h3(property). defaultForPlugin
 h3(function). text(category)
 
 Returns a JavaScript @Object@ for a given @category@ which acts as a dictionary to translate text.
+
+Text is [node:plugin/misc/name#String_interpolation:interpolated] with [node:plugin/misc/name].
 
 For strings which are used in the user interface, always use the @"template"@ category to match your HSVT templates.

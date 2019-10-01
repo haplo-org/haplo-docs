@@ -3,6 +3,8 @@ title: Text in plugins
 
 Text in plugins must be marked for translation. Most of the text should be within the plugin's [node:plugin/templates:templates], with a small amount inline in the JavaScript code.
 
+All text is [node:plugin/misc/name#String_interpolation:interpolated] with [node:plugin/misc/name].
+
 h2. Text in templates
 
 Your templates should mark all strings for translation. An example template before translation might look like:
