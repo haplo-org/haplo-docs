@@ -1,0 +1,7 @@
+long_title: Importing from other systems
+title: From other systems
+--
+
+The best method for importing data from a legacy system is to develop a plugin that reads the legacy system's native data format and converts records from that into the Haplo schema. Haplo Services will be developing these in response to our clients' requirements for hosted systems, so additional import modules will become available.
+
+The repository has functionality to import records from external sources in a number of common formats (eg. Datacite XML, Dublin Core XML, etc.), which may be suitable depending on your institutions' requirements.

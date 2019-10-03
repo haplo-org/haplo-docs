@@ -4,7 +4,7 @@ long_title: Haplo Repository plugins
 
 Setting up an Haplo Repository applciation presumes that you already have an instance of the [node:platform/run:Haplo platform] set up and available to upload plugins to. If you haven't already, set that up first.
 
-Choosing functionality is then largely a case of installing your desired plugins from the open source plugings available. The source code for these is available on "GitHub":https://github.com/haplo-org/haplo-repository, and a brief explanation of the plugins written up in our "Haplo Repository plugins guide":https://www.haplo-services.com/docs/Haplo_Repository_Open_Source_Plugins.pdf
+Choosing functionality is then largely a case of installing your desired plugins from the open source plugins available. The source code for these is available on "GitHub":https://github.com/haplo-org/haplo-repository, and a brief explanation of the plugins written has been up in our "Haplo Repository plugins guide":https://www.haplo-services.com/docs/Haplo_Repository_Open_Source_Plugins.pdf
 
 h3. Creating a root application plugin
 
