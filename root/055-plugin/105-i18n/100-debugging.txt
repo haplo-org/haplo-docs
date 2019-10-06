@@ -14,6 +14,4 @@ To disable i18n debugging, run
   haplo-plugin -s <server> i18n-debugging disable
 </pre>
 
-While i18n debugging is active, all translated plugin text is converted to CAPITAL LETTERS. Note that some text is translated by the platform, so not all text will be in capital letters.
-
-As well as highlighting translated text, it will also increase the width of the text. This is useful to ensure your user interface will still work when translated into languages with a longer average word length, such as German.
+While i18n debugging is active, all translated plugin text is surrounded by symbols to make it easy to spot the translated text. Note that some text is translated by the platform, so not all text will be marked.
