@@ -1,0 +1,69 @@
+long_title: Migrating from an existing repository
+title: Migrated systems
+--
+
+
+h3. OpenDOAR update
+
+Search for the legacy repository from the "homepage":https://v2.sherpa.ac.uk/opendoar/ and use the "Suggest an update for this record" button on the bottom of the repository's page.
+
+
+h3. IRUS-UK
+
+To ensure oputput downloads are tracked properly by Jisc's IRUS-UK service, Jisc should be informed (via their generic help@jisc.ac.uk email address) of:
+
+1) The release date (they should be warned ahead of the migration)
+
+2) The new OAI-PMH endpoint of the repository
+
+They should be provided with a mapping from old to new OAI identifiers for each item in the repository, so that they can keep track of data usage for an item across the two systems.
+
+Note that currently the IRUS statistics for the legacy and new repositories will not be combined into a single dataset in the IRUS-UK portal.
+
+
+h3. British Library's EThOS
+
+To ensure thesis records can be mapped from their old locations in the legacy repository to their new locations in Haplo, EThOS should be notified (ethos-help@bl.uk) of:
+
+1) The release date (they should be warned ahead of the migration)
+
+2) The new OAI-PMH endpoint of the repository
+
+They should be provided with a mapping from old to new OAI identifiers for each item in the repository, so that they can keep track of data usage for an item across the two systems.
+
+
+h3. Submit to Google scholar
+
+To register the new repository to be indexed, "submit here":https://partnerdash.google.com/partnerdash/d/scholarinclusions
+
+Once the new repository is well indexed (which may take a few months - Google gives no garuantees of time taken to process requests) you may wish to remove the legacy repository listing in a similar manner.
+
+
+h3. re3data.org
+
+Note: Only relevant if the repository will be used for hosting research data.
+
+"Search":https://www.re3data.org/ for the legacy system and choose the "submit a change request" link at the bottom of the record to update it to point to the new location.
+
+
+h3. Registry of Open Access Repositories
+
+"Search":http://roar.eprints.org/ for the legacy system and update the record there.
+
+
+h3. Google webmaster
+
+In the Google Webmaster console for the site, you will need to register
+
+1) the repository's change of address
+
+2) sitemaps for the old and new sites
+
+Note, it's worth using sitemaps to double check the number fo records in the old and new repositories. Treat any counts from system UI as rough guesses for legacy systems - they tend to be unreliable.
+
+
+h3. Update any links on other institutional sites
+
+Note that these might not just be to the home page, sometimes there are deep links to features. Redirects in general are only configured for output records, so links to specific pages (eg. policies) may need to be updated.
+
+
