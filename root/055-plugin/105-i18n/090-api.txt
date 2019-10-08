@@ -1,0 +1,9 @@
+title: APIs
+long_title: Internationalisation APIs
+--
+
+The platform provides APIs to build internationalised applications.
+
+The main API is through the [node:plugin/interface/locale] interface, obtained from a plugin, and the automatic translation of [node:plugin/i18n/form:forms] and [node:plugin/i18n/workflow:workflows].
+
+In addition, the platform provides some [node:plugin/o/locale:low level] and [node:plugin/interface/security-principal#Interface_internationalisation:user] APIs for use by special purpose plugins.
