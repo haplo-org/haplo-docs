@@ -36,7 +36,7 @@ h3. Submit to Google scholar
 
 To register the new repository to be indexed, "submit here":https://partnerdash.google.com/partnerdash/d/scholarinclusions
 
-Once the new repository is well indexed (which may take a few months - Google gives no garuantees of time taken to process requests) you may wish to remove the legacy repository listing in a similar manner.
+Once the new repository is well indexed (which may take a few months - Google gives no guarantees of time taken to process requests) you may wish to remove the legacy repository listing in a similar manner.
 
 
 h3. re3data.org
