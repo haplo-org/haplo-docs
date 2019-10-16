@@ -1,0 +1,16 @@
+title: Locales
+--
+
+A *locale* represents a language translation, regional features, and other technical requirements to meet the local requirements of a group of users.
+
+An individual [node:plugin/i18n/user-locale:user's locale] is configured through the management user interface or through APIs.
+
+
+h2. Locale interface
+
+The [node:plugin/interface/locale] interface is the main platform API for internationalisation features.
+
+Because Haplo applications are built from many plugins, some of which are generic and used in many applications, much of the internationalisation information is specific to a plugin, and resources are packaged within the individual plugins.
+
+@Locale@ objects are obtained from a [node:plugin/interface/plugin/i18n#locale:Plugin], and provide access to platform-wide and plugin specific internationalisation resources.
+

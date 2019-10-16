@@ -9,6 +9,8 @@ As a bonus, it can also generate a static HTML display of the data in the docume
 
 Everything is represented as JavaScript data structures, using only values which can be serialised as JSON. These are referred to as _JSON documents_, although the the forms system doesn't do any serialisation or decoding of JSON.
 
+Forms can be [node:plugin/i18n/form:automatically translated] to the user's current locale when you include translated strings resources in your plugin.
+
 The forms system uses several components. It's worth being aware of them, but when you're [node:plugin/form/usage:using the forms system in a request handler], it all pretty much takes care of itself.
 
 

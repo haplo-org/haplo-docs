@@ -24,7 +24,7 @@ Validation functions take five arguments:
 |@data@|Function specific configuration data, obtained from the element's specification.|
 |@context@|The current context within the document. If the element is in a section, this will be the sections position in the document. Generally you should access other elements through the context.|
 |@document@|The root of the document. Avoid using this to make sure your functions are as general as possible.|
-|@externalData@|The external data set on this form instance. @std_document_store@ will set the @"std_document_store:key"@ property within @externalData@.|
+|@externalData@|The external data that was set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance]. @std_document_store@ will set the @"std_document_store:key"@ property within @externalData@.|
 
 The validation function is only called when the value is not @undefined@.
 

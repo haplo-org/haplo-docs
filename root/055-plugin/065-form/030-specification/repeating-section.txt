@@ -20,7 +20,7 @@ h2. Properties
 |@templateOptions@|(optional) Options for the specified template. Ignored by this element, but is available to the template for it to change its behaviour.|
 |@renderDocumentOmitEmpty@|(optional) If true, when rendering the document with [node:plugin/interface/form-instance#renderDocument], omit the section entirely if there are no rows in the document.|
 |@heading@|(optional) A heading to display above this section in forms and documents. See [node:plugin/form/specification/section#Heading_and_labels:section headings and labels].|
-|@allowDelete@|(optional) Whether the user can delete rows in the form. Defaults to @true@.|
+|@allowDelete@|(optional) Whether the user can delete rows in the form. Defaults to @false@.|
 |@allowAdd@|(optional) Whether to display the add button after the repeated sections. Defaults to @true@.|
 |@minimumCount@|(optional) The minimum number of rows required to pass validation.|
 |@maximumCount@|(optional) The maximum number of rows allowed to pass validation.|

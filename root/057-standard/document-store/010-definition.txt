@@ -6,7 +6,7 @@ Document stores are constructed by passing a delegate object as an argument to @
 
 The delegate is a collection of properties and methods which define how your Document store should function.
 
-@std_document_store@ will set the @"std_document_store:key"@ property within @externalData@ for each form instance it creates.
+@std_document_store@ will set the @"std_document_store:key"@ property within @externalData@ for each [node:plugin/interface/form-instance] it creates.
 
 h2. Delegate interface
 
@@ -72,11 +72,11 @@ Use @form.formId@ to determine which form is being queried.
 
 h3(function). prepareFormInstance(key, form, instance, context)
 
-Prepare a form instance for the form.
+Prepare a [node:plugin/interface/form-instance] for the form.
 
 *IMPORTANT*: Always check @form.formId@ to check you're preparing the right form.
 
-Use this to setup things like [node:plugin/interface/form-instance#choices:dynamic form choices], for example:
+Use this to setup things like [node:plugin/interface/form-instance#choices:dynamic form choices] and [node:plugin/interface/form-instance#externalData:external data], for example:
 
 <pre>language=javascript
 var docStore = P.defineDocumentStore({
@@ -85,8 +85,14 @@ var docStore = P.defineDocumentStore({
         if(form.formId === "form_name") {
           if(key.kind === "film") {
               instance.choices("genres", ["Action", "Comedy", "Horror"]);
+              instance.externalData({
+                  interest: "film"
+              });
           } else {
               instance.choices("genres", ["Thriller", "Drama"]);
+              instance.externalData({
+                  interest: "literature"
+              });
           }
         }
     }

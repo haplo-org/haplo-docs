@@ -1,0 +1,17 @@
+title: std:ui:request
+link_as: keyword
+--
+
+This template renders a generic request that the user performs an action.
+
+Use the @message@ property to specify your message, or use an anonyous block to render custom HTML.
+
+There is also a [node:plugin/templates/functions/platform/widgets#std_ui_request] template function, which can be more convenient.
+
+
+h2. View
+
+h3(key). message
+
+Optional. The message, rendered using the [node:plugin/templates/functions/platform/text#std_text_paragraph] template function.
+

@@ -146,22 +146,6 @@ For example:
 }
 </pre>
 
-h3(property). actionableUserMustReview
-
-A [node:standard/workflow/definition/selector:selector] which if matched will show the actionable user the completed document with a prompt to confirm that they have (re)viewed the form before they are able to transition to the next state.
-
-For example:
-
-<pre>language=javascript
-{
-    // ... ,
-    actionableUserMustReview: {
-        state: "wait_approve",
-        pendingTransitions: ["approve_application"]
-    }
-}
-</pre>
-
 h3(function). onFinishPage(key)
 
 Return the URL (as a string) of the page to redirect to after finishing the final page of the document store.

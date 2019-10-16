@@ -12,11 +12,11 @@ h2. Declare URL roots
 
 Declare the URL roots in [node:plugin/plugin-json] with the @respond@ key.
 
-Choose URLs which look good and aren't too long. Try to pick names which aren't too generic so they're unlikely to clash with other plugins.
+Choose URLs which look good and aren't too long. So they're unlikely to clash with other plugins, try to pick names which aren't too generic.
 
-You can only use URLs starting with @/do@ and @/api@. The root level namespace is used for objects, with the first path element being the section name. @/do@ is used for user visible UI, and @/api@ for automated systems.
+You can only use URLs starting with @/do@ and @/api@. The root level namespace is used for objects and [node:standard/web-publisher:Web Publisher] pages. @/do@ is used for user visible UI, and @/api@ for automated systems.
 
-Note that if you are intending to write an HTTP API which is accessed by external software, it needs to be under @/api@ since API keys are only allowed to access URLs under this root.
+Note that if you are intending to write an HTTP API which is accessed by external software, it needs to be under @/api@ since [node:dev/api-key:API keys] are only allowed to access URLs under this root by default.
 
 
 h2. Create links in main UI

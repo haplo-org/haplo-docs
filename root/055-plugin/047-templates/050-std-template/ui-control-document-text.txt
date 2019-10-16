@@ -1,0 +1,43 @@
+title: std:ui:control:document-text
+link_as: keyword
+--
+
+This template renders a rich text document editor as a form element.
+
+You may wish to consider using a [node:plugin/form/specification/document-text:document-text] element within a [node:plugin/form:form].
+
+
+h2. View
+
+h3(key). name
+
+The name of the control. The edited document will be submitted in a request parameter with this name.
+
+
+h3(key). value
+
+(optional) The initial value of the control, as a XML rich text document.
+
+
+h2. Example
+
+With a view like
+
+<pre>language=javascript
+{
+  item: {
+    name: "item",
+    value: "<doc><p>Example</p></doc>"
+  }
+}
+</pre>
+
+a control can be rendered in a form with:
+
+<pre>language=hsvt
+<form method="POST"> std:form:token()
+  within(item) { template:std:ui:control:document-text() }
+  <p> <input type="submit" value="Save"> </p>
+</form>
+</pre>
+
