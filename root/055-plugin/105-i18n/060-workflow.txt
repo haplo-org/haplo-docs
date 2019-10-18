@@ -1,0 +1,19 @@
+title: Workflows
+long_title: Translating workflows
+--
+
+Text in [node:standard/workflow:Workflows] is translated using strings from the @workflow@ category.
+
+
+h2. Translating workflows
+
+Text provided by the [node:standard/workflow/definition/text:workflow text system] is translated before any other interpolations (eg [node:plugin/misc/name]).
+
+Extract strings from workflows by temporarily installing the @design_i18n_utility_extract_translatable@ plugin.
+
+After translation, include the translated @<localeId>.workflow.json@ files in your plugin.
+
+
+h2. Using translated workflows
+
+You do not need to write additional code to translate workflows. The user's current locale is used to automatically select the translation when displaying the workflow user interface.

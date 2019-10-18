@@ -100,7 +100,7 @@ Specified precision date ranges are encoded in XML as:
  * @datetime@
  ** @precision@ - precision of the date and time
  *** _TEXT_ - 'C' = century, 'D' = decade, 'Y' = year, 'd' = day, 'h' = hour, 'm' = minute
- ** @timezone@ ? - optional time zone, processed as GMT if not included
+ ** @timezone@ ? - optional time zone, processed as UTC if not included
  *** _TEXT_ - one of the standard time zone names
  ** @start@ - start of the date and time range
  *** _TEXT_ - the date and time as @YYYY-MM-DDThh:mm:ss@, regardless of precision. This is ignored when reading objects.

@@ -1,0 +1,17 @@
+title: Debugging
+long_title: Debugging translations
+--
+
+To make it easier to check that you have made all the text translatable, you can turn on i18n debugging with the plugin tool:
+
+<pre>
+  haplo-plugin -s <server> i18n-debugging
+</pre>
+
+To disable i18n debugging, run
+
+<pre>
+  haplo-plugin -s <server> i18n-debugging disable
+</pre>
+
+While i18n debugging is active, all translated plugin text is surrounded by symbols to make it easy to spot the translated text. Note that some text is translated by the platform, so not all text will be marked.

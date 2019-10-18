@@ -2,7 +2,7 @@ title: JSON
 link_as: keyword
 --
 
-The standard @JSON@ global is provided: "JSON in JavaScript":http://www.json.org/js.html. This is a fast implementation which does not @eval()@ any text.
+The standard @JSON@ global is provided: "JSON":https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON.
 
 
 h3(function). JSON.parse(jsonText, reviver)

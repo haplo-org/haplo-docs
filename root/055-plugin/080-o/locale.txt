@@ -1,0 +1,20 @@
+title: Locale
+--
+
+A low level API is provided to manage the current locale. This will only be required for special purposes, such as custom authentication.
+
+
+h3(property). O.currentLocaleId
+
+The id of the current locale, for example @"en"@.
+
+Prefer to get a [node:plugin/interface/locale] object from your [node:plugin/interface/plugin/i18n:plugin], which provides access to all the internationalisation features, and don't use or manipulate the locale ID in your code.
+
+
+h3(function). O.setSessionLocaleId(localeId)
+
+Set the locale for the current session using a locale ID. An exception will be thrown if the locale is not known.
+
+The change in locale may not take effect until the next request is handled. You should respond with a redirect to any request which calls this function to make sure all response handling uses a consistent locale when rendering the HTML response.
+
+This change is not persistent for the logged in user.

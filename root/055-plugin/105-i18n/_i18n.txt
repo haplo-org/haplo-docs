@@ -1,0 +1,10 @@
+title: Internationalisation
+class: DocNodeTextileWithTOC
+--
+
+Internationalisation, abbreviated to i18n, is the process of enabling your software to be used in more than one language, with each user selecting their own preferred language. Wikipedia has an useful "introduction to internationalisation":https://en.wikipedia.org/wiki/Internationalization_and_localization.
+
+The Haplo Platform itself is translated into various languages, and provides support for plugins to be localised.
+
+
+h2. Contents

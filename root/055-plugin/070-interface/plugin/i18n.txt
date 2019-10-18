@@ -1,0 +1,31 @@
+title: Internationalisation
+long_title: Plugin internationalisation
+--
+
+Because each plugin has to be individually [node:plugin/i18n:internationalised], locales and other translation APIs start with obtaining a [node:plugin/interface/locale] from your @Plugin@.
+
+
+h2. Interface
+
+
+h3(property). defaultLocaleId
+
+The ID of the default locale for this plugin, for example, @"en"@.
+
+
+h3(function). locale(localeId)
+
+Returns a [node:plugin/interface/locale] object for this plugin.
+
+@localeId@ is optional, and if not specified, the *current* locale is returned. This is the locale for the current user's session.
+
+In general, you should not pass in a @localeId@, as in almost all cases, you need a @Locale@ object to translate the UI for the current user.
+
+
+h2. Example
+
+To obtain a @Locale@ object, you would almost always use code like:
+
+<pre>language=json
+  let locale = P.locale();
+</pre>

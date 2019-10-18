@@ -1,0 +1,27 @@
+title: std:ui:choose:selected-item
+link_as: keyword
+--
+
+This template renders a single item in a similar style to a single item from the [node:plugin/templates/std-template/ui-choose] template. This is intended to be used to tell the user which choice was selected.
+
+Obtain a [node:plugin/interface/template] object with @P.template("std:ui:choose:selected-item")@, or use the @template:std:ui:choose:selected-item()@ template function.
+
+
+h2. View
+
+The keys of the view are identical to the keys of a single option in the [node:plugin/templates/std-template/ui-choose#View:options] key of the @std:ui:choose@ template.
+
+
+h2. Example
+
+<pre>language=javascript
+    P.respond("GET", "/do/example/choose", [
+    ], function(E) {
+        E.render({
+            action: "/do/example/choose?fruit=apples",
+            label: "Apples",
+            indicator: "primary"
+            notes: "All our apples are locally grown."
+        }, "std:ui:choose:selected-item");
+    });
+</pre>

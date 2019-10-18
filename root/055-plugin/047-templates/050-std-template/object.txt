@@ -22,7 +22,8 @@ Optional. The style in which to render this object.
 
 |*Name*|*Purpose*|
 |@generic@|Generic rendering|
-|@standardview@|Standard view for display in a web page|
+|@generalview@|Standard view for display in a web page|
+|@table@|Standard view rendered as an HTML table, most useful for [node:plugin/files/transform/generate-formatted-text:generated files]|
 |@linkedheading@|Heading with icon and link to object|
 |@searchresult@|Entry in search results|
 |@searchresultmini@|Entry in mini search results|

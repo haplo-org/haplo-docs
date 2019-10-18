@@ -55,6 +55,11 @@ h3. Forms
 The plugin object creates [node:plugin/interface/plugin/form:form descriptions and data sources].
 
 
+h3. Internationalisation
+
+The plugin object provides access to the [node:plugin/interface/plugin/i18n:platform internationalisation API].
+
+
 h3. Properties
 
 h3(property). pluginName

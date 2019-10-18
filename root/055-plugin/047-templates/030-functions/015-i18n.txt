@@ -1,0 +1,88 @@
+title: Internationalisation
+long_title: Internationalisation functions
+--
+
+The @i:()@ template function allows templates to be [node:plugin/i18n/text-in-plugin#Text_in_templates:internationalised].
+
+h3(function). i("text")
+
+Translates a literal string, with text from the @template@ [node:plugin/i18n/resources#Categories:category].
+
+The argument to the function must be a literal string. Using values from the view is not allowed.
+
+Text is [node:plugin/misc/name#String_interpolation:interpolated] with [node:plugin/misc/name].
+
+If the function has [node:plugin/templates/functions#Function_syntax:blocks], then the string is interpolated with values from the blocks, with insertion points marked with @{}@. See below for syntax.
+
+
+h3(function). i:category("text")
+
+As @i()@, except the [node:plugin/i18n/resources#Categories:category] is explicitly specified in the function name.
+
+For example, @i:example("Hello world")@ translates the text using the strings from the @example@ category.
+
+
+h2. Example
+
+This example shows simple usage of the @i()@ template function, interpolating values from the view.
+
+<pre>language=hsvt
+<p> i("Dear {},") { user.name } </p>
+<p> i("This is an example notification.") </p>
+<p> i("There are {count} and they are {}.")
+        {itemColour} count{count}
+</p>
+</pre>
+
+
+h2. Interpolations
+
+When the @i()@ function has blocks, the translated string is interpolated, inserting values in the block into the output.
+
+The insertion points are marked with @{}@, where the brackets contain the name of the block (and optionally a plural format). The empty string is the anonymous [node:plugin/templates/functions#Function_syntax:block], or a name for a named block.
+
+The string
+
+<pre>
+  "Hello {},"
+</pre>
+
+would insert the anonymous block before the comma, and
+
+<pre>
+  "Hello {}, today is {dayName}."
+</pre>
+
+would also insert the @dayName@ named block in the string.
+
+See the example above.
+
+
+h2. Plurals
+
+Because each language has different plural rules, the translated strings must contain all the logic for pluralisation. These are implemented using the "ICU PluralFormat":http://icu-project.org/apiref/icu4j/com/ibm/icu/text/PluralFormat.html within the enclosing @{}@.
+
+A plural format is the block name, the literal string 'plural', and then the plural format, as a comma separated list. If the block is the anonymous block, there is nothing proceeding the first comma. For example,
+
+<pre>language=hsvt
+  i("I have {} {,plural,other{items} one{item}}") { count }
+</pre>
+
+would output the following strings, depending on the value of @count@ within the view:
+
+|@count@|Output|
+|0|I have 0 items|
+|1|I have 1 item|
+|2|I have 2 items|
+
+In the view, the value must be a number, otherwise it is treated as zero.
+
+The plural format is one or more options, each separated by spaces. The options are:
+
+<pre>
+  option{text}
+</pre>
+
+where option is one of 'zero', 'one', 'two', 'few', 'many' or 'other', or a literal count specified a @=N@ where @N@ is a number. The definition of the named options is language specific, using the "Unicode plural rules":https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html.
+
+You must include the @other@ option in all plural formats.

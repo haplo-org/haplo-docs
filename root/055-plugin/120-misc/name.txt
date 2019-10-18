@@ -10,6 +10,7 @@ It's also available as:
 
  * a [node:plugin/templates/functions/platform/name:template function] (which is the recommended way of using it)
  * automatic substitution in [node:plugin/form/specification#Text:form labels and other text]
+ * using [node:plugin/i18n:internationalisation features] like the [node:plugin/templates/functions/i18n:i() template function] and @Locale@ [node:plugin/interface/locale#text] lookup
  * as a standard text interpolation in the standard [node:standard/workflow/definition/text:workflow plugin text system]
 
 There is a two argument version so longer phrases can be customised using the same system.
