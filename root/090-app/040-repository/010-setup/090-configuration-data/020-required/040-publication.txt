@@ -19,32 +19,3 @@ h3. repo_standard_publication:admin_email
 h4. Expected type: String
 
 The email address for the repository
-
-
-h3. repo_standard_publication:logo:src
-
-h4. Expected type: String - Usual Form "/~/a.jpg"
-
-The source for the image to be used as the logo for the public site. To get this value the logo will need to be uploaded to the site as a static file here:
-
-CLICK_PATH TOOLS > System management > Configuration > Static files
-
-After the logo is uploaded use the value from the "Pathname" column as the source for this key in the configuration data.
-
-h3. repo_standard_publication:logo:width
-
-h4. Expected type: String
-
-The width for the institution logo on the left of the navigation bar
-
-h3. repo_standard_publication:logo:height
-
-h4. Expected type: String
-
-The height for the institution logo on the left of the navigation bar
-
-h3. repo_standard_publication:logo:name_in_header
-
-h4. Expected type: Boolean
-
-Whether or not to show the institution name next to the logo in the navigation bar
