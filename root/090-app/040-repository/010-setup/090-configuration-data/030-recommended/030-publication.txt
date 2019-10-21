@@ -1,0 +1,43 @@
+title: Publication
+long_title: Recommended configuration data for Publication
+--
+
+h3. repo_standard_publication:text
+
+h4. Expected type: JSON object
+
+An object detailing the text on a publication to be changed, there are various keys that can be set. The keys and their default values are listed below:
+<pre style="line-height:13px">{
+    description: "",
+    homeMainSearchPlaceholder: "Find researchers and their research...",
+    homeBrowseByResearcher: "Browse by Researcher",
+    homeBrowseByResearcherText: "Browse the list of Researchers with outputs in **ApplicationName**.",
+    homeSearchTheRepository: "Search the repository",
+    homeSearchTheRepositoryText: "Search the repository for outputs and researchers.",
+    homeBrowseBySubject: "Browse by Subject",
+    homeBrowseBySubjectText: "View outputs filtered by Faculty and Department.",
+    homeBrowseByYear: "Browse by year",
+    homeBrowseByYearText: "View outputs by year of publication.",
+    peopleDirectoryTitle: "People",
+    peopleDirectorySubtitle: "Browse our directory to find staff profiles containing contact information, 
+                              biography and lists of publications.",
+    researchInstituteBrowseTitle: "Departments and research groups"
+    researchInstituteBrowseSubtitle: ""
+}
+</pre>
+
+Changing these in the configuration data and looking for changes is likely the best way to see what exactly they represent.
+
+h3. repo_standard_publication:footer_links
+
+h4. Expected type: Array of JSON objects
+
+An array of objects to use as links in the footer of the publication.
+To add a link to the university of example homepage to the footer for example: 
+<pre style="line-height:13px">[
+    {
+        "text": "University of Example",
+        "href": "https://example.ac.uk"
+    }
+]
+</pre>
