@@ -16,15 +16,13 @@ attribute test:attribute:files-with-info as FilesWithInfo
    group-type test:type:group-of-attributes
 
 # This type defines the attributes to be included in the "group"
+# Only attributes and labels are relevant
 type test:type:group-of-attributes as TestGroup
    title: Test group
    behaviour hide-from-browse
    attribute std:attribute:file
    attribute dc:attribute:author
    attribute std:attribute:notes
-   render-icon: E226,1,f
-   render-category 4
    label-applicable std:label:common
    label-default std:label:common
-   create-position never
 </pre>

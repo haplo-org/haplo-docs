@@ -1,7 +1,7 @@
 title: Attribute groups
 --
 
-"Attribute groups" are a set of attributes on a [node:plugin/interface/store-object] which are grouped together as a unit. Care should be taken when defining a new attribute group that your use case wouldn't be better managed as a linked object.
+_Attribute groups_ are a set of attributes on a [node:plugin/interface/store-object] which are grouped together as a unit. Care should be taken when defining a new attribute group that your use case wouldn't be better managed as a linked object.
 
 For clarity, when using attribute groups the convention is to refer to the "parent" record as the **container** object. This reduces confusion between the main record and any attribute groups extracted as **group objects**.
 
@@ -9,7 +9,7 @@ h2. Implementing attribute groups
 
 The attributes to be included in attribute groups are defined in schema as a new type. Objects of this type should never be created directly, but may be extracted from the container object in code.
 
-Add a new attribute in schema requirements of data-type @attribute-group@, pointing to this new type, to add the group to a type. For an example, see [node:plugin/schema/requirements-schema/attribute-groups:here].
+Add a new attribute in schema requirements of data-type @attribute-group@, pointing to this new type, to add the group to a type, as in [node:plugin/schema/requirements-schema/attribute-groups:this example].
 
 h2. Using data in attribute groups
 
@@ -23,6 +23,6 @@ If you need to restrict attributes from a specific attribute group, you should u
 
 * Apply a [node:plugin/schema/restrictions:restriction] using the @restrict-if-label@ option
 
-* Apply a label to the attribute group object to be restricted, using the hLabelAttributeGroupObject hook
+* Apply a label to the attribute group object to be restricted, using the [node:plugin/hook/label-attribute-group-object] hook.
 
-* Call @reindex()@ on the container object
+If changes to data elsewhere in the application mean that @hLabelAttributeGroupObject@ would apply difference labels, call [node:plugin/interface/store-object#reindex] on the container object to reflect these changes in the object store.

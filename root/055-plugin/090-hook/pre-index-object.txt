@@ -12,6 +12,8 @@ The [node:plugin/interface/store-object] passed to the hook is read only. @mutab
 
 This hook will be called several times for each object update.
 
+Call [node:plugin/interface/store-object#reindex] when the results of this hook will change to update the object store.
+
 h3. Example
 
 This example hook adds additional text to the notes field for File objects.

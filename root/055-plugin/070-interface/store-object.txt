@@ -245,7 +245,9 @@ Returns the @groupId@ of the first [node:plugin/interface/attribute-extension] w
 
 h3(function). reindex()
 
-Re-indexes the object. Used to apply restrictions to attribute groups in conjuction with the hLabelAttributeGroup hook.
+Re-indexes the object.
+
+Hooks such as [node:plugin/hook/pre-index-object] can change the indexed contents, and hooks like [node:plugin/hook/label-attribute-group-object] can affect restrictions. When the results of these change, for example, when dependent data is updated, reindex() must be called to reflect the changes in the object store.
 
 
 h3(function). reindexText()
