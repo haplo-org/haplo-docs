@@ -2,10 +2,12 @@ title: User sync
 long_title: Haplo Repository user sync setup
 --
 
-As Haplo Repository is built on top of Haplo Research Manager, you need include the required [node:app/research/setup/user-sync:user sync data].
+The user sync keeps the Haplo user database and user profile objects synchronised with an external system, such as an institution's HR system.
+
+As Haplo Repository is built on top of Haplo Research Manager, the instructions for setting up [node:app/research/setup/user-sync:user sync data] are held there.
 
 
-h2. REF Unit of Assessment
+h3. Adding REF Unit of Assessment
 
 If your institution is a UK University, and you wish to use the Haplo Repository REF process, you will need to assign each user to a REF Unit of Assessment.
 

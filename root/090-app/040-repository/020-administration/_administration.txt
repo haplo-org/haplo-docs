@@ -1,0 +1,7 @@
+title: Administration
+class: DocNodeTextileWithTOC
+--
+
+Haplo Repository provides administrative support staff with a set of comprehensive tools for managing research outputs at their institution.
+
+h2. Contents

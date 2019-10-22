@@ -1,0 +1,6 @@
+title: Required
+long_title: Required configuration data
+class: DocNodeTextileWithTOC
+--
+
+Some of the configuration data is required to get a repository application running at minimal functionality.

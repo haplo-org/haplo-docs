@@ -1,0 +1,10 @@
+title: Data import
+class: DocNodeTextileWithTOC
+--
+
+If your institution has an existing legacy repository system, you will want to import that data into Haplo.
+
+Importing data into Haplo requires the data to be exported from the legacy system, and a plugin to be written to consume that data into Haplo. The key data quality checks that should be carried out are that the total number of items are imported, and that they are associated with the correct authors at the institution.
+
+Where the author is still at the university, the outputs should be associated with their Haplo profile as created by the [node:app/repository/setup/user-sync].
+

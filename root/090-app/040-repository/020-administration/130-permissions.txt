@@ -1,0 +1,10 @@
+title: Permissions
+--
+
+Permissions in Haplo are flexible and fine-grained.
+
+User permissions are based on the roles a user has in an organisation. Authorised users can add and remove other users from roles. This makes it possible to consistently manage permissions between users in similar positions, and to easily update permissions if a user role changes within an organisation.
+
+Users are often assigned multiple roles and their permissions will be reflected to support all the roles they perform. For example, the same user may be a Supervisor for one project, and an Examiner for a different project.
+
+More details on how to configure roles within Haplo are available "here":https://support.haplo.com/permissions/managing-permissions

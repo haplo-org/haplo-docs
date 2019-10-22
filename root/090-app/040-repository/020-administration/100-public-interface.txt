@@ -1,0 +1,7 @@
+title: Public interface
+--
+
+Every aspect of Haplo's public portal is customisable, from the kinds of information it displays, to the way that information is structured and presented.
+
+Using open tools, Haplo's flexible toolkit provides institution web teams with full control over all HTML generated, and can modify the HTML, CSS and templates of the public portal to match the look and layout of the institution's visual identity.
+

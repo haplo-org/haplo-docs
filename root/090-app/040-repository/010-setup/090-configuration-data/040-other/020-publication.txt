@@ -1,0 +1,132 @@
+title: Publication
+long_title: Other configuration data for publications
+--
+
+h3. hres:repository:publication:prevent_keywords_inline_display
+
+h4. Expected type: Boolean - Default: false
+
+Alters the display of the keywords of an output, if set to true the keywords will display with a linebreak after each one.
+
+h3. repo_publication_common:latest_additions:page:max_items
+
+h4. Expected type: Integer - Default: 100
+
+Sets the maximum number of outputs to show on the latest additions page.
+
+h3. repo_publication_common:latest_additions:page_part:max_items
+
+h4. Expected type: Integer - Default: 5
+
+Sets the maximum number of outputs to show in the latest additions section of the home page.
+
+h3. hres:repository:browse-by-year:first
+
+h4. Expected type: Integer - Default: First output's date attribute
+
+Sets the earliest year to display in the "Browse by year" section of the repository.
+
+h3. repo_standard_publication:object:without_attributes
+
+h4. Expected type: JSON object
+
+Sets the only attributes to hide for a given object, of the form:
+
+<pre style="line-height:13px">{
+    "output": [
+        "hres:attribute:keywords"
+    ],
+    "person": [
+        "hres:attribute:orcid"
+    ],
+    "research-institute": [
+        "hres:attribute:head"
+    ]
+}
+</pre>
+
+h3. repo_standard_publication:object:only_attributes
+
+h4. Expected type: JSON object
+
+Sets the only attributes to show for a given object, of the form:
+
+<pre style="line-height:13px">{
+    "output": [
+        "hres:attribute:keywords"
+    ],
+    "person": [
+        "hres:attribute:orcid"
+    ],
+    "research-institute": [
+        "hres:attribute:head"
+    ]
+}
+</pre>
+
+h3. repo_standard_publication:carousel
+
+h4. Expected type: Array of JSON objects
+
+Sets the images for the carousel on the home page, by default the system randomly selects images from Pixabay. The object should be of the form:
+<pre style="line-height:13px">[
+    {
+      "image": "/~/a.jpg",
+      "title": "University of Example",
+      "imageDescription": "Banner image for the University of Example"
+    }
+]
+</pre>
+Where:
+# image: is the pathname of the image after it has been uploaded here:
+
+CLICK_PATH TOOLS > System management > Configuration > Static files
+
+# title is the text to display over the image.
+# imageDescription is the value for the alt attribute of the image
+
+
+h3. repo_standard_publication:home_images
+
+h4. Expected type: Array of strings
+
+Sets the images displayed above the Browse/Search links on the home page in order. E.g. to change only the "Browse by Researcher" and "Browse by Subject" images: 
+<pre style="line-height:13px">[
+    "/~/a.jpg",
+    "",
+    "/~/b.jpg",
+]
+</pre>
+
+Where the string value is the pathname of an image after it has been uploaded here:
+
+CLICK_PATH TOOLS > System management > Configuration > Static files
+
+h3. repo_standard_publication:use_short_item_urls
+
+h4. Expected type: Boolean - Default: false
+
+Some institutions want to use short URLs where the title of the output is not shown in the address bar.
+
+h3. repo_standard_publication:research_institute_browse_images
+
+h4. Expected type: Arrray of strings
+
+Sets the images associated with each subject in the "Browse by Subject" by the order in which they are in the array, looping if the limit is reached.
+<pre style="line-height:13px">[
+    "/~/a.jpg",
+    "/~/b.jpg",
+]
+</pre>
+Would show images a.jpg and b.jpg alternating for the each research institute image.
+
+Where the string value is the pathname of an image after it has been uploaded here:
+
+CLICK_PATH TOOLS > System management > Configuration > Static files
+
+h3. repo_standard_publication:client_publication_features
+
+h4. Expected type: Array of strings
+
+Sets the use of client specific features, add the namespaced code of the feature to the array. Usually for use with client-specific object types that need to be rendered. Use **very** sparingly. Consider using a separate publication if this list gets long.
+

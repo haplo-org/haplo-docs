@@ -1,0 +1,9 @@
+title:Media file handling
+--
+
+Any type of file can be stored and managed within the repository, to enable management of written outputs, non-traditional outputs such as images and videos, research datasets, and the underlying data files.
+
+Text is extracted for full text indexing from common file formats, including PDF, MS Office, OpenOffice, text and HTML. These can be viewed in an embedded viewer directly on the page, along with image file formats including PNG, GIF, JPEG and TIFF.
+
+Audio media players are included for WAV and MP3, and embedded support for video files is an upcoming development.
+

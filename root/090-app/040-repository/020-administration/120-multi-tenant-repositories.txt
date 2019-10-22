@@ -1,0 +1,6 @@
+title: Multi-tenant repositories
+--
+
+Haplo supports multi-tenant repositories, either a single institution with multiple collections or multiple institutions wishing to share a repository. Haplo's support for multi-tenancy also enables it to effectively host multiple independent repositories on a single server. 
+
+More details of our multi-tenancy support are "here":https://www.haplo.com/news/multi-tenant-academic-repository-software 
