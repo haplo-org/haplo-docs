@@ -2,8 +2,6 @@ title: DOI
 long_title: Configuration data for DOI minting
 --
 
-NEED TO ADD KEYCHAIN LINK
-
 h3. hres:doi:minting:safety-application-hostname
 
 h4. Expected type: String
