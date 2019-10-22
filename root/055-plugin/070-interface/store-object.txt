@@ -165,16 +165,16 @@ h3(function). firstParent(qual)
 Shortcut for @first(ATTR["std:attribute:parent"], qual)@
 
 
-h3(function). every(desc, qual, iterator)
+h3(function). every(desc, qual, ext, iterator)
 
-All arguments are optional. @desc@ and @qual@ as for the @first()@ function.
+All arguments are optional. @desc@ and @qual@ as for the @first()@ function, @ext@ is an [node:plugin/interface/attribute-extension].
 
 If the last argument is not a function, an array of all the values will be returned.
 
 If the last argument is a function, it will be called for each matching value with the arguments @(value, desc, qual)@.
 
 
-h3(function). each(desc, qual, iterator)
+h3(function). each(desc, qual, ext, iterator)
 
 Alias for @every()@.
 
@@ -198,6 +198,13 @@ Returns @true@ if this object has an attribute with a given value, and @false@ o
 This is more useful than code like @(value === object.first(desc, qual))@ as it takes account of multiple values in the attribute, and knows how to convert and compare values properly.
 
 
+h3(function). attributeGroupHas(groupDesc, value, desc, qual)
+
+Returns @true@ if this object has an attribute-group at the given @groupDesc@ with a given @value@, and @false@ otherwise.
+
+@desc@ and @qual@ are optional, although typically you would use @desc@ to specify which attribute should be checked within the attribute group. If @qual@ is specified, only attributes with that qualifier will be checked, otherwise the qualifier is ignored in the comparison.
+
+
 h3(function). valuesEqual(object, desc, qual)
 
 Compare the values in this object with those in another object. Returns @true@ if the list of values, including their descriptors and qualifiers, are exactly equal in the two objects.
@@ -205,6 +212,42 @@ Compare the values in this object with those in another object. Returns @true@ i
 The values are sorted by descriptor, but the order of values in any given descriptor is preserved. This matches the behaviour you'd expect if you were comparing objects in the user interface.
 
 @desc@ and @qual@ are optional. If @desc@ is specified, then only values with that descriptor are compared. If @qual@ is specified, then only values with the descriptor and qualifier are compared.
+
+
+h3(function). extractAllAttributeGroups()
+
+Decomposes the @StoreObject@ into a JavaScript object with keys @object@ and @groups@. @groups@ is an array, containing for each attribute group on the @StoreObject@:
+
+|@groupId@|Corresponding to the [node:plugin/interface/attribute-extension] for the group|
+|@groupDesc@|Corresponding to the [node:plugin/interface/attribute-extension] for the group|
+|@object@|A temporary object containing the attributes in the  group. This will have the appropriate type attribute for the group's [node:plugin/schema/requirements-schema/attribute-groups:requirements].|
+
+
+h3(function). extractSingleAttributeGroupMaybe(groupId)
+
+Returns a temporary object with the attributes contained within the attribute group for @groupId@.
+
+
+h3(function). extractSingleAttributeGroup(groupId)
+
+As above, but exceptions if no group is found.
+
+
+h3(function). getAttributeGroupIds(desc)
+
+Return the group IDs for [node:plugin/interface/attribute-extension:attribute extension groups] in this object, optionally only for groups with a given @desc@.
+
+
+h3(function). attributeGroupIdForValue(groupDesc, value, desc, qual)
+
+Returns the @groupId@ of the first [node:plugin/interface/attribute-extension] with @groupDesc@, @value@, @desc@, and @qual@. @desc@ and @qual@ are optional. Returns @null@ if no attribute group is found.
+
+
+h3(function). reindex()
+
+Re-indexes the object.
+
+Hooks such as [node:plugin/hook/pre-index-object] can change the indexed contents, and hooks like [node:plugin/hook/label-attribute-group-object] can affect restrictions. When the results of these change, for example, when dependent data is updated, reindex() must be called to reflect the changes in the object store.
 
 
 h3(function). reindexText()

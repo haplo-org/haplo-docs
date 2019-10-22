@@ -1,0 +1,28 @@
+title: Attribute groups
+--
+
+Defining [node:plugin/schema/attribute-groups] in requirements files requires an attribute to be added with @data-type attribute-group@, and a type to define the attributes to be included in the group. That type should never be created directly, but is just a definition for what attributes should be included in the group.
+
+<pre>
+# The "container" object
+type test:type:type-with-file-group
+   attribute test:attribute:files-with-info
+
+attribute test:attribute:files-with-info as FilesWithInfo
+   title: Files with info
+   search-name: files-with-info
+   qualifier std:qualifier:null
+   data-type attribute-group
+   group-type test:type:group-of-attributes
+
+# This type defines the attributes to be included in the "group"
+# Only attributes and labels are relevant
+type test:type:group-of-attributes as TestGroup
+   title: Test group
+   behaviour hide-from-browse
+   attribute std:attribute:file
+   attribute dc:attribute:author
+   attribute std:attribute:notes
+   label-applicable std:label:common
+   label-default std:label:common
+</pre>

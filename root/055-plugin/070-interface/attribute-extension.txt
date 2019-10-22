@@ -1,0 +1,20 @@
+title: AttributeExtension
+long_title: AttributeExtension interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @AttributeExtension@ interface represents an extension to the object store's @v,d,q@ triple, used to enable the use of [node:plugin/schema/attribute-groups].
+
+h2. Construction
+
+A new @AttributeExtension@ object is returned using the [node:plugin/interface/store-object-mutable#newAttributeGroup:newAttributeGroup()] function on a @StoreObjectMutable@.
+
+h2. Interface
+
+h3(property). desc
+
+The descriptor for the attribute group on the container object.
+
+h3(property). groupId
+
+A persistent, unique, numeric identifier for this @AttributeExtension@. This can be safely persisted and referenced in plugin code, but its exact value should not be relied upon.
