@@ -1,0 +1,46 @@
+title: TransitionUI
+long_title: TransitionUI interface
+link_as: keyword
+--
+
+Objects implementing the @TransitionUI@ interface are used to control the transition user interface by the [node:standard/workflow/definition/handlers#transitionUI] handler.
+
+
+h2. Interface
+
+h3(property). backLinkText
+
+The standard @backLinkText@ property for the back button. Set to change the label.
+
+
+h3(property). M
+
+The workflow Instance.
+
+
+h3(property). requestedTransition
+
+The name of the transition requested by the user. (read only)
+
+
+h3(function). preventTransition()
+
+Call to prevent this transition taking place.
+
+
+h3(function). redirect(url)
+
+After the transition is complete, redirect the user to @url@.
+
+It may be easier to use the @transitionUIPostTransitionRedirectForActionableUser@ handler which selects on the post-transition state.
+
+
+h3(function). addFormDeferred(position, deferred)
+
+Add some additional user interface to the transition confirmation form.
+
+@position@ is either @"top"@, @"bottom"@, or @"aboveConfirm"@.
+
+@deferred@ is a deferred render returned from [node:plugin/interface/template#deferredRender].
+
+

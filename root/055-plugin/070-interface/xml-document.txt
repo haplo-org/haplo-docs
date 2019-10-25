@@ -1,0 +1,21 @@
+title: XMLDocument
+long-title: XMLDocument interface
+link_as: keyword
+--
+
+An object implementing the @XMLDocument@ interface represents a complete XML document. 
+
+h2. Interface
+
+h3(function). cursor()
+
+Returns a new [node:plugin/interface/xml-cursor] object for editing or reading the document.
+
+h3(function). toString()
+
+Returns the document rendered as a JavaScript String.
+
+h3(function). write(mimeType, fileName)
+
+Returns the document written as a [node:plugin/interface/binary-data] object. Both arguments are optional.
+

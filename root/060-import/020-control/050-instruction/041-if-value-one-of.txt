@@ -1,0 +1,33 @@
+title: if-value-one-of
+link_as: keyword
+--
+
+The @if-value-one-of@ Instruction conditionally executes a nested lists of *Instructions* depending on whether a named input value in the current *Record* has a value matching one of a specified list of values.
+
+|@action@|@"if-value-one-of"@|
+|@source@|The property in the input Record.|
+|@values@|An array of values.|
+|@then@|An array of Instructions to be executed when the value in the Record is equal to one of the values in @values@ (optional).|
+|@else@|An array of Instructions to be executed when the value in the Record is not in the @values@ (optional).|
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "if-value-one-of",
+    "source": "role",
+    "values": ["STUDENT", "PHD"],
+    "then": [
+        {
+            "action": "set-value",
+            "destination": "user",
+            "name": "groups",
+            "value": "example:group:student"
+        }
+    ],
+    "else": [
+        // ...
+    ]
+}
+</pre>

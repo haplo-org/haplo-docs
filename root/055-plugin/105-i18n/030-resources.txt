@@ -1,0 +1,59 @@
+title: Resources
+--
+
+Various resources for internationalisation are stored in the @i18n@ directory [node:plugin/directory-structure:within the plugin].
+
+h2. Local and global resources
+
+These are stored in two sub-directories, @i18n/local@ and @i18n/global@. Local resources apply only to this plugin, global resources are provided to all plugins. This split allows:
+
+ * resources and common translations to be shared between plugins,
+ * the translations for a large application, implemented as a number of plugins, to be contained in a single resources plugin for ease of translation.
+
+When searching for a resource, such as a translation for a string, it's looked up in the local resources first. If the resource doesn't exist in the local resources, the global resources are searched in reverse order of the [node:plugin/plugin-json#loadPriority] properties in the @plugin.json@.
+
+
+h2. Categories
+
+Resources are split into categories which separate out the various purposes. The system defines:
+
+|*Name*|*Purpose*|
+|@template@|Resources, such as strings, used in [node:plugin/templates:templates] and other user interface.|
+|@form@|Translation of [node:plugin/form:forms].|
+|@workflow@|Translation of [node:standard/workflow/definition/text:text] within [node:standard/workflow:workflows].|
+
+Plugins can define their own categories.
+
+
+h2. Strings (text translations)
+
+*Strings* translate text between languages. If a string is not included in the strings resource, the string itself is used.
+
+Files named @<locale id>.<category>.json@ within the @i18n/local@ and @i18n/global@ directories provide these strings and their translations. Example names are @en.form.json@ to provide strings in English for forms, and @es.template.json@ for UI strings in Spanish.
+
+String resources are JSON files, which map from the source string or ID to the translated text. For example a Spanish translation might look like:
+
+<pre>language=json
+{
+  "Hello World!": "Hola Mundo!",
+  "button:edit": "Editar"
+}
+</pre>
+
+This shows two styles of source string, text in the source language, or an identifier.
+
+
+h3. Translating from the source language
+
+For most text, translate from the string in the source language. This makes it easier to develop the plugin in the source language, as templates and code contains text in the plugin's default language.
+
+These strings are *not* included in the resources for the default language. Because any strings which are not found in the resources are used untranslated, this means the default language does not need to be managed.
+
+When it's time to translate the strings, the @extract-text@ sub-command of the [node:dev/tool/plugin] can be used to find all the text in your plugin. These files are then provided to the translator, and the translated files added to the plugin when they're returned.
+
+
+h3. Identifiers
+
+Where a specific place in the UI needs to be identified, and the string may be used in other places which could require a different translation, use an opaque identifier. Usually the text is one or two words long.
+
+These mappings from identifiers to translated text *must* be included in the strings file for the default language.

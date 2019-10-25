@@ -1,0 +1,32 @@
+title: RefKeyDictionaryHierarchical
+long_title: RefKeyDictionaryHierarchical interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @RefKeyDictionaryHierarchical@ interface is very similar to a [node:plugin/interface/ref-key-dictionary], except that @get()@ methods respect object hierarchy.
+
+This is particularly useful for storing information about object types. If you request a value for an @Ref@ without an explicit value, the value for the nearest parent will be returned.
+
+Hierarchy is defined using the standard _parent_ attribute, @std:attribute:parent@, which is used in the shortcut [node:plugin/interface/store-object#firstParent] function in the [node:plugin/interface/store-object] interface.
+
+
+h2. Construction
+
+Use [node:plugin/o/constructor/refdict-hierarchical]. Pass in an optional value constructor function and size hint.
+
+
+h2. Interface
+
+@RefKeyDictionaryHierarchical@ implements the interface of [node:plugin/interface/ref-key-dictionary], except:
+
+
+h3(function). get(key)
+
+@get()@ works identically to @RefKeyDictionary@ [node:plugin/interface/ref-key-dictionary#get], except that if the dictionary does not contain a value, the nearest parent is returned instead.
+
+
+h3(function). getAllInHierarchy(key)
+
+Returns an @Array@, which may be empty, returning all the values in the dictionary for the given object, and all it's parents.
+
+The array is ordered from the top of the tree to the child node specified by @key@.

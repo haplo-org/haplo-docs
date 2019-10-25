@@ -1,0 +1,123 @@
+title: Example
+long_title: REST API example
+--
+
+This is a worked example to implement a REST API to update a project title for a user, given their username.
+
+
+h2. Control file
+
+Use the data import admin interface to view the @haplo:person@ model:
+
+CLICK_PATH TOOLS > Data import > Models > haplo:person
+
+We want to update the @dc:attribute:title@ of the @phd:project@ Destination.
+
+The admin UI shows a "Depends on *profile*" tag above the list of Names in the model, so we know that the @phd:project@ depends on the @profile@ being loaded, so the user can be identified. Therefore, we need to load the @profile@ Destination, and then the @phd:project@ [node:import/model/depends:dependent Destination] is automatically loaded or created.
+
+<pre>language=json
+{
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:person",
+    "files": {
+        "DEFAULT": {
+            "read": "json",
+            "singleRecord": true
+        }
+    },
+    "instructions": [
+        {
+            "source": "username",
+            "destination": "load:by-ref",
+            "name": "ref",
+            "filters": ["haplo:username-to-ref"]
+        },
+        {
+            "action": "load",
+            "destination": "profile",
+            "using": "load:by-ref"
+        },
+        {
+            "source": "title",
+            "destination": "phd:project",
+            "name": "dc:attribute:title"
+        }
+    ]
+}
+</pre>
+
+The three Instructions:
+
+* Look up the @username@ in the API request to find the ref of the user's @profile@.
+* Load the @profile@, using this ref.
+* Update the title of the project to the @title@ in the API request.
+
+Note the use of @singleRecord@ in the @files@ section, as this API will only be updating one project in a single request.
+
+This control file could be generated through the admin UI:
+
+CLICK_PATH TOOLS > Data import > Models > haplo:person > Generate control file...
+
+Select @dc:attribute:title@ in the project, click _Generate control file_, then modify it:
+
+* Add @"singleRecord":true@ to the @DEFAULT@ file.
+* Change the @source@ names to match your input data.
+
+
+h2. Create the API
+
+Use the admin user interface to create the API:
+
+CLICK_PATH TOOLS > Data import > REST APIs > New REST API...
+
+and fill out the form with:
+
+|URL|@update-title@|
+|Description|Update project title|
+|Enabled|Yes|
+|Response|JSON|
+|Control file|Copy and paste the control file above.|
+
+Click _New REST API_ to create the API.
+
+
+h2. Create an API key
+
+After creating the REST API, click the _Create API key..._ button to create an API key.
+
+This API key is restricted so it can only access this REST API.
+
+
+h2. Prepare request data
+
+Create a file, @request.json@, which contains the data:
+
+<pre>language=javascript
+{
+    "username": "jbloggs",
+    "title": "Updated title"
+}
+</pre>
+
+Adjust the file with a username that is used in your application.
+
+
+h2. Call the endpoint
+
+The details page for the REST API will give the full endpoint URL. Write a script to call it, inserting the API key and hostname at the top:
+
+<pre>
+#!/bin/sh
+set -e
+
+API_KEY=API_KEY_GOES_HERE
+FILE_DIRECTORY=.
+SERVER=app.example.org
+
+curl -X POST --data-binary @request.json --user haplo:${API_KEY} https://${SERVER}/api/push-data/update-title
+</pre>
+
+This script will POST the contents of the @request.json@ file to the endpoint and update the project title.
+
+View the project record, and verify the project title has been updated.
+

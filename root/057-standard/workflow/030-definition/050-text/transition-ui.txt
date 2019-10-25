@@ -1,0 +1,60 @@
+title: Transition UI
+--
+
+The built-in transition UI is highly configurable.
+
+It uses the [node:plugin/templates/std-template/ui-choose] standard template, and a lot of these text values are simply inserted into the appropriate part of the view.
+
+
+h4. Label of action panel link to transition page
+
+ * action-label:STATE
+ * action-label
+
+
+h4. Title of transition page
+
+ * transition-page-title:STATE
+ * action-label:STATE
+ * transition-page-title
+ * action-label
+
+
+h4. Transition name
+
+(std:ui:choose @label@)
+
+ * transition:TRANSITION:STATE
+ * transition:TRANSITION
+ * transition
+
+
+h4. Transition notes
+
+(std:ui:choose @notes@)
+
+ * transition-notes:TRANSITION:STATE
+ * transition-notes:TRANSITION
+ * transition-notes
+
+
+h4. Transition indicator
+
+(std:ui:choose @indicator@, defaults to @"standard"@)
+
+ * transition-indicator:TRANSITION:STATE
+ * transition-indicator:TRANSITION
+ * transition-indicator
+
+
+h4. Transition confirmation text
+
+(displayed on the confirmation page)
+
+ * transition-confirm:TRANSITION:STATE
+ * transition-notes:TRANSITION:STATE
+ * transition-confirm:TRANSITION
+ * transition-notes:TRANSITION
+ * transition-confirm
+ * transition-notes
+

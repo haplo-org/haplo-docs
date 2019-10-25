@@ -1,0 +1,60 @@
+title: Control validation
+long_title: Control file validation
+--
+
+The data import framework provides methods to validate that control files are well formed and refer to features available in the current application.
+
+h2(service). haplo:data-import-framework:validate-control
+
+This service takes the a control file as a single argument, and returns an array of error messages. If this array is empty, the control file is validated successfully.
+
+<pre>language=javascript
+let control = {
+    "dataImportControlFileVersion": 0,
+    "model": "haplo:person",
+    // ...
+};
+
+let errors = O.service(
+        "haplo:data-import-framework:validate-control",
+        control
+    );
+if(errors.length === 0) {
+    // validates OK
+}
+</pre>
+
+
+h2. Form validation
+
+Two form [node:plugin/form/custom-validation:custom validation functions] are provided to validate control files as part of a [node:plugin/form:form].
+
+h3. File upload
+
+<pre>language=json
+{
+    "type": "file",
+    "path": "control",
+    "label": "Control file",
+    "required": true,
+    "validationCustom": {
+        "name": "haplo:data-import-framework:control-file"
+    }
+}
+</pre>
+
+h3. Text field for JSON input
+
+<pre>language=json
+{
+    "type": "paragraph",
+    "label": "Control file",
+    "explanation": "Copy and paste your JSON control file.",
+    "path": "control",
+    "rows": 16,
+    "required": true,
+    "validationCustom": {
+        "name": "haplo:data-import-framework:control-json"
+    }
+}
+</pre>

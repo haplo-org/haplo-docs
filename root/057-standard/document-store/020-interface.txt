@@ -1,0 +1,126 @@
+title: Interface
+long_title: Document store interfaces
+--
+
+To get an instance of the Document store, call @instance(key)@ on your defined Document store object.
+
+h2. Interfaces
+
+h3(property). currentDocument
+
+Returns the currently edited but unsaved document as a javascript object if one exists. Else returns the last committed version of the document or if one doesn't exist, a blank document.
+
+h3(property). currentDocumentIsEdited
+
+Returns a boolean which is true if the current document has outstanding uncommitted edits.
+
+h3(property). currentDocumentIsComplete
+
+Returns a boolean which is true if the current document is completed, eg: the required fields are filled in and the document validates.
+
+h3(function). setCurrentDocument(document, isComplete)
+
+Sets the current (uncomitted) document to @document@, using @isComplete@ to define the completed/incompleted status of the current document.
+
+h3(property). lastCommittedDocument
+
+Returns the javascript object of the last committed version of the document, or if one doesn't exist, a blank document.
+
+h3(property). hasCommittedDocument
+
+Returns a boolean which is true if there is any saved version of the document.
+
+h3(property). history
+
+Return an array of objects containing data about all the versions of the document stored for this instance of the document store.
+
+The objects in the array have the properties:
+
+|*Property*|*Description*|
+|version|The numeric version of the document|
+|date|The date this version was committed|
+|user|The user that committed this version|
+|document|The document as a javascript object|
+
+h3(function). commit(user)
+
+Saves/commits the @currentDocument@ as the latest version. If there is no edited version then @commit()@ will use the @lastCommittedDocument@ as the document to commit.
+
+h3(function). deferredRenderLastCommittedDocument()
+
+Return a [node:plugin/templates/including-templates#Deferred_rendering:deferred render] for the last committed document.
+
+h3(property). lastCommittedDocumentHTML
+
+The HTML for the last committed document. Use @deferredRenderLastCommittedDocument()@ instead.
+
+h3(function). deferredRenderCurrentDocument()
+
+Return a [node:plugin/templates/including-templates#Deferred_rendering:deferred render] for the current, potentially edited, version of the document.
+
+h3(property). currentDocumentHTML
+
+The HTML for the current document. Use @deferredRenderCurrentDocument()@ instead.
+
+
+h3(function). handleEditDocument(E, actions)
+
+Handles the editing of a document instance, for example in a request handler where the user has submitted changes to some forms.
+
+@E@ is the request object and is required.
+
+@actions@ is an object containing hooks to be executed to customise functionality of the editor.
+
+|*Property*|*Description*|
+|finishEditing|A function called with the arguments @instance, E, complete@ when the user submits edits to the form. Should end with @E.response.redirect()@ to redirect the user to the desired location.|
+|gotoPage|A function called with the arguments @instance, E, formId@  when the user clicks to go to another page in the store. Should end with @E.response.redirect()@ to redirect the user to the desired location. By default appending @"/"+formId@ to the URL of the editor handler will redirect to a specific form. Use [node:standard/document-store/definition#formIdFromRequest:@formIdFromRequest()@] for other URL schemes|
+|render|A function called with the arguments @instance, E, deferredRender@ that should render the page by calling @E.render()@|
+
+The arguments mentioned above are:
+
+|*Argument*|*Description*|
+|instance|The document store instance|
+|E|The [node:plugin/interface/exchange:Exchange] object|
+|complete|Boolean. if the form passes validation and is completed|
+|formId|String. Id of the form the user is going to|
+|deferredRender|[node:plugin/templates/including-templates#Deferred_rendering:Deferred render]. The Deferred render object of the form to be displayed to be included in a HSVT template|
+
+For example:
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/example-plugin/edit-form", [
+    {pathElement:0, as:"workUnit", workType:"example_workunit"}
+], function(E, workUnit) {
+    var key = workUnit.id;
+    var instance = P.exampleDocStore.instance(key);
+    instance.handleEditDocument(E, {
+        finishEditing: function(instance, E, complete) {
+            if(complete) {
+                // ...
+            }
+        },
+        gotoPage: function(instance, E, formId) {
+            E.response.redirect("/do/example-plugin/edit-form/"+
+                instance.key.workUnit.id+"/"+formId);
+        },
+        render: function(instance, E, deferredRender) {
+            E.render({
+                // ...
+            });
+        }
+    });
+});
+</pre>
+
+h3(function). addInitialCommittedDocument(document, user, date)
+
+Adds @document@ as the first committed document to the instance.
+
+@user@ becomes the person that committed the original document and the @date@ becomes the date the document was originally committed. There cannot be any existing documents, committed or not, for the current instance.
+
+h3(function). makeViewerUI(E, options)
+
+Constructs and returns a [node:standard/document-store/viewer:DocumentViewer] object which can be used to display UI for your document store and forms in your plugin.
+
+For @options@ see [node:standard/document-store/viewer#Options:DocumentViewer options].
+

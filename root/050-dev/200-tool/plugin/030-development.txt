@@ -43,9 +43,9 @@ will upload the plugin to the server, and install it. You can test the plugin by
 While it is running:
 
 * if you make any changes to the files on the disc, the Plugin Tool will automatically upload them to the server
-* if your plugin calls [node:dev/plugin/standard-interfaces/console:console.log()], the message will output by the Plugin Tool.
+* if your plugin calls [node:plugin/standard-interfaces/console:console.log()], the message will output by the Plugin Tool.
 
-See [node:dev/tool/plugin/database:working with databases] for notes on how to use the [node:dev/plugin/database:relational database] during development.
+See [node:dev/tool/plugin/database:working with databases] for notes on how to use the [node:plugin/database:relational database] during development.
 
 
 h2. Errors
@@ -61,7 +61,7 @@ If your plugin doesn't work as you expect, for example a change isn't applied, c
 
 h2. Tests
 
-Where appropriate, you should write [node:dev/plugin/tests:automated tests] for your plugin's key functionality. To run them, use the @test@ command:
+Where appropriate, you should write [node:plugin/tests:automated tests] for your plugin's key functionality. To run them, use the @test@ command:
 
 <pre>
     haplo-plugin -p test_plugin test
@@ -72,7 +72,7 @@ The @test@ command takes an optional argument to specify a subset of the tests. 
 
 h2. Debugging
 
-Currently debugging support is a little minimal, limited to reporting errors in the web browser and viewing the output of [node:dev/plugin/standard-interfaces/console:console.log()] while the Plugin Tool is running the @develop@ command.
+Currently debugging support is a little minimal, limited to reporting errors in the web browser and viewing the output of [node:plugin/standard-interfaces/console:console.log()] while the Plugin Tool is running the @develop@ command.
 
 You can also view the output of @console.log()@ in System management:
 

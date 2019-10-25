@@ -1,0 +1,12 @@
+title: Value types
+long_title: Constants for types of value
+--
+
+These constants are used to identify the type of values stored in a [node:plugin/interface/store-object]. Along with the [node:plugin/o/constants/text-types:text types], they can be queried using the @O.typecode()@ function, see [node:plugin/o/typecode].
+
+|*Constant name*|*Description*|
+|@O.T_REF@|@StoreObject@ reference, as a [node:plugin/interface/ref]|
+|@O.T_DATETIME@|[node:plugin/interface/date-time] or JavaScript @Date@ object|
+|@O.T_BOOLEAN@|@true@ or @false@|
+|@O.T_INTEGER@|Integer|
+|@O.T_NUMBER@|Floating point number|

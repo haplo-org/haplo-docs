@@ -1,0 +1,16 @@
+title: hObjectAttributeRestrictionLabelsForUser
+class: HookNode
+--
+
+This hook allows plugins to lift [node:plugin/schema/restrictions:restrictions] on individual objects on a per-object per-user basis.
+
+For efficiency, this does not affect searches. Adding a per-object rule does not allow a user to search by attributes that are restricted.
+
+<pre>language=javascript
+P.hook("hObjectAttributeRestrictionLabelsForUser", function(response, user, object, container) {
+    if(isAuthorOf(user, object)) {
+        response.userLabelsForObject.add(Label.LiftAllEmbargoRestrictions);
+    }
+});
+</pre>
+

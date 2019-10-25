@@ -1,0 +1,17 @@
+title: Embargoes
+--
+
+
+Haplo supports multiple embargo periods on a single record, managing different embargo periods for each file  associated with a single output record. This provides the flexibility to accurately and seecurely describe complex publisher rules on full-text deposit.
+
+Reeference links for publisher and journal embargo periods for research outputs are integrated into the system by querying the SHERPA/RoMEO service, and presented to administrative staff at the point embargoes are added so they can check at a glance the deposit conditions for an output.
+
+h3. Embargoed file access
+
+While an embargo is active the file it applies to is not available for public download. External users will be able to request a copy of the embargoed file using the [node:app/repository/administration/restricted-file-access] framework. 
+
+In the standard configuration this will send a system task and an email to the author of the output, asking them to confirm the release of the file to the external user. The file will then be securely released to the external user, and downloads audited within the application.
+
+h3. Embargo date reached
+
+When an embargo end date is reached, the embargo is lifted and the file becomes available for download in the public repository. This can either happen automatically (with or without notifying the submitter and repository manager) or can require confirmation by the repository manager before publication.

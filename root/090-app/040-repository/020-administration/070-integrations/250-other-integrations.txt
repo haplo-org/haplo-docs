@@ -1,0 +1,10 @@
+title: Other integrations
+--
+
+h2. Researchfish
+
+Haplo presents data in a format that can be uploaded to Researchfish, as a precursor to an automatic feed when a Researchfish API is made available.
+
+h2. CERIF
+
+Haplo sits within the CERIF framework for CRIS systems, using similar and compatible concepts to describe institutional information.

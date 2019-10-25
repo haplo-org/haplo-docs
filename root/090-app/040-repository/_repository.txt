@@ -1,0 +1,38 @@
+title: Haplo Repository
+--
+
+Haplo Repository is a modern academic repository for the management and publication of research outputs and research data.
+
+A single repository can manage all research outputs, including traditional scholarly publications, practise based research, and research data. Each output type can have different metadata, workflows and policies.
+
+With integrated workflows and an intuitive user interface, Haplo offers high rates of engagement with your researchers and increases rates of self-deposit. Customisable workflows and reports allow all processes to happen inside the repository, including the UK REF process.
+
+Building on the Haplo Platform, it has a flexible architecture that enables your repository to perfectly fit your institution and your research.
+
+Highlights include:
+
+* Public repository with a flexible toolkit for customised public interfaces to the repository
+* Researcher web profiles
+* Flexible ingest processes with clear, intuitive user experience, resulting in high levels of self-deposit from researchers
+* Multiple per-file embargos on outputs
+* Flexible schema, multiple types of outputs (including research data) to be managed in the same repository, standard protocol and metadata support, including OAI-PMH, DOI minting
+* Support for managing restricted files including a “Request a copy” workflow to approve access to restricted files, and support for file preparation for research data (eg anonymisation).
+* Out of the box ORCiD integration
+* Support for practise based research
+* Reporting, including UK REF compliance monitoring and reporting
+* Impact and esteem recording
+* High level of security, suitable for storing sensitive material with access restrictions
+* Metadata import and compatibility with legacy repositories
+
+The code is available through the "haplo-repository":https://github.com/haplo-org/haplo-repository source code repository, under the MPLv2 license.
+
+
+h2. This manual
+
+This manual is aimed at IT professions and Librarians who are setting up and managing an academic repository.
+
+It is split into two main sections:
+
+1. [node:app/repository/setup:Setting up and configuring] a Haplo Repository.
+
+2. Supporting and managing a Haplo Repository.

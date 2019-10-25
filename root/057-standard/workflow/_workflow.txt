@@ -1,0 +1,35 @@
+title: Workflow
+--
+
+Plugin name: @std_workflow@
+
+The standard Workflow plugin implements a comprehensive workflow system based on "Finite state machines":https://en.wikipedia.org/wiki/Finite-state_machine.
+
+While the theory may sound a little complex, it's actually really simple, and is just a way of turning a flowchart into code. A workflow process can be in one of several defined states, and can transition to a defined set of other states from each of those states.
+
+Read the [node:standard/workflow/overview:overview] and [node:standard/workflow/concepts:concepts] to get started.
+
+
+h2. Features
+
+ * Complete UI for workflow, including passing tasks to different people with email notifications
+
+ * Timeline/audit trail of all actions in a workflow
+
+ * Simple note taking for communication between workflow participants 
+
+ * Expressive yet concise representation of user interface
+
+ * API designed for composition of workflow behaviours, so common functionality can be layered without clashing
+
+ * Sensible defaults which are easy to override
+
+ * Metadata based entities system to route tasks to the right people
+
+ * Replacements system and UI, allowing users to be replaced on an ad-hoc basis
+
+ * Translation using the platform's [node:plugin/i18n/workflow:internationalisation features]
+
+ * Configurable dashboard showing states of tasks
+
+ * Behind-the-scenes admin UI for support and development

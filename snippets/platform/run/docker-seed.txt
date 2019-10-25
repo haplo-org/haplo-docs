@@ -1,0 +1,34 @@
+h3. Seeding the configuration
+
+In the location for persistent storage you created above, create a file called @app.values@ that looks like the following, defining the five settings required to bootstrap the installation.
+
+<pre>
+APPURL="haplo.your.site.name"
+APPNAME="Fred"
+APPUNAME="Fred Bloggs"
+APPUMAIL="fred@example.com"
+APPUPASS="fred123"
+</pre>
+
+The values required are:
+
+<dl>
+<dt>APPURL</dt>
+<dd>This is the address you use to connect to the server
+<dt>APPNAME</dt>
+<dd>This is the name that will be displayed on all the pages of your Haplo installation. It should reflect the name of your department or organization, or the function of this Haplo installation.</dd>
+<dt>APPUNAME</dt>
+<dd>You need to create at least one user, so you will be asked for their details. This should be their full name, for example 'Fred Bloggs'.</dd>
+<dt>APPUMAIL</dt>
+<dd>And their email address, for example 'fred.bloggs@example.com'.</dd>
+<dt>APPUPASS</dt>
+<dd>And then give a password for this user.</dd>
+</dl>
+
+There is an additional value you can set, which is optional.
+
+<pre>
+APPPLUGIN="hresrepodemo_application"
+</pre>
+
+If this is set, then the application will have the specified plugin installed. If unset, you'll get a basic uncustomized Haplo application. At the present time, the only valid value is "hresrepodemo_application", which will cause a demonstration "Academic Repository":https://github.com/haplo-org/haplo-repository to be created.

@@ -1,0 +1,16 @@
+title: Restricted file access
+--
+
+h3. Restricted files access requests
+
+Haplo's access request support enables institutions to manage requests from internal or external readers to view embargoed and restricted files.
+
+Access requests are submitted to the repository manager and author for approval. Files can be routed for processing prior to release, for example to anonymise data sets. The routing for access to restricted files can be customised for different item types and different levels of restriction.
+
+On approval, the reader is granted access to the file for a limited period and the download is logged for auditing. Users can either be sent a link to the file in an email or be required to create an account.
+
+h3. Re-use licences
+
+Users can be required to agree to or acknowledge a re-use licence before viewing the item. Agreement and download is then logged on the audit trail.
+
+Haplo provides dashboards reporting on downloads of restricted files so administrators can monitor these processes within the repository.

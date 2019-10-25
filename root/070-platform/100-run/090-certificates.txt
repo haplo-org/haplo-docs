@@ -1,0 +1,35 @@
+title: SSL Certificates
+long_title: Managing SSL Certificates
+--
+
+The Haplo Platform assumes and requires that incoming connections are encrypted. Everything is over HTTPS. While unencrypted HTTP requests are accepted, they are immediately redirected to HTTPS.
+
+Here we describe how the necessary SSL certificates are managed.
+
+h2. Locations and file names
+
+All certificates are stored in @/haplo/sslcerts@. If you're using [node:platform/run/docker:Docker] this will be the @sslcerts@ directory in the persistent storage location that you've mapped into the container.
+
+That directory must contain a private key called @server.key@ and a matching certificate @server.crt@. If they don't exist then our scripts will create a self-signed certificate.
+
+h2. Using your own certificate
+
+If you have your own certificate (which must match the URL used for you Haplo instance) then you can replace the self-signed certificate.
+
+Note that you must first allow the self-signed certificate to be created as part of the initial setup, then replace it later.
+
+To do this, replace the existing @server.key@ with your certificate's private key, replace the existing @server.crt@ with your certificate, and create a file @server-intermediate.crt@ containing any intermediates you need. You must use these file names.
+
+h2. Adding additional sites
+
+The Haplo Platform is a multitenant application server, so allows multiple instances of the application which have unique names. Each name must have a matching SSL certificate.
+
+If you have a wildcard certificate, then you can use that: simply use it as @server.crt@.
+
+If you have multiple certificates, then the first one must be called @server.crt@. Additional certificates can be added, using the hostname as the root of the filename. So, for @my.host.name@, you'll need @my.host.name.key@, @my.host.name.crt@, and @my.host.name-intermediate.crt@.
+
+If you have a certificate for multiple sites (one that contains Subject Alternate Names) then copy it for each name.
+
+h2. Copying the certificate for the plugin tool
+
+The [node:dev/tool/plugin] needs a copy of the @server.crt@ file, which you can find in the location listed above.

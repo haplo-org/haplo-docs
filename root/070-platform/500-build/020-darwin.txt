@@ -1,0 +1,78 @@
+title: macOS
+long_title: Build on macOS
+--
+
+We recommend you use an [node:platform/build/ubuntu:Ubuntu VM] on your Mac, as macOS is a bit of a moving target. However, with a bit of work, it is possible to run Haplo on macOS directly.
+
+You need a recent version of macOS with Xcode or the command line development tools installed. If you haven't got either installed yet, install the latter with
+
+<pre>
+xcode-select --install
+</pre>
+
+Then install Java 8 and "Maven":http://maven.apache.org/download.cgi.
+
+Check the version of java with @java -version@. You must use Java 8, as older and newer versions aren't compatible. If it's not using Java 8, use @/usr/libexec/java_home@ to set the appropriate @PATH@.
+
+Use the current version of Maven, such as 3.5.4 or later.
+
+h3. Install PostgreSQL
+
+Download a recent version of PostgreSQL "Enterprise DB":http://www.enterprisedb.com/products-services-training/pgdownload#osx (we suggest version 10).
+
+Install it with all the defaults, so it installs at @/Library/PostgreSQL/10@
+
+[SNIPPET platform/build/postgresql-local-user]
+
+
+h3. Setting up PostgreSQL
+
+Create a database as the current user:
+
+<pre>
+mkdir -p ~/haplo-dev-support/pg
+/Library/PostgreSQL/10/bin/initdb -E UTF8 -D ~/haplo-dev-support/pg
+</pre>
+
+*Important:* You need to make sure that the PostgreSQL @bin@ directory is in your path, for example, by adding the following to your @~/.profile@ file.
+
+<pre>
+export PATH=/Library/PostgreSQL/10/bin:$PATH
+</pre>
+
+
+h3. Running PostgreSQL for development and testing
+
+Whenever you want to run the database, leave the following command running in a terminal window:
+
+<pre>
+sudo launchctl stop com.edb.launchd.postgresql-10
+/Library/PostgreSQL/10/bin/postmaster -D ~/haplo-dev-support/pg
+</pre>
+
+Open another terminal window so you can leave it running now.
+
+
+[SNIPPET platform/build/building-haplo]
+
+
+[SNIPPET platform/build/run-test-suite]
+
+You should expect a few tests to fail due to platform differences between our production environment and macOS. If lots of tests fail, you haven't got enough free memory.
+
+
+[SNIPPET platform/build/running-server]
+
+<pre>
+cd ~/haplo
+db/init_app.sh haplo test.`hostname` "Test application" sme 4000
+db/create_app_user.sh test.`hostname` "Ben Summers" ben@example.com password
+echo Visit http://test.`hostname`:8080 in your browser.
+</pre>
+
+The Haplo server will use multicast DNS to broadcast the hostname for the application, so a web browser on your Mac will be able to connect to the server on the address printed by the @echo@ command.
+
+[SNIPPET platform/build/server-login]
+
+
+[SNIPPET platform/build/next-steps]

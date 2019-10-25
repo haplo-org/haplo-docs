@@ -1,0 +1,165 @@
+title: Upload script
+--
+
+While there is a user interface for manual upload of files, it is generally quicker to develop the integration using an upload script from the very start.
+
+The upload script needs to:
+
+* Authenticate each request to the server using HTTP basic authentication, using the username @haplo@ and an API key as the password.
+
+* Upload one or more files, each with a separate @name@ parameter, matching the names in the @files@ section of the control file.
+
+* When all files are uploaded, make a separate request to apply the files.
+
+Upload scripts just need to make POST requests to @https@ URLs, using the @multipart/form-data@ encoding for the request body. Just about all HTTP client libraries are capable of making these requests.
+
+
+h3. Example script for UNIX
+
+The standard @curl@ utility is often pre-installed on UNIX-like operating systems, such as Linux and macOS, or easily obtained through a package.
+
+<pre>
+#!/bin/sh
+set -e
+
+# TODO: Edit this configuration
+API_KEY=YOUR_API_KEY_HERE
+FILE_DIRECTORY=/path/to/directory
+SERVER=research.example.org
+
+# Upload the control file
+curl -X POST -F name=_control -F file=@${FILE_DIRECTORY}/_control.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/upload-file
+
+# TODO: Edit the name and file arguments, and repeat if there are multiple files
+curl -X POST -F name=users -F file=@${FILE_DIRECTORY}/users.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/upload-file
+
+# Applies the files
+curl -X POST --user haplo:${API_KEY} https://${SERVER}/api/haplo-user-sync/start-sync
+</pre>
+
+h3. Example script for Windows
+
+For Windows servers, we recommend the use of the "User Sync Uploader":https://github.com/haplo-org/haplo-user-sync-uploader utility.
+
+You can download a binary from "the releases page":https://github.com/haplo-org/haplo-user-sync-uploader/releases. Checksums for the .exe downloads are:
+
+|*Version*|*SHA256 checksum*|
+|20190924|@f362d0ab8b3a293e001597a22efbefe33d1f2ac7b55b6d4b8d7c4360762032fd@|
+
+At least .NET 4.7 is required for TLS 1.2 support, which is required for connecting to Haplo applications.
+
+An example upload script is: 
+
+<pre>
+set HAPLO_API_KEY=YOUR_API_KEY_HERE
+set HAPLO_SERVER=research.example.org
+
+haplo-user-sync-uploader file _control path\to\_control.json
+haplo-user-sync-uploader file users path\to\users.json
+haplo-user-sync-uploader apply
+</pre>
+
+
+h2. Configuring the script
+
+The server name is the hostname of the application you're testing, or eventually the live application.
+
+The API key is generated for a special _service user_ using User sync administration UI:
+
+CLICK_PATH TOOLS > User sync administration > Create API key...
+
+After creation, API keys are managed through System Management:
+
+CLICK_PATH TOOLS > System management > Users > SRV > Generic user sync access
+
+Scroll to the bottom of the right hand pane to view the API keys.
+
+All user sync API keys should have @/api/haplo-user-sync/@ as the _Request path_ to restrict them to just the user sync APIs.
+
+
+
+h2. Control files
+
+The control file is uploaded with the @_control@ name, and should be uploaded as the first file. If it is not uploaded for a sync run, the previous control file will be used.
+
+
+h2. API
+
+The user sync API uses two endpoints on the application. Both must be authenticated using HTTP basic authentication with the @haplo@ username and an API key as the password.
+
+h3. POST /api/haplo-user-sync/upload-file
+
+The request body must be @multipart/form-data@ encoded, and contain two parameters:
+
+* @name@ - the name of the file, matching an entry in the @files@ property of the control file.
+
+* @file@ - the data file. The filename of this file is ignored.
+
+As a special case, if the @name@ is @_control@, then the control file is replaced with the @file@.
+
+Files do not all need to be uploaded from the same server, as long as the request to start the sync happens after they have all been uploaded.
+
+If this API succeeds, the response will have a 200 status status code and the body will be a JSON document with three properties:
+
+|@digest@|SHA256 digest of the uploaded file|
+|@fileSize@|Size of the uploaded file in bytes|
+|@filename@|Filename of the uploaded file|
+
+For example,
+
+<pre>language=json
+{
+    "digest": "bb0216c6ec24c67658a8257733a47504f4131ef8a116b1085eda7f00932fb057",
+    "fileSize": 189373,
+    "filename": "users.xml"
+}
+</pre>
+
+If this API fails, a non-200 status code will be returned.
+
+
+h3. POST /api/haplo-user-sync/start-sync
+
+After all files have been uploaded, make a POST request this endpoint to start the sync run. An error will be returned if not all files have been uploaded yet.
+
+If automatic apply of the user sync has been disabled in the admin user interface, or the files are too different from the previous run (for example, their size differs by more than 10%), then a manual action will be needed to apply the sync.
+
+The first run will always need a manual apply.
+
+This API will by default return a @text/plain@ body with a human readable description of the status of the sync.
+
+If the user sync has all the files required, a 200 status code will be returned, otherwise a non-200 status code is returned.
+
+There are alternative APIs available if a structured response is required. Unlike the default API, the alternatives will return a 200 status cade even if the required files have not all been uploaded. The structured response will contain the following values:
+
+|@status@|The status of the user sync. Possible values are: @queued-for-apply@, @missing-files@, and @admin-intervention-required@|
+|@error@|Whether an error has occurred|
+|@message@|A human readable explanation of the state|
+<br>
+
+h4. JSON
+
+The first alternative is returning the data in JSON format. This can be used by POSTing to @/api/haplo-user-sync/start-sync/json@.
+
+Example response:
+
+<pre>language=json
+{
+    "status": "queued-for-apply",
+    "error": false,
+    "message": "OK. Sync queued."
+}
+</pre>
+
+h4. XML
+
+Another alternative is returning the data in XML format. This can be used by POSTing to @/api/haplo-user-sync/start-sync/xml@. The message value is the text of the sync element, while the error and status values are stored as attributes on it.
+
+Example response:
+
+<pre>language=xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<response>
+    <sync error="false" status="queued-for-apply">OK. Sync queued.</sync>
+</response>    
+</pre>

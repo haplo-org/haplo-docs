@@ -1,0 +1,8 @@
+title: text-multiline
+long_title: Multiline text data type
+link_as: keyword
+--
+
+The @text-paragraph@ data type represents multiline text.
+
+Newline characters, @"\n"@, separate the lines.

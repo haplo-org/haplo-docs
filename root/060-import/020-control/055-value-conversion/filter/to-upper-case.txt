@@ -1,0 +1,5 @@
+title: haplo:to-upper-case
+link_as: keyword
+--
+
+The @haplo:to-upper-case@ value filter converts strings to upper case.

@@ -7,6 +7,10 @@ The API is an "XML REST"-like API accessed via HTTPS (or HTTP if the system is c
 
 The endpoints are all relative to the system base URL. The hostname is used by the server to identify the customer's system. For example, if the system URL used by the users is @http://example.infomanaged.co.uk@ then given the endpoint @/api/example@ the URL @http://example.infomanaged.co.uk/api/example@ should be requested.
 
+h3. Authentication
+
+All requests must be authenticated using an [node:dev/api-key:API key].
+
 h3. Notation
 
 In documentation of the XML format, the hierarchy follows the hierarchy of the XML. @monospace@ is used to represent the elements, with the suffic * meaning zero or more, + meaning 1 or more, ? means 0 or 1, no suffix means always 1. _italics_ show the attributes on the parent element. _TEXT_ represents the text node contained in the elemement. For example:

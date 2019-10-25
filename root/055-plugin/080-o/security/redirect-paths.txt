@@ -1,0 +1,27 @@
+title: Redirect paths
+long_title: Checked safe redirect paths
+--
+
+When your application is redirecting to another URL provided as a user-modifiable parameter (for example, a post login redirect in a custom login process), it is important to check it refers to a URL on this application to avoid providing an open redirect.
+
+This function checks the URL, avoiding subtle mistakes, and providing a central place to update these checks should browser behaviour evolve.
+
+
+h3(function). O.checkedSafeRedirectURLPath(rdr)
+
+Returns the value of @rdr@ if it is a safe redirect URL path, and @null@ otherwise.
+
+For example:
+
+<pre>language=javascript
+P.respond("GET,POST", "/do/something", [
+  {paramter:"rdr", as:"string", optional:true}
+], function(E, rdr) {
+    rdr = O.checkedSafeRedirectURLPath(rdr);
+    // Do some operation
+    if(rdr) {
+        E.response.redirect(rdr);
+    }
+});
+</pre>
+

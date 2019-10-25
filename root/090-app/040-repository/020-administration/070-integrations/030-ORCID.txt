@@ -1,0 +1,22 @@
+title: ORCID
+--
+
+The repository supports integration with ORCID to allow the creation of ORCID iDs, or for researchers with an iD to connect that to their account within the repository.
+
+iDs are recorded on a researcher's record, which automatically associates the iD with all of that researcher's publications within the repository through the Haplo linked data model.
+
+The repository can be configured to allow different levels of integration with ORCID:
+
+h3. Collecting iDs
+
+The basic integration includes authentication with ORCID's servers, registering authors' iDs within the repository, and reporting on iD uptake within the university. This reporting allows you to identifiy departments, or faculties where ORCID iD uptake is slow, or individual users without iDs, to target your internal advocacy within your institution.
+
+h3. Pushing data to ORCID
+
+This more advanced integration will include the functionality to push authors' lists of research outputs ("works", in ORCID terms) and universtity affiliation to the ORCID registry. This keeps their ORCID record up to date with the contents of the repository automatically.
+
+h3. Pulling data from ORCID (coming soon)
+
+Haplo will soon develop the functionality to fully sync data with the ORCID registry, pulling publications information from the registry into the repository.
+
+This will provide a fast and streamlined method for new researchers to pull all of their previous publications automatically into the repository when they join an institution via a machine to machine interface.

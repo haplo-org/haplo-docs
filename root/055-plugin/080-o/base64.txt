@@ -1,0 +1,38 @@
+title: Base64
+long_title: Base64 encoding and decoding
+--
+
+An API providing simple Base64 encoding and decoding functions. These use an entirely in-memory implementation, so are only suitable for use with relatively small amounts of data.
+
+
+h3(function). O.base64.encode(input, option)
+
+Encodes the @input@, which may be a @String@, [node:plugin/interface/binary-data] or [node:plugin/interface/file] object.
+
+Where a @String@ is used for the @input@ data, it is serialised in the UTF-8 character set before encoding.
+
+The optional @option@ argument specifies which style of Base64 encoding should be used, see below for allowed values.
+
+Returns a @String@ of Base64 encoded data.
+
+
+h3(function). O.base64.decode(input, option, binaryDataOptions)
+
+Decodes the @input@, which may be a @String@, [node:plugin/interface/binary-data] or [node:plugin/interface/file] object.
+
+The optional @option@ argument specifies which style of Base64 decoding should be used, see below for allowed values.
+
+Returns a [node:plugin/interface/binary-data] object.
+
+The optional @binaryDataOptions@ sets the filename and MIME type of the returned @BinaryData@ object, as per [node:plugin/o/constructor/binary-data]. This should be used when creating files in the file store with [node:plugin/o/constructor/file] or returning the data in a response handler.
+
+An exception will be thrown if the input data is not properly encoded according to the given @option@.
+
+
+h2. Base64 options
+
+The @option@ argument of the Base64 functions specifies the style of Base64 for encoding or decoding binary data.
+
+|Unspecified, @undefined@ or @null@|Base64 alphabet from Table 1 of RFC 4648, without any line separator characters.|
+|@"mime"@|Base64 alphabet from Table 1 of RFC 4648, with @"\r\n"@ line separator characters so lines are no longer than 76 characters.|
+|@"url"@|URL and Filename safe Base64 alphabet from Table 2 of RFC 4648.|

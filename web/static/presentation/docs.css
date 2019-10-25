@@ -621,6 +621,12 @@ h2.acts_as span.apilabel, h3.acts_as span.apilabel
     background: #eff;
 }
 
+h2.service span.apilabel, h3.service span.apilabel
+{
+    border-color: #faa;
+    background: #fee;
+}
+
 /* anchor points should be moved up a little bit so the heading doesn't get in the way */
 
 .anchor_point
@@ -690,3 +696,19 @@ h2.acts_as span.apilabel, h3.acts_as span.apilabel
 }
 .ref-converter input:first-child { margin-right: 10px; }
 .ref-converter input:nth-child(2) { margin-left: 10px; }
+
+/* images */
+div.doc-image {
+    margin: 16px 0;
+    padding: 0 16px;
+}
+div.doc-image img {
+    display: block;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+div.doc-image .doc-image-caption {
+    margin-top: 12px;
+    font-style: italic;
+    color: #444;
+}
+

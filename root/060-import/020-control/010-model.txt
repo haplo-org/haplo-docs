@@ -1,0 +1,20 @@
+title: Model
+--
+
+The @model@ property specifies the *Model* to use for this data import.
+
+Model names look like @"haplo:person"@ or @"haplo:user-sync"@. You can find the name in the Model explorer:
+
+CLICK_PATH TOOLS > Data import > Models
+
+Some uses of the data import framework, primarily the user sync, require a specific model to be used.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "model": "haplo:user-sync"
+}
+</pre>
+

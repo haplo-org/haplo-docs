@@ -1,0 +1,132 @@
+title: StoreObjectMutable
+long_title: StoreObjectMutable interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @StoreObjectMutable@ interface is an object in the Object Store which can be modified, then saved back to the store.
+
+@StoreObjectMutable@ objects also implement the [node:plugin/interface/store-object] interface.
+
+
+h2. Construction
+
+Use [node:plugin/o/constructor/object] or [node:plugin/interface/store-object#mutableCopy] on [node:plugin/interface/store-object] objects.
+
+
+
+h2. Interface
+
+h3(acts_as). StoreObject
+
+All properties and functions in the [node:plugin/interface/store-object] interface are implemented.
+
+
+h3(function). save(labelChanges)
+
+Creates or updates the object in the store.
+
+@labelChanges@ is optional, and if present, is used to add or remove labels from the defaults, or those specified when calling @O.object()@. If you *only* want to change the labels, use [node:plugin/interface/store-object#relabel] instead.
+
+
+h3(function). append(value, desc, qual, ext)
+
+Append a value to the object, with the specified @desc@ from the schema [node:plugin/schema/schema-global/attr] constants. @qual@ can be omitted, or use @QUAL["std:qualifier:null"]@ to specify no qualifier. @ext@ is optional - if supplied it must be an attribute extension object returned by the newAttributeGroup method.
+
+The value can be:
+
+|*Type*|*Notes*|
+|[node:plugin/interface/ref]|Link to another object|
+|[node:plugin/interface/store-object]|@ref@ property used for linking to the object|
+|[node:plugin/interface/text]|Any text object created with [node:plugin/o/constructor/text]|
+|@String@|Automatically converted into a [node:plugin/interface/text]|
+|[node:plugin/interface/date-time]|Variable precision date and time|
+|@Date@|Automatically converted into a [node:plugin/interface/date-time] with Day precision|
+|Numeric types|Numbers in JavaScript are always floating point, so if the value represents an integer, it is converted to an integer value in the object store. Otherwise a floating point value is stored. See note below.|
+
+Use @appendWithIntValue()@ if you want to be absolutely sure you're adding an integer, or @appendWithFloatValue()@ if you're intending to add floating point values.
+
+
+h3(function). appendWithIntValue(value, desc, qual, ext)
+
+As @append()@, but with a workaround for JavaScript's unhelpful use of floating point numbers for all numeric values.
+
+@value@ must be a number, and is converted into an integer value before appending to the object.
+
+
+h3(function). appendWithFloatValue(value, desc, qual, ext)
+
+As @append()@, but for numeric values only, and without the automatic conversion of floating point values to integers when they represent an integer value.
+
+@value@ must be a number, and is converted into an double floating point before appending to the object.
+
+
+h3(function). appendType(value, qual, ext)
+
+Shortcut for @append(value, ATTR["dc:attribute:type"], qual, ext)@
+
+
+h3(function). appendTitle(value, qual, ext)
+
+Shortcut for @append(value, ATTR["dc:attribute:title"], qual, ext)@
+
+
+h3(function). appendParent(value, qual, ext)
+
+Shortcut for @append(value, ATTR["std:attribute:parent"], qual, ext)@
+
+
+h3(function). remove(desc, qual, iterator)
+
+Remove zero or more values from the object. @desc@ is required, @qual@ can be omitted to specify any qualifier (If @QUAL["std:qualifier:null"]@ is used for @qual@, it will only remove values without a qualifier).
+
+If an @iterator@ is passed as the last argument, it will be called with @(value, desc, qual)@ arguments. If it returns @true@, the value will be deleted.
+
+
+h3(function). newAttributeGroup(groupDesc)
+
+Returns a new [node:plugin/interface/attribute-extension] object for this @groupDesc@.
+
+
+h3(function). preallocateRef()
+
+Preallocate the @ref@ for a new object before @save()@ is called.
+
+@preallocateRef()@ will throw an exception if it is called when the @ref@ has already been allocated, either by calling this function or @save()@.
+
+Returns the new @ref@.
+
+
+h2. Interface (computed attributes)
+
+h3(property). willComputeAttributes
+
+@true@ if the object will [node:plugin/schema/computed-attributes:compute attributes] the next time it is saved or the platform uses attribute values.
+
+
+h3(function). computeAttributesIfRequired()
+
+If the object has been modified since attributes were last [node:plugin/schema/computed-attributes:computed], call the [node:plugin/hook/compute-attributes] hook to compute the attributes.
+
+There is no need to check the @willComputeAttributes@ property first; this method only does work if it is actually required.
+
+You only need to call this method when you are working with mutable store objects and are accessing computed attributes.
+
+Returns this store object.
+
+
+h3(function). computeAttributesForced()
+
+Like @computeAttributesIfRequired()@, but computes attributes even if the object hasn't been marked as requiring an update to computed attributes.
+
+Returns this store object.
+
+
+h3(function). setWillComputeAttributes(willCompute)
+
+Overrides the normal marking of objects as requiring attributes to be computed.
+
+If @willCompute@ is @true@, attributes will be computed when next required.
+
+If @willCompute@ is @false@, the object will be marked as not requiring attributes to be computed.
+
+Returns this store object.

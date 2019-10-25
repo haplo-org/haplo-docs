@@ -1,0 +1,51 @@
+title: Action
+long_title: Action interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @Action@ interface represents the rules for deciding whether a given user is permitted to perform an [node:plugin/o/action:action].
+
+
+h2. Construction
+
+Use [node:plugin/o/action#O_action] while your plugin is loading.
+
+
+h2. Interface (setup)
+
+Every setup function returns the action object, making them suitable for chaining.
+
+
+h3(function). title(title)
+
+Specify the name of this action, suitable for displaying to administrative users.
+
+
+h3(function). allow(kind, thing)
+
+Add an allow rule to the action. A user must match at least one allow rule.
+
+@kind@ specifies which kind of rule. The platform implements two kinds,
+
+|@"all"@|Matches all users|
+|@"group"@|The user is a member of the group passed as @thing@|
+
+Plugins can extend the action system to implement other @kind@ options.
+
+
+h3(function). deny(kind, thing)
+
+Add a deny rule to the action. A user must not match any deny rules.
+
+
+h2. Interface (utility)
+
+h3(property). code
+
+The API code of this action.
+
+
+h3(function). enforce(message)
+
+Check to see if the current user is allowed to perform this action, and if not, call [node:plugin/o/request/stop] with the given @message@, or a default message if it is not specified.
+

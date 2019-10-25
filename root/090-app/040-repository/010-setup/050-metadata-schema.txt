@@ -1,0 +1,41 @@
+title: Metadata schema
+--
+
+h2. Introduction
+
+Haplo's data model is a linked data (semantic web) inspired object store. It's an innovative mix of a graph database, object store, and search engine. Every field is multi-value, and hierarchical relationships are supported everywhere they're needed.
+
+Haplo's shared schema support enables a repository to incorporate both industry standard metadata schemas and custom metadata for each type of output. It is ideal for managing datasets, traditional and non-traditional output types together within the same system with different attributes used by different output types.
+
+The Haplo repository uses these qualities to include comprehensive schemas for a range of record types within the system. These are broken into four main categories:
+
+* Text based outputs (eg. articles, reports)
+* Non-text based outputs (eg. digital or visual media)
+* Research data
+* Collections and portfolios
+
+Each of these has a [node:plugin/schema/requirements-schema/declaration/schema-template:schema template] defined for it, which sets up the basic schema for types within that category. These are amended and extended throughout the repository code, with each plugin referencing only the minimal schema it requires to exists.
+
+Haplo has the flexibility to support new templates for new output types at any time, and for attributes to be added or removed from these templates, from all output types (using the generic "repository item" template), or from a specific output type individually.
+
+h2. Configuring the schema
+
+When setting up a new system you will likely need to configure the schema for the institution's requirements. This may be in the form of renaming existing fields, or by adding additional attributes, qualifiers, and types.
+
+Schema can be added to the default repository schema in two ways:
+
+h3. Setting up schema requirements files (preferred)
+
+You can define an application-specific [node:plugin/schema/requirements-schema:requirements file], to be installed with your system. This will automatically update the schema in the system, allowing you to keep your schema in version control and apply it to systems through a deployment process.
+
+This should be carried out in the [node:app/repository/setup/plugins:root application plugin], so that the changes are applied only for this client, and do not affect the generic functionality.
+
+To amend schema that is defined in generic functionality, you may need to [node:plugin/schema/requirements-schema/change-values#Forcing_changes:force-apply changes] in the client namespace. This should be used as sparingly as possible, but is useful to enforce cosmetic changes like renaming the title of shared schema entries.
+
+h3. Using System Management
+
+In a running application, adminstrators are able to edit the schema through the system management interface:
+
+CLICK_PATH TOOLS > System management
+
+Changes made here are only applied for the current application. You can use the [node:plugin/schema/requirements-schema:requirements generator tool] to create a schema file that can be saved in source control, so the configured schema can be easily applied to other systems.

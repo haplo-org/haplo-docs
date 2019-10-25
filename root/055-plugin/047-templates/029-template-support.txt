@@ -1,0 +1,9 @@
+title: Template support
+--
+
+The platform provides utility functions to work with templates.
+
+
+h3(function). O.isDeferredRender(object)
+
+Returns @true@ if @object@ is the result of a [node:plugin/interface/template#deferredRender] function call on a @Template@ object.

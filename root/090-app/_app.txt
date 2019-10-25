@@ -1,0 +1,5 @@
+title: Applications
+class: DocNodeTextileWithTOC
+--
+
+Setup and admin instructions for open source applications built on top of the Haplo platform are described in this section.

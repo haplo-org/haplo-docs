@@ -1,0 +1,169 @@
+title: Definition
+long_title: Document store definition
+--
+
+Document stores are constructed by passing a delegate object as an argument to @P.defineDocumentStore()@
+
+The delegate is a collection of properties and methods which define how your Document store should function.
+
+@std_document_store@ will set the @"std_document_store:key"@ property within @externalData@ for each [node:plugin/interface/form-instance] it creates.
+
+h2. Delegate interface
+
+h3(property). name
+
+Required. The internal name of the Document store. This name will be used when querying the document for data or values and can not be shared with any other Document store defined on your plugin.
+
+h3(property). keyIdType
+
+The type that will be used for the @key@ of your form, if it is not @int@
+
+h3(function). formsForKey(key, instance, document)
+
+Required. Return an array of [node:plugin/form:forms].
+
+You can use the value of @key@ and the @document@ to return different forms for different instances and documents. @document@ may be a historical version when using the document viewer.
+
+*IMPORTANT*: The forms returned for a given @key@ should not vary depending on the currently active user. If you need to display or edit different forms for different people, use @shouldDisplayForm()@ and @shouldEditForm()@.
+
+Note that using the [node:standard/document-store/interface:instance] to determine forms is unlikely to be that interesting, and the methods and properties which require the list of forms cannot be used in this method.
+
+h3(function). keyToKeyId(key)
+
+If the key you are using is not the keyId, use keyToKeyId to transform a key object and into a keyId by return value.
+
+h3(function). blankDocumentForKey(key)
+
+Return what the blank document for a given key should be. You should return a JSON document that sets any default values you want to be set when the user first edits the document store.
+
+h3(function). formIdFromRequest(request)
+
+Given a request object, return a form ID. By default the Document store will use the second [node:plugin/interface/request#extraPathElements:extraPathElements].
+
+h3(function). alwaysShowNavigation(key, instance, document)
+
+Return @true@ to always multi-page navigation, overriding the default to only show it when it's necessary.
+
+h3(function). onSetCurrentDocument(instance, document, isComplete)
+
+Called when the current document is set.
+
+h3(function). onCommit(instance, user)
+
+Called when @commit()@ is called.
+
+h3(function). updateDocumentBeforeEdit(key, instance, document)
+
+Called before a form is to be edited to change the current document. Changes to the document in this function are only saved if the user saves the form.
+
+Use this if your form uses information from other sources that may change between edits.
+
+h3(function). shouldDisplayForm(key, form, document)
+
+Return @true@ if this form should be displayed when rendering the instance as a document.
+
+Use @form.formId@ to determine which form is being queried.
+
+h3(function). shouldEditForm(key, form, document)
+
+Return @true@ if this form should be edited. Use this to stop users from editing individual forms.
+
+Use @form.formId@ to determine which form is being queried.
+
+h3(function). prepareFormInstance(key, form, instance, context)
+
+Prepare a [node:plugin/interface/form-instance] for the form.
+
+*IMPORTANT*: Always check @form.formId@ to check you're preparing the right form.
+
+Use this to setup things like [node:plugin/interface/form-instance#choices:dynamic form choices] and [node:plugin/interface/form-instance#externalData:external data], for example:
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    prepareFormInstance: function(key, form, instance, context) {
+        if(form.formId === "form_name") {
+          if(key.kind === "film") {
+              instance.choices("genres", ["Action", "Comedy", "Horror"]);
+              instance.externalData({
+                  interest: "film"
+              });
+          } else {
+              instance.choices("genres", ["Thriller", "Drama"]);
+              instance.externalData({
+                  interest: "literature"
+              });
+          }
+        }
+    }
+});
+</pre>
+
+h3(function). getAdditionalUIForViewer(key, instance, document)
+
+Use this to define additional UI to be displayed when rendering the form viewer.
+
+Return an object containing locations and [node:plugin/templates/including-templates#Deferred_rendering:deferred renders].
+
+|*Property*|*Location*|
+|top|Displayed at the top of the page|
+|bottom|Displayed at the bottom of the page|
+
+The properties are optional.
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    getAdditionalUIForViewer: function(M, instance, document) {
+        return {
+            top: P.template("top").deferredRender(view)
+        };
+    }
+});
+</pre>
+
+h3(function). getAdditionalUIForEditor(key, instance, document, form)
+
+Use this to define additional UI to be displayed when rendering the form editor. Check form.formId to only display on certain forms in the docstore.
+
+Return an object containing locations and [node:plugin/templates/including-templates#Deferred_rendering:deferred renders].
+
+|*Property*|*Location*|
+|top|Displayed at the top of the page, above the form nvaigation|
+|formTop|Displayed above the form, after the form navigation|
+|bottom|Displayed at the bottom of the page, below the form nvaigation|
+|formBottom|Displayed below the form, before the submit buttons and form navigation|
+
+The properties are optional.
+
+<pre>language=javascript
+var docStore = P.defineDocumentStore({
+    // ... ,
+    getAdditionalUIForEditor: function(M, instance, document, form) {
+        return {
+            top: P.template("top").deferredRender({}),
+            formBottom: P.template("form-bottom").deferredRender({})
+        };
+    }
+});
+</pre>
+
+h3(property). enableSidebarPanel
+
+A boolean that enables items to be added to the top right of the form viewer. The sidebar is populated by implementing the @"std:document_store:sidebar_panel"@ service, which passes in a @builder@ parameter.
+
+h2. Example
+
+An example small definition, where @meetingDetails@ and @outcomes@ are two defined [node:plugin/form:forms]:
+
+<pre>language=javascript
+var meetingRecordStore = P.defineDocumentStore({
+    name: "meetingRecord",
+    formsForKey: function(key) { return [meetingDetails, outcomes]; },
+    blankDocumentForKey: function(key) {
+        return {
+            meetingDate: new Date()
+        };
+    }
+});
+</pre>

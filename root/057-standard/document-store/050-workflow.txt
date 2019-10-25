@@ -1,0 +1,306 @@
+title: Workflow
+long_title: Document store workflow integration
+--
+
+The Document store plugin also has integration with the workflow system, providing a @std:document_store@ [node:standard/workflow/definition/features:workflow feature] that can be applied by a workflow with the @use()@ function. 
+
+The second argument to the @use()@ function is a specification that defines and constructs the Document store.
+
+h2. Specification
+
+The specification is a [node:standard/document-store/definition:Document store definition] with some additional properties.
+
+The @formsForKey()@ method is *required*.
+
+h3(property). name
+
+*Required*. The internal name of the Document store. This name will be used when querying the document for data or values and can not be shared with any other Document store being defined on your workflow.
+
+h3(property). title
+
+The human readable title of the Document store. This will be displayed when referencing the form in the UI unless alternate titles are specified using text system.
+
+h3(property). panel
+
+Specifies where in the sidebar to render a link for viewing the document, with lower numbers being shown closest to the top of the action panel/sidebar.
+
+@panel@ can also be a named priority, if defined by the [node:standard/action-panel/services#std_action:std:action_panel_priorities] service.
+
+h3(property). path
+
+The URL for the document. Must be a valid path (specified in @plugin.json@). The Document store plugin implements the handlers needed for viewing/editing the document at this path.
+
+h3(property). editPriority
+
+The priority of the edit document button within the built-in transition UI action panel. Defaults to "default".
+
+h3(property). priority
+
+The priority within the @panel@. Defaults to "default".
+
+h3(property). view
+
+A list of objects specifying which roles are able to view the document and optionally limiting by [node:standard/workflow/definition/selector:workflow selectors]. Omitting these objects or specifying an empty list @[]@ means that everyone can view the document.
+
+The objects have optional properties:
+
+|*Property*|*Description*|
+|roles|A list of [node:standard/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the document. An empty roles property will allow everyone to read the document|
+|selector|A [node:standard/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be viewable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
+
+For example:
+
+<pre>language=javascript
+{
+    // ... ,
+    view: [
+        {
+            roles:["researcher", "supervisor"],
+            selector:{state:"example_state"}
+        }
+    ]
+}
+</pre>
+
+h3(property). edit
+
+A list of objects specifying which roles are able to edit the document and optionally limiting by [node:standard/workflow/definition/selector:workflow selectors]. Omitting these objects or specifying an empty list @[]@ means that everyone would be able to edit the document, and if it was not optional, would be forced to for every stage of the workflow.
+
+The objects have optional properties:
+
+|*Property*|*Description*|
+|roles|A list of [node:standard/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to edit the document. An empty roles property will allow everyone to edit the document|
+|selector|A [node:standard/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be editable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
+|transitionsFiltered|A list specifying which transitions should only be avaialble if the form has been edited and completed. Useful for situations where a document must be completed to progress, but should allow alternate/backwards traversing transitions when not completed|
+|optional|Boolean. If present and true, allows the user to progress even if the document has not been edited or completed. This is the preferred way to specify optinality, and has the same effect as specifying transitionsFiltered as an empty list|
+
+For example:
+
+<pre>language=javascript
+{
+    // ... ,
+    edit: [
+        {
+            roles: ["researcher"],
+            selector: {state:"wait_researcher"},
+            transitionsFiltered: ["progress"]
+        }
+    ]
+}
+</pre>
+
+h3(property). viewDraft
+
+A list of objects specifying which roles are able to view the current version of the document (as opposed to the last committed version) in addition to whoever is currently editing it. Omiting it will only allow the person who can edit to view the current version.
+
+This is useful where someone aside from the person currently editing needs to be able to see the progress of a form being completed and/or needs to provide input directly to the person editing.
+
+The objects have optional properties:
+
+|*Property*|*Description*|
+|roles|A list of [node:standard/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the current document. An empty roles property will allow everyone to view the current document|
+|selector|A [node:standard/workflow/definition/selector:workflow selector] to select when in the Workflow the current document should be viewable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
+
+For example:
+
+<pre>language=javascript
+{
+    // ... ,
+    viewDraft: [
+        {
+            roles: ["supervisor"],
+            selector: {state:"wait_researcher"}
+        }
+    ]
+}
+</pre>
+
+h3(property). history
+
+A list of objects specifying which roles are able to view the history of the document and optionally limiting by [node:standard/workflow/definition/selector:workflow selectors]. Omitting this property or specifying an empty list @[]@ means that everyone would be able to view the history of the document.
+
+This is useful where a document store maybe being used to draft/collaborate on a message that you intend to show to a particular user at a certain point, but do not want them to be able to see the draft stage.
+
+The objects have optional properties:
+
+|*Property*|*Description*|
+|roles|A list of [node:standard/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to view the document history. An empty roles property will allow everyone to view the document history|
+|selector|A [node:standard/workflow/definition/selector:workflow selector] to select when in the Workflow the document history should be viewable by the specified roles. An empty selector @{}@ will select on all states|
+|action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
+
+For example:
+
+<pre>language=javascript
+{
+    // ... ,
+    history: [
+        {
+            roles: ["researcher"],
+            selector: {state:"approved"},
+            action: "deny"
+        }
+    ]
+}
+</pre>
+
+h3(function). onFinishPage(key)
+
+Return the URL (as a string) of the page to redirect to after finishing the final page of the document store.
+
+By default, the document store workflow integration will redirect the user to the transition screen upon completion of a form if a transition is available, or back to the associated object if not. Specifying an onFinishPage function in the specification can override this behaviour and redirect to the returned URL.
+
+<pre>language=javascript
+{
+    // ... ,
+    onFinishPage: function(key) {
+        return key.entities.object.url();
+    }
+}
+</pre>
+
+
+h2. Accessing a document from the workflow
+
+When using the @std:document_store@ workflow feature, a property named @documentStore@ is added to the Workflow object that gives access to the Document stores that have been defined.
+
+To get an instance of a document store we call @instance(M)@ on our defined document store where @M@ is the workflow object.
+
+For example:
+
+<pre>language=javascript
+var instance = EgWorkflow.documentStore.applicationForm.instance(M)
+</pre>
+
+From here we have access to the regular Document store interfaces. We could now get the most recently updated value for a path in the form for example with:
+
+<pre>language=javascript
+var instance = EgWorkflow.documentStore.applicationForm.instance(M)
+var projectTitle = instance.currentDocument.projectTitle
+</pre>
+
+h2. Text
+
+The [node:standard/workflow/definition/text:workflow text system] can be used to configure the text that appears in the document store specific user interface.
+
+In the documented search paths, placeholders will be used:
+
+ * DOCSTORE - name of a document store 
+ * STATE - name of a state
+
+h4. Edit document button
+
+(Defaults to @"Edit "+title.toLowerCase()@)
+
+ * docstore-panel-edit-link:DOCSTORE:STATE
+ * docstore-panel-edit-link:DOCSTORE
+
+h4. View document button
+
+(Defaults to the title given in the docstore spec)
+
+ * docstore-panel-view-link:DOCSTORE
+
+h4. Uncommitted changes warning
+
+(std:ui:notice @message@, defaults to @"You've made some changes, but they're not visible to anyone else yet."@)
+
+ * docstore-uncommitted-changes-warning-text:DOCSTORE
+
+h4. View draft button
+
+Displays when there are uncommitted changes and the user is permitted to view the draft
+
+(defaults to @"Draft "+title.toLowerCase()@)
+
+ * docstore-panel-draft-link:DOCSTORE
+
+h4. Review prompt
+
+(std:ui:confirm @text@, defaults to @"Please review the form below."@)
+
+ * docstore-review-prompt:DOCSTORE
+
+h4. Review continue
+
+(Defaults to @"Continue"@)
+
+ * docstore-review-continue:DOCSTORE
+
+h4. Review return to edit
+
+(Defaults to @"Return to edit"@)
+
+ * docstore-review-return-to-edit:DOCSTORE
+
+h4. Review prompt edit
+
+(Shown if form editable by current user, defaults to @"Once submitted, the form is no longer editable."@)
+
+ * docstore-review-editable:DOCSTORE
+
+h4. Review cancel
+
+(std:ui:confirm @backLinkText@, defaults to @"Cancel"@)
+
+ * docstore-review-cancel:DOCSTORE
+
+h2. Example definition
+
+An example of a simple document store for a workflow:
+
+<pre>language=javascript
+var application = P.form({
+    "specificationVersion": 0,
+    "formId": "application",
+    "formTitle": "Application",
+    "elements": [
+        {
+            type: "text",
+            label: "Name",
+            path: "name"
+        },
+        {
+            type: "paragraph",
+            label: "Application"
+            path: "applicationText"
+        }
+    ]
+});
+
+P.EgWorkflow.use("std:document_store", {
+    name: "applicationForm",
+    title: "Application form",
+    panel: 500,
+    priority: 100,
+    path: "/do/example-plugin/application-form"
+    formsForKey: function(key) {
+        return [application];
+    },
+    blankDocumentForKey: function(key) {
+        var applicant = key.entities.applicant;
+        return {
+            name: applicant.title
+        };
+    },
+    view: [{}],
+    edit: [
+        {
+            roles: ["applicant"],
+            selector: {state:"wait_application"}, 
+            transitionsFiltered: ["submit_application"]}
+        },
+        {
+            roles: ["supervisor"],
+            selector: {flags:["supervisorEdit"]},
+            optional: true
+        }
+    ],
+    actionableUserMustReview: {
+        pendingTransitions:["approve"]
+    }
+});
+</pre>
+

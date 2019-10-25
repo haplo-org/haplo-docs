@@ -134,7 +134,7 @@ class Documentation
       html.gsub!('</body>',loader+"\n</body>")
     end
     # Rewrite javascript api keys
-    html.gsub!(/\<h(\d) class="(key|value|function|property|acts_as)">/) do
+    html.gsub!(/\<h(\d) class="(key|value|function|property|acts_as|service)">/) do
       %Q!<h#{$1} class="jsapi #{$2}"><span class="apilabel">#{$2.gsub('_',' ')}</span> !
     end
     html

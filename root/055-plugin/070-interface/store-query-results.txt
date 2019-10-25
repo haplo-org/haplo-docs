@@ -1,0 +1,37 @@
+title: StoreQueryResults
+long_title: StoreQueryResults interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @StoreQuery@ interface represents the result of an object store query, and acts as an array of [node:plugin/interface/store-object] objects.
+
+
+h2. Construction
+
+Call [node:plugin/interface/store-query#execute] on a [node:plugin/interface/store-query] object.
+
+
+h2. Interface
+
+h3(acts_as). Array
+
+The query results behave as a read-only JavaScript @Array@. You can use the @[]@ operator to retrieve a [node:plugin/interface/store-object] at the given index in the results.
+
+
+h3(property). length
+
+Number of results.
+
+
+h3(function). each(iterator)
+
+Calls @iterator@, once for each object. Arguments are @(object, index)@, where @object@ is a [node:plugin/interface/store-object] and @index@ is the index of the object in the results.
+
+Return @true@ from the @iterator@ function to stop the iteration immediately.
+
+
+h3(function). ensureRangeLoaded(startIndex, endIndex)
+
+If this is a sparse result set, requested by calling @setSparseResults(true)@ on the query object, use this function to load a range of objects.
+
+This is more efficient than just loading each object individually by accessing the array.

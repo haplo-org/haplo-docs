@@ -1,0 +1,8 @@
+title:Licences
+--
+
+Researchers can select an appropriate licence from a controlled list of licences, which can be confugured as a drop down or as a taxonomy. The repository manager can confirm the licence as part of the [node:app/repository/administration/ingest:managed deposit process] or select an alternative.
+
+Licences are displayed on the metadata record in the public repository, and can be recorded for each file attached to the record. Licences link through to their license terms when a URL is added to the license record in the system.
+
+Haplo supports all CC-BY licences and can support any institutional specific licences. These are managed by repository editors in the system, who can add licences to the managed list as they are needed for your institution's research.

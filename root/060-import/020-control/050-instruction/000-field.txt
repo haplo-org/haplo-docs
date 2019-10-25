@@ -1,0 +1,77 @@
+title: field
+link_as: keyword
+--
+
+The @field@ Instruction copies a value from the input *Record* to a *Name* in a *Destination*.
+
+As it is the most common Instruction, the @action@ property may be omitted.
+
+|@source@|The property in the input Record.|
+|@destination@|The Destination to store the value in.|
+|@name@|The Name within the Destination to store the value in.|
+|@multivalue@|(Optional) If @true@, then the value is added to a multi-value name instead of replacing any existing value.|
+
+In addition, [node:import/control/value-conversion:value conversion properties] can be added, especially [node:import/control/value-conversion/filter:value filters], [node:import/control/value-conversion/data-type/date:date formats], [node:import/control/value-conversion/generic-value-mapping:value mapping], and [node:import/control/value-conversion/data-type/ref:ref mapping].
+
+
+h2. Example: single value
+
+To set @username@ within the @user@ Destination using the value of the @ID@ property in the input Record:
+
+<pre>language=json
+{
+    "source": "ID",
+    "destination": "user",
+    "name": "username"
+}
+</pre>
+
+
+h2. Example: mapping to ref
+
+To set an organisational unit in the user's @profile@, [node:import/control/mapping:mapping a code] from the input:
+
+<pre>language=json
+{
+    "source": "orgUnit",
+    "destination": "profile",
+    "name": "example:attribute:organisational-unit",
+    "refMapping": "organisational-unit"
+}
+</pre>
+
+
+h2. Example: working with multi-values
+
+By default, new values are added to existing values in multi-value Names instead of replacing them. To replace the existing values instead, use a [node:import/control/instruction/remove-values] Instruction, demonstrated in this example.
+
+First, this example removes existing values in the job title field of profiles. Then it uses the [node:import/control/instruction/if-value-one-of] Instruction so that, if the profile's role is researcher, the title "Additional job title" should be added with the [node:import/control/instruction/set-value] action. Finally, it adds a additional job titles from the corresponding source in the input Record using a @field@ Instruction.
+
+<pre>language=json
+{
+    "action": "remove-values",
+    "destination": "profile",
+    "name": "std:attribute:job-title"
+},
+{
+    "source": "ROLE",
+    "action": "if-value-one-of",
+    "values": ["RESEARCHER"],
+    "then": [
+        {
+            "action": "set-value",
+            "destination": "profile",
+            "name": "std:attribute:job-title",
+            "value": "Additional job title",
+            "multivalue": true
+        }
+    ]
+},
+{
+    "source": "JOB_TITLE",
+    "destination": "profile",
+    "name": "std:attribute:job-title",
+    "multivalue": true
+}
+</pre>
+

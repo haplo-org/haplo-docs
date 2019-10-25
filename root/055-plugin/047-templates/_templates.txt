@@ -1,0 +1,34 @@
+title: Templates
+class: DocNodeTextileWithTOC
+--
+
+h2. Haplo Safe View Templates
+
+Haplo plugins use HSVT templates to render their user interface. Templates are usually rendered when responding to an [node:plugin/request-handling:HTTP request].
+
+HSVT is designed to be a safe templating language which cannot output invalid HTML and prevents security flaws like XSS. It does this by understanding the structure of HTML, and always applies the correct escaping.
+
+It's also designed to make generating HTML as simple and easy as possible. Tasks like URL generation and conditionally including attributes is handled by HSVT.
+
+HSVT has a [node:plugin/templates/hsvt-language:simple structure] made up of view property names which insert values from the view, HTML tags, literal strings, and template functions.
+
+Template functions implement control flow, rendering of common HTML widgets, and include additional templates.
+
+
+h2. Internationalisation
+
+HSVT templates integrate with the Platform [node:plugin/i18n:internationalisation] features through the [node:plugin/templates/functions/i18n:i() translated text] function.
+
+
+h2. Directory layout
+
+Templates are stored in the @template@ (singular) directory as files with the @.hsvt@ extension. See [node:plugin/directory-structure].
+
+To get a [node:plugin/interface/template] object to use for rendering, call [node:plugin/interface/plugin/response-generation#template] on your [node:plugin/interface/plugin] object. The name is the name of the file (without the extension) within the @template@ directory, or one of a standard template beginning @std:@.
+
+The kind of template, available in the [node:plugin/interface/template#kind] property of the @Template@ object, is derived from the extension of the template file. This will be used to set the MIME type of the response when rendered with the [node:plugin/interface/exchange#render] function of [node:plugin/interface/exchange].
+
+To produce the output from the template as a @String@, call [node:plugin/interface/template#render] on the @Template@ object, passing in a view object.
+
+
+h2. Contents

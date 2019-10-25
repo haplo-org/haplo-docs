@@ -1,0 +1,39 @@
+title: User sync
+long_title: Research Manager user sync setup
+--
+
+Before setting up the user sync:
+
+* create and apply the [node:app/research/setup/institution-structure]
+
+* review the generic documentation for [node:import/user-sync:setting up user sync].
+
+You need to install the @hres_user_sync_generic@ plugin to use the user sync with Haplo Research Manager applications.
+
+
+h2. Additional user sync information
+
+Some extra information needs to be provided about each user, ideally by including this information in the user feed.
+
+
+h3. Managed groups
+
+Users in the user feed should be in exactly one of the following managed groups, set by adding the value to the @groups@ *Name* in the @user@ *Destination*.
+
+* @hres:group:researchers@ if the user is a researcher.
+
+* @hres:group:external-researchers@ is the user is an external researcher, that is, not a member of the institution but needs to participate in the research and processes.
+
+* @hres:group:admin-staff@ if the user is a member of the supporting administrative staff.
+
+Applications built on top of Haplo Researcher Manager may add additional managed groups, and if so, those groups may be used instead of one of the core managed groups above.
+
+
+h3. Organisational structure
+
+Each user should be a member of one of the organisational units making up the [node:app/research/setup/institution-structure:institutional structure].
+
+Include this information in the user feed, and map it to the @hres:attribute:research-institute@ *Name* of the @profile@ *Destination*.
+
+To generate the instruction and mapping to the institutional structure, view the *Model* in the admin UI, then click 'Map' next to the Name. Fill in the values in the mapping when copying to your control file.
+

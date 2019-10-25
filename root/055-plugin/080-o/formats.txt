@@ -1,0 +1,36 @@
+title: Formatting and parsing
+--
+
+h3(function). O.numberFormatter(format)
+
+Returns a function which takes a single numeric argument, and returns a string representation according to @format@.
+
+If a function is passed to this function, it will return the function unaltered. This is so APIs can take format strings or custom formatters, and pass them through @O.numberFormatter()@ to get a formatter function.
+
+The @format@ string uses the same formats as Java's "@java.text.DecimalFormat@":https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html.
+
+For performance, call this once to create a formatter which is called many times.
+
+<pre>language=javascript
+  let formatter = O.numberFormatter("#,##0.00");
+  let string = formatter(123456);
+  // Reuse formatter to format other numbers.
+</pre>
+
+
+
+h3(function). O.dateParser(format)
+
+Returns a function which takes a single string argument, and returns a @Date@ parsed according to @format@.
+
+The @format@ string uses the same formats as Java's "@java.text.SimpleDateFormat@":https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.
+
+If the string passed to the parser does not match the format, @null@ is returned.
+
+For performance, call this once to create a parser which is called many times.
+
+<pre>language=javascript
+  let parser = O.dateParser("yyyy-MM-dd");
+  let date = parser("2018-02-12");
+  // Reuse parser for any other dates.
+</pre>

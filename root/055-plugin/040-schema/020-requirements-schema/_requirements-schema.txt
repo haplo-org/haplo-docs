@@ -1,0 +1,26 @@
+title: requirements.schema
+link_as: keyword
+--
+
+@requirements.schema@ files specify the minimum requirements your plugin requires to function, and the [node:plugin/schema/local-schema:plugin local schema dictionaries].
+
+Comments are lines beginning with @#@, lines with no indent start a schema object [node:plugin/schema/requirements-schema/declaration:declaration], and indented lines an value of that schema object.
+
+Where values are multi-value, append @[sort=1000]@ to specify a sort order when requirements from different plugins are merged. The default sort order is @10000@.
+
+Because schemas are shared with the user, who can rename things you declare, changing a value in a @requirements.schema@ file won't change the value. There are tools to help you [node:plugin/schema/requirements-schema/change-values:change values], but you should always try and respect the user's changes.
+
+When a schema object is declared with @as ReadableName@, that readable name will be made available in the plugin's [node:plugin/schema/local-schema:local schema dictionary] under that readable name.
+
+A schema object may be declared as @OPTIONAL@, but you should be [node:plugin/schema/requirements-schema/optional:quite careful about how you use it].
+
+You can define schema objects in any order in your file.
+
+
+h2. Requirements generator tool
+
+It's easiest to create the schema using the system management user interface, then use the built-in schema requirements generator to write your initial requirements.
+
+CLICK_PATH TOOLS > System management > Tools > Generate requirements
+
+You should always trim the generated file down to the minimum requirements. For built in schema objects, this may just be the first line which allows you to use the readable name in your code.

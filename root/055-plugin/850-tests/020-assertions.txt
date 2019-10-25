@@ -1,0 +1,45 @@
+title: Assertions
+--
+
+Assertions are used to make statements about the expected behaviour of the plugin under test.
+
+To pass, a test must run without throwing any exceptions and with all assertions passing.
+
+
+h3(function). t.assert(condition, message)
+
+Call @t.assert()@ to make a generic assertion in your test.
+
+@condition@ must be true, otherwise the assertion has failed and the test will be aborted.
+
+@message@ is optional, and if passed, will be included in the assertion failure message.
+
+h3(function). t.assertEqual(arg1, arg2)
+
+Checks that the two arguments passed, @arg1@ and @arg2@, are equal, aborting if the assertion fails.
+
+Uses Javascript "@===@" internally.
+
+h3(function). t.assertThrows(fn, message)
+
+Call @t.assertThrows()@ to check that an exception is thrown from plugin code. The test will pass if an exception is caught. If the optional @message@ argument is defined the exception's error message must match the string passed in.
+
+@fn@ must be a function that can be called with no arguments. In many cases it will be necessary to wrap the function call to be tested in an anonymous function when using this assertion. eg:
+
+<pre>language=javascript
+t.assertThrows(function() {
+    P.requiresNumberArgument("test");
+}, "Argument must be a Number");
+</pre>
+
+
+h2. Using assertions
+
+Assertions in your tests will look something like this:
+
+<pre>language=javascript
+t.assertEquals(a, "Value");
+t.assert((b === 42), "Meaning of life");
+</pre>
+
+The first makes a simple statement that a variable should have the correct value, using @assertEquals()@. The second is similar, but uses @assert()@ with a @message@ to explain what is being tested to someone reading the test, and in any failure message.

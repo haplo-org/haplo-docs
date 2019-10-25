@@ -1,0 +1,7 @@
+title: Web Publisher
+--
+
+Plugin name: @std_web_publisher@
+
+The standard Web Publisher plugin allows a subset of information to be published as a publicly accessible web site. Multiple _Publications_ can be created from a single application.
+

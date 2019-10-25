@@ -1,0 +1,39 @@
+title: Type
+--
+
+@type@ declarations define types. For example, this declaration defines the standard Book type and makes the type @Ref@ available as @T.Book@ to the plugin.
+
+<pre>
+type std:type:book as Book
+    title: Book
+    search-name: book
+    behaviour physical
+    attribute dc:attribute:title [sort=1000]
+    attribute dc:attribute:author [sort=1100]
+    attribute std:attribute:isbn [sort=1200]
+    attribute std:aliased-attribute:year [sort=1300]
+    attribute dc:attribute:publisher [sort=1300]
+    attribute dc:attribute:subject [sort=1500]
+    attribute std:attribute:notes [sort=1600]
+    render-type book
+    render-icon: E210,1,f
+    render-category 0
+    label-applicable std:label:common
+    create-position normal
+</pre>
+
+
+h2. Type annotations
+
+Sometimes it is useful to work with a set of types, or apply generic functionality to some types without knowing exactly what they are. Type annotations allow you to annotate types with arbitrary strings, and query the schema to find them. You can apply multiple annotations to a type.
+
+<pre>
+type std:type:file
+    annotation example:annotation:first
+    annotation example:annotation:second
+</pre>
+
+Types with a given annotation are found using [node:plugin/schema/schema-global/query/type-annotation:SCHEMA.getTypesWithAnnotation()], and [node:plugin/schema/schema-global/query/type:SCHEMA.getTypeInfo()] to retrieve the annotations on a given type.
+
+To test if an object is one of your annotated types, use [node:plugin/interface/store-object#isKindOfTypeAnnotated].
+

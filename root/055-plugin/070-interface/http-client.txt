@@ -1,0 +1,102 @@
+title: HTTPClient
+long_title: HTTPClient interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @HTTPClient@ interface represents an HTTP client that can be used to make an HTTP request.
+
+h2. Construction
+
+Use [node:plugin/o/http-client#O_httpClient] in your plugin.
+
+h2. Interface
+
+h3(function). url(string)
+
+Reset the URL to the provided string.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). method(string)
+
+Change the HTTP method. The default is @GET@.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). agent(string)
+
+Changes the HTTP user-agent sent to the server to the provided string.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). bodyParameter(name, value)
+
+Adds a body parameter to be sent in the HTTP request, with the given name and value. Body parameters are the traditional place to put parameters for @POST@ requests.
+
+Note that multiple values of the same parameter can be used; this method can be called several times with the same name, and all instances of the parameter will be sent.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). queryParameter(name, value)
+
+Adds a query parameter to the URL, in addition to any specified in the URL string.
+
+Note that multiple values of the same parameter can be used; this method can be called several times with the same name, and all instances of the parameter will be sent.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). body(mimeType, string)
+
+Provides a raw string as the body of the request, with the specified MIME type.
+
+If body parameters have been specified using the [node:plugin/interface/http-client#bodyParameter] method, then they will be sent and the raw string provided to this method will not be used.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). header(name, value)
+
+Adds a raw HTTP header to the request.
+
+The @Content-Length@ and @Host@ headers may not be overriden.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). retryDelay(seconds)
+
+Overrides the delay in seconds between retries, if the HTTP request fails in a manner that may get better in future. The default is 60 seconds.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). redirectLimit(count)
+
+Overrides the number of redirects that will be followed when attempting to perform a request. This limit is set to prevent the HTTP client from trying to follow an infinite loop. The default is 10.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). useCredentialsFromKeychain(name)
+
+Enables HTTP authentication for the request, using credentials from the specified entry in the Keychain.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). useClientCertificateFromKeychain(name)
+
+Authenticates with the remote server using a TLS (SSL) client certificate, using the specified X.509 Certificate and Key in the Keychain.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). mutableCopy()
+
+Makes a clone of this HTTP client. Even if the client is immutable (eg, [node:plugin/interface/http-client#request] has already been called on it), the copy returned will be mutable and can be configured then used for future requests.
+
+h3(function). request(callbackDescriptor, callbackData)
+
+Perform the HTTP request.
+
+The @callbackDescriptor@ is a callback descriptor returned by [node:plugin/interface/plugin/platform-interface#callback:P.callback()].
+
+The @callbackData@ is an arbitrary JSON-serialisable value, which is passed to the callback when it is invoked.
+
+The @HTTPClient@ may not be modified after the request has been sent. The only method it is valid to call upon it is [node:plugin/interface/http-client#mutableCopy].
+
+When the HTTP request is complete, whether it has failed or succeeded, the callback is invoked with @callbackData@, a copy of the @HTTPClient@ that the callback may call [node:plugin/interface/http-client#mutableCopy] on if it wants to make further similar requests, and an [node:plugin/interface/http-response] object representing the response.

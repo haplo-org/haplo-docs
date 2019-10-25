@@ -1,0 +1,46 @@
+title: Text
+long_title: Text interface
+link_as: keyword
+--
+
+Text objects are used as values for [node:plugin/interface/store-object], and the type of text object specifies how the text is formatted in the user interface.
+
+Use [node:plugin/templates/functions/language#render_convertible] to render text objects in your templates.
+
+
+h2. Construction
+
+Use [node:plugin/o/constructor/text].
+
+
+h2. Interface
+
+
+h3(property). typecode
+
+Text typecode, as defined in [node:plugin/o/constants/text-types].
+
+
+h3(function). toString(format)
+
+Returns a string representation of the text.
+
+Optional @format@ parameter (string) can be used to return the text in a specific format for certain [node:plugin/o/constants/text-types]. The following options are available:
+
+
+|*Constant name*|*Format option*|*Description*|
+|@O.T_TEXT_DOCUMENT@|plaintext|Return the document with tags removed, and paragraphs/headers seperated by new lines|
+|@O.T_IDENTIFIER_TELEPHONE_NUMBER@|dial|Telephone number as it would be dialed without spaces|
+|@O.T_IDENTIFIER_TELEPHONE_NUMBER@|short|Short format readable telephone number|
+|@O.T_IDENTIFIER_TELEPHONE_NUMBER@|export|Clean format for sync and exporting|
+
+
+h3(function). s()
+
+Alias for @toString()@.
+
+
+h3(function). toHTML()
+
+Returns a HTML encoded string representation of the text, formatted appropriately for the text and suitable for outputting directly in generated HTML.
+

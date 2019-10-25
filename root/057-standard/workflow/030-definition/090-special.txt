@@ -1,0 +1,48 @@
+title: Special functions
+--
+
+The definition provides some special purpose functions to provide information about the configured workflow.
+
+These are intended to remove the necessity to make available too much information about the specifics of the workflow, to encourage well-designed composable features.
+
+
+h2. Definition
+
+h3(function). getUsedActionableBy()
+
+Returns a de-duplicated list of all the @actionableBy@ properties in the state definitions.
+
+Note that this will only return information about the currently defined states. If a feature relies on this, it will get different results depending on when in the definition process it's called.
+
+
+h2. Workflow feature
+
+h3(function). P.workflow.registerOnLoadCallback(callback)
+
+Registers a callback function which will be called when the platform calls the @std_workflow@ @onLoad()@ function, passing in an [node:standard/workflow/interfaces/all-workflows] object.
+
+<pre>language=javascript
+P.workflow.registerOnLoadCallback(function(workflows) {
+    workflows.forEach(function(workflow) {
+        console.log(workflow.fullName);
+    });
+});
+</pre>
+
+h3(function). P.workflow.standaloneEntities(entityDefinitions, callback)
+
+Returns an entity system without the context of a workflow. The entity system is an object with a @constructEntitiesObject()@ function which takes a [node:plugin/interface/work-unit], [node:plugin/interface/ref], or [node:plugin/interface/store-object] returning an object which allows you to access the entities (see [node:standard/workflow/definition/std-features/entities]).
+
+Pass a dictionary of entity names to definitions (see [node:standard/workflow/definition/std-features/entities]) and an optional function that is called with the entities object prototype for you to extend. Example:
+
+<pre>language=javascript
+var standaloneEntities = P.workflow.standaloneEntities({
+    "project": ["object", A.Project],
+    "supervisor": ["project", A.Supervisor]
+});
+var entities = standaloneEntities.constructEntitiesObject(projectPlan);
+var supervisor = entities.supervisor_maybe;
+if(supervisor) {
+    // ...
+}
+</pre>

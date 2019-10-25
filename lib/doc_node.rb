@@ -30,6 +30,10 @@ class DocNode
     @attributes[:long_title] || @attributes[:title]
   end
 
+  def title_for_toc
+    @attributes[:use_long_title_for_toc] ? @attributes[:long_title] : @attributes[:title]
+  end
+
   def replace_with(node)
     node.parent = @parent
     @parent.children[self.name] = node if @parent != nil
@@ -80,6 +84,22 @@ class DocNode
   end
 end
 
+module DocSnippets
+  def self.replace_snippets(text)
+    text.gsub(/\[SNIPPET\s+(.+?)\]/) do
+      snippet_path = $1.gsub('.','') # prevent traversal
+      snippet_disk_pathname = "snippets/#{snippet_path}.txt";
+      unless File.exists?(snippet_disk_pathname)
+        unless DocServer.running?
+          raise "No snippet: #{snippet_disk_pathname}"
+        end
+        return %Q!<div style="font-size:24px;color:#f0f">SNIPPET NOT FOUND: #{snippet_disk_pathname}</div>!
+      end
+      File.read(snippet_disk_pathname)
+    end
+  end
+end
+
 class DocNodeWithHeaders < DocNode
   def read_file(filename)
     File.open(filename) do |f|
@@ -116,7 +136,9 @@ class DocNodeTextile < DocNodeWithHeaders
   end
 
   def body_html
-    html = RedCloth.new(body_textile, [:no_span_caps]).to_html
+    body = DocSnippets.replace_snippets(body_textile)
+    body = DocImages.replace_image_markers_with_html(body, self.url_path)
+    html = RedCloth.new(body, [:no_span_caps]).to_html
     # Anchor points for headings
     ids_used_in_template = Documentation.get_ids_used_in_template
     # 1) Search for duplicates where the long name should be used
@@ -176,7 +198,7 @@ class DocNodeTextileWithTOC < DocNodeTextile
     # Build the TOC
     toc = ''
     self.sorted_children.each do |node|
-      toc << "[node:#{node.url_path}]\n"
+      toc << "[node:#{node.url_path}:#{node.title_for_toc}]\n"
     end
     # Get body from super
     body = super

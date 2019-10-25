@@ -1,5 +1,0 @@
-title: Standard plugins
---
-
-Haplo provides several standard plugins, with names beginning @std_@, which help you implement common features in a highly customised manner.
-

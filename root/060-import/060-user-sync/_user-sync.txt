@@ -1,0 +1,61 @@
+title: User sync
+class: DocNodeTextileWithTOC
+--
+
+User sync keeps the Haplo user database and user profile objects synchronised with an external system. Regular batch files are uploaded which contain information on all current users, and the user sync works out the difference between this and the previous version to:
+
+* add new users and their associated profile store objects,
+
+* update existing users and profile objects to match the information in the feed,
+
+* maintain group membership in [node:import/user-sync/user-groups:managed groups],
+
+* block users who are no longer in the feed, and mark their profile object as 'past',
+
+* unblock users who reappear in the feed, and mark their profile object as current.
+
+A user interface is provided to configure the user sync, view logs of all sync runs, download previous batch files, and examine received data on individual users.
+
+While the user sync plugin maintains the user database and profile information, logging in users is handled by a separate plugin.
+
+The user sync will not alter users that it has not created, so it can be used in parallel to other user management systems.
+
+
+h2. Required plugins
+
+The @haplo_user_sync_generic@ plugin provides user sync services based on the data import framework. Other plugins may add to the [node:import/model].
+
+
+h2. No duplicate usernames, avoid duplication of email addresses
+
+The @username@ of a user must be unique within the data files, so that users can be unambiguously matched.
+
+Usernames are opaque to the user sync, and can be any string or identifier. Note that usernames are _case insensitive_, and internally are converted to lower case. The identifiers used as the username must not differ only in case, eg @JSmith@ and @jsmith@ must refer to the same user.
+
+If a record duplicates the @username@ of a previous record, it will be ignored with an error in the logs.
+
+While it's not an enforced constraint, it is advised that email addresses are unique for avoiding ambiguity. This is particularly important for authenticating users through external identity systems that use the email address to identify the authenticated user.
+
+
+h2. Setting up a user sync
+
+To set up a user sync,
+
+* As the generic user sync mechanism is very general, and the exact data Model will depend on the application, consult the application specific documentation for additional guidance.
+
+* Find an identifier for your users which will never change over the entire time they are involved with your organisation to use as the @username@. This might be their account username, but some organisations change usernames, so another person identifier may be more appropriate. (For example, your institution may change usernames when staff change their surname through marriage, or issue a new username when a user moves from a student to staff role.)
+
+* View the @haplo:user-sync@ [node:import/model] and note the required and optional data that needs to be provided.
+
+* Prepare data exports from the originating system, usually by writing database queries that select data for all active users. Output these files in [node:import/control/files/json:JSON] format (recommended), or use [node:import/control/files/xml-text-of-children:XML (child nodes)], [node:import/control/files/xml-attributes:XML (attributes)] or [node:import/control/files/tsv-with-name-row:TSV].
+
+* Write a [node:import/user-sync/control:Control file] which describes how to map the input data onto the *Model*, using the control file generator linked from the Model page to create a starting point. Follow the additional documentation for your specific application.
+
+* Write an [node:import/user-sync/upload-script:upload script] which uploads the control file and data files to a test instance of your application.
+
+* Refine the data and mappings. The error count for a sync run should be as close to zero as possible.
+
+* Set up the live user sync by automating data generation and upload.
+
+
+h2. Table of contents

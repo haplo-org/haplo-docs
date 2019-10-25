@@ -1,0 +1,56 @@
+title: Ubuntu
+long_title: Running under Docker on Ubuntu
+--
+
+You can run Haplo as a pre-built container, using Docker on an Ubuntu desktop or server.
+
+h3. Setting up the system
+
+Logged into your Ubuntu system, install Docker:
+
+<pre>
+sudo apt-get update
+sudo apt-get install -y docker.io
+</pre>
+
+h3. Pre-install planning
+
+You need to create a location for persistent storage. Because containers are stateless, the data has to live outside the image. For example,
+
+<pre>
+sudo mkdir -p /var/haplo
+</pre>
+
+You will need to decide on the name you're going to use for your Haplo installation. On a server, register a name in DNS so that clients can connect to your server. This can either be the name of the server you're going to install Haplo on, or an alias (CNAME). For example, if you want your Haplo installation to be available at the URL:
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+then you need to create a DNS entry for @haplo.your.site.name@. 
+
+If you're connecting from a Mac, then you could alternatively edit @/private/etc/hosts@ to add @haplo.your.site.name@ as an alias for the server IP address.
+
+This name will also be used in the configuration file below.
+
+[SNIPPET platform/run/docker-seed]
+
+h3. Starting the container
+
+With the initial configuration ready, run the Haplo Docker image. You need to map network ports and the persistent storage.
+
+<pre>
+sudo docker run -p 80:8080 -p 443:8443 -v /var/haplo:/haplo haploorg/haplo-app
+</pre>
+
+This will download the Haplo image, map the network ports 80 (for http) and 443 (for https), and mount your persistent storage in the correct place inside the container.
+
+The first time you run the container, it will take a little while to populate the database, create a self-signed certificate, set up an application, and start the application server. You can then go to
+
+<pre>
+http://haplo.your.site.name/
+</pre>
+
+in your web browser and log in using the email address and password details you put in the configuration. (You will get a security warning from your web browser due to the use of a self-signed certificate.)
+
+Subsequent runs of the container will just load the data from the persistent storage, and won't need the initialization step. Once configured, you can go and delete the @app.values@ file.

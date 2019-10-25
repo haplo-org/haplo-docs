@@ -1,0 +1,50 @@
+title: Widgets
+long_title: Widgets template functions
+--
+
+h2. std:ui:notice(message dismissLink dismissText)
+
+Render a prominent notice for alerting users to important information. The @message@ text is rendered using [node:plugin/templates/functions/platform/text#std_text_paragraph].
+
+@dismissLink@ and @dismissText@ are optional, and if present, render an @X@ icon and text to dismiss the notice.
+
+If you are asking the user to perform an action, use @std:ui:request()@ instead.
+
+
+h2. std:ui:request(message)
+
+Render a notice requesting that the user performs an action. The @message@ text is rendered using [node:plugin/templates/functions/platform/text#std_text_paragraph].
+
+
+h2. std:ui:navigation:arrow(direction link)
+
+Render a navigation arrow. Direction is @"left"@ or @"right"@, and @link@ is an optional link for the @<a>@ element.
+
+
+h2. std:ui:button-link(url) { linkedText }
+
+Render a link, styled as a button. The @url@ is automatically interpreted with the URL syntax, you do not need to use an explicit @url()@ function to generate URLs properly.
+
+The anonymous block is rendered within the link tags.
+
+Multiple links immediately next to each other will render with an appropriate gap. Do not add additional whitespace.
+
+For example:
+
+<pre>language=hsvt
+<p>
+    std:ui:button-link("/do/link" ? a=id) { "Button text" }
+    std:ui:button-link("/do/other" id)    { "Another button" }
+</p>
+</pre>
+
+
+h2. std:ui:button-link:active(url) { linkedText }
+
+Like @std:ui:button-link()@, with the button rendered in an 'active' style.
+
+
+h2. std:ui:button-link:disabled() { text }
+
+Render a disabled button in a style to fit in with @std:ui:button-link()@. Note there is no URL argument.
+

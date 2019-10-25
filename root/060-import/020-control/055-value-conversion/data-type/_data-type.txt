@@ -1,0 +1,7 @@
+title: Data types
+class: DocNodeTextileWithTOC
+--
+
+While most conversions from input data are automatic, some data types need additional options to convert correctly, or are [node:import/control/value-conversion/structured-value:structured values]. These requirements are documented for each data type.
+
+h2. Available data types

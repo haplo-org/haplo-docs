@@ -1,0 +1,47 @@
+title: load
+link_as: keyword
+--
+
+The @load@ Instruction loads an existing piece of data represented by a *Destination*. If that data does not exist, other Instructions can be executed, enabling "load or create" style operations.
+
+If the @otherwise@ Instructions aren't specified, and it isn't possible to load the data into the Destination, an error will be reported and nothing will be committed for this *Record*.
+
+This is a two step process, firstly setting the 'ref' (ID) of the object in a [node:import/model/pseudo:pseudo Destination], and then using the @load@ Instruction to load the object into the Destination. This is separated out into two steps so the full data transformation capabilities of the data import framework can be used to determine which data to load. For example, the [node:import/control/value-conversion/filter/username-to-ref] value filter can be used to load user profiles by their username.
+
+|@action@|@"load"@|
+|@using@|The name of the [node:import/model/pseudo:pseudo-destination] for the required method of loading the object. The values in this Destination must have been set by previous Instructions.|
+|@destination@|The Destination for this data.|
+|@otherwise@|(optional) If specified, the Instructions to execute if the data does not already exist.|
+
+It the @load@ Instruction should not be used for [node:import/model/depends:dependent destinations].
+
+
+h2. Example
+
+Try to load a person using their username, and if that person doesn't have a profile, create one setting the person object's type to Staff:
+
+<pre>language=json
+{
+    "source": "PERSON-USERNAME",
+    "destination": "load:by-ref",
+    "name": "ref",
+    "filters": ["haplo:username-to-ref"]
+},
+{
+    "action": "load",
+    "destination": "profile",
+    "using": "load:by-ref",
+    "otherwise": [
+        {
+            "action": "new",
+            "destination": "profile"
+        },
+        {
+            "action": "set-value",
+            "destination": "profile",
+            "name": "dc:attribute:type",
+            "value": "std:type:person:staff"
+        }
+    ]
+}
+</pre>

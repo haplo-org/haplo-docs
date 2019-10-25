@@ -1,0 +1,16 @@
+title: O.refdictHierarchical()
+link_as: keyword
+--
+
+Constructs a object implementing the [node:plugin/interface/ref-key-dictionary-hierarchical] interface.
+
+
+h3(function). O.refdictHierarchical(valueConstructorFn, sizeHint)
+
+Both arguments are optional, and for hierarchical dictionaries, probably shouldn't be used.
+
+If @valueConstructorFn@ is a function, it will be called to construct a value for any unknown key. Set to @undefined@ if you don't want to use a value constructor function, and are passing in a @sizeHint@.
+
+*Be careful* about using @valueConstructorFn@, as it will defeat the purpose of using a hierarchical dictionary. The only exception if if you're using @getAllInHierarchy()@ to access the values set, as this won't call the constructor function.
+
+If @sizeHint@ is passed, it will be used as a hint for the expected number of values in this dictionary. This is an optimisation only, and avoids reallocation. Only set it if you're pretty much sure of how many objects you'll be storing.

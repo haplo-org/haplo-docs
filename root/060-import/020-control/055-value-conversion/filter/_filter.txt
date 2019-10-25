@@ -1,0 +1,32 @@
+title: Value filters
+class: DocNodeTextileWithTOC
+--
+
+Input data can be passed through multiple value filters to convert the values in the input *Record*.
+
+|@filters@|Array of value filter names.|
+
+Filters are applied in the order they are specified in the control file. If [node:import/control/value-conversion/generic-value-mapping:generic value mapping] is used, this is performed before the filters.
+
+
+h2. Example
+
+Your input data might include usernames of users supplied in the [node:import/user-sync]. To convert these usernames into a Ref which can be used by a [node:import/control/instruction/load] Instruction, use:
+
+<pre>language=json
+{
+    "source": "PERSON-USERNAME",
+    "destination": "load:by-ref",
+    "name": "ref",
+    "filters": ["haplo:username-to-ref"]
+}
+</pre>
+
+
+h2. Available value filters
+
+The standard filters provided by the data import framework may be augmented by other plugins. To view the available filters, use the admin UI:
+
+CLICK_PATH TOOLS > Data import > Value filters
+
+Value filters implemented by the framework and user sync are:

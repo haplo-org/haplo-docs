@@ -1,0 +1,17 @@
+title: Date
+--
+
+A simple date field, with validation and a calendar popup.
+
+The date is stored as a @"YYYY-MM-DD"@ string in the JSON document.
+
+
+h2. Properties
+
+|@type@|@"date"@|
+
+All the [node:plugin/form/specification#Common_properties:common properties] are supported.
+
+h2. Custom validation
+
+There are [node:plugin/form/custom-validation/standard-validation] available for validating dates against today or other dates.

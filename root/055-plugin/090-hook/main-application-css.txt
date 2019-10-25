@@ -1,0 +1,7 @@
+title: hMainApplicationCSS
+class: HookNode
+--
+
+This hook is called to allow a plugin to append CSS to the main CSS file.
+
+The CSS is cached. To invalidate the cached CSS, call [node:plugin/o/invalidation#O_reloadPlatformDynamicFiles].

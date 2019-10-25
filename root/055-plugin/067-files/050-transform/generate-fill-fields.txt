@@ -1,0 +1,126 @@
+title: std:generate:fill_fields
+long_title: std:generate:fill_fields transform step
+link_as: keyword
+--
+
+This file transform step fills in fields in PDF and word processing documents. The @information@ property on the [node:plugin/interface/file-transform-result] is used to return information about which fields were filled.
+
+*NOTE:* This transform is implemented by an optional platform component, and may not be available in your installation.
+
+
+h2. Creating input documents
+
+Text form fields are filled in when filling a PDF file.
+
+@MERGEFIELD@ fields are filled in when filling a word processing document, and @IF@ fields are used to conditionally include content. A definition should look like @"MERGEFIELD FieldName"@ where @FieldName@ is the name which should be used in the @fields@ property.
+
+h3. Using Microsoft Word
+
+To use Word to insert @MERGEFIELD@ fields into a document without creating a mailmerge, you need to do some one-off setup.
+
+ * In the title bar of any Word document, click down the arrow at the end of the left group of buttons (Customise Quick Access Toolbar)
+
+ * Menu: _More commands..._
+
+ * Choose commands from: _All commands_
+
+ * Select: _Insert a Field..._
+
+ * Click the @[ > ]@ button
+
+ * Click _Save_
+
+An _insert field_ button will appear in the title bar at the very top of the window:
+
+[IMAGE word-insert-field-icon.png]
+
+This setup step only need to be performed once.
+
+h3. MERGEFIELD
+
+A @MERGEFIELD@ will be replaced by the value of the field in the @fields@ property:
+
+ * Click the _insert field_ button in the window title
+
+ * Categories: _Mail Merge_
+
+ * Field names: _MergeField_
+
+ * Fill in box so it says: @MERGEFIELD Something@, where _Something_ is the name of the field
+
+ * Click _OK_
+
+h3. IF
+
+An @IF@ conditionally includes formatted text, based on the value of a field in the @fields@ property. It's a little bit more convoluted to set up.
+
+ * Click the _insert field_ button in the window title
+
+ * Categories: _Mail Merge_
+
+ * Field names: _If_
+
+ * Fill in the box so it says @IF X = "Value" "True" "False"@, where _Value_ is the value you want to test the field against.
+
+ * Click _OK_
+
+ * @False@ will appear in your document. Right click it, and choose _Toggle field codes_.
+
+ * Delete the X from the @IF@ definition, and click the _insert field_ button again. This time, create a @MERGEFIELD@ with the name of the field you want to test (see instructions above).
+
+ * Edit the definition so @True@ is the text you want inserted in the document when the value is equals, and @False@ is the text otherwise. Either of these can be the empty string, @""@, to insert nothing.
+
+ * You can use formatting on the inserted text, such as bold and italic.
+
+After you have completed entering the field, it will look something like:
+
+[IMAGE word-if-field.png]
+
+You can include line breaks and multiple paragraphs in the conditionally included text, but not the @"@ character. Smart quotes can be used as a workaround.
+
+Tip: Write long text outside the @IF@ field, format it, then cut and paste it into the field.
+
+
+h2. Information in result
+
+The @information@ property in the [node:plugin/interface/file-transform-result] will contain a @"std:generate:fill_fields"@ property. This is an array of objects, one per fill fields transform step.
+
+Each of these objects contains an @"filled"@ property, an array of field names that were filled in, and an @"unfilled"@ property, of those where a value was not specified in the @fields@ property of the specification. If fields are repeated in the input file, these arrays will contain multiple entries for that field.
+
+For example:
+
+<pre>language=json
+{
+  "std:generate:fill_fields": [
+    {
+      "filled": ["Field 1", "Field Two", "Field 1"],
+      "unfilled": ["Three"]
+    }
+  ]
+}
+</pre>
+
+
+h2. Transform specification
+
+h3(property). input
+
+Name of the input file. Optional, defaults to @"input"@.
+
+
+h3(property). output
+
+Name of the output file. Optional, defaults to @"output"@.
+
+
+h3(property). mimeType
+
+MIME type of the output file. Optional, defaults to the MIME type of the @input@ file.
+
+This transform step can convert between different formats of word processing documents, and word processing documents to PDF.
+
+
+h3(property). fields
+
+A dictionary of field name to field value, both of which must be strings.
+
