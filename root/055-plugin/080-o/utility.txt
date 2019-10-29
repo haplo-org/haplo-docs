@@ -24,3 +24,18 @@ This function guarantees the following properties. You *must not* rely on any ot
  * If @array@ is @undefined@ or @null@, an empty array is returned.
 
  * An exception will be thrown if the input array contains an object of an unexpected type.
+
+
+h3(function). O.interpolateString(string, inserts)
+
+Replace occurrences of @{property}@ within @string@ with the corresponding property from @inserts@.
+
+<pre>language=javascript
+  let s = O.interpolateString("Hello {name}, it's {day}.", {
+    name: "world",
+    day: "Tuesday"
+  });
+  // s === "Hello world, it's Tuesday"
+</pre>
+
+This is often useful for translating [node:plugin/i18n/text-in-plugin#Interpolations:text in plugins].

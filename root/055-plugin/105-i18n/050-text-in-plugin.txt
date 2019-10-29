@@ -85,6 +85,23 @@ P.respond("GET,POST", "/do/example/action", [
 
 See the [node:plugin/interface/locale:full documentation for the Locale interface].
 
+h3. Interpolations
+
+To interpolate translated strings in JavaScript, use the [node:plugin/o/utility#O_interpolateString] function. If needed, pass the string through [node:plugin/misc/name#O_interpolateNAMEinString] first.
+
+<pre>language=javascript
+  // Just interpolated
+  let text0 = O.interpolateString(i["Hello {name}!"] {
+    name: "world"
+  });
+
+  // NAME() then string interpolation
+  let text1 = O.interpolateString(
+    O.interpolateNAMEinString(i["The {subject} NAME(Faculty)"]),
+    {subject: "Mathematics"}
+  );
+</pre>
+
 
 h2. Extracting text ready for translation
 
