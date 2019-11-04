@@ -1,0 +1,11 @@
+title: REST API
+class: DocNodeTextileWithTOC
+--
+
+This document describes how to use the API to access and modify data in Haplo systems.
+
+An [node:dev/api-key:API key] is used to authenticate as a user of the system, and gives the external system the same permissions as that user. Multiple API keys can be generated for a single Haplo application to provide external systems with differing levels of access.
+
+h3. API Implementations
+
+This style of API is used for APIs managing different types of data within Haplo systems. You should install the plugins for the specific APIs that your application needs to use, or else write your own to provide access.

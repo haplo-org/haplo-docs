@@ -1,0 +1,18 @@
+title: Users
+class: DocNodeTextileWithTOC
+--
+
+This document describes how to use the Users REST API to access and modify users (see [node:/plugin/interface/security-principal]) in Haplo systems.
+
+To use the Users API, the plugin which provides it, @haplo_api_user_v0@, must be installed.
+
+h3. Endpoints
+
+|*Endpoint*|*Method*|*Action*|
+|@/api/v0-user/id@|GET|[node:rest-api/users/get-user]|
+|@/api/v0-user/create@|POST|[node:rest-api/users/create-user]|
+|@/api/v0-user/id@|POST|[node:rest-api/users/update-user]|
+|@/api/v0-user/enable@|POST|[node:rest-api/users/enable-user]|
+|@/api/v0-user/group@|GET|[node:rest-api/users/get-group]|
+
+See [node:rest-api/introduction] for how to form a request URL.

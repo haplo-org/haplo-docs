@@ -1,0 +1,1 @@
+Along with the standard @success@ and @kind@ fields (see [node:rest-api/introduction] for explanation), the response has the following structure:
