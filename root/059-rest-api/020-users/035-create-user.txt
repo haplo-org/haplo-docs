@@ -11,10 +11,12 @@ The body of the request should be a JSON document containing the fields below:
 |@nameFirst@|Required. The user's first name|
 |@nameLast@|Required. The user's last name|
 |@email@|Required. The email address for the user. Must be unique. |
-|@localeId@|Optional. Defaults to @en@|
-|@directGroupMembership@|Optional. Array. If the users should be added directly to any groups, add either the code of the group, or @group:[id]@ where @[id]@ is the group's ID|
+|@localeId@|Optional. If unspecified, will use the application's default locale.|
+|@directGroupMembership@|Optional. Array of gropup API codes specifying the direct group membership of this user.|
 
 An optional parameter of @welcomeLink@ can be included. Passing a value of 1 will include a welcome link for the newly created user to set their password and log in to the system.
+
+Membership of @std:group:everyone@ is implied, and should not be specified in @directGroupMembership@.
 
 h3. Example request body
 
@@ -25,8 +27,8 @@ h3. Example request body
     "email":"first.last@example.com",
     "localeId":"en",
     "directGroupMembership":[
-        "haplo:group:example", 
-        "group:123"
+        "std:group:administrators"
+        "haplo:group:example"
     ]
 }
 </pre>
@@ -52,7 +54,7 @@ h3. Example response
 {
     success: true,
     kind: "haplo:api-v0:user:create",
-    welcomeLink: "https://example.infomanaged.co.uk/do/authentication/welcome/130-abcdef1234567890",
+    welcomeLink: "https://app.example.org/do/authentication/welcome/130-abcdef1234567890",
     user: {
         "id":130,
         "nameFirst":"First",
@@ -68,8 +70,8 @@ h3. Example response
         "isAnonymous":false,
         "localeId":"en",
         "directGroupMembership":[
-            "haplo:group:example", 
-            "group:123"
+            "std:group:administrators"
+            "haplo:group:example"
         ]
     }
 }

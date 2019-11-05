@@ -1,12 +1,23 @@
 title: Users
-class: DocNodeTextileWithTOC
 --
 
-This document describes how to use the Users REST API to access and modify users (see [node:/plugin/interface/security-principal]) in Haplo systems.
+The Users REST API provides endpoints to access and modify [node:/plugin/interface/security-principal:users] in Haplo applications.
 
-To use the Users API, the plugin which provides it, @haplo_api_user_v0@, must be installed.
+h2. Enabling the Users API
 
-h3. Endpoints
+Install the @haplo_api_user_v0@ plugin to enable access to the Users API.
+
+
+h2. Permissions
+
+A user can only access the API if they are in the "API v0: User" group (API code @haplo:group:api-v0:user-api@). In general, you should create an API key for the service user defined by the @haplo_api_user_v0@ plugin:
+
+CLICK_PATH TOOLS > System management > Users > SRV > API v0: User > New API key...
+
+Set the request path to @/api/v0-user/@ for any API key you create.
+
+
+h2. Endpoints
 
 |*Endpoint*|*Method*|*Action*|
 |@/api/v0-user/id@|GET|[node:rest-api/users/get-user]|

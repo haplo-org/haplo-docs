@@ -26,8 +26,7 @@ h3. Example request body
     "ref":"890qv",
     "localeId":"en",
     "directGroupMembership":[
-        "haplo:group:example", 
-        "group:123"
+        "haplo:group:example"
     ]
 }
 </pre>
@@ -69,8 +68,7 @@ h3. Example
         "isAnonymous":false,
         "localeId":"en",
         "directGroupMembership":[
-            "haplo:group:example", 
-            "group:123"
+            "haplo:group:example"
         ]
     }
 }

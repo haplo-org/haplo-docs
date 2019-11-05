@@ -5,11 +5,11 @@ h2. API Style
 
 The API is an JSON REST API accessed via HTTPS.
 
-The endpoints are all relative to the system base URL. The hostname is used by the server to identify the customer's system. For example, if the system URL used by the users is @http://example.infomanaged.co.uk@ then given the endpoint @/api/example@ the URL @http://example.infomanaged.co.uk/api/example@ should be requested.
+The endpoints are all relative to the system base URL. The hostname is used by the server to identify the customer's application. For example, if the system URL used by the users is @http://app.example.org@ then given the endpoint @/api/example@ the URL @http://app.example.org/api/example@ should be requested.
 
 h3. API Implementations
 
-This style of API is used for APIs managing different types of data within Haplo systems. You should install the plugins for the specific APIs that your application needs to use, or else write your own to provide access.
+This style of API is used for APIs managing different types of data within Haplo systems. You should install the plugins for the specific APIs that your application needs to use.
 
 h3. Response
 
@@ -68,4 +68,4 @@ h3. Example failed response body
 
 h3. Authentication
 
-All requests must be authenticated using an [node:dev/api-key:API key].
+All requests must be authenticated using an [node:dev/api-key:API key]. It is recommended that you set a restrictive request path so that the API key can only access the intended APIs.
