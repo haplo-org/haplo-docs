@@ -31,9 +31,9 @@ h3. Example successful response body
 
 <pre>language=json
 {
-    success: true,
-    kind: "haplo:api-v0:user:update",
-    user: {
+    "success": true,
+    "kind": "haplo:api-v0:user:update",
+    "user": {
         "id":130,
         "nameFirst":"Test",
         "nameLast":"User",

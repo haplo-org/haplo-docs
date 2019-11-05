@@ -51,9 +51,9 @@ h3. Example
 
 <pre>language=json
 {
-    success: true,
-    kind: "haplo:api-v0:user:details",
-    user: {
+    "success": true,
+    "kind": "haplo:api-v0:user:details",
+    "user": {
         "id":130,
         "nameFirst":"First",
         "nameLast":"Last",

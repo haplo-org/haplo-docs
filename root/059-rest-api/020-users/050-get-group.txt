@@ -26,10 +26,10 @@ h3. Example response
 
 <pre>language=json
 {
-    success: true,
-    kind: "haplo:api-v0:user:group-details",
-    users: [123, 456, 789],
-    group: {
+    "success": true,
+    "kind": "haplo:api-v0:user:group-details",
+    "users": [123, 456, 789],
+    "group": {
         "id":130,
         "nameFirst":null,
         "nameLast":null,

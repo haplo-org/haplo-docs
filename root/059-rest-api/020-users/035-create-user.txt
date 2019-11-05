@@ -52,10 +52,10 @@ h3. Example response
 
 <pre>language=json
 {
-    success: true,
-    kind: "haplo:api-v0:user:create",
-    welcomeLink: "https://app.example.org/do/authentication/welcome/130-abcdef1234567890",
-    user: {
+    "success": true,
+    "kind": "haplo:api-v0:user:create",
+    "welcomeLink": "https://app.example.org/do/authentication/welcome/130-abcdef1234567890",
+    "user": {
         "id":130,
         "nameFirst":"First",
         "nameLast":"Last",

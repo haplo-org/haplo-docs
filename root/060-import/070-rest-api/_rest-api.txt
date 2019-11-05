@@ -74,13 +74,13 @@ The response is in JSON or XML, with a @200@ status code if everything succeeded
     ],
     "actions": [
         {
-            record: "record 1",
-            changed: [
+            "record": "record 1",
+            "changed": [
                 {
-                    kind: "object:save",
-                    destination: "example",
-                    ref: "80qqq",
-                    new: false
+                    "kind": "object:save",
+                    "destination": "example",
+                    "ref": "80qqq",
+                    "new": false
                 }
             ]
         }

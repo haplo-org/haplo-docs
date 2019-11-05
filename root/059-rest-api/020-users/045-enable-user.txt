@@ -27,9 +27,9 @@ h3. Example response
 
 <pre>language=json
 {
-    success: true,
-    kind: "haplo:api-v0:user:enable",
-    user: {
+    "success": true,
+    "kind": "haplo:api-v0:user:enable",
+    "user": {
         "id":130,
         "nameFirst":"First",
         "nameLast":"Last",
