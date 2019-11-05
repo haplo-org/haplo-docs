@@ -1,9 +1,9 @@
 title: Get group
 --
 
-API_ENDPOINT /api/v0-user/group/[groupid] (GET only)
+API_ENDPOINT /api/v0-user/group/[groupcode] (GET only)
 
-When generating URLs, @[groupid]@ is the id of a group [node:/plugin/interface/security-principal]
+When generating URLs, @[groupcode]@ is the API code of a group [node:/plugin/interface/security-principal]
 
 h2. Returns
 
