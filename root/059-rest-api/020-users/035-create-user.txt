@@ -12,7 +12,7 @@ The body of the request should be a JSON document containing the fields below:
 |@nameLast@|Required. The user's last name|
 |@email@|Required. The email address for the user. Must be unique. |
 |@localeId@|Optional. If unspecified, will use the application's default locale.|
-|@directGroupMembership@|Optional. Array of gropup API codes specifying the direct group membership of this user.|
+|@directGroupMembership@|Optional. Array of group API codes specifying the direct group membership of this user.|
 
 An optional parameter of @welcomeLink@ can be included. Passing a value of 1 will include a welcome link for the newly created user to set their password and log in to the system.
 
