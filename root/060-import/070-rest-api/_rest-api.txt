@@ -71,6 +71,19 @@ The response is in JSON or XML, with a @200@ status code if everything succeeded
     "errorCount": 1,
     "errors": [
         "Example error"
+    ],
+    "actions": [
+        {
+            record: "record 1",
+            changed: [
+                {
+                    kind: "object:save",
+                    destination: "example",
+                    ref: "80qqq",
+                    new: false
+                }
+            ]
+        }
     ]
 }
 </pre>
@@ -83,6 +96,11 @@ or in XML as:
   <errors>
     <error>Example error</error>
   </errors>
+  <actions>
+    <record identifier="record 1">
+        <changed kind="object:save" destination="example" ref="80qqq" new="false"/>
+    </record>
+  </action>
 </response>
 </pre>
 
@@ -93,5 +111,18 @@ The JSON properties or XML attributes/child nodes are:
 |@failures@|The number of records which couldn't be applied.|
 |@errorCount@|The number of errors.|
 |@errors@|Zero or more error messages.|
+|@actions@|Zero or more records, corresponding to actions taken. Each will include a record identifier (@record@), and a number of @changed@ elements. These contain @kind@, the kind of action that happened, @destination@, the destination the action happened to, and any other information specific to the @kind@, such as relevant identifiers. See below for information on speicfic kinds. |
 
 Because the APIs can receive multiple records in a single call, a result may be a partial success. You are recommended to just send a single record.
+
+h2. Actions
+
+The possible kinds of actions, and the extra information they include in the response, are listed below:
+
+h3. @object:save@
+
+This action kind records that the destination specified in @destination@ represents a [node:/plugin/interface/store-object] which has been modified and saved.
+
+|*Field*|*Meaning*|
+|@ref@| A string representing the [node:/plugin/interface/ref] of the object that was saved |
+|@new@| Boolean. Whether this action created this object. |
