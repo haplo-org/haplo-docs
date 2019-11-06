@@ -1,6 +1,8 @@
-title: Publication
-long_title: Recommended configuration data for Publication
+title: Public interface
+long_title: Recommended configuration data for the public interface
 --
+
+NOTE: This configuration data is only for applications using the "standard public interface":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_standard_publication. If you have written your own publication plugin the configuration is probably managed in code, and you should contact your developer for changes.
 
 h3. repo_standard_publication:logo:src
 
@@ -16,19 +18,36 @@ h3. repo_standard_publication:logo:width
 
 h4. Expected type: String
 
-The width for the institution logo on the left of the navigation bar
+The width for the institution logo on the left of the navigation bar.
 
 h3. repo_standard_publication:logo:height
 
 h4. Expected type: String
 
-The height for the institution logo on the left of the navigation bar
+The height for the institution logo on the left of the navigation bar.
 
 h3. repo_standard_publication:logo:name_in_header
 
 h4. Expected type: Boolean
 
-Whether or not to show the institution name next to the logo in the navigation bar
+Whether or not to show the institution name next to the logo in the navigation bar.
+
+h3. repo_standard_publication:carousel
+
+h4. Expected type: Array of JSON objects
+
+An array of images and text to display on the repository home page carousel. The array contains objects of the kind:
+<pre style="line-height:13px">{
+    title: "Showcasing research",
+    text: "Our repository showcases work from across our broad range of subject areas",
+    image: "/~/5.jpg",
+    imageDescription: "Researchers discussing work on a whiteboard"
+}
+</pre>
+
+where the @image@ path is a static file uploded to the system using:
+
+CLICK_PATH TOOLS > System management > Configuration > Static files
 
 h3. repo_standard_publication:text
 
@@ -54,7 +73,7 @@ An object detailing the text on a publication to be changed, there are various k
 }
 </pre>
 
-Changing these in the configuration data and looking for changes is likely the best way to see what exactly they represent.
+Changing these in the configuration data and looking for the associated changes in the user interface is likely the best way to see what exactly they represent if it's unclear.
 
 h3. repo_standard_publication:footer_links
 

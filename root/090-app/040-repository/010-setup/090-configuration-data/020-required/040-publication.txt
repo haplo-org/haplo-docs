@@ -1,21 +1,23 @@
-title: Publication
+title: Public interface
 long_title: Configuration data for public interface
 --
+
+NOTE: This configuration data is only for applications using the "standard public interface":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_standard_publication. If you have written your own publication plugin the configuration is probably managed in code, and you should contact your developer for changes.
 
 h3. repo_standard_publication:hostname
 
 h4. Expected type: String
 
-The hostname of the publication, used if an institution intends to host their public interface on a different host to their internal system. If this isn't set, the default option is to use: "application_host_name/repository."
+The hostname of the publication, used if an institution intends to host their public interface on a different host to their internal system. If this isn't set, the default option is to use: "application_host_name/repository".
 
 h3. repo_standard_publication:name
 
 h4. Expected type: String
 
-The name to be displayed on the application, by default it is set to the application name.
+The repository name to be displayed in the public interface. By default it is set to the application name.
 
 h3. repo_standard_publication:admin_email
 
 h4. Expected type: String
 
-The email address for the repository
+The admin email address for the repository, which will be used for general enquiries about items in the system.

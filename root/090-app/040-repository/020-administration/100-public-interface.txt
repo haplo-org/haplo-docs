@@ -1,7 +1,24 @@
 title: Public interface
 --
 
-Every aspect of Haplo's public portal is customisable, from the kinds of information it displays, to the way that information is structured and presented.
+h2. Haplo standard publication
 
-Using open tools, Haplo's flexible toolkit provides institution web teams with full control over all HTML generated, and can modify the HTML, CSS and templates of the public portal to match the look and layout of the institution's visual identity.
+The "Haplo standard publication":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_standard_publication provides an attractive public interface to the Haplo Repository, with configuration options to allow customisation of the text displayed, images, and common options for the behaviour of the site.
 
+These configuration options are broken down into:
+
+* [node:app/repository/setup/configuration-data/required/publication:Required information]
+* [node:app/repository/setup/configuration-data/recommended/publication:Recommended configuration]
+* [node:app/repository/setup/configuration-data/other/publication:Optional additional configuration]
+
+This should provide the vast majority of the configuraton that an insitution requries to set up the public interface to the repository, and all configuration options can be amended during the operation of the application, using the admin interface:
+
+CLICK_PATH TOOLS > System management > Configuration > Configuration data
+
+h2. A custom public interface
+
+If you have developed a custom public interface, then the Haplo toolkit enables every aspect of the public portal to be customisable, from the which information it displays to the way that information is structured and presented.
+
+Using open tools, Haplo's flexible toolkit allows institution web teams to have full control over all HTML generated, and can modify the HTML, CSS and templates of the public portal to match the look and layout of the institution's visual identity.
+
+In this case your administration and configuration options will be different to those of the Haplo standard publication. You'll need to contact your system administrator or developer for the configuration options available in your application.

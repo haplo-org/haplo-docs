@@ -1,6 +1,8 @@
-title: Publication
+title: Public interface
 long_title: Other configuration data for publications
 --
+
+NOTE: This configuration data is only for applications using the "standard public interface":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_standard_publication. If you have written your own publication plugin the configuration is probably managed in code, and you should contact your developer for changes.
 
 h3. hres:repository:publication:prevent_keywords_inline_display
 
