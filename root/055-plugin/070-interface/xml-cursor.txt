@@ -159,7 +159,7 @@ Add a new schema location to this element. This schema will be defined for this 
 
 h3(function). addNamespace(namespaceURI, preferredPrefix, schemaLocation)
 
-Add a new schema location to this elemennt, with a namespace prefix for elements from this schema. Cursors set to this namespace will add the @preferredPrefix@ automatically.
+Add a new schema location to this element, with a namespace prefix for elements from this schema. Cursors set to this namespace will add the @preferredPrefix@ automatically.
 
 
 h3(function). attribute(name, value)
@@ -209,6 +209,6 @@ Available policies are:
 
 |@"entity-encode"@|Encodes the control characters as escaped strings|
 |@"remove"@|Deletes control characters|
-|@"replace-with-space"@|Replaces control characers with a single space|
+|@"replace-with-space"@|Replaces control characters with a single space|
 |@"replace-with-question-mark"@|Replaces control characters with a question mark|
 

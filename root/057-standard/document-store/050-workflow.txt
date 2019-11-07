@@ -73,8 +73,8 @@ The objects have optional properties:
 |roles|A list of [node:standard/workflow/definition/std-features/entities#Entity_roles:roles] that should be allowed to edit the document. An empty roles property will allow everyone to edit the document|
 |selector|A [node:standard/workflow/definition/selector:workflow selector] to select when in the Workflow the document should be editable by the specified roles. An empty selector @{}@ will select on all states|
 |action|@"allow"@ or @"deny"@ - Default: @"allow"@. Specify whether to give permissions for a particular matched role/selector or whether to deny access. Omiting this is fine and defaults to allowing. Sometimes it makes more sense to allow all and deny only in 1 or 2 instances.|
-|transitionsFiltered|A list specifying which transitions should only be avaialble if the form has been edited and completed. Useful for situations where a document must be completed to progress, but should allow alternate/backwards traversing transitions when not completed|
-|optional|Boolean. If present and true, allows the user to progress even if the document has not been edited or completed. This is the preferred way to specify optinality, and has the same effect as specifying transitionsFiltered as an empty list|
+|transitionsFiltered|A list specifying which transitions should only be available if the form has been edited and completed. Useful for situations where a document must be completed to progress, but should allow alternate/backwards traversing transitions when not completed|
+|optional|Boolean. If present and true, allows the user to progress even if the document has not been edited or completed. This is the preferred way to specify optionality, and has the same effect as specifying transitionsFiltered as an empty list|
 
 For example:
 

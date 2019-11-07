@@ -20,5 +20,5 @@ The key steps to setting up a Haplo Repository application are:
 
 * Customise and re-brand the repository's public interface.
 
-* Register the Repository with the appropraite registries for open access repositories.
+* Register the Repository with the appropriate registries for open access repositories.
 

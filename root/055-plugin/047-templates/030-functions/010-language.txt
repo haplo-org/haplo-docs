@@ -67,7 +67,7 @@ h2. render(deferred)
 
 Include a deferred render into the current template, created using the [node:plugin/interface/template#deferredRender] function on a @Template@.
 
-This is intended to prevent you from needing to use @unsafeHTML()@ by giving you a mechanisum to safely include rendered templates.
+This is intended to prevent you from needing to use @unsafeHTML()@ by giving you a mechanism to safely include rendered templates.
 
 See [node:plugin/templates/including-templates#Deferred_rendering] for how to use @render()@.
 

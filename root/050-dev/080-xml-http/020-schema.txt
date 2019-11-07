@@ -21,7 +21,7 @@ The returned schema has the format:
  **** _vtype_ - usual data type of the attribute (see below for list)
  **** @display_name@
  ***** _TEXT_ - name displayed to the user
- **** @allowed_qualifiers@ ? - qualifiers to be used on this attibute
+ **** @allowed_qualifiers@ ? - qualifiers to be used on this attribute
  ***** @null_qualifier@ ? - no qualifier is allowed
  ***** @qualifier@ *
  ****** _ref_ - reference of an allowed qualifier

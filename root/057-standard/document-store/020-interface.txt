@@ -20,7 +20,7 @@ Returns a boolean which is true if the current document is completed, eg: the re
 
 h3(function). setCurrentDocument(document, isComplete)
 
-Sets the current (uncomitted) document to @document@, using @isComplete@ to define the completed/incompleted status of the current document.
+Sets the current (uncommitted) document to @document@, using @isComplete@ to define the completed/incompleted status of the current document.
 
 h3(property). lastCommittedDocument
 

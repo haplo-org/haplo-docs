@@ -1,7 +1,7 @@
 title:Ingest
 --
 
-Outputs can be added either via an online form or by retrieving the Datacite meatadata by looking up and importing existing records from their DOI.
+Outputs can be added either via an online form or by retrieving the Datacite metadata by looking up and importing existing records from their DOI.
 
 Haplo enables researchers to self-deposit their research outputs. Researchers are presented with different metadata records for different types of output so the fields on the form are always relevant to the research being submitted. Embedded guidance notes help improve the quality of information collected.
 

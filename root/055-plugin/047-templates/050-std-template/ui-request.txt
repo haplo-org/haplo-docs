@@ -4,7 +4,7 @@ link_as: keyword
 
 This template renders a generic request that the user performs an action.
 
-Use the @message@ property to specify your message, or use an anonyous block to render custom HTML.
+Use the @message@ property to specify your message, or use an anonymous block to render custom HTML.
 
 There is also a [node:plugin/templates/functions/platform/widgets#std_ui_request] template function, which can be more convenient.
 

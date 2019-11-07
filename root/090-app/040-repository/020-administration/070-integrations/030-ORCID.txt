@@ -9,11 +9,11 @@ The repository can be configured to allow different levels of integration with O
 
 h3. Collecting iDs
 
-The basic integration includes authentication with ORCID's servers, registering authors' iDs within the repository, and reporting on iD uptake within the university. This reporting allows you to identifiy departments, or faculties where ORCID iD uptake is slow, or individual users without iDs, to target your internal advocacy within your institution.
+The basic integration includes authentication with ORCID's servers, registering authors' iDs within the repository, and reporting on iD uptake within the university. This reporting allows you to identify departments, or faculties where ORCID iD uptake is slow, or individual users without iDs, to target your internal advocacy within your institution.
 
 h3. Pushing data to ORCID
 
-This more advanced integration will include the functionality to push authors' lists of research outputs ("works", in ORCID terms) and universtity affiliation to the ORCID registry. This keeps their ORCID record up to date with the contents of the repository automatically.
+This more advanced integration will include the functionality to push authors' lists of research outputs ("works", in ORCID terms) and university affiliation to the ORCID registry. This keeps their ORCID record up to date with the contents of the repository automatically.
 
 h3. Pulling data from ORCID (coming soon)
 

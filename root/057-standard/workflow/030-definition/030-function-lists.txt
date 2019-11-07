@@ -25,7 +25,7 @@ Defines a service @fn@ that can be called by @name@ on any instance of this work
 
 By convention @name@ should begin with the workflow name as specified in [node:standard/workflow/definition/implement:@P.workflow.implement()@].
 
-If there is more than one implementation for a service @name@, they will be called in reverse order of registration until one returns something other than @undefined@ (as for all worklflow function lists).
+If there is more than one implementation for a service @name@, they will be called in reverse order of registration until one returns something other than @undefined@ (as for all workflow function lists).
 
 *Note:* This differs from [node:plugin/o/service:platform services], which are called in order of registration.
 

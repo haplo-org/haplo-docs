@@ -59,7 +59,7 @@ The validation message to display when the count is less than the minimum.
 
 h3(property). maxFailureMessage
 
-The validation message to display when the count is greated than the maximum.
+The validation message to display when the count is greater than the maximum.
 
 
 h3(property). limitText

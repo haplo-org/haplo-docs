@@ -17,7 +17,7 @@ This style promotes the platform coding style of many cooperating plugins, and o
 
 h2. API codes
 
-Because the user may rename all the schema objects, plugin code refers to them by API code. These are arbitary strings which are not visible to the user in normal use of their application.
+Because the user may rename all the schema objects, plugin code refers to them by API code. These are arbitrary strings which are not visible to the user in normal use of their application.
 
 By convention, they're namespaced, for example:
 
@@ -25,7 +25,7 @@ pre.     std:type:person
 
 @std@ is the namespace, in this case, the standard namespace of common concepts defined by the platform. The platform also uses the @dc@ namespace for the attributes derived from the Dublin Core metadata standard.
 
-@type@ is the kind of schema object. While strictly speaking unnecessary, it's included to be unambigous.
+@type@ is the kind of schema object. While strictly speaking unnecessary, it's included to be unambiguous.
 
 @person@ is the name of the schema object. There may be more @:@ separators if there is hierarchy, for example, @std:type:person:staff@ where Staff is a sub-type of Person.
 

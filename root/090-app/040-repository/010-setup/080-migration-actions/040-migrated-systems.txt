@@ -10,7 +10,7 @@ Search for the legacy repository from the "homepage":https://v2.sherpa.ac.uk/ope
 
 h3. IRUS-UK
 
-To ensure oputput downloads are tracked properly by Jisc's IRUS-UK service, Jisc should be informed (via their generic help@jisc.ac.uk email address) of:
+To ensure output downloads are tracked properly by Jisc's IRUS-UK service, Jisc should be informed (via their generic help@jisc.ac.uk email address) of:
 
 1) The release date (they should be warned ahead of the migration)
 

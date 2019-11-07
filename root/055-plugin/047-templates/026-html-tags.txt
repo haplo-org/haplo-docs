@@ -74,7 +74,7 @@ otherwise
 If all the values in the list are empty, the attribute is omitted entirely from the tag.
 
 
-h2. Attributes from dictionarys
+h2. Attributes from dictionaries
 
 Sometimes you don't know all the attributes you need until the template is rendered.
 

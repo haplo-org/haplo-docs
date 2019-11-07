@@ -34,7 +34,7 @@ To amend schema that is defined in generic functionality, you may need to [node:
 
 h3. Using System Management
 
-In a running application, adminstrators are able to edit the schema through the system management interface:
+In a running application, administrators are able to edit the schema through the system management interface:
 
 CLICK_PATH TOOLS > System management
 
