@@ -143,7 +143,7 @@ Type annotations are defined in [node:plugin/schema/requirements-schema/declarat
 
 h3(function). first(desc, qual)
 
-Returns the first value in the object described by @desc@ and @qual@. Use the schema [node:plugin/schema/schema-global/attr] constants.
+Returns the first value in the object described by @desc@ and @qual@, or @null@ if no value is present. Use the schema [node:plugin/schema/schema-global/attr] constants.
 
 @qual@ may be omitted. Use the schema [node:plugin/schema/schema-global/qual] constants.
 
