@@ -1,0 +1,8 @@
+title: Usage statistics
+--
+
+The "Haplo usage tracking":https://github.com/haplo-org/haplo-plugins/tree/master/haplo_usage_tracking plugin monitors, records, and reports on views and downloads from the public interface to the repository.
+
+These are collected at the item level, and then are aggregated to allow institutions to explore usage at the output, author, or department level, breaking those results down by year, month, and geographic location. Headline figures are displayed on each output and author's public page.
+
+A more detailed breakdown of views and downloads for their own outputs can be explored by authors in the internal view of the system after logging in - these are available either on their internal profile page (for totals across all their outputs) or on each output page (for individual item statistics).

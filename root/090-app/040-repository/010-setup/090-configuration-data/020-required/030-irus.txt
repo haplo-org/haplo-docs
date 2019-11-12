@@ -1,12 +1,12 @@
-title: IRUS
-long_title: Configuration data for jisc integration
+title: IRUS-UK
+long_title: Configuration data for Jisc IRUS-UK integration
 --
 
 h3. hres_repo_irus_uk:enabled_application
 
 h4. Expected type: String
 
-This is another safety value to prevent irus tracking statistics being sent from development or testing applications. Set this as equal to the internal hostname in order to allow for statistics to be sent to IRUS.
+This is another safety value to prevent IRUS-UK tracking statistics being sent from development or testing applications. Set this to the hostname of the internal view of the application in order to activate the integration for statistics to be sent to IRUS.
 
 The internal hostname is accessible at:
 

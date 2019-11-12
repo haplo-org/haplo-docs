@@ -1,0 +1,34 @@
+title: External reporting services
+--
+
+h3. IRUS-UK
+
+Haplo Repositories include a plugin - "hres_repo_irus_uk":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_irus_uk - that sends usage statistics data to the "IRUS-UK":https://irus.jisc.ac.uk service.
+
+This plugin takes usage information and passes it to IRUS-UK as "Counter R5":https://www.projectcounter.org/counter-release-5/ conformant data.
+
+The IRUS-UK data is then exposed in the public interface repository through the use of the "IRUS-UK widget":https://irus.jisc.ac.uk/support/widget/.
+
+For setup instructions for the IRUS-UK integration and widget, please see [node:app/repository/setup/configuration-data/required/irus:here].
+
+
+h3. Altmetrics badge
+
+The Digital Science "Altmetric Badge":https://www.altmetric.com/products/altmetric-badges/ will be included in teh sidepart of outputs if the "hres_repo_publication_altmetric":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_publication_altmetric plugin has been installed.
+
+This integration looks up the Altmetric data using the item's DOI, and so will not display if there is no DOI on the record. The badge will also not display if there is no Altmetric data for that output.
+
+
+h3. Google Analytics
+
+If your institution has a "Google Analytics":https://analytics.google.com/ account, it easily added to your Haplo Repository to report on its usage using this service.
+
+At present this will require contacting your developer with your GA tracking code, and them adding that to a script tag in the footer of your publication.
+
+We are in the process of open-sourcing a feature to make adding Google Analytics possible without writing any code using system configuration data only, which we expect to be available by the end of 2019.
+
+h3. Other services
+
+Adding other reporting services is usually simple, and in many cases can re-use existing standards-based functionality in the repository.
+
+If a reporting, statistics, or analytics service you use isn't listed here it's always worth asking your developers about it, or dropping us at Haplo an email, as it's possible we've previously implemented the integration but not yet open-sourced it.

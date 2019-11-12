@@ -8,3 +8,7 @@ Haplo presents data in a format that can be uploaded to Researchfish, as a precu
 h2. CERIF
 
 Haplo sits within the CERIF framework for CRIS systems, using similar and compatible concepts to describe institutional information.
+
+h2. Reporting integrations
+
+Haplo also integrates with a number of external systems for reporting on the items in the repository, and the usage of the system. These are listed under [node:app/repository/administration/reporting/external-services].

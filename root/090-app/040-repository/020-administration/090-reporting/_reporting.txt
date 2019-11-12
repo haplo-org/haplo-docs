@@ -1,0 +1,34 @@
+title: Reporting
+--
+
+Reports are built in to each of the areas of in the system, installed alongside the functioanlity they report on. This should give adminstrative users oversight of all of the day to day activity of the repository within the system, where the data is most likely to be accurate and up to date.
+
+All reports within Haplo can be exported to Excel, and exports can include additional columns for supplementary data that wouldn't fit well on screen in a browser window. The reporting system includes a [node:standard/reporting/rest-api] to allow querying from an external system.
+
+The reports supplied as part of the open source repository provide wide-ranging monitoring, including:
+
+* Items added each year
+
+* Status of newly submitted items
+
+* Items with embargoed or otherwise restricted files
+
+* Number of file downloads and access requests
+
+* Last access date of files
+
+* Administrative metadata including date and time of record creation, name of record creator, date, time and names of users making subsequent changes
+
+* Reporting information gathered on a per-article basis, allowing article level metrics reporting
+
+* Configuration of each item record to show number of downloads
+
+* Optional integration of Google Analytics and other external altmetrics services into the public repository page
+
+* Custom reports for each institution
+
+* REF Open Access Compliance rates recorded on a per-faculty and per-department level
+
+* Individual item compliance recorded and highlighted to researchers at the point of deposit
+
+* REF submission reports

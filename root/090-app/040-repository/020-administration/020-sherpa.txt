@@ -7,4 +7,4 @@ This guides users towards compliance with publisher and journal regulations, min
 
 h3. RoMEO
 
-Publisher deposit rules for research outputs can be looked up using the SHERPA RoMEO service. Results from querying this service are displayed on the output record, displaying results for journal and publishers entered by the depositing user on the record. This allows repository managers to confirm at a glance that any files uploaded by researchers are allowed to be deposited in the repository, before they are made public. 
+Publisher deposit rules for research outputs are looked up within the system using the SHERPA RoMEO service API. Results from querying this service are displayed on the output record, displaying results for journal and publishers entered by the depositing user on the record. This allows repository managers to confirm at a glance that any files uploaded by researchers are allowed to be deposited in the repository, before they are made public.
