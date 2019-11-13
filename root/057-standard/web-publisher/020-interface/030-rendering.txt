@@ -1,0 +1,60 @@
+title: Rendering
+--
+
+There are a few methods to change the visual appearance of a publication made up of common features without having to create an entirely new publication.
+
+h3(function). registerReplaceableTemplate(code, templateName)
+
+Registers a replaceable template in the publication, this is a relation from an API code to a template, allowing for templates to be defined in a single place and used across the publication, reducing duplication.
+
+Arguments:
+
+|@code@|API code style code for the template|
+|@templateName@|The path to the template from the current publication's template folder|
+
+Example usage: 
+
+<pre>language=javascript
+P.webPublication.registerReplaceableTemplate(
+    "example:replaceable-templates:ui:button",
+    "ui/button"
+);
+</pre>
+
+h3(function). replaceTemplate(code, templateName)
+
+Replaces the template for the given @code@ in the publication. It is worth noting that the replaceTemplate will be called from the implementing plugin for the publication and not the plugin in which the template is replaced.
+
+Arguments:
+
+|@code@|API code style code for the template|
+|@templateName@|The path to the template from the current publication's template folder|
+
+Example usage: 
+
+<pre>language=javascript
+Publication.replaceTemplate(
+    "example:replaceable-templates:ui:button",
+    "replaceable/ui/super-button"
+);
+</pre>
+
+h3(function). getReplaceableTemplate(code)
+
+Returns the template for the given @code@.
+
+Arguments:
+
+|@code@|API code style code for the template|
+
+Example usage:
+
+<pre>language=javascript
+publication.searchResultRendererForTypes(
+    publication.DEFAULT,
+    function(object, context) {
+        var template = context.publication.getReplaceableTemplate("hres:repo-publication-common:search-result:default");
+        return template.deferredRender({object:object});
+    }
+);
+</pre>

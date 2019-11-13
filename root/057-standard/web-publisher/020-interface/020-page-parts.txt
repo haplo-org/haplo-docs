@@ -1,0 +1,52 @@
+title: Page Parts
+--
+
+h2. Creation
+
+h3(function). pagePart(pagePart)
+
+@pagePart@ is an object which has 4 properties:
+
+|@name@|API code style name|
+|@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint|
+|@sort@|Sort value for ordering parts within a category|
+|@deferredRender@|A @function(E, context, options)@ which needs to return the deferred render object for the display of the page part|
+
+h3(function). pagePartAlias(pagePartAlias)
+
+Same as for @pagePart@ except the properties change to:
+
+|@name@|API code style name|
+|@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint|
+|@sort@|Sort value for ordering parts within a category|
+|@aliasOf@|The name of the page part for which this is an alias|
+
+h3(function). pagePartFromTemplate(pagePartTemplate)
+
+Creates a page part given a template name in calling plugin instead of a deferred render.
+
+|@name@|API code style name|
+|@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint|
+|@sort@|Sort value for ordering parts within a category|
+|@template@|The name of the template to use for the page part|
+
+h2. Placement
+
+h3(function). pagePartAddToCategory(add)
+
+Adds a page part to a category, useful for when a part is needed in multiple categories as only one can be defined in the creation.
+
+@add@ is an object made up of:
+
+|@pagePart@||The API code style name of the page part|
+|@category@||The API code style name of the category to add the page part to|
+|@sort@|*Optional*|The sort value for where to add the page part into the category, if not defined defaults to the sort value defined in the page part. |
+
+h3(function). pagePartRemoveFromCategory(remove)
+
+Removes a page part from a category, useful for when a common feature adds a page part you don't need in the current publication.
+
+@remove@ is an object made up of:
+
+|@name@|The API code style name of the page part|
+|@category@|The API code style name of the category to remove this page part from|

@@ -1,0 +1,229 @@
+title: Interface
+--
+
+h2. Context
+
+There are a few functions that can be used on the context object.
+
+h3(function). setPagePartOptions(pagePartName, options)
+
+Set the page part options for the given @pagePartName@, can also be set on the publication.
+
+Arguments:
+
+|@pagePartName@|The API code style name of the page part|
+|@options@|The options to be passed to the pagePart deferred render property function|
+
+h3(function). publishedObjectUrl(object)
+
+Returns the Url for the given object's publication page, formatted with the hostname as a full hyperlink, e.g. @https://example.org/item/REF@
+
+h3(function). publishedObjectUrlPath(object)
+
+Returns the Url for the given object's publication page, formatted as just the path elements after the hostname, e.g. @/item/REF@
+
+h2. Features
+
+h3(function). feature(name, feature)
+
+A web publication feature essentially a @function(publication, spec)@ that can be used between publications for some shared/common code to prevent duplication, essentially the same as [node:plugin/o/feature] however these are defined exclusively for web publications and contain to the publication to enable declaration of handlers and other publication interface methods.
+
+Arguments:
+
+|@name@|API code style name of the feature|
+|@feature@|function(publication, spec) to define the feature|
+
+Example usage:
+
+<pre>language=javascript
+P.webPublication.feature("example:publication:common:feature", function(publication, spec) {
+    publication.pagePart({
+        //Page part definition
+    });
+});
+</pre>
+
+These can be used throughout different publications, it should be noted that any publication using a feature will have access to everything inside of that feature including any request handlers and page parts.
+
+h3(function). featureImplemented(name)
+
+Utility function to determine whether a feature is in use in the current publication. Returns true if the given feature @name@ is implemented.
+
+Arguments:
+
+|@name@|The API code style name of the feature|
+
+h3(function). use(name, spec)
+
+Adds the given feature @name@ to the publication, optionally passing it @spec@.
+
+Arguments:
+
+|@name@|The API code style name of the feature|
+|@spec@|An object of arguments to pass to the feature, can be anything to aid in the functionality/generality of the feature|
+
+h2. Publication
+
+h3(function). setHomePageUrlPath(urlPath)
+
+Sets the URL for the home page of the publication to @urlPath@.
+
+h3(function). serviceUser(serviceUserCode)
+
+Sets the API code for the service user to be used when browsing the publication to @serviceUserCode@ used for permissions management between different publications.
+
+h3(function). layout(E, context, blocks)
+
+Returns the rendered html for a page in the publication. Each of the named @blocks@ will be rendered at their appropriate location in the layout, which will typically be defined on a per-publication basis.
+
+Use the layout template to define the common layout for this publication. The main content for each page will be rendered within this layout in the special @body@ block.
+
+<pre>language=javascript
+Publication.layout(function(E, context, blocks) {
+    return P.template("layout").render({
+        staticDirectoryUrl: P.staticDirectoryUrl,
+        context: context,
+        blocks: blocks
+    });
+});
+</pre>
+
+h3(function). setPagePartOptions(pagePartName, options)
+
+Used to pass options to the page parts of a publication, can also be set on a per-request basis in context
+
+h3(function). urlPolicyForTypes(types, policy)
+
+Sets the url policy for the given @types@
+
+Arguments:
+
+|@types@|The types to apply the policy to, e.g. @[T.Book, T.Journal]@|
+|@policy@|An object with property @slugLength@ which decides the length of the last path element to display as the path|
+
+<pre>language=javascript
+Publication.urlPolicyForTypes(T.Book, {
+    slugLength: 0
+});
+</pre>
+
+h3(function). urlForFileDownload(fileOrIdentifier, options)
+
+Returns the url to download the file through this publication. This handler will return the download URL for the file. Plugins are expected to check for themselves whether the requesting user has permission to access that URL.
+
+The @options@ object can have properties:
+
+|@transform@|The transform to be applied to the file|
+
+h3(function). respondToExactPath(path, handlerFunction)
+
+Creates a request handlers similar to a @GET@ [node:plugin/interface/request] but doesn't allow for extra parameters in the same way, any further data requiring to be set via the url must be accessed via @E.request.extraPathElements@. 
+
+Arguments: 
+
+|@path@|The path to respond to|
+|@handlerFunction@|The response to the request and should be a function of the form @function(E, context)@ where context is an object with details about the publication in it's current state|
+
+Example usage: 
+
+<pre>language=javascript
+publication.respondToExactPath("/example",
+    function(E, context) {
+
+        //Usual request handling code
+
+        E.render(view, "example");
+    }
+);
+</pre>
+
+
+h3(function). respondToExactPathAllowingPOST(path, handlerFunction)
+
+Exactly the same as @respondToExactPath@ however the path also accepts @POST@ requests.
+
+Example usage: 
+
+<pre>language=javascript
+publication.respondToExactPathAllowingPOST("/example",
+    function(E, context) {
+
+        //Usual request handling code
+        if(E.request.method === "POST") {
+            //Some data changing actions
+        }
+        E.render(view, "example");
+    }
+);
+</pre>
+
+h3(function). respondToDirectory(path, handlerFunction)
+
+Similar to @respondToExactPath@ however this creates a request handler that responds to all requests to a given directory beyond the hostname, for example path @/item@ would pick up all requests to a path beyond that such as @/item/category@, further path elements can be extracted using @E.request.extraPathElements@ property
+
+Example usage:
+
+<pre>language=javascript
+Publication.respondToDirectory("/researchers",
+    function(E, context) {
+        let letter = (E.request.extraPathElements[0] || "A").toUpperCase();
+        if(letter.length != 1) { letter = 'A'; }
+        let results = //get all researchers whose name begins with letter
+        E.render({results: results});
+    }
+);
+</pre>
+
+h3(function). respondToDirectoryAllowingPOST(path, handlerFunction)
+
+Exactly the same as @respondToDirectory@ however the path also accepts @POST@ requests.
+
+h3(function). respondWithObject(path, types, handlerFunction)
+
+Similar to @respondToExactPath@ however takes an additional @types@ argument, which is used to determine the types of objects this handler will display.
+
+Each path provided has an implicit assumption that the first argument beyond the path will be the [node:plugin/interface/ref] of the object to be displayed, if the object for that ref does not match any of @types@ then an error will occur.
+
+<pre>language=javascript
+Publication.respondWithObject("/example-objects",
+    [T.ExampleObject],
+    function(E, context, object) {
+        context.hint.objectKind = 'example-object';
+        E.render({
+            object: P.webPublication.widget.object(object)
+        });
+    }
+);
+</pre>
+
+For more on the object widget see [node:standard/web-publisher/interface/widgets]
+
+h3(function). searchResultRendererForTypes(types, renderer)
+
+Specifies how to display search results for items of a specific type. Useful for displaying additional information in results such as including the citation string below an output.
+
+Arguments:
+
+|@types@|An array of types to use the @renderer@ for e.g. @T.Book@|
+|@renderer@|The handler @function(object, context)@ to which should return a deferredRender for the given @object@|
+
+Example Usage:
+
+<pre>language=javascript
+publication.searchResultRendererForTypes(publication.DEFAULT, 
+    function(object, context) {
+        var template = context.publication.getReplaceableTemplate("hres:repo-publication-common:search-result:default");
+        return template.deferredRender({object:object});
+    }
+);
+</pre>
+
+For more information on replaceable templates see [node:standard/web-publisher/interface/rendering]
+
+h3(function). objectValueRendererForTypes(types, renderer)
+
+Set custom rendering of objects when they're rendered as values by widgets.
+
+|@renderer@|Called as @renderer(object, href, desc, publication)@ 
+- @href@ may be undefined if the object doesn't have a page in this publication
+- @desc@ may be an alias.|

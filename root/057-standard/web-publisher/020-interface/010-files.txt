@@ -1,0 +1,43 @@
+title: Files
+--
+
+h3(function). setFileThumbnailSize(size)
+
+Sets the size of thumbnails to display in the publication
+
+Arguments:
+
+|@size@|An integer representing the pixel dimension to be squared, e.g. 64|
+
+h3(function). addFileDownloadPermissionHandler(fn)
+
+Register a function which will be called with a [node:plugin/interface/file] or [node:plugin/interface/file-identifier], and a result object with property @allow@ which will allow the download if set to @true@
+
+Example Usage:
+
+<pre>language=javascript
+publication.addFileDownloadPermissionHandler(function(fileOrIdentifier, result) {
+    if(P.db.permitImages.select().where("digest","=",fileOrIdentifier.digest).count() > 0) {
+        result.allow = true;
+    }
+});
+</pre>
+
+h3(function). permitFileDownloadsForServiceUser()
+
+By default no file downloads are allowed. This is a standard implementation which permits any files which is a value on an object visible by the service user to be downloaded.
+
+h3(function). isFileDownloadPermitted(fileOrIdentifier)
+
+Utility function/Public API for checking whether a file download is permitted for the given @fileOrIdentifier@
+
+h3(function). deferredRenderImageFileTag(fileOrIdentifier, spec)
+
+Returns the deferredRender for the given image file, returns undefined if the provided @fileOrIdentifier@ is not an image.
+The @spec@ object can have properties:
+
+|@maxWidth@|The max width for the image|
+|@maxHeight@|The max Height for the image|
+|@hiDPI@|Boolean to set whether the image is to be scaled for HiDPI screens|
+|@title@|The text to be set as the title attribute in the image tag|
+|@alt@|The text to be included in the alt attribute in the image tag|
