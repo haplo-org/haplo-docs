@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title><%= h(node.long_title) %> : Haplo</title>
@@ -8,24 +8,24 @@
 </head>
 <body>
   <div id="container">
-    <div id="header">
+    <div id="header" role="presentation">
       <div id="header-logo">
         Haplo Platform Technical Documentation
       </div>
     </div>
-    <div id="content">
+    <div id="content" role="main">
       <div id="document">
         <div id="breadcrumb"><%= html_breadcrumb(node) %></div>
         <h1><%= h(node.long_title) %></h1>
         <%= node.body_html %>      
       </div>
-      <div id="navigation">
+      <div id="navigation" role="navigation">
         <ul id="homelink"><% if node.url_path == '/' %><li><b>Home</b><hr></li><% else %><li><a href="/">Home</a><hr></li><% end %></ul><hr>
         <%= html_node_navigation(node) %>
       </div>
     </div>
   </div>
-  <div id="footer">
+  <div id="footer" role="contentinfo">
     <div id="links"><a href="https://haplo.org/">Haplo</a> &bull;
       <a href="https://www.haplo.com/contact">Contact</a>
     </div>

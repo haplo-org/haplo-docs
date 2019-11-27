@@ -194,7 +194,7 @@ li
 #breadcrumb 
 {
     font-family:Helvetica, Arial, sans-serif;
-    color:#aaa;
+    color:#757575;
     position:absolute;
     top:1px;
     left:0px;
@@ -464,7 +464,7 @@ li
     border-top:1px solid #ddd;
     background-color:#fff;
     padding: 30px 50px;	
-    color: #aaa;
+    color: #757575;
     font-size: 11px;
     position: relative;
     z-index: 999;
@@ -492,7 +492,7 @@ li
 #links a.external_link
 {
     background:none;
-    color:#7d92ac;
+    color:#757575;
     text-decoration:none;
     padding:0;
     margin: 10px;
