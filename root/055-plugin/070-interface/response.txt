@@ -36,6 +36,8 @@ As an alternative to setting the @Content-Type@, set this property to the kind o
 
 All @Content-Type@ headers will include the UTF-8 charset option.
 
+Any @Content-Type@ header set using the @headers@ property will override the header implied by the @kind@ property.
+
 
 h3(function). redirect(url)
 
