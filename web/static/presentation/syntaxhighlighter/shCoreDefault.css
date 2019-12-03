@@ -244,7 +244,7 @@
   color: black !important;
 }
 .syntaxhighlighter .gutter {
-  color: #afafaf !important;
+  color: #757575 !important; /* modified */
 }
 .syntaxhighlighter .gutter .line {
   border-right: 3px solid #6ce26c !important;
@@ -276,7 +276,7 @@
   border: none !important;
 }
 .syntaxhighlighter .toolbar a {
-  color: #888 !important; /* modified */
+  color: #6B6B7B !important; /* modified */
 }
 .syntaxhighlighter .toolbar a:hover {
   color: black !important;
