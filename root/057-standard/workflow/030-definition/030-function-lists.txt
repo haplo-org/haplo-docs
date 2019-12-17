@@ -144,3 +144,14 @@ EgWorkflow.modifyFlags(function(M, flags) {
 </pre>
 
 
+h2. modifySendEmail(fn)
+
+Alter any email that is sent. @fn@ takes @M@ and @modify@, modify is an object containing the property @specification@, which is an object with the properties described [node:standard/workflow/definition/emails:here].
+
+Make changes by modifying the desired property on the @modify.specification@ object.
+
+<pre>language=javascript
+EgWorkflow.modifySendEmail(function(M, modify) {
+    modify.specification.cc = (modify.specification.cc || []).push("researchAdministrator");
+});
+</pre>

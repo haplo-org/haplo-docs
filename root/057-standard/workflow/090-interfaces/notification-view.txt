@@ -1,0 +1,44 @@
+title: Notification view
+long_title: Notification view interface
+link_as: keyword
+--
+
+The @NotificationView@ object stores information about a work unit notification.
+
+h2. Interface
+
+h3(property). title
+
+Defaults to the task title.
+
+h3(property). emailSubject
+
+Defaults to the @title@.
+
+h3(property). action
+
+The URL for the button rendered in the notification, defaults to the task URL.
+
+h3(property). status
+
+Defaults to the @notification-status@ or @status@ text defined for the current state.
+
+h3(property). button
+
+The label for the button, defaults to the @notification-action-label@ or @action-label@ for the current state.
+
+h3(function). addHeaderDeferred
+
+Call this function with one argument, the [node:plugin/interface/deferred:deferred render] of the template to display at the top of the notification. Can be called multiple times.
+
+h3(function). addNoteText
+
+Call this function with one argument, a string to be rendered with @std:text:paragraph@ between the status and the button. Can be called multiple times.
+
+h3(function). addNoteDeferred
+
+Call this function with one argument, the [node:plugin/interface/deferred:deferred render] of the template to display between the status and the button. Can be called multiple times.
+
+h3(function). addEndDeferred
+
+Call this function with one argument, the [node:plugin/interface/deferred:deferred render] of the template to display at the bottom of the notification. Can be called multiple times.
