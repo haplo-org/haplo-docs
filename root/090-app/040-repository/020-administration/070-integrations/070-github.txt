@@ -1,0 +1,20 @@
+title: GitHub
+--
+
+Haplo has plugins to allow users to integrate their GitHub accounts. Setting up GitHub integration requires the creation of a GitHub OAuth application. The system administrator should set this up for the application as a whole, once logged into the GitHub account you wish to create the application from navigate to "here":https://github.com/settings/applications/new, once set up, navigate to
+
+CLICK_PATH TOOLS > System management > Keychain > Add new credential
+
+to create the credential with these core entries:
+
+<pre>
+    Name: GitHub Service //(anything else requires changing the configuration data as below)
+    Kind: OAuth Identity Provider
+    Instance kind: OAuth2
+    auth_url: https://github.com/login/oauth/authorize
+    domain: //The domain of your application
+    token_url   https://github.com/login/oauth/access_token
+</pre>
+
+Adding on the specifics @client_id@ and @client_secret@ as shown in the GitHub application dashboard. You will also need to set the @ssl_ciphers@ in line with your security policy.
+
