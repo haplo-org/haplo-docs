@@ -1,0 +1,29 @@
+title: Sherpa RoMEO
+--
+
+If using the @hres_repo_embargoes@ plugin Haplo repository supports the Sherpa RoMEO API to display the policies of the relevant publishers with regards to the self-archiving of journal articles.
+
+h2. Keychain credential setup
+
+Using the SHERPA RoMEO service requires set up of an API key to prevent rate limiting of requests, this can be done "here.":http://www.sherpa.ac.uk/romeo/apiregistry.php Once the key has been obtained it will need to be added to the applications keychain by going to:
+
+CLICK_PATH TOOLS > System Management > Keychain > Add new credential
+
+Selecting the "Generic/Secret" option and completing with the options:
+
+|@name@|Either "Sherpa API Key" or a name of your choosing (provided the configuration data is changed, see below)|
+|@secret@|The API key|
+
+h2. Configuration data
+
+h3. "hres_repo_embargoes:sherpa_api_credential_name"
+
+h4. Expected type: String - Default: "Sherpa API Key"
+
+If when setting the keychain credential for the API key the name is changed from the default "Sherpa API Key" then the alternate name will need to be set in the configuration data. 
+
+e.g. If the credential was set with @name@ as "Sherpa key" then in the configuration data you will need to add:
+
+<pre>language=json
+"hres_repo_embargoes:sherpa_api_credential_name": "Sherpa key"
+</pre>
