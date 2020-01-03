@@ -1,7 +1,7 @@
 title: GitHub
 --
 
-Haplo has plugins to allow users to integrate their GitHub accounts. Setting up GitHub integration requires the creation of a GitHub OAuth application. The system administrator should set this up for the application as a whole, once logged into the GitHub account you wish to create the application from navigate to "here":https://github.com/settings/applications/new, once set up, navigate to
+Haplo has plugins to allow users to integrate their GitHub accounts. Setting up GitHub integration requires the creation of a GitHub OAuth application. The system administrator should set this up for the application as a whole, once logged into the GitHub account you wish to create the application from navigate to "here":https://github.com/settings/applications/new, for this to work the "Authorization callback URL" in the application will need to be set to the application homepage, e.g. "https://research.universityofexample.ac.uk"
 
 CLICK_PATH TOOLS > System management > Keychain > Add new credential
 
