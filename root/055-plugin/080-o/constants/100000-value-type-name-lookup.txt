@@ -1,0 +1,15 @@
+title: Value type name lookup
+long_title: Constants for looking up value type names
+--
+
+Constants are provided to map from data value type names, as used in [node:plugin/schema/requirements-schema:requirements.schema files], to typecode values, as returned by [node:plugin/o/typecode#O_typecode].
+
+
+h3(constant). O.NAME_TO_TYPECODE
+
+The @O.NAME_TO_TYPECODE@ constant maps value type names to typecode values.
+
+
+h3(constant). O.TYPECODE_TO_NAME
+
+The @O.TYPECODE_TO_NAME@ constant maps from a typecode value to a value type name.
