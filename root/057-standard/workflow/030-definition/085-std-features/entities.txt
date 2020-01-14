@@ -125,7 +125,7 @@ For compatibility with legacy code, this function will always be called with a s
 
 h2. Text system helpers
 
-When using @std:entities@, entities that you define become avaialable in the [node:standard/workflow/definition/text:workflow text system]. Simply use the entitiy name enclosed in @ symbols, and upon rendering the title of the object that the entity references will be displayed instead
+When using @std:entities@, entities that you define become available in the [node:standard/workflow/definition/text:workflow text system]. Simply use the entity name enclosed in @ symbols, and upon rendering the title of the object that the entity references will be displayed instead
 
 For example, to display the name of the entity @supervisor@ in a transition name:
 

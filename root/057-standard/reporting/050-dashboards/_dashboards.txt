@@ -144,13 +144,13 @@ P.implementService("std:reporting:dashboard:example_dashboard:setup",
 
 h2. Features
 
-The @use()@ interface adds a defined dashboard feature to the dashboard being displayed. To register a new workfow feature for other plugins, use @P.reporting.registerReportingFeature()@
+The @use()@ interface adds a defined dashboard feature to the dashboard being displayed. To register a new workflow feature for other plugins, use @P.reporting.registerReportingFeature()@
 
 h3. P.reporting.registerReportingFeature(featureName, fn)
 
-@featureName@ is the name of your feature, and @fn@ is a function which will be called when another plugin's dashbaord calls @use()@.
+@featureName@ is the name of your feature, and @fn@ is a function which will be called when another plugin's dashboard calls @use()@.
 
-The arguments to @fn@ are the dashboard object, and any further arugments passed to @user()@.
+The arguments to @fn@ are the dashboard object, and any further arguments passed to @user()@.
 
 For example, for collections where the root @ref@ object is a person, you might implement:
 

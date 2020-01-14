@@ -1,0 +1,49 @@
+title: Get user
+--
+
+API_ENDPOINT /api/v0-user/id/[userid] (GET)
+
+When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
+
+h2. Returns
+
+[SNIPPET rest-api/users/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:user:details@| The request was successful and a user's details have been returned |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+
+[SNIPPET rest-api/users/user-details-response]
+
+* user
+[SNIPPET rest-api/users/user-details]
+
+[SNIPPET rest-api/users/user-details-explanation]
+
+h3. Example response
+
+<pre>language=json
+{
+    "success": true,
+    "kind": "haplo:api-v0:user:details",
+    "user": {
+        "id":130,
+        "nameFirst":"First",
+        "nameLast":"Last",
+        "name":"First Last",
+        "code":null,
+        "email":"first.last@example.com",
+        "ref":null,
+        "isGroup":false,
+        "isActive":true,
+        "isSuperUser":false,
+        "isServiceUser":false,
+        "isAnonymous":false,
+        "localeId":"en",
+        "directGroupMembership":[
+            "haplo:group:example", 
+            "group:123"
+        ]
+    }
+}
+</pre>

@@ -1,0 +1,12 @@
+title: REST API
+class: DocNodeTextileWithTOC
+--
+
+REST APIs are provided to access and modify objects and data in Haplo applications. The APIs use JSON formatted requests and responses.
+
+They are not enabled by default. You must install the plugins for the specific APIs that you need.
+
+An [node:dev/api-key:API key] is used to authenticate as a user of the system, and gives the external system the same permissions as that user. Multiple API keys can be generated for a single Haplo application to provide external systems with differing levels of access.
+
+h2. Haplo REST APIs
+

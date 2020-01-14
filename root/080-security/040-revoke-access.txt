@@ -2,11 +2,7 @@ title: Revoking access
 long_title: Revoking access for a lost device
 --
 
-When a computer, laptop, or mobile phone used to access Haplo is lost, or you do not have control over it for any reason, you __must__ take action immediately.
-
-p(recommendation). When a device is lost, you __must__ revoke access immediately.
-
-p(recommendation). You __must__ ensure that your users report lost devices immediately.
+When a computer, laptop, or mobile phone used to access Haplo is lost, and you are managing access using Haplo internal accounts (not Single Sign On against a remote identity service), you should revoke access.
 
 h2. Revoking access (user accounts)
 

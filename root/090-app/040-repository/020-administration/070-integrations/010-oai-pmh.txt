@@ -8,7 +8,7 @@ Haplo has an intention to add metadata standards to this interface as they are n
 h3. Currently supported standards
 
 * Dublin Core (oai_dc)
-* RIOXX (2.0 appplication profile)
+* RIOXX (2.0 application profile)
 * DataCite (v4 metadata schema)
 * OpenAIRE (v4 application profile)
 * EThOS

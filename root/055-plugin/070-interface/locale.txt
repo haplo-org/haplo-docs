@@ -34,6 +34,16 @@ h3(property). id
 The ID of this locale, eg @"en"@.
 
 
+h3(property). name
+
+The name of this locale.
+
+
+h3(property). nameInLanguage
+
+The name of this locale, in the locale's language.
+
+
 h3(property). plugin
 
 The [node:plugin/interface/plugin] which created this Locale object.

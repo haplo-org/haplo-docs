@@ -1,0 +1,1 @@
+Apart from @directGroupMembership@, all the fields correspond directly to the equivalent field on the [node:/plugin/interface/security-principal]. @directGroupMembership@ is the equivalent of @directGroupIds@, but returns an array of group API codes instead of group IDs.

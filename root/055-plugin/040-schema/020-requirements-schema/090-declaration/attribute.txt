@@ -1,7 +1,7 @@
 title: Attribute
 --
 
-@attribute@ declarations define attributes which are used in types. This declaraction defines the standard Publisher attribute, and makes the descriptor available as @A.Publisher@.
+@attribute@ declarations define attributes which are used in types. This declaration defines the standard Publisher attribute, and makes the descriptor available as @A.Publisher@.
 
 <pre>
 attribute dc:attribute:publisher as Publisher

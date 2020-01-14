@@ -63,7 +63,7 @@ h3(function). readAsString(charsetName)
 
 Read the contents of the file, interpreted as a string in the given character set, eg @"UTF-8"@.
 
-Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidently run out of memory.
+Use this function with care, checking the @fileSize@ property before calling it, as it is very easy to accidentally run out of memory.
 
 
 h3(property). properties

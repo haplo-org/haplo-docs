@@ -43,4 +43,4 @@ Returns a single-valued HTTP header from the response. @default@, if provided, i
 
 h3(property). body
 
-This property contains the body of the reponse, if one was provided, as a [node:plugin/interface/binary-data] object. The filename, content type, and charset will have been filled in from the HTTP response's @Content-Type@ and @Content-Disposition@ headers, if available.
+This property contains the body of the response, if one was provided, as a [node:plugin/interface/binary-data] object. The filename, content type, and charset will have been filled in from the HTTP response's @Content-Type@ and @Content-Disposition@ headers, if available.

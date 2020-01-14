@@ -129,9 +129,9 @@ Use this to define additional UI to be displayed when rendering the form editor.
 Return an object containing locations and [node:plugin/templates/including-templates#Deferred_rendering:deferred renders].
 
 |*Property*|*Location*|
-|top|Displayed at the top of the page, above the form nvaigation|
+|top|Displayed at the top of the page, above the form navigation|
 |formTop|Displayed above the form, after the form navigation|
-|bottom|Displayed at the bottom of the page, below the form nvaigation|
+|bottom|Displayed at the bottom of the page, below the form navigation|
 |formBottom|Displayed below the form, before the submit buttons and form navigation|
 
 The properties are optional.

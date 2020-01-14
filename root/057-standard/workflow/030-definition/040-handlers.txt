@@ -40,7 +40,7 @@ EgWorkflow.observeExit({}, function(M, transition) {
 
 h2. observeFinish(selector, fn)
 
-Called when the process enteres a finish state and the workflow is complete.
+Called when the process enters a finish state and the workflow is complete.
 
 <pre>language=javascript
 EgWorkflow.observeFinish({}, function(M) {
@@ -59,7 +59,7 @@ EgWorkflow.transitionComplete({},
 );
 </pre>
 
-Note that the list of handlers is choosen using the selectors at the *beginning* of the transition, but the functions are called at the *end* of the transition with the new state of the workflow instance. This avoids having to select on all the possible destination states.
+Note that the list of handlers is chosen using the selectors at the *beginning* of the transition, but the functions are called at the *end* of the transition with the new state of the workflow instance. This avoids having to select on all the possible destination states.
 
 
 h2. resolveTransitionDestination(selector, fn)
@@ -190,7 +190,7 @@ The handler should modify the properties of the view as described [node:plugin/i
 
 h2. notification(selector, fn)
 
-Alter the email notification set to the user when the work unit becomes actionable by them.
+Alter the view for the email notification sent to the user when the work unit becomes actionable by them.
 
 It's usually easier to use the Text system to [node:standard/workflow/definition/text/notification-emails:set the text for the email] than use this handler.
 
@@ -199,11 +199,23 @@ EgWorkflow.notification({}, function(M, notificationView) {
 });
 </pre>
 
-@notificationView@ is the notification view object.
+@notificationView@ is the [node:standard/workflow/interfaces/transition-ui:notification view object].
 
 Return @false@ to prevent the notification from being sent.
 
+h2. notificationModifySendEmail(selector, fn)
 
+Alter the email notification sent when a work unit is assigned to a user. This is called after the notification handler, if defined, is used to modify the @view@. It is called before [node:standard/workflow/definition/function-lists#modifySendEmail:modifySendEmail].
+
+@fn@ takes @M@ and @specification@, where @specification@ is an object containing the properties:
+
+* @template@, set by default to the generic notification template provided by the platform
+* @view@, the [node:standard/workflow/interfaces/transition-ui:notification view object] that may have been modified by the @notification@ handler
+* @to@, by default set to the work unit @actionableBy@
+* @cc@, by default an empty array
+* @except@, by default an empty array
+* @toExternal@, by default an empty array
+* @ccExternal@, by default an empty array
 
 h2. transitionUI(selector, fn)
 

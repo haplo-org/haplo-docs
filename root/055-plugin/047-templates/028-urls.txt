@@ -11,7 +11,7 @@ URL parsing and escaping is triggered by one of these forms:
 
 * As an attribute defined in the HTML spec to take a URL value attribute, with a list @<a href=[...]>@
 
-* As any tag attribute with an explict url value, @<a href=url(...)>@
+* As any tag attribute with an explicit url value, @<a href=url(...)>@
 
 Where a URL is a single value, it is % escaped without escaping reserved characters. This allows values in the view like @/path/to/action@ to work as expected, as otherwise characters like '/' would be replaced with % encoded values.
 
@@ -24,7 +24,7 @@ The URL list may contain the @?@ symbol, which triggers parameter mode. This is 
 
 * @key=value@ sets the given parameter to the value. This can be a value from the view or a literal. If a parameter with that name is already set, then the value is replaced.
 
-* @*dictionary@ retrives value from the view, inteprets it as a dictionary of key value pairs for setting parameters.
+* @*dictionary@ retrieves value from the view, inteprets it as a dictionary of key value pairs for setting parameters.
 
 * @!key@ removes the parameter
 

@@ -1,0 +1,52 @@
+title: Enable user
+--
+
+API_ENDPOINT /api/v0-user/enable/[userid] (POST only)
+
+When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
+
+A parameter of @status@ with value of either @block@ or @active@ should be passed with requests to the endpoint. Passing @block@ will disable the user, set @isActive@ to false, and block the user from logging in. Blocking an already blocked user will do nothing. Passing a value of @active@ will re-enable a blocked user, allow them to log in again, and set @isActive@ to true. Setting an already active user as active will have no effect
+
+h2. Returns
+
+[SNIPPET rest-api/users/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:user:enable@| The request was successful and the blocked/enabled user's details have been returned |
+|@haplo:api-v0:user:enable-failed@| The value provided in the status parameter was not valid. Returns with HTTP status 400 |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+
+[SNIPPET rest-api/users/user-details-response]
+
+* user
+[SNIPPET rest-api/users/user-details]
+
+[SNIPPET rest-api/users/user-details-explanation]
+
+h3. Example response
+
+<pre>language=json
+{
+    "success": true,
+    "kind": "haplo:api-v0:user:enable",
+    "user": {
+        "id":130,
+        "nameFirst":"First",
+        "nameLast":"Last",
+        "name":"First Last",
+        "code":null,
+        "email":"first.last@example.com",
+        "ref":null,
+        "isGroup":false,
+        "isActive":false,
+        "isSuperUser":false,
+        "isServiceUser":false,
+        "isAnonymous":false,
+        "localeId":"en",
+        "directGroupMembership":[
+            "haplo:group:example", 
+            "group:123"
+        ]
+    }
+}
+</pre>

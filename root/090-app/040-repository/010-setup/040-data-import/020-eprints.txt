@@ -4,11 +4,11 @@ title: From EPrints
 
 If your legacy system is an EPrints repository, you will be able to use the "@haplo_repo_eprints@":https://github.com/haplo-org/haplo-repository/tree/master/hres_repo_eprints plugin to import your existing data. Install this as a dependency of your [node:app/repository/setup/plugins:root application plugin].
 
-This plugin provides default mappings for data held in an EPrints repository to the Haplo system, and an adminsitrative interface to run, develop, and debug an import.
+This plugin provides default mappings for data held in an EPrints repository to the Haplo system, and an administrative interface to run, develop, and debug an import.
 
 h2. Import steps
 
-After logging into the application as an adinistrator:
+After logging into the application as an administrator:
 
 h3. Add an EPrints admin account to the application's keychain
 

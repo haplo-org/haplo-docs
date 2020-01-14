@@ -122,7 +122,7 @@ Return the result of an aggregate function.
 
 @groupByFieldNames@ is optional. If present, then the values are grouped by those fields. If present it should be an array of field names, or else a single field name as a string.
 
-Returns a single value if @groupByFieldNames@ is not specified, otherwise an @Array@ of @Objects@ containing @value@ and @groups@ properties. The @groups@ property is an object with propoerties for each of the fields specified in @groupByFieldNames@, and a property @value@ with the aggregated value for the group. If only one field name to group by was specified, there will also be a property @group@ which contains the value of the column being grouped by.
+Returns a single value if @groupByFieldNames@ is not specified, otherwise an @Array@ of @Objects@ containing @value@ and @groups@ properties. The @groups@ property is an object with properties for each of the fields specified in @groupByFieldNames@, and a property @value@ with the aggregated value for the group. If only one field name to group by was specified, there will also be a property @group@ which contains the value of the column being grouped by.
 
 
 h2. Interface (results)

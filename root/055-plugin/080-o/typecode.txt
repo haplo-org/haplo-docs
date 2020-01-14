@@ -20,6 +20,8 @@ Because JavaScript represents all numbers as floating point, the difference betw
 
 @O.T_DATETIME@ will be returned for JavaScript @Date@ objects in addition to proper [node:plugin/interface/date-time] objects, since both can be used with the @append()@ functions on a [node:plugin/interface/store-object].
 
+The values that can be returned are listed for [node:plugin/o/constants/text-types:text] and [node:plugin/o/constants/value-types:other values types].
+
 
 h3(function). O.isRef(value)
 

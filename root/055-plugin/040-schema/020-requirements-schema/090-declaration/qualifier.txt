@@ -1,7 +1,7 @@
 title: Qualifier
 --
 
-@qualifier@ declarations define qualifiers, used on attributes. This declaraction defines the standard Alternative qualifiers, making it available as @Q.Alternative@.
+@qualifier@ declarations define qualifiers, used on attributes. This declaration defines the standard Alternative qualifiers, making it available as @Q.Alternative@.
 
 <pre>
 qualifier dc:qualifier:alternative as Alternative

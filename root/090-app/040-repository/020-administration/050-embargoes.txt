@@ -2,9 +2,9 @@ title: Embargoes
 --
 
 
-Haplo supports multiple embargo periods on a single record, managing different embargo periods for each file  associated with a single output record. This provides the flexibility to accurately and seecurely describe complex publisher rules on full-text deposit.
+Haplo supports multiple embargo periods on a single record, managing different embargo periods for each file  associated with a single output record. This provides the flexibility to accurately and securely describe complex publisher rules on full-text deposit.
 
-Reeference links for publisher and journal embargo periods for research outputs are integrated into the system by querying the SHERPA/RoMEO service, and presented to administrative staff at the point embargoes are added so they can check at a glance the deposit conditions for an output.
+Reference links for publisher and journal embargo periods for research outputs are integrated into the system by querying the SHERPA/RoMEO service, and presented to administrative staff at the point embargoes are added so they can check at a glance the deposit conditions for an output.
 
 h3. Embargoed file access
 
