@@ -1,0 +1,104 @@
+title: Server-side JavaScript
+--
+
+h3. Capitalisation
+
+We use @camelCase@ for variables in all cases, except:
+
+* @ClassNames@, and [node:plugin/o/action:@Actions@] are capitalised.
+* @CONSTANTS_ALL_CAPS@, and declared at the top of the file.
+
+
+h3. API codes and other meaningful strings
+
+Haplo APIs make use of singificant strings - service names, feature names, actions, schema API codes, URLs, etc. all use significant strings as identifiers. These should:
+
+* always lower case
+* API codes use dashes
+* URLs use dashes
+* services use underscores (to match plugin names)
+* Services and Actions are usually two part, eg. @plugin_name:what_it_does@
+* Features should be @namespace:thing@, following the usual @hres_@, @phd_@ etc. namespace convention
+
+
+h3. Code Layout
+
+<pre>language=javascript
+    // Space after the condition and not before
+    // Braces start on the same line as condition
+    if(thing) {
+    }
+</pre>
+
+Indent with 4 spaces.
+
+Addition and subtraction in code shouldn't have whitepace around the operator:
+
+<pre>language=javascript
+    x = a+b;
+</pre>
+
+In function definitions, include spaces between arguments and after the argument list, and assign functions to named variables.
+
+<pre>language=javascript
+    var egFunction = function(arguments, have, spaces) {
+        // My code
+    };
+</pre>
+
+Never nest ternaries.
+
+<pre>language=javascript
+    // DON'T DO THIS
+    var x  = a ? (c ? d : e ) : b;
+</pre>
+
+Blank lines in code should should be significant, separating sections of code that have a different purpose, like paragraphs in prose.
+
+When adding separator comments in files, add a note in the separator about the content of the following section  of code.
+
+<pre>language=javascript
+    // -----------------------------------------------
+    // This section is for migrations
+</pre>
+
+Comments should go next to code if short, or on the line above if it's longer than will fit naturally on a normal width text editor window.
+
+Comments should describe the "why" behind the code they annotate - the "what" should be read from the code through using meaningful variable names throughout.
+
+
+h2. ES6 features
+
+Haplo plugins go through the Rhino JavaScript interpreter, which doesn't have the full set of ES6 features, and others are not preferred in this style guide.
+
+Also note that a lot of plugin code was written before ES6 features were available in Rhino. To avoid spurious changes and errors these files have not been updated to use these features. We aim to always to match the style within the file, so each JavaScript file should either use ES6 features thoughout or not at all.
+
+
+h3. Arrow functions
+
+* Don't use them for top level functions. Only use them inside others
+* Always put the brackets around the input parameters
+* Go for clarity - no need to use curly brackets for single return values
+
+<pre>language=javascript
+    var doubled = _.map([1, 2, 3, 4, 5], (number) => number*2);
+</pre>
+
+h3. Method definitions
+
+There's no need to write the @function@ keyword in object definitions - it is preferred to use method definitions where appropriate;
+
+<pre>language=javascript
+    var something = {
+        hello(a,b) {
+            console.log("hello", a, b);
+        }
+    };
+</pre>
+
+h3. @let@ and @const@
+
+Prefer to use @var@ for top level variables, because the hoisting is useful in allowing you to lay out a file sensibly without being concerned by variable definition order.
+
+@let@ should be used for everything below top level, except for variables that will be defined once and never changed, which should use @const@.
+

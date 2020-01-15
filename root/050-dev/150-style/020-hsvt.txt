@@ -1,0 +1,12 @@
+title: HSVT templates
+--
+
+h3. Text
+
+Text that will appear in HTML should be included in the HSVT file preferentially. For example, the @pageTitle()@ and @backLink()@ functions should be preferred to passing text in to the view from JavsaScript.
+
+Always prepare the text in your templates for [node:plugin/i18n:internationalisation].
+
+h3. Layout
+
+HSVT files should be indented 2 spaces.
