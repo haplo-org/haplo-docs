@@ -215,6 +215,11 @@ The optional @desc@ and @qual@ arguments restrict the values which are searched.
 
 Returns itself, making the function suitable for chaining.
 
+h3(function). lastUpdatedWithinDateRange(startDate, endDate)
+
+Query for objets that have last been updated with the given range.
+
+@startDate@ and @endDate@ must be JavaScript @Date@ objects. Either @startDate@ or @endDate@ can be @null@ in which case the query is unbounded in that direction.
 
 h3(function). anyLabel(labels)
 
