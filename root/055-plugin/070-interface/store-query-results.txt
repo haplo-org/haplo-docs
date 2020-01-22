@@ -35,3 +35,13 @@ h3(function). ensureRangeLoaded(startIndex, endIndex)
 If this is a sparse result set, requested by calling @setSparseResults(true)@ on the query object, use this function to load a range of objects.
 
 This is more efficient than just loading each object individually by accessing the array.
+
+You shouldn't call this if you just using @refAtIndex()@.
+
+
+h3(function). refAtIndex(index)
+
+Returns the [node:plugin/interface/ref] of the object at @index@.
+
+For sparse result sets, this is efficient whether or not @ensureRangeLoaded()@ has been called.
+
