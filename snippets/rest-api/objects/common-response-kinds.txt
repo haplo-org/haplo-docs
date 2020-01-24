@@ -1,0 +1,2 @@
+|@haplo:api-v0:object:sources-not-specified@| The @sources@ parameter was not specified. Returns with HTTP status 400 |
+|@haplo:api-v0:object:bad-query@| The object store query was invalid. Returns with HTTP status 400 and more information in the message |

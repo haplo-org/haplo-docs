@@ -1,0 +1,2 @@
+|@results@|Set @results=refs@ to return results as their @ref@, or @results=objects@ to return the full serialised object.|
+|@start@|The numeric index of the first result to return. Results are paged, so the API must be called repeatedly to fetch the entire list.|

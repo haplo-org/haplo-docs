@@ -1,0 +1,96 @@
+title: Get object
+--
+
+API_ENDPOINT /api/v0-object/ref/[ref]?sources=[sources] (GET)
+
+When generating URLs, @[ref]@ is the ref of a [node:/plugin/interface/store-object:store object].
+
+h2. Request
+
+In addition to the ref of the store object, the URL must contain a @sources@ parameter. This may be:
+
+[SNIPPET rest-api/objects/sources-parameter]
+
+[SNIPPET rest-api/objects/transform-parameter]
+
+
+h2. Response
+
+[SNIPPET rest-api/objects/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:object:serialised@| The request was successful and a serialised object has been returned |
+|@haplo:api-v0:object:no-such-object@| No object could be found with the requested ref or the user does not have permission to read it. Returns with HTTP status 400 |
+[SNIPPET rest-api/objects/common-response-kinds]
+
+Along with the standard @success@ and @kind@ fields (see [node:rest-api/introduction] for explanation), the response contains a @object@ property containing the object in the standard JSON serialisation.
+
+
+h2. Example
+
+<pre>
+GET /api/v0-object/ref/83w92?sources=std:workunit,std:workflow
+</pre>
+
+<pre>language=json
+{
+  "success": true,
+  "kind": "haplo:api-v0:object:serialised",
+  "object": {
+    "kind": "haplo:object:0",
+    "sources": [
+      "std:workunit",
+      "std:workflow"
+    ],
+    "ref": "83w92",
+    "url": "https://app.example.org/83w92/nice-book",
+    "recordVersion": 2,
+    "title": "Nice book",
+    "labels": [
+      {
+        "ref": "1x7z",
+        "title": "Common"
+      }
+    ],
+    "deleted": false,
+    "creationDate": "2020-01-14T17:05:18Z",
+    "lastModificationDate": "2020-01-14T17:05:18Z",
+    "type": {
+      "code": "std:type:book",
+      "name": "Book",
+      "rootCode": "std:type:book",
+      "annotations": []
+    },
+    "attributes": {
+      "dc:attribute:type": [
+        {
+          "type": "link",
+          "ref": "1zq4",
+          "code": "std:type:book",
+          "title": "Book"
+        }
+      ],
+      "dc:attribute:title": [
+        {
+          "type": "text",
+          "value": "Nice book"
+        }
+      ],
+      // ...
+    },
+    "workflows": [
+      {
+        "workType": "example:book-review",
+        "createdAt": "2020-01-14T17:05:18.341Z",
+        "openedAt": "2020-01-14T17:05:18Z",
+        "deadline": null,
+        "closed": true,
+        "data": {},
+        "tags": {},
+        "state": "finished",
+        "url": "https://app.example.org/83w92/nice-book"
+      }
+    ]
+  }
+}
+</pre>

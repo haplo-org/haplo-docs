@@ -1,0 +1,5 @@
+
+|@sources=NONE@|No additional sources, just the object information.|
+|@sources=ALL@|All available sources. It is not recommended you use this, except for manually exploring the API.|
+|@sources=s1,s2,...@|Specify the required sources as a comma separated list.|
+

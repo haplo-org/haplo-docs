@@ -1,0 +1,31 @@
+title: Objects
+--
+
+The Objects REST API provides endpoints to access [node:/plugin/interface/store-object:store objects] in Haplo applications.
+
+h2. Enabling the Objects API
+
+Install the @haplo_api_object_v0@ plugin to enable access to the Objects API.
+
+
+h2. Sources
+
+The basic object information is augmented by "sources" of additional information, for example, workflows and documents around the object. When requesting an object, you specify which sources you need included in the response. Only specify the sources you will be using.
+
+
+h2. Permissions
+
+A user can only access the API if they are in the "API v0: Objects" group (API code @haplo:group:api-v0:object-api@). In general, you should create an API key for the service user defined by the @haplo_api_object_v0@ plugin:
+
+CLICK_PATH TOOLS > System management > Users > SRV > API v0: Object > New API key...
+
+Set the request path to @/api/v0-object/@ for any API key you create.
+
+
+h2. Endpoints
+
+|*Endpoint*|*Method*|*Action*|
+|@/api/v0-object/ref@|GET|[node:rest-api/objects/get-object]|
+|@/api/v0-object/linked@|GET|[node:rest-api/objects/linked-objects]|
+
+See [node:rest-api/introduction] for how to form a request URL.

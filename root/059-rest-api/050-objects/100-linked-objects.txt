@@ -1,0 +1,60 @@
+title: Get linked objects
+--
+
+Given the ref of an object, returns a list of all objects which link to this object. Results are paged, so multiple requests may need to be made to retrieve the entire list.
+
+API_ENDPOINT /api/v0-object/linked/[ref] (GET)
+
+When generating URLs, @[ref]@ is the ref of a [node:/plugin/interface/store-object:store object].
+
+h2. Request
+
+In addition to the ref of the store object, the URL may include some optional parameters.
+
+|@attribute@|Restrict results to objects linked to this object in the given attribute, specified as the API code. For example, @std:attribute:project@.|
+|@qualifier@|When @attribute@ is used, restrict further to objects linked with the given qualifier, for example @dc:qualifier:alternative@.|
+|@type@|Restrict to objects of a given type, for example, @std:type:project@|
+[SNIPPET rest-api/objects/common-query-parameters]
+
+If @results=objects@ is specified, the request must contain a @sources@ parameter. This may be:
+
+[SNIPPET rest-api/objects/sources-parameter]
+
+[SNIPPET rest-api/objects/transform-parameter]
+
+
+h2. Response
+
+[SNIPPET rest-api/objects/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:object:store-query-results@| The request was successful and a list of linked objects has been returned |
+[SNIPPET rest-api/objects/common-response-kinds]
+
+[SNIPPET rest-api/objects/query-results]
+
+
+h2. Example
+
+<pre>
+GET /api/v0-object/linked/83w92
+</pre>
+
+<pre>language=json
+{
+  "success": true,
+  "kind": "haplo:api-v0:object:store-query-results",
+  "results": {
+    "count": 4,
+    "start": 0,
+    "end": 4,
+    "more": false
+  },
+  "refs": [
+    "83w93",
+    "81y84",
+    "81y83",
+    "81y82"
+  ]
+}
+</pre>

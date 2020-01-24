@@ -11,6 +11,9 @@ h3. API Implementations
 
 This style of API is used for APIs managing different types of data within Haplo systems. You should install the plugins for the specific APIs that your application needs to use.
 
+|[node:rest-api/objects]|@haplo_api_object_v0@|
+|[node:rest-api/users]|@haplo_api_user_v0@|
+
 h3. Response
 
 Every request to the API will receive a response in JSON format with the following structure

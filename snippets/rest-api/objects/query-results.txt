@@ -1,0 +1,15 @@
+Along with the standard @success@ and @kind@ fields (see [node:rest-api/introduction] for explanation), the response contains a list of the linked objects.
+
+If @results=ref@ or no @results@ parameter was specified, the @refs@ property is an array of object references.
+
+If @results=objects@ was specified, the @objects@ property is an array of objects in the standard JSON serialisation.
+
+The @results@ property contains the following nested properties:
+
+* @count@ - the number of linked objects
+* @start@ - the index of the first result in this page
+* @end@ - the index of the result after the last result in this page
+* @more@ - @true@ if there are more results to fetch.
+
+If @more@ is true, the request should be repeated with the @start@ parameter set to the @end@ property to fetch the next page of results.
+
