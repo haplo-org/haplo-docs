@@ -5,7 +5,7 @@ API_ENDPOINT /api/v0-user/id/[userid] (GET)
 
 When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
 
-h2. Returns
+h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 

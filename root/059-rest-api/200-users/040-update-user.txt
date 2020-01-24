@@ -31,7 +31,7 @@ h3. Example request body
 }
 </pre>
 
-h2. Returns
+h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 

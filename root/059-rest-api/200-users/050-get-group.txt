@@ -5,7 +5,7 @@ API_ENDPOINT /api/v0-user/group/[groupcode] (GET only)
 
 When generating URLs, @[groupcode]@ is the API code of a group [node:/plugin/interface/security-principal]
 
-h2. Returns
+h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 
