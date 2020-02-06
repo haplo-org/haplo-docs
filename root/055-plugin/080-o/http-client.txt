@@ -14,25 +14,19 @@ h2. Example
 <pre>language=javascript
 P.myHTTPCallback = P.callback("myHTTPCallback", function(data, client, result) {
     if(result.successful) {
-        var body = result.body.readAsString("UTF-8");
-        if (body === "RETRY") {
-           // Try again
-           var newClient = client.mutableCopy();
-           newClient.request(P.myHTTPCallback, data);
-        } else {
-            P.data[data.target] = "Success: " + body;
-        }
+        // use result.body
     } else {
         P.data[data.target] = "Failure: " + result.errorMessage;
     }
 });
 
 ...
-    var client = O.httpClient("http://www.example.com/api").
-                   method("PUT").
-                   body("application/json", "{ver: '1.0', operation: 'help'}");
-
+    let client = O.httpClient("http://www.example.com/api").
+        method("PUT").
+        body("application/json", "{ver: '1.0', operation: 'help'}");
 
     client.request(P.myHTTPCallback, {target: 'help-response'});
 ...
 </pre>
+
+Note: be aware of the limitations of the plugin's [node:plugin/interface/data-store], consider using a [node:plugin/interface/database] to avoid race conditions when reading and writing in background tasks.
