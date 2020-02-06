@@ -18,3 +18,21 @@ to create the credential with these core entries:
 
 Adding on the specifics @client_id@ and @client_secret@ as shown in the GitHub application dashboard. You will also need to set the @ssl_ciphers@ in line with your security policy.
 
+
+h3(config). "hres_github:credential_name"
+
+h4. Expected type: String - Default value: "GitHub Service"
+
+Configuration data to set the name of the keychain entry to lookup for the GitHub OAuth credentials.
+
+h3(config). "hres_github:requested_scope"
+
+h4. Expected type: String - Default value: "repo"
+
+Set to the scope of access your system needs to a user's github profile (multiple scopes can be comma separated), default is repo to allow full read/write access to repositories, including setting of webhooks. More information on GitHub scopes is available "here":https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/.
+
+h3(config). "hres_github:safety_application_hostname"
+
+h4. Expected type: String - No default value
+
+This is a safety check to prevent linking of accounts to development environments, this should be set to the application hostname upon set up in a live system.
