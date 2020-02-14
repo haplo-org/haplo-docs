@@ -14,7 +14,7 @@ h2. Example
 <pre>language=javascript
 P.myHTTPCallback = P.callback("myHTTPCallback", function(data, client, result) {
     if(result.successful) {
-        // use result.body
+        // do something with result.body
     } else {
         P.data[data.target] = "Failure: " + result.errorMessage;
     }
