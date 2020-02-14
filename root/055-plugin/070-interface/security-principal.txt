@@ -68,6 +68,16 @@ h3(property). isAnonymous
 
 @true@ if this @SecurityPrincipal@ represents an anonymous user. This includes the built in @ANONYMOUS@ user.
 
+h3(property). tags
+
+An @Object@-like dictionary of short @String@ to @String@ key value pairs. Use for values that you will use in user queries, and the @data@ property for all other information.
+
+@Ref@ objects will be automatically converted to a @String@, but otherwise, an exception will be raised if a non-@String@ object is assigned to a key.
+
+User tags are indexed, and can be efficiently queried with [node:plugin/o/lookup/users-by-tags].
+
+The tag @username@ is special, and should only be set by plugins which manage user accounts (such as user syncs and data import plugins).
+
 
 h3(property). groupIds
 

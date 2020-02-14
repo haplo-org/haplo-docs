@@ -3,7 +3,12 @@ title: Get user
 
 API_ENDPOINT /api/v0-user/id/[userid] (GET)
 
-When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
+When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]. It is optional.
+If @[userid]@ is not included, you must include a tag query. 
+
+[SNIPPET rest-api/users/tag-queries]
+
+[SNIPPET rest-api/users/tag-query-single-user]
 
 h2. Response
 
@@ -11,7 +16,10 @@ h2. Response
 
 |*Kind*|*Meaning*|
 |@haplo:api-v0:user:details@| The request was successful and a user's details have been returned |
-|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 404 |
+|@haplo:api-v0:user:no-tag-query-provided@| A tag query was expected for this request, but was not provided. Returns with HTTP status 400 |
+|@haplo:api-v0:user:no-user-found@| No user could be found that matched the tag query provided. Returns with HTTP status 404 |
+|@haplo:api-v0:user:multiple-users-found@| Multiple users were found matching the tag query, but this endpoint expects to return only one user. Tag queries for this endpoint should be on uniquely identifying tags. Returns with HTTP status 404 |
 
 [SNIPPET rest-api/users/user-details-response]
 
@@ -40,6 +48,10 @@ h3. Example response
         "isServiceUser":false,
         "isAnonymous":false,
         "localeId":"en",
+        "tags": {
+            "username": "abc123",
+            "other": "true"
+        },
         "directGroupMembership":[
             "haplo:group:example", 
             "group:123"
