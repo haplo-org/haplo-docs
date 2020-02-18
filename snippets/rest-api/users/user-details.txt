@@ -11,4 +11,5 @@
 ** isServiceUser
 ** isAnonymous
 ** localeId
+** tags
 ** directGroupMembership

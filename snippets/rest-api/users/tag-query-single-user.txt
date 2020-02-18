@@ -1,0 +1,1 @@
+When using tag queries for this endpoint, you should only use queries that you expect to return a single user. To get a list of all users with a set of tags, use the [node:/rest-api/users/find-by-tag] endpoint.

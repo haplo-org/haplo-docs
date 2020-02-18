@@ -3,7 +3,12 @@ title: Update user
 
 API_ENDPOINT /api/v0-user/id/[userid] (POST)
 
-When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
+When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]. It is optional.
+If @[userid]@ is not included, you must include a tag query. 
+
+[SNIPPET rest-api/users/tag-queries]
+
+[SNIPPET rest-api/users/tag-query-single-user]
 
 The body of the request should be a JSON document containing only the fields that you wish to change for the user. The fields which can be updated by this API are:
 
@@ -12,6 +17,7 @@ The body of the request should be a JSON document containing only the fields tha
 * email
 * ref
 * localeId
+* tags
 * directGroupMembership
 
 [SNIPPET rest-api/users/user-details-explanation]
@@ -25,6 +31,10 @@ h3. Example request body
     "email":"first.last@example.com",
     "ref":"890qv",
     "localeId":"en",
+    "tags": {
+        "username": "abc123",
+        "flag": "other"
+    },
     "directGroupMembership":[
         "haplo:group:example"
     ]
@@ -35,10 +45,12 @@ h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 
-|*Kind*|*Meaning*|
-|@haplo:api-v0:user:update@| The request was successful and the updated user's details have been returned |
-|@haplo:api-v0:user:update-failed@| The user could not be created with the provided details. Returns with HTTP status 400 |
-|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+|*Kind*|*Meaning*| *HTTP status* |
+|@haplo:api-v0:user:update@| The request was successful and the updated user's details have been returned | 200 |
+|@haplo:api-v0:user:update-failed@| The user could not be created with the provided details. | 400 |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. | 404 |
+[SNIPPET rest-api/users/tag-responses]
+[SNIPPET rest-api/users/tag-response-multiple-users]
 
 [SNIPPET rest-api/users/user-details-response]
 
@@ -67,6 +79,10 @@ h3. Example
         "isServiceUser":false,
         "isAnonymous":false,
         "localeId":"en",
+        "tags": {
+            "username": "abc123",
+            "flag": "other"
+        },
         "directGroupMembership":[
             "haplo:group:example"
         ]

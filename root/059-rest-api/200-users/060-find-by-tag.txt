@@ -1,0 +1,32 @@
+title: Find by tag
+--
+
+API_ENDPOINT /api/v0-user/find-by-tag (GET only)
+
+A tag query must be included when using this end point.
+
+[SNIPPET rest-api/users/tag-queries]
+
+h2. Response
+
+[SNIPPET rest-api/users/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|*HTTP status*|
+|@haplo:api-v0:user:find-by-tag@| The request was successful and all users with tags matching the tag query have been returned | 200 |
+[SNIPPET rest-api/users/tag-responses]
+
+[SNIPPET rest-api/users/user-details-response]
+
+* users
+
+The users field is an array of the IDs of all users (active or not) who have tags matching the tag query. This array does not include groups.
+
+h3. Example response
+
+<pre>language=json
+{
+    "success": true,
+    "kind": "haplo:api-v0:user:find-by-tag",
+    "users": [123, 456, 789]
+}
+</pre>
