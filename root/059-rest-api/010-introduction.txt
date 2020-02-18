@@ -23,10 +23,12 @@ Every request to the API will receive a response in JSON format with the followi
 
 @kind@ contains a code that defines where the response is coming from. In addition to the kinds provided by each API implementation, there are the following generic kinds:
 
-|*Kind*|*Meaning*|
-|@haplo:api-v0:generic:not-permitted@| The user is not authorised to access the API. Returns with HTTP status 401|
-|@haplo:api-v0:generic:exception@| The request failed with an error. Returns with HTTP status 400 |
-|@haplo:api-v0:generic:no-response@| The API implementation did not respond to the request. Returns with HTTP status 404 |
+|*Kind*|*Meaning*|*HTTP status*|
+|@UNAUTHORISED@|A generic permissions error was encountered.|403|
+|@INVALID-API-KEY@|The provided API key was not valid.|403|
+|@haplo:api-v0:generic:not-permitted@|The user is not authorised to access the API.|403|
+|@haplo:api-v0:generic:exception@|The request failed with an error.|400|
+|@haplo:api-v0:generic:no-response@|The API implementation did not respond to the request|404|
 
 @success@ can have a value of @true@ or @false@, and tells you whether the request succeeded or failed. If the request succeeded, more data defined by the specific API you are using can be expected to be included in the response.
 
@@ -37,20 +39,20 @@ h3. Example successful response body
     "success": true,
     "kind": "haplo:api-v0:user:update",
     "user": {
-        "id":130,
-        "nameFirst":"Test",
-        "nameLast":"User",
-        "name":"Test User",
-        "code":null,
-        "email":"test@example.com",
-        "ref":null,
-        "isGroup":false,
-        "isActive":true,
-        "isSuperUser":false,
-        "isServiceUser":false,
-        "isAnonymous":false,
-        "localeId":"en",
-        "directGroupMembership":[]
+        "id": 130,
+        "nameFirst": "Test",
+        "nameLast": "User",
+        "name": "Test User",
+        "code": null,
+        "email": "test@example.com",
+        "ref": null,
+        "isGroup": false,
+        "isActive": true,
+        "isSuperUser": false,
+        "isServiceUser": false,
+        "isAnonymous": false,
+        "localeId": "en",
+        "directGroupMembership": []
     }
 }
 </pre>
@@ -64,7 +66,7 @@ h3. Example failed response body
     "success": false,
     "kind": "haplo:api-v0:generic:exception",
     "error": {
-        "message": "org.jruby.exceptions.RaiseException: (JavaScriptAPIError) User must have a non-empty String nameFirst attribute"
+        "message": "User must have a non-empty String nameFirst attribute"
     }
 }
 </pre>
