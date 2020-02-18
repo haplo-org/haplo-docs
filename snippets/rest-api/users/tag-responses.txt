@@ -1,0 +1,2 @@
+|@haplo:api-v0:user:no-tag-query-provided@| A tag query was expected for this request, but was not provided. | 400 |
+|@haplo:api-v0:user:no-user-found@| No user could be found that matched the tag query provided. | 404 |

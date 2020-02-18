@@ -9,8 +9,8 @@ h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 
-|*Kind*|*Meaning*|
-|@haplo:api-v0:user:group-details@| The request was successful and the group's users and details have been returned |
+|*Kind*|*Meaning*|*HTTP status*|
+|@haplo:api-v0:user:group-details@| The request was successful and the group's users and details have been returned | 200 |
 
 [SNIPPET rest-api/users/user-details-response]
 

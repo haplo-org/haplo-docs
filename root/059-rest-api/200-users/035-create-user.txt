@@ -28,7 +28,7 @@ h3. Example request body
     "localeId":"en",
     "tags": {
         "username": "abc123",
-        "other": "true"
+        "flag": "other"
     },
     "directGroupMembership":[
         "std:group:administrators"
@@ -40,9 +40,9 @@ h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 
-|*Kind*|*Meaning*|
-|@haplo:api-v0:user:create@| The request was successful and the new user's details have been returned |
-|@haplo:api-v0:user:creation-failed@| A user could not be created the provided details. Returns with HTTP status 400 |
+|*Kind*|*Meaning*|*HTTP status*|
+|@haplo:api-v0:user:create@| The request was successful and the new user's details have been returned | 200 |
+|@haplo:api-v0:user:creation-failed@| A user could not be created the provided details.| 400 |
 
 [SNIPPET rest-api/users/user-details-response]
 
@@ -75,7 +75,7 @@ h3. Example response
         "localeId":"en",
         "tags": {
             "username": "abc123",
-            "other": "true"
+            "flag": "other"
         },
         "directGroupMembership":[
             "std:group:administrators"

@@ -11,10 +11,10 @@ h2. Response
 
 [SNIPPET rest-api/users/endpoint-specific-kinds]
 
-|*Kind*|*Meaning*|
-|@haplo:api-v0:user:enable@| The request was successful and the blocked/enabled user's details have been returned |
-|@haplo:api-v0:user:enable-failed@| The value provided in the status parameter was not valid. Returns with HTTP status 400 |
-|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+|*Kind*|*Meaning*|*HTTP status*|
+|@haplo:api-v0:user:enable@| The request was successful and the blocked/enabled user's details have been returned | 200 |
+|@haplo:api-v0:user:enable-failed@| The value provided in the status parameter was not valid. | 400 |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. | 400 |
 
 [SNIPPET rest-api/users/user-details-response]
 
