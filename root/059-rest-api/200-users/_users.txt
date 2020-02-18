@@ -25,5 +25,6 @@ h2. Endpoints
 |@/api/v0-user/id@|POST|[node:rest-api/users/update-user]|
 |@/api/v0-user/enable@|POST|[node:rest-api/users/enable-user]|
 |@/api/v0-user/group@|GET|[node:rest-api/users/get-group]|
+|@/api/v0-user/find-by-tag@|GET|[node:rest-api/users/find-by-tag]|
 
 See [node:rest-api/introduction] for how to form a request URL.

@@ -6,12 +6,12 @@ Look up users with specific tags set, and return an array of objects implementin
 
 h3(function). O.usersByTags(tagQuery)
 
-Look up the users with the tags in @tagQuery@, a JSON object specifying the names and values of tags. Users who have tags matching all the values specified in @tagQuery@ will be returned (whether active or not).
+Look up the users with the tags in @tagQuery@, a JSON object specifying the names and values of tags. Users who have tags matching all the values specified in @tagQuery@ will be returned (whether active or not). If no users have the specified tags, an empty array will be returned.
 
 Example:
 
 <pre>language=json
-    {
+    O.usersByTags({
         "username": "abc123"
-    }
+    });
 </pre>

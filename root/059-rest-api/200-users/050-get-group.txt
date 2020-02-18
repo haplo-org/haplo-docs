@@ -43,6 +43,9 @@ h3. Example response
         "isServiceUser":false,
         "isAnonymous":false,
         "localeId":"en",
+        "tags": {
+            "tagName": "tagValue"
+        },
         "directGroupMembership":[
             "haplo:group:example", 
             "group:321"
