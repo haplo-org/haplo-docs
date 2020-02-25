@@ -8,8 +8,6 @@ This is the technical documentation for Haplo, describing how to set up a Haplo 
 
 Documentation for [node:app:applications built on top of the platform] describes how to build customised applications on top of out-of-the-box functionality.
 
-As you're probably dealing with confidential information in your Haplo application, you should read our [node:security].
-
 
 h2. Getting help
 
