@@ -7,7 +7,7 @@ Information about the format and serialisation options are included for decoders
 
 h3(property). kind
 
-The @kind@ property specifies the overall format of the serialised object. It is always @"haplo:object:0"@ to specify the format and version of the serialisation.
+The @kind@ property specifies the overall format of the serialised object. The value for the current version of the serialisation format is @"haplo:object:0"@.
 
 
 h3(property). sources

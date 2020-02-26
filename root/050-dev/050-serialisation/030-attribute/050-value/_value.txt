@@ -9,9 +9,6 @@ _Sources_ may add additional properties to values.
 
 h2. Common value properties
 
-Each value will have the following properties, most of which are optional.
-
-
 h3(property). type
 
 The @type@ property specifies the data type of this value. See the list of data types at end for possible types.

@@ -22,7 +22,7 @@ It contains sub-properties:
 
 h3(property). title
 
-The human readable @title@ of this object. This is a string which is suitable for presenting to users as a hyperlink to this object.
+The human readable @title@ of this object. This is a string which is suitable for presenting to users as the 'name' of this object.
 
 This generally duplicates the first @dc:attribute:title@ attribute, and is provided for convenience.
 

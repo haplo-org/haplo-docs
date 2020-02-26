@@ -2,7 +2,7 @@ title: JSON serialisation format
 long_title: Haplo JSON serialisation format
 --
 
-[node:dev/store:Objects] and information associated with them such as workflows and forms, is serialised into a standard JSON format that is used for [node:rest-api/objects:APIs] and other data interchange.
+[node:dev/store:Objects] and information associated with them, such as workflows and forms, are serialised into a standard JSON format that is used for APIs and data interchange.
 
 Because Haplo is an extensible system, the serialiser uses [node:dev/serialisation/source:Sources] to include additional information along with the object metadata and attributes. When serialising an object, you need to specify which sources you want to include.
 

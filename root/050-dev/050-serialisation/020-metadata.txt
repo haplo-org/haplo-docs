@@ -9,7 +9,7 @@ All dates are in ISO8601 format.
 
 h3(property). ref
 
-The object's @ref@, as a string.
+The object's [node:/plugin/interface/ref], as a string.
 
 
 h3(property). url

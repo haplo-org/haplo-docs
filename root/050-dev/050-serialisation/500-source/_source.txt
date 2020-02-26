@@ -9,4 +9,4 @@ Sources add this additional information to serialised objects.
 
 h2. Available sources
 
-The plugins installed in your application may provide additional sources.
+The following sources are provided by standard plugins when they are installed. Additional plugins installed in your application may provide more sources.
