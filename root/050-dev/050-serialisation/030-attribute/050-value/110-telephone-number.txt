@@ -1,0 +1,35 @@
+title: telephone-number
+link_as: keyword
+--
+
+A telephone number.
+
+h3(property). type
+
+@"telephone-number"@
+
+
+h3(property). readable
+
+A human readable representation of this telephone number.
+
+
+h3(property). value
+
+A dictionary containing the fields of this value.
+
+
+h3(property). value.country
+
+The ISO country code for this number.
+
+
+h3(property). value.number
+
+The telephone number, as entered by the user.
+
+
+h3(property). value.extension
+
+An optional extension number.
+

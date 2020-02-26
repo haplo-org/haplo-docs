@@ -3,6 +3,9 @@ title: Objects
 
 The Objects REST API provides endpoints to access [node:/plugin/interface/store-object:store objects] in Haplo applications.
 
+Objects are represented using the standard [node:dev/serialisation:JSON serialisation format].
+
+
 h2. Enabling the Objects API
 
 Install the @haplo_api_object_v0@ plugin to enable access to the Objects API.

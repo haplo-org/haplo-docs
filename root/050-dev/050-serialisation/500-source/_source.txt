@@ -1,0 +1,12 @@
+title: Sources
+class: DocNodeTextileWithTOC
+--
+
+Haplo applications base functionality around objects in the object store, so there may be additional information available "about" an object.
+
+Sources add this additional information to serialised objects.
+
+
+h2. Available sources
+
+The plugins installed in your application may provide additional sources.

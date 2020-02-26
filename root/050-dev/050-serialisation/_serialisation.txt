@@ -1,0 +1,77 @@
+title: JSON serialisation format
+long_title: Haplo JSON serialisation format
+--
+
+[node:dev/store:Objects] and information associated with them such as workflows and forms, is serialised into a standard JSON format that is used for [node:rest-api/objects:APIs] and other data interchange.
+
+Because Haplo is an extensible system, the serialiser uses [node:dev/serialisation/source:Sources] to include additional information along with the object metadata and attributes. When serialising an object, you need to specify which sources you want to include.
+
+This format is used by functions including the [node:rest-api/objects:Objects REST API].
+
+
+h2. Properties
+
+The serialised form contains several categories of properties.
+
+* [node:dev/serialisation/format]
+* [node:dev/serialisation/metadata]
+* [node:dev/serialisation/attribute]
+
+In addition, [node:dev/serialisation/source:sources] may add additional information to the serialised object.
+
+
+h2. Example
+
+This example shows a simple serialised object with four attributes. It uses a single _source_ to include the username of authors in the attribute value.
+
+Typical usage will include more [node:dev/serialisation/source:sources] and contain more information.
+
+<pre>language=json
+{
+  "kind": "haplo:object:0",
+  "sources": ["std:username"],
+  "ref": "83w92",
+  "url": "https://app.example.org/83w92/nice-book",
+  "recordVersion": 2,
+  "title": "Nice book",
+  "labels": [{"ref":"1x7z", "title":"Common"}],
+  "deleted": false,
+  "creationDate": "2020-01-14T17:05:18Z",
+  "lastModificationDate": "2020-01-14T17:05:18Z",
+  "type": {
+    "code": "std:type:book",
+    "name": "Book",
+    "rootCode": "std:type:book",
+    "annotations": []
+  },
+  "attributes": {
+    "dc:attribute:type": [
+      {
+        "type": "link",
+        "ref": "1zq4",
+        "code": "std:type:book",
+        "title": "Book"
+      }
+    ],
+    "dc:attribute:title": [
+      {
+        "type": "text",
+        "value": "Nice book"
+      },
+      {
+        "qualifier": "dc:qualifier:alternative",
+        "type": "text",
+        "value": "A study of things"
+      }
+    ],
+    "dc:attribute:author": [
+      {
+        "type": "link",
+        "ref": "82q1w",
+        "title": "Mr Joe Bloggs",
+        "username": "jbloggs"
+      }
+    ]
+  }
+}
+</pre>

@@ -1,0 +1,12 @@
+title: std:username
+link_as: keyword
+--
+
+The @std:username@ source adds a @username@ property to [node:dev/serialisation/attribute/value/link] values, if:
+
+* a [node:plugin/interface/security-principal:user] is represented by the linked object
+* the user has a @username@ tag.
+
+This is compatible with the [node:import/user-sync] and other user management plugins which follow the convention of setting the @username@ tag.
+
+If the [node:rest-api/users:Users REST API] is used, consumers should set and maintain the @username@ tag through the API.

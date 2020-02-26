@@ -1,0 +1,26 @@
+title: Text
+--
+
+There are various text types which use a common format, with @type@ controlling how the @value@ is interpreted.
+
+h3(property). type
+
+One of the text types, listed below.
+
+h3(property). value
+
+A string representation of the text, possibly encoded.
+
+
+h2. Text types
+
+|*@type@*|*@value@*|
+|@"text"@|Single line text string.|
+|@"text-paragraph"@|Paragraph text with paragraphs delimited by @\n\n@|
+|@"text-document"@|XML encoded rich text document|
+|@"text-formatted-line"@|XML encoded formatted single line|
+|@"text-multiline"@|Multi-line text string with lines delimited by @\n@|
+
+
+
+

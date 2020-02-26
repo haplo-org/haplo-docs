@@ -1,0 +1,39 @@
+title: Attributes
+long_title: Serialised attributes
+--
+
+The attributes of the object are the information which the user manages with the application.
+
+
+h3(property). type
+
+The @type@ property summarises the type of the object. While the @dc:attribute:type@ attribute provides access to the same information, this summary is more convenient.
+
+It contains sub-properties:
+
+* the @rootCode@ of the type as an API code, which should be used to determine the overall type of the object.
+
+* the API @code@ of the specific sub-type.
+
+* the @name@ of the sub-type, suitable for presenting to the user.
+
+* an array of @annotations@ applied to this type.
+
+
+h3(property). title
+
+The human readable @title@ of this object. This is a string which is suitable for presenting to users as a hyperlink to this object.
+
+This generally duplicates the first @dc:attribute:title@ attribute, and is provided for convenience.
+
+
+h3(property). attributes
+
+The @attributes@ lists all the attributes applied to the object as a dictionary of attribute API code to an array of attribute [node:dev/serialisation/attribute/value:values].
+
+All attributes are multi-value, and may contain more than one value in the array. The array of values are ordered lists, but the @attributes@ dictionary is not in any specific order.
+
+The properties in each value depend on the data type, and are [node:dev/serialisation/attribute/value:documented individually].
+
+See the [node:dev/serialisation#Example:example] of a simple object serialisation.
+

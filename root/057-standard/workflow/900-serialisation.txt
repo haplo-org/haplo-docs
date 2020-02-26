@@ -1,0 +1,5 @@
+title: Serialisation
+long_title: Workflow serialisation
+--
+
+The Workflow plugin provides the [node:dev/serialisation/source/std-workflow] source for the standard [node:dev/serialisation].

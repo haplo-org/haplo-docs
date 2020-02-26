@@ -1,0 +1,18 @@
+title: Format information
+long_title: Serialised format information
+--
+
+Information about the format and serialisation options are included for decoders.
+
+
+h3(property). kind
+
+The @kind@ property specifies the overall format of the serialised object. It is always @"haplo:object:0"@ to specify the format and version of the serialisation.
+
+
+h3(property). sources
+
+Optional [node:dev/serialisation/source:Sources] may be used to include additional information in the serialised format. The @sources@ property is an array of source names used to generate the serialised object.
+
+When using a serialised object, always test that the @sources@ contain the expected names.
+

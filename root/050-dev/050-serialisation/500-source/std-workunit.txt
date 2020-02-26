@@ -1,0 +1,64 @@
+title: std:workunit
+link_as: keyword
+--
+
+The @std:workunit@ source adds information about work units associated with the object.
+
+A top level @workflows@ property is added to the object, containing an array of dictionaries, each representing a single [node:plugin/interface/work-unit]. (The property is @workflows@ because it is most often used with the [node:dev/serialisation/source/std-workflow] source.)
+
+h2. Work unit properties
+
+h3(property). workType
+
+The plugin defined work type.
+
+h3(property). createdAt
+
+The date and time this work unit was created, encoded as a string in ISO8601 format.
+
+h3(property). openedAt
+
+The date and time this work unit was opened, encoded as a string in ISO8601 format.
+
+h3(property). deadline
+
+The deadline for this work unit, encoded as a string in ISO8601 format.
+
+h3(property). closed
+
+Boolean. @true@ if this work unit is closed.
+
+h3(property). data
+
+Data associated with this work unit.
+
+h3(property). tags
+
+Tags set on this work unit.
+
+
+h2. Example
+
+A serialised object with a single work unit.
+
+<pre>language=json
+{
+  "kind": "haplo:object:0",
+  "sources": [
+    "std:workunit"
+  ],
+  "ref": "83w92",
+  // ...
+  "workflows": [
+    {
+      "workType": "example:book-review",
+      "createdAt": "2020-01-14T17:05:18.341Z",
+      "openedAt": "2020-01-14T17:05:18Z",
+      "deadline": null,
+      "closed": true,
+      "data": {},
+      "tags": {}
+    }
+  ]
+}
+</pre>

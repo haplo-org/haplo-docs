@@ -1,0 +1,50 @@
+title: link
+link_as: keyword
+--
+
+The @link@ data type represents a link to another object. This is the primary data type for Haplo objects, as every thing and concept is represented as an object.
+
+
+h2. Common properties
+
+All values will have these properties.
+
+h3(property). type
+
+@"link"@
+
+h3(property). ref
+
+The string representation of the Ref of the linked object.
+
+
+h3(property). title
+
+The human readable @title@ of the linked object. This is a string which is suitable for presenting to users as a hyperlink to this object.
+
+
+h2. Optional properties
+
+The inclusion of other properties depends on the linked object. 
+
+h3(property). behaviour
+
+The [node:plugin/o/behaviour:Behaviour] of the linked object, if it has one.
+
+Where the object represents a concept or a structural element, such as project types or organisational units, the behaviour is easier to use to identify the object than the @ref@.
+
+
+h3(property). code
+
+If the linked object is in the @dc:attribute:type@ attribute and is a type schema object, this property contains the API code of the type.
+
+This may be more conveniently available in the [node:dev/serialisation/attribute#type:type] top level property.
+
+
+h2. Sources
+
+[node:dev/serialisation/source] may provide additional properties if included. This section lists commonly used sources, but is not an exhaustive list. Refer to the [node:dev/serialisation/source:sources] documentation for the full list.
+
+h3(property). username
+
+If the [node:dev/serialisation/source/std-username] source is included, and a [node:plugin/interface/security-principal:user] is represented by the linked object, the @username@ property will contain the username of the user, obtained from the user's @username@ tag.

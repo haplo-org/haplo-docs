@@ -1,0 +1,13 @@
+title: Other types
+--
+
+All other types are represented as a generic string representation.
+
+h3(property). type
+
+Type name as in [node:plugin/schema/requirements-schema:requirements.schema] files.
+
+
+h3(property). value
+
+String representation of the value.

@@ -1,0 +1,51 @@
+title: file
+link_as: keyword
+--
+
+A file identifier which refers to a [node:plugin/interface/file:file].
+
+Note that the properties in the identifier may differ from the properties of the file it refers to, except for the @digest@ and @fileSize@.
+
+h3(property). type
+
+@"file"@
+
+
+h3(property). digest
+
+The digest of the file, as a hex encoded @String@.
+
+
+h3(property). fileSize
+
+The size of the file, in bytes, as a number.
+
+
+h3(property). mimeType
+
+The MIME type of the file.
+
+
+h3(property). filename
+
+The filename of the file, as presented to the user in the user interface.
+
+
+h3(property). trackingId
+
+A randomly generated @String@ for tracking versions within a 'file version track'. Used for generating the version listings in the web user interface.
+
+
+h3(property). version
+
+The version of this version within a 'file version track', as a @String@.
+
+
+h3(property). logMessage
+
+A @String@ containing the user's description of the changes made in this version within a 'file version track'.
+
+
+h3(property). url
+
+A URL which can be used to fetch the file, if the requesting user has permission.

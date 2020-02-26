@@ -1,0 +1,48 @@
+title: datetime
+link_as: keyword
+--
+
+A variable precision datetime value representing an interval in time.
+
+
+h3(property). start
+
+The date and time at the start of this interval, encoded as a string in ISO8601 format.
+
+
+h3(property). end
+
+The date and time at the end of this interval, encoded as a string in ISO8601 format.
+
+
+h3(property). specifiedAsRange
+
+@true@ if this interval was specified as a time range by the user. If @false@, you can use the @start@ property as an instant in time.
+
+
+h3(property). precision
+
+The precision of the @start@ and @end@ times. Most datetimes will be Day or Minute precision.
+
+|@"C"@|Century|
+|@"D"@|Decade|
+|@"Y"@|Year|
+|@"M"@|Month|
+|@"d"@|Day|
+|@"h"@|Hour|
+|@"m"@|Minute|
+
+These are the same values as the [node:plugin/o/constants/date-time-precision:DateTime precision constants].
+
+
+h3(property). timezone
+
+Optional. If specified, one of the standard time zone names, such as @'GMT'@ and @'Europe/London'@.
+
+
+
+h3(property). readable
+
+A human readable representation of this variable precision interval in time.
+
+

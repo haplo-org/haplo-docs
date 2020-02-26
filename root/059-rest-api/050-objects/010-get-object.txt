@@ -16,6 +16,10 @@ In addition to the ref of the store object, the URL must contain a @sources@ par
 
 h2. Response
 
+See the [node:rest-api/introduction] for the generic response format.
+
+h3(property). kind
+
 [SNIPPET rest-api/objects/endpoint-specific-kinds]
 
 |*Kind*|*Meaning*|
@@ -23,7 +27,9 @@ h2. Response
 |@haplo:api-v0:object:no-such-object@| No object could be found with the requested ref or the user does not have permission to read it. Returns with HTTP status 400 |
 [SNIPPET rest-api/objects/common-response-kinds]
 
-Along with the standard @success@ and @kind@ fields (see [node:rest-api/introduction] for explanation), the response contains a @object@ property containing the object in the standard JSON serialisation.
+h3(property). object
+
+The object in the standard [node:dev/serialisation:JSON serialisation format], if the response is of kind @haplo:api-v0:object:serialised@.
 
 
 h2. Example

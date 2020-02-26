@@ -1,0 +1,50 @@
+title: person-name
+link_as: keyword
+--
+
+A person's name, containing the various fields and a cultural identifier.
+
+
+h3(property). type
+
+@"person-name"@
+
+
+h3(property). readable
+
+A formatted representation of this name, taking into account the cultural presentation.
+
+
+h3(property). value
+
+A dictionary containing the fields of this value. All are optional, except there must be at least one value.
+
+
+h3(property). value.first
+
+First name.
+
+
+h3(property). value.middle
+
+Middle name.
+
+
+h3(property). value.last
+
+Last name / surname / family name.
+
+
+h3(property). value.suffix
+
+Suffix (eg 'III')
+
+
+h3(property). value.title
+
+Title (eg 'Ms')
+
+
+h3(property). value.culture
+
+Culture of name: @"western"@, @"western_list"@, @"eastern"@.

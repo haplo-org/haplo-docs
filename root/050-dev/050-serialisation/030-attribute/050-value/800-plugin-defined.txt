@@ -1,0 +1,19 @@
+title: Plugin defined
+long_title: Plugin defined data types
+--
+
+Where a value type is implemented by a plugin, that plugin will control the serialised form.
+
+h3(property). type
+
+The name of the data type, as defined by the implementing plugin.
+
+
+h3(property). value
+
+A JSON data structure with sub-properties defined by the implementing plugin.
+
+
+h3(property). readable
+
+A human readable string representation of the value.

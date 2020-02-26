@@ -1,0 +1,59 @@
+title: std:workflow:documents
+link_as: keyword
+--
+
+The @std:workflow:documents@ source adds the data stored in forms within the workflows associated with the object, which are implemented using the standard [node:standard/document-store/workflow:Document store plugin's workflow integration].
+
+It depends on the [node:dev/serialisation/source/std-workflow] source, which must also be included, and adds additional information to each of the work unit records in the @workflows@ top level array.
+
+h2. Additional properties
+
+The following properties are added to work unit records.
+
+h3(property). documents
+
+A dictionary of document store name to latest version of the document.
+
+The fields in the document are defined by the [node:plugin/form/specification:form specifications] which make up the document store.
+
+
+h2. Example
+
+A serialised object with a single workflow which contains two document store forms.
+
+<pre>language=json
+{
+  "kind": "haplo:object:0",
+  "sources": [
+    "std:workunit",
+    "std:workflow",
+    "std:workflow:documents"
+  ],
+  "ref": "83w92",
+  // ...
+  "workflows": [
+    {
+      "workType": "example:book-review",
+      "createdAt": "2020-01-14T17:05:18.341Z",
+      "openedAt": "2020-01-14T17:05:18Z",
+      "deadline": null,
+      "closed": true,
+      "data": {},
+      "tags": {},
+      "state": "finished",
+      "url": "https://app.example.org/83w92/nice-book",
+      "documents": {
+        "researcher": {
+          "comment": "This is ...",
+          // ...
+        },
+        "supervisor": {
+          "recommendation": "Something ...",
+          // ...
+        }
+      }
+    }
+  ]
+}
+</pre>
+

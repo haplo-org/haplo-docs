@@ -1,0 +1,49 @@
+title: postal-address
+link_as: keyword
+--
+
+A postal address.
+
+h3(property). type
+
+@"postal-address"@
+
+
+h3(property). readable
+
+A human readable representation of this postal address.
+
+
+h3(property). value
+
+A dictionary containing the fields of this value. All are optional, except for the @country@.
+
+
+h3(property). value.street1
+
+First line of street address.
+
+
+h3(property). value.street2
+
+Second line of street address.
+
+
+h3(property). value.city
+
+City
+
+
+h3(property). value.county
+
+County / State.
+
+
+h3(property). value.postcode
+
+Postcode / ZIP code.
+
+
+h3(property). value.country
+
+ISO code of the country.

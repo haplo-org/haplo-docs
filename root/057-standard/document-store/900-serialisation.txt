@@ -1,0 +1,5 @@
+title: Serialisation
+long_title: Document store serialisation
+--
+
+The Document store plugin provides the [node:dev/serialisation/source/std-workflow-documents] source for the standard [node:dev/serialisation].

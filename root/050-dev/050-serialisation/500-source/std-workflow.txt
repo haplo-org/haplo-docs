@@ -1,0 +1,58 @@
+title: std:workflow
+link_as: keyword
+--
+
+The @std:workflow@ source adds information about workflows associated with the object, which are implemented using the standard [node:standard/workflow] plugin.
+
+It depends on the [node:dev/serialisation/source/std-workunit] source, which must also be included, and adds additional information to each of the work unit records in the @workflows@ top level array.
+
+You might want to include the [node:dev/serialisation/source/std-workflow-documents] source to obtain the forms associated with the workflow.
+
+
+h2. Additional properties
+
+The following properties are added to work unit records.
+
+h3(property). state
+
+The current state of the workflow.
+
+h3(property). target
+
+The current target of the workflow. This probably won't be specified for most workflows.
+
+h3(property). url
+
+The URL of the workflow, which may be the same as the URL of the object.
+
+
+h2. Example
+
+A serialised object with a single workflow.
+
+<pre>language=json
+{
+  "kind": "haplo:object:0",
+  "sources": [
+    "std:workunit",
+    "std:workflow"
+  ],
+  "ref": "83w92",
+  // ...
+  "workflows": [
+    {
+      "workType": "example:book-review",
+      "createdAt": "2020-01-14T17:05:18.341Z",
+      "openedAt": "2020-01-14T17:05:18Z",
+      "deadline": null,
+      "closed": true,
+      "data": {},
+      "tags": {},
+      "state": "finished",
+      "url": "https://app.example.org/83w92/nice-book"
+    }
+  ]
+}
+</pre>
+
+

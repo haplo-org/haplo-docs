@@ -1,0 +1,34 @@
+title: Serialised values
+class: DocNodeTextileWithTOC
+--
+
+Each value in a serialised object's [node:dev/serialisation/attribute:attributes] has common properties, and data type specific values.
+
+_Sources_ may add additional properties to values.
+
+
+h2. Common value properties
+
+Each value will have the following properties, most of which are optional.
+
+
+h3(property). type
+
+The @type@ property specifies the data type of this value. See the list of data types at end for possible types.
+
+The names used for types match the names used in [node:plugin/schema/requirements-schema:requirements.schema] files.
+
+
+h3(property). qualifier
+
+Optional. If the attribute is qualified, this property will be the API code of the qualifier.
+
+
+h3(property). extension
+
+Optional. If the attribute is part of an attribute group, this property will have sub-properties @desc@ and @groupId@ to specify the group.
+
+
+
+h2. Data types
+

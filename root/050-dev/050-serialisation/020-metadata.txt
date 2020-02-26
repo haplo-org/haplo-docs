@@ -1,0 +1,47 @@
+title: Object metadata
+long_title: Serialised object metadata
+--
+
+Object metadata is used by the object store to manage the objects. This metadata is not part of the information the user is managing within the application.
+
+All dates are in ISO8601 format.
+
+
+h3(property). ref
+
+The object's @ref@, as a string.
+
+
+h3(property). url
+
+The URL of the object, in the application's internal interface.
+
+If used, the [node:standard/web-publisher] may make the object available publicly on a different URL.
+
+
+h3(property). recordVersion
+
+The version of this object. @1@ is the first version, and it is incremented every time the object is updated in the store.
+
+The attributes of the object will not change without changing the @recordVersion@, but information from other sources will have their own independent versioning.
+
+
+h3(property). labels
+
+The @labels@ applied to this object, as an array of JSON objects with @ref@ and @title@ properties.
+
+
+h3(property). deleted
+
+A boolean value specifying whether this object is deleted.
+
+
+h3(property). creationDate
+
+The date and time this object was created in the object store.
+
+
+h3(property). lastModificationDate
+
+The date and time this object was last updated in the object store.
+
