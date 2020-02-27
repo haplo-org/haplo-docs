@@ -1,0 +1,24 @@
+title: Global observation
+--
+
+The _Global Observer_ is an integration method that allows an external system to be sent all the data in the Haplo application as a series of messages as data changes, using a generic integration [node:dev/message-queue:message queue].
+
+To use the global observer, install the @haplo_integration_global_observation@ plugin.
+
+
+h2. Message queue
+
+Messages are sent in the @global@ queue. To find the queue API URLs and create an API key, use the administration interface:
+
+CLICK_PATH Tools > Integrations > Integration message queues > Global observation
+
+If any errors are encountered, these can be viewed in the generic integrations error list:
+
+CLICK_PATH Tools > Integrations > Errors from integrations
+
+
+h2. Messages
+
+There are various [node:dev/global-observation/message:messages] that are sent by the observer. Other plugins may add additional messages to the queue, so a message queue consumer must filter out any types of messages that it does not understand.
+
+The majority of messages will include an Haplo object in the standard [node:dev/serialisation:JSON serialisation format], and include all message sources available to the application. This will include information on workflows and forms.

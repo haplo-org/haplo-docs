@@ -1,0 +1,23 @@
+title: workflow:transition
+link_as: keyword
+--
+
+This message is sent when a [node:standard/workflow] transitions to a new state.
+
+The @object@ will include the [node:dev/serialisation/source/std-workflow] [node:dev/serialisation/source:source], so to determine the workflow state and information in the forms, find the relevant workflow in the @object.workflows@ array by selecting on the @workType@ property.
+
+
+h2. Message properties
+
+The message includes the standard [node:dev/message-queue/default-format:top level properties].
+
+
+h3(property). action
+
+@"workflow:transition"@
+
+
+h3(property). object
+
+The object in the standard [node:dev/serialisation:JSON serialisation format].
+

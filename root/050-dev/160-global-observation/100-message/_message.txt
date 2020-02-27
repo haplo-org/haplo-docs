@@ -1,0 +1,67 @@
+title: Messages
+long_title: Global observation messages
+class: DocNodeTextileWithTOC
+--
+
+As data changes in the Haplo application, messages are added to the [node:dev/global-observation:Global observation] queue.
+
+
+h2. Common message format
+
+Messages have a common format, and include all the standard [node:dev/message-queue/default-format:top level properties] for message queues.
+
+h3(property). action
+
+The @action@ property specifies the action which caused the message to be added to the queue. Your consumer should filter messages based on this property.
+
+
+h2. Example
+
+This is an example message sent when a [node:standard/workflow:workflow] changes state. It includes the attributes of the object, workflow information, and any forms attached.
+
+<pre>language=javascript
+{
+  "id": 5,
+  "datetime": "2020-02-26T10:22:34Z",
+  "action": "workflow:transition",
+  "object": {
+    "kind": "haplo:object:0",
+    "sources": [
+      "std:workunit",
+      "std:workflow",
+      "std:workflow:documents",
+      // ...
+    ],
+    // ...
+    "attributes": {
+      // ...
+    },
+    "workflows": [
+      {
+        "workType": "example:approval",
+        "createdAt": "2020-02-24T17:10:51.947Z",
+        "openedAt": "2020-02-24T17:10:51Z",
+        "deadline": null,
+        "closed": true,
+        "data": {},
+        "tags": {
+          "state": "review"
+        },
+        "state": "review",
+        "url": "https://app.example.org/80q22/book-one",
+        "documents": {
+          "review": {
+            "comments": "This book ...",
+            // ...
+          }
+        }
+      }
+    ]
+  }
+}
+</pre>
+
+
+h2. Message actions
+
+The following message actions are implemented by the core Global Observer plugin. Other plugins may add additional actions.
