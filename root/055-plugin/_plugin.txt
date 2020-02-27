@@ -7,8 +7,6 @@ You can read and write data in the [node:dev/store:object store], use [node:plug
 
 During development, you use the [node:dev/tool/plugin] to upload your plugin and [node:plugin/tests:automated tests] to a test server.
 
-Have a look at [node:dev/example/contacts-button] for an example of a simple plugin. 
-
 
 h2. Isolation and sandboxing
 
@@ -37,8 +35,7 @@ Limits are placed on the amount of processing and data that can be accessed to e
 
 h2. Coding style
 
-The JavaScript coding style used for the plugin API is a little different to the simple use of JavaScript in web pages. If you'd like a quick update on modern JavaScript, here's a couple of recommendations for short books:
+The JavaScript coding style used for the plugin API is a little different to the simple use of JavaScript in web pages. If you'd like a quick update on modern JavaScript, here's a book recommendation:
 
-"JavaScript: The Good Parts":http://www.amazon.co.uk/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742 -- __Douglas Crockford__
+"JavaScript: The Good Parts":https://www.amazon.co.uk/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742 -- __Douglas Crockford__
 
-"JavaScript Patterns":http://www.amazon.co.uk/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752 -- __Stoyan Stefanov__
