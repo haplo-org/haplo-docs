@@ -22,6 +22,6 @@ The [node:standard:standard plugins], which form part of the Platform, provide c
 
 h2. 3) Connect to external systems
 
-If you'd like other systems running on other servers or client applications to use the objects in the Haplo object store, you can use the [node:rest-api:generic] or [node:import/rest-api:data import] REST APIs.
+If you'd like other systems running on other servers or client applications to use the objects in the Haplo object store, you can use the [node:rest-api:generic] or [node:import/rest-api:data import] REST APIs. In addition, you can use [node:dev/message-queue:message queues] to send application specific messages, or use the generic [node:dev/global-observation:global observer].
 
 Of course, you can also write your own custom APIs with a JavaScript plugin, either to make queries which are inefficient with the APIs, or perform custom processing with the data stored by your plugin.
