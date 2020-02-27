@@ -1,0 +1,36 @@
+title: Message queues
+long_title: Integration message queues
+--
+
+Integration message queues are provided to send messages about changes in the Haplo application to external systems.
+
+Multiple queues can be defined in an application, and then events cause messages to be added to the queues. An administration user interface allows you to see the messages, and mark them for resend if necessary.
+
+To use message queues, the @haplo_integration_messages@ plugin must be installed.
+
+h2. Message format
+
+Messages are [node:dev/message-queue/default-format:formatted as JSON documents] which contain zero or more messages, and a @token@ which identifies the set of messages. If you use the polling API, this token is used to mark the messages as read.
+
+It is possible for us to write code to reformat the messages, for example, into a different JSON structure or an XML document. We may charge for this work unless this format was in your original requirements.
+
+
+h2. Admin user interface
+
+An admin interface allows you to inspect the message queues.
+
+CLICK_PATH TOOLS > Integrations > Integration message queues > (queue name)
+
+The queue information pages lists the messages.
+
+Additional user interface will appear depending on the mechanism for sending messages to your systems.
+
+Clicking on a message _Info..._ link shows details about that message, and enables you to mark the message as unsent to resend it to your systems. This page also shows the message as it would be formatted when sent to your systems, along with the internal JSON data structure.
+
+
+h2. Errors in integrations
+
+Any errors, such as HTTP transport errors, can be viewed and acknowledged in the admin interface.
+
+CLICK_PATH TOOLS > Integrations > Errors from integrations
+

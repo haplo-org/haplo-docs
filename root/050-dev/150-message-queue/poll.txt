@@ -1,0 +1,62 @@
+title: Polling API
+long_title: Message queue polling API
+--
+
+The polling API enables your systems to pull messages from the Haplo application. This is our recommended method, as it avoids the need for firewalls to be configured.
+
+The queue information page will give you two URLs:
+
+CLICK_PATH TOOLS > Integrations > Integration message queues > (queue name)
+
+The _Poll URL_ is used to fetch the unread messages from the queue. This includes a _token_, which is then POSTed to the _Mark URL_ to mark the messages as read and ensure they are not sent again.
+
+This two step process ensures that transport errors will not result in messages being lost.
+
+
+h2. Create an API key
+
+The requests are authenticated with an API key. Click _Create API key..._ on the queue information page.
+
+To authenticate the request, use HTTP Basic authentication with the username @haplo@ and the API key as the password.
+
+
+h2. Request the unread messages
+
+To fetch the unread message, you should make a simple authenticated GET request to the Poll URL. Here's an example script using a @curl@ command:
+
+<pre>
+#!/bin/sh
+set -e
+
+API_KEY=01234567890123456789
+SERVER=server.example.ac.uk
+
+curl -X GET --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/fetch
+</pre>
+
+
+h2. Mark messages as read
+
+The [node:dev/message-queue/default-format:response] to the Poll URL will include a @token@. This must be posted back to the server to mark the messages as read, so they will not be included the next time the application is polled.
+
+The token is opaque and should not be interpreted by your integration code, as its format may change at any time.
+
+Your integration should extract the token from the response, then POST to the Mark URL with the token as the @token@ parameter. An example @curl@ script is:
+
+<pre>
+#!/bin/sh
+set -e
+
+API_KEY=NTnA-eldmf4CYi7hvwWj9CuxItAwrjF2wzSkS6MMzuMB
+SERVER=dev7a102.infomanaged.co.uk
+
+curl -X POST --data-urlencode "token=MSwy8w099=" --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/mark
+</pre>
+
+
+h2. Configuration for different environments
+
+You will probably need to write your integration so that it can be used with test and live environments.
+
+The only things which will differ between environments will be the hostname in the URLs and the API key.
+

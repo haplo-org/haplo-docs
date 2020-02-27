@@ -1,0 +1,27 @@
+title: Push to endpoint
+long_title: Message queue push to remote HTTPS endpoint
+--
+
+If your application pushes messages to an HTTPS endpoint on your systems, the configuration is specific to your application. We'll provide details on how to configure the HTTPS endpoint.
+
+Options include:
+
+* Sending messages immediately they're generated
+* Sending batches of messages on a schedule
+* HTTP Basic authentication
+* SSL client certificates
+
+Note that only @https:@ endpoints are supported. Haplo does not support unencrypted protocols.
+
+
+h2. Reliability
+
+When the remote endpoint returns a @200@ response, the messages will be marked as sent.
+
+Any other status code or transport error will not mark them as sent, and the messages will be resent at some point in the future.
+
+
+h2. Admin user interface
+
+The admin user interface will include a button to send all messages to your endpoint, rather than waiting for a schedule. This is useful when you have marked a message for resending.
+

@@ -1,0 +1,48 @@
+title: Default format
+long_title: Default message format
+--
+
+The default format for messages is a JSON document containing zero or more messages, along with a token which can be used to mark messages as read.
+
+The top level properties are:
+
+|@version@|Format version, currently @0@|
+|@token@|An opaque token representing the messages included in this response.|
+|@messages@|An array of zero or more messages.|
+
+Within the @messages@ array, each entry will include the properties:
+
+|@id@|The message ID.|
+|@datetime@|The date and time in ISO8601 format when the message was generated.|
+
+The messages will include other properties, but these will all be specific to your application and the integration.
+
+Message IDs may not be sequential, and you can't use them to check that all messages have been received.
+
+
+h2. Example
+
+An example of formatted messages for an application which includes @type@, @project@ and @date@ properties in the messages:
+
+<pre>language=json
+{
+  "version": 0,
+  "token": "MSwy8w099",
+  "messages": [
+    {
+      "id": 10,
+      "datetime": "2019-02-15T10:32:01Z",
+      "type": "change",
+      "project": "81q48",
+      "date": "2019-01-26"
+    },
+    {
+      "id": 43,
+      "datetime": "2019-02-16T13:50:15Z",
+      "type": "notify",
+      "project": "81y49",
+      "date": "2019-02-28"
+    }
+  ]
+}
+</pre>
