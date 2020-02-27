@@ -31,7 +31,7 @@ The Platform runs as a shared hosting environment. As such, code must run effici
  * Request handling must complete quickly, matching the speed of built in operations.
  * Plugins must not use excessive amounts of memory.
 
-The Platform is not intended for performing large amounts of computation. If you are number crunching, you should offload the work to another server, perhaps using the [node:dev/xml-http] to communicate with your application.
+The Platform is not intended for performing large amounts of computation. If you are number crunching, you should offload the work to another server.
 
 
 h2. JSHint options
