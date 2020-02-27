@@ -1,9 +1,7 @@
 title: Deployment checks
 --
 
-Before you request that your plugin should be reviewed and copied to the live servers, you should perform a couple of quick checks.
-
-See [node:dev/process] for details of how plugins are deployed.
+Before you deploy your plugin, you should perform a couple of quick checks.
 
 
 h2. Check all files
