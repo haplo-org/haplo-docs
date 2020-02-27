@@ -8,5 +8,19 @@ They are not enabled by default. You must install the plugins for the specific A
 
 An [node:dev/api-key:API key] is used to authenticate as a user of the system, and gives the external system the same permissions as that user. Multiple API keys can be generated for a single Haplo application to provide external systems with differing levels of access.
 
+
+h2. Other APIs
+
+These generic APIs provide low-level access to the underlying Haplo API, exposing the [node:plugin/interface:server-side interfaces] as reasonably convenient REST APIs.
+
+It may be easier to use one of the alternative APIs:
+
+* The [node:import/rest-api:Data Import REST API] to map and write data, as it provides additional features that may be more convenient to use.
+* A [node:dev/message-queue:message queue], including the generic [node:dev/global-observation:global observer] to be notified of changes as they happen.
+* [node:import/user-sync] for managing users and their associated information.
+* The [node:standard/reporting/rest-api:Reporting REST API] to access summary information.
+* A custom API built with the server-side [node:plugin].
+
+
 h2. Haplo REST APIs
 
