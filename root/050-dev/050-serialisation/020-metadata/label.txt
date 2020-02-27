@@ -1,0 +1,26 @@
+title: Labels
+long_title: Serialised labels
+--
+
+The object [node:dev/serialisation/metadata:metadata] includes one or more @labels@, each of which has the following properties.
+
+
+h3(property). ref
+
+The [node:/plugin/interface/ref] of the label.
+
+
+h3(property). title
+
+The name of the label, as the title of the label object.
+
+
+h3(property). code
+
+Optional. The API code of the label, if it's a label defined in the application schema.
+
+
+h3(property). behaviour
+
+Optional. The [node:plugin/o/behaviour:Behaviour] of this label, if it has one. This is useful for identifying structural objects, such as organisational units.
+

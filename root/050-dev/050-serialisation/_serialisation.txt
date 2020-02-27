@@ -34,7 +34,9 @@ Typical usage will include more [node:dev/serialisation/source:sources] and cont
   "url": "https://app.example.org/83w92/nice-book",
   "recordVersion": 2,
   "title": "Nice book",
-  "labels": [{"ref":"1x7z", "title":"Common"}],
+  "labels": [
+    {"ref":"1x7z", "title":"Common", "code":"std:label:common"}
+  ],
   "deleted": false,
   "creationDate": "2020-01-14T17:05:18Z",
   "lastModificationDate": "2020-01-14T17:05:18Z",

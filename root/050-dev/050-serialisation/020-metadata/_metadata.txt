@@ -19,6 +19,11 @@ The URL of the object, in the application's internal interface.
 If used, the [node:standard/web-publisher] may make the object available publicly on a different URL.
 
 
+h3(property). behaviour
+
+The [node:plugin/o/behaviour:Behaviour] of this object, if it has one.
+
+
 h3(property). recordVersion
 
 The version of this object. @1@ is the first version, and it is incremented every time the object is updated in the store.
@@ -28,7 +33,9 @@ The attributes of the object will not change without changing the @recordVersion
 
 h3(property). labels
 
-The @labels@ applied to this object, as an array of JSON objects with @ref@ and @title@ properties.
+The @labels@ applied to this object, as an array of JSON objects with [node:dev/serialisation/metadata/label:sub-properties] describing the label.
+
+Labels are often special Label objects defined in the schema, but can be any object in the application.
 
 
 h3(property). deleted
