@@ -10,6 +10,12 @@ h4. Expected type: String
 
 The hostname of the publication, used if an institution intends to host their public interface on a different host to their internal system. If this isn't set, the default option is to use: "application_host_name/repository".
 
+h3. repo_standard_publication:internal_application_hostname
+
+h4. Expected type: String
+
+The hostname of the internal view of the application, if not using the default value for @repo_standard_publication:hostname@. This value must be set if not using that default (which will usually be the case).
+
 h3. repo_standard_publication:name
 
 h4. Expected type: String
