@@ -85,6 +85,20 @@ Comments should go next to code if short, or on the line above if it's longer th
 
 But comments shouldn't be necessary. When they are, they should describe the "why" behind the code they annotate - the "what" should be read from the code through using meaningful variable names throughout.
 
+Declare each variable on a new line ending with a semicolon, with a new @var@ keyword (or @let@, if using ES6 features).
+
+<pre>language=javascript
+    // DON'T DO THIS
+    var foo = "test",
+        bar = 42,
+        fizz, bang;
+    // INSTEAD, DO THIS
+    var foo = "test";
+    var bar = 42;
+    var fizz;
+    var bang;
+</pre>
+
 
 h2. ES6 features
 
