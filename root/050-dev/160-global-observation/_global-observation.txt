@@ -10,11 +10,11 @@ h2. Message queue
 
 Messages are sent in the @global@ queue. To find the queue API URLs and create an API key, use the administration interface:
 
-CLICK_PATH Tools > Integrations > Integration message queues > Global observation
+CLICK_PATH TOOLS > Integrations > Integration message queues > Global observation
 
 If any errors are encountered, these can be viewed in the generic integrations error list:
 
-CLICK_PATH Tools > Integrations > Errors from integrations
+CLICK_PATH TOOLS > Integrations > Errors from integrations
 
 
 h2. Messages
