@@ -8,7 +8,7 @@ These requirements are enforced partially by the JavaScript runtime and API, and
 The code examples in this documentation assume you are using a [node:plugin/schema/requirements-schema] file which has readable names for the standard schema objects.
 
 
-h2. Coding style
+h2. Enforced restrictions
 
 Because all the plugins run in a single JavaScript environment, and to allow the Platform API to be continually improved, restrictions are placed on plugin JavaScript code.
 
@@ -21,6 +21,8 @@ Because all the plugins run in a single JavaScript environment, and to allow the
  * Use documented interfaces only.
  * Do not use or create any runtime global with a name beginning @$@, and do not access any property of any object which begins with @$@. These are part of the implementation, and may be changed at any time.
  * JavaScript must pass "JSHint":http://jshint.com/ testing with the options below.
+
+See also the [node:dev/style:style guide], which should be followed for all plugin code.
 
 
 h2. Performance

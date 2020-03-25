@@ -1,0 +1,9 @@
+title: Style guide
+class: DocNodeTextileWithTOC
+--
+
+The aim of this style guide is to provide a reference for the usual conventions followed through Haplo plugin code, resulting in a consistent look and feel for plugins built for the Haplo platform.
+
+These are not enforced by a linter or the plugin tool, and can be ignored if there is a good reason to do so. A plugin that is literate and consistent is more important than sticking rigidly to the recommended style.
+
+See also the enforced [node:plugin/code-requirements:code requirements] for plugin code.
