@@ -18,6 +18,7 @@ HSVT ignores whitespace, so use it to increase the clarity of your HTML structur
       <a href="..."> i("Edit") </a>
     </p>
   }
+</div>
 </pre>
 
 h3. Layout
