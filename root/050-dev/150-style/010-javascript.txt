@@ -13,11 +13,17 @@ h3. Naming things
 
 Name things carefully. They should be descriptive, but not too long.
 
-Never abbreviate any word, even if it's a temporary variable, because your abbreviation is less legible and could very likely be confused with another concept, eg @school@, not @sch@. Write things out in full, eg @AlternativeSpecialThing@ not @AST@.
+Never abbreviate any word, even if it's a temporary variable, because your abbreviation is less legible and could very likely be confused with another concept, eg @school@, not @sch@. Write things out in full, eg @alternativeSpecialThing@ not @AST@.
 
-You probably shouldn't include the type of the thing in the name. @SupervisorApplication@ doesn't need a @Form@ suffix, it's obvious because you've assigned it from @P.form()@.
+You probably shouldn't include the type of the thing in the name. eg. in
 
-Be specific. @CanEditSpecialText@, not just @Allowed@.
+<pre>language=javascript
+    var SupervisorApplication = P.form("supervisor-application", "form/supervisor-application.json")
+</pre>
+
+@SupervisorApplication@ doesn't need a @Form@ suffix, it's obvious because you've assigned it from @P.form()@.
+
+Be specific. eg. @CanEditSpecialText@, not just @Allowed@.
 
 
 h3. API codes and other meaningful strings
@@ -27,8 +33,8 @@ Haplo APIs make use of string identifiers - service names, feature names, action
 * always be lower case
 * API codes use dashes
 * URLs use dashes
-* Where a Services or Action is specific to a plugin, it should be prefixed with the plugin name, and use underscores (to match plugin names which must be valid JavaScript symbols), eg. @plugin_name:what_it_does@
-* Features, and a Service or Action which advertises or implements a generic capability, it should be namespaced using the usual conventions with colons to separate, eg. @hres:repository:exciting-action@
+* Where a Service or Action is specific to a plugin, it should be prefixed with the plugin name, and use underscores (to match plugin names which must be valid JavaScript symbols), eg. @plugin_name:what_it_does@
+* Features, and a Service or Action which advertises or implements a generic capability, should be namespaced using the usual conventions with colons to separate, eg. @hres:repository:exciting-action@.
 
 
 h3. Code Layout
@@ -94,7 +100,7 @@ h3. Arrow functions
 * Go for clarity - no need to use curly brackets for single return values
 
 <pre>language=javascript
-    var doubled = _.map([1, 2, 3, 4, 5], (number) => number*2);
+    let doubled = _.map([1, 2, 3, 4, 5], (number) => number * 2);
 </pre>
 
 h3. Method definitions
@@ -102,8 +108,8 @@ h3. Method definitions
 There's no need to write the @function@ keyword in object definitions - it is preferred to use method definitions where appropriate;
 
 <pre>language=javascript
-    var something = {
-        hello(a,b) {
+    let something = {
+        hello(a, b) {
             console.log("hello", a, b);
         }
     };
