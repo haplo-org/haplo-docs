@@ -3,7 +3,7 @@ title: HSVT templates
 
 h3. Text
 
-Text that will appear in the user interface should be included in the HSVT file. For example, the @pageTitle()@ and @backLink()@ functions should be preferred to passing text in to the view from JavsaScript.
+Text that will appear in the user interface should be included in the HSVT file. For example, the @pageTitle()@ and @backLink()@ functions should be preferred to passing text in to the view from JavaScript.
 
 Always prepare the text in your templates for [node:plugin/i18n:internationalisation], except if you know it'll never be needed because it's a bespoke feature for a single client.
 
