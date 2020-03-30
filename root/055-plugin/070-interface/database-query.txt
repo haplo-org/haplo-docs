@@ -147,6 +147,12 @@ h3(function). each(iterator)
 The iterator function is called for each row in the result with arguments @(row, index)@. @row@ is a [node:plugin/interface/database-row] object, @index@ is the zero based index into this '@Array@'.
 
 
+h3(function). update(values)
+
+Update all matching rows from the table with the values passed in.
+
+The @values@ argument is a JavaScript @Object@ used as a dictionary of field name to new field value. The @id@ column of any table cannot be updated.
+
 h3(function). deleteAll()
 
 Delete all matching rows from the table.
