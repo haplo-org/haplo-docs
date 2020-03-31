@@ -26,6 +26,8 @@ Save a new row, or changes to an existing row, to the database.
 
 Returns itself.
 
+If you are updating multiple rows at once, it will be more efficient to use @update()@ on a [node:plugin/interface/database-query#Interface_update:DatabaseQuery].
+
 
 h3(function). deleteObject()
 

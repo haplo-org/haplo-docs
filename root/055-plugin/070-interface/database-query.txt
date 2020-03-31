@@ -3,7 +3,7 @@ long_title: DatabaseQuery interface
 link_as: keyword
 --
 
-A JavaScript object implementing the @DatabaseQuery@ interface finds rows in a table in a relational style database.
+A JavaScript object implementing the @DatabaseQuery@ interface finds rows in a table in a relational style database, and can [node:plugin/interface/database-query#Interface_update:update them in bulk].
 
 See [node:plugin/database] for how to use this interface.
 
@@ -152,3 +152,24 @@ h3(function). deleteAll()
 Delete all matching rows from the table.
 
 This can be called after the query has been implicitly executed. For efficiency, if @deleteAll()@ is called without accessing any of the results, no data is loaded.
+
+
+h2. Interface (update)
+
+A @DatabaseQuery@ can be used to efficiently update all rows matching the query.
+
+h3(function). update(values)
+
+The fields in every row which match the query will be efficiently updated to the @values@, which is a JavaScript @Object@ used as a dictionary of field name to field value.
+
+For example,
+
+<pre>language=javascript
+P.db.customers.select().
+    where("country","=","GB").
+    update({
+        lastChecked: new Date()
+    });
+</pre>
+
+will update the @lastChecked@ field to the current date and time in all rows where the @country@ is @"GB"@.

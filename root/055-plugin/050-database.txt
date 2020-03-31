@@ -94,6 +94,13 @@ Each member of the 'Array' is a [node:plugin/interface/database-row] object.
 See [node:plugin/interface/database-query] for all the selection, sorting and performance options.
 
 
+h2. Updating
+
+Call [node:plugin/interface/database-row#save] on a @DatabaseRow@ after updating the field properties to update a single database row.
+
+If you are updating multiple rows at once, it will be more efficient to use @update()@ on a [node:plugin/interface/database-query#Interface_update:DatabaseQuery].
+
+
 h2. When not to use the database
 
 If you want to store a small amount of infrequently changing data, consider using your plugin's [node:plugin/interface/data-store], accessed through the @data@ property.
