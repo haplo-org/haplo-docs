@@ -162,6 +162,8 @@ h3(function). update(values)
 
 The fields in every row which match the query will be efficiently updated to the @values@, which is a JavaScript @Object@ used as a dictionary of field name to field value.
 
+Returns the number of rows which were updated by the command.
+
 For example,
 
 <pre>language=javascript
