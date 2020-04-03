@@ -9,8 +9,18 @@ The date is stored as a @"YYYY-MM-DD"@ string in the JSON document.
 h2. Properties
 
 |@type@|@"date"@|
+|@style@|(Optional) What style of date choice. Defaults to @"year-month-day"@.|
+|@minYear@|(Optional) For the @year-month@ date @style@, this specifies the first year to be displayed in the year picker element. Defaults to 10 years before today's year.|
+|@maxYear@|(Optional) For the @year-month@ date @style@, this specifies the last year to be displayed in the year picker element. Defaults to 10 years after today's year.|
 
 All the [node:plugin/form/specification#Common_properties:common properties] are supported.
+
+h3. Style options
+
+The @style@ property can be set to:
+
+|@"year-month-day"@|Display a text input, with a calendar pop up for selecting the date visually.|
+|@"year-month"@|Use two HTML @<input type="select">@ elements, laid out horizontally, to provide options for selecting the month, then the year. Value stored in the document as @yyyy-MM-01@.|
 
 h2. Custom validation
 
