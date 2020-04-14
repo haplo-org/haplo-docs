@@ -115,3 +115,120 @@ h3(key). ccExternal
 CC external recipient or list of external recipients.
 
 If @ccExternal@ is a function, the function is called to generate the external recipient(s) with @WorkflowInstance@ @M@ as the only argument.
+
+h2. Workflow template functions
+
+A number of [node:plugin/interface/plugin/response-generation#globalTemplateFunction] are available to use in HSVT email templates to perform common workflow text interpolations.
+
+The following examples will assume the notification definition is set up as follows
+
+<pre>language=javascript
+{
+    to: ["user_list"],
+    view(M) {
+        return {
+            aList: ["one", "two", "three"],
+            value: M.entities.user_maybe ? M.entities.user.title : "No user"
+        };
+    }
+}
+</pre>
+
+h3. M:text(text)
+
+@text@ should be a single string. It interpolates text surrounded by \@s by fetching the title of the first object that appears in the entity list. If an entity could not be found, a '?' will be put in the entity's place.
+
+Supports paragraphs with line breaks in the string. Removes all other whitespace.
+
+If you need to concatenate multiple strings and still want to use this function, you can pass one use of @concat()@ into this function instead of a string.
+
+Usage:
+
+<pre>language=javascript
+M:text("Interpolates @user@! Also interpolates NAMEing, e.g. NAME(example:routing:committee).")
+</pre>
+
+h3. M:if-entity(entityName)
+
+If the entity @entityName@ is defined for this workflow instance, render the anonymous block. Otherwise render the else block.
+
+Usage:
+
+<pre>language=javascript
+<p> "Has user? " M:if-entity("user") { "true" } else { "false" } </p>
+</pre>
+
+h3. M:button(title url)
+
+Renders a button in the email. The arguments @title@ and @url@ are optional. If undefined, the button will render with @M.title@ and point to @M.url@. @title@ may include interpolations marked with \@ or @NAME()@.
+
+Usage:
+
+<pre>language=javascript
+M:button()
+M:button("Other title")
+M:button("Other url" "/abc")
+</pre>
+
+h3. M:list(arg1 arg2 ...)
+
+Takes an array variable or multiple string arguments and returns them separated by commas.
+
+<pre>language=javascript
+<p> "List (args): " M:entity-list("Big" "bad" "wolf") </p>
+<p> "List (array): " M:entity-list(aList) </p>
+</pre>
+
+Output:
+@List (args): Big, bad, wolf@
+@List (array): one, two, three@
+
+h3. M:entity-list(entityName)
+
+@entityName@ is a string of an entity. Like JS's @join()@, this concatenates a list of entity titles by separating items with commas, without a trailing comma.
+
+Usage:
+
+<pre>language=javascript
+<p> "List (entities): " M:entity-list("user") </p>
+</pre>
+
+Output: @User title 1, User title 2, User title 3@.
+
+h3. M:first-name(entity)
+
+@entity@ can either be the string name of an entity or an entity. If the entity's title is of type @O.T_TEXT_PERSON_NAME@, this will return the first name of the entity. If the title is not a person name type, then the full title will be returned. If you pass in an object, and the object is undefined then no text will be rendered.
+
+Usage:
+
+<pre>language=javascript
+<p> "First name: " M:first-name("user") </p>
+<p> "Alternatively: " M:first-name(M.entities.user_maybe) </p>
+</pre>
+
+h3. M:last-name(entity)
+
+@entity@ can either be the string name of an entity or an entity. If the entity's title is of type @O.T_TEXT_PERSON_NAME@, this will return the last name of the entity. If the title is not a person name type, then the full title will be returned. If you pass in an object, and the object is undefined then no text will be rendered.
+
+<pre>language=javascript
+<p> "Last name: " M:last-name("user") </p>
+<p> "Alternatively: " M:last-name(M.entities.user_maybe) </p>
+</pre>
+
+h3. M:switch-role(user)
+
+@user@ is a [node:plugin/interface/security-principal]. The template renders the first named block identified by the name of a role @user@ has in the workflow instance. If @user@ doesn't have any of the roles, render the anonymous block.
+
+If the @user@ is a group, the @user@ is identified as having the role of the block that is identified by the matching group code.
+
+Usage:
+
+<pre>language=javascript
+M:switch-role(toUser) {
+    <p>"Optional generic fallback text."</p>
+} organisationHead {
+    <p>"Text specific to the role 'organisationHead'."</p>
+} example:group:administrators {
+    <p>"Text specific to administrators."</p>
+}
+</pre>
