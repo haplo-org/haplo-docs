@@ -7,7 +7,9 @@ h3. oai:repository_attributes
 h4. Expected type: JSON object
 
 Shown below are example settings and should be configured as appropriate to the system.
-<pre style="line-height:13px">{
+
+<pre>language=json
+{
     repositoryName: "Haplo Research Manager: Repository",
     baseURL: "https://university-of-example.ac.uk/api/oai2",
     adminEmail: "repository@example.ac.uk",

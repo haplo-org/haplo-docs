@@ -30,53 +30,89 @@ h3. repo_standard_publication:object:without_attributes
 
 h4. Expected type: JSON object
 
-Sets the only attributes to hide for a given object, of the form:
+Default keys: "output", "research-institute", "person", "event", "impact", "impact-evidence"
 
-<pre style="line-height:13px">{
-    "output": [
-        "hres:attribute:keywords"
-    ],
-    "person": [
-        "hres:attribute:orcid"
-    ],
-    "research-institute": [
-        "hres:attribute:head"
-    ]
-}
+Each key in the object refers to the type of object that it restricts the attributes to.
+
+|output|Any output|
+|research-institute|Any research institute|
+|person|Any person|
+|event|Any event|
+|impact|Any impact|
+|impact-evidence|Any impact evidence|
+
+List the API Codes of the attributes or aliased attributes in an array under any of these keys to prevent that attribute being displayed on the publication.
+
+*Note: To restrict an aliased-attribute you can restrict either the base attribute OR the aliased attribute. Bear in mind that restricting the base attribute may have wider effects that you intend.*
+
+E.g. To prevent creator citations showing
+
+<pre>language=json
+    "repo_standard_publication:object:without_attributes": {
+        "output": [
+            "hres:aliased-attribute:creators-citation"
+        ]
+    }
 </pre>
+
+or
+
+<pre>language=json
+    "repo_standard_publication:object:without_attributes": {
+        "output": [
+            "hres:attribute:authors-citation"
+        ]
+    }
+</pre>
+
+The first option here would prevent display of creator citations from practice based outputs, whereas the second option would prevent display of all citations whether they were creators on practice based outputs or authors on text based outputs.
 
 h3. repo_standard_publication:object:only_attributes
 
 h4. Expected type: JSON object
 
-Sets the only attributes to show for a given object, of the form:
+Default keys: "output", "research-institute", "person", "event", "impact", "impact-evidence"
 
-<pre style="line-height:13px">{
-    "output": [
-        "hres:attribute:keywords"
-    ],
-    "person": [
-        "hres:attribute:orcid"
-    ],
-    "research-institute": [
-        "hres:attribute:head"
-    ]
-}
+Each key in the object refers to the type of object that it restricts the attributes to.
+
+|output|Any output|
+|research-institute|Any research institute|
+|person|Any person|
+|event|Any event|
+|impact|Any impact|
+|impact-evidence|Any impact evidence|
+
+List the API Codes of the attributes or aliased attributes in an array under any of these keys to prevent that attribute being displayed.
+
+*Note: To display an aliased attribute you will need to list the base attribute AS WELL AS the aliased attribute*
+
+e.g. To display the additional information on an output:
+
+<pre>language=json
+    "repo_standard_publication:object:only_attributes": {
+        "output": [
+            "std:attribute:notes",
+            "hres:aliased-attribute:additional-information"
+        ]
+    }
 </pre>
+
+If only one of these attributes were listed no additional information attribute information would be displayed on the public interface.
 
 h3. repo_standard_publication:carousel
 
 h4. Expected type: Array of JSON objects
 
 Sets the images for the carousel on the home page, by default the system randomly selects images from Pixabay. The object should be of the form:
-<pre style="line-height:13px">[
-    {
-      "image": "/~/a.jpg",
-      "title": "University of Example",
-      "imageDescription": "Banner image for the University of Example"
-    }
-]
+
+<pre>language=json
+{
+  "image": "/~/a.jpg",
+  "title": "University of Example",
+  "imageDescription": "Banner image for the University of Example"
+}
 </pre>
+
 Where:
 # image: is the pathname of the image after it has been uploaded here:
 
@@ -91,7 +127,9 @@ h3. repo_standard_publication:home_images
 h4. Expected type: Array of strings
 
 Sets the images displayed above the Browse/Search links on the home page in order. E.g. to change only the "Browse by Researcher" and "Browse by Subject" images: 
-<pre style="line-height:13px">[
+
+<pre>language=json
+[
     "/~/a.jpg",
     "",
     "/~/b.jpg",
@@ -113,11 +151,14 @@ h3. repo_standard_publication:research_institute_browse_images
 h4. Expected type: Arrray of strings
 
 Sets the images associated with each subject in the "Browse by Subject" by the order in which they are in the array, looping if the limit is reached.
-<pre style="line-height:13px">[
+
+<pre>language=json
+[
     "/~/a.jpg",
     "/~/b.jpg",
 ]
 </pre>
+
 Would show images a.jpg and b.jpg alternating for the each research institute image.
 
 Where the string value is the pathname of an image after it has been uploaded here:

@@ -35,7 +35,9 @@ h3. repo_standard_publication:text
 h4. Expected type: JSON object
 
 An object detailing the text on a publication to be changed, there are various keys that can be set. The keys and their default values are listed below:
-<pre style="line-height:13px">{
+
+<pre>language=json
+{
     description: "",
     homeMainSearchPlaceholder: "Find researchers and their research...",
     homeBrowseByResearcher: "Browse by Researcher",
@@ -62,10 +64,10 @@ h4. Expected type: Array of JSON objects
 
 An array of objects to use as links in the footer of the publication.
 To add a link to the university of example homepage to the footer for example: 
-<pre style="line-height:13px">[
-    {
-        "text": "University of Example",
-        "href": "https://example.ac.uk"
-    }
-]
+
+<pre>language=json
+{
+    "text": "University of Example",
+    "href": "https://example.ac.uk"
+}
 </pre>
