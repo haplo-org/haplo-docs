@@ -102,7 +102,7 @@ h2. Defining entities by function
 
 Sometimes the logic to find an entity depends on things which can't be expressed with simple attributes and qualifiers. You can use a function instead, which must return an array of Refs. The return value will be de-duplicated with [node:plugin/o/utility#O_deduplicateArrayOfRefs].
 
-@this@ is the entities object. Access to the workflow instance is available via the @this.M@, but it might not always be available, so use with caution.
+@this@ is the entities object. Access to the workflow instance is available via the @this.M@, but it won't be available when there is no workflow context e.g. with [node:standard/workflow/definition/special#P_workflow_standaloneEntities], so use with caution.
 
 For example:
 
@@ -125,7 +125,7 @@ For compatibility with legacy code, this function will always be called with a s
 
 h2. Text system helpers
 
-When using @std:entities@, entities that you define become avaialable in the [node:standard/workflow/definition/text:workflow text system]. Simply use the entitiy name enclosed in @ symbols, and upon rendering the title of the object that the entity references will be displayed instead
+When using @std:entities@, entities that you define become available in the [node:standard/workflow/definition/text:workflow text system]. Simply use the entity name enclosed in @ symbols, and upon rendering the title of the object that the entity references will be displayed instead
 
 For example, to display the name of the entity @supervisor@ in a transition name:
 

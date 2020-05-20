@@ -1,0 +1,3 @@
+The development configuration uses a self-signed SSL certificate, so you'll get a warning in your browser about the certificate.
+
+Log into the application using the email address and password given on the third line above.

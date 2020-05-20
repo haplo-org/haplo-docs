@@ -8,20 +8,25 @@ Plugins are a collection of JavaScript code, templates, automated tests, and oth
       \- plugin.json
       \- js
            \- example_plugin.js
-           \- handle_requests.js
+           \- eg_reporting.js
       \- requirements.schema
-      \- global.js
+      \- template
+           \- details.hsvt
       \- static
            \- ui.js
            \- picture.gif
            \- style.css
-      \- template
-           \- page1.html
       \- file
            \- form
-                \- details-form.json
+                \- details.json
+      \- i18n
+           \- local
+                \- en.template.json
+                \- en.form.json
+           \- global
       \- test
            \- test_feature1.js
+      \- global.js (optional)
 </pre>
 
 
@@ -58,15 +63,9 @@ The [node:plugin/schema/requirements-schema] file describes the minimum requirem
 The Platform uses it to alter the application's schema when the plugin is installed or updated, and then make the various schema objects available to the plugin as readable names in the plugin's local schema dictionaries.
 
 
-h2. global.js
+h2. template
 
-The @global.js@ file is optional, and not required by the vast majority of plugins. It's used for initialisation which cannot be done inside the anonymous function which wraps all the other JavaScript files.
-
-If you do use a global.js file, it *must* include the [node:plugin/o/constructor/plugin:O.plugin()] call to create your plugin object, for example,
-
-<pre>language=javascript
-var example_plugin = O.plugin("example_plugin");
-</pre>
+[node:plugin/templates:HSVT Templates] are stored in the @template@ directory with a @.hsvt@ file extension.
 
 
 h2. static
@@ -84,11 +83,6 @@ There is no access control on the files, and they'll be served to anyone who kno
 Files are served with expiry times several years in the future. Whenever the files are updated, for example on plugin upgrade, the URL of the files is changed.
 
 
-h2. template
-
-[node:plugin/templates:HSVT Templates] are stored in the @template@ directory with a @.hsvt@ file extension.
-
-
 h2. file
 
 Files in the @file@ directory are accessible to the plugin using your plugin's [node:plugin/interface/plugin/file#loadFile] API.
@@ -100,6 +94,28 @@ The @file/form@ directory is the conventional location for files used as form de
 Use the @static@ directory for files which are to be made available over HTTP and do not need access control.
 
 
+h2. i18n
+
+Files in the @i18n@ directory provide [node:plugin/i18n/resources:resources] for [node:plugin/i18n:internationalisation] of this plugin. They are split into @local@ and @global@ directories. @local@ provides resources for this plugin only, and @global@ provides them to the entire application. When searching for resources, @local@ takes priority.
+
+All filenames start with the locale ID, for example, @en.@
+
+i18n is short for 'internationalisation', which is a very long word.
+
+
 h2. test
 
 [node:plugin/tests:Tests] live in the @test@ directory, as one JavaScript file per test. These are run on the server by the [node:dev/tool/plugin:Plugin Tool].
+
+
+h2. global.js
+
+The @global.js@ file is optional, and not required by the vast majority of plugins. It's used for initialisation which cannot be done inside the anonymous function which wraps all the other JavaScript files.
+
+If you do use a global.js file, it *must* include the [node:plugin/o/constructor/plugin:O.plugin()] call to create your plugin object, for example,
+
+<pre>language=javascript
+var example_plugin = O.plugin("example_plugin");
+</pre>
+
+

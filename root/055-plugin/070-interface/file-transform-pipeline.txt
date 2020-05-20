@@ -58,7 +58,9 @@ h3(function). urlForOutputWaitThenDownload(name, filename, view)
 
 Generate a URL to a user interface, implemented by the platform, which shows a progress bar while the file is being generated, then downloads the file. Use this to implement the recommended "redirect after POST" pattern after form submission.
 
-@view@ contains extra information for rendering the UI, with keys @pageTitle@, @backLink@ and @backLinkText@ with definitions as in [node:plugin/interface/exchange#render].
+@view@ contains extra information for rendering the UI, with keys @pageTitle@, @backLink@, @backLinkText@ and @layout@ with definitions as in [node:plugin/interface/exchange#render]. Note that not all layouts are supported.
+
+When this is used within a covering opened with @Haplo.ui.openCovering()@, set @closeCoveringButton@ to @true@ in the view to display a button to close the covering after the download is complete.
 
 If the @filename@ has no extension, or the wrong extension, an appropriate file extension will be added.
 
@@ -85,7 +87,7 @@ h3(function). urlForWaitThenRedirect(redirectTo, view)
 
 Generate a URL to a user interface, implemented by the platform, which shows a progress bar while the file is being generated, then redirects to the path in @redirectTo@.
 
-@view@ contains extra information for rendering the UI, with keys @pageTitle@, @backLink@ and @backLinkText@ with definitions as in [node:plugin/interface/exchange#render], and @message@ to specify a custom message above the progress bar.
+@view@ contains extra information for rendering the UI, with keys @pageTitle@, @backLink@, @backLinkText@ and @layout@ with definitions as in [node:plugin/interface/exchange#render]. Note that not all layouts are supported.
 
 Use this when you are going to use the result of the output in the callback, but want the user to wait while it's being generated.
 

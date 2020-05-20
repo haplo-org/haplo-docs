@@ -1,0 +1,14 @@
+title: OAI-PMH
+--
+
+The OAI-PMH interface is the most important machine interface to the repository, and exposes the repository's public contents in a variety of standard schemas.
+
+Haplo has an intention to add metadata standards to this interface as they are needed by our users as part of the ongoing development of the product.
+
+h3. Currently supported standards
+
+* Dublin Core (oai_dc)
+* RIOXX (2.0 application profile)
+* DataCite (v4 metadata schema)
+* OpenAIRE (v4 application profile)
+* EThOS

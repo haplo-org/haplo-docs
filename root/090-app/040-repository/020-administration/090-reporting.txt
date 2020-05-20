@@ -1,0 +1,41 @@
+title: Reporting
+--
+
+* Haplo standard reports provide wide-ranging monitoring of the repository, including:
+
+* Items added each year
+
+* Status of newly submitted items
+
+* Items with embargoed or otherwise restricted files
+
+* Number of file downloads and access requests
+
+* Last access date of files
+
+* Administrative metadata including date and time of record creation, name of record creator, date, time and names of users making subsequent changes
+
+* A comprehensive audit trail including user, date, time and searches performed
+
+* Funder policy compliance reports on a per-item or per-funder basis
+
+* Compliance rates recorded on a per-faculty and per-department level
+
+* Individual item compliance recorded and highlighted to researchers at the point of deposit
+
+* Reporting information gathered on a per-article basis, allowing article level metrics reporting
+
+* Configuration of each item record to show number of downloads
+
+* Optional integration of Google Analytics and other external altmetrics services into the public repository page
+
+* Custom reports for each institution
+
+* REF submission reports (link to REF page)
+
+
+h2. How to create new reports
+
+h3. Creating new reports
+
+h3. Usage metrics

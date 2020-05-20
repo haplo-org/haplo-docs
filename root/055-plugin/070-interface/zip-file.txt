@@ -1,0 +1,70 @@
+title: ZipFile
+long-title: ZipFile interface
+link_as: keyword
+--
+
+An object implementing the @ZipFile@ interface represents a "ZIP":https://en.wikipedia.org/wiki/Zip_(file_format) file archive.
+
+Set @E.response.body@ to the @ZipFile@ object to respond to a [node:plugin/interface/plugin/request-handling:request handler] with a ZIP file download.
+
+
+h2. Construction
+
+Call [node:plugin/o/zip#O_zip_create] to create an empty ZIP file with a given filename.
+
+
+h2. Example
+
+To respond to a request with a ZIP archive, use code like:
+
+<pre>language=json
+P.respond("GET", "/do/example-download/zip", [
+], function(E) {
+    let zip = O.zip.create("example.zip");
+    zip.rootDirectory("example");
+    // Generate a file and add it
+    let json = {"key":1234};
+    zip.add(O.binaryData(JSON.stringify(json)), "file.json");
+    // Add a file from the file store
+    zip.add(O.file(...));
+    E.response.body = zip;
+});
+</pre>
+
+
+h2. Interface
+
+h3(function). add(file, pathname)
+
+Adds a @file@ to the ZIP file. This can be a [node:plugin/interface/file] object to include files from the file store, or a [node:plugin/interface/binary-data] object to include files generated in memory or from other sources.
+
+@pathname@ is optional. If not specified, the filename from the @file@ object is used. To place the file in a sub-directory, prefix the name with the path, for example, @"directory/file.txt"@.
+
+If the @pathname@ duplicates another file in the archive, whether specified or derived from the @file@ object, the filename will be adjusted to give it a different name.
+
+Returns this @ZipFile@ object, making this function suitable for chaining.
+
+
+h3(function). rootDirectory(directory)
+
+Set the root directory for this zip file, so when the archive is extracted, all the files will appear in this directory. This is useful to ensure consistent behaviour with the built-in unzip utilities in popular operating systems.
+
+This function can only be called before any entries are added to the ZIP file.
+
+Returns this @ZipFile@ object, making this function suitable for chaining.
+
+
+h3(property). filename
+
+The @filename@ of this ZIP file, as passed to the @O.zip.create()@ method.
+
+
+h3(property). count
+
+The number of entries in this ZIP file.
+
+
+h3(function). getAllPathnames()
+
+Returns an array of the pathnames of the entries in this ZIP file.
+

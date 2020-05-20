@@ -39,7 +39,7 @@ h3(function). addFormDeferred(position, deferred)
 
 Add some additional user interface to the transition confirmation form.
 
-@position@ is either @"top"@ or @"bottom"@.
+@position@ is either @"top"@, @"bottom"@, or @"aboveConfirm"@.
 
 @deferred@ is a deferred render returned from [node:plugin/interface/template#deferredRender].
 

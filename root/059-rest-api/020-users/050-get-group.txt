@@ -1,0 +1,52 @@
+title: Get group
+--
+
+API_ENDPOINT /api/v0-user/group/[groupcode] (GET only)
+
+When generating URLs, @[groupcode]@ is the API code of a group [node:/plugin/interface/security-principal]
+
+h2. Returns
+
+[SNIPPET rest-api/users/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:user:group-details@| The request was successful and the group's users and details have been returned |
+
+[SNIPPET rest-api/users/user-details-response]
+
+* users
+* group
+[SNIPPET rest-api/users/user-details]
+
+The users field is an array of the IDs of all active users who are members of this group, whether directly, or indirectly through another group that is a member of this group. This array does not include groups.
+
+[SNIPPET rest-api/users/user-details-explanation]
+
+h3. Example response
+
+<pre>language=json
+{
+    "success": true,
+    "kind": "haplo:api-v0:user:group-details",
+    "users": [123, 456, 789],
+    "group": {
+        "id":130,
+        "nameFirst":null,
+        "nameLast":null,
+        "name":"Test group",
+        "code":"haplo:group:test",
+        "email":null,
+        "ref":null,
+        "isGroup":true,
+        "isActive":true,
+        "isSuperUser":false,
+        "isServiceUser":false,
+        "isAnonymous":false,
+        "localeId":"en",
+        "directGroupMembership":[
+            "haplo:group:example", 
+            "group:321"
+        ]
+    }
+}
+</pre>

@@ -49,6 +49,12 @@ h3. Category service
 In addition, if the Element has a @category@ defined, a service named after the category, @std:action_panel:category:[category]@ will be called with the same arguments.
 
 
+h3. Global service
+
+There is also a global service, @std:action_panel:*@, called for every action panel. This should only be needed when the implementing plugin doesn't know the name or category of the panel it should add to.
+
+Be careful when using this service to ensure you only affect the panels you intend to. It should only be necessary *very* rarely.
+
 
 h2. Examples
 

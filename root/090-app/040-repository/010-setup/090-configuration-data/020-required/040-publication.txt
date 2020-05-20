@@ -1,0 +1,21 @@
+title: Publication
+long_title: Configuration data for public interface
+--
+
+h3. repo_standard_publication:hostname
+
+h4. Expected type: String
+
+The hostname of the publication, used if an institution intends to host their public interface on a different host to their internal system. If this isn't set, the default option is to use: "application_host_name/repository."
+
+h3. repo_standard_publication:name
+
+h4. Expected type: String
+
+The name to be displayed on the application, by default it is set to the application name.
+
+h3. repo_standard_publication:admin_email
+
+h4. Expected type: String
+
+The email address for the repository

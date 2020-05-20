@@ -1,0 +1,18 @@
+title:Ingest
+--
+
+Outputs can be added either via an online form or by retrieving the Datacite metadata by looking up and importing existing records from their DOI.
+
+Haplo enables researchers to self-deposit their research outputs. Researchers are presented with different metadata records for different types of output so the fields on the form are always relevant to the research being submitted. Embedded guidance notes help improve the quality of information collected.
+
+Repository managers are alerted to new submissions by researchers. Haplo's comprehensive and flexible workflow system streamlines the approval of submitted outputs.
+
+The deposit process includes review stages by authorised users, such as repository managers, and automatic publication of the approved record to the public repository.
+
+Records can be returned to submitters for changes. Haplo maintains an audit trail of all actions together with a record of the conversation between the depositor and repository manager.
+
+h3. Standard ingest workflow
+
+The standard template ingest workflow can be configured to support the roles and processes of each institution, or installed "as-is" to use the default process, below.
+
+[IMAGE 0001.png Standard ingest workflow]

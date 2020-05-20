@@ -82,7 +82,7 @@ URLs must begin with @/do/@ or @/api/@, and declare only one level below that, f
 
 h3(key). allowAnonymousRequests
 
-By default, plugins will not be asked to respond to any request unless the user has logged in, or the request is made by software using an API key to authenticate (see [node:dev/xml-http/authentication]). Set this to @true@ to allow anonymous requests as well.
+By default, plugins will not be asked to respond to any request unless the user has logged in, or the request is made by software using an [node:dev/api-key:API key] to authenticate. Set this to @true@ to allow anonymous requests as well.
 
 In either case, the plugin should do it's own authorisation checks, but the default of not allowing anonymous requests minimises the effects of a mistake.
 

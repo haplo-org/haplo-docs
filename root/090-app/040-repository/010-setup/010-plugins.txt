@@ -1,0 +1,13 @@
+title: Plugins
+long_title: Haplo Repository plugins
+--
+
+Setting up an Haplo Repository application presumes that you already have an instance of the [node:platform/run:Haplo platform] set up and available to upload plugins to. If you haven't already, set that up first.
+
+Choosing functionality is then largely a case of installing your desired plugins from the open source plugins available. The source code for these is available on "GitHub":https://github.com/haplo-org/haplo-repository, and a brief explanation of the plugins has been written up in our "Haplo Repository plugins guide":https://www.haplo-services.com/docs/Haplo_Repository_Open_Source_Plugins.pdf
+
+h3. Creating a root application plugin
+
+Your application will need a "root" plugin, which will set up the dependencies for this application, and any custom schema to be added. Convention is that this is named @<client>_application@.
+
+Create a new plugin using the [node:dev/tool/plugin], and add the plugins you want to install to the [node:plugin/plugin-json] file. This allows you to add all of the required plugins to your system by installing this one root plugin, greatly simplifying development and deployment.

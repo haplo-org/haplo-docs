@@ -1,0 +1,75 @@
+title: Update user
+--
+
+API_ENDPOINT /api/v0-user/id/[userid] (POST)
+
+When generating URLs, @[userid]@ is the id of a user [node:/plugin/interface/security-principal]
+
+The body of the request should be a JSON document containing only the fields that you wish to change for the user. The fields which can be updated by this API are:
+
+* nameFirst
+* nameLast
+* email
+* ref
+* localeId
+* directGroupMembership
+
+[SNIPPET rest-api/users/user-details-explanation]
+
+h3. Example request body
+
+<pre>language=json
+{
+    "nameFirst":"First",
+    "nameLast":"Last",
+    "email":"first.last@example.com",
+    "ref":"890qv",
+    "localeId":"en",
+    "directGroupMembership":[
+        "haplo:group:example"
+    ]
+}
+</pre>
+
+h2. Returns
+
+[SNIPPET rest-api/users/endpoint-specific-kinds]
+
+|*Kind*|*Meaning*|
+|@haplo:api-v0:user:update@| The request was successful and the updated user's details have been returned |
+|@haplo:api-v0:user:update-failed@| The user could not be created with the provided details. Returns with HTTP status 400 |
+|@haplo:api-v0:user:no-such-user@| No user could be found with the requested id. Returns with HTTP status 400 |
+
+[SNIPPET rest-api/users/user-details-response]
+
+* user
+[SNIPPET rest-api/users/user-details]
+
+[SNIPPET rest-api/users/user-details-explanation]
+
+h3. Example
+
+<pre>language=json
+{
+    "success": true,
+    "kind": "haplo:api-v0:user:details",
+    "user": {
+        "id":130,
+        "nameFirst":"First",
+        "nameLast":"Last",
+        "name":"First Last",
+        "code":null,
+        "email":"first.last@example.com",
+        "ref":null,
+        "isGroup":false,
+        "isActive":true,
+        "isSuperUser":false,
+        "isServiceUser":false,
+        "isAnonymous":false,
+        "localeId":"en",
+        "directGroupMembership":[
+            "haplo:group:example"
+        ]
+    }
+}
+</pre>

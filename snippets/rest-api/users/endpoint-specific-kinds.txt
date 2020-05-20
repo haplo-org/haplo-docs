@@ -1,0 +1,1 @@
+This request can respond with following kinds, in addition to the generic kinds (see [node:rest-api/introduction]):

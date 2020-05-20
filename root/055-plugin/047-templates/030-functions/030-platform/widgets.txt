@@ -8,6 +8,13 @@ Render a prominent notice for alerting users to important information. The @mess
 
 @dismissLink@ and @dismissText@ are optional, and if present, render an @X@ icon and text to dismiss the notice.
 
+If you are asking the user to perform an action, use @std:ui:request()@ instead.
+
+
+h2. std:ui:request(message)
+
+Render a notice requesting that the user performs an action. The @message@ text is rendered using [node:plugin/templates/functions/platform/text#std_text_paragraph].
+
 
 h2. std:ui:navigation:arrow(direction link)
 

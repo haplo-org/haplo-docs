@@ -50,6 +50,13 @@ h3(function). states(definitions)
 The properties in @definitions@ are the names of the states, and the values are the state definitions, described below.
 
 
+h3(function). addAdditionalTransitionToState(state, transition, destination)
+
+Use @addAdditionalTransitionToState()@ to add 1 transition with 1 destination to @state@ defined using [node:standard/workflow/definition/features].
+
+All arguments are required and @state@ and @destination@ must already be defined using [node:standard/workflow/definition/states/#states].
+
+
 h2. State definitions
 
 State definitions have the following properties, all of which are optional.

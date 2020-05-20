@@ -80,6 +80,11 @@ h3(function). hidePanel()
 Prevent this panel from being rendered. It's intended to allow customisations to remove user interface from other plugins which isn't required for a particular application.
 
 
+h3(function). hideAllPanels()
+
+Prevents any panel on this @PanelBuilder@ from being rendered. It's intended to allow customisations to remove user interface from other plugins which isn't required for a particular application.
+
+
 h2. Rendering
 
 These rendering functions should only be called on the root @PanelBuilder@ returned by [node:plugin/o/constructor/ui-panel].

@@ -29,7 +29,7 @@ Optional @format@ parameter (string) can be used to return the text in a specifi
 
 
 |*Constant name*|*Format option*|*Description*|
-|@O.T_TEXT_DOCUMENT@|plaintext|Return the document with tags removed, and paragraphs/headers seperated by new lines|
+|@O.T_TEXT_DOCUMENT@|plaintext|Return the document with tags removed, and paragraphs/headers separated by new lines|
 |@O.T_IDENTIFIER_TELEPHONE_NUMBER@|dial|Telephone number as it would be dialed without spaces|
 |@O.T_IDENTIFIER_TELEPHONE_NUMBER@|short|Short format readable telephone number|
 |@O.T_IDENTIFIER_TELEPHONE_NUMBER@|export|Clean format for sync and exporting|

@@ -1,0 +1,43 @@
+long_title: Setting up an institution's first repository
+title: New repositories
+--
+
+
+h3. OpenDOAR
+
+The repository should be added "here":http://sherpa.ac.uk/forms/new-repository.php?service-identifier=opendoar2
+
+
+h3. IRUS-UK
+
+Need to be informed of:
+
+1) The release date (they should be warned ahead of the release)
+
+2) The new OAI-PMH endpoint of the repository
+
+
+h3. British Library's EThOS
+
+Need to be informed of:
+
+1) The release date (they should be warned ahead of the release)
+
+2) The OAI-PMH endpoint of the repository
+
+h3. Submit to Google scholar
+
+To register a new repository for indexing, "submit here":https://partnerdash.google.com/partnerdash/d/scholarinclusions
+
+
+h3. re3data.org
+
+Note: Only relevant if the repository will be used for hosting research data.
+
+To add a new repository, "submit here":https://www.re3data.org/suggest
+
+
+h3. Registry of Open Access Repositories
+
+To register a new repository "submit here":http://roar.eprints.org/cgi/users/home?screen=NewEPrint
+

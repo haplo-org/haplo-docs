@@ -104,6 +104,18 @@ Returns @true@ if the principal is permitted to perform the given @action@.
 @action@ is an [node:plugin/interface/action] object, obtained using [node:plugin/o/action#O_action], with rules configured by one or more plugins.
 
 
+h2. Interface (internationalisation)
+
+h3(property). localeId
+
+Returns the user's locale id, for example @"en"@. Note that the user's session may have a different locale.
+
+
+h3(function). setLocaleId(localeId)
+
+Sets the user's locale id to the given @localeId@. This may not have any effect on a logged in session. Use [node:plugin/o/locale#O_setSessionLocaleId] if the current session needs to change the locale to match.
+
+
 h2. Interface (users)
 
 The following interface is valid for @SecurityPrincipal@ objects representing users.
@@ -160,3 +172,8 @@ The API code (as used in schema requirements) of a group, if it has one. If it d
 h3(function). loadAllMembers()
 
 Returns an array of @SecurityPrincipal@ objects representing users *only*. If one of the members of this group is another group, the returned array will contain that group's users.
+
+
+h3(function). loadAllBlockedMembers();
+
+Like @loadAllMembers()@, but returns a list of blocked users.

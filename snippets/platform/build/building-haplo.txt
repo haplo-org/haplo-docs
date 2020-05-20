@@ -1,0 +1,15 @@
+h3. Building Haplo
+
+Check out the repository from "GitHub":https://github.com/haplo-org/haplo, for example, with:
+
+<pre>
+cd ~
+git clone https://github.com/haplo-org/haplo.git
+</pre>
+
+Within the repository checkout, run the @fetch-and-compile.sh@ script. This will download about 110MB of archives, and create a @haplo-dev-support@ directory in your home directory.
+
+<pre>
+cd ~/haplo
+./fetch-and-compile.sh
+</pre>

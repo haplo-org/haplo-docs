@@ -1,0 +1,13 @@
+title: Configuration Data
+class: DocNodeTextileWithTOC
+--
+
+When deploying the repository there are a number of configuration options that need to be set to ensure the system will function as intended, some of these are required for minimal functionality and others are used for customisation.
+
+These options will need to be set in the system management of the repository.
+
+CLICK_PATH TOOLS > System management > Configuration > Configuration data
+
+Set by selecting Edit on the right and adding the data in valid JSON.
+
+h2. Options

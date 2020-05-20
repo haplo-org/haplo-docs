@@ -37,9 +37,14 @@ Functions called on the collection object return themselves, and so can be chain
 
 h2. Direct access
 
-Collections can also be accessed directly by using @P.reporting.collection@. This returns the collection object, for use outside of a [node:standard/reporting/dashboards:dashboard].
+Collections can also be accessed directly by calling the function @P.reporting.collection(name)@ where @name@ is the string name of the collection. This returns the collection object, for use outside of a [node:standard/reporting/dashboards:dashboard].
 
 This should only be used for querying the underlying data. Any setup or modifications should be carried out inside the setup functions.
+
+<pre>language=javascript
+var collection = P.reporting.collection("books");
+var allCurrentRows = collection.selectAllCurrentRows();
+</pre>
 
 h2. Interface
 

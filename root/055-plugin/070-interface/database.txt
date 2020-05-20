@@ -52,7 +52,7 @@ h3(key). type
 
 |*Name*|*Data type*|*JavaScript type*|
 |@text@|Unicode text [1]|String|
-|@datetime@|Date and time, GMT timezone|Date|
+|@datetime@|Date and time, UTC timezone|Date|
 |@date@|Date only|Date|
 |@time@|Time only|[node:plugin/misc/db-time]|
 |@boolean@|Boolean|@true@ or @false@|

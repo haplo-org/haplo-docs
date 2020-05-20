@@ -3,7 +3,7 @@ title: Special functions
 
 The definition provides some special purpose functions to provide information about the configured workflow.
 
-These are intended to remove the necessity to make available too much information about the specifics of the workflow, to encourage well-designed composeable features.
+These are intended to remove the necessity to make available too much information about the specifics of the workflow, to encourage well-designed composable features.
 
 
 h2. Definition
@@ -27,4 +27,22 @@ P.workflow.registerOnLoadCallback(function(workflows) {
         console.log(workflow.fullName);
     });
 });
+</pre>
+
+h3(function). P.workflow.standaloneEntities(entityDefinitions, callback)
+
+Returns an entity system without the context of a workflow. The entity system is an object with a @constructEntitiesObject()@ function which takes a [node:plugin/interface/work-unit], [node:plugin/interface/ref], or [node:plugin/interface/store-object] returning an object which allows you to access the entities (see [node:standard/workflow/definition/std-features/entities]).
+
+Pass a dictionary of entity names to definitions (see [node:standard/workflow/definition/std-features/entities]) and an optional function that is called with the entities object prototype for you to extend. Example:
+
+<pre>language=javascript
+var standaloneEntities = P.workflow.standaloneEntities({
+    "project": ["object", A.Project],
+    "supervisor": ["project", A.Supervisor]
+});
+var entities = standaloneEntities.constructEntitiesObject(projectPlan);
+var supervisor = entities.supervisor_maybe;
+if(supervisor) {
+    // ...
+}
 </pre>

@@ -15,7 +15,7 @@ For example:
 
 <pre>language=javascript
 P.respond("GET,POST", "/do/something", [
-  {paramter:"rdr", as:"string", optional:true}
+  {parameter:"rdr", as:"string", optional:true}
 ], function(E, rdr) {
     rdr = O.checkedSafeRedirectURLPath(rdr);
     // Do some operation

@@ -1,0 +1,14 @@
+** id
+** nameFirst
+** nameLast
+** name
+** code
+** email
+** ref
+** isGroup
+** isActive
+** isSuperUser
+** isServiceUser
+** isAnonymous
+** localeId
+** directGroupMembership

@@ -1,0 +1,32 @@
+title: DOI
+long_title: Configuration data for DOI minting
+--
+
+h3. hres:doi:minting:safety-application-hostname
+
+h4. Expected type: String
+
+This is used as a safety check to prevent the minting of DOIs on development and test systems. Set this as equal to the internal hostname in order to allow for minting of DOIs in the repository.
+
+The internal hostname is accessible at:
+
+CLICK_PATH TOOLS > System management > Configuration > Identity
+
+h3. hres:doi:minting:doi-prefix
+
+h4. Expected type: String - Usual Form: "10.12345/ABC."
+
+The DOI prefix for the repository, acquired from the institution/datacite. Datacite provides the numbers as the unique identifier, institutions will usually request something after the slash, e.g. their university acronym.
+
+h3. hres:doi:minting:doi-prefix-for-update
+
+h4. Expected type: Array of Strings
+
+The DOI prefixes to keep updated if they change. Some institutions may have old DOI prefixes they wish to keep updated, at the very minimum this array must include the DOI prefix as shown above.
+
+h3. hres:doi:minting:service-url
+
+h4. Expected type: String
+
+The URL of the minting service, used to send requests to datacite in order to update metadata or mint a DOI.
+

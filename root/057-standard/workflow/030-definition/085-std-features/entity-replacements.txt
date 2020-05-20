@@ -50,7 +50,7 @@ This is an object, specifying a mapping from new entity name to an object specif
 
 The @entity@ string must be an entity that is already defined for the workflow.
 
-@assignableWhen@ is a [node:standard/workflow/definition/selector:Selector] specifiying when the nominees for that role can be changed.
+@assignableWhen@ is a [node:standard/workflow/definition/selector:Selector] specifying when the nominees for that role can be changed.
 
 @selectableWhen@ is an optional [node:standard/workflow/definition/selector:Selector] which allows the user to choose whether that entity is selected for this workflow. This sets a flag on the workflow instance object @M@, which follows the naming pattern @entity-selected_ENTITYNAME_ORIGINALREF@. The ref used is that of the original entity, not the replacement, for uniqueness.
 
@@ -75,7 +75,7 @@ Uses the url passed in as @link@ as the path for an action button rendered into 
 
 h2. User interface
 
-The feature supplies a full functional user interface for viewing and selecting the replacement entities for a workflow. A link is added to the workflow obect's [node:standard/action-panel], linking to the Overview page.
+The feature supplies a full functional user interface for viewing and selecting the replacement entities for a workflow. A link is added to the workflow object's [node:standard/action-panel], linking to the Overview page.
 
 An @entityReplacementUserInterfaceURL()@ method (taking no arguments) is added to the @M@ workflow object if the ui is needed to be accessed from elsewhere.
 
@@ -99,7 +99,7 @@ h4. Displayable entity names
 * entity-replacement:display-name:editorOrNominee
 * entity-replacement:display-name
 
-Either a generic displayable value can be given, or a user-readable name supplied for each of your replacement entitites
+Either a generic displayable value can be given, or a user-readable name supplied for each of your replacement entities
 
 h4. Page titles
 

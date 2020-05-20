@@ -1,0 +1,10 @@
+title: Integrations
+--
+
+Haplo can publish and receive machine-readable, structured data (e.g. JSON, XML), in an open format. This is achieved via a publicly accessible and openly documented APIs (e.g. using the REST architectural style over HTTP, or SOAP web services). This can be fulfilled through batch publishing of CSV files, or more structured data formats.
+
+In addition, Haplo has the ability to publish data changes from and to the system in real-time.
+
+Integrations with industry standard systems listed here can be included by default in an institution's application. Haplo also provides an extensive API to enable data to be fed to and from other systems, with custom APIs developed as required.
+
+

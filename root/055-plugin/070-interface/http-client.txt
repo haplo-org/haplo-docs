@@ -57,7 +57,7 @@ h3(function). header(name, value)
 
 Adds a raw HTTP header to the request.
 
-The @Content-Length@ and @Host@ headers may not be overriden.
+The @Content-Length@ and @Host@ headers may not be overridden.
 
 Returns the HTTP client, so configuration methods can be chained.
 
@@ -76,6 +76,12 @@ Returns the HTTP client, so configuration methods can be chained.
 h3(function). useCredentialsFromKeychain(name)
 
 Enables HTTP authentication for the request, using credentials from the specified entry in the Keychain.
+
+Returns the HTTP client, so configuration methods can be chained.
+
+h3(function). useClientCertificateFromKeychain(name)
+
+Authenticates with the remote server using a TLS (SSL) client certificate, using the specified X.509 Certificate and Key in the Keychain.
 
 Returns the HTTP client, so configuration methods can be chained.
 

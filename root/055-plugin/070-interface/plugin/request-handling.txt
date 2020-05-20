@@ -12,7 +12,7 @@ h3(function). respond(methods, path, argDeclarations, handlerFunction)
 
 Declare that this plugin responds to a URL. See [node:plugin/request-handling] for how it's used.
 
-Methods declares the HTTP methods this handler will respond to. Acceptable values are @"GET"@, @"POST"@ and @"GET,POST"@. You can declare two handlers for a single @path@ if one responds to @GET@ and the other @POST@, which is handy for avoiding conditional checks on the HTTP method in the handler functions while still having pleasant URL schemes.
+Methods declares the HTTP methods this handler will respond to. Acceptable values are @"GET"@, @"POST"@, @"PUT"@ and @"GET,POST"@. You can declare two handlers for a single @path@ if one responds to @GET@ and the other @POST@, which is handy for avoiding conditional checks on the HTTP method in the handler functions while still having pleasant URL schemes.
 
 @path@ is the URL to be handled. It must begin with @/do/@ or @/api/@.
 
@@ -47,7 +47,9 @@ The argument value will be obtained from the request parameters, either from the
 
 h3(key). body: "body"
 
-The argument value will be obtained from the HTTP request body, treated as a UTF-8 string.
+If @as@ is set to @"binaryData"@, then the request body will be passed to the handler function as a [node:plugin/interface/binary-data] object. Response size limits will not apply to this request handler, so large files can be used as bodied for @POST@ requests.
+
+Otherwise, the argument value will be obtained from the HTTP request body, treated as a UTF-8 string. The request body will be limited to around 1MB.
 
 The value of the property must be the string @"body"@.
 
@@ -111,6 +113,11 @@ The value is passed to the handler as a [node:plugin/interface/binary-data] obje
 Unless it is stored using [node:plugin/o/constructor/file], the uploaded file will be deleted at the end of the request.
 
 You should consider using a form with a [node:plugin/form/specification/file:file element] instead.
+
+
+h3(value). as: "binaryData"
+
+For @body@ arguments only, pass the value as a [node:plugin/interface/binary-data] object and lift the request body size limits.
 
 
 h3. Argument validation

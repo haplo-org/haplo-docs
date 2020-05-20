@@ -1,0 +1,6 @@
+h2. Next steps
+
+Click your user name in the top right, and choose "System management" to configure your application.
+
+You may wish to try [node:platform/build/develop-plugin:developing plugins with your development server].
+

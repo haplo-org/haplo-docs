@@ -23,6 +23,8 @@ h3(function). O.file(binaryData)
 
 A [node:plugin/interface/binary-data] object, such as an uploaded or [node:plugin/o/generate:generated] file, will be added to the file store, then a @File@ object returned after committing the file to the file store.
 
+You may need to set the @filename@ property of the @BinaryData@ object to give it a sensible filename.
+
 
 h3(function). O.file(digest, fileSize)
 

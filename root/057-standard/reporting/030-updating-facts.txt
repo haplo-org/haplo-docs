@@ -1,7 +1,7 @@
 title: Updating facts
 --
 
-When a new collection is created or the definition is modifed (by the addition of facts for instance), the Reporting plugin will rebuild the entire collection. 
+When a new collection is created or the definition is modified (by the addition of facts for instance), the Reporting plugin will rebuild the entire collection. 
 
 If there is no current row (a current set of facts) for an object, one will be created. If there is a row and the new row would be identical to the existing one, then no update will occur.
 

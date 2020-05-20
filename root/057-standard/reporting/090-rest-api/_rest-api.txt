@@ -10,5 +10,7 @@ All APIs take an optional @output=pretty@ argument to pretty-print the output JS
 
 The service user accessing this API must be a member of the @Reporting API@ group (code @std:group:reporting-api@).
 
+For extra security, create the [node:dev/api-key:API key] with a _Request path_ of @/api/reporting/v0/@ to restrict your API key to the Reporting API.
+
 
 h2. API requests

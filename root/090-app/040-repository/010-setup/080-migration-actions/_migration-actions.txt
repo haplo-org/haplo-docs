@@ -1,0 +1,5 @@
+title: Deployment actions
+class: DocNodeTextileWithTOC
+--
+
+When deploying the repository to production there are a number of one-off migration actions that you will need to take to ensure the system is properly indexed and embedded within the wider ecosystem for disseminating research. Here we have collected a set of systems to update and actions to take to ensure the system is well integrated with these services.

@@ -1,0 +1,8 @@
+title: Harvesting
+--
+
+Haplo integrates with industry standard systems to enable researchers to harvest items directly into the repository.
+
+When harvested items are matched to an existing researcher profile, the system prompts the user to confirm or disclaim them.
+
+To speed up metadata quality checks, repository editors are given clear notices in the user interface, indicating that the record was harvested from an external source, which external source the record was harvested from, and any fields that have been updated within Haplo if this is an update to an existing record.

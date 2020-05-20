@@ -48,7 +48,7 @@ This template should only be used if your plugin is implementing its own file do
 
 h2. std:file:thumbnail:with-link-url(file url ["authenticationSignature"])
 
-Renders the same as the @std:file:thumblnail()@ template, but the download links to the supplied @url@, not the platform default. The only valid option to pass to this function is @authenticationSignature@, others will be silently ignored.
+Renders the same as the @std:file:thumbnail()@ template, but the download links to the supplied @url@, not the platform default. The only valid option to pass to this function is @authenticationSignature@, others will be silently ignored.
 
 @url@ should be generated using an HSVT [node:plugin/templates/urls:url()] function, to ensure proper formatting.
 

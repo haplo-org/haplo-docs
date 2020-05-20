@@ -1,0 +1,53 @@
+title: API keys
+long_title: Authentication with API keys
+--
+
+API keys are used to authenticate machine-to-machine requests. An API key is a random string of characters which authenticates the request as a specific user.
+
+The access granted is identical to the access for the user. You can use an existing user which has the permissions you want to grant, but management is easier if you create a special user for each remote system which will use the API. Plugins will typically use [node:plugin/schema/requirements-schema/declaration/service-user:service users].
+
+
+h2. Generating keys
+
+To generate a generic API key, log into Haplo as an administrator.
+
+CLICK_PATH TOOLS > System management > Users > (User name) > New API key...
+
+API keys are shown at the bottom of the user info page, so you may need to scroll down.
+
+If you are creating a key for a service user, select the service user list first:
+
+CLICK_PATH TOOLS > System management > Users > SRV > (User name) > New API key...
+
+Fill out the form to create the key:
+
+* API Key Name: Set a short name which describes the purpose of this key, perhaps including the name of the remote application which will use it.
+
+* Request path: For additional security, set a path prefix for this API key which restricts the APIs it can access. To set to a single URL, prefix the path with @=@.
+
+Click _Create API key_. The key will be shown after creation. It is not possible to find out the key afterwards, as it is stored in the database using a secure one-way hash.
+
+Special purpose API keys may be created within a feature's administration UI, such as [node:import/user-sync/admin-ui:user sync] and [node:import/rest-api:data import REST APIs].
+
+
+h2. Authenticating with an API key
+
+"HTTP Basic authentication":https://en.wikipedia.org/wiki/Basic_access_authentication is used authenticate requests with an API key. Note that Haplo does not request authentication with the @WWW-Authenticate@ header.
+
+The username must be @haplo@, and the password is the API key. For example, a @curl@ command might be:
+
+<pre>
+    curl --user haplo:0123456789ABCDEF0123456789ABCDEF0123456789AB \
+        https://application.example.com/api/example
+</pre>
+
+where the generated API key was @0123456789ABCDEF0123456789ABCDEF0123456789AB@.
+
+
+h2. Revoking an API key
+
+To remove an API key and revoke access to a remote system, the API key must be deleted.
+
+CLICK_PATH TOOLS > Users > (User name) > API Keys / Key name > Delete API key
+
+Changing a user's password does *not* revoke associated API keys.

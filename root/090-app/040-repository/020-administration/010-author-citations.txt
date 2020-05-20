@@ -1,0 +1,22 @@
+title: Author citations
+--
+
+Haplo creates unique author profiles per person, not per citation.
+
+The user interface enables the author to choose their citation for an output independently of the link to their author profile. This means different outputs can use different citation strings but be linked to the same researcher profile, and different authors can have the same citation with no ambiguity over which outputs belong to which author.
+
+When finding the expected citation for an author the repository will try, in order:
+
+* The author's custom preferred citation
+
+This is saved directly on the author's profile, in the @hres:attribute:preferred-citation@ attribute
+
+* The institution's preferred citation style
+
+If your system includes an implementation of the @"hres:author_citation:get_citation_for_object"@ [node:plugin/o/service:service], this will be called for the researcher record to find the expected citation string
+
+* The Haplo default
+
+The fallback option is implemented by Haplo, and returns citations of the form "Lastname, F." (for "Fred Lastname").
+
+These "expected" citation strings can be edited by the depositing user or repository administrative staff if required.

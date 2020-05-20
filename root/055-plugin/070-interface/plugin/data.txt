@@ -10,7 +10,7 @@ h2. Interface
 
 h3(property). db
 
-The plugin's database object, implementing the [node:plugin/interface/database] interface. Only valid if [node:plugin/plugin-json] defines @useDatabase@ as @true@.
+The plugin's database object, implementing the [node:plugin/interface/database] interface. Requires @pDatabase@ to be included in @privilegesRequired@ in your [node:plugin/plugin-json].
 
 See [node:plugin/database] for how to use the plugin's database.
 

@@ -696,3 +696,19 @@ h2.service span.apilabel, h3.service span.apilabel
 }
 .ref-converter input:first-child { margin-right: 10px; }
 .ref-converter input:nth-child(2) { margin-left: 10px; }
+
+/* images */
+div.doc-image {
+    margin: 16px 0;
+    padding: 0 16px;
+}
+div.doc-image img {
+    display: block;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+div.doc-image .doc-image-caption {
+    margin-top: 12px;
+    font-style: italic;
+    color: #444;
+}
+

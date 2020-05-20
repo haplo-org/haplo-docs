@@ -10,6 +10,8 @@ The admin interface provides:
 
 * Configuration of the user sync
 
+* Creation of API keys
+
 * Data lookup for troubleshooting
 
 
@@ -39,6 +41,13 @@ Configuration options are:
 * _Force update of all records_ - set to _Yes_ to try applying all user records, even if the data hasn't changed since the last run. This can be required when the control file mappings have changed, because although the input data is still the same, the control file will map it to different values.
 
 * _Emails to receive sync reports_ - a comma separated list of email addresses to send the sync logs.
+
+
+h2. API keys
+
+Your scripts for [node:import/user-sync/upload-script:automating the sync] will need to use an API key to authentication with your application.
+
+Click the _Create API key..._ button to generate a key specifically for use with the user sync.
 
 
 h2. User lookup

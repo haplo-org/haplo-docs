@@ -11,6 +11,7 @@ require 'fileutils'
 gem 'json'
 require 'json/ext'
 
+require './lib/images'
 require './lib/doc_node'
 require './lib/documentation'
 require './lib/documentation_html'
@@ -90,6 +91,8 @@ when 'publish'
       end
     end
   end
+  FileUtils.cp_r('images', PUBLISH_DIR)
+  FileUtils.chmod_R(0755, "#{PUBLISH_DIR}/images")
   puts "Writing files..."
   Documentation.publish_to(PUBLISH_DIR)
   puts "Compress files..."

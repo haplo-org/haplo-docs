@@ -1,0 +1,5 @@
+title: Recommended
+class: DocNodeTextileWithTOC
+--
+
+Some of the configuration data is set by default and will allow a repository to run without changing however we recommend these options are changed:
