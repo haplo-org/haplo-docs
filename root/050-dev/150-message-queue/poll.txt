@@ -47,8 +47,8 @@ Your integration should extract the token from the response, then POST to the Ma
 #!/bin/sh
 set -e
 
-API_KEY=NTnA-eldmf4CYi7hvwWj9CuxItAwrjF2wzSkS6MMzuMB
-SERVER=dev7a102.infomanaged.co.uk
+API_KEY=01234567890123456789
+SERVER=server.example.ac.uk
 
 curl -X POST --data-urlencode "token=MSwy8w099=" --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/mark
 </pre>
