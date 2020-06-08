@@ -6,7 +6,14 @@ Document stores are constructed by passing a delegate object as an argument to @
 
 The delegate is a collection of properties and methods which define how your Document store should function.
 
-@std_document_store@ will set the @"std_document_store:key"@ property within @externalData@ for each [node:plugin/interface/form-instance] it creates.
+h2. externalData
+
+@std_document_store@ will set the following properties within @externalData@ for each [node:plugin/interface/form-instance] it creates.
+
+|@"std_document_store:key"@|The @key@ of the instance.|
+|@"std_document_store:instance"@|The [node:standard/document-store/interface:instance].|
+|@"std_document_store:store"@|The document store object.|
+
 
 h2. Delegate interface
 
