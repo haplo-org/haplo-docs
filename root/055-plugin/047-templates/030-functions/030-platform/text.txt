@@ -15,3 +15,46 @@ This template function renders XML document text as simple HTML, without widgets
 h2. std:text:document:widgets(document)
 
 This template function renders XML document text as HTML including widgets, requiring display within a standard layout to render properly.
+
+
+h2. std:text:list:readable(list style)
+
+Renders a list of values as text, using the same method as @std:text:object-value()@, in a nicely human readable manner.
+
+@style@ must be @"en:default"@ to render it in a default list style for the English language.
+
+
+h2. std:text:object-value(value)
+
+Renders any JavaScript value, or a data object that can be stored as an attribute in a [node:plugin/interface/store-object], as a simple text value.
+
+In particular, if the value is a [node:plugin/interface/store-object] or a [node:plugin/interface/ref], the title of the object is rendered if the current user has permission to read it. This is particularly useful in cutting down the amount of code in a controller, because there is no need to conditionally load the object.
+
+
+h3. Example
+
+Given a view with @researcher@ and @supervisor@ properties, each of which are a @Ref@ and the @supervisor@ is optional, this template renders a table.
+
+<pre>language=hsvt
+<table>
+  <tr>
+    <th> "Researcher" </th>
+    <td> std:text:object-value(researcher) </td>
+  <tr>
+  if(supervisor) {
+    <tr>
+      <th> "Supervisor" </th>
+      <td> std:text:object-value(supervisor) </td>
+    <tr>
+  }
+</pre>
+
+The code to generate the view is simple, as it does not need to load the objects to find their titles.
+
+<pre>language=javascript
+let object = O.ref(...).load();
+let view = {
+    researcher: object.first(A.Researcher),
+    supervisor: object.first(A.Supervisor) // might be null
+}
+</pre>

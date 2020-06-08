@@ -44,6 +44,10 @@ h3(function). loadVersionAtTime(date)
 Load the version of the referred object which was the current version at the specified @date@, returning a [node:plugin/interface/store-object].
 
 
+h3(function). loadObjectTitleMaybe()
+
+Returns the title of the referred object as a @String@. If the @Ref@ refers to an object which doesn't exist, or the current user does not have permission to read, @null@ is returned.
+
 
 h3(function). deleteObject()
 

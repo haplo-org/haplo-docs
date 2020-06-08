@@ -93,6 +93,15 @@ Output all the arguments. No whitespace is output between them.
 Use to override the automatic space separated values when using lists as attribute values, and building strings as arguments to template functions.
 
 
+h2. ifContent() & markContent()
+
+The anonymous block of @ifContent()@ is rendered. Unless there is a @markContent()@ block within it which has non-empty content, the entire block is efficiently rolled back and does not appear in the rendered output. @ifContent()@ blocks can be nested.
+
+These functions are typically used to avoid cumbersome @if()@ statements within a template.
+
+See [node:plugin/templates/functions/language/if-content:the full documentation] for these functions.
+
+
 h2. scriptTag(...)
 
 Pseudo function for generating @<script>@ tags. The arguments are a URL, as @url()@, and the resulting URL is output as the @src@ attribute in @<script src="..."></script>@ tag pair.

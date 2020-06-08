@@ -1,0 +1,53 @@
+title: ifContent()
+long_title: ifContent() & markContent()
+--
+
+Sometimes rendering of part of a template is dependent on there being some content to display within it, but writing the conditional statements is non-trivial.
+
+A pair of template functions, @ifContent()@ and @markContent()@ are provided to make these templates more concise and remove logic from the controller. In particular, it is hard to determine whether a deferred render will actually render anything without rendering it, and these functions make it considerably easier to surround them with containing HTML elements.
+
+@ifContent()@ contains the entire section in an anonymous block. Unless there is at least one @markContent()@ where the anonymous block renders at least one character (whether whitespace or not), the entire section is efficiently removed. 
+
+There can be multiple @markContent()@ blocks within a single @ifContent()@ block, and @ifContent()@ may be nested.
+
+It is important to note that the anonymous block is actually rendered, but the rendered HTML is thrown away if there is no non-empty marked content. As usual, rendering the views should not have any side effects.
+
+
+h2. Example
+
+Given a view with a @name@, and two deferred renders, @description@ and @location@, this template will render the heading and enclosing @<div>@ elements if and only if at least one of the deferred renders have content.
+
+<pre>language=hsvt
+ifContent() {
+  <div class="event-information">
+    <h1> name </h1>
+    markContent() {
+      ifContent() {
+        <div class="description">
+          <div> "Description" </div>
+          markContent() {
+            render(description)
+          }
+        </div>
+      }
+    }
+    markContent() {
+      ifContent() {
+        <div class="location">
+          <div> "Location" </div>
+          markContent() {
+            render(location)
+          }
+        </div>
+      }
+    }
+  </div>
+}
+</pre>
+
+The @ifContent()@ function renders a container and a heading if and only if there is at least one deferred render which renders content.
+
+There are multiple @markContent()@ functions within the to level @ifContent()@. One or both of those must render something for the top level container to be included in the rendered HTML.
+
+Within the top level @ifContent()@ block, there are two more independent nested @ifContent()@ blocks, which use @ifContent()@ and @markContent()@ pairs around the deferred renders to control rendering them in containers. If the deferred renders render something, the containing @<div>@ elements and text will be output too.
+
