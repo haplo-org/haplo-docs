@@ -23,6 +23,8 @@ The template is rendered with a view containing the properties:
 |@view@|The @view@ from the specification.|
 |@context@|The current context within the document (ie root of the document, current section, or element in repeating section).|
 |@externalData@|The external data that was set with the [node:plugin/interface/form-instance#externalData] function on the [node:plugin/interface/form-instance].|
+|@formPlugin@|The [node:plugin/interface/plugin] which defined the form, useful if the @plugin@ property is set.|
+|@isRenderingForm@|@true@ if the template is being used to render the element as a form, @false@ if it's rendering as a document.|
 
 
 h2. Example
