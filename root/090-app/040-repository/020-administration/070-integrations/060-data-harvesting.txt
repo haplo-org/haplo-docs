@@ -6,3 +6,65 @@ Haplo integrates with industry standard systems to enable researchers to harvest
 When harvested items are matched to an existing researcher profile, the system prompts the user to confirm or disclaim them.
 
 To speed up metadata quality checks, repository editors are given clear notices in the user interface, indicating that the record was harvested from an external source, which external source the record was harvested from, and any fields that have been updated within Haplo if this is an update to an existing record.
+
+h2. Harvest claim framework
+
+Once an output has been harvested from an external source Haplo attempts to match it to an existing output in the system, alongside matching any authors. If no authors can be matched the task will be delegated to the repository editors.
+
+Once matched, the author(s) will get a task prompting them to view the output and either claim or disclaim this as their work. This task takes them to the screen shown below which displays tabs for each alternative version of the work from different sources (if they have been matched together). 
+
+These tabs are a convenient method to navigate between different versions of the output, however the "Authoritative version" is the version of record in Haplo and is the version whose metadata and files will be returned to requests to the Haplo repository (e.g. in the public repository or metadata harvesting services such as OAI-PMH).
+
+// image of harvest task
+
+There are two possible actions to be taken by an author from this task and that is to _Claim_ or _Disclaim_ the output.
+
+h3. Disclaiming
+
+Disclaiming is for when an output has been incorrectly matched to an author, this removes them as a linked author and if they were the only linked author deletes the output from the repository and prevents it from being harvested again.
+
+h3. Claiming
+
+Claiming is for when an output has been correctly matched to an author and asks for some more information from the author in order to act on the harvest.
+
+The user will be guided through a series of forms in order to claim the output.
+
+h4. 1. Author matching
+
+// image
+
+This form displays all authors in the citation string, the user they are currently linked to (if any) and the option to amend this link. The user claiming the output should fill this in as correctly and fully as they can.
+
+If an external researcher has been linked as and author but this is amended to an internal researcher the framework may move any identifiers to the amended researcher in order to correct future matching. Amended authors will also be amended as researchers on any projects linked to the output. *Note: this will only occur if the researcher choses to use the values from the harvested output (see step 3).*
+
+h4. 2. Output match confirmation/manual matching
+
+The next action will then depend on whether the system was able to find a match between the harvested output and an existing output in the repository.
+
+* If a match has been found then the user will be asked to confirm that it is correct, as shown below.
+** // image of confirming match
+
+* If a match cannot be found, or the user rejects the matched output as correct, the user will be asked to either search for a correct match or move on if there is no matching output in the repository, as shown below.
+** // image of manual search
+
+h4. 3. Attribute selection
+
+Note: If there is no matched object (automatic or manual) this stage will be skipped and the harvested object will be used to create an authoritative version for the repository.
+
+Finally the author will be asked to confirm which output they wish to use the values from, either the existing authoritative record or the harvested object. This screen shows the attributes which differ between the two versions and would be changed if the user chooses to update the Authoritative record from the harvested output.
+
+// image
+
+The user has two choices, to either keep the values on the authoritative record or use the values from the harvested record. Each action and it's effect are outlined below.
+
+Authoritative record
+* The authoritative record remains unchanged and the harvested object is displayed for reference.
+
+Harvested record
+* The authoritative record has all of it's attributes updated to the values on the harvested record.
+* Any identifiers from external researchers that were matched to internal researchers are moved over to the internal researcher and saved. If the external researcher isn't linked to anything else in the system they are then deleted.
+* Any linked projects have their researchers amended in the same way as authors are on the output.
+
+<hr>
+
+Once an author has claimed an output the task is removed for all other authors that were matched (as the claiming author should have confirmed or amended their link to the output). This also then allows the author to submit the authoritative record for publication to the repository (if it hasn't already been published).
