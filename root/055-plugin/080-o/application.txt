@@ -35,4 +35,6 @@ h3(property). O.application.plugins
 
 Array of JavaScript plugin names, in load order. You should probably never use this, as there are perfectly good ways of [node:plugin/misc/inter-plugin-comms:communicating between plugins].
 
+If you really do have to use this, you may find that [node:plugin/o/utility#O_getPluginInstance] is useful to obtain the [node:plugin/interface/plugin] object.
+
 Note that this list will not include _trusted plugins_ bundled in the platform, as they are not implemented in JavaScript.

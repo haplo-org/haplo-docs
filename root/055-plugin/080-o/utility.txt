@@ -39,3 +39,10 @@ Replace occurrences of @{property}@ within @string@ with the corresponding prope
 </pre>
 
 This is often useful for translating [node:plugin/i18n/text-in-plugin#Interpolations:text in plugins].
+
+
+h3(function). O.getPluginInstance(pluginName)
+
+Returns the [node:plugin/interface/plugin] object for the plugin named @pluginName@. Throws an exception if the plugin is not installed.
+
+You should *never need to use this function*, unless you're writing a very special plugin. Use the platform's [node:plugin/misc/inter-plugin-comms:inter-plugin communication] APIs unless you know you have a very good reason why they won't work.
