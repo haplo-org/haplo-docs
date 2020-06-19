@@ -1,0 +1,25 @@
+title: Files
+--
+
+The Files REST API provides endpoints to access [node:/plugin/interface/file:files] in Haplo applications.
+
+h2. Enabling the Files API
+
+Install the @haplo_api_file_v0@ plugin to enable access to the Files API.
+
+
+h2. Permissions
+
+A user can only access the API if they are in the "API v0: File" group (API code @haplo:group:api-v0:file-api@). In general, you should create an API key for the service user defined by the @haplo_api_file_v0@ plugin:
+
+CLICK_PATH TOOLS > System management > Users > SRV > API v0: File > New API key...
+
+Set the request path to @/api/v0-file/@ for any API key you create.
+
+
+h2. Endpoints
+
+|*Endpoint*|*Method*|*Action*|
+|@/api/v0-file/metadata@|GET|[node:rest-api/files/metadata]|
+
+See [node:rest-api/introduction] for how to form a request URL.

@@ -13,6 +13,7 @@ This style of API is used for APIs managing different types of data within Haplo
 
 |[node:rest-api/objects]|@haplo_api_object_v0@|
 |[node:rest-api/users]|@haplo_api_user_v0@|
+|[node:rest-api/files]|@haplo_api_file_v0@|
 
 h3. Response
 
