@@ -1,0 +1,44 @@
+title: Tags
+--
+
+API_ENDPOINT /api/v0-file/tags/[digest] (GET & POST)
+
+This endpoint responds with the file tags for the file identified by the @digest@. When a JSON document is POSTed, the tags are updated using [node:plugin/interface/file#changeTags].
+
+An optional @fileSize@ argument is accepted for additional confirmation of file identity.
+
+|*Kind*|*Meaning*|*HTTP status*|
+|@haplo:api-v0:file:tags@| The request was successful and the file tags are returned | 200 |
+
+When updating tags with a POST request, the request body is a JSON document containing a single @tags@ property, as a dictionary of key value pairs to update the file tags.
+
+h3. Example response
+
+The request:
+
+<pre style="white-space:nowrap">
+POST /api/v0-file/tags/0f324aae890c8293ab55715dc98ccf32fa7b428b1cbdcf71e50f94f0c4f1c061
+</pre>
+
+with body:
+
+<pre>language=json
+{
+  tags: {
+    "example:preliminary": null
+    "example:reviewed": "t"
+  }
+}
+</pre>
+
+may return the response:
+
+<pre>language=json
+{
+  "success": true,
+  "kind": "haplo:api-v0:file:tags",
+  "tags": {
+    "example:reviewed": "t"
+  }
+}
+</pre>

@@ -3,7 +3,7 @@ title: Metadata
 
 API_ENDPOINT /api/v0-file/metadata/[digest] (GET only)
 
-This endpoint responds with the file's metadata and a URL to download the file.
+This endpoint responds with the file metadata and a URL to download the file.
 
 Haplo uses the file's cryptographic digest to identify the file. The optional @fileSize@ parameter allows the file size to be specified as additional confirmation of the file identity.
 
@@ -12,7 +12,7 @@ h2. Response
 |*Kind*|*Meaning*|*HTTP status*|
 |@haplo:api-v0:file:metadata@| The request was successful and the file metadata is returned | 200 |
 
-The response contains the file metadata:
+The response contains the @file@ property with the file metadata:
 
 * digest
 * fileSize
@@ -22,11 +22,12 @@ The response contains the file metadata:
 * properties
 * tags
 
-See the [node:/plugin/interface/file] interface for the meaning of these properties.
+See the [node:plugin/interface/file] interface for the meaning of these properties.
 
-The response also contains a URL to download the file:
+The response also contains a @download@ property with information on how to download the file:
 
-* downloadUrl
+* url
+* validUntil
 
 The download URL is signed, does not need authentication, and is valid for a few hours. Treat the URL as opaque and do not attempt to parse it.
 
@@ -36,7 +37,7 @@ h3. Example response
 The request:
 
 <pre style="white-space:nowrap">
-/api/v0-file/metadata/0f324aae890c8293ab55715dc98ccf32fa7b428b1cbdcf71e50f94f0c4f1c061?fileSize=58382
+GET /api/v0-file/metadata/0f324aae890c8293ab55715dc98ccf32fa7b428b1cbdcf71e50f94f0c4f1c061?fileSize=58382
 </pre>
 
 may return the response:
@@ -66,8 +67,11 @@ may return the response:
     },
     "tags": {
       "example:reviewed": "t"
-    },
-    "downloadUrl": "https://app.example.org/file/0f324aae890c8293ab55715dc98ccf32fa7b428b..."
+    }
+  },
+  "download": {
+    "url": "https://dev8a21.infomanaged.co.uk/file/e91b5e986699e85157b0de35e6b72917f73...",
+    "validUntil": "2020-06-19T10:40:03.815Z"
   }
 }
 </pre>

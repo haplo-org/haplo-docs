@@ -21,5 +21,6 @@ h2. Endpoints
 
 |*Endpoint*|*Method*|*Action*|
 |@/api/v0-file/metadata@|GET|[node:rest-api/files/metadata]|
+|@/api/v0-file/tags@|GET & POST|[node:rest-api/files/tags]|
 
 See [node:rest-api/introduction] for how to form a request URL.
