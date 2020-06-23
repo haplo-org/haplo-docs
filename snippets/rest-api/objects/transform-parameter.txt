@@ -1,3 +1,0 @@
-The request may include a @transform@ parameter, which specifies a comma separated list of transforms to be applied to the object.
-
-|@transform=restrict@|Apply [node:plugin/schema/restrictions] to the object before serialising it.|

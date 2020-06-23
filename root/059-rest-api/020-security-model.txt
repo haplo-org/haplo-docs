@@ -1,0 +1,12 @@
+title: Security model
+long_title: REST API Security model
+--
+
+The REST APIs have a simple security model where membership of a group permits a service user read/write access to everything in the application.
+
+Each of the APIs has an associated group, for example, the [node:rest-api/objects] API creates the @haplo:group:api-v0:object-api@ group. If a user is a member of that group, they may use all the endpoints provided by that API for all the objects in the application.
+
+A service user is also created by each API plugin when it is installed. You should create API keys for this service user, and set the request path to the API's root as documented for each API.
+
+You can additionally create your own service users and add them to more than one of the REST API groups. When creating a service user, use the @/api/v0-@ request path to restrict the API key to all REST APIs.
+

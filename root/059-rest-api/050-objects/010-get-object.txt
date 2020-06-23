@@ -11,8 +11,6 @@ In addition to the ref of the store object, the URL must contain a @sources@ par
 
 [SNIPPET rest-api/objects/sources-parameter]
 
-[SNIPPET rest-api/objects/transform-parameter]
-
 
 h2. Response
 

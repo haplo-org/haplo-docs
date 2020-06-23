@@ -20,8 +20,6 @@ If @results=objects@ is specified, the request must contain a @sources@ paramete
 
 [SNIPPET rest-api/objects/sources-parameter]
 
-[SNIPPET rest-api/objects/transform-parameter]
-
 
 h2. Response
 
