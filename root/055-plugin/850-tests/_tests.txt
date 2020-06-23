@@ -48,6 +48,11 @@ To check that a result is correct, use an [node:plugin/tests/assertions:assert s
 You can use [node:plugin/standard-interfaces/console:@console.log()@] in your tests while you're writing them. To see the output, keep the Plugin Tool running the @develop@ command in another window.
 
 
+h2. Test schema
+
+If you need to apply some extra schema to the application to run the tests, include a @test/test.schema@ file. This declares schema in the same way as a [node:plugin/schema/requirements-schema] file.
+
+
 h2. Setup and teardown scripts
 
 If the special script @test/_setup.js@ exists, it will always be run once per test run, before any other test is run. If @test/_teardown.js@ exists, it'll be run after all other tests have run.

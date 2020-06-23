@@ -25,6 +25,7 @@ Plugins are a collection of JavaScript code, templates, automated tests, and oth
                 \- en.form.json
            \- global
       \- test
+           \- test.schema
            \- test_feature1.js
       \- global.js (optional)
 </pre>
@@ -106,6 +107,8 @@ i18n is short for 'internationalisation', which is a very long word.
 h2. test
 
 [node:plugin/tests:Tests] live in the @test@ directory, as one JavaScript file per test. These are run on the server by the [node:dev/tool/plugin:Plugin Tool].
+
+The @test/test.schema@ is applied before the tests are run.
 
 
 h2. global.js

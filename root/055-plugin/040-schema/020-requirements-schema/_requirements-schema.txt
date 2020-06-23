@@ -17,6 +17,11 @@ A schema object may be declared as @OPTIONAL@, but you should be [node:plugin/sc
 You can define schema objects in any order in your file.
 
 
+h2. Test schema
+
+[node:plugin/tests:Tests] can apply additional schema in the @test/test.schema@ file.
+
+
 h2. Requirements generator tool
 
 It's easiest to create the schema using the system management user interface, then use the built-in schema requirements generator to write your initial requirements.
