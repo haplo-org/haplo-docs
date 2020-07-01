@@ -34,6 +34,7 @@ SERVER=server.example.ac.uk
 curl -X GET --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/fetch
 </pre>
 
+To read all messages in a queue, repeat the requests to the poll and mark endpoints until the @unreadCount@ is zero.
 
 h2. Mark messages as read
 
