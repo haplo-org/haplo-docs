@@ -22,7 +22,7 @@ To authenticate the request, use HTTP Basic authentication with the username @ha
 
 h2. Request unread messages
 
-To fetch the 16 oldest unread message, you should make a simple authenticated GET request to the Poll URL. Here's an example script using a @curl@ command:
+To fetch a small number of the oldest unread messages, you should make a simple authenticated GET request to the Poll URL. Here's an example script using a @curl@ command:
 
 <pre>
 #!/bin/sh
@@ -53,10 +53,13 @@ SERVER=server.example.ac.uk
 curl -X POST --data-urlencode "token=MSwy8w099=" --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/mark
 </pre>
 
-The response to the Mark request will be:
+The response to the Mark request will be JSON with the structure below:
 
-<pre>
-Marked: <number marked>, Unread: <remaining unread messages count>
+<pre>language=json
+{
+    "markedCount":2,
+    "unreadCount":1
+}
 </pre>
 
 h2. Configuration for different environments
