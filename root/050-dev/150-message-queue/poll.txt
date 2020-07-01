@@ -20,9 +20,9 @@ The requests are authenticated with an API key. Click _Create API key..._ on the
 To authenticate the request, use HTTP Basic authentication with the username @haplo@ and the API key as the password.
 
 
-h2. Request the unread messages
+h2. Request unread messages
 
-To fetch the unread message, you should make a simple authenticated GET request to the Poll URL. Here's an example script using a @curl@ command:
+To fetch a small number of the oldest unread messages, you should make a simple authenticated GET request to the Poll URL. Here's an example script using a @curl@ command:
 
 <pre>
 #!/bin/sh
@@ -34,10 +34,11 @@ SERVER=server.example.ac.uk
 curl -X GET --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/fetch
 </pre>
 
+To read all messages in a queue, repeat the requests to the poll and mark endpoints until the @unreadCount@ is zero.
 
 h2. Mark messages as read
 
-The [node:dev/message-queue/default-format:response] to the Poll URL will include a @token@. This must be posted back to the server to mark the messages as read, so they will not be included the next time the application is polled.
+The [node:dev/message-queue/default-format:response] to the Poll URL will include a @token@. This must be posted back to the server to mark the messages received as read, so they will not be included the next time the application is polled.
 
 The token is opaque and should not be interpreted by your integration code, as its format may change at any time.
 
@@ -53,6 +54,14 @@ SERVER=server.example.ac.uk
 curl -X POST --data-urlencode "token=MSwy8w099=" --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/mark
 </pre>
 
+The response to the Mark request will be JSON with the structure below:
+
+<pre>language=json
+{
+    "markedCount":2,
+    "unreadCount":1
+}
+</pre>
 
 h2. Configuration for different environments
 
