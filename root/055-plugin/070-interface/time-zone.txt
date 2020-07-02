@@ -1,0 +1,29 @@
+title: TimeZone
+long_title: TimeZone interface
+link_as: keyword
+--
+
+A JavaScript object implementing the @TimeZone@ interface provides information about a time zone.
+
+h2. Construction
+
+Use [node:plugin/o/constructor/time-zone], or call [node:plugin/interface/security-principal#getTimeZone] on a [node:plugin/interface/security-principal].
+
+
+h2. Interface
+
+h3(property). id
+
+The time zone id, for example, @"Europe/Londond"@.
+
+
+h3(property). displayName
+
+The name of the time zone suitable for display to the user.
+
+
+h3(function). getOffset(date)
+
+Returns the offset of the time zone, in milliseconds, on the given @date@.
+
+If the optional @date@ argument is not used or is null, this function will return the offset at the current time.

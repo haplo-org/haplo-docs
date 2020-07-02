@@ -1,0 +1,13 @@
+title: O.timeZone()
+link_as: keyword
+--
+
+Constructs a object implementing the [node:plugin/interface/time-zone] interface.
+
+To find the application's default timezone, use @O.group(GROUP["std:group:everyone"]).getTimeZone()@.
+
+
+h3(function). O.timeZone(name)
+
+Return a [node:plugin/interface/time-zone] object for the given time zone name, for example, @"Europe/London"@.
+

@@ -126,6 +126,11 @@ h3(function). setLocaleId(localeId)
 Sets the user's locale id to the given @localeId@. This may not have any effect on a logged in session. Use [node:plugin/o/locale#O_setSessionLocaleId] if the current session needs to change the locale to match.
 
 
+h3(function). getTimeZone()
+
+Return the [node:plugin/interface/time-zone] for this user or group.
+
+
 h2. Interface (users)
 
 The following interface is valid for @SecurityPrincipal@ objects representing users.
