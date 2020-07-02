@@ -1,7 +1,7 @@
-title: Publications router
+title: Publications Router
 --
 
-Haplo repository supports integration with Jisc's Publication Router, there's a minimal amount of set up and once the repository is configured to received notifications all claiming runs through the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework].
+Haplo repository supports integration with Publication Router, there's a minimal amount of set up and once the repository is configured to received notifications all claiming runs through the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework].
 
 h2. Configuration
 
@@ -9,7 +9,7 @@ The Haplo integration with Publications Router is designed to be as simple as po
 
 h3. 1. Register for Publications Router
 
-In order to use the integration you will need an institution account with "Jisc's Publications Router":https://pubrouter.jisc.ac.uk/. Once the account is created you should set the types of notifications you want to receive to your repository from different sources, this can be done from your Publications Router account.
+In order to use the integration you will need an institution account with "Publications Router":https://pubrouter.jisc.ac.uk/. Once the account is created you should set the types of notifications you want to receive to your repository from different sources, this can be done from your Publications Router account.
 
 h3. 2. Configure the repository
 
@@ -23,12 +23,10 @@ To the configuration data add:
 
 Where @<client_account_id>@ is substituted for the client account id as shown in your Publications Router account.
 
-h3. 3. Run the initial import
+h3. 3. Run an initial import
 
-In order to know to start collecting notifications the integration requires an initial import. This is done by navigating to the following link @"/do/hres-repo-jisc-pub-router/import?since=YYYY-MM-DD"@ (where @YYYY-MM-DD@ is replaced with the date from which you want the initial import to start) and selecting import.
+In order to know to start collecting notifications the integration requires an initial import. This will import outputs already in your Publications Router account, and set up the link from Haplo for ongoing harvesting.
 
-This will import all notifications from the provided date up to now and then the integration will automatically harvest on a daily basis. There is no requirement for when this import should be from, only that it must be the *current date or earlier*.
+This is done by navigating to the following link @"/do/hres-repo-jisc-pub-router/import?since=YYYY-MM-DD"@ (where @YYYY-MM-DD@ is the date from which you want the initial import to start) and selecting import.
 
-E.g. if you want an initial import starting from the 1st June 2020 you would navigate to: @"/do/hres-repo-jisc-pub-router/import?since=2020-06-01"@.
-
-Once the initial import has been run the system will automatically collect notifications daily, depositing all items into the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework] for matching to existing items and claiming/disclaiming by the authors.
+This will import all outputs forwarded to your Publications Router account from the provided date up to now. Once the initial import has been run the system will automatically collect notifications daily, depositing all items into the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework], where they will be matched to existing repository records and can be claimed/disclaimed by the authors.
