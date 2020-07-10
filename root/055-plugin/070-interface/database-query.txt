@@ -89,6 +89,8 @@ Set the order to an order which is consistent across queries, or if other @order
 
 It's faster to not specify any order at all, if you don't mind what the order is.
 
+If a query uses stableOrder() and order(), the stableOrder() method has no effect, regardless of the order in which the methods are called.
+
 
 h3(function). limit(count)
 
