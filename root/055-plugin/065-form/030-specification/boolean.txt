@@ -13,6 +13,7 @@ h2. Properties
 |@falseLabel@|(optional) Label for the @false@ value. Defaults to @"No"@.|
 |@style@|(optional) Style of element. Defaults to @"radio"@.|
 |@notConfirmedMessage@|(optional) For @"confirm"@ style elements, the error message to display when the box is not checked.|
+|@showNextElementWhen@|(optional) If set to @true@ or @false@, controls the visibility of the next element in the form according to the given value.|
 
 All the [node:plugin/form/specification#Common_properties:common properties] are supported.
 
