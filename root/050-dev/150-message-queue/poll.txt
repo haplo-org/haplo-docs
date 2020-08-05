@@ -34,6 +34,8 @@ SERVER=server.example.ac.uk
 curl -X GET --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/fetch
 </pre>
 
+*Important:* Replace @QUEUE@ in the URL with the name of the queue. You can find the exact URL to use from queue information page.
+
 To read all messages in a queue, repeat the requests to the poll and mark endpoints until the @unreadCount@ is zero.
 
 h2. Mark messages as read
@@ -53,6 +55,8 @@ SERVER=server.example.ac.uk
 
 curl -X POST --data-urlencode "token=MSwy8w099=" --user haplo:${API_KEY} https://${SERVER}/api/haplo-integration-messages/poll/QUEUE/mark
 </pre>
+
+*Important:* Replace @QUEUE@ in the URL with the name of the queue. You can find the exact URL to use from queue information page.
 
 The response to the Mark request will be JSON with the structure below:
 

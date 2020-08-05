@@ -22,3 +22,20 @@ h2. Messages
 There are various [node:dev/global-observation/message:messages] that are sent by the observer. Other plugins may add additional messages to the queue, so a message queue consumer must filter out any types of messages that it does not understand.
 
 The majority of messages will include an Haplo object in the standard [node:dev/serialisation:JSON serialisation format], and include all message sources available to the application. This will include information on workflows and forms.
+
+
+h2. Enabling the Global Observer
+
+By default, the Global Observer is disabled, so initial creation of objects in the application and data loading doesn't result in huge amounts of messages in the queue.
+
+To enable it, edit the configuration data for your application,
+
+CLICK_PATH TOOLS > System management > Configuration > Configuration data
+
+and set the JSON value to include:
+
+<pre>
+  "haplo_integration_global_observation:enabled": true
+</pre>
+
+Set this value to @false@ to disable the Global Observer. It can be disabled and reenabled at any time, for example, during batch imports of data.
