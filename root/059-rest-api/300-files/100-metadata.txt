@@ -70,7 +70,7 @@ may return the response:
     }
   },
   "download": {
-    "url": "https://dev8a21.infomanaged.co.uk/file/e91b5e986699e85157b0de35e6b72917f73...",
+    "url": "https://app.example.org/file/e91b5e986699e85157b0de35e6b72917f73...",
     "validUntil": "2020-06-19T10:40:03.815Z"
   }
 }
