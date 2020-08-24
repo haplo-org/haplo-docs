@@ -1,0 +1,100 @@
+title: Object Widget
+--
+
+Provides a set of methods to the publication in order to manipulate [node:plugin/interface/store-object:Store Objects].
+
+h2. Creation
+
+The widget is created for a specific object which can then be manipulated as required by the publication, the constructor returns itself so is suitable for chaining.
+
+<pre>language=javascript
+let objectWidget = P.webPublication.widget.object(object);
+</pre>
+
+h2. Attribute display manipulation
+
+This widget provides methods for limiting the attributes to be displayed on the publication beyond any restrictions in schema. This is beneficial as it ensures that restrictions and permissions are enforced while allowing further control over which values are published. 
+
+The widget also allows the publication to __only__ show certain fields - which, for example, requires no changes to the publication permissions if a new attribute is added to schema.
+
+*These methods are for altering display and should not be used in place of correct permission enforcement and attribute restriction.*
+
+h3(function). withoutAttributes(attrs)
+
+Used to supply an object widget with attributes that should not be displayed. Will display all attributes on a restricted copy of an object except those listed in @attrs@.
+
+Arguments:
+
+|@attrs@|Array of attribute API codes or local schema references to the attributes that should be hidden from the object|
+
+Example usage:
+
+<pre>language=javascript
+E.render({
+    object: P.webPublication.widget.object(apple).withoutAttributes([A.Type, A.FarmLocation])
+}, 'fruit');
+</pre>
+
+h3(function). onlyAttributes(attrs)
+
+Inverse of @withoutAttributes@, will only display the attributes listed in @attrs@ and will hide everything else.
+
+Arguments:
+
+|@attrs@|Array of attribute API codes or local schema references to the attributes that should be displayed on the object|
+
+Example usage:
+
+<pre>language=javascript
+E.render({
+    object: P.webPublication.widget.object(apple).onlyAttributes([A.Colour, A.Title])
+}, 'fruit');
+</pre>
+
+h2. Templating
+
+The object widget has getter functions defined for use in [node:plugin/templates/hsvt-language] templates.
+
+h3(property). attributes
+
+Returns the list of all attributes to be displayed for a given object in an array to be iterated over.
+
+Example usage:
+
+<pre>language=xml
+each(attributes) {
+    <p>attributeName ": " yield:value()</p>
+}
+</pre>
+
+h3(property). first
+
+Returns a deferredRender for the first attribute value for the attribute provided. The attribute is selected by using the local plugin schema name for the attribute.
+
+Example usage:
+
+<pre>language=xml
+    render(object.first.Type)
+</pre>
+
+Where requirements.schema contains
+
+<pre>
+attribute dc:attribute:type as Type
+</pre>
+
+h3(property). every
+
+Returns a deferredRender for every attribute value for the attribute provided, works in the same way as @first@ above.
+
+<pre>language=xml
+    render(object.every.Project)
+</pre>
+
+h3(property). asTable
+
+Returns a deferredRender of the object in table form with the attribute name and qualifier in a row with corresponding values, useful for displaying objects with the possibility of many nested values.
+
+<pre>language=xml
+    render(object.asTable)
+</pre>

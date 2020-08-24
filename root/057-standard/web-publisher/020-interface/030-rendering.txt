@@ -1,11 +1,13 @@
 title: Rendering
 --
 
-There are a few methods to change the visual appearance of a publication made up of common features without having to create an entirely new publication.
+There are various methods to change the visual appearance of a publication made up of common features without having to create an entirely new publication. These should all be called on the local @Publication@ as registered in the [node:standard/web-publisher/publications] or @publication@ as provided by a feature or via the @context@ object.
 
 h3(function). registerReplaceableTemplate(code, templateName)
 
-Registers a replaceable template in the publication, this is a relation from an API code to a template, allowing for templates to be defined in a single place and used across the publication, reducing duplication.
+Registers a replaceable template in the publication.
+
+This is a relation from an API code to a template, allowing for templates to be defined in a single place and used across the publication, reducing duplication and improving consistency. This allows you to set up default displays for a layout (e.g. pageParts, common UI elements) and then modify the display with application specific customisations.
 
 Arguments:
 
@@ -15,15 +17,17 @@ Arguments:
 Example usage: 
 
 <pre>language=javascript
-P.webPublication.registerReplaceableTemplate(
-    "example:replaceable-templates:ui:button",
-    "ui/button"
-);
+P.webPublication.registerReplaceableTemplate("example:replaceable-templates:ui:button", "ui/button");
 </pre>
 
 h3(function). replaceTemplate(code, templateName)
 
-Replaces the template for the given @code@ in the publication. It is worth noting that the replaceTemplate will be called from the implementing plugin for the publication and not the plugin in which the template is replaced.
+Replaces the template for the given @code@ in the publication.
+
+Key points:
+
+* @replaceTemplate()@ will be called from the implementing plugin for the publication and not the plugin in which the template is replaced. Templates, therefore, are not suitable for replacement by usage of a feature which is defined outside of the publication registering plugin.
+* The same view is passed to a template that has been replaced so the view paths in the replaced template will need to match the original.
 
 Arguments:
 
@@ -33,27 +37,24 @@ Arguments:
 Example usage: 
 
 <pre>language=javascript
-Publication.replaceTemplate(
-    "example:replaceable-templates:ui:button",
-    "replaceable/ui/super-button"
-);
+Publication.replaceTemplate("example:replaceable-templates:ui:button", "replaceable/ui/super-button");
 </pre>
 
 h3(function). getReplaceableTemplate(code)
 
-Returns the template for the given @code@.
+Returns the template for the given @code@. Useful for rendering common functionality (e.g. pageParts, common UI elements) with a replaceable template, which makes it easier to modify the visual appearance without altering the underlying functionality.
 
 Arguments:
 
 |@code@|API code style code for the template|
 
-Example usage:
+Example usage to allow the searchResultRendererForTypes to have it's template replaced with an application specific version without the need for any functionality changes:
 
 <pre>language=javascript
 publication.searchResultRendererForTypes(
     publication.DEFAULT,
     function(object, context) {
-        var template = context.publication.getReplaceableTemplate("hres:repo-publication-common:search-result:default");
+        var template = context.publication.getReplaceableTemplate("example:publication-common:search-result:default");
         return template.deferredRender({object:object});
     }
 );

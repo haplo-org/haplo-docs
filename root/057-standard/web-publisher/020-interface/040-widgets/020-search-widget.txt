@@ -1,0 +1,82 @@
+title: Search Widget
+--
+
+Used to create and display search forms and the subsequent results. This should always be used for search functionality in a publication due to the efficiency of the underlying implementation and consistency of display.
+
+h2. Creation
+
+The search widget is defined with @E@ as the [node:plugin/interface/exchange] object and a @spec@. The @spec@ can have the following properties:
+
+|@formOnly@|Denotes if the search widget is just for to be used for rendering the form and the search will be handled elsewhere|
+|@alwaysSearch@|Always runs a query even if the search bar is empty|
+|@hideRelevanceSort@|Used to hide the relevance sort order for a search|
+|@pageSize@|The number of results to display on a single page, defaults to 20.|
+|@modifyQuery@|A @function(query)@ to modify the query prior to it's execution|
+
+Example usage:
+
+<pre>language=javascript
+P.webPublication.widget.search(E, {
+    alwaysSearch: true,
+    hideRelevanceSort: true,
+    hideResultsCount: true,
+    pageSize: 40,
+    modifyQuery(query) {
+        query.
+            // Restrict search to specifically labelled public items
+            anyLabel([Label.PublicItem]);
+    }
+});
+</pre>
+
+h2. Templating
+
+h3(property). form
+
+deferredRender for the default search bar template, that is the search bar and submit button. This ensures that the form is consistent in display and implementation across publications. Often used in conjunction with @results@ (below) in order to create a search page.
+
+h3(property). results
+
+deferredRender for the page around the search results, displaying the number of results, filters and next/prev arrows. The actual result display is rendered based on the [node:standard/web-publisher/interface:@searchResultRendererForTypes@]
+
+Example search page template:
+
+<pre>language=xml
+
+pageTitle("Search")
+
+std:web-publisher:block("pageheaderSubtitle") {
+  "Explore our publication"
+}
+
+std:web-publisher:block("pageheaderExtra") {
+  <div class="haplo-search-form">
+    render(search.form)
+  </div>
+}
+
+std:web-publisher:block("below") {
+  <div class="search-results">
+      render(search.results)
+  </div>
+}
+</pre>
+
+h3(property). ui
+
+deferredRender for displaying the form and results together, useful as a default implementation however rendering @form@ and @results@ separately allows for more flexibility in display.
+
+Example search page template using @ui@:
+
+<pre>language=xml
+
+pageTitle("Search")
+
+std:web-publisher:block("pageheaderSubtitle") {
+  "Explore our internationally renowned publication"
+}
+
+std:web-publisher:block("below") {
+  render(search.ui)
+}
+</pre>

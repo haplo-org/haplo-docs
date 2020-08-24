@@ -1,16 +1,34 @@
 title: Page Parts
 --
 
+Page parts are an important part of the web publisher, they allow sections of common functionality to be placed on a page. The area they are placed in can be set directly by [node:standard/web-publisher/template-function:template functions] or more generally by categories. A category is a string in the form of an API code which can be used to place functionality on similar pages, much like in [node:standard/action-panel/element:action panel elements]
+
 h2. Creation
+
+Page parts must be created using the feature as provided by @std:web-publisher@ (@P.webPublication@). All functions other than @pagePart()@ can also be used on the feature however it is preferable to use them locally on the @Publication@ as registered in the [node:standard/web-publisher/publications] to prevent unintentional interactions between publications.
 
 h3(function). pagePart(pagePart)
 
-@pagePart@ is an object which has 4 properties:
+Creates a page part which can be used by any publication which has the providing plugin in it's dependencies. If a category is provided this page part will be added to that category by default.
 
-|@name@|API code style name|
-|@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint|
+|@name@|API code style name, e.g. "example:page-part:call-to-action"|
+|@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint, e.g. "example:fruit:sidebar"|
 |@sort@|Sort value for ordering parts within a category|
 |@deferredRender@|A @function(E, context, options)@ which needs to return the deferred render object for the display of the page part|
+
+Example usage below (when combined with the example layout in [node:standard/web-publisher/publications:here]) would render this page part in the sidebar of any page which has @context.hint.objectKind@ set to "fruit".
+
+<pre>language=javascript
+var BASE_URL = O.application.config["example:publication_common:base_url_for_call_to_action"];
+P.webPublication.pagePart({
+    name: "example:page-part:call-to-action",
+    category: "example:fruit:sidebar",
+    deferredRender(E, context, options) {
+        let template = context.publication.getReplaceableTemplate("example:publication-parts:prompts:call-to-action");
+        return template.deferredRender({baseURL: BASE_URL});
+    }
+});
+</pre>
 
 h3(function). pagePartAlias(pagePartAlias)
 
@@ -21,14 +39,36 @@ Same as for @pagePart@ except the properties change to:
 |@sort@|Sort value for ordering parts within a category|
 |@aliasOf@|The name of the page part for which this is an alias|
 
+This is useful for using a page part twice with different options. If you need include a pagePart in a category with a potentially different sort order you should be using @pagePartAddToCategory()@
+
+Example usage:
+
+<pre>language=javascript
+Publication.pagePartAlias({
+    name: "client:page-part:call-to-action",
+    category: "example:fruit:sidebar",
+    aliasOf: "example:page-part:call-to-action"
+});
+</pre>
+
 h3(function). pagePartFromTemplate(pagePartTemplate)
 
-Creates a page part given a template name in calling plugin instead of a deferred render.
+Creates a page part given a template name in calling plugin instead of a deferred render. The view of the template will have access to the @E@, @context@, and @options@ values as in the @pagePart@ deferredRender. Useful for when the template of a pagePart shouldn't be altered and doesn't need any additional view elements.
 
 |@name@|API code style name|
 |@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint|
 |@sort@|Sort value for ordering parts within a category|
 |@template@|The name of the template to use for the page part|
+
+Example usage:
+
+<pre>language=javascript
+Publication.pagePart({
+    name: "example:page-part:call-to-action",
+    category: "example:fruit:sidebar",
+    template: "call-to-action"
+});
+</pre>
 
 h2. Placement
 
@@ -42,6 +82,15 @@ Adds a page part to a category, useful for when a part is needed in multiple cat
 |@category@||The API code style name of the category to add the page part to|
 |@sort@|*Optional*|The sort value for where to add the page part into the category, if not defined defaults to the sort value defined in the page part. |
 
+Example usage:
+
+<pre>language=javascript
+Publication.pagePartAddToCategory({
+    pagePart: "example:page-part:call-to-action",
+    category: "example:vegetables:sidebar"
+});
+</pre>
+
 h3(function). pagePartRemoveFromCategory(remove)
 
 Removes a page part from a category, useful for when a common feature adds a page part you don't need in the current publication.
@@ -50,3 +99,12 @@ Removes a page part from a category, useful for when a common feature adds a pag
 
 |@name@|The API code style name of the page part|
 |@category@|The API code style name of the category to remove this page part from|
+
+Example usage:
+
+<pre>language=javascript
+Publication.pagePartRemoveFromCategory({
+    pagePart: "example:page-part:call-to-action",
+    category: "example:fruit:sidebar"
+});
+</pre>
