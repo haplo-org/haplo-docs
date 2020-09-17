@@ -114,6 +114,11 @@ Returns @true@ if the principal is permitted to perform the given @action@.
 @action@ is an [node:plugin/interface/action] object, obtained using [node:plugin/o/action#O_action], with rules configured by one or more plugins.
 
 
+h3(function). saveTags()
+
+Save changes to a user's @tags@ dictionary. Your plugin must have the @pUserModifyTags@ privilege to save user tags.
+
+
 h2. Interface (internationalisation)
 
 h3(property). localeId
