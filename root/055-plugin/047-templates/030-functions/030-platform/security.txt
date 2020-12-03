@@ -1,0 +1,22 @@
+title: Security
+long_title: Security template functions
+--
+
+h2. std:security:user-controlled-url-is-valid(url) { ... } not-valid { ... }
+
+Check a user controlled URL before rendering it. If the URL is safe, render the anonymous block, otherwise render the @not-valid@ block.
+
+Use this to check URLs to ensure they don't compromise security. You should check URLs which have originated outside your application, or are entered by the user into your application. For example, if your application rendered @javascript:@ URLs, users may be able to execute arbitrary client-side JavaScript.
+
+You must also ensure that the user interface is appropriate for the level of trust that users should place in the URL.
+
+For example:
+
+<pre>language=hsvt
+<div>
+  std:security:user-controlled-url-is-valid(href)
+    { <a href=href> href </a> }
+    not-valid { "NOT VALID" }
+</div>
+</pre>
+
