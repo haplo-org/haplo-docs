@@ -17,11 +17,15 @@ h2. std:text:document:widgets(document)
 This template function renders XML document text as HTML including widgets, requiring display within a standard layout to render properly.
 
 
-h2. std:text:list:readable(list style)
+h2. std:text:list:readable(list style) { . }
 
-Renders a list of values as text, using the same method as @std:text:object-value()@, in a nicely human readable manner.
+Renders a list of values as text in a nicely human readable manner. The anonymous block is rendered for each value in @list@ with the context set to that value. If the block does not render anything, the associated item separator will not be rendered.
 
-@style@ must be @"en:default"@ to render it in a default list style for the English language.
+@style@ must be @"en:default"@ to render it in a default list style for the English language. For example,
+
+<pre>language=hsvt
+  std:text:list:readable(people "en:default") { . }
+</pre>
 
 
 h2. std:text:object-value(value)
