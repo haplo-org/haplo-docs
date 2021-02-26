@@ -7,7 +7,14 @@ CLICK_PATH TOOLS > Data import > Models
 
 Choose the correct model for your data import. The user sync always uses the @haplo:user-sync@ model, but other data import processes and REST APIs can use any model provided by your application developers.
 
-For each *Destination* in the Model, this page lists:
+Install the @haplo_data_import_auto_models@ plugin to enable simple models based on the types of object in your application. After installation, select the required types:
+
+CLICK_PATH TOOLS > Data import > Models > Select automatic model definitions...
+
+
+h2. Model administrative interface
+
+For each *Destination* in the Model, the model page shows:
 
 * The Destination name for use in *Control* files
 * Whether it [node:import/model/depends:depends] on another *Destination*
