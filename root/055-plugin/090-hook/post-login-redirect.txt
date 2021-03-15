@@ -1,0 +1,7 @@
+title: hPostLoginRedirect
+class: HookNode
+--
+
+Called to allow plugins to change the redirect path after a user has logged in.
+
+[node:plugin/o/request/current-user] is the user that has just logged in.
