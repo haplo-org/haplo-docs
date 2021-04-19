@@ -1,0 +1,24 @@
+title: Retention
+long_title: Information retention
+--
+
+The information retention APIs allow information to be removed from the generally immutable stores provided by the platform, so that plugins can implement information retention policies. Audit trail entries are written to record the erasure of information.
+
+Although information is removed from the application, it may continue to be available in backups.
+
+Plugins which use these APIs must have the @pRetentionErase@ privilege.
+
+When calling an API, the active user must be a super-user, such as @O.SYSTEM@. Use [node:plugin/o/permissions#O_impersonating] if the code is running in a context where another user is active.
+
+
+h3(function). O.retention.erase(item)
+
+Erase @item@, which may be a [node:plugin/interface/store-object], [node:plugin/interface/ref] or [node:plugin/interface/file].
+
+
+h3(function). O.retention.eraseHistory(obj)
+
+Erase the history of a store object. This is useful when removing sensitive attributes from store objects, as the history would retain the previous values.
+
+@obj@ may be a [node:plugin/interface/store-object] or [node:plugin/interface/ref].
+
