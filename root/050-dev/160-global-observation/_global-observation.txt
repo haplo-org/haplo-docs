@@ -23,6 +23,8 @@ There are various [node:dev/global-observation/message:messages] that are sent b
 
 The majority of messages will include an Haplo object in the standard [node:dev/serialisation:JSON serialisation format], and include all message sources available to the application. This will include information on workflows and forms.
 
+The order of messages is not guaranteed, especially when multiple messages are generated from one interaction with the application. If the consumer of the message queue is sensitive to the order, it should sort the messages received before processing.
+
 
 h2. Enabling the Global Observer
 

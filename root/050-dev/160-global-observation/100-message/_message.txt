@@ -5,6 +5,8 @@ class: DocNodeTextileWithTOC
 
 As data changes in the Haplo application, messages are added to the [node:dev/global-observation:Global observation] queue.
 
+See note about [node:dev/global-observation#Messages:message ordering].
+
 
 h2. Common message format
 
