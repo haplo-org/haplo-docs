@@ -61,13 +61,13 @@ If you are using a Linux system, your package manager should be able to install 
 
 h3. Download JRuby
 
-Download the current release of "JRuby":http://jruby.org/download, which must be version 9.0.5.0 or later. Choose the "binary .tar.gz" version.
+Download the current release of "JRuby":http://jruby.org/download, which must be version 9.2.17.0 or later. Choose the "binary .tar.gz" version.
 
 Decompress the downloaded file, then rename the extracted folder to @jruby@ (without the version number):
 
 <pre>
-    tar zxf ruby-bin-9.0.5.0.tar.gz
-    mv jruby-9.0.5.0 jruby
+    tar zxf ruby-bin-9.2.17.0.tar.gz
+    mv jruby-9.2.17.0 jruby
 </pre>
 
 
