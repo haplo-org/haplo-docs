@@ -48,7 +48,7 @@ Arguments:
 
 |@code@|API code style code for the template|
 
-Example usage to allow the searchResultRendererForTypes to have it's template replaced with an application specific version without the need for any functionality changes:
+Example usage to allow the searchResultRendererForTypes to have its template replaced with an application specific version without the need for any functionality changes:
 
 <pre>language=javascript
 publication.searchResultRendererForTypes(

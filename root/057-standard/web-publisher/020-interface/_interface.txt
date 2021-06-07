@@ -66,11 +66,11 @@ h2. Publication
 
 h3(function). setPagePartOptions(pagePartName, options)
 
-Used to pass options to the page parts of a publication, can also be set on a per-request basis in context
+Used to pass options to the page parts of a publication, can also be set on a per-request basis in context.
 
 h3(function). urlPolicyForTypes(types, policy)
 
-Sets the url policy for the given @types@
+Sets the url policy for the given @types@.
 
 Arguments:
 
@@ -98,7 +98,7 @@ Creates a request handlers similar to a @GET@ [node:plugin/interface/request] bu
 Arguments: 
 
 |@path@|The path to respond to|
-|@handlerFunction@|The response to the request and should be a function of the form @function(E, context)@ where context is an object with details about the publication in it's current state|
+|@handlerFunction@|The response to the request and should be a function of the form @function(E, context)@ where context is an object with details about the publication in its current state|
 
 Example usage: 
 
@@ -134,7 +134,7 @@ publication.respondToExactPathAllowingPOST("/example",
 
 h3(function). respondToDirectory(path, handlerFunction)
 
-Similar to @respondToExactPath@ however this creates a request handler that responds to all requests to a given directory beyond the hostname, for example path @/item@ would pick up all requests to a path beyond that such as @/item/category@, further path elements can be extracted using @E.request.extraPathElements@ property
+Similar to @respondToExactPath@ however this creates a request handler that responds to all requests to a given directory beyond the hostname, for example path @/item@ would pick up all requests to a path beyond that such as @/item/category@, further path elements can be extracted using @E.request.extraPathElements@ property.
 
 Example usage:
 
@@ -171,7 +171,7 @@ Publication.respondWithObject("/example-objects",
 );
 </pre>
 
-For more on the object widget see [node:standard/web-publisher/interface/widgets]
+For more on the object widget see [node:standard/web-publisher/interface/widgets].
 
 h3(function). searchResultRendererForTypes(types, renderer)
 
@@ -193,15 +193,14 @@ publication.searchResultRendererForTypes(publication.DEFAULT,
 );
 </pre>
 
-For more information on replaceable templates see [node:standard/web-publisher/interface/rendering]
+For more information on replaceable templates see [node:standard/web-publisher/interface/rendering].
 
 h3(function). objectValueRendererForTypes(types, renderer)
 
 Set custom rendering of objects when they're rendered as values by widgets.
 
 |@renderer@|Called as @renderer(object, href, desc, publication)@|
-
-- @href@ may be undefined if the object doesn't have a page in this publication
-- @desc@ may be an alias.|
+||@href@ may be undefined if the object doesn't have a page in this publication|
+||@desc@ may be an alias|
 
 Useful for altering values into context appropriate links, e.g. rendering copyright licenses as links to their terms & conditions.

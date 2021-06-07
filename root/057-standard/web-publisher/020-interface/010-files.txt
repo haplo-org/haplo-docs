@@ -7,7 +7,7 @@ Note: File downloads are not permitted for the service user by default.
 
 h3(function). setFileThumbnailSize(size)
 
-Sets the size of thumbnails to display in the publication
+Sets the size of thumbnails to display in the publication.
 
 Arguments:
 
@@ -15,7 +15,7 @@ Arguments:
 
 h3(function). addFileDownloadPermissionHandler(fn)
 
-Register a function which will be called with a [node:plugin/interface/file] or [node:plugin/interface/file-identifier], and a result object with property @allow@ which will allow the download if set to @true@
+Register a function which will be called with a [node:plugin/interface/file] or [node:plugin/interface/file-identifier], and a result object with property @allow@ which will allow the download if set to @true@.
 
 Example Usage:
 

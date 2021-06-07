@@ -16,19 +16,19 @@ h3. repo_standard_publication:logo:width
 
 h4. Expected type: String
 
-The width for the institution logo on the left of the navigation bar
+The width for the institution logo on the left of the navigation bar.
 
 h3. repo_standard_publication:logo:height
 
 h4. Expected type: String
 
-The height for the institution logo on the left of the navigation bar
+The height for the institution logo on the left of the navigation bar.
 
 h3. repo_standard_publication:logo:name_in_header
 
 h4. Expected type: Boolean
 
-Whether or not to show the institution name next to the logo in the navigation bar
+Whether or not to show the institution name next to the logo in the navigation bar.
 
 h3. repo_standard_publication:text
 

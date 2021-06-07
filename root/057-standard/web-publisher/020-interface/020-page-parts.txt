@@ -1,7 +1,7 @@
 title: Page Parts
 --
 
-Page parts are an important part of the web publisher, they allow sections of common functionality to be placed on a page. The area they are placed in can be set directly by [node:standard/web-publisher/template-function:template functions] or more generally by categories. A category is a string in the form of an API code which can be used to place functionality on similar pages, much like in [node:standard/action-panel/element:action panel elements]
+Page parts are an important part of the web publisher, they allow sections of common functionality to be placed on a page. The area they are placed in can be set directly by [node:standard/web-publisher/template-function:template functions] or more generally by categories. A category is a string in the form of an API code which can be used to place functionality on similar pages, much like in [node:standard/action-panel/element:action panel elements].
 
 h2. Creation
 
@@ -9,7 +9,7 @@ Page parts must be created using the feature as provided by @std:web-publisher@ 
 
 h3(function). pagePart(pagePart)
 
-Creates a page part which can be used by any publication which has the providing plugin in it's dependencies. If a category is provided this page part will be added to that category by default.
+Creates a page part which can be used by any publication which has the providing plugin in its dependencies. If a category is provided this page part will be added to that category by default.
 
 |@name@|API code style name, e.g. "example:page-part:call-to-action"|
 |@category@|API code style name of the category to add it to, when rendering in the layout this category can link to the context hint, e.g. "example:fruit:sidebar"|
@@ -39,7 +39,7 @@ Same as for @pagePart@ except the properties change to:
 |@sort@|Sort value for ordering parts within a category|
 |@aliasOf@|The name of the page part for which this is an alias|
 
-This is useful for using a page part twice with different options. If you need include a pagePart in a category with a potentially different sort order you should be using @pagePartAddToCategory()@
+This is useful for using a page part twice with different options. If you need include a pagePart in a category with a potentially different sort order you should be using @pagePartAddToCategory()@.
 
 Example usage:
 

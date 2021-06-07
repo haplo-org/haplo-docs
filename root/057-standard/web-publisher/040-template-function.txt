@@ -14,7 +14,7 @@ Renders all page parts for the given @category@, in order of their sort priority
 
 h3(function). std:web-publisher:block(block)
 
-Defines a named block to be rendered in the appropriate location in the publication [node:standard/web-publisher/interface#layout].
+Defines a named block to be rendered in the appropriate location in the publication [node:standard/web-publisher/publications#layout].
 
 This is typically used to define a section of UI that to be rendered e.g. below the main content of the page, in the sidebar, etc.
 
@@ -24,12 +24,12 @@ Includes the web publisher platform stylesheet.
 
 h3(function). std:web-publisher:object:link(object, title)
 
-Renders a link to the object in this publication. The title argument is optional, to allow links with text other than the object title to be generated. If an anonymous block is given, it's rendered instead of the title.
+Renders a link to the object in this publication. The title argument is optional, to allow links with text other than the object title to be generated. If an anonymous block is given, it is rendered instead of the title.
 
 
 h3(function). std:web-publisher:file:thumbnail(file)
 
-Renders a thumbnail of the file
+Renders a thumbnail of the file.
 
 h3(function). std:web-publisher:utils:title:name(personObject)
 
@@ -37,5 +37,11 @@ A utility for rendering names of people. Takes the name of the storeObject passe
 
 h3(function). std:web-publisher:template(code)
 
-Renders the replaceable template @code@, using the following block.
+Renders the replaceable template @code@, using the following anonymous block e.g.
+
+<pre>language=javascript
+std:web-publisher:template("example:web-publisher:primary-call-to-action") {
+    "Call to action" // This will be used as the button text
+}
+</pre>
 

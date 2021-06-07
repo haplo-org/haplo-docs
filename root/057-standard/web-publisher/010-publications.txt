@@ -7,7 +7,7 @@ The behaviour of a publication is defined using the [node:standard/web-publisher
 
 h3. Registering a new publication
 
-Plugins register a new publication by calling @P.webPublication.register()@, with @std:web-publisher@ in the plugin's @use@ list in @plugin.json@. The publication requires a [node:plugin/schema/requirements-schema/declaration/service-user:service user] be assigned to in order to handle requests.
+Plugins register a new publication by calling @P.webPublication.register()@, with @std:web-publisher@ in the plugin's @use@ list in @plugin.json@. The publication requires a [node:plugin/schema/requirements-schema/declaration/service-user:service user] to be assigned in order to handle requests.
 
 h3(function). register(hostname)
 
@@ -46,7 +46,7 @@ service-user example:service-user:publisher
 
 h3(function). use(feature)
 
-Sets the publication to use the feature provided. Web publisher features act in much the same way as ordinary [node:plugin/o/feature:plugin features] however they are intended to provide common functionality and composability for features that may be useful between publications. Web publication features are explained in further detail [node:standard/web-publisher/interface:here]
+Sets the publication to use the feature provided. Web publisher features act in much the same way as ordinary [node:plugin/o/feature:plugin features] however they are intended to provide common functionality and composability for features that may be useful between publications. Web publication features are explained in further detail [node:standard/web-publisher/interface:here].
 
 Example usage:
 
@@ -90,7 +90,7 @@ Returns the rendered template for a page in the publication. Each of the named @
 
 Use the layout template to define the common layout for this publication. The main content for each page should be rendered within this layout in the special @body@ block.
 
-Further blocks can be defined in templates using [node:standard/web-publisher/template-function]
+Further blocks can be defined in templates using [node:standard/web-publisher/template-function].
 
 <pre>language=javascript
 Publication.layout(function(E, context, blocks) {

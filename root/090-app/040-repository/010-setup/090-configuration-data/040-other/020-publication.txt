@@ -43,7 +43,7 @@ Each key in the object refers to the type of object that it restricts the attrib
 
 List the API Codes of the attributes or aliased attributes in an array under any of these keys to prevent that attribute being displayed on the publication.
 
-*Note: To restrict an aliased-attribute you can restrict either the base attribute OR the aliased attribute. Bear in mind that restricting the base attribute may have wider effects that you intend.*
+*Note: To restrict an aliased-attribute you can restrict either the base attribute OR the aliased attribute. Bear in mind that restricting the base attribute may have wider effects than you intend.*
 
 E.g. To prevent creator citations showing
 
@@ -84,7 +84,7 @@ Each key in the object refers to the type of object that it restricts the attrib
 
 List the API Codes of the attributes or aliased attributes in an array under any of these keys to prevent that attribute being displayed.
 
-*Note: To display an aliased attribute you will need to list the base attribute AS WELL AS the aliased attribute*
+*Note: To display an aliased attribute you will need to list the base attribute AS WELL AS the aliased attribute*.
 
 e.g. To display the additional information on an output:
 
@@ -118,7 +118,7 @@ Where:
 
 CLICK_PATH TOOLS > System management > Configuration > Static files
 
-# title is the text to display over the image.
+# title is the text to display over the image
 # imageDescription is the value for the alt attribute of the image
 
 

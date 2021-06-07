@@ -10,8 +10,8 @@ The search widget is defined with @E@ as the [node:plugin/interface/exchange] ob
 |@formOnly@|Denotes if the search widget is just for to be used for rendering the form and the search will be handled elsewhere|
 |@alwaysSearch@|Always runs a query even if the search bar is empty|
 |@hideRelevanceSort@|Used to hide the relevance sort order for a search|
-|@pageSize@|The number of results to display on a single page, defaults to 20.|
-|@modifyQuery@|A @function(query)@ to modify the query prior to it's execution|
+|@pageSize@|The number of results to display on a single page, defaults to 20|
+|@modifyQuery@|A @function(query)@ to modify the query prior to its execution|
 
 Example usage:
 
@@ -33,11 +33,11 @@ h2. Templating
 
 h3(property). form
 
-deferredRender for the default search bar template, that is the search bar and submit button. This ensures that the form is consistent in display and implementation across publications. Often used in conjunction with @results@ (below) in order to create a search page.
+deferredRender for the default search bar and submit button. This ensures that the form is consistent in display and implementation across publications. Often used in conjunction with @results@ (below) in order to create a search page.
 
 h3(property). results
 
-deferredRender for the page around the search results, displaying the number of results, filters and next/prev arrows. The actual result display is rendered based on the [node:standard/web-publisher/interface:@searchResultRendererForTypes@]
+deferredRender for the page around the search results, displaying the number of results, filters and next/prev arrows. The actual result display is rendered based on the [node:standard/web-publisher/interface:@searchResultRendererForTypes@].
 
 Example search page template:
 
