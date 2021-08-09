@@ -53,3 +53,9 @@ An array of [node:plugin/schema/schema-global/qual:qualifier values] for the qua
 
 An empty list means that all qualifiers will be allowed by the object editor UI.
 
+h3(key). groupType
+
+A @Ref@ object specifying the @group-type@ of the attribute group. Useful for retrieving information about the attributes defined within a group.
+
+This is only provided when @typecode === O.T_ATTRIBUTE_GROUP@.
+
