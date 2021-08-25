@@ -4,18 +4,18 @@ long_title: Internationalisation functions
 
 The @i:()@ template function allows templates to be [node:plugin/i18n/text-in-plugin#Text_in_templates:internationalised].
 
-h3(function). i("text")
+h3(function). i(text)
 
-Translates a literal string, with text from the @template@ [node:plugin/i18n/resources#Categories:category].
+Translates a string, with text from the @template@ [node:plugin/i18n/resources#Categories:category].
 
-The argument to the function must be a literal string. Using values from the view is not allowed.
+In almost all cases, the argument to the function will be a literal string, for example @i("Some text")@. Using values from the view should only be used when they are translatable strings from other plugins, and in this case, using a custom category is preferred.
 
 Text is [node:plugin/misc/name#String_interpolation:interpolated] with [node:plugin/misc/name].
 
 If the function has [node:plugin/templates/functions#Function_syntax:blocks], then the string is interpolated with values from the blocks, with insertion points marked with @{}@. See below for syntax.
 
 
-h3(function). i:category("text")
+h3(function). i:category(text)
 
 As @i()@, except the [node:plugin/i18n/resources#Categories:category] is explicitly specified in the function name.
 
