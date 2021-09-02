@@ -1,0 +1,20 @@
+title: Web of Science API
+--
+
+Haplo repository supports integration with Web of Science API, there's a minimal amount of set up and once the repository is configured to received outputs all claiming runs through the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework].
+
+h2. Configuration
+
+The Haplo integration with Web of Science API is designed to be as simple as possible, setup takes 2 steps.
+
+h3. 1. Register for Web of Science API
+
+In order to use the integration you will need an institution account with "Web of Science API":https://developer.clarivate.com/apis/woslite.
+
+h3. 2. Configure the repository
+
+Navigate to Keychain in System Management as shown below:
+
+CLICK_PATH TOOLS > System management > Keychain > Add new credential
+
+Select Generic/Secret and add the desired credential name and the API key from the Web of Science API account. After the credential is saved, it is listed under Keychain.
