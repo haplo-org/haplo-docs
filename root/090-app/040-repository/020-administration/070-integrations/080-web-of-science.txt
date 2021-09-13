@@ -27,11 +27,19 @@ CLICK_PATH TOOLS > System management > Configuration > Configuration data
 
 To the configuration data add:
 
-@"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/<wos_version>"@
-
 @"repo_web_of_science:api_enabled": true@
 
-If a custom credential name is listed in the Keychain, then it should also be set in the Configuration data:
-@"repo_web_of_science:api_credential_name": <same_credential_name_listed_in_keychain>@
+@"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/<wos_version>"@
 
-_Note: The current Web of Science integration implementation supports the "Lite" API, therefore the endpoint used is https://wos-api.clarivate.com/api/woslite. For this integration, in order for the harvest to function correctly and retrieve anything, ORCID authentication should also be configured, hence the application should depend on the ORCID plugin._
+Example:
+@"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/woslite"@
+
+
+If the Name in the keychain entry was changed from "Web of Science API" to a different name, then this name should also be updated in the configuration data.
+
+Example:
+Keychain name has been changed to "WoS API", therefore the configuration data should have the latter set as an api_credential_name:
+@"repo_web_of_science:api_credential_name": "WoS API"@
+
+
+_Note: The current Web of Science integration implementation supports the "Lite" API. For this integration, in order for the harvest to function correctly and retrieve anything, ORCID authentication should also be configured, hence the application should depend on the ORCID plugin._
