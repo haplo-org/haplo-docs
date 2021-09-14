@@ -1,11 +1,11 @@
 title: Web of Science API
 --
 
-Haplo repository supports integration with the Web of Science API, there's a minimal amount of set up and once the integration is configured, harvesting will take place nightly entering the outputs into the [node:app/repository/administration/integrations/data-harvesting:Harvest-Claim Framework].
+Haplo Repository supports integration with the Web of Science API. there's a minimal amount of set up and once the integration is configured, harvesting will take place nightly entering the outputs into the [node:app/repository/administration/integrations/data-harvesting:Harvest-Claim Framework].
 
 h2. Configuration
 
-The Haplo integration with Web of Science API is designed to be as simple as possible, setup takes 2 steps.
+The Haplo integration with Web of Science API is designed to be as simple as possible and setup takes 2 steps.
 
 h3. 1. Register for Web of Science API
 
@@ -18,28 +18,26 @@ Navigate to Keychain in System Management as shown below:
 CLICK_PATH TOOLS > System management > Keychain > Add new credential
 
 Select Generic/Secret and add a credential name and the API key from the Clarivate account. If the API needs to be modified at any later point, the credential can be found under Keychain.
+By default the application expects the credential name to be "Web of Science API" but a different name can also be used.
 
-The default credential name is set to "Web of Science API" but a custom name can also be used.
+To configure the application to use the Web of Science API you'll need to update the configuration data to select which end point the API should use, as well as to enable the API altogether. You may also need to update the configuration data if you have chosen a different name for the Keychain entry.
 
-Navigate to the configuration data in system management as shown below:
+The following is an example of the steps taken to update the configuration data:
+
+- Navigate to Configuration data in System management as shown below:
 
 CLICK_PATH TOOLS > System management > Configuration > Configuration data
 
-To the configuration data add:
-
-@"repo_web_of_science:api_enabled": true@
-
-@"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/<wos_version>"@
-
-Example:
-@"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/woslite"@
+- Enable the API, select the "Web of Science Lite" API and change the Keychain entry name to "Web of Science".
 
 
-If the Name in the keychain entry was changed from "Web of Science API" to a different name, then this name should also be updated in the configuration data.
 
-Example:
-Keychain name has been changed to "WoS API", therefore the configuration data should have the latter set as an api_credential_name:
-@"repo_web_of_science:api_credential_name": "WoS API"@
+Example setup
 
+<pre>language=javascript
+"repo_web_of_science:api_enabled": true,
+"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/woslite",
+"repo_web_of_science:api_credential_name": "Web of Science"
+</pre>
 
-_Note: The current Web of Science integration implementation supports the "Lite" API. For this integration, in order for the harvest to function correctly and retrieve anything, ORCID authentication should also be configured, hence the application should depend on the ORCID plugin._
+_Note: The current Web of Science integration implementation supports the "Lite" API. This integration requires people to be identifiable and currently the system relies on ORCID IDs for this. To use this integration the application will need to either use the [node:app/repository/administration/integrations/ORCID:ORCID integration], or import ORCID IDs into the system through some other route._
