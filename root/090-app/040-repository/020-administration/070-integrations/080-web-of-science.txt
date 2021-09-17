@@ -1,6 +1,8 @@
 title: Web of Science API
 --
 
+This integration is available through the Haplo RM Repository Web Of Science plugin.
+
 Haplo Repository supports integration with the Web of Science API. there's a minimal amount of set up and once the integration is configured, harvesting will take place nightly entering the outputs into the [node:app/repository/administration/integrations/data-harvesting:Harvest-Claim Framework].
 
 h2. Configuration

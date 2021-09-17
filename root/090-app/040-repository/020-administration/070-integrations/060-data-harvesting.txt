@@ -1,6 +1,8 @@
 title: Harvesting
 --
 
+This integration is available through the Haplo Repository Harvest Claim plugin.
+
 Haplo integrates with external systems to enable researchers to harvest items directly into the repository.
 
 When harvested items are matched to an existing researcher profile, the system prompts the user to confirm or disclaim them.

@@ -1,6 +1,8 @@
 title: ORCID
 --
 
+This integration is available through the Haplo Repository ORCID plugin.
+
 The repository supports integration with ORCID to allow the creation of ORCID iDs, or for researchers with an iD to connect that to their account within the repository.
 
 iDs are recorded on a researcher's record, which automatically associates the iD with all of that researcher's publications within the repository through the Haplo linked data model.
