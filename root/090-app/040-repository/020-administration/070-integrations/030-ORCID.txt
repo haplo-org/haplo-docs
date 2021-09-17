@@ -1,7 +1,7 @@
 title: ORCID
 --
 
-This integration is available through the Haplo Repository ORCID plugin.
+This integration is available through the @hres_orcid_repository@ plugin.
 
 The repository supports integration with ORCID to allow the creation of ORCID iDs, or for researchers with an iD to connect that to their account within the repository.
 

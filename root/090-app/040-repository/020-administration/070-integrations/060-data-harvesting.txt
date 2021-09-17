@@ -1,7 +1,7 @@
 title: Harvesting
 --
 
-This integration is available through the Haplo Repository Harvest Claim plugin.
+This integration is available through the @hres_repo_harvest_claim@ plugin.
 
 Haplo integrates with external systems to enable researchers to harvest items directly into the repository.
 

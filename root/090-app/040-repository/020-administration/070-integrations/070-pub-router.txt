@@ -1,7 +1,7 @@
 title: Publications Router
 --
 
-This integration is available through the Haplo RM Jisc Pub Router integration plugin.
+This integration is available through the @hres_repo_jisc_pub_router@ plugin.
 
 Haplo repository supports integration with Publication Router, there's a minimal amount of set up and once the repository is configured to received notifications all claiming runs through the [node:app/repository/administration/integrations/data-harvesting:Harvest claim framework].
 
