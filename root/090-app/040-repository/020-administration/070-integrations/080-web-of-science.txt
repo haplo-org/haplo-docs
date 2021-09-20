@@ -1,0 +1,45 @@
+title: Web of Science API
+--
+
+This integration is available through the @hres_repo_web_of_science@ plugin.
+
+Haplo Repository supports integration with the Web of Science API. there's a minimal amount of set up and once the integration is configured, harvesting will take place nightly entering the outputs into the [node:app/repository/administration/integrations/data-harvesting:Harvest-Claim Framework].
+
+h2. Configuration
+
+The Haplo integration with Web of Science API is designed to be as simple as possible and setup takes 2 steps.
+
+h3. 1. Register for Web of Science API
+
+In order to use the integration you will need an institutional account with "Clarivate":https://developer.clarivate.com to get an API key.
+
+h3. 2. Configure the repository
+
+Navigate to Keychain in System Management as shown below:
+
+CLICK_PATH TOOLS > System management > Keychain > Add new credential
+
+Select Generic/Secret and add a credential name and the API key from the Clarivate account. If the API needs to be modified at any later point, the credential can be found under Keychain.
+By default the application expects the credential name to be "Web of Science API" but a different name can also be used.
+
+To configure the application to use the Web of Science API you'll need to update the configuration data to select which end point the API should use, as well as to enable the API altogether. You may also need to update the configuration data if you have chosen a different name for the Keychain entry.
+
+The following is an example of the steps taken to update the configuration data:
+
+- Navigate to Configuration data in System management as shown below:
+
+CLICK_PATH TOOLS > System management > Configuration > Configuration data
+
+- Enable the API, select the "Web of Science Lite" API and change the Keychain entry name to "Web of Science".
+
+
+
+Example setup
+
+<pre>language=javascript
+"repo_web_of_science:api_enabled": true,
+"repo_web_of_science:api_end_point": "https://wos-api.clarivate.com/api/woslite",
+"repo_web_of_science:api_credential_name": "Web of Science"
+</pre>
+
+_Note: The current Web of Science integration implementation supports the "Lite" API. This integration requires people to be identifiable and currently the system relies on ORCID IDs for this. To use this integration the application will need to either use the [node:app/repository/administration/integrations/ORCID:ORCID integration], or import ORCID IDs into the system through some other route._
