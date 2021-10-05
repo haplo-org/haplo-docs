@@ -3,5 +3,41 @@ title: Web Publisher
 
 Plugin name: @std_web_publisher@
 
-The standard Web Publisher plugin allows a subset of information to be published as a publicly accessible web site. Multiple _Publications_ can be created from a single application.
+The standard Web Publisher plugin allows a subset of information to be published as a publicly accessible web site. Multiple [node:standard/web-publisher/publications:publications] can be created from a single application.
 
+
+h2. Concepts
+
+
+h3. Context
+
+The @context@ object is available in all rendering functions, and is used to pass around information that may be helpful for rendering the full page.
+
+Example values that can be set in the @context@ object:
+
+|@object@|The StoreObject for which this is the public page|
+|@pageTitle@|The title of the page being rendered|
+|@hint@|An object containing implementation-specific 'hints' for rendering options for this page. eg. @isHomePage@, @objectKind@, etc|
+
+Example usage:
+
+<pre>language=javascript
+publication.respondWithObject("/fruit",
+    [T.Fruit]
+    function(E, context, object) {
+        // This may be used by the layout for rendering fruit related page parts
+        context.hint.objectKind = "fruit";
+        E.render(view, "fruit");
+    }
+);
+</pre>
+
+h3. Page parts
+
+A page part defines a block of UI to be used in one or more places in a publication. They can be flexibly re-used between publications, or pages within a publication, defining common functionality.
+
+h3. Widgets
+
+A widget is a piece of interactive functionality that can be used within a page or page part, they can be used to provide an set of methods to the publication for a specific purpose, or to provide a common piece of complex functionality. Widgets are defined by the web publisher whereas more specific sets of common functionality such as page parts are implemented by a publication.
+
+E.g. The @Search@ widget is used to provide the complex functionality of free text searching in the application and the sorting, paging, and rendering of the results. This is all encapsulated in a widget that can also handle the rendering of the search form. This ensures that searching is consistent and efficient across all publications.

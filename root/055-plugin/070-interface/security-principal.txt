@@ -151,12 +151,15 @@ h3(property). otpIdentifier
 One time password token identifier assigned to this user, or @null@ if no token is assigned.
 
 
-h3(function). can(operation, ref)
+h3(function). can(operation, entities)
 
-Returns @true@ if the user is allowed to carry out the @operation@ on the object specified by [node:plugin/interface/ref].
+Returns @true@ if the user is allowed to carry out the @operation@ on the object specified by @entities@.
 
 Valid values for @operation@ are: @"update"@, @"read"@, @"create"@, @"relabel"@, @"delete"@, and @"approve"@.
+Valid values for @entities@ are: A single [node:plugin/interface/ref] or a [node:plugin/interface/label-list]
 
+For each operation there is also a wrapper function for readability. For example:
+@can("update", entities)@ becomes @canUpdate(entities)@
 
 h3(function). canCreateObjectOfType(typeRef)
 

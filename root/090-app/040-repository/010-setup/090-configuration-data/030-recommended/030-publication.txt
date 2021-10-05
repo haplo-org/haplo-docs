@@ -32,29 +32,14 @@ h4. Expected type: Boolean
 
 Whether or not to show the institution name next to the logo in the navigation bar.
 
-h3. repo_standard_publication:carousel
-
-h4. Expected type: Array of JSON objects
-
-An array of images and text to display on the repository home page carousel. The array contains objects of the kind:
-<pre style="line-height:13px">{
-    title: "Showcasing research",
-    text: "Our repository showcases work from across our broad range of subject areas",
-    image: "/~/5.jpg",
-    imageDescription: "Researchers discussing work on a whiteboard"
-}
-</pre>
-
-where the @image@ path is a static file uploded to the system using:
-
-CLICK_PATH TOOLS > System management > Configuration > Static files
-
 h3. repo_standard_publication:text
 
 h4. Expected type: JSON object
 
 An object detailing the text on a publication to be changed, there are various keys that can be set. The keys and their default values are listed below:
-<pre style="line-height:13px">{
+
+<pre>language=json
+{
     description: "",
     homeMainSearchPlaceholder: "Find researchers and their research...",
     homeBrowseByResearcher: "Browse by Researcher",
@@ -81,10 +66,10 @@ h4. Expected type: Array of JSON objects
 
 An array of objects to use as links in the footer of the publication.
 To add a link to the university of example homepage to the footer for example: 
-<pre style="line-height:13px">[
-    {
-        "text": "University of Example",
-        "href": "https://example.ac.uk"
-    }
-]
+
+<pre>language=json
+{
+    "text": "University of Example",
+    "href": "https://example.ac.uk"
+}
 </pre>

@@ -1,0 +1,143 @@
+title: Publication Definition
+--
+
+A publication is a public interface to a Haplo system. Data is exposed through a publication by application code.
+
+The behaviour of a publication is defined using the [node:standard/web-publisher/interface:publication interface]. 
+
+h3. Registering a new publication
+
+Plugins register a new publication by calling @P.webPublication.register()@, with @std:web-publisher@ in the plugin's @use@ list in @plugin.json@. The publication requires a [node:plugin/schema/requirements-schema/declaration/service-user:service user] to be assigned in order to handle requests.
+
+h3(function). register(hostname)
+
+Registers a new publication with the parameter as a hostname. This returns the publication object so is suitable for chaining.
+
+Example usage:
+
+<pre>language=javascript
+var Publication = P.webPublication.register("publication.universityofexample.ac.uk");
+</pre>
+
+h3(function). serviceUser(serviceUser)
+
+Sets the service user group code that will be impersonated for all requests to the publication. A service user is impersonated to allow permissions to be enforced and data to be safely exposed to anonymous requests.
+
+Example usage:
+
+<pre>language=javascript
+var Publication = P.webPublication.register("publication.universityofexample.ac.uk").
+    serviceUser("example:service-user:publisher");
+</pre>
+
+Service user definition:
+
+<pre>
+group example:group:publisher-service
+    title: Publication Service
+
+group example:group:public-access
+    member example:group:publisher-service
+
+service-user example:service-user:publisher
+    title: Publication Service User
+    group example:group:publisher-service
+</pre>
+
+h3(function). use(feature)
+
+Sets the publication to use the feature provided. Web publisher features act in much the same way as ordinary [node:plugin/o/feature:plugin features] however they are intended to provide common functionality and composability for features that may be useful between publications. Web publication features are explained in further detail [node:standard/web-publisher/interface:here].
+
+Example usage:
+
+<pre>language=javascript
+var Publication = P.webPublication.register("publication.universityofexample.ac.uk").
+    serviceUser("example:service-user:publication").
+    use("example:common:search-page");
+</pre>
+
+h3(service). "std:web_publisher:get_publication"
+
+If other plugins need to retrieve a publication object, they can do so using this service. This takes a single argument, the @hostname@ of the publication.
+
+Example usage:
+
+<pre>language=javascript
+var PUBLICATION_HOSTNAME = "publication.universityofexample.ac.uk";
+var getPublicDownloadURL = function(file) {
+    let publication = O.service("std:web_publisher:get_publication", PUBLICATION_HOSTNAME);
+    return publication.urlForFileDownload(file);
+};
+</pre>
+
+h2. Defining publication behaviour
+
+Publications require the layout and home url to be set, beyond that - publication behaviour is defined by using the [node:standard/web-publisher/interface:publication's interface].
+
+h3(function). setHomePageUrlPath(urlPath)
+
+Sets the URL for the home page of the publication to @urlPath@.
+
+Example usage:
+
+<pre>language=javascript
+Publication.setHomePageUrlPath("/");
+</pre>
+
+h3(function). layout(E, context, blocks)
+
+Returns the rendered template for a page in the publication. Each of the named @blocks@ will be rendered at their appropriate location in the layout, which will typically be defined on a per-publication basis.
+
+Use the layout template to define the common layout for this publication. The main content for each page should be rendered within this layout in the special @body@ block.
+
+Further blocks can be defined in templates using [node:standard/web-publisher/template-function].
+
+<pre>language=javascript
+Publication.layout(function(E, context, blocks) {
+    return P.template("layout").render({
+        staticDirectoryUrl: P.staticDirectoryUrl,
+        context: context,
+        blocks: blocks
+    });
+});
+</pre>
+
+Example layout template below showing how blocks can be checked for existence before rendering and also how to set up object specific category rendering.
+
+<pre>language=xml
+<!DOCTYPE html>
+<html lang="en">
+  <head><title>context.pageTitle</title></head>
+  <body>
+    <header>
+      <nav>
+        <!-- Navigation bar -->
+      </nav>
+    </header>
+    <main>
+      if(blocks.heroImage) {
+        render(blocks.heroImage)
+      }
+      <div class="row">
+        render(blocks.body)
+
+        <div class="8-columns">
+          render(blocks.article)
+        </div>
+  
+        <div class="4-columns">
+          <!-- Render object specific sidebar page parts first -->
+          if(context.hint.objectKind) {
+            std:web-publisher:page-part:render-category(concat("example:" context.hint.objectKind ":sidebar"))
+          }
+          render(blocks.sidebar)
+        </div>
+      </div>
+    </main>
+    <footer>
+      <!-- Footer -->
+      std:web-publisher:page-part:render-category("example:additional-footer")
+    </footer>
+  </body>
+</html>
+</pre>

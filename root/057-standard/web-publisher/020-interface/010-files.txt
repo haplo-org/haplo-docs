@@ -1,0 +1,47 @@
+title: Files
+--
+
+There are various methods available to a publication for altering the display of files and the permissions for downloading them.
+
+Note: File downloads are not permitted for the service user by default.
+
+h3(function). setFileThumbnailSize(size)
+
+Sets the size of thumbnails to display in the publication.
+
+Arguments:
+
+|@size@|An integer representing the pixel dimension to be squared, e.g. 64|
+
+h3(function). addFileDownloadPermissionHandler(fn)
+
+Register a function which will be called with a [node:plugin/interface/file] or [node:plugin/interface/file-identifier], and a result object with property @allow@ which will allow the download if set to @true@.
+
+Example Usage:
+
+<pre>language=javascript
+publication.addFileDownloadPermissionHandler(function(fileOrIdentifier, result) {
+    if(P.db.permitImages.select().where("digest","=",fileOrIdentifier.digest).count() > 0) {
+        result.allow = true;
+    }
+});
+</pre>
+
+h3(function). permitFileDownloadsForServiceUser()
+
+This is a standard implementation which permits the download of any file that is a value in an attribute or attribute group visible by the service user on an object.
+
+h3(function). isFileDownloadPermitted(fileOrIdentifier)
+
+Returns a boolean to indicate whether the service user is permitted to download the given @fileOrIdentifier@.
+
+h3(function). deferredRenderImageFileTag(fileOrIdentifier, spec)
+
+Returns the deferredRender for the given image file or undefined if the provided @fileOrIdentifier@ is not an image.
+The @spec@ object is used to alter the image tag that is returned and can have properties:
+
+|@maxWidth@|The maximum width of the object (after any HiDPI scaling), sets the @width@ property in the returned @<img>@ tag|
+|@maxHeight@|The maximum height of the image (after any HiDPI scaling), sets the @height@ property in the returned @<img>@ tag|
+|@hiDPI@|Boolean to set whether the image is to be scaled for HiDPI screens|
+|@title@|The text to be set as the title attribute in the returned  @<img>@ tag|
+|@alt@|The text to be included in the alt attribute in the returned @<img>@ tag|

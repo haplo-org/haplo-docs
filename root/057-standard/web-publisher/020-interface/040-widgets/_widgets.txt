@@ -1,0 +1,7 @@
+title: Widgets
+class: DocNodeTextileWithTOC
+--
+
+A widget is a piece of interactive functionality that can be used within a page or page part, they can be used to provide an set of methods to the publication for a specific purpose, or to provide a common piece of complex functionality. 
+
+h2. Contents
