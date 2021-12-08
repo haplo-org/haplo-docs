@@ -1,0 +1,77 @@
+title: User experience guide
+--
+
+h3. Ease of use
+
+A user with no prior knowledge of the system should be able to,
+* Spot how to start an action.
+* Progress through an action's steps.
+* Know when they have successfully completed an action.
+* Return from a mistake to the correct state. (is this worded correctly?)
+* See where they are at any point, in relation to where they've come from and where they'll be progressing to in the system.
+
+For each workflow (is workflow the correct term here?),
+* The tasks should flow sensibly.
+* Each type of user should be able to move efficiently through the workflow. (said system here before but not sure I understand what is meant by that)
+* Progressing through a workflow should be accomplished in as few steps as possible.
+* If there is an interview scheduling state, users should be able to return from the following state in order to reschedule.
+
+Delays in page loading time should be minimised. Some common ways to speed up loading time are,
+* Data re-use
+** Pre-fill needed information from elsewhere in the system when possible.
+** at the end of a workflow, can you update any records somewhere else in the system? (This was included in the checklist's data re-use section but not sure I understand exactly how that is related)
+* add more
+
+
+h3. Text
+
+Sentence case should be used throughout, even in titles, for easier reading. The one exception for this is in the case of proper roles, ie PhD Coordinator, which should use capitals.
+
+Punctuation should be used consistently throughout a (plugin/workflow?). For instance, if one sentence or bullet point ends with a full stop, all others should do so as well. 
+
+All text should be checked for spelling and grammar errors. Any superfluous wording should be removed.
+
+
+h3. Appearance
+
+The most prominent elements on screen should be those which the user considers of most importance, e.g. users should not have to scroll for primary actions.
+
+Any new functionality should remain consistent with the systems existing style and look clean, simple, and attractive.
+
+In workflows, where there is one forward option and up to 3 return options, show these on the right of the application record, then skip the traffic light confirmation page and go straight to submission confirmation and notes. 
+
+Group right hand tabs into headers for APPLICATION and ASSESSMENT wherever possible. Order of panels on right hand side should reflect order of the workflow.
+
+Resubmission statuses should be the same as they were for the original submission.
+
+Use year columns on tables listing applications to make them easy to identify.
+
+Ensure boolean confirmation form fields don't appear as a simple "Yes" or "No" on their own in the form document (user trueLabel and/or falseLabel as appropriate).
+
+
+h3. Emails
+
+Email greetings should be Dear [first name] without a comma. 
+
+Signature blocks should not be displayed at the end of automatic emails, i.e.,
+<pre>    Yours sincerely 
+    Research Administrator.</pre>
+
+All emails regarding a Postgraduate Researcher should include the Researcher's name in the email subject. This is to aid busy supervisors who look after multiple Postgraduate Researchers.
+
+Emails to external people who don't have access to the system shouldn't contain links to information within the system.
+
+Notification emails should include a link to the relevant application.
+
+
+h3. Permissions
+
+The edit button of an object should not be available for users who do not have permission to edit it.
+
+For all key stage applications and examinations, supervisors and Postgraduate Researchers should have the same access permissions. I.e., do not show the supervisor an assessment report that the relevant Postgraduate Researcher is not shown. 
+
+Only the Graduate School Office should be able to edit/delete any Application record. 
+
+
+> I am not sure where this item would fit into this 
+19. For each piece of information collected, where are you displaying it? 
