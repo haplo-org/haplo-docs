@@ -1,7 +1,7 @@
 title: Haplo Research Manager
 --
 
-"Haplo Research Manager":https://www.haplo.com/research-manager provides an open source core to manage research in academic institutions. This core supports open source applications such as [node:app/repository:Haplo Repository], and commercial products such as "PhD Manager":https://www.haplo.com/phd-manager and "Ethics Monitor":https://www.haplo.com/ethics-monitor.
+"Haplo Research Manager":https://www.haplo.com/research-manager provides an open source core to manage research in academic institutions. This core supports open source applications such as [node:app/repository:Haplo Repository], and commercial products such as "Graduate Education Manager":https://www.haplo.com/phd-manager and "Ethics Monitor":https://www.haplo.com/ethics-monitor.
 
 It provides:
 
