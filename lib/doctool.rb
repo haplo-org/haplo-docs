@@ -26,7 +26,7 @@ if ARGV[0] == 'publish'
   git_timestamp = `git log -1 --format=%ct`.strip.to_i
   commit_time = Time.at(git_timestamp).strftime("%Y%m%d-%H%M")
   SOURCE_CONTROL_DATE = Time.at(git_timestamp).strftime("%d %b %Y")
-  PACKAGING_VERSION = "#{commit_time}-#{haplo_revision-#{git_revision}"
+  PACKAGING_VERSION = "#{commit_time}-#{haplo_revision}-#{git_revision}"
   UPDATED_MESSAGE = "Revision: #{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
   puts "Docs revision: #{git_revision}"
 else
