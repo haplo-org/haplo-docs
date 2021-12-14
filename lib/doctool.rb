@@ -1,5 +1,5 @@
 # Haplo Platform                                     http://haplo.org
-# (c) Haplo Services Ltd 2006 - 2016    http://www.haplo-services.com
+# (c) Haplo Services Ltd 2006 - 2021    http://www.haplo-services.com
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -18,17 +18,17 @@ require './lib/documentation_html'
 require './lib/doc_server'
 
 if ARGV[0] == 'publish'
-  require "#{ENV['HAPLO_ROOT']}/lib/common/source_control/source_control.rb"
   olddir = FileUtils.pwd
   FileUtils.chdir(ENV['HAPLO_ROOT'])
-  source_control = SourceControl.current_revision
+  haplo_revision = `git rev-parse --verify --short HEAD`.strip
   FileUtils.chdir(olddir)
   git_revision = `git rev-parse --verify --short HEAD`.strip
-  SOURCE_CONTROL_REVISION = "#{source_control.displayable_id}-#{git_revision}"
-  SOURCE_CONTROL_DATE = source_control.displayable_date_string
-  PACKAGING_VERSION = "#{source_control.filename_time_string}-#{SOURCE_CONTROL_REVISION}"
-  UPDATED_MESSAGE = "Revision: #{source_control.displayable_id}+#{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
-  puts "Docs revision: #{SOURCE_CONTROL_REVISION} on #{SOURCE_CONTROL_DATE}"
+  git_timestamp = `git log -1 --format=%ct`.strip.to_i
+  commit_time = Time.at(git_timestamp).strftime("%Y%m%d-%H%M")
+  SOURCE_CONTROL_DATE = Time.at(git_timestamp).strftime("%d %b %Y")
+  PACKAGING_VERSION = "#{commit_time}-#{haplo_revision-#{git_revision}"
+  UPDATED_MESSAGE = "Revision: #{git_revision} | Last Updated: #{SOURCE_CONTROL_DATE}"
+  puts "Docs revision: #{git_revision}"
 else
   UPDATED_MESSAGE = 'CHECKOUT'
 end
