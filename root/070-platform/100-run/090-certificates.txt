@@ -14,7 +14,7 @@ That directory must contain a private key called @server.key@ and a matching cer
 
 h2. Using your own certificate
 
-If you have your own certificate (which must match the URL used for you Haplo instance) then you can replace the self-signed certificate.
+If you have your own certificate (which must match the URL used for your Haplo instance) then you can replace the self-signed certificate.
 
 Note that you must first allow the self-signed certificate to be created as part of the initial setup, then replace it later.
 
