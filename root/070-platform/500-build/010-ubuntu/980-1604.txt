@@ -2,6 +2,8 @@ title: Ubuntu Server 16.04
 long_title: Build on Ubuntu Server 16.04
 --
 
+We strongly recommend using a newer supported version of Ubuntu LTS such as 18.04 or 20.04, as 16.04 has reached the Extended Security Maintenance phase of the support lifecycle.
+
 Download "Ubuntu Server LTS":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated. The instructions below are appropriate for Ubuntu 16.04 LTS. If you're not using 16.04, please refer to the [node:platform/build/ubuntu:appropriate build instructions for your Ubuntu version].
 
 If you just want to run a Haplo server with a minimum of fuss, go straight to the [node:platform/run] documentation.

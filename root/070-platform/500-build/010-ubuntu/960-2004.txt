@@ -1,12 +1,14 @@
-title: Ubuntu Server 14.04
-long_title: Build on Ubuntu Server 14.04
+title: Ubuntu Server 20.04
+long_title: Build on Ubuntu Server 20.04
 --
 
-We would strongly recommend not using an older version such as 14.04, current versions such as 16.04 LTS are much better supported and require fewer workarounds to get everything working smoothly. The following modified instructions, valid for the older 14.04 LTS release, are largely for reference.
+Download "Ubuntu Server":https://www.ubuntu.com/download/server and install it on a system with *at least 4GB of memory* allocated. The instructions below are appropriate for Ubuntu 20.04. If you're not using 20.04, please refer to the [node:platform/build/ubuntu:appropriate build instructions for your Ubuntu version].
+
+If you just want to run a Haplo server with a minimum of fuss, go straight to the [node:platform/run] documentation.
 
 *Important:* Do not include a dot in the hostname. A good hostname to choose would be @haplo@
 
-You'll probably want to install openssh to allow you to log in from the VM host.
+If you're using a VM, you'll probably want to install openssh to allow you to log in from the VM host.
 
 <pre>
 sudo apt-get install openssh-server
@@ -19,19 +21,20 @@ After logging in, install packages with:
 
 <pre>
 sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
-sudo apt-get install g++ make openjdk-8-jdk maven avahi-daemon uuid-dev curl patch git
+sudo apt-get install g++ make openjdk-8-jdk maven avahi-daemon uuid-dev curl patch git libxapian30 libxapian-dev zlib1g-dev
 </pre>
 
-Check the version of java with @java -version@. If it's not using Java 8, run @sudo update-alternatives --config java@ to set the correct version.
-
-[SNIPPET platform/build/maven-secure]
-
-Install PostgreSQL 9.3 with:
+Check the version of java with @java -version@. You must use Java 8, as older and newer versions aren't compatible. If it's not using Java 8, run @sudo update-alternatives --config java@ to set the correct version. Or, non-interactively:
 
 <pre>
-sudo apt-get install postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3
+sudo /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64
+</pre>
+
+Install PostgreSQL 12 with:
+
+<pre>
+sudo apt-get install postgresql-12 postgresql-server-dev-12 postgresql-contrib-12
 </pre>
 
 [SNIPPET platform/build/postgresql-local-user]
@@ -50,7 +53,7 @@ Create a database as the current user:
 
 <pre>
 mkdir -p ~/haplo-dev-support/pg
-/usr/lib/postgresql/9.3/bin/initdb -E UTF8 -D ~/haplo-dev-support/pg
+/usr/lib/postgresql/12/bin/initdb -E UTF8 -D ~/haplo-dev-support/pg
 </pre>
 
 
@@ -59,14 +62,14 @@ h2. Running PostgreSQL for development and testing
 Whenever you want to run the database, firstly, recreate the @/var/run/postgresql@ directory, as @/var/run@ gets wiped on every boot.
 
 <pre>
-sudo mkdir /var/run/postgresql
+sudo mkdir -p /var/run/postgresql
 sudo chmod a+rwx /var/run/postgresql
 </pre>
 
 Then, leave the following command running in a terminal window:
 
 <pre>
-/usr/lib/postgresql/9.3/bin/postmaster -D ~/haplo-dev-support/pg
+/usr/lib/postgresql/12/bin/postmaster -D ~/haplo-dev-support/pg
 </pre>
 
 Open another terminal window now, before moving on to building Haplo.
@@ -77,7 +80,7 @@ Open another terminal window now, before moving on to building Haplo.
 
 [SNIPPET platform/build/run-test-suite]
 
-If tests fail, you haven't allocated enough memory to the VM.
+If more than one or two tests fail, your system doesn't have enough memory.
 
 
 [SNIPPET platform/build/running-server]

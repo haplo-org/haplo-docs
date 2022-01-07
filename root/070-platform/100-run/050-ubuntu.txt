@@ -6,7 +6,7 @@ Deploying a production instance of Haplo can be a bit fiddly, so we have created
 
 h2. Pre-install planning
 
-You should be running "Ubuntu Server":http://www.ubuntu.com/download/server 16.04 or 18.04 LTS on a system with at least 4GB of memory. The system should be dedicated to Haplo, otherwise the security of your Haplo installation will be compromised.
+You should be running "Ubuntu Server":http://www.ubuntu.com/download/server 20.04 or 18.04 LTS on a system with at least 4GB of memory. The system should be dedicated to Haplo, otherwise the security of your Haplo installation will be compromised.
 
 You'll probably want to install openssh to allow you to log in.
 

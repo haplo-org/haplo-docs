@@ -22,7 +22,7 @@ After logging in, install packages with:
 <pre>
 sudo apt-get install software-properties-common
 sudo apt-get update
-sudo apt-get install g++ make openjdk-8-jdk maven avahi-daemon uuid-dev curl patch git libxapian30 libxapian-dev zlib1g
+sudo apt-get install g++ make openjdk-8-jdk maven avahi-daemon uuid-dev curl patch git libxapian30 libxapian-dev zlib1g-dev
 </pre>
 
 Check the version of java with @java -version@. You must use Java 8, as older and newer versions aren't compatible. If it's not using Java 8, run @sudo update-alternatives --config java@ to set the correct version. Or, non-interactively:
