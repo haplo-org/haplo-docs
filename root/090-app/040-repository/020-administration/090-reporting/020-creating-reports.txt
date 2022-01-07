@@ -1,7 +1,7 @@
 title: Creating and extending reports
 --
 
-Additional reports, and extenstions to the existing reports, can be added in code using the [node:standard/reporting:Haplo standard reporting] framework. Adding new reports typically takes a matter of minutes for a developer to set up.
+Additional reports, and extensions to the existing reports, can be added in code using the [node:standard/reporting:Haplo standard reporting] framework. Adding new reports typically takes a matter of minutes for a developer to set up.
 
 This provides a set of [node:standard/reporting/dashboards#Services:services] to allow you to add additional columns to the view or export of a report in the system in a few lines of code. To add a new report follow the [node:standard/reporting/dashboards#Example:example], adding the response handler in your application's code.
 

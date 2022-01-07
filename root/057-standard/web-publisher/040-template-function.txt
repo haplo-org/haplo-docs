@@ -10,7 +10,7 @@ Renders the named page part.
 
 h3(function). std:web-publisher:page-part:render-category(category)
 
-Renders all page parts for the given @category@, in order of their sort priority. Allows composible definitions of sets of page parts to be rendered together on public pages.
+Renders all page parts for the given @category@, in order of their sort priority. Allows composable definitions of sets of page parts to be rendered together on public pages.
 
 h3(function). std:web-publisher:block(block)
 

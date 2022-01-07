@@ -1,7 +1,7 @@
 title: Reporting
 --
 
-Reports are built in to each of the areas of in the system, installed alongside the functioanlity they report on. This should give adminstrative users oversight of all of the day to day activity of the repository within the system, where the data is most likely to be accurate and up to date.
+Reports are built in to each of the areas of in the system, installed alongside the functionality they report on. This should give administrative users oversight of all of the day to day activity of the repository within the system, where the data is most likely to be accurate and up to date.
 
 All reports within Haplo can be exported to Excel, and exports can include additional columns for supplementary data that wouldn't fit well on screen in a browser window. The reporting system includes a [node:standard/reporting/rest-api] to allow querying from an external system.
 

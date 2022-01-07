@@ -6,7 +6,7 @@ Managing the tokens for your organisation is an important role. Your care and at
 
 Authentication tokens provide an additional level of security. Because passwords can be guessed or extracted from compromised computers, physical tokens ensure that a password alone is not enough to log into the system.
 
-When you're managing the tokens, there are often several steps you need to take. While sometimes a little labourious, each of these steps is essential for maintaining the security of the system.
+When you're managing the tokens, there are often several steps you need to take. While sometimes a little laborious, each of these steps is essential for maintaining the security of the system.
 
 
 h2. Issuing tokens

@@ -24,7 +24,7 @@ The URL list may contain the @?@ symbol, which triggers parameter mode. This is 
 
 * @key=value@ sets the given parameter to the value. This can be a value from the view or a literal. If a parameter with that name is already set, then the value is replaced.
 
-* @*dictionary@ retrieves value from the view, inteprets it as a dictionary of key value pairs for setting parameters.
+* @*dictionary@ retrieves value from the view, interprets it as a dictionary of key value pairs for setting parameters.
 
 * @!key@ removes the parameter
 

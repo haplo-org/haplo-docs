@@ -15,7 +15,7 @@ Once an output has been harvested from an external source Haplo attempts to matc
 
 Once matched, the author(s) will get a task prompting them to view the output and either claim or disclaim this as their work. This task takes them to the screen shown below which displays tabs for each alternative version of the work from external sources. The metadata harvested from each source will be displayed on separate tabs, so authors and repository managers are able to view the output as it exists in external systems as well as the data within the repository.
 
-These tabs are a convenient method to navigate between different versions of the output, however the "Authoritative version" is the version of record in Haplo. This version records the metadata and files displayed to researchres in the public repository and to external systems over metadata harvesting services such as OAI-PMH.
+These tabs are a convenient method to navigate between different versions of the output, however the "Authoritative version" is the version of record in Haplo. This version records the metadata and files displayed to researchers in the public repository and to external systems over metadata harvesting services such as OAI-PMH.
 
 [IMAGE 0005-f.png Harvested item with a task open for the author to "claim" the record]
 
