@@ -10,7 +10,7 @@ In the command prompt, type @java -version@
 
 You must use Java 8, build 212 or later. The version number will be shown as '1.8'. (Later versions of Java will be supported when the JRuby runtime is compatible.)
 
-If you get an error, or need to update to a recent version of Java 8, download Java and install it in the default folder. You can get a free Java JVM from "AdoptOpenJDK":https://adoptopenjdk.net/. Repeat the @java -version@ command to check it installed correctly.
+If you get an error, or need to update to a recent version of Java 8, download Java and install it in the default folder. You can get a free Java JVM from "Adoptium":https://adoptium.net/. Repeat the @java -version@ command to check it installed correctly.
 
 
 h3. Download JRuby
