@@ -15,7 +15,7 @@ If you get an error, or need to update to a recent version of Java 8, download J
 
 h3. Download JRuby
 
-Download the current release of "JRuby":http://jruby.org/download, which must be version 9.0.5.0 or later. Choose a "Windows Executable" option to download the JRuby installer. (Only use the x64 version if you know you need it.)
+Download the current release of "JRuby":https://www.jruby.org/download, which must be version 9.2.17.0 or later. Choose a "Windows Executable" option to download the JRuby installer. (Only use the x64 version if you know you need it.)
 
 Once downloaded, install JRuby by running the installer. The installer will append JRuby to your PATH environment variable.
 
