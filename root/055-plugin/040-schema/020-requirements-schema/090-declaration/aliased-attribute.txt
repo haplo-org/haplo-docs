@@ -13,3 +13,12 @@ aliased-attribute std:aliased-attribute:name as Name
     on-qualifier std:qualifier:nickname
     on-data-type person-name
 </pre>
+
+Aliases can be restricted to apply only under specific circumstances, such as when a specific qualifier or data type is used for a given attribute value. The object editor will display values under the aliased labels only if one of these filters apply, these filters may be applied using the following keys:
+
+|_.Key|_.Alias applicable when|
+|@on-qualifier@|The value uses this qualifier|
+|@on-data-type@|Values are of this data type|
+|@on-linked-type@|When the linked object is of this type (for link data type attributes)|
+
+@aliased-attributes@ can be added to types in place of, or alongside, the attribute that is being aliased and the filters also dictate how that field behaves in the object editor. For example, when using @on-linked-type@ the field in the object editor will only allow objects of the listed types to be selected, when using @on-qualifier@ will restrict the allowed qualifiers for that field to those listed. When these filters are applied the @qualifiers@ & @linked-types@ from the attribute being aliased are *not* inherited.
