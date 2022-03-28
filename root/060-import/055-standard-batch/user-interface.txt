@@ -1,0 +1,38 @@
+title: User interface
+long_title: Standard batch import user interface
+--
+
+Running a standard batch import with the user interface requests a few steps.
+
+
+h3. 1) Upload data files
+
+After locating the relevant standard API, you'll see the page displaying the control file.
+
+Click _New import..._
+
+Enter a _comment_ to describe the data import, then upload one or more files.
+
+Each file has a _name_ associated with it, which should match the names expected by the standard control file.
+
+Click the _New import_ button at the bottom of the form to create the import. This won't run it yet.
+
+
+h3. 2) Perform a dry run
+
+Before importing the batch, it's a good idea to try a dry run first to see what errors might occur.
+
+When viewing the page for your new batch, click the _Dry run..._ button, and confirm.
+
+The batch will then have a _running_ status, showing the import job is completing in the background. Refresh the page to check to see if it's finished.
+
+When the job completes, review the log and correct any errors by uploading new data files.
+
+
+h3. 3) Import the data
+
+When you are happy a dry run shows your import will work without errors, click the _Copy as new import..._ button, and confirm.
+
+This will create a new batch, and this time, click the _Import data..._ button.
+
+Just as with the dry run, the import will happen in the background, and the batch page will show the log when it completes.

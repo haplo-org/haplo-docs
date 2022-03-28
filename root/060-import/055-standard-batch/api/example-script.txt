@@ -1,0 +1,31 @@
+title: Example script
+--
+
+This example script uses the [node:import/standard-batch/api:batch import API] to create and run a batch data import job. It uses @curl@ on a UNIX-like operating system.
+
+Create an API key with:
+
+CLICK_PATH TOOLS > Data import > Standard Batch API > Create API Key
+
+then replace the values of @API_KEY@ and @SERVER@ in the script with the key and hostname of your application.
+
+<pre>
+#!/bin/sh
+set -e
+
+API_KEY=API_KEY_GOES_HERE
+FILE_DIRECTORY=.
+SERVER=research.example.ac.uk
+
+# Create a new batch
+BATCH_ID=`curl -s -X POST -d "comment=Example import" -d "kind=example-standard-api" --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-standard-api/batch`
+echo "BATCH ID: " $BATCH_ID
+
+# Upload files to the batch
+curl -X POST -F "batch=$BATCH_ID" -F name=data0 -F file=@${FILE_DIRECTORY}/data.json --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-standard-api/file
+echo
+
+# This does a dry run only, remove '-d mode=dry-run' to import the data
+curl -X POST -d "batch=$BATCH_ID" -d mode=dry-run --user haplo:${API_KEY} https://${SERVER}/api/haplo-data-import-standard-api/schedule
+echo
+</pre>
