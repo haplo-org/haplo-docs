@@ -34,3 +34,8 @@ Returns @true@ if value is a [node:plugin/interface/text] object.
 
 Note it will *not* return @true@ if a @String@ is tested.
 
+
+h3(function). O.isStoreObject(value)
+
+Returns @true@ if value is a [node:plugin/interface/store-object] object.
+
