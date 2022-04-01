@@ -30,9 +30,12 @@ If behaviour codes cannot be used, then the @"title"@ option can be used if the 
 
 The @values@ will match, case sensitively, to any of the titles of the objects with the given @types@.
 
+h3. function
+
+If the mapping requires logic to determine then the @"function"@ option can be used, this also requires another mapping property, @function@ who's value should be namespaced to the implementing plugin.
 
 
-h2. Example
+h2. Examples
 
 <pre>language=json
 "mapping": {
@@ -49,4 +52,13 @@ h2. Example
 }
 </pre>
 
+<pre>language=json
+"mapping": {
+    "project-lead": {
+        "using": "function",
+        "types": ["example:type:person"],
+        "function": "example:get-project-member-from-behaviour"
+    }
+}
+</pre>
 

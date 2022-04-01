@@ -1,0 +1,39 @@
+title: Mapping functions
+--
+
+As outlined in [node:import/control/mapping:mapping] there is the option to use arbitrary code for a mapping, this is achieved by implementating services. The name provided in the @"function"@ mapping property is the suffix of a service, in the mapping documentation linked above an example function is used to retrieve the project lead from an object denoted by a behaviour - such as an organisational unit. Please see below for an example implementation of this function.
+
+h2. Mapping specification
+
+<pre>language=json
+"mapping": {
+    "project-lead": {
+        "using": "function",
+        "types": ["example:type:person"],
+        "function": "example:get-project-member-from-behaviour"
+    }
+}
+</pre>
+
+h2. Function implementation
+
+Functions are provided with the following arguments:
+
+|_.Argument|_.Type|_.Description|
+|@batch@|Batch|The data import batch currently running see [node:import/concepts:concepts] for more details|
+|@refMapping@|String|The name of the refMapping, to differentiate different uses of the same function|
+|@specification@|JS Object|The mapping specification for the given refMapping|
+|@value@|String|The value to be mapped|
+
+h3. Example service implementation
+
+<pre>language=javascript
+P.implementService("haplo:data-import-framework:mapping-function:example:get-project-member-from-behaviour",
+    function(batch, refMapping, mapping, value) {
+        if(refMapping === "project-lead") {
+            const organisationalUnit = O.behaviourRef(value);
+            return organisationalUnit.first(A.ProjectTeam);
+        }
+    }
+);
+</pre>
