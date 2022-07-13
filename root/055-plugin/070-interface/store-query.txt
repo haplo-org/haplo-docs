@@ -31,13 +31,13 @@ Returns itself, making the function suitable for chaining.
 
 h3(function). sortBy(order)
 
-Set the order of the objects in the results. Allowed values for @order@ are @date@, @date_asc@, @relevance@, @any@, @title@ and @title_desc@.
+Set the order of the objects in the results. Allowed values for @order@ are @date@, @date_asc@, @created_date@, @created_date_asc@, @modified_date@, @modified_date_asc@, @relevance@, @any@, @title@ and @title_desc@.
 
 The default sort order is @any@, which returns the objects in whatever order is quickest for the object store.
 
 Returns itself, making the function suitable for chaining.
 
-There are also shortcut functions defined, @sortByDate()@, @sortByDateAscending()@, @sortByRelevance()@, @sortByTitle()@ and @sortByTitleDescending()@, which set the order accordingly and return the object for chaining.
+There are also shortcut functions defined, @sortByDate()@, @sortByDateAscending()@, @sortByCreatedDate()@, @sortByCreatedDateAscending()@, @sortByLastModificationDate()@, @sortByLastModificationDateAscending()@, @sortByRelevance()@, @sortByTitle()@ and @sortByTitleDescending()@, which set the order accordingly and return the object for chaining.
 
 
 h3(function). queryDeletedObjects()
