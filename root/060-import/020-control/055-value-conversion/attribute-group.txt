@@ -24,7 +24,7 @@ This Instruction clears the pseudo-destination ready for the next value to be as
 
 h2. Example
 
-These Instructions copy values from the input *Record* into the person's name pseudo-destination, then apply it to as the name in the profile object representing that person in the object store.
+These Instructions copy values from the input *Record* into the "file" attribute group pseudo-destination then appends it to the correct attribute within the object represented by the @example@ *Destination*.
 
 <pre>language=json
 { "action":"new", "destination":"example:attribute-group:file" },
