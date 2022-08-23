@@ -84,7 +84,7 @@ If an @iterator@ is passed as the last argument, it will be called with @(value,
 
 h3(function). newAttributeGroup(groupDesc, groupId)
 
-Returns a new [node:plugin/interface/attribute-extension] object for this @groupDesc@. Optionally you can provide a groupId to be used to identify this group on the object, although this will typically only be necessary for modifying values on an object in place.
+Returns a new [node:plugin/interface/attribute-extension] object for this @groupDesc@. Optionally you can provide a @groupId@ to be used to identify this group on the object, although this will typically only be necessary for modifying values on an object in place.
 
 
 h3(function). preallocateRef()
