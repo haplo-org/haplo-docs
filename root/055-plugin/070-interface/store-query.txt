@@ -235,6 +235,13 @@ Query for objects which have all of the labels in the @labels@ list, which is an
 Returns itself, making the function suitable for chaining.
 
 
+h3(function). notLabelled(labels)
+
+Query for objects which have none of the labels in the @labels@ list, which is an array of @Ref@ objects.
+
+Returns itself, making the function suitable for chaining.
+
+
 h3(function). limit(maximumResults)
 
 Limit the number of results which will be returned by this query. For paging results, see @setSparseResults()@.
