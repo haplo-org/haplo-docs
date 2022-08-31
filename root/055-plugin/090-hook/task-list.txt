@@ -1,0 +1,5 @@
+title: hTaskList
+class: HookNode
+--
+
+This hook is similar to [node:plugin/hook/help-page], to redirect users to a custom task list view, in which the developer can display a task list in a different way alongside filters or any other feature.
