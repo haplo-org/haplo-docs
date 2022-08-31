@@ -128,7 +128,7 @@ __E
       # Check the description file exists
       node_filename = "root/055-plugin/090-hook/#{node_name}.txt"
       unless File.exist?(node_filename)
-        raise "Expected to find a #{node_filename} for hook"
+        raise "Expected to find a #{node_filename} for hook for #{name}"
       end
     end
   end
