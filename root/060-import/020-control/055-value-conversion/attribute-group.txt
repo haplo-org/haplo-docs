@@ -1,0 +1,41 @@
+title: Attribute groups
+--
+
+Attribute groups are a type of field on an Object which consist of multiple attributes describing a single concept. For example, a file and what level of access is required within the system to access it.
+
+Each of these different parts may need to be mapped or transformed, so a two step process is used to convert these types from the input data.
+
+h3. 1. Copy values to pseudo-destination
+
+Each of the attribute group data types has an associated [node:import/model/pseudo:pseudo-destination], which has *Names* for each of the fields. These pseudo-destinations show up in the *Model*, and are named with a prefix of @destination@ e.g. @destination@:attribute-group:@descriptor@.
+
+Use the normal @field@ and @set-value@ Instructions to set the fields in this pseudo-destination. This allows all the value conversion features to be used on the input data.
+
+Use the admin UI to see the Names in these pseudo-destinations.
+
+Each Name in the pseudo-destination is copied individually. If the input data includes these values as properties of a nested JSON structure, use the [node:import/control/instruction/within] Instruction to move within the structure.
+
+h3. 2. Set value from the pseudo-destination
+
+Once all the values have been set in the value type's pseudo-destination, use the @set-attribute-group@ Instruction to combine the values into a group and set it in the final Destination.
+
+This Instruction clears the pseudo-destination ready for the next value to be assembled.
+
+
+h2. Example
+
+These Instructions copy values from the input *Record* into the "file" attribute group pseudo-destination then appends it to the correct attribute within the object represented by the @example@ *Destination*.
+
+<pre>language=json
+{ "action":"new", "destination":"example:attribute-group:file" },
+{ "source":"File", "destination":"example:attribute-group:file", "name":"std:attribute:file"  },
+{ "source":"Access", "destination":"example:attribute-group:file", "name":"example:attribute:access-level"  }
+{
+    "action": "set-attribute-group",
+    "source": "example:attribute-group:file",
+    "destination": "example",
+    "name": "example:attribute:file-with-access-level"
+}
+</pre>
+
+The file and access level are combined into an attribute group and appended to the @example@ destination.

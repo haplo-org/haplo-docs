@@ -1,0 +1,26 @@
+title: set-attribute-group
+link_as: keyword
+--
+
+The @set-attribute-group@ Instruction copies all values from the source object to an [node:import/control/value-conversion/attribute-group:attribute group] in *Name* on a *Destination*.
+
+|@action@|@"set-attribute-group"@|
+|@source@|The name of the pseudo-destination for this attribute group.|
+|@destination@|The Destination to store the value in.|
+|@name@|The Name within the Destination to store the value in.|
+
+Attribute groups are composed of multiple values which together describe a single concept, for example, a file and what level of access is required within the system to access it. These are assembled in a pseudo-destination using the @field@ and @set-value@ Instructions, then this Instruction combines the values together into an attribute group and appends that to the @destination@ object.
+
+After this Instruction is executed, all the values in the pseudo-destination are cleared.
+
+
+h2. Example
+
+<pre>language=json
+{
+    "action": "set-attribute-group",
+    "source": "example-destination:attribute-group:example-value",
+    "destination": "example-destination",
+    "name": "example:attribute:example-value"
+}
+</pre>
