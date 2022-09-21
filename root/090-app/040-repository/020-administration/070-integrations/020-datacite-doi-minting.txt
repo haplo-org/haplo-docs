@@ -7,3 +7,61 @@ DOIs can be created for one collection of content only and not for others, or cr
 
 Metadata and the link to a public landing page is stored in DataCite, and is updated when the item is revised. Institution specific policy controls which items and what metadata is stored, and how versions of items are managed.
 
+h2. Setup
+
+Configuring a system to allow minting of DOIs is straightforward and involves adding two sets of credentials: authentication and registration. The authentication credentials are the same as those that you'd use to log into Fabrica and the registration tells the system which DOI prefix and API to use.
+
+h3. Authentication
+
+The authentication credentials are added into the keychain as a HTTP / Basic credential
+
+CLICK_PATH TOOLS > System management > Keychain > Add new credential
+
+This credential should have the @Name@ of "DOI Minting" and then the @Username@ and @Password@ should be the same as would be used to log into Fabrica.
+
+h3. Registration
+
+The registration credentials are added into the applications configuration data
+
+CLICK_PATH TOOLS > System management > Configurationm > Configuration data
+
+You should see the following properties with placeholder values:
+* @hres:doi:minting:safety-application-hostname@
+* @hres:doi:minting:doi-prefix@
+* @hres:doi:minting:doi-prefix-for-update@
+* @hres:doi:minting:service-url@
+
+h3(config). "hres:doi:minting:safety-application-hostname"
+
+This should be set to the hostname of the production system and is used to prevent development or testing applications from registering DOIs using the production credentials. 
+
+h4. Example Value
+
+@"research.example.ac.uk"@
+
+h3(config). "hres:doi:minting:doi-prefix"
+
+This should be set to the prefix that all DOIs registered from this system should use, this doesn't necessarily need to be the same prefix as a previous repository.
+
+
+h4. Example Value
+
+@"10.1000/example."@
+
+h3(config). "hres:doi:minting:doi-prefix-for-update"
+
+This should store a list of all DOI prefixes for which this system should send updates to DataCite regarding metadata changes. Typically this should contain the DOI Prefix (above) alongside any prefixes used to register DOIs for the institution in the past.
+
+h4. Example Value
+
+@["10.1000/example.", "10.1001/historic."]@
+
+h3(config). "hres:doi:minting:service-url"
+
+This is set by default to the test endpoint for the MDS API and should only ever be changed from that on the production system to the production MDS endpoint.
+
+h4. Example Value
+
+At the time of writing the production value is:
+
+@"https://mds.datacite.org"@
