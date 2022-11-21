@@ -20,3 +20,53 @@ h2. Example
     "qualifier": "dc:qualifier:alternative"
 }
 </pre>
+
+h2. Mapping qualifiers
+
+The framework also supports qualifier mapping from other values within the same @context@ (e.g. the same record or some subvalue if within a @for-each@), to prevent duplicated actions if a given value might need a different qualifier dependent on another value in the source. This consists of 3 values within any instruction where qualifiers are supported:
+
+|_.Property|_.Type|_.Description|
+|@mapQualifierSource@|String|(Required) The property in the same context that contains the value to use for retrieving the qualifier from the map.|
+|@mapQualifier@|Object|(Required) The map of values in the data file to the API Code for the qualifier within the system.|
+|@mapQualifierDefault@|String|(Optional) A default qualifier to fall back to if no value is provided in the @mapQualifierSource@ property for a given record.|
+
+h3. Example
+
+<pre>language=json
+{
+    "action": "for-each",
+    "source": "dietaryRequirements",
+    "instructions": [
+        {
+            "source": "requirement",
+            "destination": "profile",
+            "name": "example:attribute:dietary-requirement",
+            "mapQualifierSource": "level",
+            "mapQualifier" {
+                "allergy": "example:qualifier:allergy",
+                "preference": "example:qualifier:preference"
+            },
+            "mapQualifierDefault": "example:qualifier:allergy"
+        }
+    ]
+}
+</pre>
+
+This entry in the control file allows for dietary requirements to be added to a person's profile, with the option to specify a requirement level i.e., whether this is an allergy or a preference. The data file entry for someone who is allergic to peanuts and prefers to avoid tomatoes might look something like:
+
+<pre>language=json
+[
+    {
+        "dietaryRequirements": [
+            {
+                "requirement": "Peanuts",
+                "level": "allergy"
+            },
+            {
+                "requirement": "No tomatoes",
+                "level": "preference"
+            }
+        ]
+    }
+]
+</pre>
